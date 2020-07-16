@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body { margin: 0 auto; }
+
+        #main {
+            width: 100%;
+        }
+        #top {
+            border: 1px solid black;
+            height: 400px;
+            background-color: black;
+            /* background-image: url("../images/japan.jpg");
+            background-repeat: no-repeat;
+            background-position: center center; */
+        }
+        #middle {
+            border: 1px solid black;
+            height: auto;
+        }
+        #bottom {
+            border: 1px solid black;
+            height: 200px;
+            background-color: gray;
+        }
+        #topmenu {
+            /* border: 1px solid white; */
+            color: white;
+            text-align: center;
+            font-size: 15px;
+            padding: 0 10px;
+        }
+        #topleft {
+            float: left;
+            /* border: 1px solid white; */
+            width: 40px;
+            height: 25px;
+            background-image: url("../images/title.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        #topright { float: right; font-size: 13px;}
+        #search {
+            border: 0;
+            border-bottom: 1px solid white;
+            background-color: transparent;
+            outline: none;
+            color: white;
+            text-align: right;
+        }
+        .img {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: cornflowerblue;
+            display: inline-block;
+        }
+        #banner {
+            height: 100px;
+            background-color: orange;
+            margin-top: 20px;
+        }
+        #chatbot {
+            background-image: url("../images/catty03.png");
+            width: 128px;
+            height: 128px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+        #movetop {
+            width: 40px;
+            height: 40px;
+            background-color: orange;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div id="main">
+        <div id="top">
+            <div id="topmenu">
+                <div id="topleft"></div>
+                콘서트 뮤지컬 연극 클래식 전시
+                <span id="topright">랭킹 이벤트
+                    <input type="text" value="검색" id="search">
+                    <input type="button" value="?" id="btn1">
+                    <input type="button" value="!" id="btn2">
+                </span>
+            </div>
+        </div>
+        <div id="middle">
+            <div style="text-align: center;"><h1>WHAT'S HOT</h1>
+                <div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
+            </div>
+            <div style="text-align: center;"><h1>TICKET OPEN</h1>
+                <div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
+                <div id="chatbot"></div>
+                <input type="button" value="티켓오픈 더보기" id="btn3" style="margin-top: 20px;">
+            </div>
+            <div id="banner"></div>
+            <div style="text-align: center;"><h1>RANKING</h1>
+                <input type="button" value="#뮤지컬" id="btn4">
+                <input type="button" value="#콘서트" id="btn5">
+                <input type="button" value="#연극" id="btn6">
+                <input type="button" value="#클래식" id="btn7">
+                <input type="button" value="#전시" id="btn8">
+                <div style="margin-top: 20px">
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
+                <input type="button" value="랭킹 더보기" id="btn3" style="margin-top: 20px;">
+            </div>
+            <div style="text-align: center;"><h1>MUSICAL & PLAY</h1>
+                <div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
+            </div>
+            <div style="text-align: center;"><h1>CONCERT & CLASSIC</h1>
+                <div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-bottom: 30px;"><h1>EXHIBITION</h1>
+                <div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
+            </div>
+            <div id="movetop">↑</div>
+        </div>
+        <div id="bottom"></div>
+    </div>
+
+</body>
+</html>
