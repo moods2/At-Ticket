@@ -14,15 +14,12 @@
 
         #main {
             width: 100%;
-            margin-top: 30px;
         }
         #top {
             /* border: 1px solid black; */
-            height: 400px;
+            height: 700px;
             background-color: black;
-            /* background-image: url("../images/japan.jpg");
-            background-repeat: no-repeat;
-            background-position: center center; */
+            
         }
         #middle {
             /* border: 1px solid black; */
@@ -35,38 +32,45 @@
         }
         #topmenu {
             /* border: 1px solid white; */
+            background-color: black;
+            width: 100%;
+            height: 40px;
             color: white;
             text-align: center;
             font-size: 15px;
-            padding: 10px 10px 0 0;
+            padding: 40px 0;
+            position: absolute;
+        }
+        .menubar {
+            margin: 0 5px;
+        }
+        #topmenu > span {
+            cursor: pointer;
         }
         .switch {
-            border: 1px solid white;
-            position: relative;
-            top: 40%;
-        }
-        .switch img {
             /* border: 1px solid white; */
-        }
-        
-        
+            position: relative;
+            top: 50%;
+        }        
         #topleft {
             display: inline-block;
             /* border: 1px solid white; */
-            width: 40px;
-            height: 25px;
-            background-image: url("../images/title.png");
+            width: 100px;
+            height: 65px;
+            background-image: url("../[5] 프로젝트 코드/images//title.png");
             background-repeat: no-repeat;
             background-position: center center;
             position: absolute;
-            left : 0px;
-            top: 32px;
+            left : 10px;
+            top: 10px;
+            cursor: pointer;
         }
         #topright {
-             font-size: 13px;
-             position: absolute;
-            right : 0px;
-            top: 32px;
+            font-size: 13px;
+            position: absolute;
+            right : 5px;
+            top: 42px;
+            cursor: pointer;
         }
         .prev {
             float: left;
@@ -82,7 +86,7 @@
             background-color: transparent;
             outline: none;
             color: white;
-            text-align: right;
+
         }
         .img {
             width: 150px;
@@ -96,12 +100,14 @@
             height: 300px;
         }
         #banner {
-            height: 100px;
-            background-color: orange;
+            height: 400px;
+            background-image: url("../[5] 프로젝트 코드/images//banner.png");
+            background-repeat: no-repeat;
+            background-position: center center;
             margin-top: 20px;
         }
         #chatbot {
-            background-image: url("../images/catty03.png");
+            background-image: url("../[5] 프로젝트 코드/images//face35.png");
             width: 128px;
             height: 128px;
             position: fixed;
@@ -111,14 +117,33 @@
         #movetop {
             width: 40px;
             height: 40px;
-            background-color: orange;
+            background-color: gray;
             position: fixed;
             bottom: 0;
             right: 0;
             text-align: center;
+            padding-top: 3px;
+        }
+        #movetop:hover {
+            background-color: orange;
+        }
+        #movetop a {
+            text-decoration: none;
             color: white;
             font-weight: bold;
             font-size: 1.5em;
+        }
+        #avi {
+            width: 900px;
+            height: 500px;
+            /* display: none; */
+        }
+        #avibox {
+            width: 900px;
+            /* border: 1px solid white; */
+            margin: 0px  auto;
+            padding-top: 100px;
+            
         }
 
 
@@ -129,17 +154,30 @@
     <div id="main">
         <div id="top">
             <div id="topmenu">
-                <div id="topleft"></div>
-                콘서트 뮤지컬 연극 클래식 전시
-                <span id="topright">랭킹 이벤트
-                    <input type="text" value="검색" id="search">
-                    <input type="button" value="?" id="btnsearch">
-                    <input type="button" value="!" id="btnmypage">
-                </span>
+                <a href="#" id="topleft"></a>
+                <span data-item="item1" class="menubar">콘서트</span>
+                <span data-item="item2" class="menubar">뮤지컬</span>
+                <span data-item="item3" class="menubar">연극</span>
+                <span data-item="item4" class="menubar">클래식</span>
+                <span data-item="item5" class="menubar">전시</span>
+                <div id="topright">
+                    <span data-item="item6" class="menubar">랭킹</span>
+                    <span data-item="item7" class="menubar">이벤트</span>
+                    <input type="text" value="" id="search">
+                    <label for="search" class="glyphicon glyphicon-search"
+                        style="font-size: 14px; cursor: pointer;"></label>
+                    <div class="glyphicon glyphicon-user" 
+                        style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
+                </div>
             </div>
-            <div class="switch">
-                <img src="../images/slide-dir-prev.png" class="prev">
-                <img src="../images/slide-dir-next.png" class="after">
+            <div class="switch"> <!-- 메인화면 좌우로 넘기기 -->
+                <img src="../[5] 프로젝트 코드/images/slide-dir-prev.png" class="prev">
+                <img src="../[5] 프로젝트 코드/images/slide-dir-next.png" class="after">
+            </div>
+            <div id="avibox">
+                <iframe id="avi" src="https://www.youtube.com/embed/GbpP3Sxp-1U" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
             </div>
         </div>
         <div id="middle">
@@ -158,6 +196,7 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div style="text-align: center;"><h1>TICKET OPEN</h1>
                 <div>
                     <div class="img"></div>
@@ -169,7 +208,9 @@
                 <div id="chatbot"></div>
                 <input type="button" value="티켓오픈 더보기" id="btnticket" style="margin-top: 20px;">
             </div>
+            <hr>
             <div id="banner"></div>
+            <hr>
             <div style="text-align: center;"><h1>RANKING</h1>
                 <input type="button" value="#뮤지컬" id="hashtagmusical">
                 <input type="button" value="#콘서트" id="hashtagconcert">
@@ -183,6 +224,7 @@
                 </div>
                 <input type="button" value="랭킹 더보기" id="btnrank" style="margin-top: 20px;">
             </div>
+            <hr>
             <div style="text-align: center;"><h1>MUSICAL & PLAY</h1>
                 <div>
                     <div class="img"></div>
@@ -193,6 +235,7 @@
                     <div class="img"></div>
                 </div>
             </div>
+            <hr>
             <div style="text-align: center;"><h1>CONCERT & CLASSIC</h1>
                 <div>
                     <div class="img"></div>
@@ -203,6 +246,7 @@
                     <div class="img"></div>
                 </div>
             </div>
+            <hr>
             <div style="text-align: center; margin-bottom: 30px;"><h1>EXHIBITION</h1>
                 <div>
                     <div class="img"></div>
@@ -213,10 +257,95 @@
                     <div class="img"></div>
                 </div>
             </div>
-            <div id="movetop">↑</div>
+            <hr>
+            <div id="movetop"><a href="#top">↑</a></div>
         </div>
         <div id="bottom"></div>
     </div>
+
+
+
+
+    <script>
+
+        $(".menubar").mouseover(function() {
+            $(".menubar").css("border", "");
+            $(this).css("border-bottom", "5px solid orange");
+        });
+
+        var flag = false;
+
+        $(document).scroll(function() {
+            //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            // if (!flag) {
+                if ($(document).scrollTop() > $("#middle").position().top) {
+                    $("#topmenu").css({
+                        position: "fixed",
+                        top: "0px",
+                        bottom: ""
+                    });
+                    // $("#topmenu").animate({
+                    //     top: "0px"
+                    // }, 1000, function() {
+                    //     flag=true;
+                    // });
+                };
+            // };
+
+            //상단 헤더(top)이 눈에 보일때 쯤
+            if ($(document).scrollTop() <= $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    position: "absolute",
+                    top: "0px",
+                    bottom: ""
+                });
+                // flag = false;                
+            }
+        });
+
+        var imglist = ["./images/bg1.jpg", "./images/bg2.jpg", "./images/bg3.jpg"];
+        var imgnum = 0;
+
+        $(".prev").click(function() {
+            imgnum--
+            if (imgnum < 0) imgnum = 3;
+            $("#top").css("background-image", `url(${imglist[imgnum]})`)
+            $("#top").css("background-repeat", "no-repeat")
+            $("#top").css("background-position", "center center")
+            if (imgnum!=3) {
+                $("#avi").css("display","none")
+            }
+            if (imgnum==3) {
+                $("#top").css("background-color", "black")
+                $("#avi").css("display","block")
+                
+            }
+        });
+        $(".after").click(function() {
+            $("#top").css("background-image", `url(${imglist[imgnum]})`)
+            $("#top").css("background-repeat", "no-repeat")
+            $("#top").css("background-position", "center center")
+            $("#avi").css("display","none")
+            if (imgnum!=3) {
+                $("#avi").css("display","none")    
+            }
+            if (imgnum==3) {
+                $("#top").css("background-color", "black")
+                $("#avi").css("display","block")
+                
+            }
+            imgnum++
+            if(imgnum > 3) imgnum = 0;
+        });
+
+        $("#topleft").click(function() {
+
+
+
+        });
+        
+
+    </script>
 
 </body>
 </html>
