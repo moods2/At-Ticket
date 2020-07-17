@@ -72,7 +72,7 @@
 
         #cal {
             position: relative;
-            top: 10px;
+            top: 15px;
             left: 5px;
         }
 
@@ -124,6 +124,7 @@
         .ui-accordion-header {
             background-color: #B4A7D6;
         }
+        
 
         
     </style>
@@ -143,7 +144,15 @@
         <div class="container">
            <!-- 여기에 메뉴 -->
            <h3>♥ 공연관리</h3>
-           <div>공연관리</div>
+           <div class = "container2">
+               <h4>콘서트</h4>
+               <div>1</div>
+               <h4>뮤지컬</h4>
+               <div>2</div>
+               <h4>연극</h4>
+               <div>3</div>
+               <h4>전시</h4>
+           </div>
            <h3>♥ 방문자 조회수 관리</h3>
            <div>방문자 조회수 관리</div>
            <h3>♥ 정산 관리</h3>
@@ -179,7 +188,7 @@
 
         <div id="calendar">
             <input style="width: 100px;" type="text" name="date" id="date" value="">
-            <label for="date"><span style="font-size: 3em;" class="glyphicon glyphicon-calendar"></span></label>
+            <label for="date"><span style="font-size: 3em;" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
         </div>
     </div>
 
@@ -272,6 +281,7 @@
     });
 
     $(".container").accordion();
+    $(".container2").accordion();
 
 
     
