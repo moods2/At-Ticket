@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./css/jquery-ui.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./js/bootstrap.js"></script>
+
+    <style>
+        /* body{
+            width: 1100px;
+            height: 100%;
+        } */
+        #left {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 250px;
+            height: 2000px;
+            border: 1px solid black;
+            background-color: #B4A7D6;
+            text-align: center;
+        }
+
+        #left .info {
+            margin-left: 56px;
+            text-align: left;
+            font-variant: small-caps;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .container {
+            margin-top: 30px;
+            margin-left: 10px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
+        }
+
+        .b {
+            margin-top: 30px;
+            float: left;
+        }
+
+        .b::after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        #btn1 {
+            margin-left: 50px;
+            margin-right: 20px;
+        }
+
+        #right {
+            margin-top: -50px;
+            position: absolute;
+            left: 1800px;
+            display: inline-block;
+        }
+
+        #calendar {
+            margin-top: 40px;
+            margin-left: 300px;
+        }
+
+        .cal {
+            width:150px;
+        }
+
+        #bottom{
+            position: absolute;
+            top: 2000px;
+        }
+
+
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="left">
+        <img src="./images/사람.PNG" style="margin-top: 40px;">
+        <div class="info">
+            <span><br>Welcome,</span></br></span>
+            <span>Hong gil dong</span>
+        </div>
+        <div class="container">
+            <table style="width: 200px;" class="table table-bordered table-striped">
+                <tr>
+                    <td>♥ 공연관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 방문자 조회수 관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 정산 관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 인사관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 이벤트 관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 1:1 문의 관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 광고 베너 관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 공연 랭킹 관리 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 공지사항 ▶</td>
+                </tr>
+                <tr>
+                    <td>♥ 고객 정보 ▶</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <div style="font-weight: bold; font-size: 1.5em;margin-left:30px;">10+</div>
+            <span style="font-size: 50px; color: pink;" class="glyphicon glyphicon-envelope"></span>
+        </div>
+        <div class="b">
+            <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
+                class="btn">
+        </div>
+        <div class="b">
+            <input style="font-weight: bold; background-color: #C27BA0;" type="button" value="Logout" id="btn2"
+                class="btn">
+        </div>
+    </div>
+
+    <div id="calendar">
+        <input style="width: 100px;" type="text" name="date" id="date" value="">
+        <span style="font-size: 3em;" id = "cal" class="glyphicon glyphicon-calendar"></span>
+    </div>
+    <div id="right" style="float: right;">
+        <span style="font-size: 5em;" class="glyphicon glyphicon-home"></span>
+
+        <div class="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <span style="border-radius: 30px;" class="input-group-addon"><i
+                            class="glyphicon glyphicon-search"></i></span>
+                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
+                        placeholder="검색어를 입력하세요.">
+                </div>
+            </div>
+        </div>
+        <span class="glyphicon glyphicon-user" style="word-spacing: -10px;"> Hong gil dong</span>
+    <img src="./images/switch_on.png" id = "sw" name = "sw" style="width: 100px; position: absolute; left: 100px; top: 1000px;">
+    </div>
+    <div id = "bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    </div>
+
+</body>
+<script>
+    var date = document.getElementById("date");
+    var now = new Date();
+    var sw = document.images["sw"];
+    date.value = now.getFullYear() + " / " + now.getMonth() + " / " + now.getDate();
+    if (date.value != null) {
+        date.readOnly = true;
+    }
+    // var last = new Date();
+    // last.setMonth("12");
+    $("#cal").click(function () {
+        $("#cal").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate : now.getFullYear()+"-1-1",
+            maxDate : now.getFullYear()+"-12-"+"31"
+        });
+        $("#cal").click(function () {
+            $(this).datepicker().slideUp(2000);
+        });
+    });
+
+    document.body.bgColor = "white";
+        //스위치 
+        sw.onclick = function(){
+            if(getFileName(sw.src) == "switch_off.png") {
+            sw.src = "./images/switch_on.png";
+            document.body.bgColor = "white";
+            } else {
+                sw.src = "./images/switch_off.png";
+                document.body.bgColor = "black";
+            }
+        };
+      
+
+</script>
+
+</html>
