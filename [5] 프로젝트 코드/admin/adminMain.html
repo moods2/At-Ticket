@@ -54,10 +54,10 @@
             display: block;
         }
 
-        #btn1 {
+        /* #btn1 {
             margin-left: 50px;
             margin-right: 20px;
-        }
+        } */
 
         #topmenu {
             /* border: 1px solid blue; */
@@ -122,7 +122,7 @@
             background-color: red;   
         }
 
-        #movetop a {
+        #movetop {
             text-decoration: none;
             color: white;
             font-weight: bold;
@@ -140,8 +140,10 @@
         .ui-accordion-header {
             background-color: #B4A7D6;
         }
-        
-
+        #btn2:hover {
+            /* color : red; */
+            /* background-color: red; */
+        }
         
     </style>
 
@@ -157,50 +159,51 @@
             <span><br>Welcome,</span></br></span>
             <span>Hong gil dong</span>
         </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
+                class="btn">
+        </div> -->
+        <div id = "logout">
+            <input style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; type="button" value="Logout" id="btn2" class="btn">
+        </div>
         <div class="container">
            <!-- 여기에 메뉴 -->
-           <h3>♥ 공연관리</h3>
-           <div class = "container2">
-               <h4>콘서트</h4>
-               <div>1</div>
-               <h4>뮤지컬</h4>
-               <div>2</div>
-               <h4>연극</h4>
-               <div>3</div>
-               <h4>전시</h4>
+           <h3>공연관리</h3>
+           <div>
+               <div>공연 추가</div>
+               <div>공연 수정</div>
+               <div>공연 삭제</div> 
            </div>
-           <h3>♥ 방문자 조회수 관리</h3>
+           <h3>방문자 조회수 관리</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 정산 관리</h3>
+           <h3>정산 관리</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 인사관리</h3>
+           <h3>인사관리</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 이벤트 관리</h3>
+           <h3>이벤트 관리</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 1:1 문의 관리</h3>
+           <h3>1:1 문의 관리</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 광고 베너 관리</h3>
+           <h3>광고 베너 관리</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 공연 랭킹 관리</h3>
+           <h3>공연 랭킹 관리</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 공지사항</h3>
+           <h3>공지사항</h3>
            <div>방문자 조회수 관리</div>
-           <h3>♥ 고객 정보</h3>
+           <h3>고객 정보</h3>
            <div>방문자 조회수 관리</div>
         </div>
+        <!-- container -->
 
         <div style="margin-top: 20px;">
             <div style="font-weight: bold; font-size: 1.5em;margin-left:30px;">10+</div>
             <span style="font-size: 50px; color: pink;" class="glyphicon glyphicon-envelope"></span>
         </div>
-        <div class="b">
+        <!-- <div class="b">
             <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
                 class="btn">
-        </div>
-        <div class="b">
-            <input style="font-weight: bold; background-color: #C27BA0;" type="button" value="Logout" id="btn2"
-                class="btn">
-        </div>
+        </div> -->
+
 
         <div id="calendar">
             <input style="width: 100px;" type="text" name="date" id="date" value="">
@@ -228,7 +231,7 @@
                     style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
 
                 <!-- 제일 위로 돌아가기 -->
-                <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;"><a href="#top">↑</a></div>
+                <a href="#top"><div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div></a>
             </div>
         </div>
     </div>
@@ -236,7 +239,7 @@
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
 
-                <!-- position: fixed;
+            <!-- position: fixed;
             bottom: 0;
             right: 0; -->
 
@@ -330,6 +333,14 @@
             });             
         }
     });
+
+
+    $("#btn2").mouseenter(function(){
+        $("#btn2").css("background-color","cornflowerblue");
+    });
+    $("#btn2").mouseleave(function(){
+        $("#btn2").css("background-color","#C27BA0");
+    })
 
 
     
