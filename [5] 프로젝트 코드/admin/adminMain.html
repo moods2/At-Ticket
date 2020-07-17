@@ -59,11 +59,27 @@
             margin-right: 20px;
         }
 
-        #right {
-            margin-top: 20px;
+        #topmenu {
+            /* border: 1px solid blue; */
+            width: 100%;
+            height: 60px;
             position: absolute;
-            left: 1600px;
-            display: inline-block;
+            float: right;
+            align-content: right;
+            z-index: -1;
+        }
+        #topmenu .search {
+            /* border: 1px solid black; */
+            width: 250px;
+            margin-top: 10px;
+            float: right;
+        }
+        #topmenu .home {
+            /* border: 1px solid black; */
+            width: 50px;
+            float: right;
+            margin-top: 7px;
+            cursor: pointer;
         }
 
         #calendar {
@@ -131,7 +147,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>adminMain</title>
 </head>
 
 <body>
@@ -192,29 +208,31 @@
         </div>
     </div>
 
-   
-    <div id="right" style="float: right;">
-        <!-- 여기도 바꿈 -->
-        <span style="font-size: 5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
 
+    <div id="topmenu">
+        <div class="home">
+            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
+        </div>
         <div class="search">
             <div class="form-group">
                 <div class="input-group">
-                    <span style="border-radius: 30px;" class="input-group-addon"><i
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
                             class="glyphicon glyphicon-search"></i></span>
                     <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
                         placeholder="검색어를 입력하세요.">
                 </div>
             </div>
-        </div>
-        <span class="glyphicon glyphicon-user" style="word-spacing: -10px;" id = "adminName"> Hong gil dong</span>
-        <div id = "fixedBtn">
-            <img src = "../images/switch_on.png" id="sw" name="sw"
-                style="width: 100px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 30px;">
-            <!-- 제일 위로 돌아가기 -->
-            <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;"><a href="#top">↑</a></div>
+
+            <div id = "fixedBtn">
+                <img src = "../images/switch_on.png" id="sw" name="sw"
+                    style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
+
+                <!-- 제일 위로 돌아가기 -->
+                <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;"><a href="#top">↑</a></div>
+            </div>
         </div>
     </div>
+
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
 
@@ -282,6 +300,36 @@
 
     $(".container").accordion();
     $(".container2").accordion();
+
+
+    //홈버튼 링크
+    $("#homeLogo").click(function() {
+        location.href = "adminMain.html";
+    });
+
+    //상단 메뉴 고정
+    $(document).scroll(function() {
+        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            if ($(document).scrollTop() > $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    width: "100%",
+                    position: "fixed",
+                    top: "0px",
+                    bottom: "",
+                    zIndex: "1"
+                });
+
+            };
+
+        //상단 헤더(top)이 눈에 보일때 쯤
+        if ($(document).scrollTop() <= $("#topmenu").position().top) {
+            $("#topmenu").css({
+                position: "absolute",
+                top: "0px",
+                bottom: ""
+            });             
+        }
+    });
 
 
     
