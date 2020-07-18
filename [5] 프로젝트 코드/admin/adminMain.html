@@ -127,7 +127,8 @@
             padding-top: 3px;
         }
         #movetop:hover {
-            background-color: red;   
+            background-color: orange;
+            cursor : pointer;   
         }
 
         #movetop {
@@ -148,11 +149,27 @@
         .ui-accordion-header {
             background-color: #B4A7D6;
         }
-        #btn2:hover {
-            /* color : red; */
-            /* background-color: red; */
+       #right {
+            border : 1px solid red;
+            margin-left: 300px;
+            margin-top: 100px;
+            width : 700px;
+            /* color : white;
+            background-color: #C27BA0; */
         }
-        
+        #visitTitle {
+            margin : 15px auto;
+            border : 5px solid #C27BA0;
+            color : #C27BA0;
+            text-align: center;
+            width : 120px;
+            font-size: 2em;
+        }
+        #right2 {
+            border : 1px solid black;
+            /* text-align: center; */
+
+        }
     </style>
 
     <meta charset="UTF-8">
@@ -173,7 +190,7 @@
                 class="btn">
         </div> -->
         <div id = "logout">
-            <input style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; type="button" value="Logout" id="btn2" class="btn">
+            <input style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5;" type="button" value="Logout" id="btn2" class="btn">
         </div>
         <div class="container">
            <!-- 여기에 메뉴 -->
@@ -244,11 +261,39 @@
             style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
 
         <!-- 제일 위로 돌아가기 -->
-        <a href="#top"><div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div></a>
+        <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
+    
+    <div id = right>
+        <div id = visitTitle>Visitors</div>
+        <div id = right2>
+            <ul>
+                <li>Total Females : 6,000</li>
+                <li>Total Males : 4,000</li>
+                <li>회원수: 10,000</li>
+                <li>현재 접속자: 300</li>
+                <li>Today 접속자: 1,000</li>
+                <li>댓글 수: 6,000 (+30)</li>
+                <li>미답변 1:1 문의 : 50 (+8)</li>
+                <li>취소 요청 : 10건</li>
+                <li>입금 대기 : 3건</li>
+            </ul>
+            <!-- <div>- Total Females : 6,000</div>
+            <div>- Total Males : 4,000</div>
+            <div>- 회원수: 10,000</div>
+            <div>- 현재 접속자: 300</div>
+            <div>- Today 접속자: 1,000</div>
+            <div>- 댓글 수: 6,000 (+30)</div>
+            <div>- 미답변 1:1 문의 : 50 (+8)</div>
+            <div>- 취소 요청 : 10건</div>
+            <div>- 입금 대기 : 3건</div> -->
+        </div>        
+    </div>
+
+
 
 
 </body>
@@ -343,11 +388,14 @@
     });
 
 
+    //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
     $("#btn2").mouseenter(function(){
-        $("#btn2").css("background-color","cornflowerblue");
+        // $("#btn2").css("background-color","cornflowerblue");
+        $("#btn2").css("color","white");
     });
     $("#btn2").mouseleave(function(){
-        $("#btn2").css("background-color","#C27BA0");
+        // $("#btn2").css("background-color","#C27BA0");
+        $("#btn2").css("color","#D5D5D5");
     })
 
     //티켓 홈
@@ -355,6 +403,15 @@
         window.open("../main.html","At-Ticket");
     });
 
+    
+    //상단으로 돌아가기 -> 스무스 하게 올림
+    $("#movetop").click(function(){
+        	
+        $("html,body").animate({
+			scrollTop: 0
+		}, 700);
+        
+    });
 
 
     
