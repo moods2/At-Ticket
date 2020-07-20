@@ -166,8 +166,8 @@
         }
         #visitTitle {
             margin : 15px auto;
-            border : 5px solid #C27BA0;
-            color : #C27BA0;
+            border : 5px solid #B4A7D6;
+            color : #B4A7D6;
             text-align: center;
             width : 120px;
             font-size: 2em;
@@ -181,7 +181,7 @@
             /* border : 1px solid blue; */
             width :120px;
             height : 100px;
-            margin-left : 1420px;
+            margin-left : 920px;
             margin-bottom: 0px;
             margin-top : 40px;
             
@@ -189,13 +189,15 @@
         #bannermg {
             border : 0px;
             border-radius: 5px;
-            background-color: #C27BA0;
+            background-color: #B4A7D6;
             outline: none;
             margin : 20px;
             margin-top : 50px;
             font-weight: border;
             color : rgb(220,220,220);
             height : 40px;
+            margin-left : -100px;
+            
         }
         #bannermg:hover {
             color : white;
@@ -203,8 +205,9 @@
         #mainBanner {
             /* border : 1px solid red; */
             width :1230px;
-            height : 370px;
+            height : 400px;
             margin-left : 400px; 
+            margin-bottom: 20px;
         }
 
         .bannerC {
@@ -212,8 +215,8 @@
             margin-top : 10px;
             margin-left : 100px;
             float : left;
-            width : 190px;
-            height : 230px;
+            width : 180px;
+            height : 250px;
         }
         #cfirst {
             /* background: green; */
@@ -252,9 +255,9 @@
             text-align: center;
             padding:10px;
         }
-        /* .bannerC:hover{
+        .bannerC:hover{
             cursor:pointer;
-        } */
+        }
 
 
         #selectable {
@@ -268,7 +271,7 @@
             text-align: center;
             margin: 10px 0px;
             margin-bottom: 0px;
-            background-color: #C27BA0;
+            background-color: #B4A7D6;
             border : 0px;
             border-radius: 5px;
             color : rgb(220,220,220);
@@ -283,7 +286,7 @@
             margin-left : 0px;
         }
         #nttable th {
-            background-color:  #C27BA0;
+            background-color:  #B4A7D6;
         }
         #nttable th:nth-child(1) {width : 130px;}
         #nttable th:nth-child(2) {width : 775px;}
@@ -303,7 +306,7 @@
         .modified {
             border : 0px;
             border-radius: 5px;
-            background-color: #C27BA0;
+            background-color: #B4A7D6;
             outline: none;
             /* margin : 20px; */
             /* margin-top : 50px; */
@@ -347,8 +350,8 @@
             font-weight: bold;
             margin: auto 30px;
             margin-top : 80px;
-            background-color: #C27BA0;
-            color:white;
+            background-color: #D5D5D5;
+            color:#333;
             border-radius: 10px;
             visibility: hidden;
         }
@@ -368,15 +371,32 @@
         <h1>공지사항 <small id = "mainHome"> > Home  </small></h1>
     </div>
 
-    <div id = "banner">
-        <input type="button" id = "bannermg"value = "메인배너 관리">
-    </div>
 
-    <div id = "mainBanner">
-        <!-- 여기가  -->
-        <div class = "bannerC" id = "cfirst" class = "bannerC">
-            <input type="button" value = "수정하기" class = "edit" id = "edit1">
+
+    <div id = "mainBanner" style = "padding : 0px; padding-left : 100px; background-color: #F0F0F0;">
+        <div id = "banner">
+            <input type="button" id = "bannermg" value = "메인배너 관리">
         </div>
+        
+        <div style="position: relative;">
+            <div class = "bannerC" id = "cfirst" class = "bannerC" style="position: absolute; left: 0; top:0"></div>
+            <input type="button" value = "수정하기" class = "edit" id = "edit1" style="position: absolute; left: 80px; top:30px">
+        </div>
+        <div style="position: relative; left : 200px;">
+            <div class = "bannerC" id = "csecond" class = "bannerC" style="position: absolute; left: 0; top:0"></div>
+            <input type="button" value = "수정하기" class = "edit" id = "edit2" style="position: absolute; left: 100px; top:30px">
+        </div>
+        <div style="position: relative; left : 420px;">
+            <div class = "bannerC" id = "cthird" class = "bannerC" style="position: absolute; left: 0; top:0"></div>
+            <input type="button" value = "수정하기" class = "edit" id = "edit3" style="position: absolute; left: 100px; top:30px">
+        </div>
+        <div style="position: relative; left : 640px;">
+            <div class = "bannerC" id = "cfourth" class = "bannerC" style="position: absolute; left: 0; top:0"></div>
+            <input type="button" value = "수정하기" class = "edit" id = "edit4" style="position: absolute; left: 100px; top:30px">
+        </div>
+        
+        
+<!--         
         <div class = "bannerC" id = "csecond" class = "bannerC">
             <input type="button" value = "수정하기" class = "edit" id = "edit2">
         </div>
@@ -385,13 +405,9 @@
         </div>
         <div class = "bannerC" id = "cfourth" class = "bannerC">
             <input type="button" value = "수정하기" class = "edit" id = "edit4">
-        </div>
+        </div> -->
 
-        <!-- <div class = "bannerC" id = "cfirst"><img src="../images/classic15.jpeg" alt="" style = "width : 190px;"></div>
-        <div class = "bannerC"><img src="../images/classic18.jpeg" alt="" style = "width : 190px;"></div>
-        <div class = "bannerC"><img src="../images/consert10.jpeg" alt="" style = "width : 190px;"></div>
-        <div class = "bannerC"><img src="../images/consertSlide3.jpeg" alt="" style = "width : 190px; height:230px;"></div> -->
-        <div class = "bannerC" style = "background-color: #E9E7DC; border : 0px">
+        <!-- <div class = "bannerC" style = "background-color: #E9E7DC; border : 0px">
             2020.07.06
             <br>
             뮤지컬~~
@@ -410,7 +426,7 @@
             2020.07.06
             <br>
             뮤지컬~~
-        </div>
+        </div> -->
     </div>
     <!-- 게시판 -->
     <!-- 등록순 오름차순 조회순 -->
@@ -445,14 +461,14 @@
             <tbody>
                 <tr>
                     <td>티켓오픈</td>
-                    <td>레미제라블 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td id = "remi">레미제라블 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
                     <td> 2020.02.17(월) 15:00</td>
                     <td>2016</td>
                     <td><input type="checkbox" class = "t5"></td>
                 </tr>
                 <tr>
                     <td>티켓오픈</td>
-                    <td>연극라면</td>
+                    <td id = "ramen">연극라면</td>
                     <td> 2020.03.17(월) 15:00</td>
                     <td>2016</td>
                     <td><input type="checkbox" class = "t5"></td>
@@ -676,8 +692,7 @@
         <div class="search">
             <div class="form-group">
                 <div class="input-group">
-                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
-                            class="glyphicon glyphicon-search"></i></span>
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
                     <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
                         placeholder="검색어를 입력하세요.">
                 </div>
@@ -827,49 +842,70 @@
     //     console.log("asd");
     // };
 
+    
+    
+    //  ------------------- 배너사진 효과--------------------------
     // 이미지에 커서를 올렸을때 반응
     var hiddenObj = true;
     var objNum = "zero";//객체의 아이디를 받을것이다.
 
     $(".bannerC").mouseenter(function(){
         hiddenObj = false;
-        // console.log("asd");
-        console.log(event.srcElement.id);
         objNum = event.srcElement.id;
-        $(event.srcElement).css("filter","opacity(.4)");//투명도를 준다  
-        console.log(hiddenObj);
-
+        $(event.srcElement).css("filter","opacity(.4)");//투명도를 준다->이벤트 터널링 때문에 다 투명도
+        
         if(hiddenObj == false) {
+            console.log(objNum);
             if (objNum == "cfirst") {
-                console.log("apple");
                 $("#edit1").css("visibility","visible");
+                $("#edit1").mouseenter(function(){
+                    $("#edit1").css("visibility","visible");
+                    $("#cfirst").css("filter","opacity(.4)");
+                });
             } else if (objNum == "csecond") {
                 $("#edit2").css("visibility","visible");
+                $("#edit2").mouseenter(function(){
+                    $("#edit2").css("visibility","visible");
+                    $("#csecond").css("filter","opacity(.4)");
+                });
             } else if (objNum == "cthird") {
                 $("#edit3").css("visibility","visible");
+                $("#edit3").mouseenter(function(){
+                    $("#edit3").css("visibility","visible");
+                    $("#cthird").css("filter","opacity(.4)");
+                });
             } else if (objNum == "cfourth") {
                 $("#edit4").css("visibility","visible");
+                $("#edit4").mouseenter(function(){
+                    $("#edit4").css("visibility","visible");
+                    $("#cfourth").css("filter","opacity(.4)");
+                });
             }
         }
-
-
     }); 
 
-    // 이미지에 커서를 내렸을때 반응
+    //이미지에 커서를 내렸을때 반응
     $(".bannerC").mouseleave(function(){
         hiddenObj = true;
-        // console.log("asd");
-        // console.log(event.srcElement.id);
 
         $(event.srcElement).css("filter","opacity(1)");
-        // $(".edit").css("visibility","hidden");
-        console.log(hiddenObj);
         $(".edit").css("visibility","hidden");
 
     }); 
 
-    console.log(objNum);
-    
+    //  ----------------------------------------------------------
+
+
+    //게시판 만지면 해당 영역으로 이동
+
+    $("#remi").click(function(){
+        location.href = "./adminNtcCheck.html";
+    });
+
+
+    $("#ramen").click(function(){
+        location.href = "./adminNtcCheck2.html";
+    });
 
 
 
