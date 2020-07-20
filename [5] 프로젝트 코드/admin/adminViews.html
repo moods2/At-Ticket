@@ -33,7 +33,7 @@
             top: 0px;
             width: 250px;
             height: 2000px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             background-color: #B4A7D6;
             /* background-color: #444444; */
             text-align: center;
@@ -170,51 +170,62 @@
             top: 120px;
         }
 
-        #add {
-            width: 500px;
-            height: 800px;
-            position: relative;
-            margin-left: 40px;
-            /* margin: 20px auto; */
-            
+        #tabs{
+            width: 1000px;
+            margin-left: 30px;
         }
-        #content > #add > div {
-            margin: 10px;
-
-        }
-        #content > #add > div > label {
-            margin: 5px;
-        }
-        #btnadd {
-            margin-top: 20px;
-            margin-left: 350px;
-        }
+        
     </style>
 
     <style type="text/css">
-        .img_wrap {
-            /* border: 1px solid black; */
-            width: 300px;
-            height: 100px;
-            margin-top: 50px;
-        }
-        .img_wrap img {
-            max-width: 30%;
-        }
+    /* 월별 */
+        .highcharts-figure, .highcharts-data-table table {
+        min-width: 360px; 
+        max-width: 800px;
+        margin: 1em auto;
+    }
+
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #EBEBEB;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+    }
+    .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+    .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
 
     </style>
-   
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <title>adminShowAdd</title>
+    <title>adminViews</title>
+
+    <script src="../js/highcharts.js"></script>
 </head>
 
 <body>
 
     <div id = "title">
-        <h1>공연 추가 <small> 공연관리 > Home  </small></h1>
+        <h1>방문자 조회수 통계 <small> > Home  </small></h1>
     </div>
 
 
@@ -229,7 +240,7 @@
                 class="btn">
         </div> -->
         <div id = "logout">
-            <input style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5;" type="button" value="Logout" id="btn2" class="btn">
+            <input style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; type="button" value="Logout" id="btn2" class="btn">
         </div>
         <div class="container">
            <!-- 여기에 메뉴 -->
@@ -304,59 +315,31 @@
         <a href="#top"><div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div></a>
     </div>
 
-
     <div id="content">
-        <fieldset id="add" class="form-control">
-            <!-- <legend class="form-control">공연 정보 추가하기</legend> -->
-
-            <div>
-                <label>공연 장르 : </label>
-                <select style="width: 100px; display: inline;" class="form-control">
-                    <option>뮤지컬</option>
-                    <option>콘서트</option>
-                    <option>연극</option>
-                    <option>클래식</option>
-                    <option>전시</option>
-                </select>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tab1">월별</a></li>
+                <li><a href="#tab2">일별</a></li>
+                <li><a href="#tab3">성별/연령별</a></li>
+            </ul>
+            <div id="tab1">
+                <figure class="highcharts-figure">
+                    <div id="container1"></div>
+                </figure>
             </div>
-
-            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" autofocus></div>
-            <div><label for="txtdate">공연 기간 : </label>
-                 <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
-                 <span> - </span>
-                 <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
+            <div id="tab2">
+                <figure class="highcharts-figure">
+                    <div id="container2"></div>
+                </figure>
             </div>
-            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" autofocus></div>
-            <div><label for="txttime">공연 시간 : </label><input type="text" id="txttime" autofocus></div>
-            <div><label for="txtplace" style="display: block;">공연 장소  </label>
-                <input type="text" id="sample6_postcode" placeholder="우편번호">
-                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input type="text" id="sample6_address" placeholder="주소"><br>
-                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+            <div id="tab3">
+                <figure class="highcharts-figure">
+                    <div id="container3"></div>
+                </figure>
+                
             </div>
+        </div>
 
-            <!-- </label><input type="text" id="txtplace" autofocus></div> -->
-            <!-- <div><label for="txtdelivery">배송 정보 : </label><input type="text" id="txtdelivery" autofocus></div> -->
-            <div><label for="txtnotice">유의 사항  </label>
-                 <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
-            </div>
-
-            <div><label for="txtheader">포스터  : </label><input type="file" id="txtheader" style="display: inline;" autofocus></div>
-            <div class="img_wrap">
-                <img id="img1" />
-            </div>
-
-            <div><label for="txtcontent">공연 내용 : </label><input type="file" id="txtcontent" style="display: inline;" autofocus></div>
-            <div class="img_wrap">
-                <img id="img2" />
-            </div>
-
-            
-            <div><input type="button" id="btnadd" value="추가하기" class="btn btn-default"></div>
-        </fieldset>
     </div>
 
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
@@ -365,62 +348,196 @@
 
 </body>
 <script>
-
-    $("#btnadd").click(function() {
-        // 추가버튼 >> 입력된 정보 추가하기
+    //일별
+    Highcharts.chart('container2', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: '요일별 방문자 통계'
+        },
+        subtitle: {
+            text: 'At-Ticket.com'
+        },
+        xAxis: {
+            categories: ['일', '월', '화', '수', '목', '금', '토']
+        },
+        yAxis: {
+            title: {
+                text: '방문자수'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: '방문자',
+            data: [127, 150, 256, 278, 222, 320, 259]
+        }]
     });
 
-    var sel_file;
+    //성별/연령별
+    var categories = [
+        '0-4', '5-9', '10-14', '15-19',
+        '20-24', '25-29', '30-34', '35-39', '40-44',
+        '45-49', '50-54', '55-59', '60-64', '65-69',
+        '70-74', '75-79', '80-84', '85-89', '90-94',
+        '95-99', '100 + '
+    ];
 
-    $(document).ready(function() {
-        $("#txtheader").on("change", handleImgFileSelect1);
-        $("#txtcontent").on("change", handleImgFileSelect2);
-    }); 
-
-    function handleImgFileSelect1(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-
-        filesArr.forEach(function(f) {
-            if(!f.type.match("image.*")) {
-                alert("확장자는 이미지 확장자만 가능합니다.");
-                return;
+    Highcharts.chart('container3', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '성별/연령별 방문자 통계'
+        },
+        subtitle: {
+            text: 'At-Ticket.com'
+        },
+        accessibility: {
+            point: {
+                valueDescriptionFormat: '{index}. Age {xDescription}, {value}%.'
             }
-
-            sel_file = f;
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#img1").attr("src", e.target.result);
+        },
+        xAxis: [{
+            categories: categories,
+            reversed: false,
+            labels: {
+                step: 1
+            },
+            accessibility: {
+                description: '나이 (남)'
             }
-            reader.readAsDataURL(f);
-            
-        });
-    }
-
-    function handleImgFileSelect2(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-
-        filesArr.forEach(function(f) {
-            if(!f.type.match("image.*")) {
-                alert("확장자는 이미지 확장자만 가능합니다.");
-                return;
+        }, { // mirror axis on right side
+            opposite: true,
+            reversed: false,
+            categories: categories,
+            linkedTo: 0,
+            labels: {
+                step: 1
+            },
+            accessibility: {
+                description: '나이 (여자)'
             }
-
-            sel_file = f;
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#img2").attr("src", e.target.result);
+        }],
+        yAxis: {
+            title: {
+                text: null
+            },
+            labels: {
+                formatter: function () {
+                    return Math.abs(this.value) + '%';
+                }
+            },
+            accessibility: {
+                description: 'Percentage population',
+                rangeDescription: 'Range: 0 to 5%'
             }
-            reader.readAsDataURL(f);
-            
-        });
-    }
+        },
+
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
+                    'Population: ' + Highcharts.numberFormat(Math.abs(this.point.y), 1) + '%';
+            }
+        },
+
+        series: [{
+            name: '남',
+            data: [
+                -2.2, -2.1, -2.2, -2.4,
+                -2.7, -3.0, -3.3, -3.2,
+                -2.9, -3.5, -4.4, -4.1,
+                -3.4, -2.7, -2.3, -2.2,
+                -1.6, -0.6, -0.3, -0.0,
+                -0.0
+            ]
+        }, {
+            name: '여',
+            data: [
+                2.1, 2.0, 2.1, 2.3, 2.6,
+                2.9, 3.2, 3.1, 2.9, 3.4,
+                4.3, 4.0, 3.5, 2.9, 2.5,
+                2.7, 2.2, 1.1, 0.6, 0.2,
+                0.0
+            ]
+        }]
+    });
+
+    // 월별
+    Highcharts.chart('container1', {
+
+        title: {
+            text: '월별 방문자 통계'
+        },
+
+        subtitle: {
+            text: 'At-Ticket.com'
+        },
+
+        yAxis: {
+            title: {
+                text: '방문자수'
+            }
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 1 to 8'
+            }
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 1
+            }
+        },
+
+        series: [{
+            name: '방문자수',
+            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
 
 
-    // var date = document.getElementsByClassName("date");
+
     var date = document.getElementById("date");
     var now = new Date();
     var sw = document.images["sw"];
@@ -429,24 +546,12 @@
         date.readOnly = true;
     }
 
-    $("#date").datepicker({
+    
+        $("#date").datepicker({
             dateFormat: "yy-mm-dd",
             minDate: now.getFullYear() + "-1-1",
             maxDate: now.getFullYear() + "-12-" + "31"
-    });
-
-    
-    $("#date1").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: now.getFullYear() + "-1-1",
-        maxDate: now.getFullYear() + "-12-" + "31"
-    });
-
-    $("#date2").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: now.getFullYear() + "-1-1",
-        maxDate: now.getFullYear() + "-12-" + "31"
-    });
+        });
 
    
 
@@ -536,57 +641,13 @@
     });
 
 
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
-
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
 
+
+    $("#tabs").tabs({
+            active: 0 //기본으로 선택할 것 고르기
+    });
     
     
 

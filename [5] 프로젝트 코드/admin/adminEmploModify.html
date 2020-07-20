@@ -172,7 +172,7 @@
 
         #add {
             width: 500px;
-            height: 800px;
+            height: 500px;
             position: relative;
             margin-left: 40px;
             /* margin: 20px auto; */
@@ -186,7 +186,7 @@
             margin: 5px;
         }
         #btnadd {
-            margin-top: 20px;
+            margin-top: 60px;
             margin-left: 350px;
         }
     </style>
@@ -199,7 +199,7 @@
             margin-top: 50px;
         }
         .img_wrap img {
-            max-width: 30%;
+            max-width: 50%;
         }
 
     </style>
@@ -208,13 +208,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <title>adminShowAdd</title>
+    <title>adminEmployeeModify</title>
 </head>
 
 <body>
 
     <div id = "title">
-        <h1>공연 추가 <small> 공연관리 > Home  </small></h1>
+        <h1>직원 수정 <small> 인사관리 > Home  </small></h1>
     </div>
 
 
@@ -307,51 +307,25 @@
 
     <div id="content">
         <fieldset id="add" class="form-control">
-            <!-- <legend class="form-control">공연 정보 추가하기</legend> -->
 
-            <div>
-                <label>공연 장르 : </label>
-                <select style="width: 100px; display: inline;" class="form-control">
-                    <option>뮤지컬</option>
-                    <option>콘서트</option>
-                    <option>연극</option>
-                    <option>클래식</option>
-                    <option>전시</option>
-                </select>
+            <!-- ------------------------------- 선택 직원의 value값 넘겨오기 --------------------------->
+            <div><label for="txtname">이름 : </label><input type="text" id="txtname" style="width: 100px;" autofocus></div>
+            <div><label for="txtjumin">주민번호 : </label>
+                 <input type="text" class="txtjumin" style="width: 100px;" autofocus><span> - </span><input type="text" class="txtjumin" style="width: 100px;" autofocus>
             </div>
+            <div><label for="txtphone">전화번호: </label>
+                <input type="text" value="010" class="txtphone" style="width: 50px;">
+                <span> - </span>
+                <input type="text" class="txtphone" style="width: 50px;" autofocus>
+                <span> - </span>
+                <input type="text" class="txtphone" style="width: 50px;" autofocus>
+            </div>
+            <div><label for="txtgrade">직급 : </label><input type="text" id="txtgrade" style="width: 70px;" autofocus></div>
+            <div><label for="txtsalary">월급 : </label><input type="text" id="txtsalary" style="width: 70px;" autofocus></div>
 
-            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" autofocus></div>
-            <div><label for="txtdate">공연 기간 : </label>
-                 <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
-                 <span> - </span>
-                 <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
-            </div>
-            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" autofocus></div>
-            <div><label for="txttime">공연 시간 : </label><input type="text" id="txttime" autofocus></div>
-            <div><label for="txtplace" style="display: block;">공연 장소  </label>
-                <input type="text" id="sample6_postcode" placeholder="우편번호">
-                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input type="text" id="sample6_address" placeholder="주소"><br>
-                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-            </div>
-
-            <!-- </label><input type="text" id="txtplace" autofocus></div> -->
-            <!-- <div><label for="txtdelivery">배송 정보 : </label><input type="text" id="txtdelivery" autofocus></div> -->
-            <div><label for="txtnotice">유의 사항  </label>
-                 <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
-            </div>
-
-            <div><label for="txtheader">포스터  : </label><input type="file" id="txtheader" style="display: inline;" autofocus></div>
+            <div><label for="txtphoto">증명사진 </label><input type="file" id="txtphoto" style="display: inline;" autofocus></div>
             <div class="img_wrap">
                 <img id="img1" />
-            </div>
-
-            <div><label for="txtcontent">공연 내용 : </label><input type="file" id="txtcontent" style="display: inline;" autofocus></div>
-            <div class="img_wrap">
-                <img id="img2" />
             </div>
 
             
@@ -367,14 +341,13 @@
 <script>
 
     $("#btnadd").click(function() {
-        // 추가버튼 >> 입력된 정보 추가하기
+        // 수정버튼 >> 입력된 정보 수정하기
     });
 
     var sel_file;
 
     $(document).ready(function() {
-        $("#txtheader").on("change", handleImgFileSelect1);
-        $("#txtcontent").on("change", handleImgFileSelect2);
+        $("#txtphoto").on("change", handleImgFileSelect1);
     }); 
 
     function handleImgFileSelect1(e) {
@@ -398,30 +371,9 @@
         });
     }
 
-    function handleImgFileSelect2(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
 
-        filesArr.forEach(function(f) {
-            if(!f.type.match("image.*")) {
-                alert("확장자는 이미지 확장자만 가능합니다.");
-                return;
-            }
-
-            sel_file = f;
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#img2").attr("src", e.target.result);
-            }
-            reader.readAsDataURL(f);
-            
-        });
-    }
-
-
-    // var date = document.getElementsByClassName("date");
     var date = document.getElementById("date");
+    // var date = document.getElementsByClassName("date");
     var now = new Date();
     var sw = document.images["sw"];
     date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
@@ -586,10 +538,7 @@
 
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
-
     
     
 
 </script>
-
-</html>

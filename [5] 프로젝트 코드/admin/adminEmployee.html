@@ -33,7 +33,7 @@
             top: 0px;
             width: 250px;
             height: 2000px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             background-color: #B4A7D6;
             /* background-color: #444444; */
             text-align: center;
@@ -170,51 +170,74 @@
             top: 120px;
         }
 
-        #add {
-            width: 500px;
-            height: 800px;
+        #tbl {
+            /* border: 1px solid gray; */
+            border-collapse: collapse;
+            width: 0;
+            height: 80px;
             position: relative;
-            margin-left: 40px;
-            /* margin: 20px auto; */
-            
+            margin: 0px auto;
         }
-        #content > #add > div {
-            margin: 10px;
-
+        #tbl th {
+            text-align: center;            
+            background-color: #ccc;
+            height: 30px;
         }
-        #content > #add > div > label {
-            margin: 5px;
+        #tbl td {
+            height: 30px;
         }
-        #btnadd {
-            margin-top: 20px;
-            margin-left: 350px;
+        #tbl th:nth-child(1), #tbl td:nth-child(1) {
+            width: 70px;
+            text-align: center;
         }
+        #tbl th:nth-child(2), #tbl td:nth-child(2) {
+            width: 100px;
+            text-align: center;
+        }
+        #tbl th:nth-child(3), #tbl td:nth-child(3) {
+            width: 200px;
+            padding-left: 10px;
+            text-align: center;
+        }
+        #tbl th:nth-child(4), #tbl td:nth-child(4) {
+            width: 200px;
+            text-align: center;
+        }
+        #tbl th:nth-child(5), #tbl td:nth-child(5) {
+            width: 100px;
+            text-align: center;
+        }
+        #tbl th:nth-child(6), #tbl td:nth-child(6) {
+            width: 150px;
+            text-align: center;
+        }
+        #tbl th:nth-child(7), #tbl td:nth-child(7) {
+            width: 100px;
+            text-align: center;
+        }
+        
+        #btns {
+            width: 800px;
+            position: relative;
+            margin: 10px auto;
+            margin-left: 1100px;
+        }
+        #btns > a {
+            margin: 3px;
+            box-shadow: none;
+        }
+        
     </style>
-
-    <style type="text/css">
-        .img_wrap {
-            /* border: 1px solid black; */
-            width: 300px;
-            height: 100px;
-            margin-top: 50px;
-        }
-        .img_wrap img {
-            max-width: 30%;
-        }
-
-    </style>
-   
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <title>adminShowAdd</title>
+    <title>adminEmployee</title>
 </head>
 
 <body>
 
     <div id = "title">
-        <h1>공연 추가 <small> 공연관리 > Home  </small></h1>
+        <h1>인사 관리 <small> > Home  </small></h1>
     </div>
 
 
@@ -233,16 +256,16 @@
         </div>
         <div class="container">
            <!-- 여기에 메뉴 -->
-           <h3 id="showmanage">공연관리</h3>
+           <h3>공연관리</h3>
            <div>
             <a href="adminShow.html">공연 조회</a><br>
             <a href="adminShowAdd.html">공연 추가</a>
-        </div>
+            </div>
            <h3>방문자 조회수 관리</h3>
             <div>방문자 조회수 통계</div>
            <h3>정산 관리</h3>
             <div>매출액 통계</div>
-           <h3 id="emplomanage">인사관리</h3>
+           <h3>인사관리</h3>
            <div>
             <a href="adminEmployee.html">직원 조회</a><br>
             <a href="adminEmploAdd.html">직원 추가</a>
@@ -252,7 +275,7 @@
            <h3>1:1 문의 관리</h3>
              <div>문의 조회</div>
            <h3>광고 배너 관리</h3>
-            <div>배너 조회</div>
+            <div>베너 조회</div>
            <h3>공연 랭킹 관리</h3>
             <div>랭킹 조회</div>
            <h3>공지사항</h3>
@@ -287,7 +310,7 @@
         <div class="search">
             <div class="form-group">
                 <div class="input-group">
-                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
                             class="glyphicon glyphicon-search"></i></span>
                     <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
                         placeholder="검색어를 입력하세요.">
@@ -304,59 +327,49 @@
         <a href="#top"><div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div></a>
     </div>
 
-
     <div id="content">
-        <fieldset id="add" class="form-control">
-            <!-- <legend class="form-control">공연 정보 추가하기</legend> -->
+        <div id="searchbox" style="width: 900; margin-left: 1060px; margin-bottom: 20px;">
+            <input type="text" id="search" class="form-control" style="width: 200px; height: 30px; display: inline;">
+            <span><i class="glyphicon glyphicon-search" style="cursor: pointer;"  id="btnsearch2"></i></span>
+        </div>
+        <table id="tbl" class="table table-hover">
+            <tbody id="tbody">
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>주민번호</th>
+                    <th>전화번호</th>
+                    <th>직급</th>
+                    <th>월급</th>
+                    <th>선택</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>홍길동</td>
+                    <td>910101-1010101</td>
+                    <td>010-9999-9999</td>
+                    <td>대리</td>
+                    <td>2200000</td>
+                    <td><input type="checkbox" name="is_check" class="cb"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>아무개</td>
+                    <td>910101-1010101</td>
+                    <td>010-9999-9999</td>
+                    <td>대리</td>
+                    <td>2100000</td>
+                    <td><input type="checkbox" name="is_check" class="cb"></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr style="width: 940px;">
+        <div id="btns">
+            <a class="btn btn-default" id="btnadd">추가</a>
+            <a class="btn btn-default" id="btnmodify">수정</a>
+            <a class="btn btn-default" id="btndelete">삭제</a>
+        </div>
 
-            <div>
-                <label>공연 장르 : </label>
-                <select style="width: 100px; display: inline;" class="form-control">
-                    <option>뮤지컬</option>
-                    <option>콘서트</option>
-                    <option>연극</option>
-                    <option>클래식</option>
-                    <option>전시</option>
-                </select>
-            </div>
-
-            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" autofocus></div>
-            <div><label for="txtdate">공연 기간 : </label>
-                 <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
-                 <span> - </span>
-                 <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
-            </div>
-            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" autofocus></div>
-            <div><label for="txttime">공연 시간 : </label><input type="text" id="txttime" autofocus></div>
-            <div><label for="txtplace" style="display: block;">공연 장소  </label>
-                <input type="text" id="sample6_postcode" placeholder="우편번호">
-                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input type="text" id="sample6_address" placeholder="주소"><br>
-                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-            </div>
-
-            <!-- </label><input type="text" id="txtplace" autofocus></div> -->
-            <!-- <div><label for="txtdelivery">배송 정보 : </label><input type="text" id="txtdelivery" autofocus></div> -->
-            <div><label for="txtnotice">유의 사항  </label>
-                 <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
-            </div>
-
-            <div><label for="txtheader">포스터  : </label><input type="file" id="txtheader" style="display: inline;" autofocus></div>
-            <div class="img_wrap">
-                <img id="img1" />
-            </div>
-
-            <div><label for="txtcontent">공연 내용 : </label><input type="file" id="txtcontent" style="display: inline;" autofocus></div>
-            <div class="img_wrap">
-                <img id="img2" />
-            </div>
-
-            
-            <div><input type="button" id="btnadd" value="추가하기" class="btn btn-default"></div>
-        </fieldset>
     </div>
 
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
@@ -365,62 +378,32 @@
 
 </body>
 <script>
-
-    $("#btnadd").click(function() {
-        // 추가버튼 >> 입력된 정보 추가하기
+    // 추가
+    $("#btnadd").click(function(){
+        window.location.href="adminEmploAdd.html";
     });
+    // 수정
+    $("#btnmodify").click(function(){
+        console.log($("input:checkbox[name=is_check]:checked").length);
+        if ($("input:checkbox[name=is_check]:checked").length > 1){
+            alert("하나만 선택하세요.");
+        }else {
+            //선택된 체크박스의 내용 불러오기
 
-    var sel_file;
+            window.location.href="adminEmploModify.html";
+        }
+    });
+    // 삭제
+    $("#btndelete").click(function(){
+        var result = confirm("정말 삭제하시겠습니까?");
+        console.log(result);
+        if(result) {
+            alert("삭제되었습니다.")
+        }else {
 
-    $(document).ready(function() {
-        $("#txtheader").on("change", handleImgFileSelect1);
-        $("#txtcontent").on("change", handleImgFileSelect2);
-    }); 
+        }
+    });5
 
-    function handleImgFileSelect1(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-
-        filesArr.forEach(function(f) {
-            if(!f.type.match("image.*")) {
-                alert("확장자는 이미지 확장자만 가능합니다.");
-                return;
-            }
-
-            sel_file = f;
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#img1").attr("src", e.target.result);
-            }
-            reader.readAsDataURL(f);
-            
-        });
-    }
-
-    function handleImgFileSelect2(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-
-        filesArr.forEach(function(f) {
-            if(!f.type.match("image.*")) {
-                alert("확장자는 이미지 확장자만 가능합니다.");
-                return;
-            }
-
-            sel_file = f;
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("#img2").attr("src", e.target.result);
-            }
-            reader.readAsDataURL(f);
-            
-        });
-    }
-
-
-    // var date = document.getElementsByClassName("date");
     var date = document.getElementById("date");
     var now = new Date();
     var sw = document.images["sw"];
@@ -429,24 +412,12 @@
         date.readOnly = true;
     }
 
-    $("#date").datepicker({
+    
+        $("#date").datepicker({
             dateFormat: "yy-mm-dd",
             minDate: now.getFullYear() + "-1-1",
             maxDate: now.getFullYear() + "-12-" + "31"
-    });
-
-    
-    $("#date1").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: now.getFullYear() + "-1-1",
-        maxDate: now.getFullYear() + "-12-" + "31"
-    });
-
-    $("#date2").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: now.getFullYear() + "-1-1",
-        maxDate: now.getFullYear() + "-12-" + "31"
-    });
+        });
 
    
 
@@ -535,57 +506,22 @@
         window.open("../main.html","At-Ticket");
     });
 
+    //메인검색
+    $("#btnsearch").click(function(){
+        // 검색어 넘기기
+        window.location.href="adminSearch.html";
+    });
 
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
+    //직원검색
+    $("#btnsearch2").click(function(){
+        // 검색어 넘기기
+        window.location.href="adminSearch.html";
+    });
 
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
+
+
 
     
     
