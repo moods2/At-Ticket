@@ -194,31 +194,32 @@
         </div>
         <div class="container">
            <!-- 여기에 메뉴 -->
-           <h3> 
-            공연관리</h3>
+           <h3 id="showmanage">공연관리</h3>
            <div>
-               <div>공연 추가</div>
-               <div>공연 수정</div>
-               <div>공연 삭제</div> 
-           </div>
+            <div id="showinfo">공연 조회</div>
+            <div id="showadd">공연 추가</div>
+        </div>
            <h3>방문자 조회수 관리</h3>
-           <div>방문자 조회수 관리</div>
+            <div>방문자 조회수 통계</div>
            <h3>정산 관리</h3>
-           <div>방문자 조회수 관리</div>
-           <h3>인사관리</h3>
-           <div>방문자 조회수 관리</div>
+            <div>매출액 통계</div>
+           <h3 id="emplomanage">인사관리</h3>
+           <div>
+            <div id="emploinfo">직원 조회</div>
+            <div id="emploadd">직원 추가</div>
+            </div>
            <h3>이벤트 관리</h3>
-           <div>방문자 조회수 관리</div>
+            <div>이벤트 조회</div>
            <h3>1:1 문의 관리</h3>
-           <div>방문자 조회수 관리</div>
-           <h3>광고 베너 관리</h3>
-           <div>방문자 조회수 관리</div>
+             <div>문의 조회</div>
+           <h3>광고 배너 관리</h3>
+            <div>배너 조회</div>
            <h3>공연 랭킹 관리</h3>
-           <div>방문자 조회수 관리</div>
+            <div>랭킹 조회</div>
            <h3>공지사항</h3>
-           <div>방문자 조회수 관리</div>
+            <div>공지사항 조회</div>
            <h3>고객 정보</h3>
-           <div>방문자 조회수 관리</div>
+            <div>고객 정보 조회</div>
         </div>
         <!-- container -->
 
@@ -246,7 +247,7 @@
         <div class="search">
             <div class="form-group">
                 <div class="input-group">
-                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
                             class="glyphicon glyphicon-search"></i></span>
                     <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
                         placeholder="검색어를 입력하세요.">
@@ -413,6 +414,21 @@
 		}, 700);
         
     });
+
+    //검색
+    $("#btnsearch").click(function(){
+        // 검색어 넘기기
+        window.location.href="adminSearch.html";
+    });
+
+
+    //메뉴 링크
+    $("#showmanage, #showinfo").click(function(){  window.location.href="adminShow.html"; });
+    $("#showadd").click(function(){  window.location.href="adminShowAdd.html"; });
+    $("#emplomanage, #emploinfo").click(function(){  window.location.href="adminEmployee.html"; });
+    $("#emploadd").click(function(){  window.location.href="adminEmploAdd.html"; });
+    
+
 
 
     
