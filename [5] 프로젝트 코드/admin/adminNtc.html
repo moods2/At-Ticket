@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <style>
+        html{
+            width: 1100px;
+        }
+        #title{
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+        h1{
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 3em; 
+            color: #B4A7D6;
+        }
+
+        #left {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 250px;
+            height: 2000px;
+            border: 1px solid black;
+            background-color: #B4A7D6;
+            /* background-color: #444444; */
+            text-align: center;
+        }
+
+        #left .info {
+            margin-left: 56px;
+            text-align: left;
+            font-variant: small-caps;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .container {
+            /* margin-top: 30px; */
+            /* margin-left: 10px; */
+            width : 260px;
+            padding-right : 25px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
+        }
+
+        .b {
+            margin-top: 30px;
+            float: left;
+        }
+
+        .b::after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        /* #btn1 {
+            margin-left: 50px;
+            margin-right: 20px;
+        } */
+
+        #topmenu {
+            /* border: 1px solid blue; */
+            width: 100%;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            float: right;
+            align-content: right;
+            z-index: 0;
+        }
+        #topmenu .search {
+            /* border: 1px solid black; */
+            width: 250px;
+            margin-top: 10px;
+            float: right;
+        }
+        #topmenu .home {
+            /* border: 1px solid black; */
+            width: 50px;
+            float: right;
+            margin-top: 7px;
+            cursor: pointer;
+        }
+
+        #calendar {
+           margin-top: 10px;
+        }
+
+        #cal {
+            position: relative;
+            top: 15px;
+            left: 5px;
+        }
+
+        #bottom {
+            position: absolute;
+            top: 2000px;
+        }
+
+        #sw {
+            margin-top: 850px;
+            cursor: pointer;
+        }
+
+        /* 새로 추가한 코드 */
+        /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
+        .container tr td:hover {
+            cursor : pointer;
+        }
+
+         #movetop {
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            text-align: center;
+            padding-top: 3px;
+        }
+        #movetop:hover {
+            background-color: orange;
+            cursor : pointer;   
+        }
+
+        #movetop {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        .ui-state-active {
+            background-color: red;
+            background-image: url();
+        }
+        .ui-state-hover {
+            background-color: #B4A7D6;
+            background-image: url();
+        }
+
+        .ui-accordion-header {
+            background-color: #B4A7D6;
+        }
+       #right {
+            border : 1px solid red;
+            margin-left: 300px;
+            margin-top: 100px;
+            width : 700px;
+            /* color : white;
+            background-color: #C27BA0; */
+        }
+        #visitTitle {
+            margin : 15px auto;
+            border : 5px solid #C27BA0;
+            color : #C27BA0;
+            text-align: center;
+            width : 120px;
+            font-size: 2em;
+        }
+        #right2 {
+            border : 1px solid black;
+            /* text-align: center; */
+
+        }
+        #banner {
+            /* border : 1px solid blue; */
+            width :120px;
+            height : 100px;
+            margin-left : 1420px;
+            margin-bottom: 0px;
+            margin-top : 40px;
+            
+        }
+        #bannermg {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #C27BA0;
+            outline: none;
+            margin : 20px;
+            margin-top : 50px;
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 40px;
+        }
+        #bannermg:hover {
+            color : white;
+        }
+        #mainBanner {
+            /* border : 1px solid red; */
+            width :1230px;
+            height : 370px;
+            margin-left : 400px; 
+        }
+
+        .bannerC {
+            background-color: #6495ED;
+            margin-top : 10px;
+            margin-left : 100px;
+            float : left;
+            width : 190px;
+            height : 230px;
+        }
+        #cfirst {
+            /* background: green; */
+            margin-left : 80px;
+            background-image: url(../images/Exhibition1.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #csecond {
+            background-image: url(../images/Exhibition13.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #cthird {
+            background-image: url(../images/Exhibition6.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #cfourth {
+            background-image: url(../images/music10.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .bannerC~div:nth-child(5) {
+            margin-left : 80px;
+        }
+        .bannerC~div:nth-child(5),
+        .bannerC~div:nth-child(6),
+        .bannerC~div:nth-child(7),
+        .bannerC~div:nth-child(8) {
+            background-color: white;
+            border: 1px solid black;
+            height : 60px;
+            margin-top: 0px;
+            text-align: center;
+            padding:10px;
+        }
+        /* .bannerC:hover{
+            cursor:pointer;
+        } */
+
+
+        #selectable {
+            /* border : 1px solid black; */
+            width : 1330px;
+            margin-left : 350px;
+            height : 1100px;
+        }
+        .selectNotice {
+            width : 100px;
+            text-align: center;
+            margin: 10px 0px;
+            margin-bottom: 0px;
+            background-color: #C27BA0;
+            border : 0px;
+            border-radius: 5px;
+            color : rgb(220,220,220);
+            font-weight: bold;
+            height : 40px;
+        }
+
+        .selectNotice:hover {
+            color : white;
+        }
+        #nttable {
+            margin-left : 0px;
+        }
+        #nttable th {
+            background-color:  #C27BA0;
+        }
+        #nttable th:nth-child(1) {width : 130px;}
+        #nttable th:nth-child(2) {width : 775px;}
+        #nttable th:nth-child(3) {width : 300px;}
+        #nttable th:nth-child(4) {width : 100px;}
+        #nttable th:nth-child(5) {width : 25px;}
+
+        #nttable tbody td {
+            /* color :red; */
+            font-size: 1.3em;
+        }
+
+        #nttable > tbody > tr > td:nth-child(2):hover {
+            cursor : pointer;
+            text-decoration: underline;
+        }
+        .modified {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #C27BA0;
+            outline: none;
+            /* margin : 20px; */
+            /* margin-top : 50px; */
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modified:hover {
+            color : white;
+        }
+        .pagebar {
+            margin-left : 400px;
+        }
+        #slctp1, #slctp2 {
+            float : left;
+            /* margin-left : 100px; */
+        }
+
+        #slctp2 {
+            margin-top : 10px;
+            margin : 10px auto;
+            margin-bottom: 10px;
+            width : 300px;
+            margin-left: 720px;
+        }
+        #searchlogo:hover {
+            cursor: pointer;
+            /* background-color: rgb(red, green, blue); */
+        }
+
+        #manipulate {
+            margin-left: 1050px;
+        }
+        /* 수정하는 버튼  */
+        .edit {
+            width : 120px;
+            height : 50px;
+            border: 0px;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: auto 30px;
+            margin-top : 80px;
+            background-color: #C27BA0;
+            color:white;
+            border-radius: 10px;
+            visibility: hidden;
+        }
+        
+
+
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminMain</title>
+</head>
+
+<body>
+    <!-- 고객 메인 페이지 베너관리하는 곳 -->
+    <div id = "title">
+        <h1>공지사항 <small id = "mainHome"> > Home  </small></h1>
+    </div>
+
+    <div id = "banner">
+        <input type="button" id = "bannermg"value = "메인배너 관리">
+    </div>
+
+    <div id = "mainBanner">
+        <!-- 여기가  -->
+        <div class = "bannerC" id = "cfirst" class = "bannerC">
+            <input type="button" value = "수정하기" class = "edit" id = "edit1">
+        </div>
+        <div class = "bannerC" id = "csecond" class = "bannerC">
+            <input type="button" value = "수정하기" class = "edit" id = "edit2">
+        </div>
+        <div class = "bannerC" id = "cthird" class = "bannerC">
+            <input type="button" value = "수정하기" class = "edit" id = "edit3">
+        </div>
+        <div class = "bannerC" id = "cfourth" class = "bannerC">
+            <input type="button" value = "수정하기" class = "edit" id = "edit4">
+        </div>
+
+        <!-- <div class = "bannerC" id = "cfirst"><img src="../images/classic15.jpeg" alt="" style = "width : 190px;"></div>
+        <div class = "bannerC"><img src="../images/classic18.jpeg" alt="" style = "width : 190px;"></div>
+        <div class = "bannerC"><img src="../images/consert10.jpeg" alt="" style = "width : 190px;"></div>
+        <div class = "bannerC"><img src="../images/consertSlide3.jpeg" alt="" style = "width : 190px; height:230px;"></div> -->
+        <div class = "bannerC" style = "background-color: #E9E7DC; border : 0px">
+            2020.07.06
+            <br>
+            뮤지컬~~
+        </div>
+        <div class = "bannerC" style = "background-color: #E9E7DC; border : 0px">
+            2020.07.06
+            <br>
+            뮤지컬~~
+        </div>
+        <div class = "bannerC" style = "background-color: #E9E7DC; border : 0px">
+            2020.07.06
+            <br>
+            뮤지컬~~
+        </div>
+        <div class = "bannerC" style = "background-color: #E9E7DC; border : 0px">
+            2020.07.06
+            <br>
+            뮤지컬~~
+        </div>
+    </div>
+    <!-- 게시판 -->
+    <!-- 등록순 오름차순 조회순 -->
+    <div id = "selectable">
+        
+        <div id = "slctp1">
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
+            <!-- <input type="button" class = "selectNotice" value = "등록순">
+            <input type="button" class = "selectNotice" value = "오름차순">
+            <input type="button" class = "selectNotice" value = "내림차순"> -->
+        </div>
+
+        <div id = "slctp2">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
+			</div>
+        </div>
+
+        <table style = "width:1330px;" class = "table table-striped table-bordered table-condensed" id = "nttable">
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>제목</th>
+                    <th>티켓오픈일시</th>
+                    <th>조회수</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>레미제라블 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>연극라면</td>
+                    <td> 2020.03.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>                
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>               
+                 <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>               
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>                
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>                
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>               
+                 <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>                
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox"></td>
+
+                </tr>                
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>                
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>                
+                <tr>
+                    <td>티켓오픈</td>
+                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>2016</td>
+                    <td><input type="checkbox" class = "t5"></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 내용물 수정/삭제 페이지 -->
+        <div id = "manipulate">
+            <button class = "modified"><i class="glyphicon glyphicon-trash"></i> 공지삭제</button>
+            <button class = "modified"><i class="glyphicon glyphicon-plus"></i> 공지작성</button>
+            <button class = "modified"><i class="glyphicon glyphicon-pencil"></i> 공지수정</button>
+        </div>
+            <!-- <input type="button" class = "modified" value = "공지삭제"> -->
+        <!-- <input type="button" class = "modified" value = "공지작성"> -->
+        <!-- <input type="button" class = "modified" value = "공지수정"> -->
+
+
+        <!-- 하단 페이지 선택 바 -->
+            <nav class = "pagebar">
+              <ul class="pagination">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li class = "active"><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li><a href="">6</a></li>
+                <li><a href="">7</a></li>
+                <li><a href="">8</a></li>
+                <li><a href="">9</a></li>
+                <li><a href="">10</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+        
+    </div><!-- selectable --> 
+    
+    
+
+    
+
+    <div id="left">
+        <img src="../images/사람.png" style="margin-top: 40px;">
+        <div class="info">
+            <span><br>Welcome,</span></br></span>
+            <span>Hong gil dong</span>
+        </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
+                class="btn">
+        </div> -->
+        <div id = "logout">
+            <input style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5;" type="button" value="Logout" id="btn2" class="btn">
+        </div>
+        <div class="container">
+           <!-- 여기에 메뉴 -->
+           <h3> 
+            공연관리</h3>
+           <div>
+               <div>공연 추가</div>
+               <div>공연 수정</div>
+               <div>공연 삭제</div> 
+           </div>
+           <h3>방문자 조회수 관리</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>정산 관리</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>인사관리</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>이벤트 관리</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>1:1 문의 관리</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>광고 베너 관리</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>공연 랭킹 관리</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>공지사항</h3>
+           <div>방문자 조회수 관리</div>
+           <h3>고객 정보</h3>
+           <div>방문자 조회수 관리</div>
+        </div>
+        <!-- container -->
+
+
+        <!-- 티켓 사이트 로고 바로가기 -->
+        <div style="margin-top: 20px;">
+            <img src="../images/title.png" id="tickethome" style="cursor: pointer;">
+        </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
+                class="btn">
+        </div> -->
+
+
+        <div id="calendar">
+            <input style="width: 100px;" type="text" name="date" id="date" value="">
+            <label for="date"><span style="font-size: 3em;" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
+        </div>
+    </div>
+
+
+    <div id="topmenu">
+        <div class="home">
+            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
+        </div>
+        <div class="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
+                            class="glyphicon glyphicon-search"></i></span>
+                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
+                        placeholder="검색어를 입력하세요.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id = "fixedBtn">
+        <img src = "../images/switch_on.png" id="sw" name="sw"
+            style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
+
+        <!-- 제일 위로 돌아가기 -->
+        <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
+    </div>
+
+    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    </div>
+    
+
+
+
+
+
+</body>
+<script>
+    var date = document.getElementById("date");
+    var now = new Date();
+    var sw = document.images["sw"];
+    date.value = now.getFullYear() + " / " + now.getMonth() + " / " + now.getDate();
+    if (date.value != null) {
+        date.readOnly = true;
+    }
+
+    
+        $("#date").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: now.getFullYear() + "-1-1",
+            maxDate: now.getFullYear() + "-12-" + "31"
+        });
+
+   
+
+    document.body.bgColor = "white";
+    
+
+
+    //스위치 
+    var swCount = 1;
+    $("#sw").click(function () {
+        console.log("클릭함");
+
+            if(swCount % 2 == 0) {
+                console.log("들어옴");
+                sw.src="../images/switch_on.png";
+                $("body").css("background-color","white");
+                $("#homeLogo").css("color","#333333");
+                $("#adminName").css("color","#333333");
+                $("#mainHome").css("color","#333");
+                $("#nttable > tbody > tr:nth-child(2n)").css("color","#333333");
+            } else {
+                sw.src="../images/switch_off.png";
+                $("body").css("background-color","#292A2D");
+                $("#homeLogo").css("color","white");
+                $("#adminName").css("color","white");
+                $("#mainHome").css("color","white");
+                $("#nttable > tbody > tr:nth-child(2n)").css("color","white");
+
+
+            }
+            swCount++;
+    });
+
+    $("#btn1").click(function(){
+        window.open("login.html","Login","width=300, height=300");
+    });
+    
+
+    $("#btn2").click(function(){
+        if(confirm("로그아웃하시겠습니까?")){
+            console.log("로그아웃 되었습니다.");
+         }
+    });
+
+    $(".container").accordion();
+    // $(".container2").accordion();
+    $('.collapse').collapse({
+        toggle: false
+    })
+
+
+    //홈버튼 링크
+    $("#homeLogo").click(function() {
+        location.href = "adminMain.html";
+    });
+
+    //상단 메뉴 고정
+    $(document).scroll(function() {
+        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            if ($(document).scrollTop() > $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    width: "100%",
+                    position: "fixed",
+                    top: "0px",
+                    bottom: "",
+                    zIndex: "1"
+                });
+
+            };
+
+        //상단 헤더(top)이 눈에 보일때 쯤
+        if ($(document).scrollTop() <= $("#topmenu").position().top) {
+            $("#topmenu").css({
+                position: "absolute",
+                top: "0px",
+                bottom: ""
+            });             
+        }
+    });
+
+
+    //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
+    $("#btn2").mouseenter(function(){
+        // $("#btn2").css("background-color","cornflowerblue");
+        $("#btn2").css("color","white");
+    });
+    $("#btn2").mouseleave(function(){
+        // $("#btn2").css("background-color","#C27BA0");
+        $("#btn2").css("color","#D5D5D5");
+    })
+
+    //티켓 홈
+    $("#tickethome").click(function() {
+        window.open("../main.html","At-Ticket");
+    });
+
+    
+    //상단으로 돌아가기 -> 스무스 하게 올림
+    $("#movetop").click(function(){
+        	
+        $("html,body").animate({
+			scrollTop: 0
+		}, 700);
+        
+    });
+
+    // document.getElementsByClassName("bannerC").onmousedown = function(){
+    //     console.log("asd");
+    // };
+
+    // 이미지에 커서를 올렸을때 반응
+    var hiddenObj = true;
+    var objNum = "zero";//객체의 아이디를 받을것이다.
+
+    $(".bannerC").mouseenter(function(){
+        hiddenObj = false;
+        // console.log("asd");
+        console.log(event.srcElement.id);
+        objNum = event.srcElement.id;
+        $(event.srcElement).css("filter","opacity(.4)");//투명도를 준다  
+        console.log(hiddenObj);
+
+        if(hiddenObj == false) {
+            if (objNum == "cfirst") {
+                console.log("apple");
+                $("#edit1").css("visibility","visible");
+            } else if (objNum == "csecond") {
+                $("#edit2").css("visibility","visible");
+            } else if (objNum == "cthird") {
+                $("#edit3").css("visibility","visible");
+            } else if (objNum == "cfourth") {
+                $("#edit4").css("visibility","visible");
+            }
+        }
+
+
+    }); 
+
+    // 이미지에 커서를 내렸을때 반응
+    $(".bannerC").mouseleave(function(){
+        hiddenObj = true;
+        // console.log("asd");
+        // console.log(event.srcElement.id);
+
+        $(event.srcElement).css("filter","opacity(1)");
+        // $(".edit").css("visibility","hidden");
+        console.log(hiddenObj);
+        $(".edit").css("visibility","hidden");
+
+    }); 
+
+    console.log(objNum);
+    
+
+
+
+
+
+    
+    
+
+</script>
+
+</html>
