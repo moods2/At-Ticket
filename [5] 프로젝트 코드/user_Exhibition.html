@@ -316,7 +316,7 @@
             <div id="top">
                 <div id="topmenu">
                     <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-                    <a href="#" id="topleft"></a>
+                    <a href="main.html" id="topleft"></a>
                     <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
                     <div id="topcenter">
                         <span data-lo="user_concert.html" class="menubar">콘서트</span>
@@ -495,14 +495,14 @@
             //상단 메뉴 css
             $(".menubar").mouseover(function() {
             $(this).css("border-bottom", "5px solid orange");
-        });
-        $(".menubar").mouseout(function() {
-            $(this).css("border-bottom", "");
-        });
-        //상단 메뉴 클릭시
-        $(".menubar").click(function() {
-            location.href = $(this).data("lo");
-        });
+            });
+            $(".menubar").mouseout(function() {
+                $(this).css("border-bottom", "");
+            });
+            //상단 메뉴 클릭시
+            $(".menubar").click(function() {
+                location.href = $(this).data("lo");
+            });
 
             var flag = false;
 

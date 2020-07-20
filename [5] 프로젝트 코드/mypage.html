@@ -582,15 +582,20 @@
         //유저메뉴 css
         $(".usermenu").mouseover(function() {
             $(this).css("color", "#4E7AD1");
-        })
+        });
         $(".usermenu").mouseout(function() {
             $(this).css("color", "");
-        })
+        });
         //유저메뉴 클릭시 이동
         $(".usermenu").click(function() {
             // console.log($(this).data("lo"));
             location.href = $(this).data("lo");
-        })
+        });
+
+        //이벤트 더보기 클릭시 이동
+        $("#eventmore").click(function() {
+            location.href = "user_event.html";
+        });
 
     </script>
 
