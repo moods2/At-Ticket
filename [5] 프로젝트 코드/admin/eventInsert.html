@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            margin-left: 30px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <legend style="width: 200px; margin:20px 25px; font-weight: bold;">이벤트 추가</legend>
+    <div id="box">
+        <div id="sel">
+            <select name="sel1" size="1" style="height: 25px;">
+                <optgroup label="구분">
+                    <option value="1">프로</option>
+                    <option value="2">초대</option>
+                    <option value="3">기획</option>
+            </select>
+            <input style="position: relative; top: -2px;" type="text" placeholder="제목을 입력하세요." name="txt" id="txt"
+                autofocus>
+        </div>
+
+        <div style="margin-top: 10px;"><label for="txtname" style="font-weight: bold;">&nbsp기간 : &nbsp&nbsp&nbsp</label>
+            <input style="width: 100px; text-align: center;" type="text" name="date" value=" /      /" id="date"><label
+            for="date"><span style="font-size: 1em; margin-left: 10px;" class="glyphicon glyphicon-calendar"
+                id="cal"></span></label> ~ <input style="width: 100px; text-align: center;" type="text" name="date"
+            value=" /      /" id="date1"><label for="date1"><span style="font-size: 1em; margin-left: 10px;"
+                class="glyphicon glyphicon-calendar" id="cal1"></span></label>
+        </div>
+        <div> <span style="font-weight: bold;">배너 첨부 :</span><input style="background-color: lavender; margin: 4px; display: inline;" type="file"></div>
+        <div id="list"></div>
+        <input type="button" value="+파일" id="btnAdd"  style="margin-top: 5px;">
+        <div><span style="font-weight: bold;">내용 첨부 : </span><input style="background-color: lavender; margin: 4px; display: inline;" type="file"></div>
+        <div id="list1"></div>
+        <input style="margin-bottom: 4px;" type="button" value="+파일" id="btnAdd1">
+
+    </div>
+    <script>
+        var btnAdd = document.getElementById("btnAdd");
+        var list = document.getElementById("list");
+        var btnAdd1 = document.getElementById("btnAdd1");
+        var list1 = document.getElementById("list1");
+        var now = new Date();
+
+        btnAdd.onclick = function () {
+            list.innerHTML += " <div>파일 첨부 : <input type = 'file'></div>";
+        };
+
+        btnAdd1.onclick = function () {
+            list1.innerHTML += " <div>파일 첨부 : <input type = 'file'></div>";
+        };
+
+        $("#date").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: now.getFullYear() + "-1-1",
+            maxDate: now.getFullYear() + "-12-" + "31"
+        });
+
+        $("#date1").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: now.getFullYear() + "-1-1",
+            maxDate: now.getFullYear() + "-12-" + "31"
+        });
+
+    </script>
+</body>
+
+</html>

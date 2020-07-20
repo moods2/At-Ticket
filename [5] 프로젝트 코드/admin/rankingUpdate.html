@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <style>
+         #b {
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+
+        .btn {
+            width: 100px;
+        }
+
+        #sel {
+           margin:40px;
+        }
+
+        #add {
+        width: 430px;
+        height: 250px;
+        }
+
+    </style>
+</head>
+<body>
+    <legend style="width: 200px; margin:20px 40px; font-weight: bold;">랭킹 수정</legend>
+    <div id = "sel">
+        <div><label for="txtname">수정할 필드 : </label>  <select name="sel1" size="1" style="height: 25px;">
+            <option value="name">제목</option>
+            <option value="email">장르</option>
+            <option value="tel">예매율</option>
+            <option value="ssn">별점</option>
+            <option value="id">순위</option>
+        </select>
+        <input style="position: relative; top: -2px;" type="text" name="txt" id="txt" autofocus>
+    </div>
+
+    <div id="b">
+        <input type="button" value="수정" id="btn1" style="margin-left: 20px;" class="btn btn-warning">
+        <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-warning">
+    </div>
+
+    <script>
+          $("#btn1").click(function () {
+            if (confirm("수정하시겠습니까?")) {
+            }
+        });
+
+        $("#btn2").click(function () {
+            window.close();
+        });
+
+    </script>
+</body>
+</html>

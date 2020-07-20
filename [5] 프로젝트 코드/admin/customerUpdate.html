@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <style>
+        /* #list{
+            margin-top: 10px;
+        }
+        li{
+            margin-bottom: 10px;
+        } */
+        #b {
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+
+        .btn {
+            width: 100px;
+        }
+
+        #sel {
+           margin:40px;
+        }
+
+        #add {
+        width: 430px;
+        height: 250px;
+        }
+
+        
+    </style>
+</head>
+
+
+<body>
+    <!-- <ul id="list">
+        <h3>수정할 내용을 선택</h3>
+            <li><input type="button" value="이름" class ="btn btn-default" id = "name"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="name1" class = "data"></li>
+            <li><input type="button" value="이메일" class ="btn btn-default" id = "email"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="email1" class = "data"></li>
+            <li><input type="button" value="전화번호" class ="btn btn-default" id = "tel"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="tel1" class = "data"></li>
+            <li><input type="button" value="주민번호" class ="btn btn-default" id = "ssn"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="ssn1" class = "data"></li>
+            <li><input type="button" value="아이디" class ="btn btn-default" id = "id"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="id1" class = "data"></li>
+            <li><input type="button" value="비번" class ="btn btn-default" id = "pwd"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="pwd1" class = "data"></li>
+            <li><input type="button" value="주소" class ="btn btn-default" id = "addr"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="addr1" class = "data"></li>
+        </ul> -->
+       
+            <legend style="width: 200px; margin:20px 40px; font-weight: bold;">고객정보 수정</legend>
+            <div id = "sel">
+                <div><label for="txtname">수정할 필드 : </label>  <select name="sel1" size="1" style="height: 25px;">
+                    <option value="name">이름</option>
+                    <option value="email">이메일</option>
+                    <option value="tel">전화번호</option>
+                    <option value="ssn">주민번호</option>
+                    <option value="id">아이디</option>
+                    <option value="pwd">비번</option>
+                    <option value="addr">주소</option>
+                </select>
+                <input style="position: relative; top: -2px;" type="text" name="txt" id="txt" autofocus>
+            </div>
+
+            <div id="b">
+                <input type="button" value="수정" id="btn1" style="margin-left: 20px;" class="btn btn-warning">
+                <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-warning">
+            </div>
+   
+  
+
+    
+    <script>
+
+        // $("#name").click(function () {
+        //     $("#name1").css("display", "inline-block");
+        // }
+        // );
+
+        // $("#email").click(function () {
+        //     $("#email1").css("display", "inline-block");
+        // }
+        // );
+
+        // $("#tel").click(function () {
+        //     $("#tel1").css("display", "inline-block");
+        // }
+        // );
+
+        // $("#ssn").click(function () {
+        //     $("#ssn1").css("display", "inline-block");
+        // }
+        // );
+
+        // $("#id").click(function () {
+        //     $("#id1").css("display", "inline-block");
+        // }
+        // );
+
+        // $("#pwd").click(function () {
+        //     $("#pwd1").css("display", "inline-block");
+        // }
+        // );
+
+        // $("#addr").click(function () {
+        //     $("#addr1").css("display", "inline-block");
+        // }
+        // );
+       
+
+        $("#btn1").click(function () {
+            if (confirm("수정하시겠습니까?")) {
+            }
+        });
+
+        $("#btn2").click(function () {
+            window.close();
+        });
+
+
+    </script>
+</body>
+
+</html>

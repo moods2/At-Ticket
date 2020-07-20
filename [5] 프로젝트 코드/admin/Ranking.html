@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Highcharts Example</title> -->
+    <style>
+        #title {
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+
+        small {
+            color: #777;
+            font-family: Arial;
+            font-size: 27.3px;
+            font-weight: lighter;
+        }
+
+        #cal {
+            position: relative;
+            float: left;
+            top: 15px;
+            left: 5px;
+        }
+
+        * {
+            outline: none;
+        }
+
+        #btns {
+            width: 350px;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+        }
+
+        .dat:hover {
+            border-bottom: 3px solid lightgreen;
+            
+        }
+
+        #middle {
+            margin-left: 280px;
+        }
+
+        #one{
+            margin-top: 50px;
+        }
+
+        .rank{
+            text-align: center center;
+            position: relative; 
+            top: -70px;
+            margin-right: 20px;
+        }
+        .img {
+            width: 150px;
+            height: 150px;
+            background-color: mediumseagreen;
+            display: inline-block;
+        }
+
+        .box2 {
+            margin-bottom: 10px;
+        }
+
+        #sel{
+            margin-top: 50px;
+            text-align: center;
+            margin-left: 100px;
+            margin-bottom: 200px;
+            
+        }
+        .btn{
+            margin-right: 8px;
+            color: mediumslateblue;
+            font-weight: bold;
+            border: 0px;
+        }
+        .bt{
+            border: 0px;
+        }
+
+        .bt:hover {    
+            background: #B4A7D6;
+            border: 0px;
+            border-bottom: 3px solid mediumslateblue;
+        }
+    </style>
+    <style type="text/css">
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 320px;
+            max-width: 660px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="title">
+        <h1 style="color: #B4A7D6; font-weight: bold;
+        font-family: Arial;
+        font-size: 3em;">랭킹 <small>> Home </small></h1>
+    </div>
+
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p style="text-align: center;" class="highcharts-description">
+            에매율
+        </p>
+    </figure>
+    <div style="text-align: center; font-weight: bold;">
+        <span id="day" class="dat">일간</span>
+        <span>｜</span>
+        <span id="week" class="dat">주간</span>
+        <span>｜</span>
+        <span id="month" class="dat">월간</span>
+        <span>｜</span>
+        <span id="year" class="dat">연간</span>
+        <span>｜</span>
+    </div>
+    <div id="calendar" style="width: 500px; margin: 20px auto; ">
+        <input style="width: 100px; text-align: center; margin-left: 170px;" type="text" name="date" id="date">
+        <label for="date"><span style="font-size: 3em; " class="glyphicon glyphicon-calendar" id="cal"></span></label>
+    </div>
+    <div id="btns">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="전체" id="btn1" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="뮤지컬" id="btn2" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="콘서트" id="btn3" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="연극" id="btn4" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="전시" id="btn5" class="bt">
+    </div>
+
+    <div id = "line" style="border: 2px solid #999999; width: 1500px; margin-left: 280px; margin-top: 30px;"></div>
+  
+    <div id = "middle">
+        <div style="text-align: center; margin-left: -500px;" id = "one" class = "box2">
+            <span class = "rank">1위</span>
+            <div class = "img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
+            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+                대학로 유니플렉스 2관</div>
+        </div>
+        <div style="text-align: center; margin-left: -500px;" id = "two" class = "box2">
+            <span class = "rank">2위</span>
+            <div class = "img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
+            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+                대학로 유니플렉스 2관</div>
+        </div>
+        <div style="text-align: center; margin-left: -500px;" id = "three" class = "box2">
+            <span class = "rank">3위</span>
+            <div class = "img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
+            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+                대학로 유니플렉스 2관</div>
+        </div>
+        <div style="text-align: center; margin-left: -500px;" id = "four" class = "box2">
+            <span class = "rank">4위</span>
+            <div class = "img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
+            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+                대학로 유니플렉스 2관</div>
+        </div>
+        <div style="text-align: center; margin-left: -500px;" id = "five" class = "box2">
+            <span class = "rank">5위</span>
+            <div class = "img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
+            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+                대학로 유니플렉스 2관</div>
+        </div>
+        <div style="text-align: center; margin-left: -500px;" id = "six" class = "box2">
+            <span class = "rank">6위</span>
+            <div class = "img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
+            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+                대학로 유니플렉스 2관</div>
+        </div>
+    </div>
+    <div id = "sel">
+    <input type="button" value="추가" class = "btn btn-warning" id = "btn6">
+    <input type="button" value="수정" class = "btn btn-warning" id = "btn7">
+    <input type="button" value="삭제" class = "btn btn-warning" id = "btn8">
+    </div>
+
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <!-- <script src="../js/bootstrap.js"></script> -->
+    <script src="../js/highcharts.js"></script>
+    <script type="text/javascript">
+
+        // Build the chart
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Booking rate by genre'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'performance',
+                colorByPoint: true,
+                data: [{
+                    name: 'Concert',
+                    y: 40,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'Musical',
+                    y: 46
+                }, {
+                    name: 'play',
+                    y: 7
+                }, {
+                    name: 'Exhibition',
+                    y: 3
+                }, {
+                    name: 'Other',
+                    y: 4
+                }]
+            }]
+        });
+
+
+    </script>
+    <script>
+        $("#btns").controlgroup();
+        var date = document.getElementById("date");
+        var now = new Date();
+        date.value = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
+        if (date.value != null) {
+            date.readOnly = true;
+        }
+
+        $("#date").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: now.getFullYear() + "-1-1",
+            maxDate: now.getFullYear() + "-12-" + "31"
+        });
+
+        $("#btn1").click(function () {
+
+        });
+
+        $("#btn2").click(function () {
+
+        });
+
+        $("#btn3").click(function () {
+
+        });
+
+        $("#btn4").click(function () {
+
+        });
+
+        $("#btn5").click(function () {
+
+        });
+
+        $("#btn6").click(function () {
+            window.open("rankingInsert.html", "추가", "width=400, height=300")
+        });
+
+        $("#btn7").click(function () {
+            window.open("rankingUpdate.html", "수정", "width=400, height=300")
+        });
+
+        $("#btn8").click(function () {
+            window.open("rankingDelete.html", "삭제", "width=420, height=300")
+        });
+
+
+    </script>
+</body>
+
+</html>

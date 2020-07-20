@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #title {
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+
+        * {
+            outline: none;
+        }
+
+        #info {
+            margin-top: 30px;
+            margin-left: 280px;
+        }
+
+        td {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+   
+    <div id="title">
+        <h1 style="color: #B4A7D6; font-weight: bold;
+        font-family: Arial;
+        font-size: 3em;">이벤트 관리 <small>> Home </small></h1>
+    </div>
+
+    <div id="info">
+        <h2>이벤트 관리</h2>
+       
+        <table style="width: 850px;" class="table  table-bordered table-striped" id="tbl">
+            <tbody id="tbody1">
+                <tr style="background-color: sandybrown;">
+                    <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
+                    <th class="title" style="width: 100px;text-align: center;">Index</th>
+                    <th class="title" style="width: 150px;text-align: center;">제목</th>
+                    <th class="title" style="width: 400px;text-align: center;">기간</th>
+                    <th class="title" style="width: 200px;text-align: center;">구분</th>
+                  
+                <tr value="1">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="1"></td>
+                    <td class="data" id="index">1</td>
+                    <td class="data">출석이벤트</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">프로모션</td>
+                </tr>
+                <tr value="2">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="2"></td>
+                    <td class="data" id="index">2</td>
+                    <td class="data">출석이벤트</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">프로모션</td>
+                </tr>
+                <tr value="3">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="3"></td>
+                    <td class="data" id="index">3</td>
+                    <td class="data">출석이벤트</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">프로모션</td>
+                </tr>
+                <tr value="4">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="4"></td>
+                    <td class="data" id="index">4</td>
+                    <td class="data">출석이벤트</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">프로모션</td>
+                </tr>
+                <tr value="5">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="1"></td>
+                    <td class="data" id="index">5</td>
+                    <td class="data">출석이벤트</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">프로모션</td>
+                </tr>
+                <tr value="6">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="6"></td>
+                    <td class="data" id="index">6</td>
+                    <td class="data">출석이벤트</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">프로모션</td>
+                </tr>
+        </table>
+        <input type="button" value="추가" class="btn btn-warning" id="btn1">
+        <input type="button" value="수정" class="btn btn-warning" id="btn2">
+        <input type="button" value="삭제" class="btn btn-warning" id="btn3">
+        </tbody>
+    </div>
+
+    <script>
+         var cbAll = document.all.cbAll; // 일괄 체크박스
+    var child;
+    var cb = document.getElementsByClassName("cb");
+
+    // 모두 선택 기능, 페이지 이동 
+    cbAll.onchange = function () {
+        for (var i = 0; i < cb.length; i++) {
+            cb[i].checked = cbAll.checked;
+        }
+    }
+
+    //추가
+    $("#btn1").click(function () {
+        child = window.open("eventInsert.html", "추가", "width=500, height=330");
+    });
+
+    //수정
+    $("#btn2").click(function () {
+        child = window.open("eventUpdate.html", "수정", "width=500, height=330");
+    });
+
+    //삭제
+    $("#btn3").click(function () {
+
+        if (confirm("정말로 삭제하시겠습니까?")) {
+            $("input[name=checkRow]:checked").each(function () {
+                var tr_value = $(this).val();
+                var tr = $("tr[value='" + tr_value + "']");
+                tr.remove();
+            });
+        }
+
+    }
+    );
+    </script>
+
+
+</body>
+</html>

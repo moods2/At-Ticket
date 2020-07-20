@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #title {
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 3em;
+            color: #B4A7D6;
+        }
+
+        body {
+            outline: none;
+        }
+
+        .search {
+            float: left;
+            width: 200px;
+        }
+
+        #sel1 {
+            width: 150px;
+            float: left;
+        }
+
+        #header {
+            width: 1000px;
+            margin-top: 10px;
+            background-color: gray;
+        }
+
+        #box {
+            margin: 70px auto;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">
+        <h1>고객 관리 <small>> Home </small></h1>
+    </div>
+
+    <div id="header">
+        <select style="margin-left: 280px;" name="sel1" id="sel1" class="form-control">
+            <option value="name">이름</option>
+            <option value="tel">전화번호</option>
+            <option value="id">회원아이디</option>
+            <option value="ssn">주민번호</option>
+        </select>
+
+        <span style="margin-left: 20px;" class="search">
+            <span class="form-group">
+                <span style="width: 300px;" class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+                </span>
+            </span>
+        </span>
+    </div>
+
+    <div id="box">
+        <table style="width: 450px; margin-left: 280px;" class="table  table-bordered table-striped table-hover"
+            id="tbl">
+            <tbody id="tbody1">
+                <tr>
+                    <th><input type="checkbox" name="cbAll"></th>
+                    <th style="width: 50px;">index</th>
+                    <th style="width: 90px;">이름</th>
+                    <th style="width: 130px;">회원아이디</th>
+                    <th style="width: 180px;">주민번호</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var index = 1;
+        var list = [];
+        var count = 10;
+        var tbl = document.getElementById("tbl");
+        var tbody1 = document.getElementById("tbody1");
+        var sel1 = document.getElementById("sel1");
+        var tr = document.getElementsByTagName("tr");
+        var cbAll = document.all.cbAll; // 일괄 체크박스
+      
+        // select에서 바뀌면 검색창에 focus가 가도록 한 구문
+       $("#sel1").change(function(){
+            $(".form-control").focus();
+        });
+      
+        // 테이블 만드는 구문 
+        // box.appendChild(table);
+        if (count != 0) {
+            index = 1;
+
+            for (var i = 0; i < count; i++) {
+                list = ['<input type="checkbox" class="cb">',index, "홍길동", "hongil", "932921-1859144"];
+                tr = document.createElement("tr");
+               
+                for (var j = 0; j < 5; j++) {
+                    var td = document.createElement("td");
+                    td.innerHTML = list[j];
+                    tr.appendChild(td);
+                }
+                index++;
+                tbody1.appendChild(tr);
+            }
+
+        } else {
+
+            tr = document.createElement("tr");
+            tbody1.innerText = "일치하는 데이터가 없습니다.";
+
+        }
+        var cb = document.getElementsByClassName("cb");
+
+        // 모두 선택 기능, 페이지 이동 
+        cbAll.onchange = function(){
+            for(var i=0;i<cb.length;i++){
+                    cb[i].checked = cbAll.checked;
+                }
+                location.href = "customerInfo.html";
+        }
+        var name = [];
+        var id = [];
+        var ssn = [];
+
+        // 체크 박스 선택하면 페이지 이동
+        for(var i=0;i<cb.length;i++){
+            cb[i].onchange = function(){
+                if(event.srcElement.checked){
+                    // name.push(event.srcElement);
+                    // console.log(1);
+                }       
+                
+                location.href = "customerInfo.html";
+            };
+        }
+
+        
+
+    </script>
+</body>
+
+</html>
