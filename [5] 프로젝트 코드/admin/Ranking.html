@@ -7,9 +7,24 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/jquery-ui.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-  
+
     <style>
         /* main */
+        @font-face {
+            font-family: 'NanumBarunGothic';
+            font-style: normal;
+            font-weight: 400;
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF Light';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         html {
             width: 1100px;
         }
@@ -18,7 +33,7 @@
             font-weight: bold;
             font-family: Arial;
             font-size: 3em;
-            color: #B4A7D6;
+            color: #111;
         }
 
         #left {
@@ -27,10 +42,10 @@
             top: 0px;
             width: 250px;
             height: 2000px;
-            border: 1px solid black;
-            background-color: #B4A7D6;
-            /* background-color: #444444; */
+            /* border: 1px solid black; */
+            background-color: #444;
             text-align: center;
+            z-index: 10;
         }
 
         #left .info {
@@ -41,7 +56,7 @@
             font-size: 1em;
         }
 
-        .container {
+        .accomenu {
             /* margin-top: 30px; */
             /* margin-left: 10px; */
             width: 260px;
@@ -49,7 +64,8 @@
         }
 
         .btn {
-            box-shadow: 3px 3px 0;
+            /* box-shadow: 3px 3px 0; */
+            
         }
 
         .b {
@@ -76,7 +92,10 @@
             top: 0;
             float: right;
             align-content: right;
-            z-index: 0;
+            /* z-index: -1; */
+            /* background-color: #BBDED7; */
+            /* opacity: .3; */
+
         }
 
         #topmenu .search {
@@ -84,6 +103,7 @@
             width: 250px;
             margin-top: 10px;
             float: right;
+
         }
 
         #topmenu .home {
@@ -92,10 +112,12 @@
             float: right;
             margin-top: 7px;
             cursor: pointer;
+            color: #444
         }
 
         #calendar {
-            margin-top: 10px;
+            margin-top: 70px;
+            margin-left: -20px;
         }
 
         #cal {
@@ -116,14 +138,14 @@
 
         /* 새로 추가한 코드 */
         /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
-        .container tr td:hover {
+        .accomenu tr td:hover {
             cursor: pointer;
         }
 
         #movetop {
             width: 40px;
             height: 40px;
-            background-color: gray;
+            background-color: #777;
             position: fixed;
             bottom: 0px;
             right: 0px;
@@ -132,7 +154,7 @@
         }
 
         #movetop:hover {
-            background-color: orange;
+            background-color: #444;
             cursor: pointer;
         }
 
@@ -143,19 +165,59 @@
             font-size: 1.5em;
         }
 
+        body {
+            font-family: 'NanumBarunGothic';
+        }
+
+        /* 아코디언 메뉴 css */
         .ui-state-active {
             background-color: red;
             background-image: url();
         }
 
         .ui-state-hover {
-            background-color: #B4A7D6;
+            background-color: #444;
             background-image: url();
+
         }
 
         .ui-accordion-header {
-            background-color: #B4A7D6;
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NEXON Lv1 Gothic OTF Light';
+            /* font-weight: bolder; */
+
         }
+
+        .ui-accordion-content {
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NanumBarunGothic';
+        }
+
+        .ui-accordion-content div:hover {
+            background: #333;
+        }
+
+        .ui-widget-content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .ui-widget-content span {
+            font-size: 10px;
+        }
+
+        .ui-accordion .ui-accordion-header {
+            /* border: 0px; */
+            outline: none;
+
+        }
+
         /* 랭킹 */
         #title {
             /* text-align: center; */
@@ -225,7 +287,6 @@
             margin-top: 50px;
             text-align: center;
             margin-left: 250px;
-            margin-bottom: 200px;
 
         }
 
@@ -238,6 +299,7 @@
 
         .bt {
             border: 0px;
+            border-bottom: 3px solid transparent;
         }
 
         .bt:hover {
@@ -297,8 +359,10 @@
 <body>
     <!-- main -->
     <div id="left">
-        <img src="../images/사람.png" style="margin-top: 40px;">
-        <div class="info">
+
+        <img src="../images/man.png"
+            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius: 50%; background-color: #999;">
+        <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
             <span>Hong gil dong</span>
         </div>
@@ -308,44 +372,45 @@
         </div> -->
         <div id="logout">
             <input
-                style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5;"
+                style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
                 type="button" value="Logout" id="btn2" class="btn">
         </div>
-        <div class="container">
+        <div class="accomenu">
             <!-- 여기에 메뉴 -->
-            <h3>
-                공연관리</h3>
+            <h3>공연</h3>
             <div>
-                <div>공연 추가</div>
-                <div>공연 수정</div>
-                <div>공연 삭제</div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminShow.html"><span>▶</span> 공연 조회</a></div>
             </div>
-            <h3>방문자 조회수 관리</h3>
-            <div>방문자 조회수 관리</div>
+            <h3>통계</h3>
+            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a
+                    href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
             <h3>정산 관리</h3>
-            <div>방문자 조회수 관리</div>
-            <h3>인사관리</h3>
-            <div>방문자 조회수 관리</div>
-            <h3>이벤트 관리</h3>
-            <div>방문자 조회수 관리</div>
-            <h3>1:1 문의 관리</h3>
-            <div>방문자 조회수 관리</div>
-            <h3>광고 베너 관리</h3>
-            <div>방문자 조회수 관리</div>
-            <h3>공연 랭킹 관리</h3>
-            <div>방문자 조회수 관리</div>
+            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a
+                    href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            <h3>직원 정보</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
+            </div>
+            <h3>이벤트</h3>
+            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a
+                    href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            <h3>1:1 문의</h3>
+            <div><span>▶</span> 문의 조회</div>
+            <h3>공연 랭킹</h3>
+            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a
+                    href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
             <h3>공지사항</h3>
-            <div>방문자 조회수 관리</div>
+            <div><span>▶</span> 공지사항 조회</div>
             <h3>고객 정보</h3>
-            <div>방문자 조회수 관리</div>
+            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a
+                    href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
         </div>
         <!-- container -->
 
 
-        <!-- 티켓 사이트 로고 바로가기 -->
-        <div style="margin-top: 20px;">
-            <img src="../images/title.png" id="tickethome" style="cursor: pointer;">
-        </div>
+
         <!-- <div class="b">
             <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
                 class="btn">
@@ -353,9 +418,16 @@
 
         <div id="calendar">
             <input style="width: 100px;" type="text" name="date" id="date" value="">
-            <label for="date"><span style="font-size: 3em;" class="glyphicon glyphicon-calendar"
+            <label for="date"><span style="font-size: 2.5em; color:white" class="glyphicon glyphicon-calendar"
                     id="cal"></span></label>
         </div>
+
+        <!-- 티켓 사이트 로고 바로가기 -->
+        <div style="margin-top: 20px; position: fixed; bottom: 30px; left: 70px;">
+            <img src="../images/title.png" id="tickethome" style="cursor: pointer; height: 50px;">
+        </div>
+
+
     </div>
 
 
@@ -366,7 +438,7 @@
         <div class="search">
             <div class="form-group">
                 <div class="input-group">
-                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
                             class="glyphicon glyphicon-search"></i></span>
                     <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
                         placeholder="검색어를 입력하세요.">
@@ -385,10 +457,10 @@
 
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
-    
+
     <!-- 랭킹 -->
     <div id="title">
-        <h1 style="color: #B4A7D6; font-weight: bold;
+        <h1 style="color: #555; font-weight: bold;
         font-family: Arial;
         font-size: 3em;">랭킹 <small>> Home </small></h1>
     </div>
@@ -414,7 +486,7 @@
         <input style="width: 100px; text-align: center; margin-left: 170px;" type="text" name="date1" id="date1">
         <label for="date1"><span style="font-size: 3em; " class="glyphicon glyphicon-calendar" id="cal1"></span></label>
     </div>
-    <div style="margin-left: 430px;" id="btns">
+    <div style="margin-left: 430px; outline: none;" id="btns">
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="전체" id="btn1" class="bt">
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="뮤지컬" id="btn3" class="bt">
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="콘서트" id="btn4" class="bt">
@@ -426,8 +498,9 @@
 
     <div id="middle">
         <div style="text-align: center; margin-left: -500px;" id="one" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
-            <span  class="rank">1위</span>
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+                class="cb">
+            <span class="rank">1위</span>
             <div class="img"></div>
             <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
                 ★★★★☆ 4</div>
@@ -439,7 +512,8 @@
                 대학로 유니플렉스 2관</div>
         </div>
         <div style="text-align: center; margin-left: -500px;" id="two" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+                class="cb">
             <span class="rank">2위</span>
             <div class="img"></div>
             <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
@@ -452,7 +526,8 @@
                 대학로 유니플렉스 2관</div>
         </div>
         <div style="text-align: center; margin-left: -500px;" id="three" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+                class="cb">
             <span class="rank">3위</span>
             <div class="img"></div>
             <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
@@ -465,7 +540,8 @@
                 대학로 유니플렉스 2관</div>
         </div>
         <div style="text-align: center; margin-left: -500px;" id="four" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+                class="cb">
             <span class="rank">4위</span>
             <div class="img"></div>
             <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
@@ -478,7 +554,8 @@
                 대학로 유니플렉스 2관</div>
         </div>
         <div style="text-align: center; margin-left: -500px;" id="five" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+                class="cb">
             <span class="rank">5위</span>
             <div class="img"></div>
             <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
@@ -491,7 +568,8 @@
                 대학로 유니플렉스 2관</div>
         </div>
         <div style="text-align: center; margin-left: -500px;" id="six" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+                class="cb">
             <span class="rank">6위</span>
             <div class="img"></div>
             <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
@@ -504,34 +582,34 @@
                 대학로 유니플렉스 2관</div>
         </div>
     </div>
-    <nav style="margin-left: 500px;" class = "pagebar">
+    <nav style="margin-left: 500px;" class="pagebar">
         <ul class="pagination">
-          <li>
-            <a href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">6</a></li>
-          <li class = "active"><a href="#">7</a></li>
-          <li><a href="#">8</a></li>
-          <li><a href="#">9</a></li>
-          <li><a href="#">10</a></li>
-          <li>
-            <a href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li class="active"><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
         </ul>
-      </nav>
-    <div id="sel">
-        <input type="button" value="추가" class="btn btn-warning" id="btn7">
-        <input type="button" value="수정" class="btn btn-warning" id="btn8">
-        <input type="button" value="삭제" class="btn btn-warning" id="btn9">
+    </nav>
+    <div style="margin-left: 320px;" id="sel">
+        <input style="background-color: #F6F5F4;" type="button" value="추가" class="btn btn-default" id="btn7">
+        <input style="background-color: #F6F5F4;" type="button" value="수정" class="btn btn-default" id="btn8">
+        <input style="background-color: #F6F5F4;" type="button" value="삭제" class="btn btn-default" id="btn9">
     </div>
 
     <script src="../js/jquery-1.12.4.js"></script>
@@ -596,6 +674,7 @@
 
     </script>
     <script>
+        //메인
         var date = document.getElementById("date");
         var now = new Date();
         var sw = document.images["sw"];
@@ -612,12 +691,6 @@
             minDate: now.getFullYear() + "-1-1",
             maxDate: now.getFullYear() + "-12-" + "31"
         });
-
-        // $("#date1").datepicker({
-        //     dateFormat: "yy-mm-dd",
-        //     minDate: now.getFullYear() + "-1-1",
-        //     maxDate: now.getFullYear() + "-12-" + "31"
-        // });
 
 
 
@@ -657,14 +730,10 @@
             }
         });
 
-        $(".container").accordion();
-        // $(".container2").accordion();
-        // $('.collapse').collapse({
-        //     toggle: false
-        // })
-
-        console.log(111);
-
+        $(".accomenu").accordion({
+            collapsible: true,
+            active: false
+        });
 
         //홈버튼 링크
         $("#homeLogo").click(function () {
@@ -721,6 +790,18 @@
 
         });
 
+        //검색
+        $("#btnsearch").click(function () {
+            // 검색어 넘기기
+            window.location.href = "adminSearch.html";
+        });
+
+
+        //메뉴 링크
+        $("#showmanage").click(function () { window.location.href = "adminShow.html"; });
+        $("#emplomanage").click(function () { window.location.href = "adminEmployee.html"; });
+
+        //랭킹
         $("#btns").controlgroup();
         var date1 = document.getElementById("date1");
         var now = new Date();
@@ -759,13 +840,13 @@
 
         $("#btn9").click(function () {
             if (confirm("정말로 삭제하시겠습니까?")) {
-                    // $("input[name=checkRow]:checked").each(function () {
-                    //     var tr_value = $(this).val();
-                    //     var box = $("box" + tr_value);
-                    //     console.log(1);
-                    //     box.remove();
-                    // });
-                }
+                // $("input[name=checkRow]:checked").each(function () {
+                //     var tr_value = $(this).val();
+                //     var box = $("box" + tr_value);
+                //     console.log(1);
+                //     box.remove();
+                // });
+            }
         });
 
 
