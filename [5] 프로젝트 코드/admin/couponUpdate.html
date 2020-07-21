@@ -61,7 +61,7 @@
 
         //<option selected> 기본적으로 선택되는 속성
         sel1.onchange = function () {
-            //    clear();
+               clear();
             console.log(2);
             if (sel1.value == "discount") {
                 $("#box").append('<input style="background-color: lavender; margin: 4px; display: inline;" type="file"></div><div id="list"></div><input type="button" value="+파일" id="btnAdd"  style="margin-top: 5px;">');
@@ -74,9 +74,9 @@
         //  }
 
         function clear() {
-            while (document.getElementById("box").hasChildNodes) {
-                document.getElementById("box").removeChild(document.getElementById("box").lastChild);
-            }
+           // while (document.getElementById("box").hasChildNodes) {
+                document.getElementById("box").removeChild(document.getElementById("box").lastElementChild);
+            //}
         }
 
 
@@ -89,7 +89,6 @@
             window.close();
         });
 
-      
      
         btnAdd.onclick = function () {
             list.innerHTML += " <div>파일 첨부 : <input type = 'file'></div>";

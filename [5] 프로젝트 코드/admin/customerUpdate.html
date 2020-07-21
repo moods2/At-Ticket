@@ -11,118 +11,129 @@
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/bootstrap.js"></script>
     <style>
-        /* #list{
+         #list {
             margin-top: 10px;
+
         }
-        li{
+
+        li {
             margin-bottom: 10px;
-        } */
+        }
+
         #b {
-            margin-top: 30px;
-            margin-left: 50px;
+            margin-top: 20px;
+            margin-bottom: 30px;
         }
-
-        .btn {
-            width: 100px;
-        }
-
-        #sel {
-           margin:40px;
-        }
-
-        #add {
-        width: 430px;
-        height: 250px;
-        }
-
-        
     </style>
 </head>
 
 
 <body>
-    <!-- <ul id="list">
-        <h3>수정할 내용을 선택</h3>
-            <li><input type="button" value="이름" class ="btn btn-default" id = "name"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="name1" class = "data"></li>
-            <li><input type="button" value="이메일" class ="btn btn-default" id = "email"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="email1" class = "data"></li>
-            <li><input type="button" value="전화번호" class ="btn btn-default" id = "tel"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="tel1" class = "data"></li>
-            <li><input type="button" value="주민번호" class ="btn btn-default" id = "ssn"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="ssn1" class = "data"></li>
-            <li><input type="button" value="아이디" class ="btn btn-default" id = "id"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="id1" class = "data"></li>
-            <li><input type="button" value="비번" class ="btn btn-default" id = "pwd"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="pwd1" class = "data"></li>
-            <li><input type="button" value="주소" class ="btn btn-default" id = "addr"><input style="width: 150px; margin-left: 10px; display: none;" type="text" id="addr1" class = "data"></li>
-        </ul> -->
-       
-            <legend style="width: 200px; margin:20px 40px; font-weight: bold;">고객정보 수정</legend>
-            <div id = "sel">
-                <div><label for="txtname">수정할 필드 : </label>  <select name="sel1" size="1" style="height: 25px;">
-                    <option value="name">이름</option>
-                    <option value="email">이메일</option>
-                    <option value="tel">전화번호</option>
-                    <option value="ssn">주민번호</option>
-                    <option value="id">아이디</option>
-                    <option value="pwd">비번</option>
-                    <option value="addr">주소</option>
-                </select>
-                <input style="position: relative; top: -2px;" type="text" name="txt" id="txt" autofocus>
-            </div>
 
-            <div id="b">
-                <input type="button" value="수정" id="btn1" style="margin-left: 20px;" class="btn btn-warning">
-                <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-warning">
-            </div>
-   
+    <legend style="width: 200px; margin:20px 40px; font-weight: bold;">고객정보 수정</legend>
   
+    <ul id="list">
+        <li>이름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input style="width: 150px;" type="text" name="name"
+                id="name" class="data"></li>
+        <li>이메일 &nbsp;&nbsp;&nbsp;&nbsp;: <input style="width: 150px;" type="text" name="email" id="email" class="data">
+        </li>
+        <li>전화번호 : <input style="width: 150px;" type="text" name="tel" id="tel" class="data"></li>
+        <li>주민번호 : <input style="width: 150px;" type="text" name="ssn" id="ssn" class="data"></li>
+        <li>아이디 &nbsp;&nbsp;&nbsp;&nbsp;: <input style="width: 150px;" type="text" name="id" id="id" class="data"></li>
+        <li>비번 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input style="width: 150px;" type="text" name="pwd"
+                id="pwd" class="data"></li>
+        <li>주소 : 
+            <div style="display: inline-block; margin-left: 30px;">
+                <input type="text" id="sample4_postcode" placeholder="우편번호">
+                <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+                <span id="guide" style="color:#999;display:none"></span>
+                <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+                <input type="text" id="sample4_extraAddress" placeholder="참고항목">
 
-    
-    <script>
+                <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                <script>
+                    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+                    function sample4_execDaumPostcode() {
+                        new daum.Postcode({
+                            oncomplete: function (data) {
+                                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-        // $("#name").click(function () {
-        //     $("#name1").css("display", "inline-block");
-        // }
-        // );
+                                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                                var extraRoadAddr = ''; // 참고 항목 변수
 
-        // $("#email").click(function () {
-        //     $("#email1").css("display", "inline-block");
-        // }
-        // );
+                                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                                if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                                    extraRoadAddr += data.bname;
+                                }
+                                // 건물명이 있고, 공동주택일 경우 추가한다.
+                                if (data.buildingName !== '' && data.apartment === 'Y') {
+                                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                }
+                                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                                if (extraRoadAddr !== '') {
+                                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                                }
 
-        // $("#tel").click(function () {
-        //     $("#tel1").css("display", "inline-block");
-        // }
-        // );
+                                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                document.getElementById('sample4_postcode').value = data.zonecode;
+                                document.getElementById("sample4_roadAddress").value = roadAddr;
+                                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
 
-        // $("#ssn").click(function () {
-        //     $("#ssn1").css("display", "inline-block");
-        // }
-        // );
+                                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                                if (roadAddr !== '') {
+                                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                                } else {
+                                    document.getElementById("sample4_extraAddress").value = '';
+                                }
 
-        // $("#id").click(function () {
-        //     $("#id1").css("display", "inline-block");
-        // }
-        // );
+                                var guideTextBox = document.getElementById("guide");
+                                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                                if (data.autoRoadAddress) {
+                                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                                    guideTextBox.style.display = 'block';
 
-        // $("#pwd").click(function () {
-        //     $("#pwd1").css("display", "inline-block");
-        // }
-        // );
-
-        // $("#addr").click(function () {
-        //     $("#addr1").css("display", "inline-block");
-        // }
-        // );
-       
-
-        $("#btn1").click(function () {
-            if (confirm("수정하시겠습니까?")) {
-            }
-        });
-
-        $("#btn2").click(function () {
-            window.close();
-        });
+                                } else if (data.autoJibunAddress) {
+                                    var expJibunAddr = data.autoJibunAddress;
+                                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                                    guideTextBox.style.display = 'block';
+                                } else {
+                                    guideTextBox.innerHTML = '';
+                                    guideTextBox.style.display = 'none';
+                                }
+                            }
+                        }).open();
+                    }
+                </script>
+                
+            </div>
+        </li>
 
 
-    </script>
+    </ul>
+    <div id="b">
+        <input type="button" value="수정" id="btn1" style="margin-left: 20px;" class="btn btn-warning">
+        <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-warning">
+    </div>
+
+        <script>
+
+            $("#btn1").click(function () {
+                if (confirm("수정하시겠습니까?")) {
+                }
+            });
+
+            $("#btn2").click(function () {
+                window.close();
+            });
+
+
+        </script>
 </body>
 
 </html>

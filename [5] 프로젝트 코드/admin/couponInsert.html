@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
     <legend style="width: 200px; margin:20px 25px; font-weight: bold;">쿠폰 추가</legend>
     <div id="box">
             제목 : <input style="position: relative; top: -2px;" type="text" placeholder="제목을 입력하세요." name="txt" id="txt"
@@ -37,6 +38,10 @@
         </div>
     
     </div>
+        <div style="margin: 10px 20px;">
+            <input type="button" value="추가" id = "btn1" class = "btn btn-warning">
+            <input type="button" value="닫기" id = "btn2" class = "btn btn-warning">
+        </div>
     <script>
         var btnAdd = document.getElementById("btnAdd");
         var list = document.getElementById("list");
@@ -59,6 +64,15 @@
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
+        $("#btn1").click(function(){
+            if(confirm("추가하시겠습니까?")){
+
+            }
+        }); 
+
+        $("#btn2").click(function(){
+            window.close();
+        }); 
     </script>
 </body>
 

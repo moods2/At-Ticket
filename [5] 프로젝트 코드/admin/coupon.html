@@ -28,11 +28,15 @@
             margin-left: 280px;
         }
 
-        td {
+       #tbl td {
             text-align: center;
         }
-
+        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
+        body{
+            font-family: 'NanumBarunGothic'; 
+        }
     </style>
+
 </head>
 <body>
    
@@ -44,7 +48,25 @@
 
     <div id="info">
         <h2>쿠폰 관리</h2>
-       
+
+        <div style="margin-bottom: 10px;" id="header">
+            <select style="float:left; margin-right: 20px; width: 100px;" name="sel1" id="sel1" class="form-control">
+                <option value="name">제목</option>
+                <option value="month">기간(월)</option>
+                <option value="year">기간(년)</option>
+                <option value="sale">할인율(미만)</option>
+            </select>
+
+            <span class="search">
+                <span class="form-group">
+                    <span style="width: 300px;" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+                    </span>
+                </span>
+            </span>
+        </div>
+
         <table style="width: 850px;" class="table  table-bordered table-striped" id="tbl">
             <tbody id="tbody1">
                 <tr style="background-color: sandybrown;">
@@ -97,14 +119,36 @@
                     <td class="data">2000</td>
                 </tr>
         </table>
-        <input type="button" value="추가" class="btn btn-warning" id="btn1">
-        <input type="button" value="수정" class="btn btn-warning" id="btn2">
-        <input type="button" value="삭제" class="btn btn-warning" id="btn3">
+        <nav style="margin-left: 200px;" class = "pagebar">
+            <ul class="pagination">
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">6</a></li>
+              <li class = "active"><a href="#">7</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">10</a></li>
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        <input type="button" value="보기" class="btn btn-warning" id="btn">
         </tbody>
     </div>
 
     <script>
-         var cbAll = document.all.cbAll; // 일괄 체크박스
+    var cbAll = document.all.cbAll; // 일괄 체크박스
     var child;
     var cb = document.getElementsByClassName("cb");
 
@@ -115,29 +159,9 @@
         }
     }
 
-    //추가
-    $("#btn1").click(function () {
-        child = window.open("couponInsert.html", "추가", "width=500, height=330");
-    });
-
-    //수정
-    $("#btn2").click(function () {
-        child = window.open("couponUpdate.html", "수정", "width=500, height=330");
-    });
-
-    //삭제
-    $("#btn3").click(function () {
-
-        if (confirm("정말로 삭제하시겠습니까?")) {
-            $("input[name=checkRow]:checked").each(function () {
-                var tr_value = $(this).val();
-                var tr = $("tr[value='" + tr_value + "']");
-                tr.remove();
-            });
-        }
-
-    }
-    );
+        $("#btn").click(function(){
+            location.href="couponInfo.html";
+        });
     </script>
 
 

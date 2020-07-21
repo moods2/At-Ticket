@@ -2,18 +2,14 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script src="../js/jquery-1.12.4.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/bootstrap.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
-        /* main */
-           html{
+        /* 메인 */
+        html{
             width: 1100px;
         }
         h1{
@@ -153,7 +149,7 @@
         .ui-accordion-header {
             background-color: #B4A7D6;
         }
-        /* 고객 관리 */
+        /* 이벤트 정보 */
         #title {
             /* text-align: center; */
             margin-left: 280px;
@@ -162,49 +158,37 @@
             border-bottom: 1px dashed black;
         }
 
-        h1 {
-            font-weight: bold;
+        small {
+            color: #777;
             font-family: Arial;
-            font-size: 3em;
-            color: #B4A7D6;
+            font-size: 27.3px;
+            font-weight: lighter;
         }
 
         body {
             outline: none;
         }
 
-        .search {
-            float: left;
-            width: 200px;
+        #info {
+            margin-top: 30px;
+            margin-left: 280px;
         }
 
-        #sel1 {
-            width: 150px;
-            float: left;
-        }
-
-        #header {
-            width: 1000px;
-            margin-top: 10px;
-            background-color: gray;
-        }
-
-        #box {
-            margin: 70px auto;
-        }
-
-        th {
+        #tbl td {
             text-align: center;
+            vertical-align: middle;
         }
 
-        td {
-            text-align: center;
-        }
+
     </style>
 </head>
 
+<script src="../js/jquery-1.12.4.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/bootstrap.js"></script>
+
 <body>
-    <!-- main -->
+    <!-- 메인 -->
     <div id="left">
         <img src="../images/사람.png" style="margin-top: 40px;">
         <div class="info">
@@ -291,72 +275,54 @@
 
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
-
-    <!-- 고객 관리 -->
+    <!-- 이벤트 정보 -->
     <div id="title">
-        <h1>고객 관리 <small>> Home </small></h1>
+        <h1 style="color: #B4A7D6; font-weight: bold;
+        font-family: Arial;
+        font-size: 3em;">이벤트 정보 <small>> 이벤트 관리 > Home </small></h1>
     </div>
 
-    <div id="header">
-        <select style="margin-left: 280px;" name="sel1" id="sel1" class="form-control">
-            <option value="name">이름</option>
-            <option value="tel">전화번호</option>
-            <option value="id">회원아이디</option>
-            <option value="ssn">주민번호</option>
-        </select>
-
-        <span style="margin-left: 20px;" class="search">
-            <span class="form-group">
-                <span style="width: 300px;" class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                    <input type="text" class="form-control" placeholder="검색어를 입력하세요.">
-                </span>
-            </span>
-        </span>
-    </div>
-
-    <div id="box">
-        <table style="width: 450px; margin-left: 280px;" class="table  table-bordered table-striped table-hover"
-            id="tbl">
+    <div id="info">
+        <h2>이벤트 정보</h2>
+        <!-- <ul id="list">
+            <li>이름 : <span> 홍길동</span></li>
+            <li>이메일 : <span>honggildong@naver.com</span></li>
+            <li>전화번호 : <span>010-1234-1234</span></li>
+            <li>주민번호 : <span>984561-1546844</span></li>
+            <li>아이디 : <span>cherry1234</span></li>
+            <li>비번 : <span>skysun7466</span></li>
+            <li>주소 : <span>서울 강남구 역삼동</span></li>
+        </ul> -->
+        <table style="width: 900px;" class="table  table-bordered table-striped" id="tbl">
             <tbody id="tbody1">
-                <tr>
-                    <th><input type="checkbox" name="cbAll"></th>
-                    <th style="width: 50px;">index</th>
-                    <th style="width: 90px;">이름</th>
-                    <th style="width: 130px;">회원아이디</th>
-                    <th style="width: 180px;">주민번호</th>
+                <tr style="background-color: sandybrown;">
+                    <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
+                    <th class="title" style="width: 50px;text-align: center;">Index</th>
+                    <th class="title" style="width: 150px;text-align: center;">제목</th>
+                    <th class="title" style="width: 200px;text-align: center;">기간</th>
+                    <th class="title" style="width: 100px;text-align: center;">구분</th>
+                    <th class="title" style="width: 200px;text-align: center;">배너</th>
+                    <th class="title" style="width: 200px;text-align: center;">내용</th>
+                <tr value="1">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="1"></td>
+                    <td class="data" id="index">1</td>
+                    <td class="data">출석이벤트</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">프로모션</td>
+                    <td class="data"><img src="../images/20200109-ev_list_e1.png" width="200px" height="200px"></td>
+                    <td class="data"><img src="../images/check_2.jpg" width="200px" height="200px"></td>
                 </tr>
-            </tbody>
+                </tr>
         </table>
+        <input type="button" value="추가" class="btn btn-warning" id="btn1">
+        <input type="button" value="수정" class="btn btn-warning" id="btn3">
+        <input type="button" value="삭제" class="btn btn-warning" id="btn4">
+        </tbody>
     </div>
-    <nav style=" margin-top: -70px; margin-left:280px;" class = "pagebar">
-        <ul class="pagination">
-          <li>
-            <a href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">6</a></li>
-          <li class = "active"><a href="#">7</a></li>
-          <li><a href="#">8</a></li>
-          <li><a href="#">9</a></li>
-          <li><a href="#">10</a></li>
-          <li>
-            <a href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    <input style="margin-left: 280px;" type="button" value="보기" id = "btn" class = "btn btn-warning">
-    
-    <script>
-    // main 
+
+</body>
+<script>
+    // 메인
     var date = document.getElementById("date");
     var now = new Date();
     var sw = document.images["sw"];
@@ -473,54 +439,42 @@
 		}, 700);
         
     });
-    
-    // 고객 관리
-        var index = 1;
-        var list = [];
-        var count = 10;
-        var tbl = document.getElementById("tbl");
-        var tbody1 = document.getElementById("tbody1");
-        var sel1 = document.getElementById("sel1");
-        var tr = document.getElementsByTagName("tr");
-        var cbAll = document.all.cbAll; // 일괄 체크박스
-      
-        // select에서 바뀌면 검색창에 focus가 가도록 한 구문
-       $("#sel1").change(function(){
-            $(".form-control").focus();
-        });
-      
-        // 테이블 만드는 구문 
-        // box.appendChild(table);
-        if (count != 0) {
-            index = 1;
+    // 이벤트 정보
+    var cbAll = document.all.cbAll; // 일괄 체크박스
+    var child;
+    var cb = document.getElementsByClassName("cb");
 
-            for (var i = 0; i < count; i++) {
-                list = ['<input type="checkbox" class="cb">',index, "홍길동", "hongil", "932921-1859144"];
-                tr = document.createElement("tr");
-               
-                for (var j = 0; j < 5; j++) {
-                    var td = document.createElement("td");
-                    td.innerHTML = list[j];
-                    tr.appendChild(td);
-                }
-                index++;
-                tbody1.appendChild(tr);
-            }
-
-        } else {
-
-            tr = document.createElement("tr");
-            tbody1.innerText = "일치하는 데이터가 없습니다.";
-
+    // 모두 선택 기능, 페이지 이동 
+    cbAll.onchange = function () {
+        for (var i = 0; i < cb.length; i++) {
+            cb[i].checked = cbAll.checked;
         }
-        var cb = document.getElementsByClassName("cb");
+    }
+
+     //추가
+     $("#btn1").click(function () {
+        child = window.open("eventInsert.html", "추가", "width=500, height=330");
+    });
+
+    //수정
+    $("#btn3").click(function () {
+        child = window.open("eventUpdate.html", "수정", "width=500, height=330");
+    });
+
+    //삭제
+    $("#btn4").click(function () {
+
+        if (confirm("정말로 삭제하시겠습니까?")) {
+            $("input[name=checkRow]:checked").each(function () {
+                var tr_value = $(this).val();
+                var tr = $("tr[value='" + tr_value + "']");
+                tr.remove();
+            });
+        }
+
+    });
 
 
-        $("#btn").click(function(){
-            location.href = "customerInfo.html";
-        });
-
-    </script>
-</body>
+</script>
 
 </html>

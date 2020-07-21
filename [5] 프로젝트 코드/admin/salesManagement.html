@@ -43,9 +43,11 @@
             display: block;
         }
 
-        #info1::after {
-            clear: both;
+
+        path {
+        fill: rgb(52, 120, 209);
         }
+     
     </style>
     <style type="text/css">
         .highcharts-figure,
@@ -113,7 +115,7 @@
     <table style="margin-left: 280px; margin-top: 10px; width: 500px;" class="table  table-bordered">
         <tr>
             <td style="width: 100px; background-color: aquamarine; text-align: center;">총 매출액</td>
-            <td></td>
+            <td style="text-align: center; font-weight: bold; font-size: 2em;">30억</td>
         </tr>
     </table>
 
@@ -134,38 +136,97 @@
         </div>
     </div>
 
-    <div class="info" style="float: left;" id="info1">
-        <div class="img" style="display: inline-block;"></div>
-        <span class="p" style="position:relative; top: -170px; left: 230px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
-        <span class="p"
-            style="position:relative; top: -180px; left: 230px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-        <span class="p" style="position:relative; top: -190px; left: 230px; font-weight: bold;"><br>예스24스테이지 2관</span>
 
-    </div>
 
-    <figure class="highcharts-figure">
-        <div style="width:250px; margin-left: 50px;" id="container"></div>
-        <p class="highcharts-description">
-        </p>
-    </figure>
+    <div id = "box1">
+        <div class="info" style="float: left; margin-right: 90px;" id="info1">
+            <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value = "1">
+            <div class="img" style="display: inline-block;"></div>
+            <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
+            <span class="p"
+                style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
+            <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
+                2관</span>
 
-    <div class="info" id="info2">
-        <div class="img" style="display: inline-block;"></div>
-        <span class="p" style="position:relative; top: -170px; left: 230px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
-        <span class="p"
-            style="position:relative; top: -180px; left: 230px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-        <span class="p" style="position:relative; top: -190px; left: 230px; font-weight: bold;"><br>예스24스테이지 2관</span>
+        </div>
 
-    </div>
-
-    <div id = "two" style="border: 1px solid;">
-        <figure class="highcharts-figure">
-            <div style="width:250px; margin-left: 50px;" id="container"></div>
+        <figure style="float: left;" class="highcharts-figure">
+            <div style="width:300px; margin-left: 60px;" id="container"></div>
             <p class="highcharts-description">
             </p>
         </figure>
     </div>
 
+    <div style="clear: both;"></div>
+
+    <div id = "box2">
+        <div class="info" style="float: left;margin-right: 90px;" id="info2">
+            <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value = "2">
+            <div class="img" style="display: inline-block;"></div>
+            <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
+            <span class="p"
+                style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
+            <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
+                2관</span>
+
+        </div>
+
+        <figure style="float: left;" class="highcharts-figure">
+            <div style="width:300px; margin-left: 60px;" id="container1"></div>
+            <p class="highcharts-description">
+            </p>
+        </figure>
+    </div>
+    <div style="clear: both;"></div>
+    <div id = "box3">
+        <div class="info" style="float: left;margin-right: 90px;" id="info3">
+            <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value = "3">
+            <div class="img" style="display: inline-block;"></div>
+            <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
+            <span class="p"
+                style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
+            <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
+                2관</span>
+
+        </div>
+
+        <figure style="float: left;" class="highcharts-figure">
+            <div style="width:300px; margin-left: 60px;" id="container2"></div>
+            <p class="highcharts-description">
+            </p>
+        </figure>
+    </div>
+
+    <div style="clear: both;"></div>
+    <nav style="margin-left: 400px;" class = "pagebar">
+        <ul class="pagination">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+          <li class = "active"><a href="#">7</a></li>
+          <li><a href="#">8</a></li>
+          <li><a href="#">9</a></li>
+          <li><a href="#">10</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    <div style="margin-top:20px; margin-bottom: 80px; margin-left: 540px;">
+    <!-- <input type="button" value="추가" id = "btn1" class = "btn btn-warning"> -->
+    <input type="button" value="수정" id = "btn3" class = "btn btn-warning">
+    <input type="button" value="삭제" id = "btn4" class = "btn btn-warning">
+    </div>
     <script>
         var now = new Date();
 
@@ -243,25 +304,8 @@
                 ]
             }]
         });
-    </script>
 
-    <script type="text/javascript">
-        // Make monochrome colors
-        var pieColors = (function () {
-            var colors = [],
-                base = Highcharts.getOptions().colors[0],
-                i;
-
-            for (i = 0; i < 10; i += 1) {
-                // Start out with a darkened base color (negative brighten), and end
-                // up with a much brighter color
-                colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
-            }
-            return colors;
-        }());
-
-        // Build the chart
-        Highcharts.chart('container', {
+        Highcharts.chart('container1', {
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -305,6 +349,92 @@
                 ]
             }]
         });
+
+        Highcharts.chart('container2', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'sales Rate (총매출액: 10억)'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    colors: pieColors,
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                        distance: -50,
+                        filter: {
+                            property: 'percentage',
+                            operator: '>',
+                            value: 4
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Share',
+                data: [
+                    { name: '순이익', y: 55 },
+                    { name: '비용', y: 45 },
+
+                ]
+            }]
+        });
+    </script>
+
+    <script type="text/javascript">
+        // Make monochrome colors
+        var pieColors = (function () {
+            var colors = [],
+                base = Highcharts.getOptions().colors[0],
+                i;
+
+            for (i = 0; i < 10; i += 1) {
+                // Start out with a darkened base color (negative brighten), and end
+                // up with a much brighter color
+                colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+            }
+            return colors;
+        }());
+
+        // Build the chart
+
+        // $("#btn1").click=function(){
+
+        // };
+
+        $("#btn3").click(function(){
+            window.open("salesManagementUpdate.html","수정","width=400 ,height=300");
+        
+        });
+
+        $("#btn4").click(function () {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    $("input[name=checkRow]:checked").each(function () {
+                        var tr_value = $(this).val();
+                        var box = $("#box" + tr_value);
+                        console.log(1);
+                        box.remove();
+                    });
+                }
+            }
+        );
+
+        
     </script>
 
 
