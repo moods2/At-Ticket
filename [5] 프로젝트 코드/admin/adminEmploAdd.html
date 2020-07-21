@@ -9,172 +9,41 @@
     <script src="../js/bootstrap.js"></script>
 
     <style>
+        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
+
+        body{
+            font-family: 'NanumBarunGothic';
+        }
         html{
             width: 1100px;
         }
         #title{
-            /* text-align: center; */
-            margin-left: 280px;
-            margin-top: 50px;
-            width: 1500px;
+            margin-left: 30px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            width: 600px;
             border-bottom: 1px dashed black;
         }
-
         h1{
             font-weight: bold;
             font-family: Arial;
             font-size: 3em; 
-            color: #B4A7D6;
+            /* color: #B4A7D6; */
         }
 
-        #left {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 250px;
-            height: 2000px;
-            border: 1px solid black;
-            background-color: #B4A7D6;
-            /* background-color: #444444; */
-            text-align: center;
-        }
-
-        #left .info {
-            margin-left: 56px;
-            text-align: left;
-            font-variant: small-caps;
-            font-weight: bold;
-            font-size: 1em;
-        }
-
-        .container {
-            /* margin-top: 30px; */
-            /* margin-left: 10px; */
-            width : 260px;
-            padding-right : 25px;
-        }
-
-        .btn {
-            box-shadow: 3px 3px 0;
-        }
-
-        .b {
-            margin-top: 30px;
-            float: left;
-        }
-
-        .b::after {
-            content: " ";
-            clear: both;
-            display: block;
-        }
-
-        /* #btn1 {
-            margin-left: 50px;
-            margin-right: 20px;
-        } */
-
-        #topmenu {
-            /* border: 1px solid blue; */
-            width: 100%;
-            height: 60px;
-            position: absolute;
-            top: 0;
-            float: right;
-            align-content: right;
-            z-index: 0;
-        }
-        #topmenu .search {
-            /* border: 1px solid black; */
-            width: 250px;
-            margin-top: 10px;
-            float: right;
-        }
-        #topmenu .home {
-            /* border: 1px solid black; */
-            width: 50px;
-            float: right;
-            margin-top: 7px;
-            cursor: pointer;
-        }
-
-        #calendar {
-           margin-top: 10px;
-        }
-
-        #cal {
-            position: relative;
-            top: 15px;
-            left: 5px;
-        }
-
-        #bottom {
-            position: absolute;
-            top: 2000px;
-        }
-
-        #sw {
-            margin-top: 850px;
-            cursor: pointer;
-        }
-
-        /* 새로 추가한 코드 */
-        /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
-        .container tr td:hover {
-            cursor : pointer;
-        }
-
-         #movetop {
-            width: 40px;
-            height: 40px;
-            background-color: gray;
-            position: fixed;
-            bottom: 0px;
-            right: 0px;
-            text-align: center;
-            padding-top: 3px;
-        }
-        #movetop:hover {
-            background-color: red;   
-        }
-
-        #movetop {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-        .ui-state-active {
-            background-color: red;
-            background-image: url();
-        }
-        .ui-state-hover {
-            background-color: #B4A7D6;
-            background-image: url();
-        }
-
-        .ui-accordion-header {
-            background-color: #B4A7D6;
-        }
-        #btn2:hover {
-            /* color : red; */
-            /* background-color: red; */
-        }
 
         #content {
             /* border: 1px solid red; */
-            width: 86.5%;
-            height: 1880px;
-            position: absolute;
-            left: 250px;
-            top: 120px;
+            width: 100%;
+            height: 500px;
+           
         }
 
         #add {
             width: 500px;
-            height: 500px;
+            height: 800px;
             position: relative;
-            margin-left: 40px;
+            left: 40px
             /* margin: 20px auto; */
             
         }
@@ -186,8 +55,8 @@
             margin: 5px;
         }
         #btnadd {
-            margin-top: 60px;
-            margin-left: 350px;
+            margin-top: 0px;
+            margin-left: 200px;
         }
     </style>
 
@@ -214,100 +83,14 @@
 <body>
 
     <div id = "title">
-        <h1>직원 추가 <small> 인사관리 > Home  </small></h1>
+        <h1 style="color: #444;">직원 추가</h1>
     </div>
 
 
-    <div id="left">
-        <img src="../images/사람.png" style="margin-top: 40px;">
-        <div class="info">
-            <span><br>Welcome,</span></br></span>
-            <span>Hong gil dong</span>
-        </div>
-        <!-- <div class="b">
-            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
-                class="btn">
-        </div> -->
-        <div id = "logout">
-            <input style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5;" type="button" value="Logout" id="btn2" class="btn">
-        </div>
-        <div class="container">
-           <!-- 여기에 메뉴 -->
-           <h3 id="showmanage">공연관리</h3>
-           <div>
-            <a href="adminShow.html">공연 조회</a><br>
-            <a href="adminShowAdd.html">공연 추가</a>
-        </div>
-           <h3>방문자 조회수 관리</h3>
-            <div>방문자 조회수 통계</div>
-           <h3>정산 관리</h3>
-            <div>매출액 통계</div>
-           <h3 id="emplomanage">인사관리</h3>
-           <div>
-            <a href="adminEmployee.html">직원 조회</a><br>
-            <a href="adminEmploAdd.html">직원 추가</a>
-            </div>
-           <h3>이벤트 관리</h3>
-            <div>이벤트 조회</div>
-           <h3>1:1 문의 관리</h3>
-             <div>문의 조회</div>
-           <h3>광고 배너 관리</h3>
-            <div>배너 조회</div>
-           <h3>공연 랭킹 관리</h3>
-            <div>랭킹 조회</div>
-           <h3>공지사항</h3>
-            <div>공지사항 조회</div>
-           <h3>고객 정보</h3>
-            <div>고객 정보 조회</div>
-        </div>
-        <!-- container -->
-
-
-        <!-- 티켓 사이트 로고 바로가기 -->
-        <div style="margin-top: 20px;">
-            <img src="../images/title.png" id="tickethome" style="cursor: pointer;">
-        </div>
-        <!-- <div class="b">
-            <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
-                class="btn">
-        </div> -->
-
-
-        <div id="calendar">
-            <input style="width: 100px;" type="text" name="date" id="date" value="">
-            <label for="date"><span style="font-size: 3em;" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
-        </div>
-    </div>
-
-
-    <div id="topmenu">
-        <div class="home">
-            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
-        </div>
-        <div class="search">
-            <div class="form-group">
-                <div class="input-group">
-                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
-                            class="glyphicon glyphicon-search"></i></span>
-                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
-                        placeholder="검색어를 입력하세요.">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id = "fixedBtn">
-        <img src = "../images/switch_on.png" id="sw" name="sw"
-            style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
-
-        <!-- 제일 위로 돌아가기 -->
-        <a href="#top"><div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div></a>
-    </div>
 
 
     <div id="content">
-        <fieldset id="add" class="form-control">
-
+        <fieldset id="add" class="form-control" style="border: 0px;">
 
             <div><label for="txtname">이름 : </label><input type="text" id="txtname" style="width: 100px;" autofocus></div>
             <div><label for="txtjumin">주민번호 : </label>
@@ -331,9 +114,6 @@
             
             <div><input type="button" id="btnadd" value="추가하기" class="btn btn-default"></div>
         </fieldset>
-    </div>
-
-    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
 
 
@@ -381,12 +161,6 @@
         date.readOnly = true;
     }
 
-    $("#date").datepicker({
-            dateFormat: "yy-mm-dd",
-            minDate: now.getFullYear() + "-1-1",
-            maxDate: now.getFullYear() + "-12-" + "31"
-    });
-
     
     $("#date1").datepicker({
         dateFormat: "yy-mm-dd",
@@ -400,92 +174,6 @@
         maxDate: now.getFullYear() + "-12-" + "31"
     });
 
-   
-
-    document.body.bgColor = "white";
-    
-
-
-    //스위치 
-    var swCount = 1;
-    $("#sw").click(function () {
-        console.log("클릭함");
-
-            if(swCount % 2 == 0) {
-                console.log("들어옴");
-                sw.src="../images/switch_on.png";
-                $("body").css("background-color","white");
-                $("#homeLogo").css("color","#333333");
-                $("#adminName").css("color","#333333")
-            } else {
-                sw.src="../images/switch_off.png";
-                $("body").css("background-color","#292A2D");
-                $("#homeLogo").css("color","white");
-                $("#adminName").css("color","white");
-
-            }
-            swCount++;
-    });
-
-    $("#btn1").click(function(){
-        window.open("login.html","Login","width=300, height=300");
-    });
-    
-
-    $("#btn2").click(function(){
-        if(confirm("로그아웃하시겠습니까?")){
-            console.log("로그아웃 되었습니다.");
-         }
-    });
-
-    $(".container").accordion();
-    // $(".container2").accordion();
-    $('.collapse').collapse({
-        toggle: false
-    })
-
-
-    //홈버튼 링크
-    $("#homeLogo").click(function() {
-        location.href = "adminMain.html";
-    });
-
-    //상단 메뉴 고정
-    $(document).scroll(function() {
-        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
-            if ($(document).scrollTop() > $("#topmenu").position().top) {
-                $("#topmenu").css({
-                    width: "100%",
-                    position: "fixed",
-                    top: "0px",
-                    bottom: "",
-                    zIndex: "1"
-                });
-
-            };
-
-        //상단 헤더(top)이 눈에 보일때 쯤
-        if ($(document).scrollTop() <= $("#topmenu").position().top) {
-            $("#topmenu").css({
-                position: "absolute",
-                top: "0px",
-                bottom: ""
-            });             
-        }
-    });
-
-
-    $("#btn2").mouseenter(function(){
-        $("#btn2").css("background-color","cornflowerblue");
-    });
-    $("#btn2").mouseleave(function(){
-        $("#btn2").css("background-color","#C27BA0");
-    })
-
-    //티켓 홈
-    $("#tickethome").click(function() {
-        window.open("../main.html","At-Ticket");
-    });
 
 
     function sample6_execDaumPostcode() {
@@ -536,8 +224,7 @@
         }).open();
     }
 
-    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
-    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
+
     
     
 

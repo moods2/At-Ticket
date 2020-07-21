@@ -10,7 +10,6 @@
 
     <style>
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
-        @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
         html{
             width: 1100px;
         }
@@ -43,7 +42,7 @@
 
         .accomenu {
             /* margin-top: 30px; */
-            margin-left: 10px;
+            /* margin-left: 10px; */
             width : 260px;
             padding-right : 25px;
         }
@@ -193,12 +192,12 @@
           
         }
        #right {
-            border : 1px solid red;
-            margin-left: 300px;
-            margin-top: 100px;
-            width : 700px;
-            /* color : white;
-            background-color: #C27BA0; */
+            /* border : 1px solid red; */
+            position: relative;
+            margin-left: 500px;
+            margin-top: 30px;
+            width : 1000px;
+
         }
         #visitTitle {
             margin : 15px auto;
@@ -208,22 +207,39 @@
             width : 120px;
             font-size: 2em;
         }
-        #right2 {
-            border : 1px solid black;
-            /* text-align: center; */
 
+        #title{
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
         }
-        
+        #btnadd {
+            position: relative;
+            top: -35px;
+            left: 250px;
+        }
+
+        #tbl th {
+            position: relative;
+            text-align: center;
+        }
+
         
         
     </style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminMain</title>
+    <title>adminWorking</title>
 </head>
 
 <body>
+
+    <div id = "title">
+        <h1 style="color:#555">업무 현황</h1>
+    </div>
 
     <div id="left">
         
@@ -317,30 +333,49 @@
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
     
-    <div id = right>
-        <div id = visitTitle>Visitors</div>
-        <div id = right2>
-            <ul>
-                <li>Total Females : 6,000</li>
-                <li>Total Males : 4,000</li>
-                <li>회원수: 10,000</li>
-                <li>현재 접속자: 300</li>
-                <li>Today 접속자: 1,000</li>
-                <li>댓글 수: 6,000 (+30)</li>
-                <li>미답변 1:1 문의 : 50 (+8)</li>
-                <li>취소 요청 : 10건</li>
-                <li>입금 대기 : 3건</li>
-            </ul>
-            <!-- <div>- Total Females : 6,000</div>
-            <div>- Total Males : 4,000</div>
-            <div>- 회원수: 10,000</div>
-            <div>- 현재 접속자: 300</div>
-            <div>- Today 접속자: 1,000</div>
-            <div>- 댓글 수: 6,000 (+30)</div>
-            <div>- 미답변 1:1 문의 : 50 (+8)</div>
-            <div>- 취소 요청 : 10건</div>
-            <div>- 입금 대기 : 3건</div> -->
-        </div>        
+    <div id = "right">
+
+        <table id="tbl" class="table table-bordered" style="width: 600px;">
+            <tr>
+                <th style="width: 150px;">개발부</th>
+                <td style="width: 450px;">
+                   이벤트 관련 디자인 보내주세요.
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 150px;">작성자</th>
+                <td style="width: 450px;">
+                    [개]아무개
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 150px;">내용</th>
+                <td style="width: 450px;">
+                   <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem eligendi error architecto nobis id aut dolores est, deserunt vel ratione tenetur quas amet nihil, iste, dolor cumque maxime similique fugiat.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt voluptates magni hic tempora atque accusamus modi iure dignissimos fugiat, eos necessitatibus ex, porro dolorum minus non, sequi ad nam qui.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, nemo quisquam? Voluptatem porro laborum sunt veritatis fugit ex corrupti, incidunt eos consequuntur fugiat dicta illum sed accusantium nam aut vitae.
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <div id="commentbox" >
+            <h4 style="font-weight: bold;">댓글</h4>
+            <div id="sbox" style="border: 2px solid #ccc; width: 600px; height: 180px; border-radius: 10px;">
+                <span id="userName" style="font-weight: bold;">[영]홍길동</span>
+                <input type="text" class="form-control" style="width: 500px; height: 100px; border: 0px; " placeholder="댓글을 입력하세요.">
+                <input type="button" class="form-control" style="width: 40px; border: 0px; color: #ccc; margin-left: 500px;" value="등록">
+            </div>
+
+        </div>
+
+        <!-- <hr> -->
+        <input type="button" class="btn btn-default" value="목록"
+                style="margin-left: 550px; margin-top: 50px; box-shadow: none; outline: none;" >
+
+
+        
     </div>
 
 
@@ -348,6 +383,8 @@
 
 </body>
 <script>
+
+
     var date = document.getElementById("date");
     var now = new Date();
     var sw = document.images["sw"];

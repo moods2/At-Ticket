@@ -43,7 +43,7 @@
 
         .accomenu {
             /* margin-top: 30px; */
-            margin-left: 10px;
+            /* margin-left: 10px; */
             width : 260px;
             padding-right : 25px;
         }
@@ -193,12 +193,11 @@
           
         }
        #right {
-            border : 1px solid red;
-            margin-left: 300px;
-            margin-top: 100px;
-            width : 700px;
-            /* color : white;
-            background-color: #C27BA0; */
+            /* border : 1px solid red; */
+            margin-left: 500px;
+            margin-top: 30px;
+            width : 1000px;
+
         }
         #visitTitle {
             margin : 15px auto;
@@ -208,10 +207,18 @@
             width : 120px;
             font-size: 2em;
         }
-        #right2 {
-            border : 1px solid black;
-            /* text-align: center; */
 
+        #title{
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+        #btnadd {
+            position: relative;
+            top: -35px;
+            left: 250px;
         }
         
         
@@ -220,10 +227,14 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminMain</title>
+    <title>adminWorking</title>
 </head>
 
 <body>
+
+    <div id = "title">
+        <h1 style="color:#555">업무 현황</h1>
+    </div>
 
     <div id="left">
         
@@ -317,30 +328,180 @@
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
     
-    <div id = right>
-        <div id = visitTitle>Visitors</div>
-        <div id = right2>
-            <ul>
-                <li>Total Females : 6,000</li>
-                <li>Total Males : 4,000</li>
-                <li>회원수: 10,000</li>
-                <li>현재 접속자: 300</li>
-                <li>Today 접속자: 1,000</li>
-                <li>댓글 수: 6,000 (+30)</li>
-                <li>미답변 1:1 문의 : 50 (+8)</li>
-                <li>취소 요청 : 10건</li>
-                <li>입금 대기 : 3건</li>
+    <div id = "right">
+        <div class="search" style="margin-left: 760px;">
+            <div class="form-group">
+                <div class="input-group">
+                    <span style="cursor: pointer;" class="input-group-addon" id="btnsearch"><i
+                            class="glyphicon glyphicon-search"></i></span>
+                    <input style=" width: 200px;" type="text" class="form-control"
+                        placeholder="검색어를 입력하세요.">
+                </div>
+            </div>
+        </div>
+        <table id="tbl" class="table table-hover table-borderd table-striped">
+            <tbody id="tbody">
+                <tr>
+                    <th>번호</th>
+                    <th>부서</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>날짜</th>
+                    <th>조회수</th>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>영업부</td>
+                    <td>새로운 이벤트 정보입니다.</td>
+                    <td>[영]홍길동</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                
+                <tr>
+                    <td>3</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>개발부</td>
+                    <td>이벤트 디자인 파일 보내주세요.</td>
+                    <td>[개]아무개</td>
+                    <td>2020-07-21</td>
+                    <td>3</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr style="width: 940px;">
+
+        <nav class="pagebar" style="width: 500px; position: relative; margin: 20px auto;">
+            <ul class="pagination">
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">6</a></li>
+              <li><a href="#">7</a></li>
+              <li><a href="#">8</a></li>
+              <li><a href="#">9</a></li>
+              <li><a href="#">10</a></li>
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+                
+              </li>
             </ul>
-            <!-- <div>- Total Females : 6,000</div>
-            <div>- Total Males : 4,000</div>
-            <div>- 회원수: 10,000</div>
-            <div>- 현재 접속자: 300</div>
-            <div>- Today 접속자: 1,000</div>
-            <div>- 댓글 수: 6,000 (+30)</div>
-            <div>- 미답변 1:1 문의 : 50 (+8)</div>
-            <div>- 취소 요청 : 10건</div>
-            <div>- 입금 대기 : 3건</div> -->
-        </div>        
+            <a class="btn btn-primary" id="btnadd">글쓰기</a>
+        </nav>
+
     </div>
 
 
@@ -348,6 +509,11 @@
 
 </body>
 <script>
+    $("#btnadd").click(function(){
+        location.href="boardWrite.html";
+    });
+
+
     var date = document.getElementById("date");
     var now = new Date();
     var sw = document.images["sw"];
