@@ -59,7 +59,7 @@
             /* border: 1px solid white; */
             width: 100px;
             height: 65px;
-            background-image: url("./images//title.png");
+            background-image: url("../images//title.png");
             background-repeat: no-repeat;
             background-position: center center;
             position: absolute;
@@ -142,7 +142,7 @@
             text-decoration: underline;
             color: rgb(71, 125, 224);
             font-weight: bold;
-            padding: 8px 15px;
+            padding: 8px 10px;
             margin-bottom: -10px;
             background-color: #EEEEEE;
         }
@@ -199,6 +199,7 @@
         #right > h1 {
             font-size: 18px;
             margin-top: 0px;
+            color: #444;
         }
         #right > h2 {
             font-size: 16px;
@@ -328,15 +329,14 @@
             right: 0;
             text-align: center;
             padding-top: 3px;
-        }
-        #movetop:hover {
-            background-color: orange;
-        }
-        #movetop a {
             text-decoration: none;
             color: white;
             font-weight: bold;
             font-size: 1.5em;
+        }
+        #movetop:hover {
+            background-color: orange;
+            cursor: pointer;
         }
         #frogue-container, .frogue-chat {
             position: absolute;
@@ -484,13 +484,13 @@
                 }(document, 'script', 'frogue-embed'));
             </script>
             <!-- 제일 위로 돌아가기 버튼 -->
-            <div id="movetop"><a href="#top">↑</a></div>
+            <div id="movetop">↑</div>
         </div>
 <!-------------------------------- 화면 하단부 -------------------------------->
         <div id="bottom">
             <div style="width: 100%; min-width: 1300px; margin: auto;">
                 <!-- 회사 마크 -->
-                <img src="./images/title2.png" style="transform: translate(0, 40px);">
+                <img src="../images/title2.png" style="transform: translate(0, 40px);">
             </div>
         </div>
     </div>
@@ -542,6 +542,14 @@
         //할인쿠폰 등록 시
         $("#btnticket").click(function() {
             console.log($("#tickettxt").val());
+        });
+
+        //movetop
+        $("#movetop").click(function() {
+            event.preventDefault();
+            $("html, body").animate({
+                scrollTop: 0
+            }, 500);
         });
 
 

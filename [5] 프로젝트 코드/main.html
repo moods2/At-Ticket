@@ -58,7 +58,7 @@
             /* border: 1px solid white; */
             width: 100px;
             height: 65px;
-            background-image: url("./images//title.png");
+            background-image: url("../images//title.png");
             background-repeat: no-repeat;
             background-position: center center;
             position: absolute;
@@ -102,7 +102,7 @@
         }
         #banner {
             height: 400px;
-            background-image: url("./images//banner.png");
+            background-image: url("../images//banner.png");
             background-repeat: no-repeat;
             background-position: center center;
             margin-top: 20px;
@@ -128,15 +128,14 @@
             right: 0;
             text-align: center;
             padding-top: 3px;
-        }
-        #movetop:hover {
-            background-color: orange;
-        }
-        #movetop a {
             text-decoration: none;
             color: white;
             font-weight: bold;
             font-size: 1.5em;
+        }
+        #movetop:hover {
+            background-color: orange;
+            cursor: pointer;
         }
         #avi {
             width: 900px;
@@ -186,8 +185,8 @@
             </div>
             <!-- 메인화면 좌우로 넘기는 버튼 -->
             <div class="switch">
-                <img src="./images/slide-dir-prev.png" class="prev">
-                <img src="./images/slide-dir-next.png" class="after">
+                <img src="../images/slide-dir-prev.png" class="prev">
+                <img src="../images/slide-dir-next.png" class="after">
             </div>
             <!-- 동영상 -->
             <!-- <div id="avibox">
@@ -303,13 +302,13 @@
                 }(document, 'script', 'frogue-embed'));
             </script>
             <!-- 제일 위로 돌아가기 버튼 -->
-            <div id="movetop"><a href="#top">↑</a></div>
+            <div id="movetop">↑</div>
         </div>
 <!-------------------------------- 화면 하단부 -------------------------------->
         <div id="bottom">
             <div style="width: 1600px; margin: auto;">
                 <!-- 회사 마크 -->
-                <img src="./images/title2.png" style="transform: translate(0, 40px);">
+                <img src="../images/title2.png" style="transform: translate(0, 40px);">
             </div>
         </div>
     </div>
@@ -375,9 +374,9 @@
 
         //top에있는 그림 자동 슬라이드
         $("#top").backstretch([
-            "./images/bg1.jpg",
-            "./images/bg2.jpg",
-            "./images/bg3.jpg"
+            "../images/bg1.jpg",
+            "../images/bg2.jpg",
+            "../images/bg3.jpg"
         ], {duration:3000, fade:1000});
 
         //top에있는 그림 이전으로
@@ -406,6 +405,14 @@
         //마이페이지 클릭시 이동
         $("#mypage").click(function() {
             location.href = "mypage.html";
+        });
+
+        //movetop
+        $("#movetop").click(function() {
+            event.preventDefault();
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1000);
         });
         
 
