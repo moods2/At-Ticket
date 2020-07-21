@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/Backstretch.js"></script>
+    <style>
+
+        * {
+            outline: none;
+        }
+        body { margin: 0 auto; }
+        h1 { font-family: "Arial Black"; font-weight: bold; }
+        #main { width: 100%; }
+        #top {
+            /* border: 1px solid black; */
+            min-width: 1600px;
+            height: 650px;
+            margin: 0 auto;
+        }
+        #middle {
+            /* border: 1px solid black; */
+            width: 1600px;
+            margin: 0 auto;
+        }
+        #bottom {
+            /* border: 1px solid black; */
+            height: 200px;
+            background-color: #eee;
+            color: white;
+        }
+        #topmenu {
+            border-bottom: 1px solid #ddd;
+            background-color: transparent;
+            width: 100%;
+            height: 40px;
+            color: black;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 40px 0;
+            position: absolute;
+        }
+        .menubar {
+            margin: 0 5px;
+        }
+        #topmenu > span {
+            cursor: pointer;
+        }     
+        #topleft {
+            display: inline-block;
+            /* border: 1px solid white; */
+            width: 100px;
+            height: 65px;
+            background-image: url("../images//title.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: absolute;
+            left : 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+        #topright {
+            font-size: 13px;
+            position: absolute;
+            right : 5px;
+            top: 42px;
+            cursor: pointer;
+        }
+        .prev {
+            float: left;
+            padding-left: 20px;
+            cursor: pointer;
+        }
+        .after {
+            float:right;
+            padding-right: 20px;
+            cursor: pointer;
+        }
+        #search {
+            border: 0;
+            border-bottom: 1px solid black;
+            background-color: transparent;
+            outline: none;
+            color: black;
+        }
+
+        .noticebar {
+            width: 1200px;
+            margin: 0px auto;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            
+        }
+        .golist {
+            cursor: pointer;
+        }
+        
+        
+      
+    </style>
+</head>
+<body>
+    
+    <div id="main">
+<!-------------------------------- 화면 상단부 -------------------------------->
+        <div id="top">
+            <div id="topmenu">
+                <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
+                <a href="#" id="topleft"></a>
+                <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
+                <span data-item="item1" class="menubar">콘서트</span>
+                <span data-item="item2" class="menubar">뮤지컬</span>
+                <span data-item="item3" class="menubar">연극</span>
+                <span data-item="item4" class="menubar">클래식</span>
+                <span data-item="item5" class="menubar">전시</span>
+                <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
+                <div id="topright">
+                    <span data-item="item6" class="menubar">랭킹</span>
+                    <span data-item="item7" class="menubar">이벤트</span>
+                    <input type="text" value="" id="search">
+                    <label for="search" class="glyphicon glyphicon-search"
+                        style="font-size: 14px; cursor: pointer;"></label>
+                    <div class="glyphicon glyphicon-user" 
+                        style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
+                </div>
+            </div>
+            <!-- 메인화면 슬라이더 -->
+            
+        <hr>
+<!-------------------------------- 내용부분 -------------------------------->
+        <h2 style="text-align: center; margin-top: 200px; margin-bottom: 50px; font-size: 4em; font-weight: bold;">공지사항</h2>
+        <div class="noticebar">
+            <div style="display: inline-block; width:90px; border: 1px solid orange; color: orange; text-align: center;">티켓오픈</div>
+            <span>Good Bye! 오페라의 유령! 뮤지컬 [오페라의 유령] 월드투어-서울 7/21(화) 2시 티켓오픈!</span>
+        </div>
+        <p style="text-align: center; margin-left: 1000px; padding-top: 10px; color: gray;">등록일 : 2020-07-20 조회수: 25</p>
+
+        <div style="width: 1200px; height: 370px; background-color: #eeeeee; margin: 0px auto;" >
+            <div style="width: 180px; height: 252px; margin-left: 50px; "><img style="margin-top: 50px; width: 180px; height: 252px;" src="./images/noticeimage.jpg" alt=""></div>
+            <span style="font-size: 18px; margin-left: 300px; position: relative; bottom: 180px; left: 0px;">Good Bye! 오페라의 유령! 뮤지컬 [오페라의 유령] 월드투어-서울 7/21(화) 2시 티켓오픈!</span>
+            <div style=" padding-left: 30px; padding-top: 18px; background-color: rgb(253, 221, 190); position: relative; bottom: 120px; margin-left: 300px; margin-bottom: 500px; border: 1px solid gray; width: 840px; height: 60px;">
+                <span class="glyphicon glyphicon-time" style= "color: orange; font-weight: bold;" ;>&nbsp;티켓오픈</span><span style="padding-left: 30px;">|</span>
+                <span style="padding-left: 30px; font-weight: bold; font-size: 17px;">2020.07.21(화) 오후 2:00</span>                
+                <div style=" width: 236px; height: 46px; border: 3px solid orange; margin-top: 80px; position: relative; left: -30px; padding-top: 10px; text-align: center; background-color: white; color: orange; font-weight: bold; font-size: 18px;">티켓오픈 알림<span class="glyphicon glyphicon-bell"></span></div>
+            </div>
+            
+        </div>
+        <div style="width: 1200px; margin: 0px auto;">
+
+        <hr>
+        
+<h2 style="text-align: center;">지역별 게시판</h2>
+
+            <table class="table table-borderd" style="width: 600px; margin: 0px auto;">
+                <tr>
+                    <th style="width: 120px;">제목</th>
+                    <th style="width: 650px;">
+                        <input type="text" class="form-control" />
+                    </th>
+                </tr>
+                <tr>
+                    <th style="width: 150px;">태그</th>
+                    <th style="width: 650px;">
+                        <input type="text" class="form-control" />
+                    </th>
+                </tr>
+                <tr>
+                    <th style="width: 150px;">내용</th>
+                    <th style="width: 650px;">
+                        <textarea
+                            class="form-control"
+                            style="height: 200px;"
+                        ></textarea>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="width: 150px;">지역</th>
+                    <th style="width: 650px;">
+                        <select class="form-control">
+                            <option>서울</option>
+                            <option>경기/인천</option>
+                            <option>대전/충남</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="width: 150px;">파일</th>
+                    <th style="width: 650px;">
+                        <input type="file" class="form-control" />
+                    </th>
+                </tr>
+                <tr>
+                    <th style="width: 150px;">HTML5</th>
+                    <th style="width: 650px;">
+                        <input type="color" class="form-control" />
+                    </th>
+                </tr>
+            </table>
+
+
+
+        
+</div>        
+            
+            
+
+        
+      
+<!-------------------------------- 화면 하단부 -------------------------------->
+        <div id="bottom">
+            <div style="width: 1600px; margin: auto;">
+                <!-- 회사 마크 -->
+                <img src="../images/title2.png" style="transform: translate(0, 40px);">
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/slick.min.js"></script>
+    <script>
+
+        //상단 메뉴 css
+        $(".menubar").mouseover(function() {
+            $(this).css("border-bottom", "5px solid orange");
+        });
+        $(".menubar").mouseout(function() {
+            $(this).css("border-bottom", "");
+        });
+
+      
+
+       
+
+        
+
+        
+
+
+    </script>
+
+</body>
+</html>
