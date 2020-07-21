@@ -7,10 +7,156 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/jquery-ui.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Highcharts Example</title> -->
+  
     <style>
+        /* main */
+        html {
+            width: 1100px;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 3em;
+            color: #B4A7D6;
+        }
+
+        #left {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 250px;
+            height: 2000px;
+            border: 1px solid black;
+            background-color: #B4A7D6;
+            /* background-color: #444444; */
+            text-align: center;
+        }
+
+        #left .info {
+            margin-left: 56px;
+            text-align: left;
+            font-variant: small-caps;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .container {
+            /* margin-top: 30px; */
+            /* margin-left: 10px; */
+            width: 260px;
+            padding-right: 25px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
+        }
+
+        .b {
+            margin-top: 30px;
+            float: left;
+        }
+
+        .b::after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        /* #btn1 {
+            margin-left: 50px;
+            margin-right: 20px;
+        } */
+
+        #topmenu {
+            /* border: 1px solid blue; */
+            width: 100%;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            float: right;
+            align-content: right;
+            z-index: 0;
+        }
+
+        #topmenu .search {
+            /* border: 1px solid black; */
+            width: 250px;
+            margin-top: 10px;
+            float: right;
+        }
+
+        #topmenu .home {
+            /* border: 1px solid black; */
+            width: 50px;
+            float: right;
+            margin-top: 7px;
+            cursor: pointer;
+        }
+
+        #calendar {
+            margin-top: 10px;
+        }
+
+        #cal {
+            position: relative;
+            top: 15px;
+            left: 5px;
+        }
+
+        #bottom {
+            position: absolute;
+            top: 2000px;
+        }
+
+        #sw {
+            margin-top: 850px;
+            cursor: pointer;
+        }
+
+        /* 새로 추가한 코드 */
+        /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
+        .container tr td:hover {
+            cursor: pointer;
+        }
+
+        #movetop {
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            text-align: center;
+            padding-top: 3px;
+        }
+
+        #movetop:hover {
+            background-color: orange;
+            cursor: pointer;
+        }
+
+        #movetop {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .ui-state-active {
+            background-color: red;
+            background-image: url();
+        }
+
+        .ui-state-hover {
+            background-color: #B4A7D6;
+            background-image: url();
+        }
+
+        .ui-accordion-header {
+            background-color: #B4A7D6;
+        }
+        /* 랭킹 */
         #title {
             /* text-align: center; */
             margin-left: 280px;
@@ -26,7 +172,7 @@
             font-weight: lighter;
         }
 
-        #cal {
+        #cal1 {
             position: relative;
             float: left;
             top: 15px;
@@ -46,23 +192,24 @@
 
         .dat:hover {
             border-bottom: 3px solid lightgreen;
-            
+
         }
 
         #middle {
             margin-left: 280px;
         }
 
-        #one{
+        #one {
             margin-top: 50px;
         }
 
-        .rank{
+        .rank {
             text-align: center center;
-            position: relative; 
+            position: relative;
             top: -70px;
             margin-right: 20px;
         }
+
         .img {
             width: 150px;
             height: 150px;
@@ -74,29 +221,33 @@
             margin-bottom: 10px;
         }
 
-        #sel{
+        #sel {
             margin-top: 50px;
             text-align: center;
-            margin-left: 100px;
+            margin-left: 250px;
             margin-bottom: 200px;
-            
+
         }
-        .btn{
+
+        .btn {
             margin-right: 8px;
             color: mediumslateblue;
             font-weight: bold;
             border: 0px;
         }
-        .bt{
+
+        .bt {
             border: 0px;
         }
 
-        .bt:hover {    
+        .bt:hover {
             background: #B4A7D6;
             border: 0px;
             border-bottom: 3px solid mediumslateblue;
         }
     </style>
+
+    <!-- 그래프 -->
     <style type="text/css">
         .highcharts-figure,
         .highcharts-data-table table {
@@ -144,7 +295,98 @@
 </head>
 
 <body>
+    <!-- main -->
+    <div id="left">
+        <img src="../images/사람.png" style="margin-top: 40px;">
+        <div class="info">
+            <span><br>Welcome,</span></br></span>
+            <span>Hong gil dong</span>
+        </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
+                class="btn">
+        </div> -->
+        <div id="logout">
+            <input
+                style="font-weight: bold; background-color: #C27BA0; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5;"
+                type="button" value="Logout" id="btn2" class="btn">
+        </div>
+        <div class="container">
+            <!-- 여기에 메뉴 -->
+            <h3>
+                공연관리</h3>
+            <div>
+                <div>공연 추가</div>
+                <div>공연 수정</div>
+                <div>공연 삭제</div>
+            </div>
+            <h3>방문자 조회수 관리</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>정산 관리</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>인사관리</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>이벤트 관리</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>1:1 문의 관리</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>광고 베너 관리</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>공연 랭킹 관리</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>공지사항</h3>
+            <div>방문자 조회수 관리</div>
+            <h3>고객 정보</h3>
+            <div>방문자 조회수 관리</div>
+        </div>
+        <!-- container -->
 
+
+        <!-- 티켓 사이트 로고 바로가기 -->
+        <div style="margin-top: 20px;">
+            <img src="../images/title.png" id="tickethome" style="cursor: pointer;">
+        </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
+                class="btn">
+        </div> -->
+
+        <div id="calendar">
+            <input style="width: 100px;" type="text" name="date" id="date" value="">
+            <label for="date"><span style="font-size: 3em;" class="glyphicon glyphicon-calendar"
+                    id="cal"></span></label>
+        </div>
+    </div>
+
+
+    <div id="topmenu">
+        <div class="home">
+            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id="homeLogo"></span>
+        </div>
+        <div class="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon"><i
+                            class="glyphicon glyphicon-search"></i></span>
+                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
+                        placeholder="검색어를 입력하세요.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fixedBtn">
+        <img src="../images/switch_on.png" id="sw" name="sw"
+            style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
+
+        <!-- 제일 위로 돌아가기 -->
+        <div id="movetop" style="position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
+    </div>
+
+    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    </div>
+    
+    <!-- 랭킹 -->
     <div id="title">
         <h1 style="color: #B4A7D6; font-weight: bold;
         font-family: Arial;
@@ -152,13 +394,13 @@
     </div>
 
 
-    <figure class="highcharts-figure">
+    <figure style="margin-left: 280px;" class="highcharts-figure">
         <div id="container"></div>
         <p style="text-align: center;" class="highcharts-description">
             에매율
         </p>
     </figure>
-    <div style="text-align: center; font-weight: bold;">
+    <div style="margin-left: 500px; font-weight: bold;">
         <span id="day" class="dat">일간</span>
         <span>｜</span>
         <span id="week" class="dat">주간</span>
@@ -168,74 +410,128 @@
         <span id="year" class="dat">연간</span>
         <span>｜</span>
     </div>
-    <div id="calendar" style="width: 500px; margin: 20px auto; ">
-        <input style="width: 100px; text-align: center; margin-left: 170px;" type="text" name="date" id="date">
-        <label for="date"><span style="font-size: 3em; " class="glyphicon glyphicon-calendar" id="cal"></span></label>
+    <div id="calendar1" style="width: 500px; margin: 20px ; margin-left: 370px;">
+        <input style="width: 100px; text-align: center; margin-left: 170px;" type="text" name="date1" id="date1">
+        <label for="date1"><span style="font-size: 3em; " class="glyphicon glyphicon-calendar" id="cal1"></span></label>
     </div>
-    <div id="btns">
+    <div style="margin-left: 430px;" id="btns">
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="전체" id="btn1" class="bt">
-        <input style="color: mediumpurple; font-weight: bold;" type="button" value="뮤지컬" id="btn2" class="bt">
-        <input style="color: mediumpurple; font-weight: bold;" type="button" value="콘서트" id="btn3" class="bt">
-        <input style="color: mediumpurple; font-weight: bold;" type="button" value="연극" id="btn4" class="bt">
-        <input style="color: mediumpurple; font-weight: bold;" type="button" value="전시" id="btn5" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="뮤지컬" id="btn3" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="콘서트" id="btn4" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="연극" id="btn5" class="bt">
+        <input style="color: mediumpurple; font-weight: bold;" type="button" value="전시" id="btn6" class="bt">
     </div>
 
-    <div id = "line" style="border: 2px solid #999999; width: 1500px; margin-left: 280px; margin-top: 30px;"></div>
-  
-    <div id = "middle">
-        <div style="text-align: center; margin-left: -500px;" id = "one" class = "box2">
-            <span class = "rank">1위</span>
-            <div class = "img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
-            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+    <div id="line" style="border: 2px solid #999999; width: 1500px; margin-left: 280px; margin-top: 30px;"></div>
+
+    <div id="middle">
+        <div style="text-align: center; margin-left: -500px;" id="one" class="box2">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <span  class="rank">1위</span>
+            <div class="img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
+                ★★★★☆ 4</div>
+            <div
+                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            </div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+                2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id = "two" class = "box2">
-            <span class = "rank">2위</span>
-            <div class = "img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
-            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+        <div style="text-align: center; margin-left: -500px;" id="two" class="box2">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <span class="rank">2위</span>
+            <div class="img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
+                ★★★★☆ 4</div>
+            <div
+                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            </div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+                2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id = "three" class = "box2">
-            <span class = "rank">3위</span>
-            <div class = "img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
-            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+        <div style="text-align: center; margin-left: -500px;" id="three" class="box2">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <span class="rank">3위</span>
+            <div class="img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
+                ★★★★☆ 4</div>
+            <div
+                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            </div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+                2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id = "four" class = "box2">
-            <span class = "rank">4위</span>
-            <div class = "img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
-            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+        <div style="text-align: center; margin-left: -500px;" id="four" class="box2">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <span class="rank">4위</span>
+            <div class="img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
+                ★★★★☆ 4</div>
+            <div
+                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            </div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+                2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id = "five" class = "box2">
-            <span class = "rank">5위</span>
-            <div class = "img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
-            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+        <div style="text-align: center; margin-left: -500px;" id="five" class="box2">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <span class="rank">5위</span>
+            <div class="img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
+                ★★★★☆ 4</div>
+            <div
+                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            </div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+                2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id = "six" class = "box2">
-            <span class = "rank">6위</span>
-            <div class = "img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0 ★★★★☆ 4</div>
-            <div style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;"></div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class = "content">2020.07.10~2020.08.30<br>
+        <div style="text-align: center; margin-left: -500px;" id="six" class="box2">
+            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox" class="cb">
+            <span class="rank">6위</span>
+            <div class="img"></div>
+            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
+                ★★★★☆ 4</div>
+            <div
+                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            </div>
+            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+                2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
     </div>
-    <div id = "sel">
-    <input type="button" value="추가" class = "btn btn-warning" id = "btn6">
-    <input type="button" value="수정" class = "btn btn-warning" id = "btn7">
-    <input type="button" value="삭제" class = "btn btn-warning" id = "btn8">
+    <nav style="margin-left: 500px;" class = "pagebar">
+        <ul class="pagination">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+          <li class = "active"><a href="#">7</a></li>
+          <li><a href="#">8</a></li>
+          <li><a href="#">9</a></li>
+          <li><a href="#">10</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    <div id="sel">
+        <input type="button" value="추가" class="btn btn-warning" id="btn7">
+        <input type="button" value="수정" class="btn btn-warning" id="btn8">
+        <input type="button" value="삭제" class="btn btn-warning" id="btn9">
     </div>
 
     <script src="../js/jquery-1.12.4.js"></script>
@@ -300,25 +596,140 @@
 
     </script>
     <script>
-        $("#btns").controlgroup();
         var date = document.getElementById("date");
         var now = new Date();
+        var sw = document.images["sw"];
+
+        //날짜 자동 입력, 읽기만 가능 
         date.value = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
         if (date.value != null) {
             date.readOnly = true;
         }
 
-        $("#date").datepicker({
+        // 캘린더
+        $("#date, #date1").datepicker({
             dateFormat: "yy-mm-dd",
             minDate: now.getFullYear() + "-1-1",
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
-        $("#btn1").click(function () {
+        // $("#date1").datepicker({
+        //     dateFormat: "yy-mm-dd",
+        //     minDate: now.getFullYear() + "-1-1",
+        //     maxDate: now.getFullYear() + "-12-" + "31"
+        // });
+
+
+
+        document.body.bgColor = "white";
+
+
+
+        //스위치 
+        var swCount = 1;
+        $("#sw").click(function () {
+            console.log("클릭함");
+
+            if (swCount % 2 == 0) {
+                console.log("들어옴");
+                sw.src = "../images/switch_on.png";
+                $("body").css("background-color", "white");
+                $("#homeLogo").css("color", "#333333");
+                $("#adminName").css("color", "#333333")
+            } else {
+                sw.src = "../images/switch_off.png";
+                $("body").css("background-color", "#292A2D");
+                $("#homeLogo").css("color", "white");
+                $("#adminName").css("color", "white");
+
+            }
+            swCount++;
+        });
+
+        // $("#btn1").click(function(){
+        //     window.open("login.html","Login","width=300, height=300");
+        // });
+
+        // 버튼을 클릭하면 로그아웃 창이 뜸
+        $("#btn2").click(function () {
+            if (confirm("로그아웃하시겠습니까?")) {
+                console.log("로그아웃 되었습니다.");
+            }
+        });
+
+        $(".container").accordion();
+        // $(".container2").accordion();
+        // $('.collapse').collapse({
+        //     toggle: false
+        // })
+
+        console.log(111);
+
+
+        //홈버튼 링크
+        $("#homeLogo").click(function () {
+            location.href = "adminMain.html";
+        });
+
+        //상단 메뉴 고정
+        $(document).scroll(function () {
+            //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            if ($(document).scrollTop() > $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    width: "100%",
+                    position: "fixed",
+                    top: "0px",
+                    bottom: "",
+                    zIndex: "1"
+                });
+
+            };
+
+            //상단 헤더(top)이 눈에 보일때 쯤
+            if ($(document).scrollTop() <= $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    position: "absolute",
+                    top: "0px",
+                    bottom: ""
+                });
+            }
+        });
+
+
+        //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
+        $("#btn2").mouseenter(function () {
+            // $("#btn2").css("background-color","cornflowerblue");
+            $("#btn2").css("color", "white");
+        });
+        $("#btn2").mouseleave(function () {
+            // $("#btn2").css("background-color","#C27BA0");
+            $("#btn2").css("color", "#D5D5D5");
+        })
+
+        //티켓 홈
+        $("#tickethome").click(function () {
+            window.open("../main.html", "At-Ticket");
+        });
+
+
+        //상단으로 돌아가기 -> 스무스 하게 올림
+        $("#movetop").click(function () {
+
+            $("html,body").animate({
+                scrollTop: 0
+            }, 700);
 
         });
 
-        $("#btn2").click(function () {
+        $("#btns").controlgroup();
+        var date1 = document.getElementById("date1");
+        var now = new Date();
+        date1.value = "   / " + "      / ";
+        if (date1.value != null) {
+            date1.readOnly = true;
+        }
+
+        $("#btn1").click(function () {
 
         });
 
@@ -335,15 +746,26 @@
         });
 
         $("#btn6").click(function () {
-            window.open("rankingInsert.html", "추가", "width=400, height=300")
+
         });
 
         $("#btn7").click(function () {
-            window.open("rankingUpdate.html", "수정", "width=400, height=300")
+            window.open("rankingInsert.html", "추가", "width=400, height=300")
         });
 
         $("#btn8").click(function () {
-            window.open("rankingDelete.html", "삭제", "width=420, height=300")
+            window.open("rankingUpdate.html", "수정", "width=400, height=300")
+        });
+
+        $("#btn9").click(function () {
+            if (confirm("정말로 삭제하시겠습니까?")) {
+                    // $("input[name=checkRow]:checked").each(function () {
+                    //     var tr_value = $(this).val();
+                    //     var box = $("box" + tr_value);
+                    //     console.log(1);
+                    //     box.remove();
+                    // });
+                }
         });
 
 
