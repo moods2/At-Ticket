@@ -272,7 +272,9 @@
         #poster{
             width: 430px; 
             height: 602px; 
-            background-color: rgb(184, 201, 233);
+            /* background-color: rgb(184, 201, 233); */
+            background-image: url(./images/consertPoster.jpg);
+            background-size: 430px;
         }
 
         #contents{
@@ -381,7 +383,9 @@
         #benner {
             width: 700px;
             height: 180px;
-            background-color: rgb(241, 231, 213);
+            /* background-color: rgb(241, 231, 213); */
+            background-image: url(./images/banner.png);
+            background-size: 750px;
         }
 
         #contentsBox {
@@ -690,6 +694,13 @@
             font-size: 50px;
         }
 
+        .rank1:nth-child(2){
+            background-image: url("./images/consertRank1.jpg");
+            width: 100px;
+            height: 50px;
+            background-color: black;
+        }
+
 
         /* 예매페이지======================================================================================================================================================== */
         /* 맵 */
@@ -722,6 +733,72 @@
 
         .reserv {
             cursor: pointer;
+        }
+
+        #rankingImg {
+            background-image: url("http://tkfile.yes24.com/imgNew/sub/rn-tit-15456.png");
+            width: 207px;
+            height: 175px;
+            margin-bottom: 100px;
+        }
+
+        /* #ranking div:nth-child(3){
+            width: 170px;
+            height: 238px;
+            background-image: url("./images/consertRank1.jpg");
+            background-size: 170px;
+        } */
+
+        #ranking {
+            /* padding-bottom: -100px; */
+            /* margin-bottom: -100px; */
+            height: 300px;
+            border-bottom: 1px solid black;
+        }
+
+        .rank1 img {
+            width: 170px;
+            height: 238px;
+        }
+
+        .rank1 {
+            float: left;
+            position: relative;
+            top: -270px;
+            left: 250px;
+            margin-right: 25px;
+        }
+        #ranking input {
+            position: relative;
+            right: 975px;
+            top: -65px;
+            outline: none;
+            width: 100px;
+            height: 30px;
+            border: 1px solid #EC7D2C;;
+            background-color: white;
+            border-radius: 3px;
+            color: #EC7D2C;
+        }
+
+        .num {
+            width: 30px;
+            height: 30px;
+            border-radius: 25px;
+            background-color: #EC7D2C;
+            text-align: center;
+            float: left;
+            position: relative;
+            top: -500px;
+            left: 255px;
+            margin-right: 165px;
+        }
+
+        .num span {
+            padding-top: 5px;
+            /* margin-top: 10px; */
+            display: block;
+            color: white;
         }
 
 
@@ -1069,10 +1146,10 @@
                 <small>02-457-5114</small>
                 <small>http://yes24livehall.com</small>
 
-                <div style="height: 800px;">
+                <div style="height: 600px;">
                     <div style="width: 1200px; height: 200px;  margin: 150px auto;">
                         <div class="map_wrap">
-                <div id="map" style="width:1200px;height:700px;position:relative;overflow:hidden;"></div>
+                <div id="map" style="width:1000px;height:500px;position:relative;  overflow:hidden; margin: 0px auto;"></div>
                 <ul  id="category">
                     <li class="sellist" id="SW8" data-order="0"> 
                         <img style="width: 30px;" src="./images/metro.png" alt=""><br>
@@ -1105,6 +1182,24 @@
                     </div>
 
             </div>
+
+            <div id="ranking">
+                <div id="rankingImg"></div>
+                <input type="button" value="더보기">
+                <div class="rank1"><img src="./images/consertRank1.jpg"></div>
+                <div class="rank1"><img src="./images/consertRank2.jpg"></div>
+                <div class="rank1"><img src="./images/consertRank3.jpg"></div>
+                <div class="rank1"><img src="./images/consertRank4.jpg"></div>
+                <div class="rank1"><img src="./images/consertRank5.jpg"></div>
+                <div style="clear:both;"></div>
+                <div class="num"><span>1위</span></div>
+                <div class="num"><span>2위</span></div>
+                <div class="num"><span>3위</span></div>
+                <div class="num"><span>4위</span></div>
+                <div class="num"><span>5위</span></div>
+                <div style="clear:both;"></div>
+            </div>
+            <div style="clear:both;"></div>
             
             <!-- 챗봇 : 단비봇 --------------------------------------------------------------------------------------------------------------------------------->
             <!-- <img src="./images/face35.png" id="chatbot"> -->
