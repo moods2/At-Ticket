@@ -193,6 +193,102 @@
           
         }
 
+        /* 최상단 타이틀 */
+        #title{
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+            color : #444444;
+        }
+
+        /* 표가 존재하는 구역 */
+        #selectable {
+            /* border : 1px solid black; */
+            width : 1330px;
+            margin-left : 350px;
+            height : 1700px;
+            margin-top : 100px;
+        }
+        
+        .selectNotice {
+            width : 100px;
+            text-align: center;
+            margin: 10px 0px;
+            margin-bottom: 0px;
+            background-color: #444;
+            border : 0px;
+            border-radius: 5px;
+            color : rgb(220,220,220);
+            font-weight: bold;
+            height : 40px;
+        }
+        .selectNotice:hover {
+            color : white;
+        }
+        #nttable {
+            margin-left : 0px;
+        }
+        #nttable th {
+            background-color:  #444;
+            color:white;
+        }
+        #nttable th:nth-child(1) {width : 130px;}
+        #nttable th:nth-child(2) {width : 375px;}
+        #nttable th:nth-child(3) {width : 200px;}
+        #nttable th:nth-child(4) {width : 180px;}
+        #nttable th:nth-child(5) {width : 100px;}
+        #nttable th:nth-child(6) {width : 30px;}
+
+        #nttable tbody td {
+            /* color :red; */
+            font-size: 1.3em;
+        }
+
+        #nttable > tbody > tr > td:nth-child(2):hover {
+            cursor : pointer;
+            text-decoration: underline;
+        }
+        .modified {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #444;
+            outline: none;
+            /* margin : 20px; */
+            /* margin-top : 50px; */
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modified:hover {
+            color : white;
+        }
+        .pagebar {
+            margin-left : 400px;
+        }
+
+
+        #slctp1, #slctp2 {
+            float : left;
+            /* margin-left : 100px; */
+        }
+
+        #slctp2 {
+            margin-top : 10px;
+            margin : 10px auto;
+            margin-bottom: 10px;
+            width : 300px;
+            margin-left: 720px;
+        }
+        .secret {
+            border:1px solid red;
+            color : red;
+            font-size: .7em;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        
         
         
         
@@ -204,6 +300,341 @@
 </head>
 
 <body>
+
+    <div id = "title">
+        <h1 id = "titesub">1:1 문의 <small id = "mainHome" style = "color : #777;"> > 문의조회  </small></h1>
+    </div>
+
+      <!-- 게시판 -->
+    <!-- 등록순 오름차순 조회순 -->
+    <div id = "selectable">
+        
+        <div id = "slctp1">
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
+            <!-- <input type="button" class = "selectNotice" value = "등록순">
+            <input type="button" class = "selectNotice" value = "오름차순">
+            <input type="button" class = "selectNotice" value = "내림차순"> -->
+        </div>
+
+        <div id = "slctp2">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
+			</div>
+        </div>
+        
+        <table style = "width:1330px;" class = "table table-striped table-bordered table-condensed" id = "nttable">
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>제목</th>
+                    <th>작성날짜</th>
+                    <th>문의유형</th>
+                    <th>열람확인</th>
+                    <th>선택</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>구매자</td>
+                    <td id = "t1input">아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td><span class = "secret">삭제대기</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td><span class = "secret">삭제대기</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>미확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+                <tr>
+                    <td>구매자</td>
+                    <td>아니 이 사이트는 관리자는 노는겁니까?</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>반품/환불/교환</td>
+                    <td>확인</td>
+                    <td><input type="checkbox" class = "t5"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 내용물 수정/삭제 페이지 -->
+        <div id = "manipulate">
+            <button class = "modified" style = "margin-left : 1210px;"><i class="glyphicon glyphicon-trash"></i> 문의 내역 삭제</button>
+            <!-- <button class = "modified"><i class="glyphicon glyphicon-plus"></i> 공지작성</button>
+            <button class = "modified"><i class="glyphicon glyphicon-pencil"></i> 공지수정</button> -->
+        </div>
+            <!-- <input type="button" class = "modified" value = "공지삭제"> -->
+        <!-- <input type="button" class = "modified" value = "공지작성"> -->
+        <!-- <input type="button" class = "modified" value = "공지수정"> -->
+
+
+        <!-- 하단 페이지 선택 바 -->
+            <nav class = "pagebar">
+              <ul class="pagination">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li class = "active"><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li><a href="">6</a></li>
+                <li><a href="">7</a></li>
+                <li><a href="">8</a></li>
+                <li><a href="">9</a></li>
+                <li><a href="">10</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+        
+    </div><!-- selectable -->
+
 
     <div id="left">
         
@@ -335,16 +766,24 @@
         console.log("클릭함");
 
             if(swCount % 2 == 0) {
-                console.log("들어옴");
+                //배경이 하얀색일때
                 sw.src="../images/switch_on.png";
                 $("body").css("background-color","white");
                 $("#homeLogo").css("color","#333333");
-                $("#adminName").css("color","#333333")
+                $("#adminName").css("color","#333333");
+                $("#nttable > tbody > tr:nth-child(2n)").css("color","#333333");
+                $("#mainHome").css("color","#777");
+                $("#titesub").css("color","#111");
             } else {
+                // 배경이 어두운색일때
                 sw.src="../images/switch_off.png";
                 $("body").css("background-color","#292A2D");
                 $("#homeLogo").css("color","white");
                 $("#adminName").css("color","white");
+                $("#nttable > tbody > tr:nth-child(2n)").css("color","white");
+                $("#mainHome").css("color","white");
+                $("#titesub").css("color","white");
+
 
             }
             swCount++;
@@ -433,7 +872,17 @@
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
     
 
+    // 관리자 질문 답해주는 링크로 가기
+    var adminChild;//자식객체
 
+    $("#t1input").click(function(){
+        // 새로운 링크를 띄워야 한다.
+
+        adminChild = window.open("./adminQuestionAnswer.html","QA","width=900,height=900");
+        // 질문에 대한 답을 해주는 페이지로 이동한다. 
+    
+
+    });
 
     
     
