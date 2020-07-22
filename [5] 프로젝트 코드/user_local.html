@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/jquery-ui.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="js/Backstretch.js"></script>
+    <!-- Kakao Map -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d54ec4ee3d75f5d446f2cddfc3e41d4"></script>
+
+    <style>
+
+        * {
+            outline: none;
+        }
+
+    body { margin: 0 auto; }
+        h1 { font-family: "Arial Black"; }
+        #main { width: 100%; }
+        #top {
+            /* border: 1px solid black; */
+            min-width: 1600px;
+            height: 50px;
+            margin: 0 auto;
+        }
+        #bottom {
+            /* border: 1px solid black; */
+            height: 200px;
+            background-color: #eee;
+            color: white;
+        }
+        #topmenu {
+            border-bottom: 1px solid black;
+            background-color: white;
+            width: 100%;
+            height: 40px;
+            color: black;
+            text-align: center;
+            font-size: 15px;
+            padding: 40px 0;
+            position: absolute;
+            /* margin-top: -120px; */
+        }
+        .menubar {
+            margin: 0 5px;
+        }
+        #topmenu > span {
+            cursor: pointer;
+        }
+        .switch {
+            /* border: 1px solid white; */
+            position: relative;
+            top: 50%;
+        }        
+        #topleft {
+            display: inline-block;
+            /* border: 1px solid white; */
+            width: 100px;
+            height: 65px;
+            background-image: url("./images//title.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: absolute;
+            left : 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+        #topright {
+            font-size: 13px;
+            position: absolute;
+            right : 5px;
+            top: 42px;
+            cursor: pointer;
+        }
+
+        #search {
+            border: 0;
+            border-bottom: 1px solid white;
+            background-color: transparent;
+            outline: none;
+            color: black;
+
+        }
+
+        #chatbot {
+            width: 88px;
+            height: 88px;
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #frogue-container, .frogue-chat {
+            position: absolute;
+            left:20px;
+            bottom: 0;
+        }
+
+        #movetop {
+            width: 40px;
+            height: 40px;
+            background-color: gray;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            padding-top: 3px;
+        }
+        #movetop:hover {
+            background-color: orange;
+        }
+        #movetop a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        /* 내용======================================================================================================== */
+
+        #mainBox {
+            width: 1200px;
+            /* text-align: center; */
+            margin: 120px auto;
+            min-height: 890px;
+        }
+
+        #mainBox h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #tabs {
+            width: 1200px;
+            padding-bottom: 100px;
+            /* text-align: center; */
+            margin-top: 100px;
+        }
+
+        .tabMenu {
+            border: 1px solid #eee;
+            width: 171.4px;
+            height: 70px;
+            float: left;
+            text-align: center;
+            padding-top: 25px;
+            border-right: none;
+            color: black;
+        }
+        .tabMenu:first-child{
+            background-color: orange;
+            color: white;
+        }
+        .tabMenu:last-child{
+            border-right: 1px solid #eee;
+        }
+
+        #tab1 img:first-child {
+            margin-top: 50px;
+        }
+
+        .tabss img:first-child {
+            margin-top: 100px;
+        }
+
+        #tab1 h1 {
+            margin: 30px;
+            margin-top: 90px;
+            padding-top: 70px;
+            border-top: 1px solid #eee;
+        }
+        #tab1 h1:nth-child(2){
+            border: none;
+            padding: 0px;
+        }
+
+        #tab1 p {
+            margin-bottom: 30px;
+        }
+
+        /* 상세검색 */
+        #plusSearch {
+            width: 1200px;
+            background-color: #eee;
+            /* margin-top: 200px; */
+            position: relative;
+            top: 120px;
+            border-bottom: 2px solid gray;
+        }
+
+        #plusTop {
+            border-bottom: 1px solid #ccc;
+            width: 1120px;
+            height: 60px;
+            margin-left: 35px;
+        }
+
+        #plusbtn {
+            border: 1px solid #eee;
+            position: relative;
+            top: -50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #plusSBox {
+            margin-left: 35px;
+            display: none;
+            text-align: center;
+            height: 200px;
+        }
+
+        #plusSBox div {
+            margin-top: 20px;
+            background-color: #fff;
+            width: 1120px;
+        }
+
+        #plusSBox dl {      
+            margin: 0px;    
+            margin-left: 50px; 
+            margin-right: 50px;
+        }
+
+        #plusSBox dt, #plusSBox dd {
+            float: left;
+            margin-top:  20px;
+        }
+
+        #plusSBox dl:nth-child(1){
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        #plusSBox dt {
+            border-right: 1px solid #ddd;
+            width: 80px;
+            text-align: left;
+        }
+        #plusSBox dd {
+            padding-left: 50px;
+            padding-bottom: 10px;
+        }
+
+
+        /* 체크박스 */
+        #plusSBox input[type="checkbox"] {
+            display:none;
+        }
+
+        #plusSBox input[type="checkbox"] + label {
+            color: black;
+
+        }
+
+        #plusSBox input[type="checkbox"] + label span {
+            display:inline-block;
+            width:19px;
+            height:19px;
+            margin:-2px 10px 0 0;
+            vertical-align:middle;
+            background: white;
+            border: 1px solid #7E9CB6;
+            cursor:pointer;
+            /* margin-top: 8px;
+            margin-left: 5px; */
+        }
+
+        #plusSBox input[type="checkbox"]:checked + label span {
+            background: #7E9CB6;
+            border: 1px solid white;
+        }
+
+        #plusSBox label {
+            margin-right: 20px;
+        }
+
+        #plusSBox input[type = text] {
+            margin-left: 10px;
+            font-weight: normal;
+        }
+
+        /* 달력 */
+        .ui-datepicker{ font-size: 12px; width: 280px;}
+
+        #plusSBox input[type = button] {
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 30px;
+            margin: 20px 10px;
+        }
+
+        #plusSBox input[type = button]:nth-child(2){
+            background-color: white;
+        }
+
+        #plusSBox input[type = button]:nth-child(3){
+            background-color: orange;
+            color: white;
+        }
+
+        .tabss {
+            margin-top: 170px;
+            text-align: center;
+        }
+
+        .numbering {
+            /* border: 1px solid black; */
+            font-size: 20px;
+            padding-top: 25px;
+        }
+        .numbering span{
+            color: orange;
+        }
+
+        .contentBox {
+            /* border: 1px solid black; */
+            width: 217px;
+            height: 420px;
+            margin-top: 80px;
+            display:inline-block;
+            vertical-align:middle;
+            margin-right: 20px;
+        }
+
+        .content::after {
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+
+        .content {
+            text-align: center;
+            height: 2000px;
+        }
+
+        .contentBox img {
+            width: 215px;
+            height: 300px;
+            position: relative;
+            top: -52px;
+        }
+        .contentBox span:nth-child(2) {
+            font-size: 16px;
+            /* font-weight: bold; */
+            position: relative;
+            top: -30px;
+        }
+        .contentBox span:nth-child(3), .contentBox span:nth-child(4){
+            font-size: 12px;
+            display: block;
+            position: relative;
+            top: -20px;
+            margin-bottom: 5px;
+            color: gray;
+        }
+
+        .contentBox:hover img{
+            transform: scale(1.1);
+            transition: transform .5s;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="main">
+
+        <!-------------------------------- 화면 상단부 -------------------------------->
+        <div id="top">
+            <div id="topmenu">
+                <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
+                <a href="main.html" id="topleft"></a>
+                <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
+                <span data-item="item1" class="menubar">콘서트</span>
+                <span data-item="item2" class="menubar">뮤지컬</span>
+                <span data-item="item3" class="menubar">연극</span>
+                <span data-item="item4" class="menubar">클래식</span>
+                <span data-item="item5" class="menubar">전시</span>
+                <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
+
+                <div id="topright">
+                    <span data-item="item6" class="menubar">랭킹</span>
+                    <span data-item="item7" class="menubar">이벤트</span>
+                    <input type="text" value="" id="search">
+                    <label for="search" class="glyphicon glyphicon-search"
+                        style="font-size: 14px; cursor: pointer;"></label>
+                    <div class="glyphicon glyphicon-user" 
+                        style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
+                </div>
+            </div>
+            
+            <!-- 챗봇 : 단비봇 --------------------------------------------------------------------------------------------------------------------------------->
+            <!-- <img src="./images/face35.png" id="chatbot"> -->
+
+            <div id="frogue-container" class="position-right-bottom"
+                data-chatbot="e4957de9-dad9-448d-a709-e43eeb644f63"
+                data-user="사용자ID"
+                data-init-key="value">
+            </div>
+            <!-- data-init-식별키=값 으로 셋팅하면 챗플로우에 파라미터와 연동가능. 식별키는 소문자만 가능 -->
+            <script>
+                (function(d, s, id){
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "https:\/\/danbee.ai/js/plugins/frogue-embed/frogue-embed.min.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'frogue-embed'));
+            </script>
+            <!-- 제일 위로 돌아가기 버튼 -->
+            <div id="movetop"><a href="#top">↑</a></div>
+        </div>
+
+            <!-- 내용============================================================================================================================================= -->
+            <div id="mainBox">
+                <h1>지역별 공연</h1>
+
+                <div id="tabs">
+                    <div id="tabMenu">
+                        <div class="tabMenu" data-tab="tab1">전체</div>
+                        <div class="tabMenu" data-tab="tab2">서울</div>
+                        <div class="tabMenu" data-tab="tab3">경기/인천</div>
+                        <div class="tabMenu" data-tab="tab4">대전/충청/강원</div>
+                        <div class="tabMenu" data-tab="tab5">부산/대구/울산/경상</div>
+                        <div class="tabMenu" data-tab="tab6">광주/전라</div>
+                        <div class="tabMenu" data-tab="tab7">제주</div>
+                    </div>
+
+                    <div id="plusSearch">
+                        <div id="plusTop">
+                            <input type="button" value="상세검색 ➕" id="plusbtn">
+                        </div>
+                        <div id="plusSBox">
+                            <div>
+                                <dl>
+                                    <dt>장르</dt>
+                                        <dd>
+                                            <!-- <label><input type="checkbox" value="concert"> 콘서트</label>
+                                            <label><input type="checkbox" value="musical"> 뮤지컬</label>
+                                            <label><input type="checkbox" value="theater"> 연극</label>
+                                            <label><input type="checkbox" value="classic"> 클래식/국악/무용</label>
+                                            <label><input type="checkbox" value="event"> 전시/행사</label> -->
+                                            <input type="checkbox" id="c1" name="c1" />
+                                            <label for="c1"><span></span>콘서트</label>
+                                            <input type="checkbox" id="c2" name="c2" />
+                                            <label for="c2"><span></span>뮤지컬</label>
+                                            <input type="checkbox" id="c3" name="c3" />
+                                            <label for="c3"><span></span>연극</label>
+                                            <input type="checkbox" id="c4" name="c4" />
+                                            <label for="c4"><span></span>클래식/국악/무용</label>
+                                            <input type="checkbox" id="c5" name="c5" />
+                                            <label for="c5"><span></span>전시/행사</label>
+                                        </dd>
+                                        <div style="clear:both;"></div>
+                                </dl>
+                                <dl>
+                                    <dt>공연일</dt>
+                                    <dd>
+                                        <label><span class="glyphicon glyphicon-calendar"></span>공연일 선택<input type="text" id="dateChoice" placeholder="YYYY-MM-DD"></label>
+                                    </dd>
+                                    <div style="clear:both;"></div>
+                                </dl>
+                            </div>
+                            <input type="button" value="초기화">
+                            <input type="button" value="적용">
+                        </div>
+                    </div>
+
+                    <div id="tab1" class="tabss">
+                        <div class="numbering">현재 예매 가능한 공연은 총 <span>360개</span>입니다.</div>
+                        <!-- 공연이미지 -->
+                        <div class="content">
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>                        
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                            <div class="contentBox">
+                                <img src="./images/local1.jpg">
+                                <span>트리오 제이드 정기연주회 '셋을 위한 브람스'</span>
+                                <span>2020.08.22 ~ 2020.08.22</span>
+                                <span>예술의전당 IBK 챔버홀</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tabss">
+                        <div class="numbering">현재 예매 가능한 공연은 총 <span></span>입니다.</div>
+                        <!-- 공연이미지 -->
+
+                        
+                    </div>
+                    <div id="tab3" class="tabss">
+                        <div class="numbering">현재 예매 가능한 공연은 총 <span></span>입니다.</div>
+
+                    </div>
+                    <div id="tab4" class="tabss">
+                        <div class="numbering">현재 예매 가능한 공연은 총 <span></span>입니다.</div>
+
+                    </div>
+                    <div id="tab5" class="tabss">
+                        <div class="numbering">현재 예매 가능한 공연은 총 <span></span>입니다.</div>
+
+                    </div>
+                    <div id="tab6" class="tabss">
+                        <div class="numbering">현재 예매 가능한 공연은 총 <span></span>입니다.</div>
+
+                    </div>
+                    <div id="tab7" class="tabss">
+                        <div class="numbering">현재 예매 가능한 공연은 총 <span></span>입니다.</div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+<!-------------------------------- 화면 하단부 -------------------------------->
+        <div id="bottom">
+            <div style="width: 1600px; margin: auto;">
+                <!-- 회사 마크 -->
+                <img src="./images/title2.png" style="transform: translate(0, 40px);">
+            </div>
+        </div>
+    </div>
+
+            <!-- <div id="place"></div> -->
+
+    <script>
+
+        //상단 메뉴 css
+        $(".menubar").mouseover(function() {
+        $(this).css("border-bottom", "5px solid orange");
+        });
+        $(".menubar").mouseout(function() {
+            $(this).css("border-bottom", "");
+        });
+
+        var flag = false;
+ 
+        //이미지에 마우스 올릴때
+        $(".img").mouseover(function() {
+            $(this).css("box-shadow", "1px 1px 1px 2px gray");
+        });
+        //이미지에 마우스 뗄때
+        $(".img").mouseout(function() {
+            $(this).css("box-shadow", "");
+        });
+        
+        //이미지 클릭시 이동
+        $(".img").click(function() {
+            location.href = "#";
+        });
+
+        //챗봇 클릭시 행동
+        $("#chatbot").dblclick(function() {
+            alert("챗봇입니다!");
+        });
+        //챗봇 이동 가능
+        $("#chatbot").draggable();
+
+        $("#movetop").click(function() {
+            //<a> 본연의 기능을 제거
+			event.preventDefault();
+
+            $("html,body").animate({
+                scrollTop: 0
+            }, 1000);
+        });
+
+        // 내용==================================================================================================================================================================
+        // $("#tabs").tabs({
+        //     active: 0
+        // });
+
+        $(".tabss").css("display","none");
+        $("#tab1").css("display","block");
+
+            $(".tabMenu").click(function(){
+                // alert(this);
+                $(".tabMenu").css({
+                    "background-color" : "white",
+                    "color": "black"
+                })
+                $(this).css({
+                    "background-color" : "orange",
+                    "color": "white"
+                })
+
+                $(".tabss").css("display","none");
+                $('#'+$(this).attr("data-tab")).css("display","block");
+
+            });
+
+            
+        var flag = false;
+
+        $(document).scroll(function() {
+            //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            // if (!flag) {
+                if ($(document).scrollTop() > $("#tabs").position().top) {
+                    $("#topmenu").css({
+                        width: "100%",
+                        position: "fixed",
+                        top: "0px",
+                        bottom: "",
+                        zIndex: "1"
+                    });
+                    // $("#topmenu").animate({
+                    //     top: "0px"
+                    // }, 1000, function() {
+                    //     flag=true;
+                    // });
+                };
+            // };
+
+            //상단 헤더(top)이 눈에 보일때 쯤
+            if ($(document).scrollTop() <= $("#tabs").position().top) {
+                $("#topmenu").css({
+                    position: "absolute",
+                    top: "0px",
+                    bottom: ""
+                });
+                // flag = false;                
+            }
+        });
+
+        // 달력
+        $("#dateChoice").datepicker({
+            dateFormat: "yy-mm-dd",
+            // minDate: "2020-07-06",
+            // maxDate: "2020-07-24"
+            // minDate: "-5",
+            // maxDate: "+5"
+            minDate: "-1M -5D",
+            maxDate: "+1M + 5D",
+            beforeShow: function(input) {
+
+                var i_offset= $(input).offset(); //클릭된 input의 위치값 체크
+
+                setTimeout(function(){
+
+                $('#ui-datepicker-div').css({'top':i_offset.top + 30, 'left':i_offset.left-100});
+                })
+
+                } 
+
+        });
+
+        //상세검색 펼치기
+        $("#plusbtn").click(function(){
+            $("#plusSBox").slideToggle(400);
+
+            if($("#plusbtn").val() == "상세검색 ➕"){
+                $("#plusbtn").val("상세검색 ➖");
+            } else if($("#plusbtn").val() == "상세검색 ➖"){
+                $("#plusbtn").val("상세검색 ➕");
+            }
+        });
+
+        // 포스터 배열 맞추기
+        var n = 0;
+
+        for(var i=0; i<$('.contentBox').length;i++){
+
+            if(n%5==0){
+                $(".contentBox:nth-child("+ n +")").css("margin-right","0px");
+            };
+
+            n++;
+        };
+
+        //공연 개수 넣기
+        var m = 0;
+
+        for(var i=0; i<8; i++){
+
+        $('#tab'+ m +' .numbering span').html($('#tab'+ m +' .contentBox').length +"개");
+
+            m++;
+
+        };
+
+        // 체크 해제
+        $("#plusSBox input[type = button]:nth-child(2)").click(function(){
+            $("#plusSBox input[type = checkbox]").prop("checked", false);
+            $("#plusSBox input[type = text]").val("");
+        });
+
+
+
+    </script>
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
