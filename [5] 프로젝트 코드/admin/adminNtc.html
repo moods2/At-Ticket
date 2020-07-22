@@ -469,7 +469,7 @@
                 <!-- 첫번째 그림 -->
                 <div class = "bannerImg" id = "inbanner1"></div>
                 <div class = "inner" id = "inner1" style = "transform: translate(-2675px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn1">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -479,7 +479,7 @@
                 <!-- 두번째 그림 -->
                 <div class = "bannerImg" id = "inbanner2"></div>         
                 <div class = "inner" id = "inner2" style = "transform: translate(-2590px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn2">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -488,7 +488,7 @@
                 <!-- 세번째 그림 -->
                 <div class = "bannerImg" id = "inbanner3"></div>
                 <div class = "inner" id = "inner3" style = "transform: translate(-2505px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn3">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -497,7 +497,7 @@
                 <!-- 네번쨰 그림 -->
                 <div class = "bannerImg" id = "inbanner4"></div>
                 <div class = "inner" id = "inner4" style = "transform: translate(-2418px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn4">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -506,7 +506,7 @@
                 <!-- 다섯번째 그림 -->
                 <div class = "bannerImg" id = "inbanner5"></div>
                 <div class = "inner" id = "inner5"style = "transform: translate(-2330px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn5">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -515,7 +515,7 @@
                 <!-- 여섯번째 그림 -->
                 <div class = "bannerImg" id = "inbanner6"></div>
                 <div class = "inner" id = "inner6" style = "transform: translate(-2244px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn6">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -524,7 +524,7 @@
                 <!-- 일곱번쨰 그림 -->
                 <div class = "bannerImg" id = "inbanner7"></div>
                 <div class = "inner" id = "inner7" style = "transform: translate(-2159px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn7">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -533,7 +533,7 @@
                 <!-- 여덜번째 그림 -->
                 <div class = "bannerImg" id = "inbanner8"></div>
                 <div class = "inner" id = "inner8" style = "transform: translate(-2072px,200px);">
-                    <input type="button" value = "수정하기" class = "innerbtn1">
+                    <input type="button" value = "수정하기" class = "innerbtn1" id = "modbtn8">
                     <pre style = "margin: 10px;" class = "innercontxt">
 2020.07.06(목) 16:00
 	
@@ -1074,6 +1074,15 @@
     $("#ramen").click(function(){
         location.href = "./adminNtcCheck2.html";
     });
+
+    // 배너 이미지선택한 경우 새로운 페이지 띄워서 배경화면 선택해주도록 유도한다.
+    var bannerChild;//자식객체 -> 새로운 페이지에 대한 자식객체라고 생각하면 된다.
+
+    $(".innerbtn1").click(function(){
+        
+
+
+    }); 
 
 
 
