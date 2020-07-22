@@ -36,25 +36,22 @@
         #bottom {
             /* border: 1px solid black; */
             height: 200px;
-            background-color: black;
+            background-color: #eee;
             color: white;
         }
         #topmenu {
-            border-bottom: 1px solid black;
             background-color: white;
             width: 100%;
             height: 40px;
             color: black;
             text-align: center;
-            font-size: 15px;
+            font-size: 18px;
+            font-weight: bold;
             padding: 40px 0;
             position: absolute;
-            /* margin-top: -120px; */
         }
         .menubar {
             margin: 0 5px;
-        }
-        #topmenu > span {
             cursor: pointer;
         }
         .switch {
@@ -67,7 +64,7 @@
             /* border: 1px solid white; */
             width: 100px;
             height: 65px;
-            background-image: url("./images//title.png");
+            background-image: url("../images//title.png");
             background-repeat: no-repeat;
             background-position: center center;
             position: absolute;
@@ -85,7 +82,7 @@
 
         #search {
             border: 0;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid black;
             background-color: transparent;
             outline: none;
             color: black;
@@ -399,22 +396,23 @@
         <div id="top">
             <div id="topmenu">
                 <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-                <a href="#" id="topleft"></a>
+                <a href="main.html" id="topleft"></a>
                 <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
-                <span data-item="item1" class="menubar">콘서트</span>
-                <span data-item="item2" class="menubar">뮤지컬</span>
-                <span data-item="item3" class="menubar">연극</span>
-                <span data-item="item4" class="menubar">클래식</span>
-                <span data-item="item5" class="menubar">전시</span>
+                <div id="topcenter">
+                    <span data-lo="user_concert.html" class="menubar">콘서트</span>
+                    <span data-lo="user_musical.html" class="menubar">뮤지컬</span>
+                    <span data-lo="user_theater.html" class="menubar">연극</span>
+                    <span data-lo="user_classic.html" class="menubar">클래식</span>
+                    <span data-lo="user_Exhibition.html" class="menubar">전시</span>
+                </div>
                 <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
-
                 <div id="topright">
-                    <span data-item="item6" class="menubar">랭킹</span>
-                    <span data-item="item7" class="menubar">이벤트</span>
+                    <span data-lo="user_ranking.html" class="menubar">랭킹</span>
+                    <span data-lo="user_event.html" class="menubar">이벤트</span>
                     <input type="text" value="" id="search">
                     <label for="search" class="glyphicon glyphicon-search"
                         style="font-size: 14px; cursor: pointer;"></label>
-                    <div class="glyphicon glyphicon-user" 
+                    <div class="glyphicon glyphicon-user" id="mypage" 
                         style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
                 </div>
             </div>
@@ -483,20 +481,20 @@
                         <div class="tabMenu" data-tab="tab7">티켓반매/재휴문의</div>
                     </div>
                     <div id="tab1" class="tabss">
-                        <img src="./images/ticketing1.jpg" alt="">
+                        <img src="../images/ticketing1.jpg" alt="">
                         <h1>1. 본인인증/로그인</h1>
                         <p>빠른 예매를 위해 로그인을 먼저 해주세요.<br>
                             예매는 <span>본인인증된 ID로만 가능</span>합니다.<br>
                             개인 정보 보호 및 관리를 위해 예매 전 가입된 회원 정보를 확인해주시기 바라며, 주기적으로 비밀번호를 변경해주시기 바랍니다.
                         </p>
-                            <img src="./images/guide-img2.jpg">
+                            <img src="../images/guide-img2.jpg">
                         <h1>2. 공연 및 관람일시 선택</h1>
                         <p>관람 원하는 공연 선택 > [예매하기] 버튼 클릭 > 관람하실 날짜와 시간을 선택합니다.<br>
                             (공연 상세페이지에서 관람일 및 회차를 선택 한 경우 이후 단계에 자동 적용 됩니다.)
                         </p>
-                        <img src="./images/guide-img3.jpg">
+                        <img src="../images/guide-img3.jpg">
                         <h1>3. 좌석 선택</h1>
-                        <img src="./images/guide-img4.jpg" class="guideImg">
+                        <img src="../images/guide-img4.jpg" class="guideImg">
 
                         <p class="guideP">
                             좌석도에서 원하는 좌석을 선택합니다. 좌석 선택 시 티켓 결제 가격이 자동 적용 됩니다.<br>
@@ -512,7 +510,7 @@
                         </p>
                         <div style="clear:both;"></div>
                         <h1>4. 할인/쿠폰 선택</h1>
-                        <img src="./images/guide-img5.jpg" class="guideImg">
+                        <img src="../images/guide-img5.jpg" class="guideImg">
                         <p class="guideP">
                             적용 받고자 하는 할인 종류와 매수를 선택합니다.<br>
                             장애인, 국가유공자 할인 등 증빙이 필요한 할인이 있을 수 있으니 반드시
@@ -522,7 +520,7 @@
                         </p>
                         <div style="clear:both;"></div>
                         <h1>5. 수령방법 선택</h1>
-                        <img src="./images/guide-img6.jpg" class="guideImg">
+                        <img src="../images/guide-img6.jpg" class="guideImg">
                         <p class="guideP">
                             현장수령, 배송 중 원하는 수령 방법을 선택합니다.(상품의 특성에 따라 수령방법 선택이 제한될 수 있습니다.)<br><br>
                             현장 수령 은 공연 당일 매표소에서 예매자 본인 신분증,예매내역서(예약번호) 로 본인 확인 후 티켓을 수령하는 방법입니다.<br>
@@ -533,14 +531,14 @@
                         </p>
                         <div style="clear:both;"></div>
                         <h1>6. 결제방법 선택</h1>
-                        <img src="./images/guide-img7.jpg" class="guideImg">
+                        <img src="../images/guide-img7.jpg" class="guideImg">
                         <p class="guideP">
                             원하는 결제 수단을 선택합니다.<br>
                             상품별로 사용 가능한 결제 수단에 제한이 있을 수 있습니다.
                         </p>
                         <div style="clear:both;"></div>
                         <h1>7. 정책 동의</h1>
-                        <img src="./images/guide-img8.jpg" class="guideImg">
+                        <img src="../images/guide-img8.jpg" class="guideImg">
                         <p class="guideP">
                             취소 마감 시간 및 취소 수수료 정책을 확인하고 이에 동의합니다.<br>
                             예매/관람 서비스 제공을 위한 제3자 정보 제공을 확인하고 이에 동의합니다.
@@ -554,23 +552,23 @@
                                 
                     </div>
                     <div id="tab2" class="tabss">
-                        <img src="./images/guide1.JPG">
-                        <img src="./images/guide2.JPG">
-                        <img src="./images/guide3.JPG">
+                        <img src="../images/guide1.JPG">
+                        <img src="../images/guide2.JPG">
+                        <img src="../images/guide3.JPG">
                     </div>
                     <div id="tab3" class="tabss">
-                        <img src="./images/guide4.JPG">
-                        <img src="./images/guide5.JPG">
-                        <img src="./images/guide6.JPG">
+                        <img src="../images/guide4.JPG">
+                        <img src="../images/guide5.JPG">
+                        <img src="../images/guide6.JPG">
                     </div>
                     <div id="tab4" class="tabss">
-                        <img src="./images/guide7.JPG">  
-                        <img src="./images/guide8.JPG">  
-                        <img src="./images/guide9.JPG">  
-                        <img src="./images/guide10.JPG">  
+                        <img src="../images/guide7.JPG">  
+                        <img src="../images/guide8.JPG">  
+                        <img src="../images/guide9.JPG">  
+                        <img src="../images/guide10.JPG">  
                     </div>
                     <div id="tab5" class="tabss">
-                        <img src="./images/guide11.JPG">  
+                        <img src="../images/guide11.JPG">  
                         
                     </div>
                     <div id="tab6" class="tabss">
@@ -594,7 +592,7 @@
                                 <div class="a1">
                                     <h3><span>취소/환불</span>환불 계좌 정보를 잘못 입력해서 환불 받지 못했어요!</h3>
                                     <div>
-                                        <img src="./images/faq.JPG" style="position: relative; top: -70px;">
+                                        <img src="../images/faq.JPG" style="position: relative; top: -70px;">
                                     </div>
                                     <h3><span>팬클럽</span>[SM팬클럽] 기존에 구매했던 At-ticket 계정 말고 다른 계정으로 연장이 가능한가요?</h3>
                                     <div>
@@ -629,7 +627,7 @@
                                 <div class="a1">
                                     <h3><span>취소/환불</span>환불 계좌 정보를 잘못 입력해서 환불 받지 못했어요!</h3>
                                     <div>
-                                        <img src="./images/faq.JPG" style="position: relative; top: -70px;">
+                                        <img src="../images/faq.JPG" style="position: relative; top: -70px;">
                                     </div>
                                     <h3><span>팬클럽</span>[SM팬클럽] 기존에 구매했던 At-ticket 계정 말고 다른 계정으로 연장이 가능한가요?</h3>
                                     <div>
@@ -664,7 +662,7 @@
                                 <div class="a1">
                                     <h3><span>취소/환불</span>환불 계좌 정보를 잘못 입력해서 환불 받지 못했어요!</h3>
                                     <div>
-                                        <img src="./images/faq.JPG" style="position: relative; top: -70px;">
+                                        <img src="../images/faq.JPG" style="position: relative; top: -70px;">
                                     </div>
                                     <h3><span>팬클럽</span>[SM팬클럽] 기존에 구매했던 At-ticket 계정 말고 다른 계정으로 연장이 가능한가요?</h3>
                                     <div>
@@ -699,7 +697,7 @@
                                 <div class="a1">
                                     <h3><span>취소/환불</span>환불 계좌 정보를 잘못 입력해서 환불 받지 못했어요!</h3>
                                     <div>
-                                        <img src="./images/faq.JPG" style="position: relative; top: -70px;">
+                                        <img src="../images/faq.JPG" style="position: relative; top: -70px;">
                                     </div>
                                     <h3><span>팬클럽</span>[SM팬클럽] 기존에 구매했던 At-ticket 계정 말고 다른 계정으로 연장이 가능한가요?</h3>
                                     <div>
@@ -734,7 +732,7 @@
                                 <div class="a1">
                                     <h3><span>취소/환불</span>환불 계좌 정보를 잘못 입력해서 환불 받지 못했어요!</h3>
                                     <div>
-                                        <img src="./images/faq.JPG" style="position: relative; top: -70px;">
+                                        <img src="../images/faq.JPG" style="position: relative; top: -70px;">
                                     </div>
                                     <h3><span>팬클럽</span>[SM팬클럽] 기존에 구매했던 At-ticket 계정 말고 다른 계정으로 연장이 가능한가요?</h3>
                                     <div>
@@ -769,7 +767,7 @@
                                 <div class="a1">
                                     <h3><span>취소/환불</span>환불 계좌 정보를 잘못 입력해서 환불 받지 못했어요!</h3>
                                     <div>
-                                        <img src="./images/faq.JPG" style="position: relative; top: -70px;">
+                                        <img src="../images/faq.JPG" style="position: relative; top: -70px;">
                                     </div>
                                     <h3><span>팬클럽</span>[SM팬클럽] 기존에 구매했던 At-ticket 계정 말고 다른 계정으로 연장이 가능한가요?</h3>
                                     <div>
@@ -804,7 +802,7 @@
                                 <div class="a1">
                                     <h3><span>취소/환불</span>환불 계좌 정보를 잘못 입력해서 환불 받지 못했어요!</h3>
                                     <div>
-                                        <img src="./images/faq.JPG" style="position: relative; top: -70px;">
+                                        <img src="../images/faq.JPG" style="position: relative; top: -70px;">
                                     </div>
                                     <h3><span>팬클럽</span>[SM팬클럽] 기존에 구매했던 At-ticket 계정 말고 다른 계정으로 연장이 가능한가요?</h3>
                                     <div>
@@ -838,8 +836,8 @@
                         </div>
                     </div>
                     <div id="tab7" class="tabss">
-                        <img src="./images/guide12.JPG">  
-                        <img src="./images/guide13.JPG">  
+                        <img src="../images/guide12.JPG">  
+                        <img src="../images/guide13.JPG">  
                         <!-- <img src="./images/guide14.JPG">   -->
                         
                     </div>
@@ -853,7 +851,7 @@
         <div id="bottom">
             <div style="width: 1600px; margin: auto;">
                 <!-- 회사 마크 -->
-                <img src="./images/title2.png" style="transform: translate(0, 40px);">
+                <img src="../images/title2.png" style="transform: translate(0, 40px);">
             </div>
         </div>
     </div>
@@ -864,26 +862,14 @@
 
         //상단 메뉴 css
         $(".menubar").mouseover(function() {
-        $(this).css("border-bottom", "5px solid orange");
+            $(this).css("border-bottom", "5px solid orange");
         });
         $(".menubar").mouseout(function() {
             $(this).css("border-bottom", "");
         });
-
-        var flag = false;
- 
-        //이미지에 마우스 올릴때
-        $(".img").mouseover(function() {
-            $(this).css("box-shadow", "1px 1px 1px 2px gray");
-        });
-        //이미지에 마우스 뗄때
-        $(".img").mouseout(function() {
-            $(this).css("box-shadow", "");
-        });
-        
-        //이미지 클릭시 이동
-        $(".img").click(function() {
-            location.href = "#";
+        //상단 메뉴 클릭시
+        $(".menubar").click(function() {
+            location.href = $(this).data("lo");
         });
 
         //챗봇 클릭시 행동
@@ -900,6 +886,11 @@
             $("html,body").animate({
                 scrollTop: 0
             }, 1000);
+        });
+
+        //마이페이지 클릭시 이동
+        $("#mypage").click(function() {
+            location.href = "mypage.html";
         });
 
         // 내용==================================================================================================================================================================
@@ -965,7 +956,16 @@
                         position: "fixed",
                         top: "0px",
                         bottom: "",
-                        zIndex: "1"
+                        zIndex: "1",
+                        "border-bottom": "1px solid #eee"
+                    });
+                    $(window).resize(function() {
+                        if($(window).width() < 970) {
+                            // console.log($(window).width());
+                            $("#topcenter").css("transform", "translate(-100px, 0)");
+                        } else {
+                            $("#topcenter").css("transform", "translate(0, 0)");
+                        }
                     });
                     // $("#topmenu").animate({
                     //     top: "0px"
@@ -980,7 +980,8 @@
                 $("#topmenu").css({
                     position: "absolute",
                     top: "0px",
-                    bottom: ""
+                    bottom: "",
+                    "border-bottom": "0px"
                 });
                 // flag = false;                
             }

@@ -89,7 +89,6 @@
             background-color: transparent;
             outline: none;
             color: white;
-
         }
         .img {
             width: 230px;
@@ -188,12 +187,6 @@
                 <img src="../images/slide-dir-prev.png" class="prev">
                 <img src="../images/slide-dir-next.png" class="after">
             </div>
-            <!-- 동영상 -->
-            <!-- <div id="avibox">
-                <iframe id="avi" src="https://www.youtube.com/embed/GbpP3Sxp-1U" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
-            </div> -->
         </div>
 <!-------------------------------- 내용부분 -------------------------------->
         <div id="middle">
@@ -284,8 +277,6 @@
             </div>
             <hr>
             <!-- 챗봇 : 단비봇 -->
-            <!-- <img src="./images/face35.png" id="chatbot"> -->
-
             <div id="frogue-container" class="position-right-bottom"
                 data-chatbot="e4957de9-dad9-448d-a709-e43eeb644f63"
                 data-user="사용자ID"
@@ -334,31 +325,30 @@
 
         $(document).scroll(function() {
             //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
-            // if (!flag) {
-                if ($(document).scrollTop() > $("#middle").position().top) {
-                    $("#topmenu").css({
-                        width: "100%",
-                        position: "fixed",
-                        top: "0px",
-                        bottom: "",
-                        zIndex: "1",
-                        "background-color": "black"
-                    });
-                    $(window).resize(function() {
-                        if($(window).width() < 970) {
-                            // console.log($(window).width());
-                            $("#topcenter").css("transform", "translate(-100px, 0)");
-                        } else {
-                            $("#topcenter").css("transform", "translate(0, 0)");
-                        }
-                    });
-                    // $("#topmenu").animate({
-                    //     top: "0px"
-                    // }, 1000, function() {
-                    //     flag=true;
-                    // });
-                };
-            // };
+            if ($(document).scrollTop() > $("#middle").position().top) {
+                $("#topmenu").css({
+                    width: "100%",
+                    position: "fixed",
+                    top: "0px",
+                    bottom: "",
+                    zIndex: "1",
+                    "background-color": "white",
+                    color: "black",
+                    "border-bottom": "1px solid #ddd"
+                });
+                $("#search").css({
+                    "border-bottom-color": "black",
+                    color: "black"
+                });
+                $(window).resize(function() {
+                    if($(window).width() < 970) {
+                        // console.log($(window).width());
+                        $("#topcenter").css("transform", "translate(-100px, 0)");
+                    } else {
+                        $("#topcenter").css("transform", "translate(0, 0)");
+                    }
+                });
+            };
 
             //상단 헤더(top)이 눈에 보일때 쯤
             if ($(document).scrollTop() <= $("#middle").position().top) {
@@ -366,10 +356,15 @@
                     position: "absolute",
                     top: "0px",
                     bottom: "",
-                    "background-color": "transparent"
+                    color: "white",
+                    "background-color": "transparent",
+                    "border-bottom": "0"
                 });
-                // flag = false;                
-            }
+                $("#search").css({
+                        "border-bottom-color": "white",
+                        color: "white"
+                });
+            };
         });
 
         //top에있는 그림 자동 슬라이드
