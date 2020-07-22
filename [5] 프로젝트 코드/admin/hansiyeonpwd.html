@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/highcharts.js"></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            margin: 100px auto;
+            margin-left: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "box"><span>비밀번호 : </span><input type="text" name="txt" id="pwd" autofocus placeholder="비밀번호를 입력해주세요."></div>
+
+    <script>
+        // child = window.open("hansiyeoncontent.html","content","width=300, height=300");
+        // child.close();
+        $("#pwd").keyup(function () {
+                if (event.keyCode == 13) {
+                    // if (window.document.all.pwd.value = child.document.all.pwd.value) {
+                        opener.location.href= "hansiyeoncontent.html";
+                        window.close();
+                        // window.open("hansiyeoncontent.html","_blank")
+                        // location으로 사원 문의 게시판 => 내용으로 가고 싶은데..
+                    // }
+                }
+            });
+       
+    </script>
+</body>
+</html>

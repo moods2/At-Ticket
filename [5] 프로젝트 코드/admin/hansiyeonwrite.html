@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #title {
+        /* text-align: center; */
+        margin-left: 280px;
+        margin-top: 50px;
+        width: 1500px;
+        border-bottom: 1px dashed black;
+    }
+
+    #subtitle{
+        margin-top: 50px;
+        margin-left: 280px;
+        text-align: center;
+        width: 1000px;
+        height: 40px;
+        background-color: #CCCCCC;
+        padding-top: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 1.3em;
+    }
+
+    /* .line {
+        margin-top: 40px;
+        border: 1px solid #CCCCCC;
+        width: 1000px;
+    }
+
+    #box {
+        margin-left: 280px;
+    }
+
+    .row{
+        margin-top: 20px;
+        
+    }
+
+    .row span{
+        font-weight: bold;
+    }
+
+    #sel{
+        margin-top: 20px;
+        margin-bottom: -20px;
+        margin-left: 280px;
+    } */
+
+    #box1{
+        margin-left: 280px;
+    }
+
+    .table th{
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .line{
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <div id="title">
+        <h1 style="color: #555; font-weight: bold;
+                font-family: Arial;
+                font-size: 3em;">글쓰기> <small>사원 문의 게시판 </small><small>> Home </small></h1>
+    </div>
+    
+    <div id="subtitle">글쓰기</div>
+    <!-- <div id = "sel">
+        <span style="font-weight: bold;">구분 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <select name="sel1" id="sel1">
+            <optgroup label="구분"></optgroup>
+                <option value="1">휴가신청</option>
+                <option value="2">비품</option>
+                <option value="3">일정</option>
+                <option value="4">복지</option>
+                <option value="5">기타</option>
+        </select>
+    </div>
+    <div id="box">
+        <div class="line"></div>
+        <div class="row"><span>&nbsp;&nbsp;&nbsp;작성자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="text"></div>
+        <div class="line"></div>
+        <div class="row"><span>&nbsp;&nbsp;&nbsp;제목 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input style="width: 500px;" type="text"></div>
+        <div class="line"></div>
+        <div class="row"><span>&nbsp;&nbsp;&nbsp;내용 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input  style="width: 950px; height: 100px;" type="text"></div>
+        <div class="line"></div>
+        <div class="row"><span>&nbsp;&nbsp;&nbsp;&nbsp;비밀번호&nbsp;&nbsp;</span><input type="text"></div>
+        <div class="line"></div>
+        <div style="margin-top: 30px; margin-left: -300px; text-align: center;">
+            <input type="button" value="작성" class="btn btn-default">
+        </div>
+    </div> -->
+
+    <div id = "box1" style="width: 1000px;">
+    <table class = "table table-bordered" style="width: 1000px">
+        <tr>
+            <th style="width: 100px; vertical-align: middle;;">작성자</th>
+            <td style="width: 850px;">
+                <input id = "row1" style="width: 100px;" type="text" class ="form-control" autofocus>
+                <div style="margin-top: 10px;">반드시 입력하세요.</div>
+            </td>
+            
+        </tr>
+        <tr>
+            <th style="vertical-align: middle;">제목</th>
+            <td>
+                <input id = "row2" style="width: 500px;" type="text" class ="form-control" class="line">
+                <div style="margin-top: 10px;">반드시 입력하세요.</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <th style="vertical-align: middle;">내용</th>
+            <td>
+            <textarea id = "row3" class = "form-control" style="height:100px"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <th style="vertical-align: middle;">구분</th>
+            <td>
+                <select style="width: 110px;" class = "form-control">
+                    <optgroup label="구분">
+                            <option>휴가신청</option>
+                            <option>비품</option>
+                            <option>일정</option>
+                            <option>복지</option>
+                            <option>기타</option>
+                        </optgroup>
+                </select>
+            </td>
+        </tr>
+      
+        <tr>
+            <th style="vertical-align: middle;">파일</th>
+            <td>
+                <input type="file" class = "form-control">
+            </td>
+        </tr>
+       
+        <tr>
+            <th style="vertical-align: middle;">비밀번호</th>
+            <td>
+                <input id = "row4" style="width: 200px;" type="password" class = "form-control">
+            </td>
+        </tr>
+    </table>
+    <div style="margin-top: 30px; margin-left: 50px; text-align: center;">
+        <input type="button" value="작성" class="btn btn-default" id = "en">
+    </div>
+</div>
+<script>
+    $("#row1").keyup(function(){
+        if(event.keyCode == 13){
+            $("#row2").focus();
+        }
+    });
+
+    $("#row2").keyup(function(){
+        if(event.keyCode == 13){
+            $("#row3").focus();
+        }
+    });
+
+    $("#row3").keyup(function(){
+        if(event.keyCode == 13){
+            $("#row4").focus();
+        }
+    });
+
+    $("#row4").keyup(function(){
+        if(event.keyCode == 13){
+            $("#en").click();
+        }
+    });
+
+    $("#en").click(function(){
+       if(confirm("작성을 하시겠습니까?")){
+
+       }
+    });
+
+</script>
+                       
+</body>
+
+</html>
