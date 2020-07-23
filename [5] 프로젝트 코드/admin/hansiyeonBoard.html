@@ -1,17 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../css/jquery-ui.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <script src="../js/jquery-1.12.4.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/bootstrap.js"></script>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #title {
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+
+        #tbl {
+            margin-top: 30px;
+            margin-left: 280px;
+        }
+
+        #b {
+            margin-top: 20px;
+            margin-left: 280px;
+        }
+
+        #sel {
+            margin-left: 280px;
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        #btns {
+            margin-top: 10px;
+            margin-bottom: -10px;
+            margin-left: 280px;
+        }
+
+        .btn1{
+            border: 0px;
+            border-bottom: 1px solid transparent;
+            background-color: white;
+            outline: none;
+        }
+
+        .btn1:hover{
+            border-bottom: 1px solid red;
+        }
+
+        #tbl td:nth-child(4) {
+            text-align: left;
+        }
+
+        tr:nth-child(3){
+            cursor:pointer;
+        }
+
+        tr td:nth-child(4){
+            cursor:pointer;
+        }
+
+        tr td:nth-child(4) div:hover {
+            width: 250px;
+            border-bottom: 2px solid thistle;
+        }
+        tr td:nth-child(4) div{
+            width: 250px;
+            border-bottom: 2px solid transparent;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div id="title">
+        <h1 style="color: #555; font-weight: bold;
+        font-family: Arial;
+        font-size: 3em;">사원 문의 게시판 <small>> Home </small></h1>
+    </div>
+
+    <div id="b">
+        <input type="button" value="오름차순" class="btn btn-default" id="btn3">
+        <input type="button" value="내림차순" class="btn btn-default" id="btn4">
+    </div>
+    <!-- <input type="button" value=""> -->
+    <div id="btns"><input type= "button" value = "전체" id = "all" class = "btn1"> | <input type= "button" value = "휴가신청" id = "vac" class = "btn1"> | <input  type= "button" value = "비품" id = "que" class = "btn1"> | <input type= "button" value = "일정" id = "day" class = "btn1"> | <input type= "button" value = "복지" id = "wel" class = "btn1"> | <input type= "button" value = "기타" id = "etc" class = "btn1"></div>
+    <table class="table table-bordered table-striped table-hover" id="tbl" style="width: 1080px;">
+        <tr class="row">
+            <th style="width: 70px;">글번호</th>
+            <th style="width: 100px;">분류</th>
+            <th style="width: 90px;">작성자</th>
+            <th id = "tit" style="width: 400px;">글제목</th>
+            <th style="width: 100px;">작성날짜</th>
+            <th style="width: 90px;">작성시간</th>
+            <th style="width: 60px;">조회수</th>
+            <th style="width: 90px;">답변여부</th>
+            <th style="width: 80px;">첨부</th>
+        </tr>
+        <tr class="row">
+            <td>Notice</td>
+            <td>공지사항</td>
+            <td>관리자</td>
+            <td><div>사원 문의 게시판 공지사항입니다.</div></td>
+            <td>2020/06/21</td>
+            <td>16:25</td>
+            <td>4</td>
+            <td>X</td>
+            <td>O</td>
+        </tr>
+        <tr class="row">
+            <td>1</td>
+            <td>휴가신청</td>
+            <td>staff01</td>
+            <td><div>휴가신청 문의 입니다.</div></td>
+            <td>2020/07/21</td>
+            <td>13:55</td>
+            <td>10</td>
+            <td>O</td>
+            <td>X</td>
+        </tr>
+        <tr class="row">
+            <td>2</td>
+            <td>휴가신청</td>
+            <td>staff01</td>
+            <td><div><span style="color: red; font-weight: bold;">[잠금] </span>휴가신청 문의 입니다.</div></td>
+            <td>2020/07/21</td>
+            <td>13:55</td>
+            <td>10</td>
+            <td>O</td>
+            <td>X</td>
+        </tr>
+        <tr class="row">
+            <td>3</td>
+            <td>휴가신청</td>
+            <td>staff01</td>
+            <td><div>휴가신청 문의 입니다.</div></td>
+            <td>2020/07/21</td>
+            <td>13:55</td>
+            <td>10</td>
+            <td>O</td>
+            <td>X</td>
+        </tr>
+        <tr class="row">
+            <td>4</td>
+            <td>휴가신청</td>
+            <td>staff01</td>
+            <td><div>휴가신청 문의 입니다.</div></td>
+            <td>2020/07/21</td>
+            <td>13:55</td>
+            <td>10</td>
+            <td>O</td>
+            <td>X</td>
+        </tr>
+        <tr class="row">
+            <td>5</td>
+            <td>휴가신청</td>
+            <td>staff01</td>
+            <td><div>휴가신청 문의 입니다.</div></td>
+            <td>2020/07/21</td>
+            <td>13:55</td>
+            <td>10</td>
+            <td>O</td>
+            <td>X</td>
+        </tr>
+    </table>
+    <nav style="margin-left: 550px;" class="pagebar">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li class="active"><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    </tbody>
+    </div>
+
+    <select name="sel" id="sel" style="float: left; margin-right: 10px;">
+        <option value="1">글번호</option>
+        <option value="2">작성자</option>
+        <option value="3">글제목</option>
+        <option value="4">내용</option>
+        <option value="5">작성날짜</option>
+    </select>
+    <div style="margin-top: -5px;" class="search">
+        <div class="form-group">
+            <div class="input-group">
+                <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
+                        class="glyphicon glyphicon-search"></i></span>
+                <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
+                    placeholder="검색어를 입력하세요.">
+                <button id = "write" style="margin-left: 690px;" class="btn-default">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    Write
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div style="clear: both;"></div>
+
+    <script>
+       var tr = document.getElementsByTagName("tr");
+       $("#btn3").click(function(){
+
+       });
+        
+        
+       $("#btn4").click(function(){
+
+        });
+
+        $("#all").click(function(){
+
+        }); 
+
+        $("#vac").click(function(){
+
+        });
+
+        $("#que").click(function(){
+
+        }); 
+
+        $("#day").click(function(){
+
+        });
+
+        $("#wel").click(function(){
+
+        
+        
+        $("#etc").click(function(){
+
+        });});
+
+        $("#write").click(function(){
+            location.href="hansiyeonwrite.html";
+        });
+
+
+     for(var i=0;i<tr.length;i++) {
+            tr[i].children[3].onclick = function() {
+            // location.href="hansiyeoncontent.html";
+            window.open("hansiyeonpwd.html","비밀번호","width=300,height=300");
+        };
+     }
+        
+    </script>
+
 </body>
+
 </html>

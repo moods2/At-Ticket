@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/highcharts.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #title {
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+
+        #box1 {
+            margin-left: 280px;
+            margin-top: 30px;
+        }
+
+        .table th {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .line {
+            margin-top: 10px;
+        }
+
+        #btns {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .form-control input:disabled{
+		    cursor: not-allowed;
+        }
+
+        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+            background-color: white;
+        }
+
+        .sub{
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">
+        <h1 style="color: #555; font-weight: bold;
+        font-family: Arial;
+        font-size: 3em;">내용 > <small>사원 문의 게시판 </small><small>> Home </small></h1>
+    </div>
+
+    <div id="box1" style="width: 1000px;">
+        <table class="table table-bordered" style="width: 1000px">
+            <tr>
+                <th style="width: 70px; vertical-align: middle;">작성자</th>
+                <td style="width: 850px;">
+                    <input style="width: 100px;" type="text" class="form-control" value="admin01" disabled="">
+                    <div style="margin-top: 10px;">반드시 입력하세요.</div>
+                </td>
+
+            </tr>
+            <tr>
+                <th style="vertical-align: middle;">제목</th>
+                <td>
+                    <input style="width: 500px;" type="text" class="form-control" class="line" value="휴가신청문의 입니다." disabled="">
+                    <div style="margin-top: 10px;">반드시 입력하세요.</div>
+                </td>
+            </tr>
+
+            <tr>
+                <th style="vertical-align: middle;">내용</th>
+                <td>
+                    <textarea class="form-control" style="height:100px" disabled="">휴가는 어떻게 신청 할 수 있죠?</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th style="vertical-align: middle;">구분</th>
+                <td>
+                    <select style="width: 110px;" class="form-control" disabled="">
+                        <optgroup label="구분">
+                            <option selected>휴가신청</option>
+                            <option>비품</option>
+                            <option>일정</option>
+                            <option>복지</option>
+                            <option>기타</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <th style="vertical-align: middle;">파일</th>
+                <td>
+                    <input type="file" class="form-control" disabled="">
+                </td>
+            </tr>
+
+            <tr>
+                <th style="vertical-align: middle;" >비밀번호</th>
+                <td>
+                    <input style="width: 200px;" type="password" class="form-control" disabled="" value="1234" id = "pwd">
+                </td>
+            </tr>
+        </table>
+
+        <div style="margin: width
+        100px; color: white; background-color: black; font-weight: bold; text-align: center;">답변내용</div>
+        <div style="border: 1px solid black;">
+            <div class = "sub">
+                <span style="font-weight: bold;">작성자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><textarea name="ans" id="ans"
+                    style="width: 100px; height: 30px; vertical-align: middle;" disabled=""></textarea>
+            </div>
+            <div class = "sub">
+                <span style="font-weight: bold;">작성 날짜&nbsp; </span></span><textarea name="ans" id="ans"
+                    style="width: 100px; height: 30px; vertical-align: middle;" disabled=""></textarea>
+            </div>
+            <div class = "sub">
+                <span style="font-weight: bold;">답변 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><textarea name="ans" id="ans"
+                    style="width: 900px; height: 30px; vertical-align: middle;" disabled=""></textarea>
+            </div>
+        </div>
+      
+        <!-- <textarea name="ans" id="ans" style="width: 1000px; height: 110px; vertical-align: middle;" disabled="">
+           작성자    : 관리자
+           작성 날짜 : 2020-07-21 12:45
+           답변      : 휴가는 매월 마지막 주에 신청이 가능하며 skysun79@At-Ticket.com 으로 휴가 신청서 양식을 보내주시면 됩니다.
+        </textarea> -->
+
+        </table>
+        <div id = "btns">
+        <!-- <input type="button" value="수정" class="btn btn-default" id = "btn3"> -->
+        <input type="button" value="삭제" class="btn btn-default" id = "btn4">
+        </div>
+
+        <!-- 댓글 -->
+        
+        
+        <p>
+          <div id="disqus_thread"></div>
+      <script>
+      
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://web1-2.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      
+        </p>
+</body>
+    <script>
+        // $("#btn3").click(function(){
+        //     $(".form-control").attr("disabled",false);
+        // });
+
+        $("#btn4").click(function(){
+            if(confirm("정말로 삭제하시겠습니까?")){
+                
+            }
+        });
+
+    </script>
+</html>

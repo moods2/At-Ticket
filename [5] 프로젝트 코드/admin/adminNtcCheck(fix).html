@@ -600,11 +600,11 @@
            <h3>이벤트</h3>
            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
            <h3>1:1 문의</h3>
-             <div><span>▶</span> 문의 조회</div>
+             <div><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
            <h3>공연 랭킹</h3>
            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
            <h3>공지사항</h3>
-            <div><span>▶</span> 공지사항 조회</div>
+            <div><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
            <h3>고객 정보</h3>
            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
         </div>
@@ -800,28 +800,29 @@
     //목록으로
     $("#topGo").click(function(){
 
-        // location.href = "./adminNtc.html";//여기 url 수정해야함
+        location.href = "./adminNtc(fix).html";//여기 url 수정해야함
 
     }); 
 
     // 수정하기
     $("#fixbtn").click(function(){
         if(confirm("수정하시겠습니까?")) {
-            alert("수정완료")
+            location.href = "./adminNctModify(fix).html";
         }
     });
     
     //삭제하기
     $("#delbtn").click(function(){
         if(confirm("삭제하시겠습니까?")) {
-            alert("삭제완료")
+            alert("삭제완료");
         }
     });
 
+    
     // 다음버튼 하면 다음 공지를 띄워줄것! -> url 수정이 필요함
     $("#next").click(function(){
 
-        // location.href = "./adminNtcCheck2.html";
+        location.href = "./adminNtcCheck2(fix).html";
 
     });
     

@@ -287,8 +287,104 @@
         }
 
 
+        #grid1 {
+            width: 1200px;
+            /* text-align: center; */
+            display: grid;
+            grid-column: 600px 600px;
+            grid-row: 200px;
+            margin-top: 100px;
+            margin-bottom: -100px;
+        }
 
-        
+        #grid1 h2 {
+            font-size: 15px;
+        }
+
+        #ratio4 {
+            grid-column: 1/2;
+            
+            /* grid-row: 1/2; */
+        }
+
+        #ratio5{
+            grid-column: 2/3;
+            /* grid-row: 2/5; */
+        }
+
+        /* 문의 분류별 */
+         #ratio4 .highcharts-figure, .highcharts-data-table table {
+            min-width: 320px; 
+            max-width: 500px;
+            /* margin: 1em auto; */
+        }
+
+        #container4 {
+            height: 400px;
+        }
+
+        #ratio4 .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        #ratio4 .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        #ratio4 .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+        #ratio4 .highcharts-data-table td, #ratio4 .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+        #ratio4 .highcharts-data-table thead tr,#ratio4  .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        #ratio4 .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+
+        /* 월별 문의 */
+        #ratio5 .highcharts-figure, #ratio5 .highcharts-data-table table {
+            min-width: 360px; 
+            max-width: 800px;
+            /* margin: 1em auto; */
+        }
+
+        #ratio5 .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        #ratio5 .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        #ratio5 .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+        #ratio5 .highcharts-data-table td, #ratio5 .highcharts-data-table th, #ratio5 .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+        #ratio5 .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        #ratio5 .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
 
 
     </style>
@@ -595,6 +691,37 @@
                 </ul>
               </nav>
 
+              <div id="grid1">
+
+                <div id="ratio4">
+                    <h2>문의분류별 문의율</h2>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                    <figure class="highcharts-figure">
+                        <div id="container4"></div>
+                    </figure>
+
+                </div>
+
+                <div id="ratio5">
+                    <h2>월별 문의율</h2>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                    <figure class="highcharts-figure">
+                        <div id="container5"></div>
+                    </figure>
+
+
+                </div>
+            </div>
+
+
+
 
         </div>
 
@@ -714,6 +841,100 @@
         });
  
 
+                // 문의 분류별
+                Highcharts.chart('container4', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+            title: {
+                text: 'Type of Question',
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 60
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        distance: -50,
+                        style: {
+                            fontWeight: 'bold',
+                            color: 'white'
+                        }
+                    },
+                    startAngle: -90,
+                    endAngle: 90,
+                    center: ['50%', '75%'],
+                    size: '110%'
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                innerSize: '50%',
+                data: [
+                    ['예매방법', 58.9],
+                    ['결제방법', 13.29],
+                    ['수수료', 13],
+                    ['취소/환불', 3.78],
+                    ['티켓수령', 3.42],
+                    ['티켓판매/재휴문의', 3],
+                    {
+                        name: '기타',
+                        y: 4.61,
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }
+                ]
+            }]
+        });
+
+        // 월별 문의
+        Highcharts.chart('container5', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Monthly inquiry rate'
+            },
+            subtitle: {
+                text: 'Woman & Man'
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: '회수'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Woman',
+                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            }, {
+                name: 'Man',
+                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }]
+        });
 
 
     </script>

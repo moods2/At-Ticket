@@ -275,6 +275,8 @@
             margin-left : 400px;
         }
 
+        /* dasd-------------------------------- */
+
        #slctp1, #slctp2 {
             float : left;
             /* margin-left : 100px; */
@@ -397,7 +399,7 @@
                     <th>번호</th>
                     <th>이름</th>
                     <th>날짜</th>
-                    <th><input type="checkbox" id = "t5start"></th>
+                    <th>선택</th>
                 </tr>
             </thead>
             <tbody>
@@ -681,7 +683,7 @@
         </table>
     </div>
 
-    <!-- 등록 하는곳 -->
+    <!-- 수정 하는곳 -->
     <div style = "margin-left : 950px;">
         <input id = "confirmation" type="button" value = "수정하기" style = "width : 120px; height : 40px; font-size: 1.3em; font-weight: bold;">
     </div>
@@ -720,11 +722,11 @@
            <h3>이벤트</h3>
            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
            <h3>1:1 문의</h3>
-             <div><span>▶</span> 문의 조회</div>
+                <div><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
            <h3>공연 랭킹</h3>
            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
            <h3>공지사항</h3>
-            <div><span>▶</span> 공지사항 조회</div>
+                <div><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
            <h3>고객 정보</h3>
            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
         </div>
@@ -963,25 +965,32 @@
     
     // 게시판 맨 상단이 체크드 되면 아래 모두 체크드 해준다.  
     // t5start  
-    var t5start = document.getElementById("t5start");
-    var t5 = document.getElementsByClassName("t5");
+    // var t5start = document.getElementById("t5start");
+    // var t5 = document.getElementsByClassName("t5");
     
-    t5start.onclick = function(){
-        if (t5start.checked) {
-            for (var i = 0; i < t5.length; i++) {
-                t5[i].checked = true;
-            }
+    // t5start.onclick = function(){
+    //     if (t5start.checked) {
+    //         for (var i = 0; i < t5.length; i++) {
+    //             t5[i].checked = true;
+    //         }
 
-        } else {
-            console.log("체크가 안됨");
-            for (var i = 0; i < t5.length; i++) {
-                t5[i].checked = false;
-            }
+    //     } else {
+    //         console.log("체크가 안됨");
+    //         for (var i = 0; i < t5.length; i++) {
+    //             t5[i].checked = false;
+    //         }
+    //     }
+    // }
+
+
+    // 수정하기
+    
+    $("#confirmation").click(function(){
+        if(confirm("해당 공지를 수정하시겠습니까?")) {
+            alert("수정완료");
+            location.href = "./adminNtc(Fix).html";
         }
-    }
-
-
-    
+    });
 
 
     
