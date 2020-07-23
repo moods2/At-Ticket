@@ -6,110 +6,116 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <script src="../js/jquery-1.12.4.js"></script>
     <script src="../js/jquery-ui.js"></script>
+    <script src="../js/highcharts.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminMain</title>
-</head>
+    <script src="../js/highcharts.js"></script>
+
 
     <style>
-        
-        #test {
+
+        #main {
             border: 1px solid black;
-            position:relative;
-            top : 0px;
-            transform: translate(-380px,0px);
-            width : 5000px;
-            height : 600px;
-            /* overflow: hidden; */
-        }
-        .txt {
-            margin : 10px;
-            margin-left : 70px;
-            width : 300px;
-            height : 450px;
+            width : 700px;
+            height : 500px;
             float : left;
-            background-repeat: no-repeat;
-            background-size: cover;
         }
+        #enterimg {
+            border: 1px solid black;
+            float : left;
+            width : 280px;
+            height : 300px;
 
-        #txt1 {
-            background-image: url(../images/theater14.jpeg);
         }
-        #txt2 {
-            background-image: url(../images/classic18.jpeg);
+        #saleRateGraph {
+            float : left;
+            width : 400px;
+            height : 400px;
+            border: 1px solid blue;
         }
-        #txt3 {
-            background-image: url(../images/classic24.jpeg);
-        }
-        #txt4 {
-            background-image: url(../images/classic16.jpeg);
-        }
-        #txt5 {
-            background-image: url(../images/classic10.jpeg);
-        }
-        #txt6 {
-            background-image: url(../images/music8.jpeg);
-        }
-        #txt7 {
-            background-image: url(../images/music4.jpeg);
-        }
-        #txt8 {
-            background-image: url(../images/music18.jpeg);
-        }
-        #look {
-            border: 1px solid red;
-            margin-left: 500px;
-            width : 1500px;
-            height : 1000px;
-            overflow: hidden;
-        }
-        #next {
-            position : absolute;
-            top : 200px;
-            left: 10px;
-            z-index : 1px;
-        }
-
-        #prev {
-            position : absolute;
-            top : 200px;
-            left: 500px;
-            z-index : 1px;
-        }
-
-        
 
 
     </style>
 
-<body>
-    
-    <div id = "look">
-        <div id = "prev" ><img src="../images/slide-dir-prev.png" alt=""></div>
-        <div id = "test">
-            <!-- <div id = "prev" class = "np"><img src="../images/slide-dir-prev.png" alt=""></div> -->
-            <div class = "txt" id = "txt1"></div>
-            <div class = "txt" id = "txt2"></div>
-            <div class = "txt" id = "txt3"></div>
-            <div class = "txt" id = "txt4"></div>
-            <div class = "txt" id = "txt5"></div>
-            <div class = "txt" id = "txt6"></div>
-            <div class = "txt" id = "txt7"></div>
-            <div class = "txt" id = "txt8"></div>
-            <!-- <div id = "next" class = "np"><img src="../images/slide-dir-next.png" alt=""></div> -->
-        </div>
-        <div id = "next"><img src="../images/slide-dir-next.png" alt=""></div>
-    </div>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminViews</title>
 
-    <script>
-        
-        
-    </script>
+</head>
+
+<body>
+
+    <div id = "main">
+        <div id="saleRateGraph"></div>
+        <div id = "enterimg"></div>
+    </div>
 
 
 </body>
+<script>
+    
+    //장르별 예매율
+    Highcharts.chart('saleRateGraph', {
+        colors: [
+            "cornflowerblue",
+            "orange",
+            "#8389E0",
+            "#92D050",
+            "#555"
+        ],
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: "pie",
+        },
+        title: {
+            text: "sales Rate(총 매출액 : 10억)",
+        },
+        tooltip: {
+            pointFormat:
+                "{series.name}: <b>{point.percentage:.1f}%</b>",
+        },
+        accessibility: {
+            point: {
+                valueSuffix: "%",
+            },
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: "pointer",
+                dataLabels: {
+                    enabled: true,
+                    format:
+                        "<b>{point.name}</b>: {point.percentage:.1f} %",
+                },
+            },
+        },
+        series: [
+            {
+                name: "Brands",
+                colorByPoint: true,
+                data: [
+                    {
+                        name: "비용",
+                        y:70
+                        // y: 41.41,
+                    },
+                    {
+                        name: "순이익",
+                        // y: 33.48,
+                        y:30
+                        
+                    }
+                ],
+            },
+        ],
+    });
 
+    
+
+
+
+</script>
 
 </html>
