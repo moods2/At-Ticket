@@ -104,6 +104,15 @@
                 margin: 10px 0 0 10px;
                 cursor: pointer;
             }
+            .open {
+                width: 230px;
+                height: 330px;
+                /* border: 1px solid black; */
+                background-color: cornflowerblue;
+                display: inline-block;
+                margin: 10px 0 0 10px;
+                cursor: pointer;
+            }
             #banner {
                 height: 400px;
                 background-image: url("./images//banner.png");
@@ -158,45 +167,17 @@
                 left: 20px;
                 bottom: 0;
             }
-            
-            .img-cover {
-                position: absolute;
-                width: 420px;
-                height: 675px;
-                background-color: rgba(0,0,0,0.7);
-                z-index: 1;
-            }
-            .text {
-                /* border: 1px solid white; */
-                position: absolute;
-                text-align: center;
-                color: white;
-                margin-left: 150px;
-                margin-top: 300px;
-                z-index: 2;
-            }
-            .img-cover1 {
-                display: inline-block;
-                position: relative;
-                width: 230px;
-                height: 330px;
-                background-color: rgba(0,0,0,0.7);
-                z-index: 1;
-            }
-            .text1 {
-                display: inline-block;
-                /* border: 1px solid white; */
-                position: absolute;
-                text-align: center;
-                color: white;
-                margin-top: 100px;
-                margin-left: 50px;
-                z-index: 2;
-            }
 
             #bigimg {
                 background-image: url("./images/big_consert.jpeg");
-                /* position: relative; */
+
+                z-index: 10;
+            }
+            .bigimg {
+                background-color: black;
+                opacity: 0;
+
+                z-index: 2;
             }
             .img1 {
                 background-image: url("./images/consert1.jpeg");
@@ -326,7 +307,6 @@
                 background-image: url("./images/Exhibition6.jpeg");
                 background-size: contain;
             }
-
         </style>
     </head>
     <body>
@@ -391,65 +371,37 @@
                 <div style="text-align: center;">
                     <h1>WHAT'S HOT</h1>
                     <div style="padding: 10px 0;">
+                        <div
+                            class="img"
+                            id="bigimg"
+                            style="
+                                width: 420px;
+                                height: 675px;
+                                display: inline-block;
+                                color: white;
+                                font-size: 1em;
+                                text-align: center;
+                            "
+                        >
                             <div
-                                class="img"
-                                id="bigimg"
+                                class="bigimg"
+                                id="bigimgbox"
                                 style="
                                     width: 420px;
                                     height: 675px;
                                     display: inline-block;
                                 "
-                            >
-                                <div class="text">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                                <div class="img-cover"></div>
-                            </div>
+                            ></div>
+                        </div>
+
                         <div style="display: inline-block;">
-                            <div class="img img1">
-                                <div class="text1">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                                <div class="img-cover1"></div>
-                            </div>
-                            <div class="img img2">
-                                <div class="text1">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                                <div class="img-cover1"></div>
-                            </div>
-                            <div class="img img3">
-                                <div class="text1">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                                <div class="img-cover1"></div>
-                            </div>
+                            <div class="img img1"></div>
+                            <div class="img img2"></div>
+                            <div class="img img3"></div>
                             <div style="display: block;"></div>
-                            <div class="img img4">
-                                <div class="text1">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                                <div class="img-cover1"></div>
-                            </div>
-                            <div class="img img5">
-                                <div class="text1">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                                <div class="img-cover1"></div>
-                            </div>
-                            <div class="img img6">
-                                <div class="text1">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                                <div class="img-cover1"></div>
-                            </div>
+                            <div class="img img4"></div>
+                            <div class="img img5"></div>
+                            <div class="img img6"></div>
                         </div>
                     </div>
                 </div>
@@ -458,11 +410,21 @@
                 <div style="text-align: center;">
                     <h1>TICKET OPEN</h1>
                     <div>
-                        <div class="img opne1"></div>
-                        <div class="img opne2"></div>
-                        <div class="img opne3"></div>
-                        <div class="img opne4"></div>
-                        <div class="img opne5"></div>
+                        <div class="img opne1">
+                            <div class="open open1"></div>
+                        </div>
+                        <div class="img opne2">
+                            <div class="open open2"></div>
+                        </div>
+                        <div class="img opne3">
+                            <div class="open open3"></div>
+                        </div>
+                        <div class="img opne4">
+                            <div class="open open4"></div>
+                        </div>
+                        <div class="img opne5">
+                            <div class="open open5"></div>
+                        </div>
                     </div>
                     <!-- 티켓오픈 더보기 버튼 -->
                     <input
@@ -708,6 +670,12 @@
                     },
                     1000
                 );
+            });
+            $(".bigimg").mouseover(function () {
+                $(this).css("opacity", "0.4");
+            });
+            $(".bigimg").mouseout(function () {
+                $(this).css("opacity", "0");
             });
         </script>
     </body>
