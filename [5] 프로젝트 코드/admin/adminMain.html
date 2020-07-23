@@ -13,7 +13,8 @@
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
         @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
         html{
-            width: 1100px;
+            /* width: 2500px; */
+            /* border : 1px solid red; */
         }
         h1{
             font-weight: bold;
@@ -27,7 +28,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 2000px;
+            height: 2400px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -222,22 +223,23 @@
             margin-top : 70px;
             margin-left : 300px;
         }
+
         
         /* 최상단 타이틀 */
         #title{ 
             margin-left: 280px;
             margin-top: 50px;
             width: 1500px;
-            border-bottom: 1px dashed black;
+            /* border-bottom: 1px dashed black; */
         }
 
         .basicBox {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             margin-left: 330px;
             margin-top: 50px;
             width: 1400px;
             height : 540px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             padding: 20px;
         }
 
@@ -301,8 +303,8 @@
         /* 테이블 내 타이틀 중앙정렬 */
         #nttable th{
             text-align : center;
-            background-color: #444444;
-            color : white;
+            background-color: #999999;
+            /* color : white; */
         }
 
         #nttable {
@@ -315,6 +317,17 @@
         #nttable th:nth-child(3) {width : 200px;}
         #nttable th:nth-child(4) {width : 100px;}
         #nttable th:nth-child(5) {width : 50px;}
+
+
+        /* 게시판 내 요소 중앙정렬 해주기 -> 공지명은 왼쪽으로 */
+        #nttable td {
+            text-align: center;
+        }
+
+        #nttable tbody td:nth-child(2) {
+            text-align: left;
+            padding-left : 20px;
+        }
 
 
         .pagebar {
@@ -330,7 +343,6 @@
 
         /* 사내공지사항 타이틀 */
         #empNoticeTitle {
-
             font-size : 1.7em;
             font-weight : bold;
         }
@@ -342,6 +354,11 @@
             position : relative;
             top : -2px;
             
+        }
+        /* 사내 공지사항 건드리면 공짓사항 수정하는 페이지로 이동한다 */
+        #empNoticeTitle:hover {
+            cursor : pointer;
+            text-decoration: underline;
         }
 
         /* 열람 안했을 경우 */
@@ -359,12 +376,13 @@
             color : red;
             border : 1px solid red;
             font-size : .9em;
+            /* margin-left : 10px; */
         }
 
         /* 매출액을 연속적으로 보여주기 위해서 위에 부모 div 역할 수행하는~ */
         #incomeParent {
             /* border : 1px solid red; */
-            margin-top : 100px;
+            margin-top : 20px;
             margin-left : 330px;
             width : 1400px;
             height : 500px;
@@ -395,21 +413,18 @@
 
         /* 이전 버튼 */
         #prevbtn {
-            /* border: 1px solid pink; */
+            
             position : absolute;
-            top : 1640px;
+            top : 1750px;
             left : 330px;
-            /* z-index: 10px; */
         }
         #prevbtn:hover {
             cursor: pointer;
         }
 
         #nextbtn {
-            /* border: 1px solid hotpink; */
             position : absolute;
-            top : 1640px;
-            /* left : 978px; */
+            top : 1750px;
             left : 1679px;
 
         }
@@ -428,7 +443,7 @@
 
         /* 포스터1 */
         #backp1 {
-            background-image: url(" ../images/classic10.jpeg");
+            background-image: url(../images/classic10.jpeg);
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -437,22 +452,75 @@
         /* 포스터에 대한 내용1 */
         #innertextjam1 {
             width : 400px;
-            height : 400px;
+            height : 430px;
             border : 0px;
 
         }
 
+        /* 포스터2 */
+        #backp2 {
+            background-image: url(../images/classic11.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* 포스터3 */
+        #backp3 {
+            background-image: url(../images/classic17.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+
+
+
         /* 엔터테이먼트 이미지  */
         .conttables > tbody > tr:nth-child(1) > td{
-            /* border: 1px solid orange; */
+            
             width : 300px;
-            height : 400px;
-            /* margin-left : 10px; */
+            height : 430px;
+           
         }
 
         .innervector {
             float : left;
         }
+
+        /* 스플릿 hr */
+        .splitHr {
+            border : 1px solid #999;
+            margin-left : 330px;
+            width : 1400px;
+        }
+
+        /* 매출관리 페이지 */
+        #moneyTitle {
+            margin-left : 350px;
+            /* border: 1px solid black; */
+            font-size : 1.7em;
+            font-weight : bold;
+            margin-bottom : 50px;
+        }
+        /* 매출관리 페이지 타이틀을 선택하면 상세페이지로 가게 만들것이다. */
+        #moneyTitle:hover {
+            cursor : pointer;
+            text-decoration: underline;
+        } 
+
+        /* 방문자 & 예매율 그래프 */
+        #vistreserve {
+            margin-left : 350px;
+            font-size : 1.7em;
+            font-weight : bold;
+            margin-bottom : 50px;
+
+        }       
+        /* 방문자 & 예매율 그래프 타이틀은 선택하면 상세 페에지로 이동*/
+        #vistreserve:hover {
+            cursor : pointer;
+            text-decoration: underline;
+        } 
 
         
 
@@ -469,9 +537,8 @@
 
     <!-- 기준선 -->
     <div id = "title">
-        
+    
     </div>
-    <!-- glyphicon glyphicon-pushpin -->
     <!-- 사내공지사항 게시판 형식 -->
     <div class = "basicBox" style = "height : 600px">
         <div id = "selectable">
@@ -499,8 +566,6 @@
                         <td> 2020.02.17(월) 15:00</td>
                         <td> 임직원 전체</td>
                         <td><span class = "seesee">열람</span></td>
-
-                        
                     </tr>
                     <tr>
                         <td>2</td>
@@ -613,20 +678,23 @@
         </div>       
     
     </div>
+
+    <hr class = "splitHr">
+    <div id = "vistreserve">방문자 & 예매율 그래프</div>
     
 
     <div class = "wrapper">
         <!-- 일별 방문자수 요약 -->
         <div style = "margin-left : 200px;">
-            <h4 style="margin-right: 140px; color: #666;">방문자</h4>
-            <span style="color: #555; font-size: 25px;">11.2k</span><span style="color:red"> ▲ 2.1k</span>
+            <h4 style="margin-right: 140px; color: #666;" class = "chartWord">방문자</h4>
+            <span style="color: #555; font-size: 25px;" class = "chartWord">11.2k</span><span style="color:red"> ▲ 2.1k</span>
             <span class="glyphicon glyphicon-stats" style="font-size: 35px; margin-left: 100px; color: #e09b9b;"></span>
         </div>
 
         <!-- 예매율 요약 -->
         <div style = "margin-left : 200px;">
-            <h4 style="margin-right: 140px; color: #666;">예매율</h4>
-            <span style="color: #555; font-size: 25px;">11.1%</span><span style="color: blue"> ▼ 1.6%</span>
+            <h4 style="margin-right: 140px; color: #666;" class = "chartWord">예매율</h4>
+            <span style="color: #555; font-size: 25px;" class = "chartWord">11.1%</span><span style="color: blue"> ▼ 1.6%</span>
             <span class="glyphicon glyphicon-stats" style="font-size: 35px; margin-left: 100px; color: #e09b9b;"></span>
         </div>
 
@@ -642,6 +710,8 @@
         </div>
     </div>
 
+    <hr class = "splitHr" style = "margin-top : 100px;">
+
 
     <!-- 매출보기 -->
     <!-- ../images/slide-dir-prev.png -->
@@ -651,12 +721,10 @@
     <!-- **************************************************************************************** -->
     
     <div class = "npbtn" id = "prevbtn" style = "z-index : 10;"><img src="../images/slide-dir-prev.png" alt=""></div>
-    
+    <div id = "moneyTitle">매출관리</div>
     <div id = "incomeParent">
-        <!--  -->
         <div id = "income">
-            
-            
+    
             <!-- 1 element -->
             <div class = "inContent">
                 <div id = "enterimg" class = "innervector">
@@ -668,7 +736,7 @@
                 </div>
                 <div style = "float : left; margin-left : 10px;" >
                     <pre id = "innertextjam1">                     
-<span style = "font-size: 1.4em; font-weight: bold;">뮤지컬<미아 파밀리아></span>
+            <span style = "font-size: 1.4em; font-weight: bold;">뮤지컬<미아 파밀리아></span>
 
                 2020.06.09~2020.08.23
 
@@ -694,7 +762,7 @@
                 <div id = "enterimg" class = "innervector">
                     <table class = "conttables">
                         <tr>
-                            <td id = "backp1"></td>
+                            <td id = "backp2"></td>
                         </tr>
                     </table>
                 </div>
@@ -727,13 +795,13 @@
                 <div id = "enterimg" class = "innervector">
                     <table class = "conttables">
                         <tr>
-                            <td id = "backp1"></td>
+                            <td id = "backp3"></td>
                         </tr>
                     </table>
                 </div>
                 <div style = "float : left; margin-left : 10px;" >
                     <pre id = "innertextjam1">                     
-<span style = "font-size: 1.4em; font-weight: bold;">뮤지컬<미아 파밀리아></span>
+            <span style = "font-size: 1.4em; font-weight: bold;">뮤지컬<미아 파밀리아></span>
 
                 2020.06.09~2020.08.23
 
@@ -754,22 +822,6 @@
                 <div id="saleRateGraph2" class = "innervector"></div>
             </div>
            <!-- 1 element -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <!-- inContent -->
         </div>
@@ -896,7 +948,8 @@
         <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
-    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    <!-- 아래 회색 바닥 페이지 없앰 -->
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
     
 
@@ -947,6 +1000,7 @@
                 $("#adminName").css("color","#333333");
                 $("#nttable > tbody > tr:nth-child(2n)").css("color","#333333");
                 $("#empNoticeTitle").css("color","#333");
+                $(".chartWord").css("color","#333");
             } else {
                 // 배경화면이 어두운 색일 경우
                 sw.src="../images/switch_off.png";
@@ -955,6 +1009,7 @@
                 $("#adminName").css("color","white");
                 $("#nttable > tbody > tr:nth-child(2n)").css("color","white");
                 $("#empNoticeTitle").css("color","white");
+                $(".chartWord").css("color","white");
             }
             swCount++;
     });
@@ -1369,6 +1424,27 @@ $("#nextbtn").click(function(){
             clickCount--;
         }
     
+    });
+
+    // 매출관리를 누르면 해당 페이지로 이동시켜줄것이다.
+    $("#moneyTitle").click(function(){
+
+        location.href = "salesManagement.html";
+
+    });
+
+    // 사내 공지사항 누르면 해당 페이지로 이동시켜줄것이다
+    $("#empNoticeTitle").click(function(){
+
+        location.href = "adminNtc(Fix).html";
+
+    });
+
+    // 방문자 & 예매율 그래프 타이틀은 선택하면 상세 페에지로 이동
+    $("#vistreserve").click(function(){
+
+        location.href = "adminViews.html";
+
     });
     
 
