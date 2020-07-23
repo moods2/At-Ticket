@@ -332,6 +332,10 @@
             <div><span>▶</span> 공지사항 조회</div>
            <h3>고객 정보</h3>
            <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+           <h3>업무게시판</h3>
+           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무게시판</a></div>
+           <h3>Q&A 게시판</h3>
+           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 고객 정보 조회</a></div>
         </div>
         <!-- container -->
 
@@ -653,11 +657,14 @@
     });
 
 
-    $("#btn2").mouseenter(function(){
-        $("#btn2").css("background-color","cornflowerblue");
+   //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
+   $("#btn2").mouseenter(function(){
+        // $("#btn2").css("background-color","cornflowerblue");
+        $("#btn2").css("color","white");
     });
     $("#btn2").mouseleave(function(){
-        $("#btn2").css("background-color","#C27BA0");
+        // $("#btn2").css("background-color","#C27BA0");
+        $("#btn2").css("color","#D5D5D5");
     })
 
     //티켓 홈

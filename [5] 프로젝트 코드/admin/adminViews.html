@@ -976,13 +976,15 @@
     });
 
 
+    //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
     $("#btn2").mouseenter(function(){
-        $("#btn2").css("background-color","cornflowerblue");
+        // $("#btn2").css("background-color","cornflowerblue");
+        $("#btn2").css("color","white");
     });
     $("#btn2").mouseleave(function(){
-        $("#btn2").css("background-color","#C27BA0");
+        // $("#btn2").css("background-color","#C27BA0");
+        $("#btn2").css("color","#D5D5D5");
     })
-
     //티켓 홈
     $("#tickethome").click(function() {
         window.open("../main.html","At-Ticket");
