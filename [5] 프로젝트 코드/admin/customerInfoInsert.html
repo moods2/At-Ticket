@@ -113,9 +113,9 @@
 
 
     </ul>
-    <div id="b">
-        <input type="button" value="추가" id="btn1" style="margin-left: 20px;" class="btn btn-default">
-        <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-default">
+    <div id="b" style="margin-left: 715px;">    
+        <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+        <button class = "modified" id = "closebtn">닫기</button>
     </div>
     <script>
 
@@ -155,7 +155,7 @@
         }
         );
 
-        $("#btn1").click(function () {
+        $("#addbtn").click(function () {
             if (confirm("추가하시겠습니까?")) {
                 var name1 = document.getElementById('name').value;
                 var email1 = document.getElementById('email').value;
@@ -184,7 +184,7 @@
             }
         });
 
-        $("#btn2").click(function () {
+        $("#closebtn").click(function () {
             window.close();
         });
 

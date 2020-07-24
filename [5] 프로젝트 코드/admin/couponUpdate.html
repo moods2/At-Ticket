@@ -48,9 +48,9 @@
     </div>
 
 
-    <div id="b">
-        <input type="button" value="수정" id="btn1" style="margin-left: 20px;" class="btn btn-default">
-        <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-default">
+    <div id="b" style="margin-left: 270px;">
+        <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+        <button class = "modified" id = "closebtn">삭제</button>
     </div>
 
     <script>
@@ -64,35 +64,62 @@
                clear();
             console.log(2);
             if (sel1.value == "discount") {
-                $("#box").append('<input style="background-color: lavender; margin: 4px; display: inline;" type="file"></div><div id="list"></div><input type="button" value="+파일" id="btnAdd"  style="margin-top: 5px;">');
+                $("#box").append('<span><label for="txtphoto"></label><input type="file" id="txtphoto" style="display: inline;" autofocus></div> <div class="img_wrap"> <img id="img1"/> </div></span>');
             } else {
                 $("#box").append('<input style="position: relative; top: -2px;" type="text" name="txt" id="txt" autofocus>');
             }
+        var sel_file;
+
+        $(document).ready(function() {
+            console.log(10);
+            $("#txtphoto").on("change", handleImgFileSelect1);
+        }); 
+
+        function handleImgFileSelect1(e) {
+            var files = e.target.files;
+            var filesArr = Array.prototype.slice.call(files);
+
+            console.log(files);
+            filesArr.forEach(function(f) {
+                if(!f.type.match("image.*")) {
+                    alert("확장자는 이미지 확장자만 가능합니다.");
+                    return;
+                }
+
+                sel_file = f;
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $("#img1").attr("src", e.target.result);
+                }
+                reader.readAsDataURL(f);
+                
+            });
+        }
 
         }
 
         //  }
 
         function clear() {
-           // while (document.getElementById("box").hasChildNodes) {
-                document.getElementById("box").removeChild(document.getElementById("box").lastElementChild);
-            //}
+            document.getElementById("box").removeChild(document.getElementById("box").lastElementChild);
         }
 
 
-        $("#btn1").click(function () {
+        $("#modifybtn").click(function () {
             if (confirm("수정하시겠습니까?")) {
             }
         });
 
-        $("#btn2").click(function () {
+        $("#closebtn").click(function () {
             window.close();
         });
 
      
-        btnAdd.onclick = function () {
-            list.innerHTML += " <div>파일 첨부 : <input type = 'file'></div>";
-        };
+        // btnAdd.onclick = function () {
+        //     list.innerHTML += " <div>파일 첨부 : <input type = 'file'></div>";
+        // };
+
 
 
 

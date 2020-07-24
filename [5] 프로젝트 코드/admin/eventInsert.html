@@ -48,8 +48,12 @@
         <div id="list1"></div>
         <input style="margin-bottom: 4px;" type="button" value="+파일" id="btnAdd1">
         <div style="margin-top: 10px;">
-            <input type="button" value = "추가" id = "btn1" class = "btn btn-default">
-            <input type="button" value = "닫기" id = "btn2" class = "btn btn-default">
+            <!-- <input type="button" value = "추가" id = "btn1" class = "btn btn-default">
+            <input type="button" value = "닫기" id = "btn2" class = "btn btn-default"> -->
+            <div id = "manipulate" style="margin-left: 255px;">
+                <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class = "modified" id = "closebtn">닫기</button>
+            </div>
         </div>
     </div>
     <script>
@@ -79,13 +83,13 @@
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
-        $("#btn1").click(function(){
+        $("#addbtn").click(function(){
             if (confirm("추가하시겠습니까?")){
 
             }
         });
 
-        $("#btn2").click(function(){
+        $("#closebtn").click(function(){
            window.close();
         });
 

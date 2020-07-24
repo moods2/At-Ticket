@@ -12,6 +12,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* 메인 */
+        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
+        @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+        html{
+            /* width: 2500px; */
+            /* border : 1px solid red; */
+        }
+        h1{
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 3em; 
+            color: #111;
+        }
+
+        #left {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 250px;
+            height: 2400px;
+            /* border: 1px solid black; */
+            background-color: #444;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #left .info {
+            margin-left: 56px;
+            text-align: left;
+            font-variant: small-caps;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .accomenu {
+            /* margin-top: 30px; */
+            margin-left: 10px;
+            width : 260px;
+            padding-right : 25px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
+        }
+
+        .b {
+            margin-top: 30px;
+            float: left;
+        }
+
+        .b::after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        /* #btn1 {
+            margin-left: 50px;
+            margin-right: 20px;
+        } */
+
+        #topmenu {
+            /* border: 1px solid blue; */
+            width: 100%;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            float: right;
+            align-content: right;
+            /* z-index: -1; */
+            /* background-color: #BBDED7; */
+            /* opacity: .3; */
+            
+        }
+        #topmenu .search {
+            /* border: 1px solid black; */
+            width: 250px;
+            margin-top: 10px;
+            float: right;
+           
+        }
+        #topmenu .home {
+            /* border: 1px solid black; */
+            width: 50px;
+            float: right;
+            margin-top: 7px;
+            cursor: pointer;
+            color: #444
+        }
+
+        #calendar {
+           margin-top: 70px;
+           margin-left: -20px;
+        }
+
+        #cal {
+            position: relative;
+            top: 15px;
+            left: 5px;
+        }
+
+        #bottom {
+            position: absolute;
+            top: 2000px;
+        }
+
+        #sw {
+            margin-top: 850px;
+            cursor: pointer;
+        }
+
+        /* 새로 추가한 코드 */
+        /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
+        .accomenu tr td:hover {
+            cursor : pointer;
+        }
+
+         #movetop {
+            width: 40px;
+            height: 40px;
+            background-color: #777;
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            text-align: center;
+            padding-top: 3px;
+        }
+        #movetop:hover {
+            background-color: #444;
+            cursor : pointer;
+        }
+
+        #movetop {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        body{
+            font-family: 'NanumBarunGothic';
+        }
+
+        /* 아코디언 메뉴 css */
+        .ui-state-active {
+            background-color: red;
+            background-image: url();
+        }
+        .ui-state-hover {
+            background-color: #444;
+            background-image: url();
+
+        }
+
+        .ui-accordion-header {
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NEXON Lv1 Gothic OTF Light';
+            /* font-weight: bolder; */
+            
+        }
+        .ui-accordion-content {
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NanumBarunGothic';
+        }
+        .ui-accordion-content div:hover {
+            background: #333;
+        }
+        .ui-widget-content a{
+            color: white;
+            text-decoration: none;
+        }
+        .ui-widget-content span {
+            font-size: 10px;
+        }
+        .ui-accordion .ui-accordion-header {
+            /* border: 0px; */
+            outline: none;
+          
+        }
+       #right {
+            border : 1px solid red;
+            margin-left: 300px;
+            margin-top: 100px;
+            width : 700px;
+            /* color : white;
+            background-color: #C27BA0; */
+        }
+        /* 게시판 */
         #title {
             /* text-align: center; */
             margin-left: 280px;
@@ -31,10 +225,11 @@
         }
 
         #sel {
-            margin-left: 280px;
+            margin-top: 6px;
         }
 
-        th, td {
+        th,
+        td {
             text-align: center;
         }
 
@@ -44,14 +239,14 @@
             margin-left: 280px;
         }
 
-        .btn1{
+        .btn1 {
             border: 0px;
             border-bottom: 1px solid transparent;
             background-color: white;
             outline: none;
         }
 
-        .btn1:hover{
+        .btn1:hover {
             border-bottom: 1px solid red;
         }
 
@@ -59,215 +254,558 @@
             text-align: left;
         }
 
-        tr:nth-child(3){
-            cursor:pointer;
+        tr:nth-child(3) {
+            cursor: pointer;
         }
 
-        tr td:nth-child(4){
-            cursor:pointer;
+        tr td:nth-child(4) {
+            cursor: pointer;
         }
 
-        tr td:nth-child(4) div:hover {
+        tr td:nth-child(4):hover {
             width: 250px;
-            border-bottom: 2px solid thistle;
+            text-decoration: underline;
         }
-        tr td:nth-child(4) div{
-            width: 250px;
-            border-bottom: 2px solid transparent;
+
+        .selectNotice {
+            width: 80px;
+            /* text-align: center; */
+            margin: 10px 0px;
+            margin-bottom: -10px;
+            background-color: white;
+            border: 0px;
+            height: 20px;
+            border-right: 1px solid #999;
+            color: #777;
+            padding: 0px;
+            padding-right: 5px;
+            /* font-size: 1.5em; */
         }
+
+        .selectNotice:last-child {
+            border-right: 0px;
+        }
+
+        .selectNotice:hover {
+            color: #111;
+            font-weight: bold;
+        }
+
+        .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+           background-color:#999999;
+           border-color: #eeeeee;
+        }
+        
+      .pagination > li > a, .pagination > li > span{
+          color: black;
+      }
+
+        #slctp2 {
+            /* margin-top : 10px;
+            margin : 10px auto;
+            margin-bottom: 10px; */
+            width : 300px;
+            /* margin-left: 920px; */
+            float : left;
+            margin-bottom: 10px;
+          
+        }
+        #searchlogo:hover {
+            cursor: pointer;
+            /* background-color: rgb(red, green, blue); */
+        }
+
+         th {
+            background-color:  #999;
+            /* color : white; */
+        }
+
     </style>
 </head>
 
 <body>
+    <!-- 메인 -->
+    <div id="left">
+        
+        <img src="../images/man.png" 
+            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:     50%; background-color: #999;">
+        <div class="info" style="color:white">
+            <span><br>Welcome,</span></br></span>
+            <span>Hong gil dong</span>
+        </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
+                class="btn">
+        </div> -->
+        <div id = "logout">
+            <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
+                     type="button" value="Logout" id="btn2" class="btn">
+        </div>
+        <!-- 왼쪽 바 메뉴 -->
+        <div class="accomenu">
+            <h3>공연</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
+            </div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
+            </div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+            <h3>공연 랭킹</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+            <h3>고객 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            </div>
+            <h3>업무 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+            </div>
+            <h3>Q&A 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>  
+        </div>
+
+
+        <!-- container -->
+
+
+        
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
+                class="btn">
+        </div> -->
+
+        <div id="calendar">
+            <input style="width: 100px;" type="text" name="date" id="date" value="">
+            <label for="date"><span style="font-size: 2.5em; color:white" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
+        </div>
+
+        <!-- 티켓 사이트 로고 바로가기 -->
+        <div style="margin-top: 20px; position: fixed; bottom: 30px; left: 70px;">
+            <img src="../images/title.png" id="tickethome" 
+                    style="cursor: pointer; height: 50px;">
+        </div>
+
+
+    </div>
+
+
+    <div id="topmenu">
+        <div class="home">
+            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
+        </div>
+        <div class="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
+                            class="glyphicon glyphicon-search"></i></span>
+                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
+                        placeholder="검색어를 입력하세요.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id = "fixedBtn">
+        <img src = "../images/switch_on.png" id="sw" name="sw"
+            style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
+
+        <!-- 제일 위로 돌아가기 -->
+        <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
+    </div>
+
+    <!-- 아래 회색 바닥 페이지 없앰 -->
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
+    </div>
+    
+
+
+
+
+
+    <!-- 게시판 -->
     <div id="title">
         <h1 style="color: #555; font-weight: bold;
         font-family: Arial;
         font-size: 3em;">사원 문의 게시판 <small>> Home </small></h1>
     </div>
 
-    <div id="b">
-        <input type="button" value="오름차순" class="btn btn-default" id="btn3">
-        <input type="button" value="내림차순" class="btn btn-default" id="btn4">
+    <div id="b" style="margin-left: 500px;">
+        <div id="slctp1">
+            <button class="selectNotice" style="outline : none;"><span><i
+                        class="glyphicon glyphicon-sort"></i></span>등록순</button>
+            <button class="selectNotice" style="outline : none;"><span><i
+                        class="glyphicon glyphicon-sort"></i>오름차순</button>
+            <button class="selectNotice" style="outline : none;"><span><i
+                        class="glyphicon glyphicon-sort"></i>내림차순</button>
+            <!-- <input type="button" class = "selectNotice" value = "등록순">
+                <input type="button" class = "selectNotice" value = "오름차순">
+                <input type="button" class = "selectNotice" value = "내림차순"> -->
+        </div>
     </div>
-    <!-- <input type="button" value=""> -->
-    <div id="btns"><input type= "button" value = "전체" id = "all" class = "btn1"> | <input type= "button" value = "휴가신청" id = "vac" class = "btn1"> | <input  type= "button" value = "비품" id = "que" class = "btn1"> | <input type= "button" value = "일정" id = "day" class = "btn1"> | <input type= "button" value = "복지" id = "wel" class = "btn1"> | <input type= "button" value = "기타" id = "etc" class = "btn1"></div>
-    <table class="table table-bordered table-striped table-hover" id="tbl" style="width: 1080px;">
-        <tr class="row">
-            <th style="width: 70px;">글번호</th>
-            <th style="width: 100px;">분류</th>
-            <th style="width: 90px;">작성자</th>
-            <th id = "tit" style="width: 400px;">글제목</th>
-            <th style="width: 100px;">작성날짜</th>
-            <th style="width: 90px;">작성시간</th>
-            <th style="width: 60px;">조회수</th>
-            <th style="width: 90px;">답변여부</th>
-            <th style="width: 80px;">첨부</th>
-        </tr>
-        <tr class="row">
-            <td>Notice</td>
-            <td>공지사항</td>
-            <td>관리자</td>
-            <td><div>사원 문의 게시판 공지사항입니다.</div></td>
-            <td>2020/06/21</td>
-            <td>16:25</td>
-            <td>4</td>
-            <td>X</td>
-            <td>O</td>
-        </tr>
-        <tr class="row">
-            <td>1</td>
-            <td>휴가신청</td>
-            <td>staff01</td>
-            <td><div>휴가신청 문의 입니다.</div></td>
-            <td>2020/07/21</td>
-            <td>13:55</td>
-            <td>10</td>
-            <td>O</td>
-            <td>X</td>
-        </tr>
-        <tr class="row">
-            <td>2</td>
-            <td>휴가신청</td>
-            <td>staff01</td>
-            <td><div><span style="color: red; font-weight: bold;">[잠금] </span>휴가신청 문의 입니다.</div></td>
-            <td>2020/07/21</td>
-            <td>13:55</td>
-            <td>10</td>
-            <td>O</td>
-            <td>X</td>
-        </tr>
-        <tr class="row">
-            <td>3</td>
-            <td>휴가신청</td>
-            <td>staff01</td>
-            <td><div>휴가신청 문의 입니다.</div></td>
-            <td>2020/07/21</td>
-            <td>13:55</td>
-            <td>10</td>
-            <td>O</td>
-            <td>X</td>
-        </tr>
-        <tr class="row">
-            <td>4</td>
-            <td>휴가신청</td>
-            <td>staff01</td>
-            <td><div>휴가신청 문의 입니다.</div></td>
-            <td>2020/07/21</td>
-            <td>13:55</td>
-            <td>10</td>
-            <td>O</td>
-            <td>X</td>
-        </tr>
-        <tr class="row">
-            <td>5</td>
-            <td>휴가신청</td>
-            <td>staff01</td>
-            <td><div>휴가신청 문의 입니다.</div></td>
-            <td>2020/07/21</td>
-            <td>13:55</td>
-            <td>10</td>
-            <td>O</td>
-            <td>X</td>
-        </tr>
-    </table>
-    <nav style="margin-left: 550px;" class="pagebar">
-        <ul class="pagination">
-            <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">6</a></li>
-            <li class="active"><a href="#">7</a></li>
-            <li><a href="#">8</a></li>
-            <li><a href="#">9</a></li>
-            <li><a href="#">10</a></li>
-            <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    </tbody>
-    </div>
-
-    <select name="sel" id="sel" style="float: left; margin-right: 10px;">
-        <option value="1">글번호</option>
-        <option value="2">작성자</option>
-        <option value="3">글제목</option>
-        <option value="4">내용</option>
-        <option value="5">작성날짜</option>
-    </select>
-    <div style="margin-top: -5px;" class="search">
-        <div class="form-group">
+   
+        <!-- <input type="button" value=""> -->
+        <div id="btns" style="margin-left: 505px;"><input type="button" value="전체" id="all" class="btn1"> | <input
+                type="button" value="휴가신청" id="vac" class="btn1"> | <input type="button" value="비품" id="que" class="btn1"> |
+            <input type="button" value="일정" id="day" class="btn1"> | <input type="button" value="복지" id="wel" class="btn1">
+            | <input type="button" value="기타" id="etc" class="btn1"></div>
+    <div style="margin-left: 1180px;">
+        <select name="sel" id="sel" style="float: left; margin-right: 10px; width: 100px;margin-top: -1.5px;" class="form-control">
+            <option value="1">글번호</option>
+            <option value="2">작성자</option>
+            <option value="3">글제목</option>
+            <option value="4">내용</option>
+            <option value="5">작성날짜</option>
+        </select>
+        <div id="slctp2">
             <div class="input-group">
-                <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
-                        class="glyphicon glyphicon-search"></i></span>
-                <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
-                    placeholder="검색어를 입력하세요.">
-                <button id = "write" style="margin-left: 690px;" class="btn-default">
-                    <span class="glyphicon glyphicon-ok"></span>
-                    Write
-                </button>
+                <input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+                <span class="input-group-addon" id="searchlogo"><i class="glyphicon glyphicon-search"></i></span>
             </div>
         </div>
-
     </div>
+        <div style="margin-left: 230px;">
+            <table class="table table-striped table-bordered table-condensed" id="tbl" style="width: 1080px;">
+                <tr class="row">
+                    <th style="width: 70px;">글번호</th>
+                    <th style="width: 100px;">분류</th>
+                    <th style="width: 90px;">작성자</th>
+                    <th id="tit" style="width: 400px;">글제목</th>
+                    <th style="width: 100px;">작성날짜</th>
+                    <th style="width: 90px;">작성시간</th>
+                    <th style="width: 60px;">조회수</th>
+                    <th style="width: 90px;">답변여부</th>
+                    <th style="width: 80px;">첨부</th>
+                </tr>
+                <tr class="row">
+                    <td>Notice</td>
+                    <td>공지사항</td>
+                    <td>관리자</td>
+                    <td>
+                        <div>사원 문의 게시판 공지사항입니다.</div>
+                    </td>
+                    <td>2020/06/21</td>
+                    <td>16:25</td>
+                    <td>4</td>
+                    <td>X</td>
+                    <td>O</td>
+                </tr>
+                <tr class="row">
+                    <td>1</td>
+                    <td>휴가신청</td>
+                    <td>staff01</td>
+                    <td>
+                        <div><span style="color: red; font-weight: bold;">[잠금] </span>휴가신청 문의 입니다.</div>
+                    </td>
+                    <td>2020/07/21</td>
+                    <td>13:55</td>
+                    <td>10</td>
+                    <td>O</td>
+                    <td>X</td>
+                </tr>
+                <tr class="row">
+                    <td>2</td>
+                    <td>휴가신청</td>
+                    <td>staff01</td>
+                    <td>
+                        <div><span style="color: red; font-weight: bold;">[잠금] </span>휴가신청 문의 입니다.</div>
+                    </td>
+                    <td>2020/07/21</td>
+                    <td>13:55</td>
+                    <td>10</td>
+                    <td>O</td>
+                    <td>X</td>
+                </tr>
+                <tr class="row">
+                    <td>3</td>
+                    <td>휴가신청</td>
+                    <td>staff01</td>
+                    <td>
+                        <div><span style="color: red; font-weight: bold;">[잠금] </span>휴가신청 문의 입니다.</div>
+                    </td>
+                    <td>2020/07/21</td>
+                    <td>13:55</td>
+                    <td>10</td>
+                    <td>O</td>
+                    <td>X</td>
+                </tr>
+                <tr class="row">
+                    <td>4</td>
+                    <td>휴가신청</td>
+                    <td>staff01</td>
+                    <td>
+                        <div><span style="color: red; font-weight: bold;">[잠금] </span>휴가신청 문의 입니다.</div>
+                    </td>
+                    <td>2020/07/21</td>
+                    <td>13:55</td>
+                    <td>10</td>
+                    <td>O</td>
+                    <td>X</td>
+                </tr>
+                <tr class="row">
+                    <td>5</td>
+                    <td>휴가신청</td>
+                    <td>staff01</td>
+                    <td>
+                        <div><span style="color: red; font-weight: bold;">[잠금] </span>휴가신청 문의 입니다.</div>
+                    </td>
+                    <td>2020/07/21</td>
+                    <td>13:55</td>
+                    <td>10</td>
+                    <td>O</td>
+                    <td>X</td>
+                </tr>
+            </table>
+        </div>
+        <nav style="margin-left: 840px; margin-top: -10px;" class="pagebar">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li class="active"><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">9</a></li>
+                <li><a href="#">10</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        </tbody>
+        <div id = "manipulate" style="margin-left: 1410px; margin-top: -30px;">
+            <button class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i>작성</button>
+            <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
+        </div>
+
+
     <div style="clear: both;"></div>
 
     <script>
-       var tr = document.getElementsByTagName("tr");
-       $("#btn3").click(function(){
+        // 메인
+        var date = document.getElementById("date");
+    var now = new Date();
+    var sw = document.images["sw"];
 
-       });
+    //날짜 자동 입력, 읽기만 가능 
+    date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
+    if (date.value != null) {
+        date.readOnly = true;
+    }
+
+    // 캘린더
+        $("#date").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: now.getFullYear() + "-1-1",
+            maxDate: now.getFullYear() + "-12-" + "31"
+        });
+
+   
+
+    document.body.bgColor = "white";
+    
+
+
+    //스위치 
+
+    var swCount = 1;
+    $("#sw").click(function () {
+        // console.log("클릭함");
+
+            if(swCount % 2 == 0) {
+                // 배경화면 기본상태
+                console.log("들어옴");
+                sw.src="../images/switch_on.png";
+                $("body").css("background-color","white");
+                $("#homeLogo").css("color","#333333");
+                $("#adminName").css("color","#333333");
+                $("#nttable > tbody > tr:nth-child(2n)").css("color","#333333");
+                $("#empNoticeTitle").css("color","#333");
+                $(".chartWord").css("color","#333");
+            } else {
+                // 배경화면이 어두운 색일 경우
+                sw.src="../images/switch_off.png";
+                $("body").css("background-color","#292A2D");
+                $("#homeLogo").css("color","white");
+                $("#adminName").css("color","white");
+                $("#nttable > tbody > tr:nth-child(2n)").css("color","white");
+                $("#empNoticeTitle").css("color","white");
+                $(".chartWord").css("color","white");
+            }
+            swCount++;
+    });
+    
+
+    // $("#btn1").click(function(){
+    //     window.open("login.html","Login","width=300, height=300");
+    // });
+    
+    // 버튼을 클릭하면 로그아웃 창이 뜸
+    $("#btn2").click(function(){
+        if(confirm("로그아웃하시겠습니까?")){
+            console.log("로그아웃 되었습니다.");
+         }
+    });
+
+    $(".accomenu").accordion({
+        collapsible: true,
+        active: false
+    });
+
+    //홈버튼 링크
+    $("#homeLogo").click(function() {
+        location.href = "adminMain.html";
+    });
+
+    //상단 메뉴 고정
+    $(document).scroll(function() {
+        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            if ($(document).scrollTop() > $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    width: "100%",
+                    position: "fixed",
+                    top: "0px",
+                    bottom: "",
+                    zIndex: "1"
+                });
+
+            };
+
+        //상단 헤더(top)이 눈에 보일때 쯤
+        if ($(document).scrollTop() <= $("#topmenu").position().top) {
+            $("#topmenu").css({
+                position: "absolute",
+                top: "0px",
+                bottom: ""
+            });             
+        }
+    });
+
+
+    //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
+    $("#btn2").mouseenter(function(){
+        // $("#btn2").css("background-color","cornflowerblue");
+        $("#btn2").css("color","white");
+    });
+    $("#btn2").mouseleave(function(){
+        // $("#btn2").css("background-color","#C27BA0");
+        $("#btn2").css("color","#D5D5D5");
+    })
+
+    //티켓 홈
+    $("#tickethome").click(function() {
+        window.open("../main.html","At-Ticket");
+    });
+
+    
+    //상단으로 돌아가기 -> 스무스 하게 올림
+    $("#movetop").click(function(){
+        	
+        $("html,body").animate({
+			scrollTop: 0
+		}, 700);
         
-        
-       $("#btn4").click(function(){
+    });
+
+    //검색
+    $("#btnsearch").click(function(){
+        // 검색어 넘기기
+        window.location.href="adminSearch.html";
+    });
+
+
+    //메뉴 링크
+    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
+    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
+    
+
+        // 게시판
+        var tr = document.getElementsByTagName("tr");
+        $("#btn3").click(function () {
 
         });
 
-        $("#all").click(function(){
 
-        }); 
-
-        $("#vac").click(function(){
+        $("#btn4").click(function () {
 
         });
 
-        $("#que").click(function(){
-
-        }); 
-
-        $("#day").click(function(){
+        $("#all").click(function () {
 
         });
 
-        $("#wel").click(function(){
+        $("#vac").click(function () {
 
-        
-        
-        $("#etc").click(function(){
-
-        });});
-
-        $("#write").click(function(){
-            location.href="hansiyeonwrite.html";
         });
 
+        $("#que").click(function () {
 
-     for(var i=0;i<tr.length;i++) {
-            tr[i].children[3].onclick = function() {
-            // location.href="hansiyeoncontent.html";
-            window.open("hansiyeonpwd.html","비밀번호","width=300,height=300");
-        };
-     }
-        
+        });
+
+        $("#day").click(function () {
+
+        });
+
+        $("#wel").click(function () {
+
+            $("#etc").click(function () {
+
+            });
+        });
+
+        $("#makebtn").click(function () {
+            location.href = "hansiyeonwrite.html";
+        });
+
+        $("#modifybtn").click(function () {
+            location.href = "hansiyeoncontent2.html";
+        });
+
+        tr[1].children[3].onclick = function(){
+            window.open("hansiyeonnotice.html","Notice","width=1100, height=350");
+        ;}
+
+        for (var i = 2; i < tr.length; i++) {
+            tr[i].children[3].onclick = function () {
+                // location.href="hansiyeoncontent.html";
+                window.open("hansiyeonpwd.html", "비밀번호", "width=300,height=300");
+            };
+        }
+
     </script>
 
 </body>

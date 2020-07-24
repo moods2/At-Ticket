@@ -31,8 +31,16 @@
         <div class = "txt"><input style="width: 200px; height: 30px;" type="text" placeholder="예매율..." class = "text-warning bg-warning"></div>
         <div class = "txt"><input style="width: 200px; height: 30px;" type="text" placeholder="별점..." class = "text-warning bg-warning"></div>
         <div class = "txt"><input style="width: 200px; height: 30px;" type="text" placeholder="순위..." class = "text-warning bg-warning"></div>
-        <div class = "txt"><input style="margin: 10px 60px;" type="button" value="추가 " class = "btn btn-default"></div>
+        <div style="margin-left:125px;" id = "manipulate">
+                <button class="modified" id="addbtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class="modified" id="closebtn">닫기</button>
+        </div>
     </div>
+    <script>
+        $("#closebtn").click(function(){
+            window.close();
+        });
+    </script>
 </body>
 
 </html>
