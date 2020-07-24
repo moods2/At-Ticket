@@ -276,7 +276,7 @@
             font-size: 1.3em;
         }
 
-        #nttable > tbody > tr > td:nth-child(2):hover {
+        #nttable > tbody > tr > td:nth-child(3):hover {
             cursor : pointer;
             text-decoration: underline;
         }
@@ -384,6 +384,17 @@
         #nttable .tdbox {
             padding-left : 15px;
         } 
+
+
+        /* 페이지 하단바  색 조정 */
+        .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+               background-color:#999999;
+           border-color: #eeeeee;
+        }
+        
+        .pagination > li > a, .pagination > li > span{
+          color: black;
+        }
         
         
     </style>

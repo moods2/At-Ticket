@@ -26,7 +26,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 2000px;
+            height: 3000px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -225,7 +225,7 @@
         }
 
         #selectable {
-            /* border : 1px solid black; */
+            /* border : 1px solid blue; */
             width : 1330px;
             margin-left : 350px;
             height : 1100px;
@@ -253,6 +253,7 @@
             color : #111;
             font-weight: bold;
         }
+        /* 고객들을 위한 공지 */
         #nttable {
             margin-left : 0px;
         }
@@ -284,6 +285,41 @@
             cursor : pointer;
             text-decoration: underline;
         }
+
+        /* 직원들을 위한 공지 */
+        #nttable2 {
+            margin-left : 0px;
+        }
+        #nttable2 th {
+            background-color:  #999;
+        }
+        #nttable2 th:nth-child(1) {width : 25px;}
+        #nttable2 th:nth-child(2) {width : 130px;}
+        #nttable2 th:nth-child(3) {width : 675px;}
+        #nttable2 th:nth-child(4) {width : 300px;}
+        #nttable2 th:nth-child(5) {width : 130px;}
+
+
+        #nttable2 tbody td {
+            text-align: center;
+        }
+
+        #nttable2 tbody td:nth-child(3) {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+
+        #nttable2 > tbody > tr > td:nth-child(3):hover {
+            cursor : pointer;
+            text-decoration: underline;
+        }
+
+
+
+
+
+
         .modified {
             border : 0px;
             border-radius: 5px;
@@ -492,7 +528,24 @@
       .pagination > li > a, .pagination > li > span{
           color: black;
       }
-        
+
+      /* 구분선 */
+      .splitHr {
+          margin-top : 40px;
+          border : 1px solid #999999;
+          margin-left : 280px;
+          width : 1500px;
+      }
+
+      /* 공지 타이틀 */
+      .tableInnerTitle {
+          /* border: 1px solid red; */
+          font-size : 1.6em;
+          font-weight: bold;
+          margin-top : 50px;
+          margin-bottom : 20px;
+
+      }
         
     </style>
 
@@ -509,7 +562,7 @@
     
     
     <div id = "mainBanner" style = "padding : 0px; padding-left : 70px; background-color: #F0F0F0;">
-        <div id = "banner">
+        <div id = "banner" style = "font-size : 1.6em;">
             메인배너 관리
         </div>
 
@@ -600,11 +653,11 @@
         
     </div>
     
-
+    <hr class = "splitHr">
     <!-- 게시판 -->
     <!-- 등록순 오름차순 조회순 -->
     <div id = "selectable">
-        
+        <div class = "tableInnerTitle">회원 대상 공지</div>
         <div id = "slctp1">
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
@@ -805,9 +858,216 @@
                 </li>
               </ul>
             </nav>
+        <hr class = "splitHr" style = "width : 1330px; margin-left : 0px;">
+
+        <!-- 사내 공지사항 하나 더 만들어야 함... 지못미... -->
+        <div class = "tableInnerTitle">사원 대상 공지</div>
+
+        <div id = "slctp1">
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
+            <!-- <input type="button" class = "selectNotice" value = "등록순">
+            <input type="button" class = "selectNotice" value = "오름차순">
+            <input type="button" class = "selectNotice" value = "내림차순"> -->
+        </div>
+
+        <div id = "slctp2">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
+			</div>
+        </div>
         
+        <table style = "width:1330px;" class = "table table-striped table-bordered table-condensed" id = "nttable2">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id = "total6"></th>
+                    <th class = "tableth">번호</th>
+                    <th class = "tableth">공지명</th>
+                    <th class = "tableth">공지날짜</th>
+                    <th class = "tableth">대상</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>1</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>2</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.03.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>3</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>4</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>                
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>5</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+
+                </tr>               
+                 <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>6</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>               
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>7</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>                
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>8</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>                
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>9</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>               
+                 <tr>
+                     <td><input type="checkbox" class = "t6"></td>
+                    <td>10</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>11</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>                
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>12</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>                
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>13</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>                
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>14</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>                
+                <tr>
+                    <td><input type="checkbox" class = "t6"></td>
+                    <td>15</td>
+                    <td>랜섬웨어로 인한 복구작업</td>
+                    <td> 2020.02.17(월) 15:00</td>
+                    <td>모든 임직원</td>
+                    
+
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 내용물 수정/삭제 페이지 -->
+        <div id = "manipulate">
+            <button class = "modified" id = "makebtn2"><i class="glyphicon glyphicon-plus"></i> 공지작성</button>
+            <button class = "modified" id = "modifybtn2"><i class="glyphicon glyphicon-pencil"></i> 공지수정</button>
+            <button class = "modified" id = "delbtn2"><i class="glyphicon glyphicon-trash"></i> 공지삭제</button>
+        </div>
+            <!-- <input type="button" class = "modified" value = "공지삭제"> -->
+        <!-- <input type="button" class = "modified" value = "공지작성"> -->
+        <!-- <input type="button" class = "modified" value = "공지수정"> -->
+
+
+        <!-- 하단 페이지 선택 바 -->
+            <nav class = "pagebar">
+              <ul class="pagination">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li class = "active"><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li><a href="">6</a></li>
+                <li><a href="">7</a></li>
+                <li><a href="">8</a></li>
+                <li><a href="">9</a></li>
+                <li><a href="">10</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+    
+
     </div><!-- selectable -->
 
+    
 
 
     <div id="left">
@@ -921,7 +1181,7 @@
         <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
-    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
     
 
@@ -1167,7 +1427,7 @@
     //  ----------------------------------------------------------
 
 
-    // 게시판 맨 상단이 체크드 되면 아래 모두 체크드 해준다.    
+    // 게시판 맨 상단이 체크드 되면 아래 모두 체크드 해준다. -> 고객공지 대상    
     var ck = document.getElementById("total5");
     var t5 = document.getElementsByClassName("t5");
     
@@ -1188,6 +1448,28 @@
     }
 
 
+    // 게시판 맨 상단이 체크드 되면 아래 모두 체크드 해준다. -> 고객공지 대상    
+    var ck6 = document.getElementById("total6");
+    var t6 = document.getElementsByClassName("t6");
+    
+    ck6.onclick = function(){
+        if (ck6.checked) {
+            console.log("체크가 됨");
+            for (var i = 0; i < t6.length; i++) {
+                t6[i].checked = true;
+            }
+
+        } else {
+            console.log("체크가 안됨");
+
+            for (var i = 0; i < t6.length; i++) {
+                t6[i].checked = false;
+            }
+        }
+    }
+
+
+
 
     var bannerChild;//자식객체 -> 새로운 페이지에 대한 자식객체라고 생각하면 된다.
 
@@ -1199,7 +1481,8 @@
 
     }); 
 
-    // 공지 삭제 작성 수정 버튼 눌렀을때 반응
+    // ----------------------------------------------------------------------------------------------
+    // 고객 공지 삭제 작성 수정 버튼 눌렀을때 반응
     //삭제
     $("#delbtn").click(function(){
         if(confirm("해당 공지를 삭제하시겠습니까?")) {
@@ -1220,7 +1503,28 @@
     });
 
 
-    // -------------------------------------------------
+    // 직원 공지 삭제 작성 수정 버튼 눌렀을때 반응
+    
+    //삭제
+    $("#delbtn2").click(function(){
+        if(confirm("해당 공지를 삭제하시겠습니까?")) {
+            alert("삭제완료");
+        }
+    });
+
+    //작성
+    // adminNctModify(fix).html
+    $("#makebtn2").click(function(){
+        location.href = "./admingNtcPlus(fix).html";
+    });
+
+    
+    //수정
+    $("#modifybtn2").click(function(){
+        location.href = "./adminNctModify(fix).html";
+    });
+    // ----------------------------------------------------------------------------------------------
+
     
     //게시판 만지면 해당 영역으로 이동
 
@@ -1232,6 +1536,13 @@
     $("#morning").click(function(){
         location.href = "./adminNtcCheck2(fix).html";
     });
+
+    // 사원 대상 공지명을 눌렀을 경우 반응 -> 서버가서 손을 봐야한다
+    var total6child;
+    $("#nttable2 > tbody > tr > td:nth-child(3)").click(function(){
+        total6child = window.open("adminmainNotice.html","adn","width=1000, height=900");
+        // console.log("asd");
+    })
 
 
 </script>
