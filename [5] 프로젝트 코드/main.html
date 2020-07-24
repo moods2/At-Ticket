@@ -10,10 +10,19 @@
         <script src="js/jquery-ui.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/Backstretch.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
+            rel="stylesheet"
+        />
         <!-- font-family: 'Noto Sans KR', sans-serif; -->
         <style>
-            @font-face { font-family: 'IBMPlexSansKR-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+            @font-face {
+                font-family: "IBMPlexSansKR-Regular";
+                src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff")
+                    format("woff");
+                font-weight: normal;
+                font-style: normal;
+            }
 
             * {
                 outline: none;
@@ -22,7 +31,7 @@
                 margin: 0 auto;
             }
             h1 {
-                font-family: 'Noto Sans KR', sans-serif;
+                font-family: "Noto Sans KR", sans-serif;
                 font-size: 2em;
                 margin: 30px 0;
             }
@@ -36,7 +45,8 @@
                 margin: 0 auto;
                 z-index: 10000 !important;
             }
-            #middle1, #middle2 {
+            #middle1,
+            #middle2 {
                 /* border: 1px solid black; */
                 width: 1600px;
                 margin: 0 auto;
@@ -118,8 +128,7 @@
                 cursor: pointer;
             }
             #banner {
-                background-color: #F19B00;
-
+                background-color: #f19b00;
             }
             #bannerimg {
                 /* border: 1px solid black; */
@@ -129,22 +138,23 @@
                 background-position: center center;
                 margin-top: 20px;
             }
-            #middle1 input, #middle2 input {
+            #middle1 input,
+            #middle2 input {
                 outline: none;
             }
             #movetop {
-            width: 40px;
-            height: 40px;
-            background-color: gray;
-            position: fixed;
-            bottom: 40px;
-            right: 0;
-            text-align: center;
-            padding-top: 3px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5em;
+                width: 40px;
+                height: 40px;
+                background-color: gray;
+                position: fixed;
+                bottom: 40px;
+                right: 0;
+                text-align: center;
+                padding-top: 3px;
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                font-size: 1.5em;
             }
             #movetop:hover {
                 background-color: orange;
@@ -372,10 +382,24 @@
                 top: 190px;
                 display: none;
             }
-            .rect h2 { font-size: 1.8em; letter-spacing: -2px;}
-            .rect h1 { font-size: 5.5em; font-weight: bold; line-height: 1.3em; letter-spacing: -5px;}
-            .rect h3 { font-size: 1.2em; letter-spacing: -1px;}
-            #rect7, #rect8 { left: 420px; }
+            .rect h2 {
+                font-size: 1.8em;
+                letter-spacing: -2px;
+            }
+            .rect h1 {
+                font-size: 5.5em;
+                font-weight: bold;
+                line-height: 1.3em;
+                letter-spacing: -5px;
+            }
+            .rect h3 {
+                font-size: 1.2em;
+                letter-spacing: -1px;
+            }
+            #rect7,
+            #rect8 {
+                left: 420px;
+            }
 
             #submenu {
                 border: 1px solid rgb(202, 202, 202);
@@ -390,7 +414,6 @@
                 text-align: center;
                 display: none;
                 box-shadow: 1px 1px 4px rgb(158, 158, 158);
-              
             }
             #submenu > ul {
                 list-style-type: none;
@@ -417,16 +440,15 @@
                 display: none;
             }
             #tagsearch::after {
-                content: ''; 
-                display: none; 
+                content: "";
+                display: none;
                 clear: both;
             }
             #tag {
                 width: 168px;
                 /* background-color: rgb(253, 236, 236); */
-                background-color: #F6F6F6;
+                background-color: #f6f6f6;
                 height: 25px;
-
             }
             #tag > span {
                 color: #222;
@@ -434,7 +456,7 @@
                 width: 50px;
                 height: 30px;
                 font-weight: normal;
-                font-family: 'IBMPlexSansKR-Regular';
+                font-family: "IBMPlexSansKR-Regular";
                 position: relative;
                 left: -20px;
             }
@@ -450,7 +472,7 @@
                 display: block;
                 color: #555;
                 font-size: 14px;
-                font-family: 'IBMPlexSansKR-Regular';
+                font-family: "IBMPlexSansKR-Regular";
                 font-weight: normal;
                 text-align: left;
                 margin-left: 20px;
@@ -460,15 +482,12 @@
                 font-size: 12px;
                 color: #999;
                 font-weight: normal;
-                font-family: 'IBMPlexSansKR-Regular';
+                font-family: "IBMPlexSansKR-Regular";
 
                 float: right;
                 margin-top: 5px;
                 margin-right: 5px;
-
             }
-            
-
         </style>
     </head>
     <body>
@@ -504,7 +523,12 @@
                         <span data-lo="user_event.html" class="menubar"
                             >이벤트</span
                         >
-                        <input type="text" value="" id="search" autocomplete="off" />
+                        <input
+                            type="text"
+                            value=""
+                            id="search"
+                            autocomplete="off"
+                        />
                         <label
                             for="search"
                             class="glyphicon glyphicon-search"
@@ -525,7 +549,10 @@
                     <div id="tagsearch">
                         <div id="tag">
                             <span>태그 검색어 </span>
-                            <label id="tagremove" class="glyphicon glyphicon-remove"></label>
+                            <label
+                                id="tagremove"
+                                class="glyphicon glyphicon-remove"
+                            ></label>
                         </div>
                         <a href="#">#연극</a>
                         <a href="#">#뮤지컬</a>
@@ -536,7 +563,6 @@
                         <a href="#">#서울 전시</a>
                         <span>2020.07.23 기준</span>
                     </div>
-                    
                 </div>
                 <!-- 메인화면 좌우로 넘기는 버튼 -->
                 <div class="switch">
@@ -545,37 +571,44 @@
                 </div>
                 <div class="rect" id="rect1">
                     <h2>아름다운 가을의 서울숲에서 즐기는</h2>
-                    <h1>서울숲<br>재즈페스티벌</h1>
+                    <h1>서울숲<br />재즈페스티벌</h1>
                     <h3>2020.10.09 ~ 2020.10.11 서울숲공원 일대</h3>
                 </div>
                 <div class="rect" id="rect2">
                     <h2>4년 만에 돌아온</h2>
-                    <h1>뮤지컬<br>머더 발라드</h1>
+                    <h1>뮤지컬<br />머더 발라드</h1>
                     <h3>2020.08.11 ~ 2020.10.25 세종문화회관 S씨어터</h3>
                 </div>
                 <div class="rect" id="rect3" style="color: black;">
                     <h2>5년의 기다림, 그리고 20주년!</h2>
-                    <h1>뮤지컬<br>베르테르</h1>
+                    <h1>뮤지컬<br />베르테르</h1>
                     <h3>7월23일(목) 오후 2시 2차 티켓오픈</h3>
                 </div>
                 <div class="rect" id="rect6" style="color: black;">
                     <h2>서로에게 빛이 되어준 위로의 이야기</h2>
-                    <h1>뮤지컬<br>라 루미에르</h1>
+                    <h1>뮤지컬<br />라 루미에르</h1>
                     <h3>2020.09.11 ~ 2020.10.25 대학로 유니플렉스 2관</h3>
                 </div>
                 <div class="rect" id="rect7" style="color: black;">
                     <h2>Ah, ah, ah, ah What can I do?</h2>
-                    <h1>SURL (설)<br>concert</h1>
+                    <h1>SURL (설)<br />concert</h1>
                     <h3>2020.08.15 ~ 2020.08.16 노들섬 라이브하우스</h3>
                 </div>
                 <div class="rect" id="rect8">
                     <h2>비지정석 최대 50% 할인</h2>
-                    <h1 style="letter-spacing: -6px;">오페라의 유령<br>월드투어</h1>
-                    <h3>2020.08.19 ~ 2020.09.27 대구 계명아트센터<br>2020.03.14 ~ 2020.08.07 블루스퀘어 인터파크홀</h3>
+                    <h1 style="letter-spacing: -6px;">
+                        오페라의 유령<br />월드투어
+                    </h1>
+                    <h3>
+                        2020.08.19 ~ 2020.09.27 대구 계명아트센터<br />2020.03.14
+                        ~ 2020.08.07 블루스퀘어 인터파크홀
+                    </h3>
                 </div>
                 <div class="rect" id="rect9">
                     <h2>3천원 할인쿠폰 증정</h2>
-                    <h1 style="font-size: 5em;">그랜드 민트<br>페스티벌 2020</h1>
+                    <h1 style="font-size: 5em;">
+                        그랜드 민트<br />페스티벌 2020
+                    </h1>
                     <h3>2020.10.24 ~ 2020.10.25 올림픽공원 내</h3>
                 </div>
             </div>
@@ -642,7 +675,7 @@
                         </li>
                     </ul>
                 </div>
-                <br>
+                <br />
                 <!-- 최신, 인기 공연 목록(순위별) -->
                 <div style="text-align: center;">
                     <h1>WHAT'S HOT</h1>
@@ -1099,7 +1132,7 @@
                         display: "block",
                         position: "fixed",
                         left: "50px",
-                        top: "200px"
+                        top: "200px",
                     });
                 }
 
@@ -1118,31 +1151,37 @@
                         color: "white",
                     });
                     $("#submenu").css({
-                        display: "none"
+                        display: "none",
                     });
                 }
             });
 
             //검색창 커서 있을때 팝업 띄우기
-            $("#search").focusin(function(){
-                $("#tagsearch").css("display","block");
-                $("#search").css("border-bottom","2px solid black");
-
+            $("#search").focusin(function () {
+                $("#tagsearch").css("display", "block");
+                $("#search").css("border-bottom", "2px solid black");
             });
             //검색창 팝업 닫기
-            $("#search").focusout(function(){
-                $("#tagsearch").css("display","none");
+            $("#search").focusout(function () {
+                $("#tagsearch").css("display", "none");
             });
-            $("#tagremove").click(function(){
-                $("#tagsearch").css("display","none");
+            $("#tagremove").click(function () {
+                $("#tagsearch").css("display", "none");
             });
-
 
             //top에있는 그림 자동 슬라이드
             $("#top").backstretch(
-                ["./images/bg1.jpg", "./images/bg2.jpg", "./images/bg3.jpg",
-                "./images/bg4.jpg", "./images/bg5.jpg", "./images/bg6.jpg",
-                "./images/bg7.jpg", "./images/bg8.jpg", "./images/bg9.jpg"],
+                [
+                    "./images/bg1.jpg",
+                    "./images/bg2.jpg",
+                    "./images/bg3.jpg",
+                    "./images/bg4.jpg",
+                    "./images/bg5.jpg",
+                    "./images/bg6.jpg",
+                    "./images/bg7.jpg",
+                    "./images/bg8.jpg",
+                    "./images/bg9.jpg",
+                ],
                 { duration: 3000, fade: 1000 }
             );
 
@@ -1152,12 +1191,11 @@
                 $(".rect").css("display", "none");
                 console.log(index);
                 index++;
-                $(`#rect${index}`).fadeIn('slow')
+                $(`#rect${index}`).fadeIn("slow");
 
-                timer = setTimeout(function() {
+                timer = setTimeout(function () {
                     $(".rect").css("display", "none");
                 }, 3100);
-
             });
 
             //top에있는 그림 이전으로
@@ -1234,15 +1272,17 @@
                 );
             });
             //페이지 하단으로 내려가기
-            $("#movebottom").click(function() {
+            $("#movebottom").click(function () {
                 //<a> 본연의 기능을 제거
                 event.preventDefault();
 
-                $("html,body").animate({
-                    scrollTop: $(document).height()
-                }, 1000);
+                $("html,body").animate(
+                    {
+                        scrollTop: $(document).height(),
+                    },
+                    1000
+                );
             });
-
         </script>
     </body>
 </html>
