@@ -27,7 +27,7 @@
                 margin: 0 auto;
                 z-index: 10000 !important;
             }
-            #middle {
+            #middle1, #middle2 {
                 /* border: 1px solid black; */
                 width: 1600px;
                 margin: 0 auto;
@@ -107,13 +107,18 @@
                 cursor: pointer;
             }
             #banner {
+                background-color: #F19B00;
+
+            }
+            #bannerimg {
+                /* border: 1px solid black; */
                 height: 400px;
-                background-image: url("./images//banner.png");
+                background-image: url("../images//banner.png");
                 background-repeat: no-repeat;
                 background-position: center center;
                 margin-top: 20px;
             }
-            #middle input {
+            #middle1 input, #middle2 input {
                 outline: none;
             }
             #movetop {
@@ -474,7 +479,7 @@
                 </div>
             </div>
             <!-------------------------------- 내용부분 -------------------------------->
-            <div id="middle">
+            <div id="middle1">
                 <div id="submenu">
                     <ul>
                         <li><a href="user_notice.html">공지사항</a></li>
@@ -615,8 +620,12 @@
                     />
                 </div>
                 <hr />
-                <!-- 배너 이미지 -->
-                <div id="banner"></div>
+            </div>
+            <!-- 배너 이미지 -->
+            <div id="banner">
+                <div id="bannerimg"></div>
+            </div>
+            <div id="middle2">
                 <hr />
                 <div style="text-align: center;">
                     <h1>RANKING</h1>
@@ -907,7 +916,7 @@
 
             $(document).scroll(function () {
                 //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
-                if ($(document).scrollTop() > $("#middle").position().top) {
+                if ($(document).scrollTop() > $("#middle1").position().top) {
                     $("#topmenu").css({
                         width: "100%",
                         position: "fixed",
@@ -942,7 +951,7 @@
                 }
 
                 //상단 헤더(top)이 눈에 보일때 쯤
-                if ($(document).scrollTop() <= $("#middle").position().top) {
+                if ($(document).scrollTop() <= $("#middle1").position().top) {
                     $("#topmenu").css({
                         position: "absolute",
                         top: "0px",
