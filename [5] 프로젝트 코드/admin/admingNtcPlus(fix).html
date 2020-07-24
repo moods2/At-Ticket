@@ -222,47 +222,57 @@
             border-bottom: 1px dashed black;
         }
 
-        /*  */
         
-  #selectable {
-            /* border : 1px solid red; */
+        #selectable {
             width : 1330px;
             margin-left : 350px;
             height : 600px;
             margin-top : 20px;
         }
+
         .selectNotice {
             width : 100px;
             text-align: center;
             margin: 10px 0px;
             margin-bottom: 0px;
-            background-color: #444444;
+            background-color: white;
             border : 0px;
             border-radius: 5px;
-            color : rgb(220,220,220);
-            font-weight: bold;
+            color : #999;
+            font-size: 1.3em;
             height : 40px;
         }
 
         .selectNotice:hover {
-            color : white;
+            color : black;
         }
         #nttable {
             margin-left : 0px;
         }
         #nttable th {
-            background-color:  #444444;
+            background-color:  #999;
             text-align: center;
-            color : white;
         }
-        #nttable th:nth-child(1) {width : 130px;}
-        #nttable th:nth-child(2) {width : 775px;}
-        #nttable th:nth-child(3) {width : 300px;}
-        #nttable th:nth-child(4) {width : 40px;}
+        #nttable td {
+            text-align: center;
+        }
+
+        #nttable td:nth-child(3) {
+            padding-left : 20px;
+            text-align: left;
+        }
+        
+        #nttable td:nth-child(1) {
+            text-align: left;
+        }        
+
+        #nttable th:nth-child(1) {width : 40px;}
+        #nttable th:nth-child(2) {width : 130px;}
+        #nttable th:nth-child(3) {width : 775px;}
+        #nttable th:nth-child(4) {width : 300px;}
 
 
         #nttable tbody td {
-            /* color :red; */
             font-size: 1.3em;
         }
 
@@ -289,19 +299,20 @@
 
        #slctp1, #slctp2 {
             float : left;
-            /* margin-left : 100px; */
+        }
+        #slctp1 {
+            margin-left: -13px;
         }
         #slctp2 {
             margin-top : 10px;
             margin : 10px auto;
             margin-bottom: 10px;
             width : 300px;
-            margin-left: 720px;
+            margin-left: 736px;
         }
 
         #searchlogo:hover {
             cursor: pointer;
-            /* background-color: rgb(red, green, blue); */
         }
         #topSelect div {
             float : left;
@@ -405,89 +416,88 @@
         <table style = "width:1330px;" class = "table table-striped table-bordered table-condensed" id = "nttable">
             <thead>
                 <tr>
+                    <th>선택</th>
                     <th>번호</th>
                     <th>이름</th>
                     <th>날짜</th>
-                    <th>선택</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>1</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>1</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>2</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>3</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>4</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>5</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>6</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>7</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>8</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>9</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
 
                 </tr>
                 <tr>
+                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
                     <td>10</td>
                     <td>가나다 콘서트</td>
                     <td> 2020.02.17(월) 15:00</td>
-                    <td class = "tdbox"><input type="checkbox" class = "t5"></td>
-
                 </tr>
             </tbody>
         </table>
@@ -714,30 +724,52 @@
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
                      type="button" value="Logout" id="btn2" class="btn">
         </div>
+        <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
-           <!-- 여기에 메뉴 -->
-           <h3>공연</h3>
-           <div>
+            <h3>공연</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
             </div>
-           <h3>통계</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
-           <h3>정산 관리</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
-           <h3>직원 정보</h3>
-           <div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
             </div>
-           <h3>이벤트</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-           <h3>1:1 문의</h3>
-             <div><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
-           <h3>공연 랭킹</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
-           <h3>공지사항</h3>
-                <div ><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
-           <h3>고객 정보</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+            <h3>공연 랭킹</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+            <h3>고객 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            </div>
+            <h3>업무 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+            </div>
+            <h3>Q&A 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>  
         </div>
         <!-- container -->
 
@@ -787,7 +819,7 @@
         <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
-    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
 
 

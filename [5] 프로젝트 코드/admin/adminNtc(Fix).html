@@ -241,8 +241,9 @@
                 border-right: 1px solid #999;
                 color : #777;
                 padding: 0px;
+                /* padding-left : -120px; */
                 padding-right: 5px;
-                /* font-size: 1.5em; */
+                font-size: 1.1em;
         }
         .selectNotice:last-child {
             border-right: 0px;
@@ -308,6 +309,7 @@
         }
         #slctp1 {
             margin-left : -10px;
+            /* margin-bottom:-10px; */
         }
 
         #slctp2 {
@@ -769,9 +771,9 @@
 
         <!-- 내용물 수정/삭제 페이지 -->
         <div id = "manipulate">
-            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 공지삭제</button>
             <button class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i> 공지작성</button>
             <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i> 공지수정</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 공지삭제</button>
         </div>
             <!-- <input type="button" class = "modified" value = "공지삭제"> -->
         <!-- <input type="button" class = "modified" value = "공지작성"> -->
@@ -824,34 +826,52 @@
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
                      type="button" value="Logout" id="btn2" class="btn">
         </div>
+        <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
-           <!-- 여기에 메뉴 -->
-           <h3>공연</h3>
-           <div>
+            <h3>공연</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShowAdd.html"><span>▶</span> 공연 추가</a></div>
             </div>
-           <h3>통계</h3>
-           <div>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
-           </div>
-           <h3>정산 관리</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
-           <h3>직원 정보</h3>
-           <div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShowAdd.html"></a><a href="adminEmploAdd.html"><span>▶</span> 직원 추가</a></div>
             </div>
-           <h3>이벤트</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-           <h3>1:1 문의</h3>
-             <div><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
-           <h3>공연 랭킹</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
-           <h3>공지사항</h3>
-            <div><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
-           <h3>고객 정보</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+            <h3>공연 랭킹</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+            <h3>고객 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            </div>
+            <h3>업무 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+            </div>
+            <h3>Q&A 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>  
         </div>
         <!-- container -->
 
@@ -1160,7 +1180,7 @@
 
         } else {
             console.log("체크가 안됨");
-            // t5.checked = "uncheked";
+
             for (var i = 0; i < t5.length; i++) {
                 t5[i].checked = false;
             }
