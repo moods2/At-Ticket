@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <style>
+        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
+        @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+        html{
+            width: 1100px;
+        }
+        h1{
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 3em; 
+            color: #111;
+        }
+
+        #left {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 250px;
+            height: 2000px;
+            /* border: 1px solid black; */
+            background-color: #444;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #left .info {
+            margin-left: 56px;
+            text-align: left;
+            font-variant: small-caps;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .accomenu {
+            /* margin-top: 30px; */
+            margin-left: 10px;
+            width : 260px;
+            padding-right : 25px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
+        }
+
+        .b {
+            margin-top: 30px;
+            float: left;
+        }
+
+        .b::after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        #topmenu {
+            /* border: 1px solid blue; */
+            width: 100%;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            float: right;
+            align-content: right;
+
+        }
+        #topmenu .search {
+            /* border: 1px solid black; */
+            width: 250px;
+            margin-top: 10px;
+            float: right;
+           
+        }
+        #topmenu .home {
+            /* border: 1px solid black; */
+            width: 50px;
+            float: right;
+            margin-top: 7px;
+            cursor: pointer;
+            color: #444
+        }
+
+        #calendar {
+           margin-top: 70px;
+           margin-left: -20px;
+        }
+
+        #cal {
+            position: relative;
+            top: 15px;
+            left: 5px;
+        }
+
+        #bottom {
+            position: absolute;
+            top: 2000px;
+        }
+
+        #sw {
+            margin-top: 850px;
+            cursor: pointer;
+        }
+
+        /* 새로 추가한 코드 */
+        /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
+        .accomenu tr td:hover {
+            cursor : pointer;
+        }
+
+         #movetop {
+            width: 40px;
+            height: 40px;
+            background-color: #777;
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            text-align: center;
+            padding-top: 3px;
+        }
+        #movetop:hover {
+            background-color: #444;
+            cursor : pointer;
+        }
+
+        #movetop {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        body{
+            font-family: 'NanumBarunGothic';
+        }
+
+        /* 아코디언 메뉴 css */
+        .ui-state-active {
+            background-color: red;
+            background-image: url();
+        }
+        .ui-state-hover {
+            background-color: #444;
+            background-image: url();
+
+        }
+
+        .ui-accordion-header {
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NEXON Lv1 Gothic OTF Light';
+            /* font-weight: bolder; */
+            
+        }
+        .ui-accordion-content {
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NanumBarunGothic';
+        }
+        .ui-accordion-content div:hover {
+            background: #333;
+        }
+        .ui-widget-content a{
+            color: white;
+            text-decoration: none;
+        }
+        .ui-widget-content span {
+            font-size: 10px;
+        }
+        .ui-accordion .ui-accordion-header {
+            /* border: 0px; */
+            outline: none;
+          
+        }
+       #right {
+            border : 1px solid red;
+            margin-left: 300px;
+            margin-top: 100px;
+            width : 700px;
+            /* color : white;
+            background-color: #C27BA0; */
+        }
+        #visitTitle {
+            margin : 15px auto;
+            border : 5px solid #C27BA0;
+            color : #C27BA0;
+            text-align: center;
+            width : 120px;
+            font-size: 2em;
+        }
+        #right2 {
+            border : 1px solid black;
+            /* text-align: center; */
+
+        }
+        /* 최상단 타이틀 */
+        #title{
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+
+        /* 게시판 th 관리 */
+        .tableth {
+            text-align: center;
+        }
+
+       .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+           background-color:#999999;
+           border-color: #eeeeee;
+       }
+        
+      .pagination > li > a, .pagination > li > span{
+          color: black;
+         }
+
+        /* 직원들을 위한 공지 */
+        #nttable2 {
+            margin-left : 0px;
+        }
+        #nttable2 th {
+            background-color:  #999;
+        }
+        #nttable2 th:nth-child(1) {width : 130px;}
+        #nttable2 th:nth-child(2) {width : 675px;}
+        #nttable2 th:nth-child(3) {width : 300px;}
+        #nttable2 th:nth-child(4) {width : 130px;}
+
+
+        #nttable2 tbody td {
+            text-align: center;
+        }
+
+        #nttable2 tbody td:nth-child(2) {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+
+        #nttable2 > tbody > tr > td:nth-child(2):hover {
+            cursor : pointer;
+            text-decoration: underline;
+        }
+
+        #selectable {
+            /* border : 1px solid blue; */
+            width : 1330px;
+            margin-left : 350px;
+            height : 1800px;
+        }
+
+                #slctp1, #slctp2 {
+            float : left;
+            /* margin-left : 100px; */
+            margin-bottom: 0px;
+        }
+        #slctp1 {
+            margin-left : -10px;
+            /* margin-bottom:-10px; */
+        }
+
+        #slctp2 {
+            margin-top : 10px;
+            margin : 10px auto;
+            margin-bottom: 10px;
+            width : 300px;
+            margin-left: 792px;
+        }
+        #searchlogo:hover {
+            cursor: pointer;
+        }
+
+        .selectNotice {
+                width : 80px;
+                /* text-align: center; */
+                margin: 10px 0px;
+                margin-bottom: -10px;
+                background-color: white;
+                border : 0px;
+                height : 20px;
+                border-right: 1px solid #999;
+                color : #777;
+                padding: 0px;
+                /* padding-left : -120px; */
+                padding-right: 5px;
+                font-size: 1.1em;
+        }
+        .selectNotice:last-child {
+            border-right: 0px;
+        }
+
+        .selectNotice:hover {
+            color : #111;
+            font-weight: bold;
+        }
+        
+        
+        
+        
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminMain</title>
+</head>
+
+<body>
+    <!-- 여기에 내용 삽입 -->
+    <div id = "title">
+        <h1 id = "realTitle">공지사항 <small id = "mainHome"> > 공지등록  </small></h1>
+    </div>
+ 
+    
+    
+    <div id = "selectable" style = "margin-top : 50px;">
+
+        <style>
+
+            #editcont table {
+                margin-left : 260px;
+                margin-top : 50px;
+                
+            }
+
+            /* 수정하기 만들기 테이블 의 td 조정 */
+            #editcont table td  {
+                border: 1px solid black;    
+                border: 3px solid #D2D2D2;
+            }
+
+            /* 테이블의 기준 이름*/
+            
+            .innercontents {
+                font-size: 1.3em;
+                padding-left: 10px;
+                width : 150px;
+                background-color: #F0F0F0;
+                  
+                 
+            }
+
+            /* 제목 */
+            #intitle {
+                /* height :50px; */
+                /* width : 70px; */
+            }
+
+
+        </style>
+
+        <!-- 수정하기 & 만들기 -->
+        <div id = "editcont">
+            <table style = "border : 1px solid black">
+                <tr>
+                    <td id = "intitle" class = "innercontents" style = "height : 50px;">제목</td>
+                    <td  colspan="3"><input type="text" style = "margin-left: 10px; border : 1px solid #999; width : 500px; height : 30px;  outline : none;"></td>
+                </tr>
+                <tr>
+                    <td id = "target" class = "innercontents" style = "height : 50px;">대상</td>
+                    <td style = "width : 300px;">
+                        <select name="" id="" style = "margin-left : 10px; height : 30px; width : 100px;">
+                            <option value="all">전직원</option>
+                            <option value="emp">직원</option>
+                            <option value="exc">임원</option>
+                            <option value="exc">개발부</option>
+                            <option value="exc">인사부</option>
+                            <option value="exc">유얼마이부</option>
+                            <option value="exc">임원</option>
+                        </select>
+                    </td>
+                    <td id = "hotline" class = "innercontents">강조</td>
+                    <td>
+                        <select name="" id="" style = "margin-left : 10px; height : 30px; width : 80px;">
+                            <option value="">긴급</option>
+                            <option value="">정기</option>
+                            <option value="">기밀</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td id = "intext" class = "innercontents" style = "height : 50px;">첨부파일</td>
+                    <td colspan="3"><input type="file" style = "margin-left : 10px;"></td>
+                </tr>
+                <tr>
+                    <td id = "intext" class = "innercontents" style = "height : 500px;">내용</td>
+                    <td colspan="3">
+                        <textarea name="" id="" cols="100" rows="25" style = "resize : none; border : 0px; outline :none;"></textarea>
+                    </td>
+                </tr>
+            </table> 
+            
+            <style>
+                #inputs {
+                    margin-top : 30px;
+                    margin-left : 635px;
+                    /* border : 2px solid black; */
+                }
+                
+                /* 수정하기 버튼 */
+                #editbtn {
+                    border : 2px solid #D2D2D2;
+                    font-size: 1.3em;
+                    text-align: center;
+                    background-color: #F0F0F0;
+                    width : 120px;
+                    height : 40px;
+                    font-weight: bold;
+                }
+
+                #editbtn:hover {
+                    cursor: pointer;
+                    background-color: #E5E5E5;
+                    
+                }
+
+                
+            
+            </style>
+            
+            <div id = "inputs">
+                <input id = "editbtn" type="text" value = "등록">
+            </div> 
+        </div>
+
+    
+
+        </div><!-- selectable -->
+        
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <div id="left">
+        
+        <img src="../images/man.png" 
+            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius: 50%; background-color: #999;">
+        <div class="info" style="color:white">
+            <span><br>Welcome,</span></br></span>
+            <span>Hong gil dong</span>
+        </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
+                class="btn">
+        </div> -->
+        <div id = "logout">
+            <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
+                     type="button" value="Logout" id="btn2" class="btn">
+        </div>
+ <!-- 왼쪽 바 메뉴 -->
+        <div class="accomenu">
+            <h3>공연</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
+            </div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
+            </div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+            <h3>공연 랭킹</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+            <h3>고객 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            </div>
+            <h3>업무 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+            </div>
+            <h3>Q&A 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>  
+        </div>
+        <!-- container -->
+
+
+        
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
+                class="btn">
+        </div> -->
+
+        <div id="calendar">
+            <input style="width: 100px;" type="text" name="date" id="date" value="">
+            <label for="date"><span style="font-size: 2.5em; color:white" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
+        </div>
+
+        <!-- 티켓 사이트 로고 바로가기 -->
+        <div style="margin-top: 20px; position: fixed; bottom: 30px; left: 70px;">
+            <img src="../images/title.png" id="tickethome" 
+                    style="cursor: pointer; height: 50px;">
+        </div>
+
+
+    </div>
+
+
+    <div id="topmenu">
+        <div class="home">
+            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
+        </div>
+        <div class="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
+                            class="glyphicon glyphicon-search"></i></span>
+                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
+                        placeholder="검색어를 입력하세요.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id = "fixedBtn">
+        <img src = "../images/switch_on.png" id="sw" name="sw"
+            style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
+
+        <!-- 제일 위로 돌아가기 -->
+        <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
+    </div>
+
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"></div> -->
+    </div>
+
+
+    
+
+
+</body>
+<script>
+    var date = document.getElementById("date");
+    var now = new Date();
+    var sw = document.images["sw"];
+
+    //날짜 자동 입력, 읽기만 가능 
+    date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
+    if (date.value != null) {
+        date.readOnly = true;
+    }
+
+    // 캘린더
+        $("#date").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: now.getFullYear() + "-1-1",
+            maxDate: now.getFullYear() + "-12-" + "31"
+        });
+
+   
+
+    document.body.bgColor = "white";
+    
+
+
+    //스위치 
+    var swCount = 1;
+    $("#sw").click(function () {
+        console.log("클릭함");
+
+            if(swCount % 2 == 0) {
+
+                console.log("들어옴");
+                sw.src="../images/switch_on.png";
+                $("body").css("background-color","white");
+                $("#homeLogo").css("color","#333333");
+                $("#adminName").css("color","#333333");
+                $("#realTitle").css("color","#333");
+                $("#mainHome").css("color","#333");
+            } else {
+                sw.src="../images/switch_off.png";
+                $("body").css("background-color","#292A2D");
+                $("#homeLogo").css("color","white");
+                $("#adminName").css("color","white");
+                $("#realTitle").css("color","white");
+                $("#mainHome").css("color","white");
+
+            }
+            swCount++;
+    });
+
+    // $("#btn1").click(function(){
+    //     window.open("login.html","Login","width=300, height=300");
+    // });
+    
+    // 버튼을 클릭하면 로그아웃 창이 뜸
+    $("#btn2").click(function(){
+        if(confirm("로그아웃하시겠습니까?")){
+            console.log("로그아웃 되었습니다.");
+         }
+    });
+
+    $(".accomenu").accordion({
+        collapsible: true,
+        active: false
+    });
+
+    //홈버튼 링크
+    $("#homeLogo").click(function() {
+        location.href = "adminMain.html";
+    });
+
+    //상단 메뉴 고정
+    $(document).scroll(function() {
+        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            if ($(document).scrollTop() > $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    width: "100%",
+                    position: "fixed",
+                    top: "0px",
+                    bottom: "",
+                    zIndex: "1"
+                });
+
+            };
+
+        //상단 헤더(top)이 눈에 보일때 쯤
+        if ($(document).scrollTop() <= $("#topmenu").position().top) {
+            $("#topmenu").css({
+                position: "absolute",
+                top: "0px",
+                bottom: ""
+            });             
+        }
+    });
+
+
+    //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
+    $("#btn2").mouseenter(function(){
+        // $("#btn2").css("background-color","cornflowerblue");
+        $("#btn2").css("color","white");
+    });
+    $("#btn2").mouseleave(function(){
+        // $("#btn2").css("background-color","#C27BA0");
+        $("#btn2").css("color","#D5D5D5");
+    })
+
+    //티켓 홈
+    $("#tickethome").click(function() {
+        window.open("../main.html","At-Ticket");
+    });
+
+    
+    //상단으로 돌아가기 -> 스무스 하게 올림
+    $("#movetop").click(function(){
+        	
+        $("html,body").animate({
+			scrollTop: 0
+		}, 700);
+        
+    });
+
+    //검색
+    $("#btnsearch").click(function(){
+        // 검색어 넘기기
+        window.location.href="adminSearch.html";
+    });
+
+
+    //메뉴 링크
+    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
+    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
+    
+
+
+    //등록하기 버튼을 눌렀을 때
+    $("#editbtn").click(function(){
+
+        if(confirm("해당 공지를 등록하시겠습니까?")) {
+            alert("등록완료");
+
+            location.href = "./adminNtc(Fix).html";
+        }
+
+    });
+    
+    
+
+</script>
+
+</html>
