@@ -931,7 +931,9 @@
               4Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
             </div>
             <div id="step5">
-              5Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    <!-- 결제해줘!!!=========================================================================================== -->
+            5Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    <!-- ======================================================================================================= -->
             </div>
           </div>
     </div>
@@ -1100,13 +1102,18 @@
         var l = 53;
         //위
         var t = 135;
+        // 구역
+        var g = "";
+        // 번호
+        var gn = 1;
 
         for(r=5; r<45; r++){
 
             for(m=13; m<68; m++){
 
-                $("#container").append('<div class="s6" id="t'+ r+'000'+ m +'" style="left:'+l+'px; top:'+t+'px;" name="tk" value="'+ r+'000'+ m +'"></div>');
+                $("#container").append('<div class="s6" id="t'+ r+'000'+ m +'" style="left:'+l+'px; top:'+t+'px;" name="tk" value="'+ r+'000'+ m +'" title= "1층 '+g+'구역 '+(r-4)+'열 '+gn+'번" grade="지정석"></div>');
 
+                //열이동
                 if(m == 67){
                     l =53;
                 } else{
@@ -1114,6 +1121,17 @@
                     l = l+11;
                 }
 
+                //구역 정하기
+                if(m<38){
+                    g = "A";
+                    gn = m-12;
+                }
+                if(m>=38){
+                    g = "B";
+                    gn = m-1;
+                }             
+
+                //나머지 지우기
                 if(m >=38 && m<43){
                     $("#t"+r+"000"+m+"").css("display","none");
                 }
@@ -1122,7 +1140,7 @@
                 t = t+12;
         }
 
-        // div 만들기 2층
+         // div 만들기 2층
         //행
         var R = 5;
         //열
@@ -1180,40 +1198,17 @@
                 T = T+12;
         }
 
+
+        //체크표시 2층
         var checkList = [];
+        var sitFinul = [];
 
         $(document).ready(function (){
-            $(document).ready(function (){
             // 클릭하면 체크이미지로
             $('div[name=tt]').click(function (){
                 s8ClickedEvent($(this));
             });
 
-
-
-        function s8ClickedEvent(obj) {
-            // 체크이미지로 변하면서 title을 선택한 좌석ul에 li의 값으로추가
-            if($(obj).attr("class") == "s8"){
-                // list 추가
-                checkList.push("<li>"+ $(obj).attr("title") +"</li>");
-
-                //li초기화
-                $("#choiceSit ul").empty();
-                //list값 ul에 li로 추가
-                $("#choiceSit ul").append(checkList);
-
-                // 체크이미지로 변환
-                $(obj).attr({
-                    'class':'son'
-                });
-            };
-            
-            // 재클릭 다시 돌아가기
-            $(".son").click(function(){
-                console.log(this);
-                sonClickedEvent($(this));
-            });
-            
             //좌석 다시 선택 버튼
             $("#reChoice").click(function(){
                 // 좌석 이미지 다 원래대로
@@ -1222,80 +1217,94 @@
                 });
                 //선택한 좌석 li 다 지우기
                 $("#choiceSit ul").empty();
+                $("#sitFinul").empty();
+                $("#ticketNum").text("");
+                $("#tickectPice").text("");
             });
-        }
-
-
-        function sonClickedEvent(obj){
-                //원래 이미지로 변환
-            $(obj).attr({
-                'class':'s8'
-            });
-
-            var wIndex = checkList.indexOf("<li>"+ $(obj).attr("title") +"</li>");
-
-            if(wIndex === -1) return;
-            
-            console.log("지울값 인덱스: "+ wIndex);
-            console.log("지울값 텍스트: "+"<li>"+ $(obj).attr("title") +"</li>");
-            console.log("리스트 전체: "+ checkList);
-
-            //클릭한 이미지 name값 list에서 지우기
-            if(wIndex >= 0){
-                checkList.splice(wIndex ,1);
-            }
-
-            console.log("지우고 난 뒤 list"+ checkList);
-            console.log("===============================================================");
-
-            $(".s8").click(function(){
-                s8ClickedEvent($(this));
-            });
-
-            //li초기화
-            $("#choiceSit ul").empty();
-            //list값 ul에 li로 추가
-            $("#choiceSit ul").append(checkList);
-
-
-        }
-                    
-            // 체크이미지로 변하면서 title을 선택한 좌석ul에 li의 값으로추가
-
-        //2층
-        var checkList2 = [];
-
-        $(document).ready(function (){
-        // 클릭하면 체크이미지로
-        $('div[name=tk]').click(function (){
-            s8ClickedEvent($(this));
         });
+        
+
+        function s8ClickedEvent(obj) {
+            var checked = $(obj).attr('checked');
+            
+            if(!checked) {
+                $(obj).attr('checked', true);
 
 
-
-        function s6ClickedEvent(obj) {
-            // 체크이미지로 변하면서 title을 선택한 좌석ul에 li의 값으로추가
-            if($(obj).attr("class") == "s6"){
+                if($(obj).attr("class") == "s8"){
                 // list 추가
-                checkList2.push("<li>"+ $(obj).attr("title") +"</li>");
+                    checkList.push("<li>"+ $(obj).attr("title") +"</li>");
+                    sitFinul.push("<dd>"+ $(obj).attr("title") +"</dd>");
+
+                    //li초기화
+                    $("#choiceSit ul").empty();
+                    $("#sitFinul").empty();
+                    $("#ticketNum").text("");
+                    $("#tickectPice").text("");
+                    //list값 ul에 li로 추가
+                    $("#choiceSit ul").append(checkList);
+                    $("#sitFinul").append(sitFinul);
+                    $("#ticketNum").text($("#sitFinul").children().length);
+                    $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
+
+                    // 체크이미지로 변환
+                    $(obj).attr({
+                        'class':'son'
+                    });
+                };
+            
+            }else{
+                $(obj).attr('checked', false);
+
+                $(obj).attr({
+                    'class':'s8'
+                });
+
+                var wIndex = checkList.indexOf("<li>"+ $(obj).attr("title") +"</li>");
+                var xIndex = sitFinul.indexOf("<dd>"+ $(obj).attr("title") +"</dd>");
+
+                console.log("지울값 인덱스: "+ wIndex);
+                console.log("지울값 텍스트: "+"<li>"+ $(obj).attr("title") +"</li>");
+                console.log("리스트 전체: "+ checkList);
+
+                //클릭한 이미지 name값 list에서 지우기
+                if(wIndex >= 0){
+                    checkList.splice(wIndex ,1);
+                    sitFinul.splice(xIndex ,1);
+                }
+
+                console.log("지우고 난 뒤 list"+ checkList);
+                console.log("===============================================================");
 
                 //li초기화
                 $("#choiceSit ul").empty();
+                $("#sitFinul").empty();
+                $("#ticketNum").text("");
+                $("#tickectPice").text("");
                 //list값 ul에 li로 추가
-                $("#choiceSit ul").append(checkList2);
+                $("#choiceSit ul").append(checkList);
+                $("#sitFinul").append(sitFinul);
+                $("#ticketNum").text($("#sitFinul").children().length);
+                $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
 
-                // 체크이미지로 변환
-                $(obj).attr({
-                    'class':'son'
-                });
-            };
+            }
             
-            // 재클릭 다시 돌아가기
-            $(".son").click(function(){
-                console.log(this);
-                sonClickedEvent($(this));
+            // 체크이미지로 변하면서 title을 선택한 좌석ul에 li의 값으로추가
+            
+            
+            
+        }
+                
+        //체크표시 1층
+        var checkList2 = [];
+        var sitFinul2 = [];
+
+        $(document).ready(function (){
+            // 클릭하면 체크이미지로
+            $('div[name=tk]').click(function (){
+                s6ClickedEvent($(this));
             });
-            
+
             //좌석 다시 선택 버튼
             $("#reChoice").click(function(){
                 // 좌석 이미지 다 원래대로
@@ -1304,53 +1313,85 @@
                 });
                 //선택한 좌석 li 다 지우기
                 $("#choiceSit ul").empty();
+                $("#sitFinul").empty();
+                $("#ticketNum").text("");
+                $("#tickectPice").text("");
             });
-        }
+        });
+        
 
-
-        function sonClickedEvent(obj){
-                //원래 이미지로 변환
-            $(obj).attr({
-                'class':'s6'
-            });
-
-            var wIndex = checkList2.indexOf("<li>"+ $(obj).attr("title") +"</li>");
-
-            if(wIndex === -1) return;
+        function s6ClickedEvent(obj) {
+            var checked = $(obj).attr('checked');
             
-            console.log("지울값 인덱스: "+ wIndex);
-            console.log("지울값 텍스트: "+"<li>"+ $(obj).attr("title") +"</li>");
-            console.log("리스트 전체: "+ checkList2);
-
-            //클릭한 이미지 name값 list에서 지우기
-            if(wIndex >= 0){
-                checkList2.splice(wIndex ,1);
-            }
-
-            console.log("지우고 난 뒤 list"+ checkList2);
-            console.log("===============================================================");
-
-            $(".s6").click(function(){
-                s6ClickedEvent($(this));
-            });
-
-            //li초기화
-            $("#choiceSit ul").empty();
-            //list값 ul에 li로 추가
-            $("#choiceSit ul").append(checkList2);
+            if(!checked) {
+                $(obj).attr('checked', true);
 
 
-        }
+                if($(obj).attr("class") == "s6"){
+                // list 추가
+                    checkList2.push("<li>"+ $(obj).attr("title") +"</li>");
+                    sitFinul2.push("<dd>"+ $(obj).attr("title") +"</dd>");
+
+                    //li초기화
+                    $("#choiceSit ul").empty();
+                    $("#sitFinul").empty();
+                    $("#ticketNum").text("");
+                    //list값 ul에 li로 추가
+                    $("#choiceSit ul").append(checkList2);
+                    $("#sitFinul").append(sitFinul2);
+                    $("#ticketNum").text($("#sitFinul").children().length);
+                    $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
+                    $("#susu").text(2000+ "원");
                     
+                    // 체크이미지로 변환
+                    $(obj).attr({
+                        'class':'son'
+                    });
+                };
+            
+            }else{
+                $(obj).attr('checked', false);
+
+                $(obj).attr({
+                    'class':'s6'
+                });
+
+                var wIndex = checkList2.indexOf("<li>"+ $(obj).attr("title") +"</li>");
+                var xIndex = sitFinul2.indexOf("<dd>"+ $(obj).attr("title") +"</dd>");
+
+                console.log("지울값 인덱스: "+ wIndex);
+                console.log("지울값 텍스트: "+"<li>"+ $(obj).attr("title") +"</li>");
+                console.log("리스트 전체: "+ checkList2);
+
+                //클릭한 이미지 name값 list에서 지우기
+                if(wIndex >= 0){
+                    checkList2.splice(wIndex ,1);
+                    sitFinul2.splice(xIndex ,1);
+                }
+
+                console.log("지우고 난 뒤 list"+ checkList2);
+                console.log("===============================================================");
+
+                //li초기화
+                $("#choiceSit ul").empty();
+                $("#sitFinul").empty();
+                $("#ticketNum").text("")
+                $("#tickectPice").text("")
+                //list값 ul에 li로 추가
+                $("#choiceSit ul").append(checkList2);
+                $("#sitFinul").append(sitFinul2);
+                $("#ticketNum").text($("#sitFinul").children().length);
+                $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
+
+            }
+            
             // 체크이미지로 변하면서 title을 선택한 좌석ul에 li의 값으로추가
             
             
             
-        
+        }
                 
     </script>
 
 </body>
 </html>
-
-        
