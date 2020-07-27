@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./css/jquery-ui.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="css/slick-theme.css">
@@ -1603,6 +1604,15 @@
                 $(".tabss").css("display","none");
                 $('#'+$(this).attr("data-tab")).css("display","block");
 
+        });
+
+        // 예매하기 링크1
+        $("#ticketing").click(function(){
+            $(location).attr('href','user_ticketpage.html');
+        });
+        // 예매하기 링크2
+        $("#mTTicketing").click(function(){
+            $(location).attr('href','user_ticketpage.html');
         });
 
     </script>
