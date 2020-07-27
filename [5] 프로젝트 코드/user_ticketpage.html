@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/jquery-ui.css">
     <script src="js/jquery-1.12.4.js"></script>
-	<script src="js/jquery-ui.js"></script>
+   <script src="js/jquery-ui.js"></script>
 </head>
     <style>
 
@@ -414,8 +414,20 @@
              color: white;
          }
 
+
+         #sitFinul {
+             width: 230px;
+             height: 60px;
+             /* border: 1px solid white; */
+             overflow: scroll;
+             scrollbar-width: none;
+             -ms-overflow-style: none;
+         }
+         #sitFinul::-webkit-scrollbar { display: none; }
+
+
          #side #choicInfo {
-             padding-bottom: 50px;
+             /* padding-bottom: 50px; */
          }
 
          #side #payment dt:nth-child(10){
@@ -434,7 +446,12 @@
 
          #side #finalPay dl dt{
              color: white;
+             font-size: 15px;
          }
+         #finull {
+            font-size: 15px;
+         }
+
 
          #side > div {
              border-bottom: 1px solid black;
@@ -447,6 +464,18 @@
              border: none;
              background-color: #7E9CB6;
              color: white;
+             float: right;
+             position: relative;
+             top: -40px;
+         }
+
+         #back {
+             width: 48%;
+             height: 40px;
+             border: none;
+             background-color: #eee;
+             float: left;
+             color: gray;
          }
 
          /* 2번째 사이드 */
@@ -510,11 +539,22 @@
          #tabs #side2 li {
              font-size: 12px;
          }
-         #tabs #side2 li:first-child {
+         #tabs #sitPrice li:first-child {
              list-style: url(./images/ic_purple.gif);
          }
-         #tabs #side2 li:last-child {
+         #tabs #sitPrice li:last-child {
              list-style: url(./images/ic_blue.gif);
+         }
+
+         #tabs #choiceSit ul {
+             overflow: scroll;
+             scrollbar-width: none;
+             -ms-overflow-style: none;
+         }
+         #tabs #choiceSit ul::-webkit-scrollbar { display: none; }
+
+         #tabs #choiceSit li {
+             list-style: none;
          }
 
          #side2 input[type=button] {
@@ -526,7 +566,7 @@
              color: white;
          }
 
-         #back {
+         #back2 {
             width: 100px;
          }
          #reChoice {
@@ -539,12 +579,12 @@
 
          #container {
             width: 678px; height: 585px; background-image: url("http://tkfile.yes24.com/upload2/hallimg/9000/9143/9143b_0_0.jpg"); background-repeat: no-repeat; background-position: 0px 3px;
-            display: none;
+            /* display: none; */
          }
 
          #divContainer {
             width: 678px; height: 585px; background-image: url("http://tkfile.yes24.com/upload2/hallimg/9000/9143/9143b_1_9128b_1_8758b_1_190328155440.jpg"); background-repeat: no-repeat; background-position: 0px 150px;
-            /* display: block; */
+            display: none;
          }
 
          /* 파란좌석 */
@@ -581,6 +621,83 @@
             height: 12px;
             width: 11px;
             z-index: 10;
+         }
+
+         /* stap3 */
+         #step3 {
+             text-align: center;
+         }
+
+         #step3 h2 {
+            width: 97%;
+            font-size: 15px;
+            background-color: #7E9CB6;
+            height: 20px;
+            color: white;
+            padding: 5px 10px;
+            text-align: left;
+         }
+
+         #seleChoice  div{
+            font-size: 13px;
+            font-weight: bold;
+            padding-left: 20px;
+         }
+
+         #seleChoice label {
+             font-weight: normal;
+             width: 550px;
+             height: 25px;
+             background-color: rgb(255, 233, 230);
+             display: block;
+             float: right;
+             margin-right: 30px;
+             padding-top: 5px;
+             text-align: left;
+         }
+
+         #seleChoice div::after {
+             display: block;
+             content: "";
+             clear: both;
+         }
+
+         #step3 table {
+             border-collapse: collapse;
+             width: 650px;
+             height: 200px;
+             text-align: center;
+             font-size: 13px;
+             color: gray;
+             margin-left: 15px;
+             margin-top: 10px;
+         }
+
+         #step3 table th {
+             background-color: #eee;
+             height: 15px;
+         }
+
+         #step3 table td{
+             border-bottom: 1px solid gray;
+             height: 15px;
+         }
+         
+         #cuponPlus {
+             border: none;
+             background-color: #7E9CB6;
+             width: 80px;
+             font-size: 13px;
+             color: white;
+             margin-bottom: 5px;
+             margin-right: 10px;
+             float: right;
+         }
+
+         #cuponPlus::after {
+             display: block;
+             content: "";
+             clear: both;
          }
 
     </style>
@@ -620,10 +737,11 @@
                         <dd></dd>
                         <div style="clear: both;"></div>
                         <dt>매수</dt>
-                        <dd>1</dd>
+                        <dd id="ticketNum"></dd>
                         <div style="clear: both;"></div>
                         <dt>좌석</dt>
-                        <dd>1</dd>
+                        <!-- <dd>1</dd> -->
+                        <div id="sitFinul"></div>
                         <div style="clear: both;"></div>
                     </dl>
                 </div>
@@ -631,45 +749,46 @@
                     <h2>결제내역</h2>
                     <dl>
                         <dt>티켓금액</dt>
-                        <dd>1</dd>
+                        <dd id="tickectPice"></dd>
                         <div style="clear: both;"></div>
                         <dt>예매수수료</dt>
-                        <dd>1</dd>
+                        <dd id="susu"></dd>
                         <div style="clear: both;"></div>
                         <dt>배송료</dt>
-                        <dd>1</dd>
+                        <dd></dd>
                         <div style="clear: both;"></div>
                         <dt>총 금액(+)</dt>
-                        <dd>1</dd>
+                        <dd id="totalPrice"></dd>
                         <div style="clear: both;"></div>
                     </dl>
                 </div>
                 <div id="sale">
                     <dl>
                         <dt>할인금액</dt>
-                            <dd>1</dd>
+                            <dd>0</dd>
                         <div style="clear: both;"></div>
                         <dt>할인쿠폰</dt>
-                        <dd>1</dd>
+                        <dd>0</dd>
                         <div style="clear: both;"></div>
                         <dt>Egg머니</dt>
-                        <dd>1</dd>
+                        <dd>0</dd>
                         <div style="clear: both;"></div>
                         <dt>Egg상품권</dt>
-                        <dd>1</dd>
+                        <dd>0</dd>
                         <div style="clear: both;"></div>
                         <dt>총 할인금액(-)</dt>
-                        <dd>1</dd>
+                        <dd>0</dd>
                         <div style="clear: both;"></div>
                     </dl>
                 </div>
                 <div id="finalPay">
                     <dl>
                         <dt>최종 결제금액</dt>
-                        <dd>1</dd>
+                        <dd id="finull">원</dd>
                     </dl>
                     <div style="clear: both;"></div>
                  </div>
+                 <input type="button" value="이전" id="back">
                  <input type="button" value="다음단계" id="nextBtn">
             </div>
 
@@ -693,7 +812,7 @@
                         <li>스텐딩석 77,000원</li> -->
                     </ul>
                 </div>
-                <input type="button" value="이전화면" id="back">
+                <input type="button" value="이전화면" id="back2">
                 <input type="button" value="↺ 좌석 다시선택" id="reChoice">
             </div>
 
@@ -768,8 +887,45 @@
             <div id="step2">
                 <div id="container" class="raffer"></div>
                 <div id="divContainer" class="raffer"></div>
+            </div>
             <div id="step3">
-              3Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                <div id="seleChoice">                
+                    <h2>할인선택</h2>
+                    <div>
+                        등급선택
+                        <label for="standing"><input type="radio" value="스텐딩석" name="standing" checked>스텐딩석</label>
+                    </div>
+                    <table>
+                        <thead>
+                            <th>할인명</th>
+                            <th>할인금액</th>
+                            <th>매수</th>
+                            <th>설명</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4">할인항목이 없습니다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="cuponChoice">                
+                    <h2>쿠폰선택</h2>
+                    <input type="button" value="쿠폰등록" id="cuponPlus">
+                    <table>
+                        <thead>
+                            <th>쿠폰명</th>
+                            <th>등급</th>
+                            <th>할인금액</th>
+                            <th>사용</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4">보유하신 쿠폰이 없습니다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div id="step4">
               4Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
@@ -795,6 +951,7 @@
 
         var tabNumMinus = [];
 
+        // 다음단계
         $("#nextBtn").click(function(){
             tabNumMinus = tabNum.shift(),
             tabNum.push(n),
@@ -807,7 +964,84 @@
             if(n == 1) {
                 $("#side2").css("display","block")
             }
+            if(n != 1) {
+                $("#side1").css("display","block")
+                $("#side2").css("display","none")
+                $("#nextBtn").css({
+                    "width": "48%",
+                    "top" : "0px"
+                });
+                $("#back").css("display","block")
+            }
+
+            if(n == 4) {
+                alert("결제하기 && 창닫기");
+            }
+            
         });
+        
+        //이전화면
+        $("#back2").click(function(){
+            if(n==1){
+                $("#tabs").tabs({
+                    disabled: [1,2,3,4],
+                    active: 0
+                });
+            }
+            tabNum = [1,2,3,4];
+            n = 0;
+            $("#side1").css("display","block")
+            $("#side2").css("display","none")
+        })
+        
+        //이전화면
+        $("#back").click(function(){
+            if(n==2){
+                $("#tabs").tabs({
+                    disabled: [0,2,3,4],
+                    active: 1
+                });
+                tabNum = [2,3,4,0];
+                n = 1;
+                $("#side1").css("display","block")
+                $("#side2").css("display","none")
+            }
+            if(n==3){
+                $("#tabs").tabs({
+                    disabled: [0,1,3,4],
+                    active: 2
+                });
+                tabNum = [3,4,0,1];
+                n = 2;
+                $("#side1").css("display","block")
+                $("#side2").css("display","none")
+            }
+            if(n==4){
+                $("#tabs").tabs({
+                    disabled: [0,1,2,4],
+                    active: 3
+                });
+                tabNum = [4,0,1,2];
+                n = 3;
+                $("#side1").css("display","block")
+                $("#side2").css("display","none")
+            }
+
+            if(n == 1) {
+                $("#side2").css("display","block")
+                $("#nextBtn").css({
+                    "width": "100%",
+                    "top" : "0px"
+                });
+                $("#back").css("display","none")
+            }
+            if(n != 1) {
+                $("#side1").css("display","block")
+                $("#side2").css("display","none")
+                $("#back").css("display","block")
+            }
+        })
+        
 
         // $(function() {
             $( "#celender").datepicker({
@@ -826,7 +1060,7 @@
 
                     if(dateText == "2020-08-29") {
                         // $("#inputTime").html("[1]회 19시 00분");
-                        	
+                           
                         $("#inputTime" ).empty();
                         $("#inputTime").append("<li>[1]회 19시 00분</li>");
                         $("#inputTime").append("<li>[2]회 20시 00분</li>");
@@ -866,13 +1100,18 @@
         var l = 53;
         //위
         var t = 135;
+        // 구역
+        var g = "";
+        // 번호
+        var gn = 1;
 
         for(r=5; r<45; r++){
 
             for(m=13; m<68; m++){
 
-                $("#container").append('<div class="s13" id="t'+ r+'000'+ m +'" style="left:'+l+'px; top:'+t+'px;" name="tk" value="'+ r+'000'+ m +'"></div>');
+                $("#container").append('<div class="s6" id="t'+ r+'000'+ m +'" style="left:'+l+'px; top:'+t+'px;" name="tk" value="'+ r+'000'+ m +'" title= "1층 '+g+'구역 '+(r-4)+'열 '+gn+'번" grade="지정석"></div>');
 
+                //열이동
                 if(m == 67){
                     l =53;
                 } else{
@@ -880,6 +1119,17 @@
                     l = l+11;
                 }
 
+                //구역 정하기
+                if(m<38){
+                    g = "A";
+                    gn = m-12;
+                }
+                if(m>=38){
+                    g = "B";
+                    gn = m-1;
+                }             
+
+                //나머지 지우기
                 if(m >=38 && m<43){
                     $("#t"+r+"000"+m+"").css("display","none");
                 }
@@ -906,7 +1156,7 @@
 
             for(M=13; M<73; M++){
 
-                $("#divContainer").append('<div class="s8" id="r'+ R+'000'+ M +'" style="left:'+L+'px; top:'+T+'px;" name="tt" value="'+ R+'000'+ M +'" title= "2층'+G+'구역'+R+'열'+GN+'번" grade="지정석"></div>');
+                $("#divContainer").append('<div class="s8" id="r'+ R+'000'+ M +'" style="left:'+L+'px; top:'+T+'px;" name="tt" value="'+ R+'000'+ M +'" title= "2층 '+G+'구역 '+(R-4)+'열 '+GN+'번" grade="지정석"></div>');
 
                 // 열 이동
                 if(M == 72){
@@ -922,52 +1172,4 @@
                 }
                 if(M>=28 && M<57){
                     G = "Y";
-                    GN = M-27;
-                }
-                if(M>=57){
-                    G = "Z";
-                    GN = M-57;
-                }
-
-                // 번호
-
-                // 나머지 지우기
-                if(M >=27 && M<=28){
-                    $("#r"+R+"000"+M+"").css("display","none");
-                }
-                if(M>=57 && M <=58){
-                    $("#r"+R+"000"+M+"").css("display","none");
-                }
-
-                if(M>=42 && M <=45){
-                    $("#r11000"+M+"").css("display","none");
-                }
-            }
-                T = T+12;
-        }
-
-        // 클릭하면 체크화면으로
-        $(".s8").click(function(){
-            $(this).attr({
-                // 'oldclass': 's8',
-                'class':'son'
-            });
-
-            // 재클릭 다시 돌아기기
-            $(".son").click(function(){
-                $(this).attr({
-                    'class':'s8'
-                });
-            });
-        });
-
-
-
-
-
-
-                
-    </script>
-
-</body>
-</html>
+                    GN = 
