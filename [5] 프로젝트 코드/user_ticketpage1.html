@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="shortcut icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <script src="js/jquery-1.12.4.js"></script>
-	<script src="js/jquery-ui.js"></script>
-</head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="jquery-ui.css"> 
+    
     <style>
 
         body {
@@ -511,11 +510,22 @@
          #tabs #side2 li {
              font-size: 12px;
          }
-         #tabs #side2 li:first-child {
+         #tabs #sitPrice li:first-child {
              list-style: url(./images/ic_purple.gif);
          }
-         #tabs #side2 li:last-child {
+         #tabs #sitPrice li:last-child {
              list-style: url(./images/ic_blue.gif);
+         }
+
+         #tabs #choiceSit ul {
+             overflow: scroll;
+             scrollbar-width: none;
+             -ms-overflow-style: none;
+         }
+         #tabs #choiceSit ul::-webkit-scrollbar { display: none; }
+
+         #tabs #choiceSit li {
+             list-style: none;
          }
 
          #side2 input[type=button] {
@@ -808,7 +818,14 @@
             if(n == 1) {
                 $("#side2").css("display","block")
             }
+
+            //이전화면
+            $("#back").click(function(){
+                n 
+            })
+
         });
+
 
         // $(function() {
             $( "#celender").datepicker({
@@ -827,7 +844,7 @@
 
                     if(dateText == "2020-08-29") {
                         // $("#inputTime").html("[1]회 19시 00분");
-                        	
+                           
                         $("#inputTime" ).empty();
                         $("#inputTime").append("<li>[1]회 19시 00분</li>");
                         $("#inputTime").append("<li>[2]회 20시 00분</li>");
@@ -907,7 +924,7 @@
 
             for(M=13; M<73; M++){
 
-                $("#divContainer").append('<div class="s8" id="r'+ R+'000'+ M +'" style="left:'+L+'px; top:'+T+'px;" name="tt" value="'+ R+'000'+ M +'" title= "2층'+G+'구역'+R+'열'+GN+'번" grade="지정석"></div>');
+                $("#divContainer").append('<div class="s8" id="r'+ R+'000'+ M +'" style="left:'+L+'px; top:'+T+'px;" name="tt" value="'+ R+'000'+ M +'" title= "2층 '+G+'구역 '+(R-4)+'열 '+GN+'번" grade="지정석"></div>');
 
                 // 열 이동
                 if(M == 72){
@@ -947,26 +964,89 @@
                 T = T+12;
         }
 
-        // 클릭하면 체크화면으로
-        $(".s8").click(function(){
-            $(this).attr({
-                // 'oldclass': 's8',
-                'class':'son'
+
+        var checkList = [];
+
+        $(document).ready(function (){
+            // 클릭하면 체크이미지로
+            $('div[name=tt]').click(function (){
+                s8ClickedEvent($(this));
             });
 
-            // 재클릭 다시 돌아기기
-            $(".son").click(function(){
-                $(this).attr({
+            //좌석 다시 선택 버튼
+            $("#reChoice").click(function(){
+                // 좌석 이미지 다 원래대로
+                $(".son").attr({
                     'class':'s8'
                 });
+                //선택한 좌석 li 다 지우기
+                $("#choiceSit ul").empty();
             });
         });
+        
+
+        function s8ClickedEvent(obj) {
+            var checked = $(obj).attr('checked');
+            
+            if(!checked) {
+                $(obj).attr('checked', true);
 
 
+                if($(obj).attr("class") == "s8"){
+                // list 추가
+                    checkList.push("<li>"+ $(obj).attr("title") +"</li>");
 
+                    //li초기화
+                    $("#choiceSit ul").empty();
+                    //list값 ul에 li로 추가
+                    $("#choiceSit ul").append(checkList);
 
+                    // 체크이미지로 변환
+                    $(obj).attr({
+                        'class':'son'
+                    });
+                };
+            
+            // 재클릭 다시 돌아가기
+            // $(".son").click(function(){
+            //     console.log(this);
+            //     sonClickedEvent($(this));
+            // });
 
+                
+            }else{
+                $(obj).attr('checked', false);
 
+                $(obj).attr({
+                    'class':'s8'
+                });
+
+                var wIndex = checkList.indexOf("<li>"+ $(obj).attr("title") +"</li>");
+
+                console.log("지울값 인덱스: "+ wIndex);
+                console.log("지울값 텍스트: "+"<li>"+ $(obj).attr("title") +"</li>");
+                console.log("리스트 전체: "+ checkList);
+
+                //클릭한 이미지 name값 list에서 지우기
+                if(wIndex >= 0){
+                    checkList.splice(wIndex ,1);
+                }
+
+                console.log("지우고 난 뒤 list"+ checkList);
+                console.log("===============================================================");
+
+                //li초기화
+                $("#choiceSit ul").empty();
+                //list값 ul에 li로 추가
+                $("#choiceSit ul").append(checkList);
+
+            }
+            
+            // 체크이미지로 변하면서 title을 선택한 좌석ul에 li의 값으로추가
+            
+            
+            
+        }
                 
     </script>
 
