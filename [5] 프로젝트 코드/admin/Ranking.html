@@ -308,6 +308,22 @@
             border-bottom: 3px solid mediumslateblue;
         }
 
+        .modified {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #999;
+            outline: none;
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modified:hover {
+            color : white;
+            /* background-color: #333; */
+
+        }
+
         .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
            background-color:#999999;
            border-color: #eeeeee;
@@ -491,7 +507,7 @@
         font-size: 3em;">랭킹 <small>> Home </small></h1>
     </div>
 
-
+    <div style="margin-left: 200px;">
     <figure style="margin-left: 280px;" class="highcharts-figure">
         <div id="container"></div>
         <p style="text-align: center;" class="highcharts-description">
@@ -506,7 +522,7 @@
         <span id="month" class="dat">월간</span>
         <span>｜</span>
         <span id="year" class="dat">연간</span>
-        <span>｜</span>
+      
     </div>
     <div id="calendar1" style="width: 500px; margin: 20px ; margin-left: 370px;">
         <input style="width: 100px; text-align: center; margin-left: 170px;" type="text" name="date1" id="date1">
@@ -520,7 +536,7 @@
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="전시" id="btn6" class="bt">
     </div>
 
-    <div id="line" style="border: 2px solid #999999; width: 1500px; margin-left: 280px; margin-top: 30px;"></div>
+    <div id="line" style="border: 2px solid #999999; width: 1500px; margin-top: 30px;"></div>
 
     <div id="middle">
         <div style="text-align: center; margin-left: -500px;" id="one" class="box2">
@@ -608,7 +624,7 @@
                 대학로 유니플렉스 2관</div>
         </div>
     </div>
-    <nav style="margin-left: 500px;" class="pagebar">
+    <nav style="margin-left: 410px;" width: 00px; class="pagebar">
         <ul class="pagination">
             <li>
                 <a href="#" aria-label="Previous">
@@ -632,12 +648,12 @@
             </li>
         </ul>
     </nav>
-    <div style="margin-left: 700px;" id="sel">
+    <div style="width: 200px; margin-left: 750px;" id="sel">
             <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
             <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i> 추가</button>
             <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i> 수정</button>
     </div>
-
+</div>
     <script src="../js/jquery-1.12.4.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <!-- <script src="../js/bootstrap.js"></script> -->
@@ -718,10 +734,7 @@
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
-
-
         document.body.bgColor = "white";
-
 
 
         //스위치 

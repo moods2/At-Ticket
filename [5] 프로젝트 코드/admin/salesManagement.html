@@ -134,6 +134,7 @@
             cursor: pointer;
         }
 
+
         /* 새로 추가한 코드 */
         /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
         .accomenu tr td:hover {
@@ -216,6 +217,10 @@
 
         }
 
+        /* path{
+            fill: #555555;
+        } */
+
         /* 매출 관리 */
         #title {
             /* text-align: center; */
@@ -262,6 +267,38 @@
         .pagination>li>a,
         .pagination>li>span {
             color: black;
+        }
+
+        .modified {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #999;
+            outline: none;
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modified:hover {
+            color : white;
+            /* background-color: #333; */
+
+        }
+
+        .modified {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #999;
+            outline: none;
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modified:hover {
+            color : white;
+            /* background-color: #333; */
+
         }
     </style>
     <style type="text/css">
@@ -476,7 +513,7 @@
             </div>
             <div style="margin-top: 30px;">
                 <span style="font-weight: bold; margin-right: 20px; margin-left: 2px;">공연 제목 : </span>
-                <input style="width: 300px;" type="text" name="txt" id="txt">
+                <input style="width: 300px;" type="text" name="txt" id="txt" autofocus>
                 <input style="margin-left: 10px; background-color:#333333; color: white;  border: 0px;" type="button"
                     value="조회">
             </div>
@@ -751,9 +788,6 @@
                 plotShadow: false,
                 type: 'pie'
             },
-            colors: [
-                '#ACE0D3', '#6C9AC3'
-            ],
             title: {
                 text: 'sales Rate (총매출액: 10억)'
             },
