@@ -38,9 +38,9 @@
         </div>
     
     </div>
-        <div style="margin: 10px 20px;">
-            <input type="button" value="추가" id = "btn1" class = "btn btn-default">
-            <input type="button" value="닫기" id = "btn2" class = "btn btn-default">
+        <div style="margin: 10px 20px; margin-left: 260px;">
+            <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+            <button class = "modified" id = "closebtn">닫기</button>
         </div>
     <script>
         var btnAdd = document.getElementById("btnAdd");
@@ -64,13 +64,13 @@
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
-        $("#btn1").click(function(){
+        $("#addbtn").click(function(){
             if(confirm("추가하시겠습니까?")){
 
             }
         }); 
 
-        $("#btn2").click(function(){
+        $("#closebtn").click(function(){
             window.close();
         }); 
     </script>

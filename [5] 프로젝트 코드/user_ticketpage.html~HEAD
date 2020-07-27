@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="js/jquery-1.12.4.js"></script>
+	<script src="js/jquery-ui.js"></script>
+</head>
+    <style>
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        * {
+            outline: none;
+        }
+
+        #mainBox {
+            /* border: 1px solid black; */
+            width: 970px;
+            height: 650px;
+        }
+
+        #tabs {
+            padding: 0px;
+            width: 710px;
+        }
+
+        #tabs ul {
+            padding-left: 110px;
+            height: 50px;
+        }
+
+        #tabs ul li {
+            width: 115.5px;
+            font-size: 16px;
+        }
+
+        #tabs ul li span {
+            font-size: 12px;
+            display: block;
+            color: rgb(197, 194, 194);
+        }
+
+
+        .ui-widget.ui-widget-content {
+            border: 0px;
+        }
+
+        .ui-corner-all {
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .ui-widget-content {
+            background: white url();
+        }
+
+        .ui-tabs .ui-tabs-nav {
+            padding-top: 13px;
+        }
+
+        /* 해더 전체 */
+        .ui-widget-header {
+            border: 0px;
+            background: rgb(61, 61, 61);
+            border-radius: 0px;
+        }
+
+        /* 탭안 */
+        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+            border: 0px;
+            background: none;
+        }
+
+        /* 디폴트 해더 글자색 */
+        .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+            color: white;
+            height: 31px;
+        }
+
+        /* 탭 안쪽 패딩 */
+        .ui-tabs .ui-tabs-panel {
+            padding: 15px;
+        }
+
+        /* 선택 */
+        #tabs .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+            border-left: 0px;
+            background-color: rgb(255, 109, 109);
+            color: black;
+        }
+
+        #titleImg {
+            float: left;
+            width: 85px;
+            height: 50px;
+            padding-left: 10px;
+            padding-top: 8px;
+        }
+
+        #step1 .ui-widget-header {
+            background-color: white;
+        }
+
+        .ui-state-default {
+            background-color: gray;
+        }
+
+        .ui-state-default, .ui-widget-content .ui-state-default {
+            color: black;
+        }
+
+        .ui-state-default, .ui-widget-content .ui-state-default {
+            background-color: gray;
+        }
+
+        /* 테이블 */
+        #tbl1 {
+            /* border: 1px solid cornflowerblue; */
+            border-collapse: collapse;
+            width: 680px;
+            color: #424242;
+        }
+        #tbl1 td, #tbl1 th {
+            border: 1px solid #7E9CB6;
+        }
+
+        #tbl1 th {
+            text-align: center;
+            font-size: 16px;
+            padding: 5px 0px;
+            background-color: #7E9CB6;
+            color: white;
+        }
+        #tbl1 td:first-child {
+            width: 240px;
+        }
+
+        #tbl1 td:last-child {
+            width: 400px;
+        }
+
+        /* 달력 */
+        #celender {
+            width: 220px;
+            margin-left: 10px;
+        }
+
+        .ui-widget-content {
+            background: white url();
+        }
+
+        .ui-datepicker-inline {
+            width: 225px;
+            height: 300px;
+            margin-top: 20px;
+        }
+        .ui-datepicker-calendar {
+            height: 260px;
+        }
+
+         .ui-state-active {
+            color: black;
+         }
+
+        #celender td, #celender th {
+            border: none;
+            background-color: white;
+            color: black;
+        }
+
+        #celender td:first-child{
+            width: 30px;
+        }
+        #celender td:last-child{
+            width: 30px;
+        }
+
+        /* 회차선택 */
+        #tbl1 td {
+            font-size: 14px;
+        }
+
+        #tbl1 dt {
+            font-weight: bold;
+        }
+
+        #tbl1 dl {
+            margin-left: 20px;
+        }
+
+        #choicDate {
+            margin-top: 40px;
+        }
+
+        #choicDate dt {
+            padding-top: 4px;
+        }
+
+         /* 선택날짜 */
+        #choicDate dt, #choicDate dd {
+            float: left;
+        }
+
+        #choicDate dd{
+            background-color: #eee;
+            width: 200px;
+            height: 24px;
+            padding-left: 20px;
+            padding-top: 5px;
+            margin-left: 20px;
+        }
+
+        #choicDate .alternate {
+            border: none;
+            background-color: #eee;
+            color: #FF6D6D;
+        }
+
+        .choicNum {
+            float: left;
+        }
+
+        .choicNum:nth-child(2) {
+            width: 150px;
+        }
+        .choicNum:nth-child(3){
+            width: 210px;
+        }
+
+        .choicNum dd{
+            margin-left: 2px;
+            border: 1px solid gray;
+            height: 170px;
+            font-size: 12px;
+        }
+
+        #tabs .choicNum ul {
+            padding-left: 7px;
+
+        }
+
+        #tabs .choicNum ul li {
+            background-color: #eee;
+            font-size: 12px;
+            list-style: none;
+            padding: 5px;
+        }
+
+
+        #choicNum ul li {
+            width: 120px;
+            height: 16px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        #tabs #choicegrde li {
+            width: 180px;
+            height: 30px;
+        }
+
+        /* 좌석선택 버튼1 */
+        #tbl1 input[type=button] {
+            float: right;
+            margin-right: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            width: 90px;
+            height: 35px;
+            border: none;
+            background-color: #FF6D6D;
+            color: white;
+            font-weight: bold;
+        }
+
+        #celenderInfo div {
+            float: left;
+            width: 10px;
+            height: 10px;
+            background-color: #FF6D6D;
+            position: relative;
+            left: 30px;
+            top: 4px;
+            margin-bottom: 30px;
+        }
+
+        #celenderInfo div:nth-child(3){
+            position: relative;
+            left: 130px;
+        }
+
+        #celenderInfo div:first-child{
+            background-color: gray;
+        }
+
+        #celenderInfo span{
+            /* display: block; */
+            /* background-color: black; */
+            margin-left: 25px;
+            font-size: 13px;
+        }
+        
+        /* 유의사항 */
+        #tbl2 {
+            border: 1px solid #7E9CB6;
+            border-collapse: collapse;
+            font-size: 12px;
+            color: rgb(66, 66, 66);
+            width: 680px;
+            margin-top: 8px;
+            margin-bottom: 0px;
+            height: 168px;
+        }
+
+        #tbl2 td:first-child {
+            background-color: gray;
+            color: white;
+            font-weight: bold;
+            width: 21px;
+            font-size: 14px;
+            padding-left: 6px;
+        }
+        #tbl2 td:last-child {
+            padding-left: 15px;
+        }
+
+        #tbl2 ul{
+            padding-left: 15px;
+            list-style: square;
+            margin-top: -75px;
+        }
+
+        #tbl2 ul li {
+            font-size: 13px;
+            width: 100%;
+        }
+
+        /* 사이드 */
+         #side {
+             width: 260px;
+             height: 640px;
+             background-color: rgb(61, 61, 61);
+             position: absolute;
+             top: 0px;
+             left: 710px;
+             padding: 15px;
+         }
+
+         #cosertInfo {
+             padding-bottom: 10px;
+         }
+
+         /* 이미지 */
+         #cosertInfo img {
+             width: 70px;
+             margin-top: 10px;
+         }
+
+         /* 사이드 정보 */
+         #InforContent {
+             float: right;
+             width: 180px;
+         }
+
+         #InforContent::after{
+             display: block;
+             content: "";
+             clear: both;
+         }
+
+         #InforContent h2 {
+             font-size: 14px;
+             height: 38px;
+             overflow: hidden; text-overflow: ellipsis;
+             color: white;
+         }
+         #InforContent div {
+             font-size: 12px;
+             color: rgb(146, 146, 146);
+         }
+
+         #side h2{
+             font-size: 14px;
+             color: white;
+         }
+
+         #side dl {
+             font-size: 12px;
+             color: white;
+         }
+
+         #side dt {
+             color: rgb(146, 146, 146);
+             float: left
+         }
+
+         #side dd {
+             float: right;
+         }
+
+         #side #choicInfo dd {
+             float: left;
+             margin-left: 20px;
+         }
+         #side #choicInfo input {
+             border: none;
+             background-color: #3D3D3D;
+             color: white;
+         }
+
+         #side #choicInfo {
+             padding-bottom: 50px;
+         }
+
+         #side #payment dt:nth-child(10){
+             color: #7E9CB6;
+         }
+         #side #sale dt:nth-child(13){
+             color: #7E9CB6;
+         }
+
+         #side #finalPay {
+             border: 1px solid black;
+             padding: 10px;
+             padding-top: 0px;
+             margin: 20px 0px;
+         }
+
+         #side #finalPay dl dt{
+             color: white;
+         }
+
+         #side > div {
+             border-bottom: 1px solid black;
+             /* padding-bottom: 10px; */
+         }
+
+         #nextBtn {
+             width: 100%;
+             height: 40px;
+             border: none;
+             background-color: #7E9CB6;
+             color: white;
+         }
+
+         /* 2번째 사이드 */
+         
+         #side2 {
+            width: 260px;
+            height: 560px;
+            background-color: rgb(61, 61, 61);
+            position: absolute;
+            top: 0px;
+            left: 710px;
+            padding: 15px;
+            display: none;
+            color: white;
+         }
+
+         #side2::after{
+             display: block;
+             content: "";
+             clear: both;
+         }
+
+         #side2 h2{
+             font-size: 14px;
+             color: #929292;
+             text-align: left;
+             background-color: #3D3D3D;
+         }
+
+         #miniMap {
+             text-align: center;
+             margin-top: 15px;
+             margin-bottom: 30px;
+         }
+
+         #miniMap span{
+             display: block;
+            font-size: 12px;
+            height: 20px;
+            /* color: white; */
+            background-color: #FF6D6D;
+            padding-left: 10px;
+            padding-top: 5px;
+         }
+
+         #miniMapImg {
+             width: 130px;
+             margin-top: 10px;
+         }
+         #miniMap div {
+             background-color: white;
+         }
+
+         #tabs #side2 ul {
+             border: 1px solid #929292;
+             height: 100px;
+             font-size: 10px;
+             padding-left: 30px;
+             padding-top: 10px;
+         }
+         #tabs #side2 li {
+             font-size: 12px;
+         }
+         #tabs #side2 li:first-child {
+             list-style: url(./images/ic_purple.gif);
+         }
+         #tabs #side2 li:last-child {
+             list-style: url(./images/ic_blue.gif);
+         }
+
+         #side2 input[type=button] {
+             border: none;
+             height: 25px;
+             font-size: 13px;
+             margin-top: 10px;
+             background-color: #929292;
+             color: white;
+         }
+
+         #back {
+            width: 100px;
+         }
+         #reChoice {
+            width: 154px;
+         }
+
+         /* #back {
+             width: ;
+         } */
+
+         #container {
+            width: 678px; height: 585px; background-image: url("http://tkfile.yes24.com/upload2/hallimg/9000/9143/9143b_0_0.jpg"); background-repeat: no-repeat; background-position: 0px 3px;
+            display: none;
+         }
+
+         #divContainer {
+            width: 678px; height: 585px; background-image: url("http://tkfile.yes24.com/upload2/hallimg/9000/9143/9143b_1_9128b_1_8758b_1_190328155440.jpg"); background-repeat: no-repeat; background-position: 0px 150px;
+            /* display: block; */
+         }
+
+         /* 파란좌석 */
+         .s6 {
+            position: absolute;
+            background: url(http://tkfile.yes24.com/images/ticket_new/ic_seat6.gif) no-repeat;
+            height: 12px;
+            width: 11px;
+            z-index: 10;
+         }
+         /* 보라좌석 */
+         .s8 {
+            position: absolute;
+            background: url(http://tkfile.yes24.com/images/ticket_new/ic_seat8.gif) no-repeat;
+            height: 12px;
+            width: 11px;
+            z-index: 10;
+         }
+
+         /* 클릭좌석 */
+         .son {
+            position: absolute;
+            background: url(http://tkfile.yes24.com/images/ticket_new/ic_seat_on.gif) no-repeat;
+            height: 12px;
+            width: 11px;
+            z-index: 10;
+         }
+
+
+         /* 회색좌석 */
+         .s13 {
+            position: absolute;
+            background: url(http://tkfile.yes24.com/images/ticket_new/ic_seat13.gif) no-repeat;
+            height: 12px;
+            width: 11px;
+            z-index: 10;
+         }
+
+    </style>
+<body>
+    
+    <div id="mainBox">
+
+        <div id="tabs">
+            <!-- 로고 -->
+            <img src="./images/title.png" id="titleImg">
+            <!-- 탭메뉴 -->
+            <ul id="tabMenu">
+              <li><a href="#step1"><span>step1</span>관람일/회차</a></li>
+              <li><a href="#step2"><span>step2</span>좌석선택</a></li>
+              <li><a href="#step3"><span>step3</span>할인/쿠폰</a></li>
+              <li><a href="#step4"><span>step4</span>수령방법</a></li>
+              <li><a href="#step5"><span>step5</span>결제방법</a></li>
+            </ul>
+            <div style="clear:both;"></div>
+            <!-- 사이드 -->
+            <div id="side">
+                <div id="cosertInfo">
+                    <img src="./images/consertPoster.jpg">
+                    <div id="InforContent">
+                        <h2>크리스토퍼 내한공연（CHRISTOPHER LIVE IN SEOUL)</h2>
+                        <div>2020-08-29 ~ 2020-08-30</div>
+                        <div>YES24 LIVE HALL</div>
+                    </div>
+                </div>
+                <div id="choicInfo">
+                    <h2>선택내역</h2>
+                    <dl>
+                        <dt>날짜</dt>
+                            <dd><input type="text" class="alternate" size="30"></dd>
+                        <div style="clear: both;"></div>
+                        <dt>시간</dt>
+                        <dd></dd>
+                        <div style="clear: both;"></div>
+                        <dt>매수</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>좌석</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                    </dl>
+                </div>
+                <div id="payment">
+                    <h2>결제내역</h2>
+                    <dl>
+                        <dt>티켓금액</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>예매수수료</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>배송료</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>총 금액(+)</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                    </dl>
+                </div>
+                <div id="sale">
+                    <dl>
+                        <dt>할인금액</dt>
+                            <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>할인쿠폰</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>Egg머니</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>Egg상품권</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                        <dt>총 할인금액(-)</dt>
+                        <dd>1</dd>
+                        <div style="clear: both;"></div>
+                    </dl>
+                </div>
+                <div id="finalPay">
+                    <dl>
+                        <dt>최종 결제금액</dt>
+                        <dd>1</dd>
+                    </dl>
+                    <div style="clear: both;"></div>
+                 </div>
+                 <input type="button" value="다음단계" id="nextBtn">
+            </div>
+
+            <div id="side2">
+                <div id="miniMap">
+                    <h2>▾ 공연장 미니맵</h2>
+                    <span>↱구역 이동은 미니맵을 이용해주세요</span>
+                    <div><img src="./images/minimap1.png" id="miniMapImg"></div>
+                </div>
+                <div id="sitPrice">
+                    <h2>▾ 좌석등급/가격</h2>
+                    <ul>
+                        <li>지정석 77,000원</li>
+                        <li>스텐딩석 77,000원</li>
+                    </ul>
+                </div>
+                <div id="choiceSit">
+                    <h2>▾ 선택한 좌석</h2>
+                    <ul>
+                        <!-- <li>지정석 77,000원</li>
+                        <li>스텐딩석 77,000원</li> -->
+                    </ul>
+                </div>
+                <input type="button" value="이전화면" id="back">
+                <input type="button" value="↺ 좌석 다시선택" id="reChoice">
+            </div>
+
+            <!-- 관람일 -->
+            <div id="step1">
+                <table id="tbl1">
+                    <thead>
+                        <th>관람일 선택</th>
+                        <th>회차 선택</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div id="celender"></div>
+                                <div id="celenderInfo">
+                                    <div></div>
+                                    <span>예매가능날짜</span>
+                                    <div></div>
+                                    <span>선택하신 날짜</span>
+                                </div>
+                            </td>
+                            <td>
+                                <dl id="choicDate">
+                                    <dt>선택날짜</dt>
+                                    <!-- <dd>2020. 8. 29</dd> -->
+                                    <dd><input type="text" class="alternate"></dd>
+                                    <div style="clear: both;"></div>
+                                </dl>
+                                <dl id="choicNum" class="choicNum">
+                                    <dt>회차선택</dt>
+                                    <dd>
+                                        <!-- <div>[1]회 19시 00분</div> -->
+                                        <ul id="inputTime">
+                                            <!-- <li id="inputTime">
+                                            </li> -->
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl id="choicegrde" class="choicNum">
+                                    <dt>좌석등급/잔여석</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                본 공연은 잔여좌석 서비스를 제공하지 않습니다.
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <div style="clear: both;"></div>
+                                <input type="button" value="좌석선택">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="tbl2">
+                    <tr>
+                        <td>유의사항</td>
+                        <td>
+                            <ul>
+                                <li>안내되어 있는 잔여석은 결제 진행 중인 좌석을 포함하고 있어 예매 가능 좌석과 다를 수 있습니다.</li>
+                                <li>할인은 자동선택 되지 않으니, 적용 받고자 하는 할인이 있는 경우 직접 선택해주시기 바랍니다.</li>
+                                <li>장애인, 국가유공자, 학생 할인 등 증빙서류가 필요한 경우 현장수령만 가능하며, 현장에서 증빙서류 미지참 시 차액 지불하셔야 합니다.</li>
+                                <li>관람 당일 공연 예매 시에는 변경/취소/환불이 불가합니다. - 경우에 따라 ATM 기기에서 가상계좌 입금이 안 될 수 있으니 가급적 인터넷/폰뱅킹 등을 이용해주시기 바랍니다.</li>
+                                <li>예매 취소 시 예매수수료는 예매 당일 밤 12시 이전까지 환불되며, 그 이후 기간에는 환불되지 않습니다.</li>
+                                <li>예매 취소 시점에 따라 취소수수료가 부과될 수 있습니다. 예매 후 취소마감시간과 함께 취소수수료를 꼭 확인해주시기 바랍니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="step2">
+                <div id="container" class="raffer"></div>
+                <div id="divContainer" class="raffer"></div>
+            <div id="step3">
+              3Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+            <div id="step4">
+              4Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+            <div id="step5">
+              5Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+          </div>
+    </div>
+
+    <script>
+
+        var tabNum = [1,2,3,4];
+
+        // console.log(tabNum);
+
+        $("#tabs").tabs({
+            active: 0,
+            disabled: tabNum
+        });
+
+        var n = 0;
+
+        var tabNumMinus = [];
+
+        $("#nextBtn").click(function(){
+            tabNumMinus = tabNum.shift(),
+            tabNum.push(n),
+            n++;
+            $("#tabs").tabs({
+                disabled: tabNum,
+                active: n
+            });
+
+            if(n == 1) {
+                $("#side2").css("display","block")
+            }
+        });
+
+        // $(function() {
+            $( "#celender").datepicker({
+                dateFormat: "yy-mm-dd",
+                minDate: "2020-08-29",
+                maxDate: "2020-08-30",
+                altField: ".alternate",
+                altFormat: "yy.mm.dd(D)",
+                dayNamesShort: ["일","월","화","수","목","금","토"],
+
+                // defaultDate: new Date('2020-08-30'),
+
+                // setDate: "2020-08-30",
+
+                onSelect: function(dateText) {  
+
+                    if(dateText == "2020-08-29") {
+                        // $("#inputTime").html("[1]회 19시 00분");
+                        	
+                        $("#inputTime" ).empty();
+                        $("#inputTime").append("<li>[1]회 19시 00분</li>");
+                        $("#inputTime").append("<li>[2]회 20시 00분</li>");
+                    }else {
+                        $( "#inputTime" ).empty();
+                        $("#inputTime").append("<li>[1]회 18시 00분</li>");
+                    }
+
+                    $("#inputTime li").click(function(){
+                        $("#inputTime li").css({
+                            "background-color":"#eee",
+                            "color": "#424242"
+                            })
+                        // $(this).css("background-color","#FF6D6D");
+                        $(this).css({
+                            "background-color": "#FF6D6D",
+                            "color": "white"
+                        });
+                        console.log($(this).text());
+                        $("#choicInfo dd:nth-child(5)").text($(this).text());
+
+                    });
+                
+                },
+                
+                
+            });
+        // } );
+
+
+        // div 만들기 1층
+        //행
+        var r = 5;
+        //열
+        var m = 13;
+        //왼
+        var l = 53;
+        //위
+        var t = 135;
+
+        for(r=5; r<45; r++){
+
+            for(m=13; m<68; m++){
+
+                $("#container").append('<div class="s13" id="t'+ r+'000'+ m +'" style="left:'+l+'px; top:'+t+'px;" name="tk" value="'+ r+'000'+ m +'"></div>');
+
+                if(m == 67){
+                    l =53;
+                } else{
+                    
+                    l = l+11;
+                }
+
+                if(m >=38 && m<43){
+                    $("#t"+r+"000"+m+"").css("display","none");
+                }
+                
+            }
+                t = t+12;
+        }
+
+        // div 만들기 2층
+        //행
+        var R = 5;
+        //열
+        var M = 13;
+        //왼
+        var L = 23;
+        //위
+        var T = 308;
+        // 구역
+        var G = "";
+        // 번호
+        var GN = 1;
+
+        for(R=5; R<12; R++){
+
+            for(M=13; M<73; M++){
+
+                $("#divContainer").append('<div class="s8" id="r'+ R+'000'+ M +'" style="left:'+L+'px; top:'+T+'px;" name="tt" value="'+ R+'000'+ M +'" title= "2층'+G+'구역'+R+'열'+GN+'번" grade="지정석"></div>');
+
+                // 열 이동
+                if(M == 72){
+                    L = 23;
+                } else{
+                    L = L+11;
+                }
+
+                // 구역 정하기
+                if(M<26){
+                    G = "X";
+                    GN = M-12;
+                }
+                if(M>=28 && M<57){
+                    G = "Y";
+                    GN = M-27;
+                }
+                if(M>=57){
+                    G = "Z";
+                    GN = M-57;
+                }
+
+                // 번호
+
+                // 나머지 지우기
+                if(M >=27 && M<=28){
+                    $("#r"+R+"000"+M+"").css("display","none");
+                }
+                if(M>=57 && M <=58){
+                    $("#r"+R+"000"+M+"").css("display","none");
+                }
+
+                if(M>=42 && M <=45){
+                    $("#r11000"+M+"").css("display","none");
+                }
+            }
+                T = T+12;
+        }
+
+        // 클릭하면 체크화면으로
+        $(".s8").click(function(){
+            $(this).attr({
+                // 'oldclass': 's8',
+                'class':'son'
+            });
+
+            // 재클릭 다시 돌아기기
+            $(".son").click(function(){
+                $(this).attr({
+                    'class':'s8'
+                });
+            });
+        });
+
+
+
+
+
+
+                
+    </script>
+
+</body>
+</html>

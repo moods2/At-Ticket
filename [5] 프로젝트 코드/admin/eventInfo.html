@@ -12,7 +12,8 @@
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
         @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
         html{
-            width: 1100px;
+            /* width: 2500px; */
+            /* border : 1px solid red; */
         }
         h1{
             font-weight: bold;
@@ -26,7 +27,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 2000px;
+            height: 2400px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -43,9 +44,13 @@
 
         .accomenu {
             /* margin-top: 30px; */
-            /* margin-left: 10px; */
+            margin-left: 10px;
             width : 260px;
             padding-right : 25px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
         }
 
         .b {
@@ -188,6 +193,14 @@
             outline: none;
           
         }
+       #right {
+            border : 1px solid red;
+            margin-left: 300px;
+            margin-top: 100px;
+            width : 700px;
+            /* color : white;
+            background-color: #C27BA0; */
+        }
         /* 이벤트 정보 */
         #title {
             /* text-align: center; */
@@ -218,6 +231,10 @@
             vertical-align: middle;
         }
 
+        th {
+            background-color:  #999;
+            /* color : white; */
+        }
 
     </style>
 </head>
@@ -231,7 +248,7 @@
     <div id="left">
         
         <img src="../images/man.png" 
-            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius: 50%; background-color: #999;">
+            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:     50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
             <span>Hong gil dong</span>
@@ -244,31 +261,55 @@
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
                      type="button" value="Logout" id="btn2" class="btn">
         </div>
+        <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
-           <!-- 여기에 메뉴 -->
-           <h3>공연</h3>
-           <div>
+            <h3>공연</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
             </div>
-           <h3>통계</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
-           <h3>정산 관리</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
-           <h3>직원 정보</h3>
-           <div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
             </div>
-           <h3>이벤트</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-           <h3>1:1 문의</h3>
-             <div><span>▶</span> 문의 조회</div>
-           <h3>공연 랭킹</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
-           <h3>공지사항</h3>
-            <div><span>▶</span> 공지사항 조회</div>
-           <h3>고객 정보</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+            <h3>공연 랭킹</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+            <h3>고객 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            </div>
+            <h3>업무 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+            </div>
+            <h3>Q&A 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>  
         </div>
+
+
         <!-- container -->
 
 
@@ -317,8 +358,10 @@
         <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
-    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    <!-- 아래 회색 바닥 페이지 없앰 -->
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
+    
     <!-- 이벤트 정보 -->
     <div id="title">
         <h1 style="color: #555; font-weight: bold;
@@ -326,7 +369,7 @@
         font-size: 3em;">이벤트 정보 <small>> 이벤트 관리 > Home </small></h1>
     </div>
 
-    <div id="info">
+    <div id="info" style="position: relative;left: 300px;">
         <h2>이벤트 정보</h2>
         <!-- <ul id="list">
             <li>이름 : <span> 홍길동</span></li>
@@ -337,7 +380,7 @@
             <li>비번 : <span>skysun7466</span></li>
             <li>주소 : <span>서울 강남구 역삼동</span></li>
         </ul> -->
-        <table style="width: 900px;" class="table  table-bordered table-striped table-hover" id="tbl">
+        <table style="width: 900px;" class="table table-striped table-bordered table-condensed" id="tbl">
             <tbody id="tbody1">
                 <tr>
                     <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
@@ -358,9 +401,14 @@
                 </tr>
                 </tr>
         </table>
-        <input type="button" value="추가" class="btn btn-default" id="btn1">
+        <!-- <input type="button" value="추가" class="btn btn-default" id="btn1">
         <input type="button" value="수정" class="btn btn-default" id="btn3">
-        <input type="button" value="삭제" class="btn btn-default" id="btn4">
+        <input type="button" value="삭제" class="btn btn-default" id="btn4"> -->
+        <div id = "manipulate" style="margin-left: 730px; width: 200px;">
+            <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+            <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
+        </div>
         </tbody>
     </div>
 
@@ -507,17 +555,17 @@
     }
 
      //추가
-     $("#btn1").click(function () {
+     $("#addbtn").click(function () {
         child = window.open("eventInsert.html", "추가", "width=500, height=330");
     });
 
     //수정
-    $("#btn3").click(function () {
+    $("#modifybtn").click(function () {
         child = window.open("eventUpdate.html", "수정", "width=500, height=330");
     });
 
     //삭제
-    $("#btn4").click(function () {
+    $("#delbtn").click(function () {
 
         if (confirm("정말로 삭제하시겠습니까?")) {
             $("input[name=checkRow]:checked").each(function () {

@@ -13,15 +13,29 @@
     <title>Document</title>
     <style>
         /* 메인 */
-        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
-        @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
-        html{
+        @font-face {
+            font-family: 'NanumBarunGothic';
+            font-style: normal;
+            font-weight: 400;
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF Light';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        html {
             width: 1100px;
         }
-        h1{
+
+        h1 {
             font-weight: bold;
             font-family: Arial;
-            font-size: 3em; 
+            font-size: 3em;
             color: #111;
         }
 
@@ -48,8 +62,8 @@
         .accomenu {
             /* margin-top: 30px; */
             /* margin-left: 10px; */
-            width : 260px;
-            padding-right : 25px;
+            width: 260px;
+            padding-right: 25px;
         }
 
         .b {
@@ -79,15 +93,17 @@
             /* z-index: -1; */
             /* background-color: #BBDED7; */
             /* opacity: .3; */
-            
+
         }
+
         #topmenu .search {
             /* border: 1px solid black; */
             width: 250px;
             margin-top: 10px;
             float: right;
-           
+
         }
+
         #topmenu .home {
             /* border: 1px solid black; */
             width: 50px;
@@ -98,8 +114,8 @@
         }
 
         #calendar {
-           margin-top: 70px;
-           margin-left: -20px;
+            margin-top: 70px;
+            margin-left: -20px;
         }
 
         #cal {
@@ -121,10 +137,10 @@
         /* 새로 추가한 코드 */
         /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
         .accomenu tr td:hover {
-            cursor : pointer;
+            cursor: pointer;
         }
 
-         #movetop {
+        #movetop {
             width: 40px;
             height: 40px;
             background-color: #777;
@@ -134,9 +150,10 @@
             text-align: center;
             padding-top: 3px;
         }
+
         #movetop:hover {
             background-color: #444;
-            cursor : pointer;
+            cursor: pointer;
         }
 
         #movetop {
@@ -146,7 +163,7 @@
             font-size: 1.5em;
         }
 
-        body{
+        body {
             font-family: 'NanumBarunGothic';
         }
 
@@ -155,6 +172,7 @@
             background-color: red;
             background-image: url();
         }
+
         .ui-state-hover {
             background-color: #444;
             background-image: url();
@@ -168,8 +186,9 @@
             border: 0px;
             font-family: 'NEXON Lv1 Gothic OTF Light';
             /* font-weight: bolder; */
-            
+
         }
+
         .ui-accordion-content {
             background: #444;
             color: white;
@@ -177,21 +196,26 @@
             border: 0px;
             font-family: 'NanumBarunGothic';
         }
+
         .ui-accordion-content div:hover {
             background: #333;
         }
-        .ui-widget-content a{
+
+        .ui-widget-content a {
             color: white;
             text-decoration: none;
         }
+
         .ui-widget-content span {
             font-size: 10px;
         }
+
         .ui-accordion .ui-accordion-header {
             /* border: 0px; */
             outline: none;
-          
+
         }
+
         /* 매출 관리 */
         #title {
             /* text-align: center; */
@@ -203,7 +227,7 @@
 
         #box {
             margin-left: 280px;
-            background-color: #B4A7D6;
+            background-color: #999999;
             padding: 20px;
             width: 700px;
         }
@@ -211,7 +235,7 @@
         .img {
             width: 200px;
             height: 200px;
-            background-color: green;
+            background-color: #555555;
             margin: 20px;
         }
 
@@ -225,10 +249,20 @@
         }
 
 
-        path {
-        fill: rgb(52, 120, 209);
+        .pagination>.active>a,
+        .pagination>.active>span,
+        .pagination>.active>a:hover,
+        .pagination>.active>span:hover,
+        .pagination>.active>a:focus,
+        .pagination>.active>span:focus {
+            background-color: #999999;
+            border-color: #eeeeee;
         }
-     
+
+        .pagination>li>a,
+        .pagination>li>span {
+            color: black;
+        }
     </style>
     <style type="text/css">
         .highcharts-figure,
@@ -279,10 +313,11 @@
 
 <body>
     <!-- 메인 -->
+    
     <div id="left">
         
         <img src="../images/man.png" 
-            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius: 50%; background-color: #999;">
+            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:     50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
             <span>Hong gil dong</span>
@@ -295,31 +330,55 @@
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
                      type="button" value="Logout" id="btn2" class="btn">
         </div>
+        <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
-           <!-- 여기에 메뉴 -->
-           <h3>공연</h3>
-           <div>
+            <h3>공연</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
             </div>
-           <h3>통계</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
-           <h3>정산 관리</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
-           <h3>직원 정보</h3>
-           <div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
             </div>
-           <h3>이벤트</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-           <h3>1:1 문의</h3>
-             <div><span>▶</span> 문의 조회</div>
-           <h3>공연 랭킹</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
-           <h3>공지사항</h3>
-            <div><span>▶</span> 공지사항 조회</div>
-           <h3>고객 정보</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+            <h3>공연 랭킹</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+            <h3>고객 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            </div>
+            <h3>업무 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+            </div>
+            <h3>Q&A 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>  
         </div>
+
+
         <!-- container -->
 
 
@@ -368,211 +427,230 @@
         <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
-    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    <!-- 아래 회색 바닥 페이지 없앰 -->
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
     
+
     <!-- 매출 관리 -->
+
     <div id="title">
         <h1 style="color: #555; font-weight: bold;
         font-family: Arial;
         font-size: 3em;">매출 관리 <small>> Home </small></h1>
     </div>
-    <select style="margin-left: 280px; margin-top: 10px;" name="genre" id="genre">
-        <optgroup label="장르">
-            <option value="1">콘서트</option>
-            <option value="2">뮤지컬</option>
-            <option value="3">연극</option>
-            <option value="4">클래식</option>
-            <option value="5">전시</option>
+    <div style="margin-left: 400px; margin-top: 20px; width: 1000px;">
+        <select style="margin-left: 280px; margin-top: 10px;" name="genre" id="genre">
+            <optgroup label="장르">
+                <option value="1">콘서트</option>
+                <option value="2">뮤지컬</option>
+                <option value="3">연극</option>
+                <option value="4">클래식</option>
+                <option value="5">전시</option>
             </optgroup>
-    </select>
+        </select>
 
 
-    <table style="margin-left: 280px; margin-top: 10px; width: 500px;" class="table  table-bordered table-striped table-hover">
-        <tr>
-            <td style="width: 100px; background-color: aquamarine; text-align: center; vertical-align: middle;">총 매출액</td>
-            <td style="text-align: center; font-weight: bold; font-size: 2em;">30억</td>
-        </tr>
-    </table>
+        <table style="margin-left: 280px; margin-top: 10px; width: 500px;"
+            class="table  table-bordered table-striped table-hover">
+            <tr>
+                <td
+                    style="width: 100px; background-color: #555555; text-align: center; vertical-align: middle; color: white;">
+                    총 매출액</td>
+                <td style="text-align: center; font-weight: bold; font-size: 2em;">30억</td>
+            </tr>
+        </table>
 
-    <div id="box">
-        <div style="margin-top: 10px;"><label for="txtname" style="font-weight: bold;">&nbsp기간별 조회 :
-                &nbsp&nbsp&nbsp</label>
-            <input style="width: 100px; text-align: center;" type="text" name="date" value=" /      /" id="date"><label
-                for="date"><span style="font-size: 1em; margin-left: 10px;" class="glyphicon glyphicon-calendar"
-                    id="cal"></span></label> ~ <input style="width: 100px; text-align: center;" type="text" name="date"
-                value=" /      /" id="date1"><label for="date1"><span style="font-size: 1em; margin-left: 10px;"
-                    class="glyphicon glyphicon-calendar" id="cal1"></span></label>
-            <input style="margin-left: 10px; background-color: cornflowerblue; border: 0px;" type="button" value="조회">
+        <div id="box">
+            <div style="margin-top: 5px;"><label for="txtname" style="font-weight: bold;">&nbsp기간별 조회 :
+                    &nbsp&nbsp&nbsp</label>
+                <input style="width: 100px; text-align: center; " type="text" name="date2" value=" /      /"
+                    id="date2"><label for="date2"><span
+                        style="font-size: 1em; margin-top: -30px; margin-left: 10px; position: relative; top: 2px; left: 0px;"
+                        class="glyphicon glyphicon-calendar" id="cal"></span></label> ~ <input
+                    style="width: 100px; text-align: center;" type="text" name="date1" value=" /      /"
+                    id="date1"><label for="date1"><span style="font-size: 1em; margin-left: 10px;"
+                        class="glyphicon glyphicon-calendar" id="cal1"></span></label>
+                <input style="margin-left: 34px; background-color: #333333; color: white; border: 0px;" type="button"
+                    value="조회">
+            </div>
+            <div style="margin-top: 30px;">
+                <span style="font-weight: bold; margin-right: 20px; margin-left: 2px;">공연 제목 : </span>
+                <input style="width: 300px;" type="text" name="txt" id="txt">
+                <input style="margin-left: 10px; background-color:#333333; color: white;  border: 0px;" type="button"
+                    value="조회">
+            </div>
         </div>
-        <div style="margin-top: 50px;">
-            <span style="font-weight: bold; margin-right: 20px;">공연 제목 : </span>
-            <input style="width: 300px;" type="text" name="txt" id="txt">
-            <input style="margin-left: 10px; background-color: cornflowerblue; border: 0px;" type="button" value="조회">
+
+
+        <div id="box1">
+            <div class="info" style="float: left; margin-right: 90px;" id="info1">
+                <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value="1">
+                <div class="img" style="display: inline-block;"></div>
+                <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아>
+                        </span>
+                <span class="p"
+                    style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
+                <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
+                    2관</span>
+
+            </div>
+
+            <figure style="float: left;" class="highcharts-figure">
+                <div style="width:300px; margin-left: 60px;" id="container"></div>
+                <p class="highcharts-description">
+                </p>
+            </figure>
         </div>
+
+        <div style="clear: both;"></div>
+
+        <div id="box2">
+            <div class="info" style="float: left;margin-right: 90px;" id="info2">
+                <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value="2">
+                <div class="img" style="display: inline-block;"></div>
+                <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아>
+                        </span>
+                <span class="p"
+                    style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
+                <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
+                    2관</span>
+
+            </div>
+
+            <figure style="float: left;" class="highcharts-figure">
+                <div style="width:300px; margin-left: 60px;" id="container1"></div>
+                <p class="highcharts-description">
+                </p>
+            </figure>
+        </div>
+        <div style="clear: both;"></div>
+        <div id="box3">
+            <div class="info" style="float: left;margin-right: 90px;" id="info3">
+                <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value="3">
+                <div class="img" style="display: inline-block;"></div>
+                <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아>
+                        </span>
+                <span class="p"
+                    style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
+                <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
+                    2관</span>
+
+            </div>
+
+            <figure style="float: left;" class="highcharts-figure">
+                <div style="width:300px; margin-left: 60px;" id="container2"></div>
+                <p class="highcharts-description">
+                </p>
+            </figure>
+        </div>
+
+        <div style="clear: both;"></div>
+        <nav class="pagebar" style="margin-left: 400px;">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li class="active"><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li><a href="">6</a></li>
+                <li><a href="">7</a></li>
+                <li><a href="">8</a></li>
+                <li><a href="">9</a></li>
+                <li><a href="">10</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div><!-- selectable -->
+
+
+
+
     </div>
-
-
-
-    <div id = "box1">
-        <div class="info" style="float: left; margin-right: 90px;" id="info1">
-            <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value = "1">
-            <div class="img" style="display: inline-block;"></div>
-            <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
-            <span class="p"
-                style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-            <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
-                2관</span>
-
-        </div>
-
-        <figure style="float: left;" class="highcharts-figure">
-            <div style="width:300px; margin-left: 60px;" id="container"></div>
-            <p class="highcharts-description">
-            </p>
-        </figure>
-    </div>
-
-    <div style="clear: both;"></div>
-
-    <div id = "box2">
-        <div class="info" style="float: left;margin-right: 90px;" id="info2">
-            <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value = "2">
-            <div class="img" style="display: inline-block;"></div>
-            <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
-            <span class="p"
-                style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-            <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
-                2관</span>
-
-        </div>
-
-        <figure style="float: left;" class="highcharts-figure">
-            <div style="width:300px; margin-left: 60px;" id="container1"></div>
-            <p class="highcharts-description">
-            </p>
-        </figure>
-    </div>
-    <div style="clear: both;"></div>
-    <div id = "box3">
-        <div class="info" style="float: left;margin-right: 90px;" id="info3">
-            <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value = "3">
-            <div class="img" style="display: inline-block;"></div>
-            <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아></span>
-            <span class="p"
-                style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-            <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
-                2관</span>
-
-        </div>
-
-        <figure style="float: left;" class="highcharts-figure">
-            <div style="width:300px; margin-left: 60px;" id="container2"></div>
-            <p class="highcharts-description">
-            </p>
-        </figure>
-    </div>
-
-    <div style="clear: both;"></div>
-    <nav style="margin-left: 400px;" class = "pagebar">
-        <ul class="pagination">
-          <li>
-            <a href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">6</a></li>
-          <li class = "active"><a href="#">7</a></li>
-          <li><a href="#">8</a></li>
-          <li><a href="#">9</a></li>
-          <li><a href="#">10</a></li>
-          <li>
-            <a href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    <div style="margin-top:20px; margin-bottom: 80px; margin-left: 540px;">
-    <!-- <input type="button" value="추가" id = "btn1" class = "btn btn-warning"> -->
-    <input type="button" value="수정" id = "btn3" class = "btn btn-default">
-    <input type="button" value="삭제" id = "btn4" class = "btn btn-default">
+    <div id="manipulate" style="margin-top:20px; margin-bottom: 80px; margin-left: 1300px; width: 130px;">
+        <button class="modified" id="modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+        <button class="modified" id="delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
     </div>
     <script>
         // 메인
         var date = document.getElementById("date");
-    var now = new Date();
-    var sw = document.images["sw"];
+        var now = new Date();
+        var sw = document.images["sw"];
 
-    //날짜 자동 입력, 읽기만 가능 
-    date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
-    if (date.value != null) {
-        date.readOnly = true;
-    }
+        //날짜 자동 입력, 읽기만 가능 
+        date.value = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
+        if (date.value != null) {
+            date.readOnly = true;
+        }
 
-    // 캘린더
+        // 캘린더
         $("#date").datepicker({
             dateFormat: "yy-mm-dd",
             minDate: now.getFullYear() + "-1-1",
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
-   
-
-    document.body.bgColor = "white";
-    
 
 
-    //스위치 
-    var swCount = 1;
-    $("#sw").click(function () {
-        console.log("클릭함");
+        document.body.bgColor = "white";
 
-            if(swCount % 2 == 0) {
+
+
+        //스위치 
+        var swCount = 1;
+        $("#sw").click(function () {
+            console.log("클릭함");
+
+            if (swCount % 2 == 0) {
                 console.log("들어옴");
-                sw.src="../images/switch_on.png";
-                $("body").css("background-color","white");
-                $("#homeLogo").css("color","#333333");
-                $("#adminName").css("color","#333333")
+                sw.src = "../images/switch_on.png";
+                $("body").css("background-color", "white");
+                $("#homeLogo").css("color", "#333333");
+                $("#adminName").css("color", "#333333")
             } else {
-                sw.src="../images/switch_off.png";
-                $("body").css("background-color","#292A2D");
-                $("#homeLogo").css("color","white");
-                $("#adminName").css("color","white");
+                sw.src = "../images/switch_off.png";
+                $("body").css("background-color", "#292A2D");
+                $("#homeLogo").css("color", "white");
+                $("#adminName").css("color", "white");
 
             }
             swCount++;
-    });
+        });
 
-    // $("#btn1").click(function(){
-    //     window.open("login.html","Login","width=300, height=300");
-    // });
-    
-    // 버튼을 클릭하면 로그아웃 창이 뜸
-    $("#btn2").click(function(){
-        if(confirm("로그아웃하시겠습니까?")){
-            console.log("로그아웃 되었습니다.");
-         }
-    });
+        // $("#btn1").click(function(){
+        //     window.open("login.html","Login","width=300, height=300");
+        // });
 
-    $(".accomenu").accordion({
-        collapsible: true,
-        active: false
-    });
+        // 버튼을 클릭하면 로그아웃 창이 뜸
+        $("#btn2").click(function () {
+            if (confirm("로그아웃하시겠습니까?")) {
+                console.log("로그아웃 되었습니다.");
+            }
+        });
 
-    //홈버튼 링크
-    $("#homeLogo").click(function() {
-        location.href = "adminMain.html";
-    });
+        $(".accomenu").accordion({
+            collapsible: true,
+            active: false
+        });
 
-    //상단 메뉴 고정
-    $(document).scroll(function() {
-        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+        //홈버튼 링크
+        $("#homeLogo").click(function () {
+            location.href = "adminMain.html";
+        });
+
+        //상단 메뉴 고정
+        $(document).scroll(function () {
+            //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
             if ($(document).scrollTop() > $("#topmenu").position().top) {
                 $("#topmenu").css({
                     width: "100%",
@@ -584,59 +662,59 @@
 
             };
 
-        //상단 헤더(top)이 눈에 보일때 쯤
-        if ($(document).scrollTop() <= $("#topmenu").position().top) {
-            $("#topmenu").css({
-                position: "absolute",
-                top: "0px",
-                bottom: ""
-            });             
-        }
-    });
+            //상단 헤더(top)이 눈에 보일때 쯤
+            if ($(document).scrollTop() <= $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    position: "absolute",
+                    top: "0px",
+                    bottom: ""
+                });
+            }
+        });
 
 
-    //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
-    $("#btn2").mouseenter(function(){
-        // $("#btn2").css("background-color","cornflowerblue");
-        $("#btn2").css("color","white");
-    });
-    $("#btn2").mouseleave(function(){
-        // $("#btn2").css("background-color","#C27BA0");
-        $("#btn2").css("color","#D5D5D5");
-    })
+        //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
+        $("#btn2").mouseenter(function () {
+            // $("#btn2").css("background-color","cornflowerblue");
+            $("#btn2").css("color", "white");
+        });
+        $("#btn2").mouseleave(function () {
+            // $("#btn2").css("background-color","#C27BA0");
+            $("#btn2").css("color", "#D5D5D5");
+        })
 
-    //티켓 홈
-    $("#tickethome").click(function() {
-        window.open("../main.html","At-Ticket");
-    });
-
-    
-    //상단으로 돌아가기 -> 스무스 하게 올림
-    $("#movetop").click(function(){
-        	
-        $("html,body").animate({
-			scrollTop: 0
-		}, 700);
-        
-    });
-
-    //검색
-    $("#btnsearch").click(function(){
-        // 검색어 넘기기
-        window.location.href="adminSearch.html";
-    });
+        //티켓 홈
+        $("#tickethome").click(function () {
+            window.open("../main.html", "At-Ticket");
+        });
 
 
-    //메뉴 링크
-    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
-    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
-    
+        //상단으로 돌아가기 -> 스무스 하게 올림
+        $("#movetop").click(function () {
+
+            $("html,body").animate({
+                scrollTop: 0
+            }, 700);
+
+        });
+
+        //검색
+        $("#btnsearch").click(function () {
+            // 검색어 넘기기
+            window.location.href = "adminSearch.html";
+        });
+
+
+        //메뉴 링크
+        $("#showmanage").click(function () { window.location.href = "adminShow.html"; });
+        $("#emplomanage").click(function () { window.location.href = "adminEmployee.html"; });
+
 
 
         // 메출 관리
         var now = new Date();
 
-        $("#date").datepicker({
+        $("#date2").datepicker({
             dateFormat: "yy-mm-dd",
             minDate: now.getFullYear() + "-1-1",
             maxDate: now.getFullYear() + "-12-" + "31"
@@ -673,6 +751,9 @@
                 plotShadow: false,
                 type: 'pie'
             },
+            colors: [
+                '#ACE0D3', '#6C9AC3'
+            ],
             title: {
                 text: 'sales Rate (총매출액: 10억)'
             },
@@ -823,24 +904,24 @@
 
         // };
 
-        $("#btn3").click(function(){
-            window.open("salesManagementUpdate.html","수정","width=400 ,height=300");
-        
+        $("#modifybtn").click(function () {
+            window.open("salesManagementUpdate.html", "수정", "width=400 ,height=300");
+
         });
 
-        $("#btn4").click(function () {
-                if (confirm("정말로 삭제하시겠습니까?")) {
-                    $("input[name=checkRow]:checked").each(function () {
-                        var tr_value = $(this).val();
-                        var box = $("#box" + tr_value);
-                        console.log(1);
-                        box.remove();
-                    });
-                }
+        $("#delbtn").click(function () {
+            if (confirm("정말로 삭제하시겠습니까?")) {
+                $("input[name=checkRow]:checked").each(function () {
+                    var tr_value = $(this).val();
+                    var box = $("#box" + tr_value);
+                    console.log(1);
+                    box.remove();
+                });
             }
+        }
         );
 
-        
+
     </script>
 
 

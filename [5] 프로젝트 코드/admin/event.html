@@ -15,7 +15,8 @@
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
         @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
         html{
-            width: 1100px;
+            /* width: 2500px; */
+            /* border : 1px solid red; */
         }
         h1{
             font-weight: bold;
@@ -29,7 +30,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 2000px;
+            height: 2400px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -46,9 +47,13 @@
 
         .accomenu {
             /* margin-top: 30px; */
-            /* margin-left: 10px; */
+            margin-left: 10px;
             width : 260px;
             padding-right : 25px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
         }
 
         .b {
@@ -191,6 +196,15 @@
             outline: none;
           
         }
+       #right {
+            border : 1px solid red;
+            margin-left: 300px;
+            margin-top: 100px;
+            width : 700px;
+            /* color : white;
+            background-color: #C27BA0; */
+        }
+
         /* 이벤트 관리 */
          #title {
             /* text-align: center; */
@@ -213,6 +227,20 @@
             text-align: center;
         }
 
+        .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+           background-color:#999999;
+           border-color: #eeeeee;
+       }
+        
+      .pagination > li > a, .pagination > li > span{
+          color: black;
+      }
+      
+      th {
+            background-color:  #999;
+            /* color : white; */
+        }
+
     </style>
 </head>
 <body>
@@ -220,7 +248,7 @@
     <div id="left">
         
         <img src="../images/man.png" 
-            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius: 50%; background-color: #999;">
+            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:     50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
             <span>Hong gil dong</span>
@@ -233,31 +261,55 @@
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
                      type="button" value="Logout" id="btn2" class="btn">
         </div>
+        <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
-           <!-- 여기에 메뉴 -->
-           <h3>공연</h3>
-           <div>
+            <h3>공연</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
             </div>
-           <h3>통계</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
-           <h3>정산 관리</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
-           <h3>직원 정보</h3>
-           <div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
             </div>
-           <h3>이벤트</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-           <h3>1:1 문의</h3>
-             <div><span>▶</span> 문의 조회</div>
-           <h3>공연 랭킹</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
-           <h3>공지사항</h3>
-            <div><span>▶</span> 공지사항 조회</div>
-           <h3>고객 정보</h3>
-           <div style="margin-left:-30px; padding-left: 60px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+            <h3>공연 랭킹</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+            <h3>고객 정보</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            </div>
+            <h3>업무 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+            </div>
+            <h3>Q&A 게시판</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>  
         </div>
+
+
         <!-- container -->
 
 
@@ -306,7 +358,8 @@
         <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
-    <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
+    <!-- 아래 회색 바닥 페이지 없앰 -->
+    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
     
    <!-- 이벤트 관리 -->
@@ -316,9 +369,9 @@
         font-size: 3em;">이벤트 관리 <small>> Home </small></h1>
     </div>
 
-    <div id="info">
+    <div id="info" style="position: relative; left: 300px;">
         <h2>이벤트 관리</h2>
-        <div style="margin-bottom: 10px;" id="header">
+        <div style="margin-bottom: 10px; margin-left: 430px;" id="header">
             <select style="float:left; margin-right: 20px; width: 100px;" name="sel1" id="sel1" class="form-control">
                 <option value="name">제목</option>
                 <option value="month">기간(월)</option>
@@ -335,7 +388,7 @@
                 </span>
             </span>
         </div>
-        <table style="width: 850px;" class="table  table-bordered table-striped table-hover" id="tbl">
+        <table style="width: 850px;" class="table table-striped table-bordered table-condensed" id="tbl">
             <tbody id="tbody1">
                 <tr>
                     <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
@@ -387,6 +440,10 @@
                     <td class="data">프로모션</td>
                 </tr>
         </table>
+       
+        <div style="margin-left: 810px; width: 100px;">
+            <button class="modified" id="viewbtn">보기</button>
+        </div>
         <nav style="margin-left: 230px;" class = "pagebar">
             <ul class="pagination">
               <li>
@@ -411,7 +468,6 @@
               </li>
             </ul>
           </nav>
-        <input type="button" value="보기" class="btn btn-default" id="btn">
         </tbody>
     </div>
 
@@ -556,7 +612,7 @@
         }
     }
 
-    $("#btn").click(function(){
+    $("#viewbtn").click(function(){
         location.href = "eventInfo.html";
     });
 

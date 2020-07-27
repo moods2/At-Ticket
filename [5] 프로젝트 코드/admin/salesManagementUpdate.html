@@ -38,10 +38,14 @@
             <div class = "line"><span style="font-weight: bold;">비용 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="txt3" id="txt3"></div>
         </div>
     </div>
-    <div id="b">
-        <input type="button" value="수정" id="btn1" style="margin-left: 20px;" class="btn btn-default">
-        <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-default">
+    <div id="b" style="margin-left: 195px;">
+        <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+        <button class = "closebtn" id = "closebtn">닫기</button>
     </div>
+    <script>
+        $("#closebtn").click(function(){
+            window.close();
+        });
+    </script>
 </body>
-
 </html>

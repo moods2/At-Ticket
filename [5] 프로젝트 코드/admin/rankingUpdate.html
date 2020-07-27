@@ -40,18 +40,18 @@
         <input style="position: relative; top: -2px;" type="text" name="txt" id="txt" autofocus>
     </div>
 
-    <div id="b">
-        <input type="button" value="수정" id="btn1" style="margin-left: 20px;" class="btn btn-default">
-        <input type="button" value="닫기" id="btn2" style="margin-left: 20px;" class="btn btn-default">
+    <div id="b" style="margin-left: 186px;">
+        <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+        <button class="modified" id="closebtn">닫기</button>
     </div>
 
     <script>
-          $("#btn1").click(function () {
+          $("#modifybtn").click(function () {
             if (confirm("수정하시겠습니까?")) {
             }
         });
 
-        $("#btn2").click(function () {
+        $("#closebtn").click(function () {
             window.close();
         });
 

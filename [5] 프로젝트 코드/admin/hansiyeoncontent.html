@@ -40,15 +40,17 @@
             text-align: center;
         }
 
-        .form-control input:disabled{
-		    cursor: not-allowed;
+        .form-control input:disabled {
+            cursor: not-allowed;
         }
 
-        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+        .form-control[disabled],
+        .form-control[readonly],
+        fieldset[disabled] .form-control {
             background-color: white;
         }
 
-        .sub{
+        .sub {
             margin: 10px;
         }
     </style>
@@ -66,7 +68,7 @@
             <tr>
                 <th style="width: 70px; vertical-align: middle;">작성자</th>
                 <td style="width: 850px;">
-                    <input style="width: 100px;" type="text" class="form-control" value="admin01" disabled="">
+                    <input style="width: 100px;" type="text" class="form-control" value="staff01" disabled="">
                     <div style="margin-top: 10px;">반드시 입력하세요.</div>
                 </td>
 
@@ -74,7 +76,8 @@
             <tr>
                 <th style="vertical-align: middle;">제목</th>
                 <td>
-                    <input style="width: 500px;" type="text" class="form-control" class="line" value="휴가신청문의 입니다." disabled="">
+                    <input style="width: 500px;" type="text" class="form-control" class="line" value="휴가신청문의 입니다."
+                        disabled="">
                     <div style="margin-top: 10px;">반드시 입력하세요.</div>
                 </td>
             </tr>
@@ -103,14 +106,21 @@
             <tr>
                 <th style="vertical-align: middle;">파일</th>
                 <td>
-                    <input type="file" class="form-control" disabled="">
+
+                    <!-- <input type="file" class="form-control" disabled=""> -->
+                    <div><label for="txtphoto">첨부파일&nbsp;</label><input type="file" id="txtphoto"
+                            style="display: inline;" autofocus disabled=""></div>
+                    <div class="img_wrap">
+                        <img id="img1" />
+                    </div>
+
                 </td>
             </tr>
 
             <tr>
-                <th style="vertical-align: middle;" >비밀번호</th>
+                <th style="vertical-align: middle;">비밀번호</th>
                 <td>
-                    <input style="width: 200px;" type="password" class="form-control" disabled="" value="1234" id = "pwd">
+                    <input style="width: 200px;" type="password" class="form-control" disabled="" value="1234" id="pwd">
                 </td>
             </tr>
         </table>
@@ -118,20 +128,21 @@
         <div style="margin: width
         100px; color: white; background-color: black; font-weight: bold; text-align: center;">답변내용</div>
         <div style="border: 1px solid black;">
-            <div class = "sub">
+            <div class="sub">
                 <span style="font-weight: bold;">작성자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><textarea name="ans" id="ans"
                     style="width: 100px; height: 30px; vertical-align: middle;" disabled=""></textarea>
             </div>
-            <div class = "sub">
+            <div class="sub">
                 <span style="font-weight: bold;">작성 날짜&nbsp; </span></span><textarea name="ans" id="ans"
                     style="width: 100px; height: 30px; vertical-align: middle;" disabled=""></textarea>
             </div>
-            <div class = "sub">
-                <span style="font-weight: bold;">답변 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><textarea name="ans" id="ans"
-                    style="width: 900px; height: 30px; vertical-align: middle;" disabled=""></textarea>
+            <div class="sub">
+                <span style="font-weight: bold;">답변 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span></span><textarea name="ans" id="ans" style="width: 900px; height: 30px; vertical-align: middle;"
+                    disabled=""></textarea>
             </div>
         </div>
-      
+
         <!-- <textarea name="ans" id="ans" style="width: 1000px; height: 110px; vertical-align: middle;" disabled="">
            작성자    : 관리자
            작성 날짜 : 2020-07-21 12:45
@@ -139,39 +150,69 @@
         </textarea> -->
 
         </table>
-        <div id = "btns">
-        <!-- <input type="button" value="수정" class="btn btn-default" id = "btn3"> -->
-        <input type="button" value="삭제" class="btn btn-default" id = "btn4">
+        <div id="btns" style="margin-left: 920px; width: 100px;">
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
         </div>
 
         <!-- 댓글 -->
-        
-        
+
+
         <p>
-          <div id="disqus_thread"></div>
-      <script>
-      
-      (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = 'https://web1-2.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      
+        <div id="disqus_thread"></div>
+        <script>
+
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://web1-2.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+
         </p>
 </body>
-    <script>
-        // $("#btn3").click(function(){
-        //     $(".form-control").attr("disabled",false);
-        // });
+<script>
+    // $("#btn3").click(function(){
+    //     $(".form-control").attr("disabled",false);
+    // });
 
-        $("#btn4").click(function(){
-            if(confirm("정말로 삭제하시겠습니까?")){
-                
+    $("#btn4").click(function () {
+        if (confirm("정말로 삭제하시겠습니까?")) {
+
+        }
+    });
+
+
+    var sel_file;
+
+    $(document).ready(function () {
+        $("#txtphoto").on("change", handleImgFileSelect1);
+    });
+
+    function handleImgFileSelect1(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+
+        filesArr.forEach(function (f) {
+            if (!f.type.match("image.*")) {
+                alert("확장자는 이미지 확장자만 가능합니다.");
+                return;
             }
-        });
 
-    </script>
+            sel_file = f;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#img1").attr("src", e.target.result);
+            }
+            reader.readAsDataURL(f);
+
+        });
+    }
+
+
+</script>
+
 </html>
