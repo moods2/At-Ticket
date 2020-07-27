@@ -277,6 +277,7 @@
             background-color: #FF6D6D;
             color: white;
             font-weight: bold;
+            cursor: pointer;
         }
 
         #celenderInfo div {
@@ -467,6 +468,7 @@
              float: right;
              position: relative;
              top: -40px;
+             cursor: pointer;
          }
 
          #back {
@@ -476,6 +478,7 @@
              background-color: #eee;
              float: left;
              color: gray;
+             cursor: pointer;
          }
 
          /* 2번째 사이드 */
@@ -524,6 +527,7 @@
          #miniMapImg {
              width: 130px;
              margin-top: 10px;
+             cursor: pointer;
          }
          #miniMap div {
              background-color: white;
@@ -568,9 +572,11 @@
 
          #back2 {
             width: 100px;
+            cursor: pointer;
          }
          #reChoice {
             width: 154px;
+            cursor: pointer;
          }
 
          /* #back {
@@ -698,6 +704,105 @@
              display: block;
              content: "";
              clear: both;
+         }
+
+         #getChoice {
+             padding: 0px 20px;
+         }
+
+         #tabs #getChoice div{
+            /* font-size: 12px; */
+            font-weight: bold;
+            padding-left: 20px;
+            margin-bottom: 10px;
+         }
+
+         #tabs #getChoice label {
+             font-weight: normal;
+             width: 500px;
+             height: 25px;
+             background-color: rgb(255, 233, 230);
+             display: block;
+             float: right;
+             margin-right: 30px;
+             padding-top: 5px;
+             text-align: left;
+         }
+
+         #tabs #getChoice div::after {
+             display: block;
+             content: "";
+             clear: both;
+         }
+
+         .ui-widget {
+            font-size: 14px;
+         }
+
+
+         #myInfo {
+             margin-top: 50px;
+             padding: 0px 20px;
+         }
+         #myInfo dl {
+             border-top: 1px solid gray;
+             margin-top: 3px;
+             padding-top: 15px;
+         }
+
+         #myInfo dt, #myInfo dd {
+             float: left;
+             margin-top: 10px;
+         }
+
+         #myInfo dt {
+             width: 80px;
+         }
+
+         #myInfo input {
+             width: 130px;
+             height: 20px;
+             background-color: white;
+             border: 1px solid #eee;
+         }
+
+         #myInfo dd:nth-child(5) input{
+             width: 80px;
+         }
+
+
+         /* 주의사항 */
+         #getRed {
+             border: 1px solid #eee;
+             background-color: #eee;
+             padding: 10px;
+             height: 150px;
+             margin-top: 120px;
+         }
+         #getRed ul{
+             padding-left:20px;
+             list-style: decimal;
+         }
+
+         #getRed ul li {
+            font-size: 12px;
+             width: 100%;
+         }
+
+         #step4 h2 {
+            width: 97%;
+            font-size: 15px;
+            background-color: #7E9CB6;
+            height: 20px;
+            color: white;
+            padding: 5px 10px;
+            text-align: left;
+            margin-bottom: 30px;
+         }
+
+         #step4 span{
+             font-weight: bold;
+             font-size: 15px;
          }
 
     </style>
@@ -862,7 +967,7 @@
                                     </dd>
                                 </dl>
                                 <div style="clear: both;"></div>
-                                <input type="button" value="좌석선택">
+                                <input type="button" value="좌석선택" id="sitBtn">
                             </td>
                         </tr>
                     </tbody>
@@ -928,12 +1033,51 @@
                 </div>
             </div>
             <div id="step4">
-              4Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                <h2>수령방법</h2>
+                <div id="getChoice">
+                    <span>수령방법선택</span>
+                    <label for="tGet"><input type="radio" value="현장수령" name="tGet" checked>현장수령[배송불가 할인 포함]</label>
+                </div>
+                <div id="myInfo">
+                    <span>주문자 확인</span>
+                    <div>
+                        <dl>
+                            <dt>이름</dt>
+                            <dd><input type="text" value="홍길동" disabled></dd>
+                            <div style="clear: both;"></div>
+                            <dt>긴급연락처</dt>
+                            <dd>
+                                <input type="text" value="010" disabled> - 
+                                <input type="text" value="1111" disabled> - 
+                                <input type="text" value="2222" disabled>
+                            </dd>
+                            <div style="clear: both;"></div>
+                            <dt>e-mail</dt>
+                            <dd>
+                                <input type="text" value="hong" disabled> @ 
+                                <input type="text" value="gmail.com" disabled>
+                            </dd>
+                            <div style="clear: both;"></div>
+                        </dl>
+
+                        <div id="getRed">
+                        <span>주의사항</span> * 부정확한 정보 입력으로 인한 문제 발생 시 At-Ticteck은 책임을 지지 않습니다.
+                        <ul>
+                            <li>배송 선택 시 티켓 수령자의 배송지 정보를 정확히 입력해주시기 바랍니다.</li>
+                            <li>티켓은 유가증권으로 본인에게 직접 전달해야하며, 분실된 티켓은 재발권 되지 않습니다.</li>
+                            <li>일괄배송의 경우 정해진 날짜에 티켓 배송이 시작되며, 주소 수정은 일괄배송일 2일 전까지 가능합니다.</li>
+                            <li>예매 티켓 배송은 예매완료일, 혹은 일괄배송일로부터 4~5일(영업일 기준) 이내 수령 가능합니다.</li>
+                            <li>긴급연락처는 공연 취소와 같은 유사 시 안내 받으실 연락처이므로 정확히 입력해주시기 바랍니다.</li>
+                            <li>이메일 정보 미 입력 시 예매 관련 안내 메일을 받을 수 없으니 이메일 받기를 원하시는 경우 마이페이지에서
+                                회원정보를 수정해주시기 바랍니다.</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div id="step5">
-    <!-- 결제해줘!!!=========================================================================================== -->
-            5Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    <!-- ======================================================================================================= -->
+              5Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
             </div>
           </div>
     </div>
@@ -941,6 +1085,8 @@
     <script>
 
         var tabNum = [1,2,3,4];
+        var clickNum = false;
+        var ticketNum = false;
 
         // console.log(tabNum);
 
@@ -953,32 +1099,73 @@
 
         var tabNumMinus = [];
 
+        $("#sitBtn").click(function(){
+            if(clickNum == false){
+                alert("날짜를 선택해 주세요.");
+				event.preventDefault();
+            } else {
+                tabNumMinus = tabNum.shift(),
+                tabNum.push(n),
+                n++;
+                $("#tabs").tabs({
+                    disabled: tabNum,
+                    active: n
+                });
+
+                if(n == 1) {
+                    $("#side2").css("display","block")
+                }
+                if(n != 1) {
+                    $("#side1").css("display","block")
+                    $("#side2").css("display","none")
+                    $("#nextBtn").css({
+                        "width": "48%",
+                        "top" : "0px"
+                    });
+                    $("#back").css("display","block")
+                }
+            }
+        });
+
         // 다음단계
         $("#nextBtn").click(function(){
-            tabNumMinus = tabNum.shift(),
-            tabNum.push(n),
-            n++;
-            $("#tabs").tabs({
-                disabled: tabNum,
-                active: n
-            });
 
-            if(n == 1) {
-                $("#side2").css("display","block")
-            }
-            if(n != 1) {
-                $("#side1").css("display","block")
-                $("#side2").css("display","none")
-                $("#nextBtn").css({
-                    "width": "48%",
-                    "top" : "0px"
+            if(clickNum == false){
+                alert("날짜를 선택해 주세요.");
+				event.preventDefault();
+                // n == 0;
+                // tabNumMinus = [1,2,3,4];
+            } else if(n != 0 && ticketNum  == false){
+                alert("좌석을 선택해 주세요");
+                event.preventDefault();
+            } else {
+                
+                tabNumMinus = tabNum.shift(),
+                tabNum.push(n),
+                n++;
+                $("#tabs").tabs({
+                    disabled: tabNum,
+                    active: n
                 });
-                $("#back").css("display","block")
+
+                if(n == 1) {
+                    $("#side2").css("display","block")
+                }
+                if(n != 1) {
+                    $("#side1").css("display","block")
+                    $("#side2").css("display","none")
+                    $("#nextBtn").css({
+                        "width": "48%",
+                        "top" : "0px"
+                    });
+                    $("#back").css("display","block")
+                }
+
+                if(n == 5) {
+                    alert("결제하기 && 창닫기");
+                }
             }
 
-            if(n == 4) {
-                alert("결제하기 && 창닫기");
-            }
             
         });
         
@@ -1083,7 +1270,7 @@
                         });
                         console.log($(this).text());
                         $("#choicInfo dd:nth-child(5)").text($(this).text());
-
+                        clickNum = true;
                     });
                 
                 },
@@ -1091,6 +1278,27 @@
                 
             });
         // } );
+
+        //미니맵 옮기기     
+        $("#miniMapImg").click(function(){
+            // alert($("#miniMapImg").offset().top+","+$("#miniMapImg").offset().left);
+
+            // 1층
+            if(event.pageY < 190){
+                $("#container").css("display","block")
+                $("#divContainer").css("display","none")
+                $("#miniMapImg").attr("src","./images/minimap1.png");
+            //2층
+            }else{
+                // alert("아님");
+                $("#divContainer").css("display","block")
+                $("#container").css("display","none")
+                $("#miniMapImg").attr("src","./images/minimap2.png");
+
+            }
+            // alert(event.pageY)
+        })
+        
 
 
         // div 만들기 1층
@@ -1219,7 +1427,9 @@
                 $("#choiceSit ul").empty();
                 $("#sitFinul").empty();
                 $("#ticketNum").text("");
+                ticketNum = false;
                 $("#tickectPice").text("");
+                $("#finull").text("");
             });
         });
         
@@ -1240,12 +1450,18 @@
                     $("#choiceSit ul").empty();
                     $("#sitFinul").empty();
                     $("#ticketNum").text("");
+                    // ticketNum = false;
                     $("#tickectPice").text("");
+                    $("#totalPrice").text("");
+                    $("#finull").text("");
                     //list값 ul에 li로 추가
                     $("#choiceSit ul").append(checkList);
                     $("#sitFinul").append(sitFinul);
                     $("#ticketNum").text($("#sitFinul").children().length);
+                    ticketNum = true;
                     $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
+                    $("#totalPrice").text($("#ticketNum").text() * 77000 +2000 +"원");
+                    $("#finull").text($("#ticketNum").text() * 77000 +2000 +"원");
 
                     // 체크이미지로 변환
                     $(obj).attr({
@@ -1281,11 +1497,16 @@
                 $("#sitFinul").empty();
                 $("#ticketNum").text("");
                 $("#tickectPice").text("");
+                $("#totalPrice").text("");
+                $("#finull").text("");
                 //list값 ul에 li로 추가
                 $("#choiceSit ul").append(checkList);
                 $("#sitFinul").append(sitFinul);
                 $("#ticketNum").text($("#sitFinul").children().length);
+                ticketNum = false;
                 $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
+                $("#totalPrice").text($("#ticketNum").text() * 77000 +2000 +"원");
+                $("#finull").text($("#ticketNum").text() * 77000 +2000 +"원");
 
             }
             
@@ -1315,7 +1536,10 @@
                 $("#choiceSit ul").empty();
                 $("#sitFinul").empty();
                 $("#ticketNum").text("");
+                ticketNum = false;
                 $("#tickectPice").text("");
+                $("#totalPrice").text("");
+                $("#finull").text("");
             });
         });
         
@@ -1336,12 +1560,18 @@
                     $("#choiceSit ul").empty();
                     $("#sitFinul").empty();
                     $("#ticketNum").text("");
+                    // ticketNum = false;
+                    $("#totalPrice").text("");
+                    $("#finull").text("");
                     //list값 ul에 li로 추가
                     $("#choiceSit ul").append(checkList2);
                     $("#sitFinul").append(sitFinul2);
                     $("#ticketNum").text($("#sitFinul").children().length);
+                    ticketNum = true;
                     $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
                     $("#susu").text(2000+ "원");
+                    $("#totalPrice").text($("#ticketNum").text() * 77000 +2000 +"원");
+                    $("#finull").text($("#ticketNum").text() * 77000 +2000 +"원");
                     
                     // 체크이미지로 변환
                     $(obj).attr({
@@ -1377,11 +1607,17 @@
                 $("#sitFinul").empty();
                 $("#ticketNum").text("")
                 $("#tickectPice").text("")
+                $("#totalPrice").text("")
+                $("#finull").text("")
                 //list값 ul에 li로 추가
                 $("#choiceSit ul").append(checkList2);
                 $("#sitFinul").append(sitFinul2);
                 $("#ticketNum").text($("#sitFinul").children().length);
+                ticketNum = false;
+                // ticketNum = true;
                 $("#tickectPice").text($("#ticketNum").text() * 77000 +"원");
+                $("#totalPrice").text($("#ticketNum").text() * 77000 +2000 +"원");
+                $("#finull").text($("#ticketNum").text() * 77000 +2000 +"원");
 
             }
             
