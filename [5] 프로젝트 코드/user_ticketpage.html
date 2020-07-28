@@ -821,6 +821,150 @@
              color: black;
          }
 
+         .pay {
+            font-size: 12px;
+            /* border: 1px solid black; */
+            width: 680px;
+        }
+        #payment1 > h4 {
+            /* 백그라운드 */
+            background-color: #7E9CB6;
+            width: 97%;
+            height: 20px;
+            color:white;
+            padding: 5px 10px;
+        }
+        .pay > span {
+            font-weight: bold;
+            color: rgba(4, 4, 73, 0.596);
+        }
+        .pay > input[type="text"] {
+            border: 1px solid gray;
+        }
+        #ptbl {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            border-left: 0px;
+            border-right: 0px;
+
+            border-collapse: collapse;
+            width: 680px;
+        }
+        #ptbl th {
+            /* border: 1px solid gray; */
+            background-color: #ccc;
+            height: 20px;
+        }
+        #ptbl td:nth-child(3){
+            border-bottom: 1px solid gray;
+            border-left: 1px solid gray;
+        }
+        #ptbl tr {
+            border-bottom: 1px solid gray;
+        }
+        #ptbl th:nth-child(1), #ptbl td:nth-child(1) {
+            width: 200px;
+            text-align: center;
+        }
+        #ptbl th:nth-child(2), #ptbl td:nth-child(2) {
+            width: 230px;
+            text-align: center;
+        }
+        #ptbl th:last-child {
+            width: 200px;
+        }
+        #ptbl td > span {
+            color: red;
+        }
+
+        #payshut {
+            font-weight: bold;
+            background-color: rgb(235, 230, 230);
+            width: 280px;
+            font-size: 12px;
+            padding: 0px 5px;
+            margin: 10px 0px;
+            color: #555;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+        #payshut > span { color: red; }
+        .pspan { font-weight: bold; }
+        #eggpt { margin-left: 50px;}
+        #freesp { margin-left: 40px; }
+        #cbegg { margin-left: 10px; }
+        #pbtn { 
+            color: tomato; background-color: rgb(240, 237, 237); 
+            outline: none; 
+            border: 1px solid #ccc; 
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #egg {
+            margin-bottom: 10px;
+        }
+        #freeticket {
+            border-bottom: 2px dotted #ccc;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        #choicepay {
+            border-bottom: 2px dotted #ccc;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+        #rb1 {
+            margin-left: 20px;
+        }
+        
+        #paycheck {
+            position: relative;
+            top: 155px;
+            text-align: right;
+            color: #777;
+        }
+        
+        .pmodal {
+            border: 1px solid black;
+            width: 450px;
+            height: 300px;
+        }
+        .pmodal div:nth-child(1) {
+            width: 400px;
+            background-color: rgb(181, 197, 226);
+            margin: 5px auto;
+            padding: 5px 10px;
+        }
+        #mtbl {
+            width: 420px;
+            font-size: 12px;
+            margin: 5px auto;
+            border-collapse: collapse;
+        }
+        #mtbl th {
+            background-color: rgb(233, 228, 228);
+            color: #555;
+            font-weight: normal;
+        }
+        #mtbl td {
+            text-align: center;
+            padding: 5px;
+        }
+        #mtbl td:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .ui-dialog-titlebar {
+            background-color: cornflowerblue;
+        }
+        .ui-dialog-title { color: white; font-size: 12px;}
+        .ui-button{
+            width: 50px;
+            height: 30px;
+        }
+        .ui-widget .ui-widget { font-size: 12px; }
+
 
     </style>
 <body>
@@ -867,7 +1011,7 @@
                         <div style="clear: both;"></div>
                     </dl>
                 </div>
-                <div id="payment">
+                <div id="payment1">
                     <h2>결제내역</h2>
                     <dl>
                         <dt>티켓금액</dt>
@@ -1094,7 +1238,103 @@
 
             </div>
             <div id="step5">
-              5Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+              
+                <!-- 모달팝업1 -->
+                <div id="addticket" class="pmodal">
+                    <div>
+                        <span style="font-weight: bold; font-size: 13px; margin-right: 20px;">예매권번호 등록</span>
+                        <input type="text" style="height:14px; width: 160px;">
+                        <input type="button" id="mbtnAdd" value="등록" style="font-size: 12px; color: white; background-color: cornflowerblue; outline: none; border: 1px solid #999; border-radius: 2px;">
+                    </div>
+                    <table id="mtbl">
+                        <tbody>
+                            <tr>
+                                <th>예매권명</th>
+                                <th>금액</th>
+                                <th>사용기간</th>
+                                <th>사용</th>
+                            </tr>
+                            <tr>
+                                <td colspan="4">사용 가능한 예매권 목록이 없습니다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div id="payment1">
+                    <h4>결제방법</h4>
+
+                    <div id="egg" class="pay">
+                        <label for "eggpt">에그머니 </label><input type="text" id="eggpt" value="0" Style="width: 100px;">원<input type="checkbox" id="cbegg"><label for="cbegg">전액사용 (총 <span class="pspan">0</span>원)</label>
+                    </div>
+                    <div id="freeticket" class="pay">
+                        <label>공연예매권 <span id="freesp">사용가능 예매권 [총 <span class="pspan">0</span>장]</label> <input type="button" value="예매권 번호 등록/사용하기" id="pbtn"></span>
+                    </div>
+                    <div id="choicepay" class="pay">
+                        <label for "prd">결제 방법 선택</label>
+                        <input type="radio" id="rb1" class="rb" name="rb">
+                        <label for="rb1">신용카드</label>
+                        <input type="radio" id="rb2" class="rb" name="rb">
+                        <label for="rb2">무통장 입금</label>
+
+                        <select id="banksel" disabled value="입금 은행 선택">
+                            <option>국민은행</option>
+                            <option>신한은행</option>
+                            <option>기업은행</option>
+                            <option>하나은행</option>
+                            <option>농협은행</option>
+                            <option>신한은행</option>
+                        </select>
+                    </div>
+
+                    <div id="payshut">
+                        취소 가능 마감 시간 : <span>2020년 09월 11일 17:00까지</span>
+                    </div>
+                    <div id="payinfo" class="pay">
+                        <table id="ptbl">
+                            <tr>
+                                <th>내용</th>
+                                <th>취소수수료</th>
+                                <th>비고</th>
+                            </tr>
+                            <tr>
+                                <td>예매 후 7일 이내</td>
+                                <td>없음</td>
+                                <td rowspan="5">
+                                    <p>- 취소 시 예매수수료는 예매 당일 밤 12시 이전까지만 환불됩니다.</p>
+                                    <p>- 예매 후 7일 이내라도 취소시점이 관람일로부터 10일 이내라면 그에 해당하는 취소수수료가 부과됩니다.</p>
+                                    <p>- 관람 당일 취소 가능 상품의 경우 관람 당일 취소 시 티켓금액의 90%가 취소수수수료로 부과됩니다.</p>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>예매 후 8일 ~ 관람일 10일 전까지</td>
+                                <td>뮤지컬, 콘서트, 클래식 등: <span>장당 4,000원</span> / 연극, 전시 등: <span>장당 2,000원</span><br>(단,티켓 금액의 10% 이내)</td>
+                            </tr>
+                            <tr>
+                                <td>관람일 9일 전 ~ 관람일 7일 전까지</td>
+                                <td>티켓 금액의 <span>10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>관람일 6일 전 ~ 관람일 3일 전까지</td>
+                                <td>티켓 금액의 <span>20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>관람일 2일 전 ~ 관람일 1일 전까지</td>
+                                <td>티켓 금액의 <span>30%</span></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="paycheck" class="pay">
+                        <input type="checkbox" id="pcb1"><label for="pcb1">취소수수료 및 취소기한을 확인하였으며, 동의합니다.</label>
+                        <input type="checkbox" id="pcb2"><label for="pcb2">제 3자 정보제공 내용에 동의합니다. </label>
+                        <span id="pdetail">[상세보기]</span>
+                    </div>
+                    
+                    
+
+                </div>
             </div>
           </div>
           <div id="dialog1">
@@ -1665,9 +1905,36 @@
             
             // 체크이미지로 변하면서 title을 선택한 좌석ul에 li의 값으로추가
             
+            $("#addticket").hide();
+            $("#pbtn").click(function(){
+                $("#addticket").dialog({
+                    title: "공연예매권 등록/사용",
+                    width: 440,
+                    height: 400,
+                    modal : true,
+                    draggable: false,
+                    resizable: false,
+                    buttons: {
+                        "확인": function() {
+                            alert("예매권을 등록했습니다.");
+                        },
+                        "취소" : function() {
+                            $("#addticket").dialog("close");
+                        }
+                    }                        
+                });
+            });
+
+            // console.log($("#rb2").is(":checked"));
+            $("#rb2").click(function(){
+                $("#banksel").attr("disabled",false);
+            })
             
-            
-        }
+            $("#rb1").click(function(){
+                $("#banksel").attr("disabled",true);
+            })
+                
+            }
                 
     </script>
 
