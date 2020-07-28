@@ -171,7 +171,7 @@
         /* 탭 */
         #tabMenu {
             width: 1200px;
-            padding-bottom: 100px;
+            /* padding-bottom: 100px; */
             text-align: center;
         }
 
@@ -387,6 +387,16 @@
             background: #f1f7ff;
         }
 
+        .searchbox {
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            position: relative;
+            /* top: -30px; */
+            left: -298px;
+        }
+
 
     </style>
 
@@ -474,7 +484,7 @@
             </div>
 
 
-            <table id="board">
+            <!-- <table id="board">
                 <thead>
                     <tr>
                         <th>번호</th>
@@ -647,7 +657,177 @@
                         <td></td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
+                        <!-- 검색창 -->
+                        <div class="searchbox">
+                            <span class="noticemenu">등록순</span>
+                            <span class="noticemenu">인기순</span>
+                            <span class="noticemenu">조회순</span>
+                            <!-- <div class="search">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="검색"
+                                        />
+                                        <span class="input-group-addon"
+                                            ><i class="glyphicon glyphicon-search"></i
+                                        ></span>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <table id="tblList" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>태그</th>
+                                    <th>제목</th>
+                                    <th>이름</th>
+                                    <th>날짜</th>
+                                    <th>읽음</th>
+                                    <th>좋아요</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>15</td>
+                                    <td>후기</td>
+                                    <td>뮤지컬 [베르테르] 후기</td>
+                                    <td>홍길동</td>
+                                    <td>2020-07-15</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>후기</td>
+                                    <td>그랜드 민트 페스티벌 후기.</td>
+                                    <td>아무개</td>
+                                    <td>2020-07-14</td>
+                                    <td>65</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>후기</td>
+                                    <td>님들 오페라의 유령 봄?</td>
+                                    <td>호호호</td>
+                                    <td>2020-07-11</td>
+                                    <td>7</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>잡담</td>
+                                    <td>티켓팅 실패 ㅠㅠ 방탄소년단 티켓 삽니다~</td>
+                                    <td>홍길동</td>
+                                    <td>2020-07-15</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>잡담</td>
+                                    <td>싸이 흠뻑쇼 가보신분들 어떤가요?</td>
+                                    <td>아무개</td>
+                                    <td>2020-07-14</td>
+                                    <td>65</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>잡담</td>
+                                    <td>서울 볼만한 전시회 추천좀 해주세요</td>
+                                    <td>호호호</td>
+                                    <td>2020-07-11</td>
+                                    <td>7</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>잡담</td>
+                                    <td>디디피에서 요즘 전시회 안하나요?</td>
+                                    <td>홍길동</td>
+                                    <td>2020-07-15</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>잡담</td>
+                                    <td>뮤지컬 [캣츠] 40주년 오리지널 내한공연 후기!!!</td>
+                                    <td>아무개</td>
+                                    <td>2020-07-14</td>
+                                    <td>65</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>잡담</td>
+                                    <td>뮤지컬 [머더 발라드] 후기!!!</td>
+                                    <td>호호호</td>
+                                    <td>2020-07-11</td>
+                                    <td>7</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>잡담</td>
+                                    <td>에미넴 콘서트 보고싶다</td>
+                                    <td>홍길동</td>
+                                    <td>2020-07-15</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>잡담</td>
+                                    <td>손열음 공연 어떤가요?</td>
+                                    <td>아무개</td>
+                                    <td>2020-07-14</td>
+                                    <td>65</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>잡담</td>
+                                    <td>마마미아 내한 계획 아시는분></td>
+                                    <td>호호호</td>
+                                    <td>2020-07-11</td>
+                                    <td>7</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>잡담</td>
+                                    <td>뮤지컬 [머더 발라드] 후기</td>
+                                    <td>홍길동</td>
+                                    <td>2020-07-15</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>잡담</td>
+                                    <td>뮤지컬 [무인도 탈출기] 후기.</td>
+                                    <td>아무개</td>
+                                    <td>2020-07-14</td>
+                                    <td>65</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>잡담</td>
+                                    <td>레미제라블 재밌습니다 ^^</td>
+                                    <td>호호호</td>
+                                    <td>2020-07-11</td>
+                                    <td>7</td>
+                                    <td>7</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
             <!-- 글쓰기 -->
 
@@ -669,7 +849,7 @@
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">1</a></li>
                   <li><a href="#">2</a></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
@@ -691,35 +871,6 @@
                   </li>
                 </ul>
               </nav>
-
-              <div id="grid1">
-
-                <div id="ratio4">
-                    <h2>문의분류별 문의율</h2>
-                    <script src="https://code.highcharts.com/highcharts.js"></script>
-                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-                    <figure class="highcharts-figure">
-                        <div id="container4"></div>
-                    </figure>
-
-                </div>
-
-                <div id="ratio5">
-                    <h2>월별 문의율</h2>
-                    <script src="https://code.highcharts.com/highcharts.js"></script>
-                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-                    <figure class="highcharts-figure">
-                        <div id="container5"></div>
-                    </figure>
-
-
-                </div>
-            </div>
 
 
 
@@ -840,103 +991,17 @@
                 "color": "#7E9CB6"
             })
         });
- 
 
-                // 문의 분류별
-                Highcharts.chart('container4', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: 0,
-                plotShadow: false
-            },
-            title: {
-                text: 'Type of Question',
-                align: 'center',
-                verticalAlign: 'middle',
-                y: 60
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    dataLabels: {
-                        enabled: true,
-                        distance: -50,
-                        style: {
-                            fontWeight: 'bold',
-                            color: 'white'
-                        }
-                    },
-                    startAngle: -90,
-                    endAngle: 90,
-                    center: ['50%', '75%'],
-                    size: '110%'
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Browser share',
-                innerSize: '50%',
-                data: [
-                    ['예매방법', 58.9],
-                    ['결제방법', 13.29],
-                    ['수수료', 13],
-                    ['취소/환불', 3.78],
-                    ['티켓수령', 3.42],
-                    ['티켓판매/재휴문의', 3],
-                    {
-                        name: '기타',
-                        y: 4.61,
-                        dataLabels: {
-                            enabled: false
-                        }
-                    }
-                ]
-            }]
+        $(".noticemenu").mouseover(function () {
+            $(this).css("border-top", "5px solid orange");
+            $(this).css("color", "black");
+            $(this).css("font-weight", "bold");
         });
-
-        // 월별 문의
-        Highcharts.chart('container5', {
-            chart: {
-                type: 'line'
-            },
-            title: {
-                text: 'Monthly inquiry rate'
-            },
-            subtitle: {
-                text: 'Woman & Man'
-            },
-            xAxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-            yAxis: {
-                title: {
-                    text: '회수'
-                }
-            },
-            plotOptions: {
-                line: {
-                    dataLabels: {
-                        enabled: true
-                    },
-                    enableMouseTracking: false
-                }
-            },
-            series: [{
-                name: 'Woman',
-                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-            }, {
-                name: 'Man',
-                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-            }]
+        $(".noticemenu").mouseout(function () {
+            $(this).css("border-top", "");
+            $(this).css("color", "gray");
+            $(this).css("font-weight", "none");
         });
-
 
     </script>
 

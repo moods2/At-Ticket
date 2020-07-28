@@ -805,6 +805,23 @@
              font-size: 15px;
          }
 
+         #dialog1 {
+            text-align: center;
+         }
+
+         .ui-widget-overlay{
+             background: gray;
+         }
+
+         .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+             background: gray;
+             border: 1px solid gray;
+         }
+         .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+             color: black;
+         }
+
+
     </style>
 <body>
     
@@ -1080,6 +1097,11 @@
               5Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
             </div>
           </div>
+          <div id="dialog1">
+            <h1>결제가 완료되었습니다</h1>
+            <span>예매확인페이지로 이동하시겠습니까?</span>
+            <!-- <button>버튼</button> -->
+        </div>
     </div>
 
     <script>
@@ -1127,6 +1149,8 @@
             }
         });
 
+        $("#dialog1").hide();
+
         // 다음단계
         $("#nextBtn").click(function(){
 
@@ -1161,8 +1185,26 @@
                     $("#back").css("display","block")
                 }
 
+                //결제까지 완료시 창닫기 and 예매완료 페이지 이동
                 if(n == 5) {
-                    alert("결제하기 && 창닫기");
+                    $("#dialog1").dialog({
+                        // title: "인삿말",
+                        width: 500,
+                        height: 250,
+                        draggable: false,
+                        resizable: false,
+                        modal: true,
+                        buttons: {
+                            // "text": function(){ alert();}
+                            "예" : function() {
+                                opener.location.href  = 'mypage_reservation.html';
+                                window.close();
+                            },
+                            "아니오" : function(){
+                                window.close();
+                            }
+                        }
+                    });
                 }
             }
 
@@ -1421,7 +1463,7 @@
             $("#reChoice").click(function(){
                 // 좌석 이미지 다 원래대로
                 $(".son").attr({
-                    'class':'s8'
+                    'class':'s6'
                 });
                 //선택한 좌석 li 다 지우기
                 $("#choiceSit ul").empty();

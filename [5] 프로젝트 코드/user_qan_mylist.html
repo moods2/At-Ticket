@@ -138,35 +138,22 @@
         }
 
         #board {
-            /* border: 1px solid #ccc; */
-            border-collapse: collapse;
+            /* border-collapse: collapse; */
             width: 1200px;
         }
 
-        #board th {
-            background-color: #7E9CB6;
-            border-right: 1px solid #ffffff;
-            text-align: center;
-            height: 40px;
-            color: white;
-        }
-        #board td {
-            border-bottom: 1px solid #ccc;
-            border-right: 1px solid #ccc;
-            height: 35px;
-            text-align: center;
-            color: rgb(68, 68, 68);
-        }
+    
 
         #board th:nth-child(1) {width: 60px;}
-        #board th:nth-child(2) {width: 120px;}
-        #board th:nth-child(4) {width: 110px;}
+        #board th:nth-child(2) {width: 60px;}
+        #board th:nth-child(3) {width: 120px;}
         #board th:nth-child(5) {width: 110px;}
-        #board th:nth-child(6) {width: 60px;}
+        #board th:nth-child(6) {width: 110px;}
+        #board th:nth-child(7) {width: 60px;}
         /* #board tr:nth-child(even) {background-color: #e3e8f1;} */
 
         #board td:nth-child(3) {text-align: left; padding: 0px 10px;}
-        #board td:last-child {border-right: none;}
+        /* #board td:last-child {border-right: none;} */
 
         /* 탭 */
         #tabMenu {
@@ -300,14 +287,15 @@
 
         input[type="checkbox"] + label span {
             display:inline-block;
-            width:19px;
-            height:19px;
-            margin:-2px 10px 0 0;
+            width: 15px;
+            height: 15px;
+            /* margin:-2px 10px 0 0; */
+            margin: 0px;
             vertical-align:middle;
             background: white;
             border: 1px solid #7E9CB6;
             cursor:pointer;
-            margin-top: 8px;
+            /* margin-top: 8px; */
             margin-left: 5px;
         }
 
@@ -399,7 +387,7 @@
             </div>
 
 
-            <table id="board">
+            <table id="board" class="table table-striped">
                 <thead>
                     <tr>
                         <th>    
