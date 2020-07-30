@@ -253,6 +253,33 @@
                 background-image: url("./images/music1.jpeg");
                 background-size: contain;
             }
+
+            #submenu {
+                border: 1px solid rgb(202, 202, 202);
+                background-color: rgb(82, 82, 82);
+                border-radius: 5px;
+                color: white;
+                position: fixed;
+                left: 20px;
+                top: 100px;
+
+                width: 120px;
+                text-align: center;
+                display: none;
+                box-shadow: 1px 1px 4px rgb(158, 158, 158);
+            }
+            #submenu > ul {
+                list-style-type: none;
+                padding: 10px;
+                margin: 0;
+            }
+            #submenu > ul > li {
+                padding: 15px 5px;
+            }
+            .subfont {
+                color: white;
+            }
+
         </style>
     </head>
     <body>
@@ -317,6 +344,67 @@
             <hr />
             <!-------------------------------- 내용부분 -------------------------------->
             <div id="middle1">
+                <div id="submenu">
+                    <ul>
+                        <li>
+                            <span
+                                style="font-size: 2.4em;"
+                                class="glyphicon glyphicon-list-alt"
+                            ></span>
+                            <br />
+                            <a class="subfont" href="user_notice.html"
+                                >공지사항</a
+                            >
+                        </li>
+                        <li>
+                            <span
+                                style="font-size: 2.4em;"
+                                class="glyphicon glyphicon-pencil"
+                            ></span>
+                            <br />
+                            <a class="subfont" href="user_localboard.html"
+                                >커뮤니티</a
+                            >
+                        </li>
+                        <li>
+                            <span
+                                style="font-size: 2.4em;"
+                                class="glyphicon glyphicon-search"
+                            ></span>
+                            <br />
+                            <a class="subfont" href="user_concerthall.html"
+                                >공연장 검색</a
+                            >
+                        </li>
+                        <li>
+                            <span
+                                style="font-size: 2.4em;"
+                                class="glyphicon glyphicon-map-marker"
+                            ></span>
+                            <br />
+                            <a class="subfont" href="user_local.html"
+                                >지역 검색</a
+                            >
+                        </li>
+                        <li>
+                            <span
+                                style="font-size: 2.4em;"
+                                class="glyphicon glyphicon-question-sign"
+                            ></span>
+                            <br />
+                            <a class="subfont" href="user_qna.html">Q & A</a>
+                        </li>
+                        <li>
+                            <span
+                                style="font-size: 2.4em;"
+                                class="glyphicon glyphicon-off"
+                            ></span>
+                            <br /><a class="subfont" href="login.html"
+                                >로그인</a
+                            >
+                        </li>
+                    </ul>
+                </div>
                 <!-- 최신, 인기 공연 목록(순위별) -->
                 <div style="text-align: center;">
                     <h1>WHAT'S HOT</h1>
@@ -543,6 +631,13 @@
                             $("#topcenter").css("transform", "translate(0, 0)");
                         }
                     });
+                    $("#submenu").css({
+                        display: "block",
+                        position: "fixed",
+                        left: "50px",
+                        top: "200px",
+                        zIndex: "5"
+                    });
                 }
 
                 //상단 헤더(top)이 눈에 보일때 쯤
@@ -553,6 +648,9 @@
                         top: "0px",
                         bottom: "",
                         "background-color": "transparent",
+                    });
+                    $("#submenu").css({
+                        display: "none",
                     });
                 }
             });

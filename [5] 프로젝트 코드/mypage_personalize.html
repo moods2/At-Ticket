@@ -13,7 +13,7 @@
     <style>
 
         * { outline: none; }
-        #btnpoint, #btninfo, #btncalendar { outline: none; }
+        #btnpoint, #btninfo, #btndetail, #btnlogout, #btncalendar { outline: none; }
         body { margin: 0 auto; }
         h1 { font-family: "Arial Black"; font-weight: bold; }
         #main { width: 100%; }
@@ -95,8 +95,8 @@
             height: 200px;
             background-color: #FDFDFD;
         }
-        #left > div:first-child {height: 210px; margin-bottom: 35px;}
-        #left > div:nth-child(3) {height: 278px; margin-bottom: 35px;}
+        #left > div:first-child {height: 230px; margin-bottom: 25px;}
+        #left > div:nth-child(3) {height: 278px; margin-bottom: 25px;}
         #userinfo #infohead {
             background-color: #eee;
             font-size: 1.7em;
@@ -119,15 +119,21 @@
             padding: 10px;
             margin: 5px 5px 15px 5px;
         }
-        #userinfo div:last-child {
+        #userinfo div:nth-child(4) {
+            margin-bottom: 5px;
+        }
+        #userinfo div:nth-child(4), #userinfo div:nth-child(5) {
             text-align: center;
+        }
+        #userinfo input {
+            width: 110px;
         }
         #left > div:nth-child(2) {
             border: 5px solid #7A98B4;
             padding: 15px;
             font-weight: bold;
             color: #555;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
         #left > div:nth-child(2) > p {
             border-bottom: 1px dotted #DBE4F3;
@@ -420,22 +426,27 @@
                         <input type="button" class="btn btn-default btn-sm" value="포인트 안내▶" id="btnpoint">
                         <input type="button" class="btn btn-default btn-sm" value="회원정보 수정▶" id="btninfo">
                     </div>
+                    <div>
+                        <input type="button" class="btn btn-default btn-sm" value="상세 보기▶" id="btndetail">
+                        <input type="button" class="btn btn-default btn-sm" value="로그 아웃▶" id="btnlogout">
+                    </div>
                 </div>
                 <!-- 유저 메뉴 -->
                 <div id="usermenu">
                     <p class="usermenu" data-lo="mypage_reservation.html">예매확인/취소<span>▶</span></p>
-                    <p class="usermenu" data-lo="mypage_coupon.html">할인쿠폰/예매권<span>▶</span></p>
+                    <p class="usermenu" data-lo="mypage_coupon.html">할인쿠폰<span>▶</span></p>
                     <p class="usermenu" data-lo="mypage_interest.html">나의 관심 공연<span>▶</span></p>
                     <p class="usermenu" data-lo="mypage_watched.html">나의 관람 공연<span>▶</span></p>
                     <p class="usermenu" data-lo="mypage_personalize.html">나의 맞춤 설정<span>▶</span></p>
                 </div>
                 <!-- 맞춤별 예매 -->
                 <div id="personalize">
-                    <p><span class="glyphicon glyphicon-hand-up"></span> 맞춤별 예매</p>
+                    <p><span class="glyphicon glyphicon-hand-up
+                        "></span> 맞춤별 예매</p>
                     <p class="personaltitle">지역별예매</p>
-                    └<a href="#">서울</a>,<a href="#">경기/인천</a>,<a href="#">대전/충청/강원</a>,<br><a href="#">부산/대구/울산/경상</a>,<a href="#">광주/전라</a>,<a href="#">제주</a>
+                    └<a href="user_local.html">서울</a>,<a href="user_local.html">경기/인천</a>,<a href="user_local.html">대전/충청/강원</a>,<br><a href="user_local.html">부산/대구/울산/경상</a>,<a href="user_local.html">광주/전라</a>,<a href="user_local.html">제주</a>
                     <p class="personaltitle" style="margin-top: 20px;">공연장별예매</p>
-                    └<a href="#">세종문화회관</a>,<a href="#">광림아트센터</a>,<a href="#">예술의전당</a>,<br><a href="#">샤롯데씨어터</a>,<a href="#">한전아트센터</a>
+                    └<a href="user_local.html">세종문화회관</a>,<a href="user_local.html">광림아트센터</a>,<a href="user_local.html">예술의전당</a>,<br><a href="user_local.html">샤롯데씨어터</a>,<a href="user_local.html">한전아트센터</a>
                     <p class="personaltitle" style="margin-top: 20px;">날짜별예매 <input type="button" value="달력보기" class="btn btn-default btn-xs" id="btncalendar"></p>
                 </div>
                 <!-- 고객센터 -->
@@ -627,9 +638,25 @@
             location.href = "user_notice.html";
         });
 
+        //포인트 안내 클릭시
+        $("#btnpoint").click(function() {
+            location.href = "InfoUse.html";
+        });
+        
         //회원정보 수정 클릭시
         $("#btninfo").click(function() {
             location.href = "mypage_revision.html";
+        });
+
+        //상세보기 클릭시
+        $("#btndetail").click(function() {
+            location.href = "siyeondensityMypage.html";
+        });
+
+        //로그아웃 클릭시
+        $("#btnlogout").click(function() {
+            alert("로그아웃");
+            location.href = "main.html";
         });
 
 
