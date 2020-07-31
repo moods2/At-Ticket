@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/highcharts.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 등록순, 오름차순, 내림차순 */
+        .selectNotice {
+                width : 80px;
+                /* text-align: center; */
+                margin: 10px 0px;
+                margin-bottom: -10px;
+                background-color: white;
+                border : 0px;
+                height : 20px;
+                border-right: 1px solid #999;
+                color : #777;
+                padding: 0px;
+                padding-right: 5px;
+                /* font-size: 1.5em; */
+        }
+        .selectNotice:last-child {
+            border-right: 0px;
+        }
+
+        .selectNotice:hover {
+            color : #111;
+            font-weight: bold;
+        }
+
+        #selectable {
+            margin-top: 10px;
+            margin-left: 280px;
+        }
+
+        #title {
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+        }
+        th,td{
+            text-align: center;
+        }
+
+        tr td:nth-child(3){
+            text-align: left;
+        }
+
+        th {
+            background-color:  #999;
+            /* color : white; */
+        }
+
+        #slctp1, #slctp2 {
+            float : left;
+            /* margin-left : 100px; */
+            margin-bottom: 0px;
+        }
+
+        #slctp2 {
+            margin-top : 10px;
+            margin : 10px auto;
+            margin-bottom: 10px;
+            width : 300px;
+            margin-left: 550px;
+        }
+        #searchlogo:hover {
+            cursor: pointer;
+            /* background-color: rgb(red, green, blue); */
+        }
+       
+        #manipulate {
+            margin-left: 910px;
+        }
+        /* 수정하는 버튼  */
+        .edit {
+            width : 120px;
+            height : 50px;
+            border: 0px;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: auto 30px;
+            margin-top : 80px;
+            background-color: #D5D5D5;
+            color:#333;
+            border-radius: 10px;
+            visibility: hidden;
+        }
+
+        .pagebar {
+            margin-left : 470px;
+        }
+
+     /* 페이징바 색상 */
+       .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+           background-color:#999999;
+           border-color: #eeeeee;
+       }
+
+       .pagination > li > a, .pagination > li > span{
+          color: black;
+      }
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1 style="color: #555; font-weight: bold;
+        font-family: Arial;
+        font-size: 3em;">자유 게시판 <small>> Home </small></h1>
+    </div>
+
+    <div id = "selectable">
+        
+        <div id = "slctp1">
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
+            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
+            <!-- <input type="button" class = "selectNotice" value = "등록순">
+            <input type="button" class = "selectNotice" value = "오름차순">
+            <input type="button" class = "selectNotice" value = "내림차순"> -->
+        </div>
+        <div id = "slctp2">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
+			</div>
+        </div>
+
+    <table style="margin-left: 280px; margin-top: 30px; width: 820px;" class = "table table-bordered table-striped">
+        <tr>
+           
+            <th><input type="checkbox" id = "total5"></th>
+            <th style="width: 50px;">번호</th>
+            <th style="width: 70px;">태그</th>
+            <th style="width: 500px;">제목</th>
+            <th style="width: 100px;">이름</th>
+            <th style="width: 100px;">날짜</th>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>8</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>7</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>6</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>5</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>4</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>3</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>2</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+        <tr>
+            <td><input type = "checkbox">
+            <td>1</td>
+            <td>후기</td>
+            <td>뮤지컬 [베르테르] 후기</td>
+            <td>홍길동</td>
+            <td>2020-07-15</td>
+        </tr>
+    </table>
+
+    <!-- 내용물 수정/삭제 페이지 -->
+    <div id = "manipulate">
+        <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
+        <button class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i> 작성</button>
+        <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i> 수정</button>
+    </div>
+
+    <!-- 하단 페이지 선택 바 -->
+    <nav class = "pagebar">
+        <ul class="pagination">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li class = "active"><a href="">3</a></li>
+          <li><a href="">4</a></li>
+          <li><a href="">5</a></li>
+          <li><a href="">6</a></li>
+          <li><a href="">7</a></li>
+          <li><a href="">8</a></li>
+          <li><a href="">9</a></li>
+          <li><a href="">10</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+  
+
+</body>
+</html>
