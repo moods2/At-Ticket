@@ -15,38 +15,14 @@
         body {
             background-color: #F8F8F8;
         }
-        #top {
-            /* border: 1px solid black; */
-            width: 450px;
-            height: 100px;
-            margin: 50px auto;
-        }
-        #topleft {
-            display: inline-block;
-            /* border: 1px solid white; */
-            width: 100px;
-            height: 65px;
-            background-image: url("./images//title.png");
-            background-repeat: no-repeat;
-            background-position: center center;
+        .create {
+            float: right;
+            outline: none;
             cursor: pointer;
         }
-        #topleft + h1 {
-            font-size: 25px;
-            font-weight: bold;
-            display: inline-block;
-            position: relative;
-            top: -10px;
-            left: 10px;
-            color: #333;
+        .find {
+            float: left;
         }
-        #create {
-            float: right;
-            position: relative;
-            top: 30px;
-            outline: none;
-        }
-
         #login {
             border: 1px solid #C8C8C8;
             border-radius: 10px;
@@ -55,7 +31,7 @@
             height: 450px;
             margin: 0 auto;
             text-align: center;
-            margin-top: -30px;
+            margin-top: 50px;
         }
         h1 {
             font-size: 2.5em;
@@ -110,11 +86,10 @@
             color: black;
         }
         #footer {
-            width: 900px;
+            text-align: center;
             margin: 0 auto;
         }
         #copyright {
-            text-align: center;
             color: #666;
             margin-top: 20px;
             letter-spacing: -.1px;
@@ -128,13 +103,6 @@
 </head>
 <body>
     
-    <div id="top">
-        <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-        <a href="main.html" id="topleft"></a>
-        <!-- 상단메뉴 좌측(로그인 문구) -->
-        <h1>로그인</h1>
-        <input type="button" value="회원가입" class="btn btn-default" id="create">
-    </div>
     <div id="login">
         <h1>Sign In</h1>
         <div>
@@ -149,7 +117,12 @@
             <input type="button" value="SIGN IN" id="enter">
         </div>
         <div>
-            <div><a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a></div>
+            <div style="width: 305px;">
+                <div class="find">
+                    <a href="">아이디 찾기</a> | <a href="">비밀번호 찾기</a>
+                </div>
+                <a class="create">회원가입</a>
+            </div>
         </div>
     </div>
     <div id="footer">
@@ -161,7 +134,9 @@
     <script>
 
         //회원가입 클릭시
-        $("#create").click(function() {
+        $(".create").click(function() {
+            window.moveTo(0, 0);
+            window.resizeTo(screen.availWidth, screen.availHeight);
             location.href = "create_account.html";
         });
 
@@ -187,7 +162,6 @@
                 console.log("아이디 미저장");
             };
             // location.href = "main.html";
-            
         });
 
     </script>

@@ -786,6 +786,8 @@
 
         //돌아가기
         $("#goback").click(function() {
+            window.moveTo(0, 0);
+            window.resizeTo(600, 630);
             location.href = "login.html";
         });
 
