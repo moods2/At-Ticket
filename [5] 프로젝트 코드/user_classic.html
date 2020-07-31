@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="shortcut icon" href="./images/favicon.ico">
+        <link rel="shortcut icon" href="./images/favicon.ico" />
         <link rel="stylesheet" href="css/jquery-ui.css" />
         <link rel="stylesheet" href="css/bootstrap.css" />
         <link rel="stylesheet" href="css/slick-theme.css" />
@@ -41,9 +41,9 @@
             }
             #bottom {
                 /* border: 1px solid black; */
-                height: 200px;
+                height: 250px;
                 background-color: #eee;
-                color: white;
+                color: #333333;
             }
             #topmenu {
                 border-bottom: 1px solid #ddd;
@@ -280,6 +280,44 @@
                 color: white;
             }
 
+            #bottom > div {
+                float: left;
+                position: relative;
+                left: 12%;
+                top: 22%;
+            }
+            #bottom .txt {
+                margin-left: 30px;
+                line-height: 1.1em;
+                color: #666;
+                top: 28%;
+            }
+            #bottom .txt .black {
+                color: black;
+            }
+            #bottom #service {
+                margin-left: 250px;
+                top: 18%;
+            }
+            #bottom #service p:first-child {
+                border-bottom: 1px solid #bbb;
+                padding: 0 0 5px 20px;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+            #bottom #service p > span {
+                color: #444;
+                font-size: 1.3em;
+            }
+            #bottom #service p:nth-child(2) {
+                text-align: center;
+                font-size: 3em;
+                padding-left: 10px;
+            }
+            #bottom #service p {
+                margin-bottom: -2px;
+                padding-left: 20px;
+            }
         </style>
     </head>
     <body>
@@ -399,9 +437,7 @@
                                 style="font-size: 2.4em;"
                                 class="glyphicon glyphicon-off"
                             ></span>
-                            <br /><a class="subfont" href="login.html"
-                                >로그인</a
-                            >
+                            <br /><a class="subfont" id="login">로그인</a>
                         </li>
                     </ul>
                 </div>
@@ -582,12 +618,27 @@
             </div>
             <!-------------------------------- 화면 하단부 -------------------------------->
             <div id="bottom">
-                <div style="width: 1600px; margin: auto;">
+                <div>
                     <!-- 회사 마크 -->
-                    <img
-                        src="./images/title2.png"
-                        style="transform: translate(0, 40px);"
-                    />
+                    <img src="./images/title2.png" />
+                </div>
+                <div class="txt">
+                    <p class="black">At-Ticket (주)</p>
+                    <p>
+                        서울시 강남구 역삼동 한독빌딩 8층 대표: 한시연 |
+                        개인정보보호책임자: 한시연
+                    </p>
+                    <p>it1234@atticket.com 사업자등록번호 229-81-37000</p>
+                    <p class="black">
+                        Copyright &copy; At-Tickey Corp. All Rights Reserved.
+                    </p>
+                </div>
+                <div id="service">
+                    <p><span>☎</span> 고객센터 전화상담</p>
+                    <p>1544-6399</p>
+                    <p>평일 09:00 ~ 18:00</p>
+                    <p>토요일 09:00 ~ 17:00</p>
+                    <p>일요일 공휴일 휴무</p>
                 </div>
             </div>
         </div>
@@ -636,7 +687,7 @@
                         position: "fixed",
                         left: "50px",
                         top: "200px",
-                        zIndex: "5"
+                        zIndex: "5",
                     });
                 }
 
@@ -732,6 +783,20 @@
                         scrollTop: 0,
                     },
                     1000
+                );
+            });
+
+            //팝업창 가운데 배치
+            var popupWidth = 600;
+            var popupheight = 630;
+            var popupX = window.screen.width / 2 - popupWidth / 2;
+            var popupY = window.screen.height / 2 - popupheight / 2;
+            //관심 공연 담기 팝업창
+            $("#login").click(function () {
+                window.open(
+                    "login.html",
+                    "_black",
+                    `left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`
                 );
             });
         </script>
