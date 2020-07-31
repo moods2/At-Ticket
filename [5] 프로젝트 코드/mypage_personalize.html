@@ -32,12 +32,49 @@
         }
         #bottom {
             /* border: 1px solid black; */
-            width: 100%;
             min-width: 1300px;
-            height: 200px;
+            height: 250px;
             background-color: #eee;
-            color: white;
         }
+        #bottom > div {
+            float: left;
+            position: relative;
+            left: 21%;
+            top: 22%;
+        }
+        #bottom .txt {
+            margin-left: 30px;
+            line-height: 1.1em;
+            color: #666;
+            top: 28%;
+        }
+        #bottom .txt .black {
+            color: black;
+        }
+        #bottom #service {
+            margin-left: 200px;
+            top: 18%;
+        }
+        #bottom #service p:first-child {
+            border-bottom: 1px solid #BBB;
+            padding: 0 0 5px 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        #bottom #service p > span {
+            color: #444;
+            font-size: 1.3em;
+        }
+        #bottom #service p:nth-child(2) {
+            text-align: center;
+            font-size: 3em;
+            padding-left: 10px;
+        }
+        #bottom #service p {
+            margin-bottom: -2px;
+            padding-left: 20px;
+        }
+
         #topmenu {
             border-bottom: 1px solid #ddd;
             background-color: transparent;
@@ -450,7 +487,7 @@
                     <p class="personaltitle" style="margin-top: 20px;">날짜별예매 <input type="button" value="달력보기" class="btn btn-default btn-xs" id="btncalendar"></p>
                 </div>
                 <!-- 고객센터 -->
-                <div id="service">
+                <div>
                     <p><span>☎</span> 고객센터 전화상담</p>
                     <p>1544-6399</p>
                     <p class="time">평일 09:00 ~ 18:00</p>
@@ -553,9 +590,22 @@
         </div>
 <!-------------------------------- 화면 하단부 -------------------------------->
         <div id="bottom">
-            <div style="width: 100%; min-width: 1300px; margin: auto;">
+            <div>
                 <!-- 회사 마크 -->
-                <img src="../images/title2.png" style="transform: translate(0, 40px);">
+                <img src="./images/title2.png"/>
+            </div>
+            <div class="txt">
+                <p class="black">At-Ticket (주)</p>
+                <p>서울시 강남구 역삼동 한독빌딩 8층 대표: 한시연 | 개인정보보호책임자: 한시연</p>
+                <p>it1234@atticket.com 사업자등록번호 229-81-37000</p>
+                <p class="black">Copyright &copy; At-Tickey Corp. All Rights Reserved.</p>
+            </div>
+            <div id="service">
+                <p><span>☎</span> 고객센터 전화상담</p>
+                <p>1544-6399</p>
+                <p>평일 09:00 ~ 18:00</p>
+                <p>토요일 09:00 ~ 17:00</p>
+                <p>일요일 공휴일 휴무</p>
             </div>
         </div>
     </div>

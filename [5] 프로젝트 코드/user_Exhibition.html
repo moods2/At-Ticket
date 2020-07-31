@@ -13,6 +13,10 @@
         <script src="js/jquery-ui.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/Backstretch.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
+            rel="stylesheet"
+        />
         <style>
             * {
                 outline: none;
@@ -21,8 +25,9 @@
                 margin: 0 auto;
             }
             h1 {
-                font-family: "Arial Black";
-                font-weight: bold;
+                font-family: "Noto Sans KR", sans-serif;
+                font-size: 2em;
+                margin: 30px 0;
             }
             #main {
                 width: 100%;
@@ -412,6 +417,7 @@
             }
             #submenu > ul > li {
                 padding: 15px 5px;
+                cursor: pointer;
             }
             .subfont {
                 color: white;
@@ -574,7 +580,7 @@
                                 style="font-size: 2.4em;"
                                 class="glyphicon glyphicon-off"
                             ></span>
-                            <br /><a class="subfont" href="login.html"
+                            <br /><a class="subfont" id="login"
                                 >로그인</a
                             >
                         </li>
@@ -929,6 +935,17 @@
                     1000
                 );
             });
+
+            //팝업창 가운데 배치
+            var popupWidth = 600;
+            var popupheight = 630;
+            var popupX = (window.screen.width / 2) - (popupWidth / 2);
+            var popupY = (window.screen.height / 2) - (popupheight / 2);
+            //관심 공연 담기 팝업창
+            $("#login").click(function() {
+                window.open("login.html","_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
+            });
+
         </script>
     </body>
 </html>

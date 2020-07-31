@@ -786,8 +786,8 @@
 
         //돌아가기
         $("#goback").click(function() {
-            window.moveTo(0, 0);
             window.resizeTo(600, 630);
+            window.moveTo(((screen.width - 600) / 2), ((screen.height - 630) / 2));
             location.href = "login.html";
         });
 
@@ -1062,8 +1062,9 @@
             
             //모든 조건 다 만족 시
             alert("회원가입이 완료되었습니다.");
-            location.href = "main.html";
-
+            window.resizeTo(600, 630);
+            window.moveTo(((screen.width - 600) / 2), ((screen.height - 630) / 2));
+            location.href = "login.html";
         });
 
     </script>

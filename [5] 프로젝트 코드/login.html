@@ -161,7 +161,10 @@
             } else {
                 console.log("아이디 미저장");
             };
-            // location.href = "main.html";
+
+            window.opener.location.href = "main.html";
+            window.close();
+
         });
 
     </script>
