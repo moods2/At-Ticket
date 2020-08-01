@@ -26,7 +26,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 2200px;
+            height: 3000px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -544,6 +544,31 @@
 
 <!-- 관리자가 뮤지컬 등의 정보를 등록한다. -->
     <div class = "inputTitle">
+        현재화면 상태
+    </div>
+    <div class = "inputInfo" style = "height : 840px;">
+        <table  style = "height : 800px;">
+            <tr>
+                <td colspan="2"><iframe src="" frameborder="0" style = "width : 1300px; height : 720px;" id = "picframe"></iframe></td>
+            </tr>  
+            <tr style = "height : 70px;">
+                <td class = title>&nbsp;&nbsp;파일첨부</td>
+                <td><input type="file" id = "fileinputer"></td>
+            </table>
+            </tr>          
+    </div> 
+
+    <script>
+        //파일선택을 하면  현재화면상태에 변화를 준다 -> 서버 구현할떄 바뀌어야 하는 코드이다.
+        var fileTimer = 0;
+        $("#fileinputer").click(function(){
+            fileTimer = setTimeout(function(){
+                $("#picframe").attr("src","adminNtcCheck(fix).html");
+            },3000);    
+        });
+    </script>
+
+    <div class = "inputTitle">
         티켓정보
     </div>
     <div class = "inputInfo">
@@ -1022,6 +1047,8 @@
             location.href = "./adminNtc(Fix).html";
         }
     });
+
+
 
 
 
