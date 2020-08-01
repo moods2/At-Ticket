@@ -292,6 +292,14 @@
             font-size: 1.6em;
             font-weight: bold;
         }
+
+        .splitHr {
+            border: 1px solid #ddd;
+            width : 1500px;
+            margin-left: 280px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
         /* --------------------상단배너 시작----------------------- */
         /* 상단배너 */
         #topbanner {
@@ -388,6 +396,13 @@
         }
         
         /* --------------------상단배너 끝----------------------- */
+
+        /*--------------------------- WHAT'S HOT 시작-------------------------------------------------*/
+
+        
+
+        /*--------------------------- WHAT'S HOT 끝-------------------------------------------------*/
+
 
 
     </style>
@@ -495,9 +510,71 @@
         </table>
     </div>
 
+    <hr class = "splitHr">
+
     
 
     <!--------------------------- 상단배너 관리 끝------------------------------------------------->
+
+
+
+
+
+    <!--------------------------- WHAT'S HOT 시작------------------------------------------------->
+    <style>
+        /* WHAT'S HOT 배경 */
+        #whatsHotPic {
+            /* border: 1px solid black; */
+            margin-top : 20px;
+            margin-left : 280px;
+            width : 1500px;
+            height : 700px;
+            background-color: #F0F0F0;
+            padding-top: 50px;
+            padding-left : 50px;
+        }
+
+
+        /* 큰사진 */
+        #bigPic {
+            border : 1px solid red;
+            background-image: url("../images/big_consert.jpeg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width : 400px;
+            height : 600px;
+            float: left;
+        }
+
+        .whatrow {
+            width : 230px;
+            height : 295px;
+            border: 1px solid green;
+            float: left;
+            margin-left : 20px;
+            margin-bottom: 10px;
+        }
+
+
+    </style>
+
+    <div class = "titlebanner">WHAT'S HOT 배너 관리</div>
+    <div id = "whatsHotPic">
+        <div id= "bigPic"></div>
+        <div class = "whatrow"></div>
+        <div class = "whatrow"></div>
+        <div class = "whatrow"></div>
+        <div class = "whatrow"></div>
+        <div class = "whatrow"></div>
+        <div class = "whatrow"></div>
+        <div class = "whatrow"></div>
+        <div class = "whatrow"></div>
+
+    </div>
+
+
+    <!--------------------------- WHAT'S HOT 끝------------------------------------------------->
+
 
 
     <!-- **************************************************************************************** -->
