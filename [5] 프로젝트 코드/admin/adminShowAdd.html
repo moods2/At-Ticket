@@ -112,11 +112,11 @@
             </div>
             <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" style="width: 100px;" autofocus>원</div>
             <div><label for="txtmin">소요 시간 : </label><input type="text" id="txtmin" style="width: 100px;" autofocus>분</div>
-            <div>
-                <label for="txt">공연 회차 : </label><input type="text" id="txttime" style="width: 100px;" autofocus>
+            <div id="round">
+                <label for="txtround">공연 회차 : </label><input type="text" id="txtround" style="width: 100px;" autofocus>
                 <label for="txttime">공연 시간 : </label><input type="text" id="txttime"  style="width: 100px;" autofocus>
 
-                <button class="btn btn-default" style="height: 27px;">회차 추가</button>
+                <button id="addbtn" class="btn btn-default" style="height: 27px;">회차 추가</button>
             </div>
             <div>
                 <label for="txtplace">공연 장소 : </label>
@@ -337,7 +337,17 @@
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
 
-    
+    var n = 1;
+
+    $("#addbtn").click(function() {
+
+        $("#round").append("<label for='txtround"+n+"'>공연 회차 : </label><input type='text' id='txtround"+n+"' style='width: 100px;'' autofocus>"+
+                "<label for='txttime"+n+"''>공연 시간 : </label><input type='text' id='txttime"+n+"''  style='width: 100px;' autofocus>");
+
+        n++;
+
+    });
+
     
 
 </script>
