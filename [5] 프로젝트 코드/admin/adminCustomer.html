@@ -260,6 +260,10 @@
             /* color : white; */
         }
 
+        #manipulate {
+            margin-left: 1100px;
+        }
+
         .modified {
             border : 0px;
             border-radius: 5px;
@@ -280,10 +284,16 @@
             cursor: pointer;
         }
 
-        #tbody1 > tr > td:nth-child(4){
-            text-align: left;
-            padding-left: 20px;
+        tr td:nth-child(3):hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
+
+/* 
+        #tbody1 > tr > td:nth-child(8){
+            text-align: left;
+            padding-left: 30px;
+        } */
     </style>
 </head>
 
@@ -421,8 +431,8 @@
         <h1>고객 관리 <small>> Home </small></h1>
     </div>
 
-    <div style="margin-left: 530px;" id="header">
-        <select style="margin-left: 280px; width: 100px;" name="sel1" id="sel1" class="form-control">
+    <div style="margin-left: 870px;" id="header">
+        <select style="margin-left: 220px; width: 100px;" name="sel1" id="sel1" class="form-control">
             <option value="name">이름</option>
             <option value="tel">전화번호</option>
             <option value="id">회원아이디</option>
@@ -439,21 +449,29 @@
         </span>
     </div>
 
-    <div id="box" style="margin-left: 500px;">
-        <table style="width: 450px; margin-left: 280px;" class="table  table-bordered table-striped table-condensed"
+    <div id="box" style="margin-left: 300px;">
+        <table style="width: 930px; margin-left: 280px;" class="table  table-bordered table-striped table-condensed"
             id="tbl">
             <tbody id="tbody1">
                 <tr>
-                    <th><input type="checkbox" name="cbAll"></th>
-                    <th style="width: 50px;">index</th>
+                    <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
+                    <th style="width: 50px;">번호</th>
                     <th style="width: 90px;">이름</th>
-                    <th style="width: 300px;">회원아이디</th>
-                    <th style="width: 180px;">주민번호</th>
+                    <th style="width: 110px;">아이디</th>
+                    <th style="width: 160px;">주민번호</th>
+                    <th class="title" style="width: 150px;text-align: center;">전화번호</th>
+                    <th class="title" style="width: 120px;text-align: center;">비번</th>
+                    <th class="title" style="width: 250px;text-align: center;">주소</th>
                 </tr>
             </tbody>
         </table>
+        <div id="manipulate">
+            <button class="modified" id="makebtn"><i class="glyphicon glyphicon-plus"></i> 추가</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
+        </div>
     </div>
-    <nav style=" margin-top: -70px; margin-left:800px; width: 500px;" class = "pagebar">
+    
+    <nav style=" margin-top: -70px; margin-left:830px; width: 500px;" class = "pagebar">
         <ul class="pagination">
           <li>
             <a href="#" aria-label="Previous">
@@ -477,8 +495,7 @@
           </li>
         </ul>
       </nav>
-      <button style="margin-left: 1200px;" class = "modified" id = "viewbtn">보기</button>
-    
+   
     <script>
     // main 
     var date = document.getElementById("date");
@@ -616,6 +633,7 @@
         var sel1 = document.getElementById("sel1");
         var tr = document.getElementsByTagName("tr");
         var cbAll = document.all.cbAll; // 일괄 체크박스
+        var cb = document.getElementsByClassName("cb");
       
         // select에서 바뀌면 검색창에 focus가 가도록 한 구문
        $("#sel1").change(function(){
@@ -628,10 +646,11 @@
             index = 1;
 
             for (var i = 0; i < count; i++) {
-                list = ['<input type="checkbox" class="cb">',index, "홍길동", "hongil", "932921-1859144"];
+        
+                list = ['<input type="checkbox" class="cb">',index, "홍길동", "hongil", "932921-1859144","010-1234-5555","cheryy1234","서울시 강남구 역삼동"];
                 tr = document.createElement("tr");
                
-                for (var j = 0; j < 5; j++) {
+                for (var j = 0; j < 8; j++) {
                     var td = document.createElement("td");
                     td.innerHTML = list[j];
                     tr.appendChild(td);
@@ -646,12 +665,43 @@
             tbody1.innerText = "일치하는 데이터가 없습니다.";
 
         }
-        var cb = document.getElementsByClassName("cb");
 
+        for (var i = 2; i < tr.length; i++) {
+            tr[i].children[2].onclick = function () {
+                // location.href="hansiyeoncontent.html";
+            };
+        }
 
-        $("#viewbtn").click(function(){
-            location.href = "customerInfo.html";
+        cbAll.onchange = function(){
+            for(var i=0;i<cb.length;i++){
+                    cb[i].checked = cbAll.checked;
+                }
+        }
+
+        $("#makebtn").click(function () {
+            // if ($('input').is(':checked') == true) {
+            //     location.href = "customerInfo.html";
+            // } else {
+            //     alert("하나 이상을 체크하시오.");
+            // }
+            window.open("customerInfoinsert.html","추가","width=500,height=450")
         });
+        
+        //삭제
+        $("#delbtn").click(function () {
+                if ($('input').is(':checked') == true) {
+                    if (confirm("정말로 삭제하시겠습니까?")) {
+                        $("input[name=checkRow]:checked").each(function () {
+                            var tr_value = $(this).val();
+                            var tr = $("tr[value='" + tr_value + "']");
+                            tr.remove();
+                        });
+                    }
+                } else {
+                    alert("하나 이상을 체크하시오.");
+                }
+
+            });
 
         
     </script>

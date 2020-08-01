@@ -940,21 +940,28 @@
         // };
 
         $("#modifybtn").click(function () {
-            window.open("salesManagementUpdate.html", "수정", "width=400 ,height=300");
+                if ($('input').is(':checked') == true) {
+                    window.open("salesManagementUpdate.html", "수정", "width=400 ,height=300");
+                } else {
+                    alert("하나 이상을 체크하시오.");
+                }
 
-        });
+            });
 
-        $("#delbtn").click(function () {
-            if (confirm("정말로 삭제하시겠습니까?")) {
-                $("input[name=checkRow]:checked").each(function () {
-                    var tr_value = $(this).val();
-                    var box = $("#box" + tr_value);
-                    console.log(1);
-                    box.remove();
-                });
-            }
-        }
-        );
+            $("#delbtn").click(function () {
+                if ($('input').is(':checked') == true) {
+                    if (confirm("정말로 삭제하시겠습니까?")) {
+                        $("input[name=checkRow]:checked").each(function () {
+                            var tr_value = $(this).val();
+                            var box = $("#box" + tr_value);
+                            console.log(1);
+                            box.remove();
+                        });
+                    }
+                } else {
+                alert("하나 이상을 체크하시오.");
+                }
+            });
 
 
     </script>

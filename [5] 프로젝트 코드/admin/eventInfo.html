@@ -393,7 +393,7 @@
             <tbody id="tbody1">
                 <tr>
                     <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
-                    <th class="title" style="width: 50px;text-align: center;">Index</th>
+                    <th class="title" style="width: 50px;text-align: center;">번호</th>
                     <th class="title" style="width: 150px;text-align: center;">제목</th>
                     <th class="title" style="width: 200px;text-align: center;">기간</th>
                     <th class="title" style="width: 100px;text-align: center;">구분</th>
@@ -413,8 +413,7 @@
         <!-- <input type="button" value="추가" class="btn btn-default" id="btn1">
         <input type="button" value="수정" class="btn btn-default" id="btn3">
         <input type="button" value="삭제" class="btn btn-default" id="btn4"> -->
-        <div id = "manipulate" style="margin-left: 730px; width: 200px;">
-            <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+        <div id = "manipulate" style="margin-left: 795px; width: 200px;">
             <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
             <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
         </div>
@@ -563,28 +562,30 @@
         }
     }
 
-     //추가
-     $("#addbtn").click(function () {
-        child = window.open("eventInsert.html", "추가", "width=500, height=330");
-    });
-
     //수정
     $("#modifybtn").click(function () {
-        child = window.open("eventUpdate.html", "수정", "width=500, height=330");
-    });
+            if ($('input').is(':checked') == true) {
+                child = window.open("eventUpdate.html", "수정", "width=500, height=330");
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+        });
 
     //삭제
     $("#delbtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    $("input[name=checkRow]:checked").each(function () {
+                        var tr_value = $(this).val();
+                        var tr = $("tr[value='" + tr_value + "']");
+                        tr.remove();
+                    });
+                }
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
 
-        if (confirm("정말로 삭제하시겠습니까?")) {
-            $("input[name=checkRow]:checked").each(function () {
-                var tr_value = $(this).val();
-                var tr = $("tr[value='" + tr_value + "']");
-                tr.remove();
-            });
-        }
-
-    });
+        });
 
 
 </script>

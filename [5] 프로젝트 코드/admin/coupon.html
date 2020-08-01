@@ -215,6 +215,10 @@
             margin-left: 280px;
         }
 
+        #tbl{
+            margin-top: 20px;
+        }
+
        #tbl td {
             text-align: center;
         }
@@ -392,7 +396,7 @@
     <div id="info" style="position: relative; left: 350px;">
         <h2>쿠폰 관리</h2>
 
-        <div style="margin-bottom: 10px; margin-left: 430px;" id="header">
+        <div style="margin-bottom: 10px; margin-left: 140px;" id="header">
             <select style="float:left; margin-right: 20px; width: 100px;" name="sel1" id="sel1" class="form-control">
                 <option value="name">제목</option>
                 <option value="month">기간(월)</option>
@@ -410,14 +414,14 @@
             </span>
         </div>
 
-        <table style="width: 850px;" class="table  table-bordered table-striped table-condensed" id="tbl">
+        <table style="width: 560px;" class="table  table-bordered table-striped table-condensed" id="tbl">
             <tbody id="tbody1">
                 <tr>
                     <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
-                    <th class="title" style="width: 100px;text-align: center;">Index</th>
-                    <th class="title" style="width: 150px;text-align: center;">제목</th>
-                    <th class="title" style="width: 400px;text-align: center;">기간</th>
-                    <th class="title" style="width: 200px;text-align: center;">할인율</th>
+                    <th class="title" style="width: 60px;text-align: center;">번호</th>
+                    <th class="title" style="width: 200px;text-align: center;">제목</th>
+                    <th class="title" style="width: 200px;text-align: center;">기간</th>
+                    <th class="title" style="width: 100px;text-align: center;">할인율</th>
                   
                 <tr value="1">
                     <td><input type="checkbox" class="cb" name="checkRow" value="1"></td>
@@ -462,10 +466,13 @@
                     <td class="data">2000</td>
                 </tr>
         </table>
-        <div style="width: 100px; margin-left: 810px;">
-        <button class = "modified" id = "viewbtn">보기</button>
-      </div>
-        <nav style="margin-left: 200px;" class = "pagebar">
+        
+        <div style="width: 150px; margin-left: 415px;">
+            <button class="modified" id="makebtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+            <button class="modified" id="viewbtn">보기</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
+        </div>
+        <nav style="margin-left: 80px;" class = "pagebar">
             <ul class="pagination">
               <li>
                 <a href="#" aria-label="Previous">
@@ -635,8 +642,37 @@
         }
     }
 
-        $("#viewbtn").click(function(){
-            location.href="couponInfo.html";
+    //추가
+        $("#makebtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                child = window.open("couponInsert.html", "추가", "width=500, height=330");
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+        });
+
+        $("#viewbtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                location.href = "couponInfo.html";
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+        });
+
+    //삭제
+     $("#delbtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    $("input[name=checkRow]:checked").each(function () {
+                        var tr_value = $(this).val();
+                        var tr = $("tr[value='" + tr_value + "']");
+                        tr.remove();
+                    });
+                }
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+
         });
     </script>
 

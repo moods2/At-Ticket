@@ -258,7 +258,7 @@
         }
 
         #middle {
-            margin-left: 280px;
+            margin-left: 800px;
         }
 
         #one {
@@ -331,6 +331,41 @@
         
       .pagination > li > a, .pagination > li > span{
           color: black;
+      }
+
+      .box2{
+        text-align: center;
+         margin-left: -500px;
+      }
+
+      .cb{
+       margin-left: 280px; 
+       position: relative; 
+       margin-right: 10px; 
+       top:-70px
+      }
+
+      .ranktitle{
+        display: inline-block; 
+        position: relative; 
+        top: -60px; 
+        margin-left: 20px;
+      }
+
+      .vertical-line{
+        border: 2px solid #999999; 
+        height: 80px; width: 2px; 
+        display: inline-block;
+         position: relative; 
+         top: -30px; 
+         left: 100px;
+      }
+
+      .rank-detail {
+        display: inline-block; 
+        position: relative; 
+        top: -60px; 
+        left: 150px;
       }
     </style>
 
@@ -509,13 +544,13 @@
     </div>
 
     <div style="margin-left: 200px;">
-    <figure style="margin-left: 280px;" class="highcharts-figure">
+    <figure style="margin-left: 450px;" class="highcharts-figure">
         <div id="container"></div>
         <p style="text-align: center;" class="highcharts-description">
             에매율
         </p>
     </figure>
-    <div style="margin-left: 500px; font-weight: bold;">
+    <div style="margin-left: 600px; font-weight: bold;">
         <span id="day" class="dat">일간</span>
         <span>｜</span>
         <span id="week" class="dat">주간</span>
@@ -525,11 +560,11 @@
         <span id="year" class="dat">연간</span>
       
     </div>
-    <div id="calendar1" style="width: 500px; margin: 20px ; margin-left: 370px;">
+    <div id="calendar1" style="width: 500px; margin: 20px ; margin-left: 450px;">
         <input style="width: 100px; text-align: center; margin-left: 170px;" type="text" name="date1" id="date1">
         <label for="date1"><span style="font-size: 3em; " class="glyphicon glyphicon-calendar" id="cal1"></span></label>
     </div>
-    <div style="margin-left: 430px; outline: none;" id="btns">
+    <div style="margin-left: 530px; outline: none;" id="btns">
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="전체" id="btn1" class="bt">
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="뮤지컬" id="btn3" class="bt">
         <input style="color: mediumpurple; font-weight: bold;" type="button" value="콘서트" id="btn4" class="bt">
@@ -540,92 +575,86 @@
     <div id="line" style="border: 2px solid #999999; width: 1500px; margin-top: 30px;"></div>
 
     <div id="middle">
-        <div style="text-align: center; margin-left: -500px;" id="one" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+        <div id="one" class="box2">
+            <input type="checkbox"
                 class="cb">
             <span class="rank">1위</span>
             <div class="img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
-                ★★★★☆ 4</div>
-            <div
-                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            <div class = "ranktitle">뮤지컬 더 모먼트<br>♥ 6.0
+              </div>
+            <div class = "vertical-line">
             </div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+            <div class ="rank-detail">
                 2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id="two" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+        <div id="two" class="box2">
+            <input type="checkbox"
                 class="cb">
             <span class="rank">2위</span>
             <div class="img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
-                ★★★★☆ 4</div>
-            <div
-                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            <div class = "ranktitle">뮤지컬 더 모먼트<br>♥ 6.0
+               </div>
+            <div class = "vertical-line">
             </div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+            <div class ="rank-detail">
                 2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id="three" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+        <div id="three" class="box2">
+            <input type="checkbox"
                 class="cb">
             <span class="rank">3위</span>
             <div class="img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
-                ★★★★☆ 4</div>
-            <div
-                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            <div class = "ranktitle">뮤지컬 더 모먼트<br>♥ 6.0
+                </div>
+            <div class = "vertical-line">
             </div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+            <div class ="rank-detail">
                 2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id="four" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+        <div id="four" class="box2">
+            <input type="checkbox"
                 class="cb">
             <span class="rank">4위</span>
             <div class="img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
-                ★★★★☆ 4</div>
-            <div
-                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            <div class = "ranktitle">뮤지컬 더 모먼트<br>♥ 6.0
+                </div>
+            <div class = "vertical-line">
             </div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+            <div class ="rank-detail">
                 2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id="five" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+        <div id="five" class="box2">
+            <input type="checkbox"
                 class="cb">
             <span class="rank">5위</span>
             <div class="img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
-                ★★★★☆ 4</div>
-            <div
-                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            <div class = "ranktitle">뮤지컬 더 모먼트<br>♥ 6.0
+                </div>
+            <div class = "vertical-line">
             </div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+            <div class ="rank-detail">
                 2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
-        <div style="text-align: center; margin-left: -500px;" id="six" class="box2">
-            <input style="margin-left: 280px; position: relative; margin-right: 10px; top:-70px" type="checkbox"
+        <div id="six" class="box2">
+            <input type="checkbox"
                 class="cb">
             <span class="rank">6위</span>
             <div class="img"></div>
-            <div style="display: inline-block; position: relative; top: -60px; margin-left: 20px;">뮤지컬 더 모먼트<br>♥ 6.0
-                ★★★★☆ 4</div>
-            <div
-                style="border: 2px solid #999999; height: 80px; width: 2px; display: inline-block; position: relative; top: -30px; left: 100px;">
+            <div class = "ranktitle">뮤지컬 더 모먼트<br>♥ 6.0
+                </div>
+            <div class = "vertical-line">
             </div>
-            <div style="display: inline-block; position: relative; top: -60px; left: 150px;" class="content">
+            <div class ="rank-detail">
                 2020.07.10~2020.08.30<br>
                 대학로 유니플렉스 2관</div>
         </div>
     </div>
-    <nav style="margin-left: 410px;" width: 00px; class="pagebar">
+    <nav style="margin-left: 480px;" width: 400px; class="pagebar">
         <ul class="pagination">
             <li>
                 <a href="#" aria-label="Previous">
@@ -649,10 +678,10 @@
             </li>
         </ul>
     </nav>
-    <div style="width: 200px; margin-left: 750px;" id="sel">
-            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
-            <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i> 추가</button>
+    <div style="width: 350px; margin-left: 750px;" id="sel">
+            <button class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i> 추가</button>
             <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i> 수정</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
     </div>
 </div>
     <script src="../js/jquery-1.12.4.js"></script>
@@ -870,22 +899,34 @@
 
         });
 
-        $("#addbtn").click(function () {
-            window.open("rankingInsert.html", "추가", "width=400, height=300")
+        $("#makebtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                window.open("rankingInsert.html", "추가", "width=400, height=300");
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
         });
 
         $("#modifybtn").click(function () {
-            window.open("rankingUpdate.html", "수정", "width=400, height=300")
+            if ($('input').is(':checked') == true) {
+                window.open("rankingUpdate.html", "수정", "width=400, height=300");
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
         });
 
         $("#delbtn").click(function () {
-            if (confirm("정말로 삭제하시겠습니까?")) {
-                // $("input[name=checkRow]:checked").each(function () {
-                //     var tr_value = $(this).val();
-                //     var box = $("box" + tr_value);
-                //     console.log(1);
-                //     box.remove();
-                // });
+            if ($('input').is(':checked') == true) {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    // $("input[name=checkRow]:checked").each(function () {
+                    //     var tr_value = $(this).val();
+                    //     var box = $("box" + tr_value);
+                    //     console.log(1);
+                    //     box.remove();
+                    // });
+                }
+            } else {
+                alert("하나 이상을 체크하시오.");
             }
         });
 

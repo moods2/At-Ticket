@@ -401,7 +401,7 @@
             <tbody id="tbody1">
                 <tr>
                     <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
-                    <th class="title" style="width: 100px;text-align: center;">Index</th>
+                    <th class="title" style="width: 100px;text-align: center;">번호</th>
                     <th class="title" style="width: 150px;text-align: center;">제목</th>
                     <th class="title" style="width: 400px;text-align: center;">기간</th>
                     <th class="title" style="width: 200px;text-align: center;">구분</th>
@@ -450,8 +450,10 @@
                 </tr>
         </table>
        
-        <div style="margin-left: 815px; width: 100px;">
+        <div style="margin-left: 700px; width: 150px;">
+            <button class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
             <button class="modified" id="viewbtn">보기</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
         </div>
         <nav style="margin-left: 230px;" class = "pagebar">
             <ul class="pagination">
@@ -621,9 +623,38 @@
         }
     }
 
-    $("#viewbtn").click(function(){
-        location.href = "eventInfo.html";
+    $("#viewbtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                location.href = "eventInfo.html";
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+        });
+
+        //추가
+     $("#makebtn").click(function () {
+        if ($('input').is(':checked') == true) {
+        child = window.open("eventInsert.html", "추가", "width=500, height=330");
+        } else {
+                alert("하나 이상을 체크하시오.");
+            }
     });
+
+     //삭제
+     $("#delbtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    $("input[name=checkRow]:checked").each(function () {
+                        var tr_value = $(this).val();
+                        var tr = $("tr[value='" + tr_value + "']");
+                        tr.remove();
+                    });
+                }
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+
+        });
 
    document.getElementsByTagName("a").onclick=function(){
             console.log(1);

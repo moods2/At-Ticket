@@ -401,8 +401,7 @@
                 </tr>
                 </tr>
         </table>
-        <div id = "manipulate" style="margin-left: 640px; width: 200px;">
-            <button class = "modified" id = "addbtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+        <div id = "manipulate" style="margin-left: 700px; width: 200px;">
             <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
             <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
         </div>
@@ -550,28 +549,30 @@
         }
     }
 
-    $("#btn1").click(function () {
-        child = window.open("couponInsert.html", "추가", "width=500, height=330");
-    });
-
     //수정
-    $("#btn3").click(function () {
-        child = window.open("couponUpdate.html", "수정", "width=500, height=330");
-    });
+    $("#modifybtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                child = window.open("couponUpdate.html", "수정", "width=500, height=330");
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+        });
 
     //삭제
-    $("#btn4").click(function () {
+    $("#delbtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                if (confirm("정말로 삭제하시겠습니까?")) {
+                    $("input[name=checkRow]:checked").each(function () {
+                        var tr_value = $(this).val();
+                        var tr = $("tr[value='" + tr_value + "']");
+                        tr.remove();
+                    });
+                    }
+                } else {
+                    alert("하나 이상을 체크하시오.");
+                }
 
-        if (confirm("정말로 삭제하시겠습니까?")) {
-            $("input[name=checkRow]:checked").each(function () {
-                var tr_value = $(this).val();
-                var tr = $("tr[value='" + tr_value + "']");
-                tr.remove();
-            });
-        }
-
-    }
-    );
+    });
 
 
 </script>
