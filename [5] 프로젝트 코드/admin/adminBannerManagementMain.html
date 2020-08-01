@@ -289,10 +289,10 @@
         .titlebanner {
             margin-top : 50px;
             margin-left : 280px;
-            font-size: 1.3em;
+            font-size: 1.6em;
             font-weight: bold;
         }
-        /* --------------------상단배너----------------------- */
+        /* --------------------상단배너 시작----------------------- */
         /* 상단배너 */
         #topbanner {
             /* border: 1px solid red; */
@@ -301,14 +301,22 @@
             width : 1500px;
             height : 500px;
             background-color: #F0F0F0;
-            padding: 40px;
+            padding-top: 50px;
+            padding-left : 50px;
+        }
+        /* 사진들을 감싸는 객체 */
+        #topcover {
+            /* border : 1px solid blue; */
+            width : 1400px;
+            overflow: hidden;
         }
         /*상단배너 자식*/
         #topbaby {
             position : relative;
-            border: 1px solid green;
+            /* border: 1px solid green; */
             height : 400px;
-            width : 3500px;
+            width : 13000px;
+            transition: all 1.3s;
         }
         /* 상단배너 자식 floating 시킨다. */
         #topbaby div {
@@ -316,17 +324,72 @@
             width : 1400px;
             height : 400px;
         }
-        /* 첫번째 자식의 그림 */
-        #topbaby div:nth-child(1) {
-            background-image: url(../images/bg1.jpg);
+        /* 상단배너 배경의 속성 */
+        .topsetting {
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
-        /* 상단배너 prev */
-        #mainprev
-        /* 상단배너 next */
+
         
-        /* --------------------상단배너----------------------- */
+        /* 상단배너 prev */
+        #mainprev {
+            position : absolute;
+            top : 430px;
+            left : 280px;
+        }
+        #mainprev:hover {
+            cursor : pointer;
+        }
+        
+        /* 상단배너 next */
+        #mainnext {
+            position : absolute;
+            top : 430px;
+            left : 1730px;
+        }
+        #mainnext:hover {
+            cursor:pointer;
+        }
+        
+        /* 전체 배너 선택들의 길이조정 너비조정 */
+        .bannerTool {
+            /* border : 1px solid red; */
+            margin-top : 20px;
+            margin-left : 280px;
+            width : 1500px;
+            height : 320px;
+
+        }
+        /* 상단배너 그림 url 가져오기 */
+        #topBannerSelect {
+            border: 1px solid blue;
+            width : 1000px;
+            margin : 0px auto;
+            
+
+        }
+        #topBannerSelect td {
+            border: 2px solid #ddd;
+            height : 35px;
+        }
+        #topBannerSelect td:nth-child(1) {
+            padding-left : 20px;
+            background-color: #f0f0f0;
+        }
+        #topBannerSelect td:nth-child(2) {
+            padding-left : 20px;
+        }
+        /* 상단배너 이미지 이름 prev next 할때마다 바뀔것이다. */
+        #topImgName {
+            margin:10px;
+            margin-left : 600px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        /* --------------------상단배너 끝----------------------- */
+
+
     </style>
 
     <meta charset="UTF-8">
@@ -336,28 +399,106 @@
 
 <body>
     <!-- 메인배너 관리하는 페이지 -->
-    <!-- 이곳에 내용 집어넣기 -->
+
     <div id = "title">
         <h1 id = "rltitle">배너관리 <small id = "mainHome"> > 메인배너 관리  </small></h1>
     </div>
     
-    <!-- 상단배너 관리 -->
+    <!-- ------------------------상단배너 관리 시작-------------------------------------------->
     <div class = "titlebanner">상단배너 관리</div>
     <div id = "topbanner">
-        <div id = "topbaby">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div id = "topcover">
+            <div id = "topbaby">
+                <div class = "topsetting" style = "background-image: url(../images/bg1.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg2.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg3.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg4.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg5.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg6.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg7.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg8.jpg);"></div>
+                <div class = "topsetting" style = "background-image: url(../images/bg9.jpg);"></div>
+            </div>
         </div>
+        <div id = "topImgName">상단배너 1 번째 사진</div>
     </div>
+    
     <div><img src="../images/slide-dir-prev.png" alt="" id = "mainprev"></div>
     <div><img src="../images/slide-dir-next.png" alt="" id = "mainnext"></div>
+    
+    <!-- 사진 움직이게 하려는 컨트롤 -->
+    <script>
+
+        var positionTopX = 0;//look 의 x좌표
+        var clickCountTop = 0;//페이지가 계속 넘어가면 안되므로 제한을 걸어준다
+        // 다음 페이지를 눌렀을 때
+        $("#mainnext").click(function(){
+            console.log("asd");
+                if (clickCountTop < 8) {
+                     positionTopX -= 1400;
+                    $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
+                    //document.getElementById("topImgName").textContent = parseInt(clickCountTop + 2) + " 번째 사진";
+                    $("#topImgName").text(`상단배너 ${clickCountTop + 2} 번째 사진`);
+                    clickCountTop++;
+                }
+        });
+        //이전페이지를 눌렀을 때
+        $("#mainprev").click(function(){
+                if (clickCountTop > 0) {
+                     positionTopX += 1400;
+                    $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
+                    $("#topImgName").text(`상단배너 ${clickCountTop} 번째 사진`);
+                    clickCountTop--;
+                }
+        });
+        
+    </script>
+    <!-- 상단배너 그림을 고르기 -->
+    <div class = "bannerTool" style = "margin-left: 330px; width : 1400px">
+        <table id = "topBannerSelect">
+            <tr>
+                <td>상단배너 1번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 2번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 3번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 4번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 5번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 6번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 7번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 8번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>상단배너 9번째 사진</td>
+                <td><input type="file"></td>
+            </tr>
+        </table>
+    </div>
+
+    
+
+    <!--------------------------- 상단배너 관리 끝------------------------------------------------->
+
 
     <!-- **************************************************************************************** -->
 
@@ -528,22 +669,14 @@
                 $("body").css("background-color","white");
                 $("#homeLogo").css("color","#333333");
                 $("#adminName").css("color","#333333");
-                $("#nttable > tbody > tr:nth-child(2n)").css("color","#333333");
-                $("#empNoticeTitle").css("color","#333");
-                $(".chartWord").css("color","#333");
-                $("#vistreserve").css("color","#333");
-                $("#moneyTitle").css("color","#333");
+
             } else {
                 // 배경화면이 어두운 색일 경우
                 sw.src="../images/switch_off.png";
                 $("body").css("background-color","#292A2D");
                 $("#homeLogo").css("color","white");
                 $("#adminName").css("color","white");
-                $("#nttable > tbody > tr:nth-child(2n)").css("color","white");
-                $("#empNoticeTitle").css("color","white");
-                $(".chartWord").css("color","white");
-                $("#vistreserve").css("color","white");
-                $("#moneyTitle").css("color","white");
+
             }
             swCount++;
     });
