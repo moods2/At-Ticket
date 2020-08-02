@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <style>
+        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
+
+        body{
+            font-family: 'NanumBarunGothic';
+        }
+         html{
+            width: 800px;
+        }
+
+        #title{
+            margin-left: 30px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            width: 600px;
+            border-bottom: 1px dashed black;
+        }
+
+        h1{
+            font-weight: bold;
+            font-family: Arial;
+            /* font-size: 3em;  */
+            color: #555;
+        }
+
+        #content {
+            /* border: 1px solid red; */
+            width: 86.5%;
+            height: 500px;
+
+        }
+
+        #add {
+            width: 500px;
+            height: 800px;
+            position: relative;
+            left: 40px;
+        }
+        #content > #add > div {
+            margin: 10px;
+
+        }
+        #content > #add > div > label {
+            margin: 5px;
+        }
+        #btnadd {
+            margin-top: 0px;
+            margin-left: 200px;
+        }
+
+    </style>
+
+    <style type="text/css">
+        .img_wrap {
+            /* border: 1px solid black; */
+            width: 300px;
+            height: 100px;
+            margin-top: 50px;
+        }
+        .img_wrap img {
+            max-width: 30%;
+        }
+
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>adminShowModify</title>
+</head>
+
+<body>
+
+    <div id = "title">
+        <h1 style="color: #444">공연 수정</h1>
+    </div>
+
+
+    <div id="content">
+        <fieldset id="add" class="form-control" style="border: 0px;">
+            <!-- <legend class="form-control">공연 정보 추가하기</legend> -->
+
+            <div>
+                <label>공연 장르 : </label>
+                <select style="width: 100px; display: inline;" class="form-control">
+                    <option>뮤지컬</option>
+                    <option>콘서트</option>
+                    <option>연극</option>
+                    <option>클래식</option>
+                    <option>전시</option>
+                </select>
+            </div>
+
+            <!-- ------------------------------- 선택 공연의 value값 넘겨오기 ----------------->
+            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" value="렌트" autofocus></div>
+            <div><label for="txtdate">공연 기간 : </label>
+                 <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="2020-07-20">
+                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
+                 <span> - </span>
+                 <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="2020-09-17">
+                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
+            </div>
+            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" value="100,000" autofocus></div>
+            <div><label for="txttime">공연 시간 : </label><input type="text" id="txttime" value="15:00" autofocus></div>
+            <div><label for="txtplace" style="display: block;">공연 장소  </label>
+                <input type="text" id="sample6_postcode" placeholder="우편번호">
+                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" id="sample6_address" placeholder="주소"><br>
+                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+            </div>
+
+            <!-- </label><input type="text" id="txtplace" autofocus></div> -->
+            <!-- <div><label for="txtdelivery">배송 정보 : </label><input type="text" id="txtdelivery" autofocus></div> -->
+            <div><label for="txtnotice">유의 사항  </label>
+                 <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
+            </div>
+
+            <!-- 포스터, 공연내용 이미지 미리보기*** -->
+            <div><label for="txtheader">포스터  : </label><input type="file" id="txtheader" style="display: inline;" autofocus></div>
+            <div class="img_wrap">
+                <img id="img1" />
+            </div>
+    
+            <div><label for="txtcontent">공연 내용 : </label><input type="file" id="txtcontent" style="display: inline;" autofocus></div>
+            <div class="img_wrap">
+                <img id="img2" />
+            </div>
+
+            
+            <div><input type="button" id="btnadd" value="수정하기" class="btn btn-default"></div>
+        </fieldset>
+    </div>
+
+</body>
+<script>
+
+    var sel_file;
+
+    $(document).ready(function() {
+        $("#txtheader").on("change", handleImgFileSelect1);
+        $("#txtcontent").on("change", handleImgFileSelect2);
+    }); 
+    
+    function handleImgFileSelect1(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+
+        filesArr.forEach(function(f) {
+            if(!f.type.match("image.*")) {
+                alert("확장자는 이미지 확장자만 가능합니다.");
+                return;
+            }
+
+            sel_file = f;
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#img1").attr("src", e.target.result);
+            }
+            reader.readAsDataURL(f);
+            
+        });
+    }
+
+    function handleImgFileSelect2(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+
+        filesArr.forEach(function(f) {
+            if(!f.type.match("image.*")) {
+                alert("확장자는 이미지 확장자만 가능합니다.");
+                return;
+            }
+
+            sel_file = f;
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#img2").attr("src", e.target.result);
+            }
+            reader.readAsDataURL(f);
+            
+        });
+    }
+
+    $("#btnadd").click(function() {
+        // 수정버튼 >> 입력된 정보 수정하기
+    });
+
+
+    // var date = document.getElementsByClassName("date");
+    var date = document.getElementById("date");
+    var now = new Date();
+    var sw = document.images["sw"];
+    date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
+    if (date.value != null) {
+        date.readOnly = true;
+    }
+    
+    $("#date1").datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: now.getFullYear() + "-1-1",
+        maxDate: now.getFullYear() + "-12-" + "31"
+    });
+
+    $("#date2").datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: now.getFullYear() + "-1-1",
+        maxDate: now.getFullYear() + "-12-" + "31"
+    });
+
+
+
+    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
+    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
+
+    
+    
+
+</script>
+
+</html>
