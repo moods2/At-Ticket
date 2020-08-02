@@ -711,8 +711,9 @@
 
 
     <!--------------------------- AT'S PICKS 시작------------------------------------------------->
+
     <style>
-        #tobanner {
+        #atpbanner {
             /* border: 1px solid black; */
             margin-top : 20px;
             margin-left : 280px;
@@ -720,74 +721,80 @@
             height : 440px;
             background-color: #F0F0F0;
             padding-top: 50px;
-            padding-left : 50px;
+            padding-left : 8px;
         }
 
-        .toPicture {
+        .atpPicture {
             /* border: 1px solid red; */
-            margin-left:20px;
-            width : 256px;
+            margin-left:15px;
+            width : 230px;
             height : 340px;
             /* height : 100px; */
             float: left;
             background-color: black;
         }
 
-        .toPicture img {
+        .atpPicture img {
             width : 100%;
             height : 100%;
             transition: all 1s;
         }
         /* 이미지 내 수정 버튼 */
-        .toEditBtn {
+        .atpEditBtn {
             position : relative;
             /* border: 1px solid orange; */
             top : -180px;
             left : 0px;
         }
-        .toEditBtn button {
+        .atpEditBtn button {
             width : 200px;
             height : 60px;
-            margin-left: 25px;
+            margin-left: 14px;
+            border: 1px solid #ddd;
             visibility: hidden;
         }
         /* 수정 버튼에 커서를 올렸을떄 */
-        .toEditBtn button:hover {
+        .atpEditBtn button:hover {
             background-color: #ddd;
             font-weight: bold;
         }
     </style>
+
     <div class = "titlebanner">AT'S PICKS 배너 관리</div>    
     
-    <div id = "tobanner">
-        <div class = "toPicture" id = "TcOpen1">
+    <div id = "atpbanner">
+        <div class = "atpPicture" id = "atpOpen1">
             <img src="../images/classic2.jpeg" alt="">
-            <div class = "toEditBtn"><button id = "toBtn1">수정하기</button></div>
+            <div class = "atpEditBtn"><button id = "atpBtn1">수정하기</button></div>
         </div>
-        <div class = "toPicture" id = "TcOpen2">
+        <div class = "atpPicture" id = "atpOpen2">
             <img src="../images/classic3.jpeg" alt="">
-            <div class = "toEditBtn"><button id = "toBtn2">수정하기</button></div>
+            <div class = "atpEditBtn"><button id = "atpBtn2">수정하기</button></div>
         </div>
-        <div class = "toPicture" id = "TcOpen3">
+        <div class = "atpPicture" id = "atpOpen3">
             <img src="../images/classic4.jpeg" alt="">
-            <div class = "toEditBtn"><button id = "toBtn3">수정하기</button></div>
+            <div class = "atpEditBtn"><button id = "atpBtn3">수정하기</button></div>
         </div>
-        <div class = "toPicture" id = "TcOpen4">
+        <div class = "atpPicture" id = "atpOpen4">
             <img src="../images/classic10.jpeg" alt="">
-            <div class = "toEditBtn"><button id = "toBtn4">수정하기</button></div>
+            <div class = "atpEditBtn"><button id = "atpBtn4">수정하기</button></div>
         </div>
-        <div class = "toPicture" id = "TcOpen5">
+        <div class = "atpPicture" id = "atpOpen5">
             <img src="../images/classic12.jpeg" alt="">
-            <div class = "toEditBtn"><button id = "toBtn5">수정하기</button></div>
+            <div class = "atpEditBtn"><button id = "atpBtn5">수정하기</button></div>
+        </div>
+        <div class = "atpPicture" id = "atpOpen6">
+            <img src="../images/classic1.jpeg" alt="">
+            <div class = "atpEditBtn"><button id = "atpBtn6">수정하기</button></div>
         </div>
     </div>
 
     <!-- 이미지위에 올리면 수정버튼이 떠야한다 -->
     <script>
         
-        for (var i = 1; i <= 5; i++) {
+        for (var i = 1; i <= 6; i++) {
             //사진 영역 내에 마우스 커서를 올렸을 때
-            $(`#TcOpen${i}`).mouseenter(function(){
+            $(`#atpOpen${i}`).mouseenter(function(){
                 console.log($(this).context.id);
                 // console.log($(this).context.id);
                 $("#" + $(this).context.id + " button").css("visibility","visible")
@@ -797,11 +804,11 @@
             });
 
             // 수정 버튼을 클릭했을때
-            $(`#toBtn${i}`).click(function(){
+            $(`#atpBtn${i}`).click(function(){
                 console.log($(this)[0].id);
             })
             //사진 영역 내에 마우스 커서를 똇을 때
-            $(`#TcOpen${i}`).mouseleave(function(){
+            $(`#atpOpen${i}`).mouseleave(function(){
                 console.log($(this).context.id);
                 $("#" + $(this).context.id + " button").css("visibility","hidden");
                 $("#" + $(this).context.id + " img").css("opacity","1");
@@ -812,7 +819,9 @@
 
     </script>
 
-    <hr class = "splitHr">
+    <hr class = "splitHr"> 
+
+    
     <!--------------------------- AT'S PICKS 끝------------------------------------------------->
 
 
