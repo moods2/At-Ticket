@@ -27,9 +27,47 @@
         }
         #bottom {
             /* border: 1px solid black; */
-            height: 200px;
+            min-width: 1300px;
+            height: 250px;
             background-color: #eee;
-            color: white;
+        }
+        #bottom > div {
+            float: left;
+            position: relative;
+            left: 21%;
+            top: 22%;
+        }
+        #bottom .txt {
+            margin-left: 30px;
+            line-height: 1.1em;
+            color: #666;
+            top: 28%;
+        }
+        #bottom .txt .black {
+            color: black;
+        }
+        #bottom #service {
+            margin-left: 200px;
+            top: 18%;
+        }
+        #bottom #service p:first-child {
+            border-bottom: 1px solid #BBB;
+            padding: 0 0 5px 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        #bottom #service p > span {
+            color: #444;
+            font-size: 1.3em;
+        }
+        #bottom #service p:nth-child(2) {
+            text-align: center;
+            font-size: 3em;
+            padding-left: 10px;
+        }
+        #bottom #service p {
+            margin-bottom: -2px;
+            padding-left: 20px;
         }
         #topmenu {
             border-bottom: 1px solid black;
@@ -45,6 +83,7 @@
         }
         .menubar {
             margin: 0 5px;
+            cursor: pointer;
         }
         #topmenu > span {
             cursor: pointer;
@@ -77,11 +116,75 @@
 
         #search {
             border: 0;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid black;
             background-color: transparent;
             outline: none;
             color: black;
 
+        }
+
+        /*-------------------------------- 태그 --------------------------------*/
+        #tagsearch {
+            border: 1px solid #111;
+            width: 170px;
+            height: 205px;
+            position: relative;
+            float: right;
+            background-color: white;
+            margin-right: 60px;
+	        margin-top: 2px;
+            /* text-align: center; */
+            display: none;
+	        top: 24px;
+        }
+        #tagsearch::after {
+            content: "";
+            display: none;
+            clear: both;
+        }
+        #tag {
+            width: 168px;
+            /* background-color: rgb(253, 236, 236); */
+            background-color: #f6f6f6;
+            height: 25px;
+            }
+        #tag > span {
+            color: #222;
+            font-size: 14px;
+            width: 50px;
+            height: 30px;
+            font-weight: normal;
+            font-family: "IBMPlexSansKR-Regular";
+            position: relative;
+            left: -20px;
+        }
+
+        #tag > label {
+            color: #111;
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        #tagsearch > a {
+            display: block;
+            color: #555;
+            font-size: 14px;
+            font-family: "IBMPlexSansKR-Regular";
+            font-weight: normal;
+            text-align: left;
+            margin-left: 20px;
+            margin-top: 2px;
+        }
+        #tagsearch > span {
+            font-size: 12px;
+            color: #999;
+            font-weight: normal;
+            font-family: "IBMPlexSansKR-Regular";
+
+            float: right;
+            margin-top: 5px;
+            margin-right: 5px;
         }
 
         #chatbot {
@@ -188,23 +291,74 @@
                 <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
                 <a href="main.html" id="topleft"></a>
                 <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
-                <span data-item="item1" class="menubar">콘서트</span>
-                <span data-item="item2" class="menubar">뮤지컬</span>
-                <span data-item="item3" class="menubar">연극</span>
-                <span data-item="item4" class="menubar">클래식</span>
-                <span data-item="item5" class="menubar">전시</span>
+                <div id="topcenter">
+                    <span data-lo="user_concert.html" class="menubar"
+                        >콘서트</span
+                    >
+                    <span data-lo="user_musical.html" class="menubar"
+                        >뮤지컬</span
+                    >
+                    <span data-lo="user_theater.html" class="menubar"
+                        >연극</span
+                    >
+                    <span data-lo="user_classic.html" class="menubar"
+                        >클래식</span
+                    >
+                    <span data-lo="user_Exhibition.html" class="menubar"
+                        >전시</span
+                    >
+                </div>
                 <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
-
                 <div id="topright">
-                    <span data-item="item6" class="menubar">랭킹</span>
-                    <span data-item="item7" class="menubar">이벤트</span>
-                    <input type="text" value="" id="search">
-                    <label for="search" class="glyphicon glyphicon-search"
-                        style="font-size: 14px; cursor: pointer;"></label>
-                    <div class="glyphicon glyphicon-user" 
-                        style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
+                    <span data-lo="user_ranking.html" class="menubar"
+                        >랭킹</span
+                    >
+                    <span data-lo="user_event.html" class="menubar"
+                        >이벤트</span
+                    >
+                    <input
+                        type="text"
+                        value=""
+                        id="search"
+                        autocomplete="off"
+                    />
+                    <label
+                        for="search"
+                        class="glyphicon glyphicon-search"
+                        style="font-size: 14px; cursor: pointer;"
+                    ></label>
+                    <div
+                        class="glyphicon glyphicon-user"
+                        id="mypage"
+                        style="
+                            font-size: 14px;
+                            cursor: pointer;
+                            margin: 0 10px;
+                        "
+                    ></div>
+                </div>
+            
+
+                <!-- 검색 팝업 -->
+                <div id="tagsearch">
+                    <div id="tag">
+                        <span>태그 검색어 </span>
+                        <label
+                            id="tagremove"
+                            class="glyphicon glyphicon-remove"
+                        ></label>
+                    </div>
+                    <a href="#">#연극</a>
+                    <a href="#">#뮤지컬</a>
+                    <a href="#">#캣츠</a>
+                    <a href="#">#00</a>
+                    <a href="#">#서울 전시</a>
+                    <a href="#">#서울 전시</a>
+                    <a href="#">#서울 전시</a>
+                    <span>2020.07.23 기준</span>
                 </div>
             </div>
+        </div>
             
             <!-- 챗봇 : 단비봇 --------------------------------------------------------------------------------------------------------------------------------->
             <!-- <img src="./images/face35.png" id="chatbot"> -->
@@ -291,24 +445,80 @@
 
 <!-------------------------------- 화면 하단부 -------------------------------->
         <div id="bottom">
-            <div style="width: 1600px; margin: auto;">
+            <div>
                 <!-- 회사 마크 -->
-                <img src="./images/title2.png" style="transform: translate(0, 40px);">
+                <img src="./images/title2.png"/>
+            </div>
+            <div class="txt">
+                <p class="black">At-Ticket (주)</p>
+                <p>서울시 강남구 역삼동 한독빌딩 8층 대표: 한시연 | 개인정보보호책임자: 한시연</p>
+                <p>it1234@atticket.com 사업자등록번호 229-81-37000</p>
+                <p class="black">Copyright &copy; At-Tickey Corp. All Rights Reserved.</p>
+            </div>
+            <div id="service">
+                <p><span>☎</span> 고객센터 전화상담</p>
+                <p>1544-6399</p>
+                <p>평일 09:00 ~ 18:00</p>
+                <p>토요일 09:00 ~ 17:00</p>
+                <p>일요일 공휴일 휴무</p>
             </div>
         </div>
     </div>
 
-            <!-- <div id="place"></div> -->
-
     <script>
 
-        //상단 메뉴 css
-        $(".menubar").mouseover(function() {
+      //상단 메뉴 css
+      $(".menubar").mouseover(function() {
         $(this).css("border-bottom", "5px solid orange");
         });
         $(".menubar").mouseout(function() {
             $(this).css("border-bottom", "");
         });
+
+        //상단 메뉴 클릭시
+        $(".menubar").click(function () {
+            location.href = $(this).data("lo");
+        });
+
+        var flag = false;
+
+        $(document).scroll(function() {
+            //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            // if (!flag) {
+                if ($(document).scrollTop() > $("#tabs").position().top) {
+                    $("#topmenu").css({
+                        width: "100%",
+                        position: "fixed",
+                        top: "0px",
+                        bottom: "",
+                        zIndex: "1"
+                    });
+                };
+
+            //상단 헤더(top)이 눈에 보일때 쯤
+            if ($(document).scrollTop() <= $("#tabs").position().top) {
+                $("#topmenu").css({
+                    position: "absolute",
+                    top: "0px",
+                    bottom: ""
+                });
+                // flag = false;                
+            }
+        });
+
+        //검색창 커서 있을때 팝업 띄우기
+        $("#search").focusin(function () {
+            $("#tagsearch").css("display", "block");
+            $("#search").css("border-bottom", "2px solid black");
+        });
+        //검색창 팝업 닫기
+        $("#search").focusout(function () {
+            $("#tagsearch").css("display", "none");
+        });
+        $("#tagremove").click(function () {
+            $("#tagsearch").css("display", "none");
+        });
+
 
         //챗봇 클릭시 행동
         $("#chatbot").dblclick(function() {
@@ -327,40 +537,6 @@
         });
 
         // 내용==================================================================================================================================================================
-
-
-            
-        // var flag = false;
-
-        // $(document).scroll(function() {
-        //     //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
-        //     // if (!flag) {
-        //         if ($(document).scrollTop() > $("#tabs").position().top) {
-        //             $("#topmenu").css({
-        //                 width: "100%",
-        //                 position: "fixed",
-        //                 top: "0px",
-        //                 bottom: "",
-        //                 zIndex: "1"
-        //             });
-        //             // $("#topmenu").animate({
-        //             //     top: "0px"
-        //             // }, 1000, function() {
-        //             //     flag=true;
-        //             // });
-        //         };
-        //     // };
-
-        //     //상단 헤더(top)이 눈에 보일때 쯤
-        //     if ($(document).scrollTop() <= $("#tabs").position().top) {
-        //         $("#topmenu").css({
-        //             position: "absolute",
-        //             top: "0px",
-        //             bottom: ""
-        //         });
-        //         // flag = false;                
-        //     }
-        // });
 
         // 목록 링크
         $("#list").click(function() {
