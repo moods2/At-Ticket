@@ -28,7 +28,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 5000px;
+            height: 7000px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -420,7 +420,7 @@
     </div>
     
     <!-- ------------------------상단배너 관리 시작-------------------------------------------->
-    <div class = "titlebanner">상단배너 관리</div>
+    <div class = "titlebanner">TOP배너 관리</div>
     <div id = "topbanner">
         <div id = "topcover">
             <div id = "topbaby">
@@ -782,13 +782,434 @@
 
 
 
-
-
-
     <!--------------------------- 중간배너 시작------------------------------------------------->
+    <style>
+        /* 중간배너 */
+        #middleBanner {
+            /* border: 1px solid black; */
+            margin-top : 20px;
+            margin-left : 280px;
+            width : 1500px;
+            height : 440px;
+            background-color: #F0F0F0;
+            padding-top: 50px;
+            padding-left : 50px;
+        }
+        /* 중간배너에 들어가는 이미지 컨테이너 */
+        #middleImg {
+            /* border: 1px solid red; */
+            width: 1400px;
+            height : 320px;
+            margin-top : 10px;
+            background-color: black;
+        }
+
+        #middleImg img {
+            width : 100%;
+            height : 100%;
+            transition: all 1s;
+        }
+        /* 중간배너 수정버튼 */
+        #mdBtn {
+            position : relative;
+            border: 1px solid #ddd;
+            top : -180px;
+            left : 575px;
+            width : 200px;
+            height : 60px;
+            margin-left: 25px;
+            visibility: hidden;
+        }
+        /* 수정버튼에 마우스 대면  */
+        #mdBtn:hover {
+            font-weight: bold;
+            background-color: #ddd;
+        }
+        
+        
+    </style>
     
-    
+    <div class = "titlebanner"> MIDDLE 배너 관리</div>  
+    <div id = "middleBanner">
+        <div id = "middleImg">
+            <img src="../images/middleBanner.png" alt="" id = "middlePic">
+            <div id = "mdEditBtn"><button id = "mdBtn">수정하기</button></div>  
+        </div>
+    </div>
+
+
+    <script>
+
+        //이미지 box 내에 마우스를 넣었을때 수정버튼이 보여야한다 -> 배경색도 어둡게 처리
+        $("#middleImg").mouseenter(function(){
+            $("#mdBtn").css("visibility","visible");
+            $("#middlePic").css("opacity",".2");
+            
+        });
+
+        //마우스 뗏을때 
+        $("#middleImg").mouseleave(function(){
+            $("#mdBtn").css("visibility","hidden");
+            $("#middlePic").css("opacity","1");
+        }); 
+
+
+        // 마우스 클릭 했을 때 -> 나중에 서버때문에 일단 만들어둠
+        $("#mdBtn").click(function(){
+            console.log("클릭함");
+        }); 
+    </script>
+
+    <hr class = "splitHr">
+
     <!--------------------------- 중간배너 끝------------------------------------------------->
+
+
+    
+
+    <!--------------------------- MUSICAL & PLAY 시작------------------------------------------------->
+     <style>
+        #mpbanner {
+            /* border: 1px solid black; */
+            margin-top : 20px;
+            margin-left : 280px;
+            width : 1500px;
+            height : 440px;
+            background-color: #F0F0F0;
+            padding-top: 50px;
+            padding-left : 8px;
+        }
+
+        .mpPicture {
+            /* border: 1px solid red; */
+            margin-left:15px;
+            width : 230px;
+            height : 340px;
+            /* height : 100px; */
+            float: left;
+            background-color: black;
+        }
+
+        .mpPicture img {
+            width : 100%;
+            height : 100%;
+            transition: all 1s;
+        }
+        /* 이미지 내 수정 버튼 */
+        .mpEditBtn {
+            position : relative;
+            /* border: 1px solid orange; */
+            top : -180px;
+            left : 0px;
+        }
+        .mpEditBtn button {
+            width : 200px;
+            height : 60px;
+            margin-left: 14px;
+            border: 1px solid #ddd;
+            visibility: hidden;
+        }
+        /* 수정 버튼에 커서를 올렸을떄 */
+        .mpEditBtn button:hover {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+    </style>
+
+    <div class = "titlebanner">MUSICAL & PLAY 배너 관리</div>    
+    
+    <div id = "mpbanner">
+        <div class = "mpPicture" id = "mpOpen1">
+            <img src="../images/music1.jpeg" alt="">
+            <div class = "mpEditBtn"><button id = "mpBtn1">수정하기</button></div>
+        </div>
+        <div class = "mpPicture" id = "mpOpen2">
+            <img src="../images/music2.jpeg" alt="">
+            <div class = "mpEditBtn"><button id = "mpBtn2">수정하기</button></div>
+        </div>
+        <div class = "mpPicture" id = "mpOpen3">
+            <img src="../images/music3.jpeg" alt="">
+            <div class = "mpEditBtn"><button id = "mpBtn3">수정하기</button></div>
+        </div>
+        <div class = "mpPicture" id = "mpOpen4">
+            <img src="../images/music4.jpeg" alt="">
+            <div class = "mpEditBtn"><button id = "mpBtn4">수정하기</button></div>
+        </div>
+        <div class = "mpPicture" id = "mpOpen5">
+            <img src="../images/music5.jpeg" alt="">
+            <div class = "mpEditBtn"><button id = "mpBtn5">수정하기</button></div>
+        </div>
+        <div class = "mpPicture" id = "mpOpen6">
+            <img src="../images/music6.jpeg" alt="">
+            <div class = "mpEditBtn"><button id = "mpBtn6">수정하기</button></div>
+        </div>
+    </div>
+
+    <!-- 이미지위에 올리면 수정버튼이 떠야한다 -->
+    <script>
+        
+        for (var i = 1; i <= 6; i++) {
+            //사진 영역 내에 마우스 커서를 올렸을 때
+            $(`#mpOpen${i}`).mouseenter(function(){
+                console.log($(this).context.id);
+                // console.log($(this).context.id);
+                $("#" + $(this).context.id + " button").css("visibility","visible")
+                $("#" + $(this).context.id + " img").css("opacity",".2");
+
+                console.log($(this).context.children[1].children[0].id);
+            });
+
+            // 수정 버튼을 클릭했을때
+            $(`#mpBtn${i}`).click(function(){
+                console.log($(this)[0].id);
+            })
+            //사진 영역 내에 마우스 커서를 똇을 때
+            $(`#mpOpen${i}`).mouseleave(function(){
+                console.log($(this).context.id);
+                $("#" + $(this).context.id + " button").css("visibility","hidden");
+                $("#" + $(this).context.id + " img").css("opacity","1");
+            }); 
+            
+
+        }
+
+    </script>
+
+    <hr class = "splitHr">
+    <!--------------------------- MUSICAL & PLAY 끝------------------------------------------------->
+    
+    
+    
+    
+    
+    
+    <!--------------------------- CONCERT & CLASSIC 시작------------------------------------------------->
+     <style>
+        #ccbanner {
+            /* border: 1px solid black; */
+            margin-top : 20px;
+            margin-left : 280px;
+            width : 1500px;
+            height : 440px;
+            background-color: #F0F0F0;
+            padding-top: 50px;
+            padding-left : 8px;
+        }
+
+        .ccPicture {
+            /* border: 1px solid red; */
+            margin-left:15px;
+            width : 230px;
+            height : 340px;
+            /* height : 100px; */
+            float: left;
+            background-color: black;
+        }
+
+        .ccPicture img {
+            width : 100%;
+            height : 100%;
+            transition: all 1s;
+        }
+        /* 이미지 내 수정 버튼 */
+        .ccEditBtn {
+            position : relative;
+            /* border: 1px solid orange; */
+            top : -180px;
+            left : 0px;
+        }
+        .ccEditBtn button {
+            width : 200px;
+            height : 60px;
+            margin-left: 14px;
+            border: 1px solid #ddd;
+            visibility: hidden;
+        }
+        /* 수정 버튼에 커서를 올렸을떄 */
+        .ccEditBtn button:hover {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+    </style>  
+    
+    <div class = "titlebanner">CONCERT & CLASSIC 배너 관리</div>    
+    
+    <div id = "ccbanner">
+        <div class = "ccPicture" id = "ccOpen1">
+            <img src="../images/consert1.jpeg" alt="">
+            <div class = "ccEditBtn"><button id = "ccBtn1">수정하기</button></div>
+        </div>
+        <div class = "ccPicture" id = "ccOpen2">
+            <img src="../images/consert2.jpeg" alt="">
+            <div class = "ccEditBtn"><button id = "ccBtn2">수정하기</button></div>
+        </div>
+        <div class = "ccPicture" id = "ccOpen3">
+            <img src="../images/consert3.jpeg" alt="">
+            <div class = "ccEditBtn"><button id = "ccBtn3">수정하기</button></div>
+        </div>
+        <div class = "ccPicture" id = "ccOpen4">
+            <img src="../images/consert4.jpeg" alt="">
+            <div class = "ccEditBtn"><button id = "ccBtn4">수정하기</button></div>
+        </div>
+        <div class = "ccPicture" id = "ccOpen5">
+            <img src="../images/consert5.jpeg" alt="">
+            <div class = "ccEditBtn"><button id = "ccBtn5">수정하기</button></div>
+        </div>
+        <div class = "ccPicture" id = "ccOpen6">
+            <img src="../images/consert6.jpeg" alt="">
+            <div class = "ccEditBtn"><button id = "ccBtn6">수정하기</button></div>
+        </div>
+    </div>
+    
+    
+     <!-- 이미지위에 올리면 수정버튼이 떠야한다 -->
+    <script>
+        
+        for (var i = 1; i <= 6; i++) {
+            //사진 영역 내에 마우스 커서를 올렸을 때
+            $(`#ccOpen${i}`).mouseenter(function(){
+                console.log($(this).context.id);
+                // console.log($(this).context.id);
+                $("#" + $(this).context.id + " button").css("visibility","visible")
+                $("#" + $(this).context.id + " img").css("opacity",".2");
+
+                console.log($(this).context.children[1].children[0].id);
+            });
+
+            // 수정 버튼을 클릭했을때
+            $(`#ccBtn${i}`).click(function(){
+                console.log($(this)[0].id);
+            })
+            //사진 영역 내에 마우스 커서를 똇을 때
+            $(`#ccOpen${i}`).mouseleave(function(){
+                console.log($(this).context.id);
+                $("#" + $(this).context.id + " button").css("visibility","hidden");
+                $("#" + $(this).context.id + " img").css("opacity","1");
+            }); 
+            
+
+        }
+
+    </script>
+
+    <hr class = "splitHr">   
+
+    <!--------------------------- CONCERT & CLASSIC 끝------------------------------------------------->
+    
+    
+    <!--------------------------- EXHIBITION 시작 ------------------------------------------------->
+    
+    <style>
+        #ebbanner {
+            /* border: 1px solid black; */
+            margin-top : 20px;
+            margin-left : 280px;
+            width : 1500px;
+            height : 440px;
+            background-color: #F0F0F0;
+            padding-top: 50px;
+            padding-left : 8px;
+        }
+
+        .ebPicture {
+            /* border: 1px solid red; */
+            margin-left:15px;
+            width : 230px;
+            height : 340px;
+            /* height : 100px; */
+            float: left;
+            background-color: black;
+        }
+
+        .ebPicture img {
+            width : 100%;
+            height : 100%;
+            transition: all 1s;
+        }
+        /* 이미지 내 수정 버튼 */
+        .ebEditBtn {
+            position : relative;
+            /* border: 1px solid orange; */
+            top : -180px;
+            left : 0px;
+        }
+        .ebEditBtn button {
+            width : 200px;
+            height : 60px;
+            margin-left: 14px;
+            border: 1px solid #ddd;
+            visibility: hidden;
+        }
+        /* 수정 버튼에 커서를 올렸을떄 */
+        .ebEditBtn button:hover {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+    </style>  
+    <div class = "titlebanner">EXHIBITION 배너 관리</div>    
+    
+    <div id = "ebbanner">
+        <div class = "ebPicture" id = "ebOpen1">
+            <img src="../images/Exhibition1.jpeg" alt="">
+            <div class = "ebEditBtn"><button id = "ebBtn1">수정하기</button></div>
+        </div>
+        <div class = "ebPicture" id = "ebOpen2">
+            <img src="../images/Exhibition2.jpeg" alt="">
+            <div class = "ebEditBtn"><button id = "ebBtn2">수정하기</button></div>
+        </div>
+        <div class = "ebPicture" id = "ebOpen3">
+            <img src="../images/Exhibition3.jpeg" alt="">
+            <div class = "ebEditBtn"><button id = "ebBtn3">수정하기</button></div>
+        </div>
+        <div class = "ebPicture" id = "ebOpen4">
+            <img src="../images/Exhibition4.jpeg" alt="">
+            <div class = "ebEditBtn"><button id = "ebBtn4">수정하기</button></div>
+        </div>
+        <div class = "ebPicture" id = "ebOpen5">
+            <img src="../images/Exhibition5.jpeg" alt="">
+            <div class = "ebEditBtn"><button id = "ebBtn5">수정하기</button></div>
+        </div>
+        <div class = "ebPicture" id = "ebOpen6">
+            <img src="../images/Exhibition6.jpeg" alt="">
+            <div class = "ebEditBtn"><button id = "ebBtn6">수정하기</button></div>
+        </div>
+    </div>
+
+
+
+     <!-- 이미지위에 올리면 수정버튼이 떠야한다 -->
+    <script>
+        
+        for (var i = 1; i <= 6; i++) {
+            //사진 영역 내에 마우스 커서를 올렸을 때
+            $(`#ebOpen${i}`).mouseenter(function(){
+                console.log($(this).context.id);
+                // console.log($(this).context.id);
+                $("#" + $(this).context.id + " button").css("visibility","visible")
+                $("#" + $(this).context.id + " img").css("opacity",".2");
+
+                console.log($(this).context.children[1].children[0].id);
+            });
+
+            // 수정 버튼을 클릭했을때
+            $(`#ebBtn${i}`).click(function(){
+                console.log($(this)[0].id);
+            })
+            //사진 영역 내에 마우스 커서를 똇을 때
+            $(`#ebOpen${i}`).mouseleave(function(){
+                console.log($(this).context.id);
+                $("#" + $(this).context.id + " button").css("visibility","hidden");
+                $("#" + $(this).context.id + " img").css("opacity","1");
+            }); 
+            
+
+        }
+
+    </script>
+
+    <hr class = "splitHr"> 
+
+    <!--------------------------- EXHIBITION 끝 ------------------------------------------------->
 
 
 
