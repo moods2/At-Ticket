@@ -28,7 +28,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 7000px;
+            height: 6300px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -1225,11 +1225,11 @@
     <style>
         /* 하단페이지 컨테이너 */
         #btmBanner {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             margin-top : 20px;
             margin-left : 280px;
             width : 1500px;
-            height : 700px;
+            height : 850px;
             /* background-color: #F0F0F0; */
             padding-top: 20px;
             padding-left : 8px;
@@ -1240,28 +1240,185 @@
             height : 40px;
             width : 150px;
             font-size: 1.3em;
+            margin-top : 20px;
         }
-        #btmBannerTbl td {
-            border: 1px solid black;
+        /* bottom 배너 컨테이너 통일양식 */
+        .intBtmBanner {
+            /* border: 1px solid orange; */
+            width : 1430px;
+            margin: 0px auto;
+            height : 300px;
         }
 
+        /* 회사 로고변경 */
+        #logoModify {
+            /* border: 1px solid blue; */
+            width : 300px;
+            height : 300px;
+            /* background-color: black; */
+        }
+        
+        /* 회사 로고 이미지 컨테이너*/
+        #innerLogo {
+            /* border: 1px solid green; */
+            width : 300px;
+            height : 300px;
+            /* background-color: black; */
+            transition: all 1s;
+        }
+        /* 회사 로고 이미지*/
+        #innerLogoImg {
+            width : 100%;
+            height : 100%;
+            transition: all 1s;
+        }
+        /* 회사 로고 수정하기 버튼 */
+        #compLogoBtn {
+            
+            border: 1px solid #ddd;
+            width : 200px;
+            height: 60px;
+            visibility: hidden;
+        }
+        #compLogoBtns {
+            position : relative;
+            /* border: 1px solid red; */
+            width : 202px;
+            top : -180px;
+            left : 50px;
+        }
+        #compLogoBtn:hover {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+
+        /* 세부내용 */
+        #compDetailTbl {
+            /* border: 1px solid #D2D2D2; */
+            width : 700px;
+            height : 300px;
+        }
+        #compDetailTbl td{
+            /* border: 1px solid red; */
+        }
+        #compDetailTbl td{
+            /* border: 1px solid red; */
+            border: 2px solid #D2D2D2;
+
+        }
+        #compDetailTbl td:nth-child(1){
+            width : 200px;
+            padding-left : 20px;
+            background-color: #F0F0F0;
+        }
+        /* 세부내용 둘째 열 내부*/
+        #compDetailTbl td:nth-child(2) input{
+            border: 0px;
+            margin-left : 20px;
+            width : 90%;
+            height : 60%;
+        }
     </style>
     
     
     <div class = "titlebanner">BOTTOM 배너 관리</div>
     <div id = "btmBanner">
+        <!-- 회사 로고 수정 -->
         <div class = "subtitlebanner">회사로고 수정</div>
-        <div id = "logoModify">
-
+        <div id = "logoModify" class = "intBtmBanner" style = "margin-left : 30px;">
+            <div id = "innerLogo"><img src="../images/title2.png" alt="" id = "innerLogoImg"></div>
+            <div id = "compLogoBtns"><input type="button" value = "수정하기" id = "compLogoBtn"></div>
+        </div>
+        
+        <!-- 세부내용 -->
+        <div class = "subtitlebanner">세부내용</div>
+        <div class = "intBtmBanner">
+            <table id = "compDetailTbl" >
+                <tr>
+                    <td>회사명</td>
+                    <td><input type="text" id = "compName" value = "AT-Ticket(주)"></td>
+                </tr>
+                <tr>
+                    <td>회사 주소</td>
+                    <td><input type="text" id = "compAddress" value = "서울시 강남구 역삼동 한독빌딩 8층"></td>
+                </tr>
+                <tr>
+                    <td>대표자</td>
+                    <td><input type="text" id = "compCeo" value = "한시연"></td>
+                </tr>
+                <tr>
+                    <td>개인정보 보호 책임자</td>
+                    <td><input type="text" id = "compResp" value = "한시연"></td>
+                </tr>
+                <tr>
+                    <td>회사 이메일</td>
+                    <td><input type="text" id = "compEmail" value = "it1234@atticket.com"></td>
+                </tr>
+                <tr>
+                    <td>사업자 등록번호</td>
+                    <td><input type="text" id = "compCode" value = "229-81-37000"></td>
+                </tr>
+            </table>
         </div>
     </div>
-    
-    
-    
+
+    <script>
+        // 이미지 수정 버튼 관련 이벤트
+        
+        //로고에 커서를 가져다 대면 변한다
+        $("#logoModify").mouseenter(function(){
+            $("#innerLogo").css("background-color","black");
+            $("#innerLogoImg").css("opacity",".2");
+            $("#compLogoBtn").css("visibility","visible");
+        });
+
+        // 로고에서 커서를 뗏을 떄
+        $("#logoModify").mouseleave(function(){
+            $("#innerLogo").css("background-color","#fff");
+            $("#innerLogoImg").css("opacity","1");
+            $("#compLogoBtn").css("visibility","hidden");
+        });
+
+
+        
+    </script>
+    <hr class = "splitHr"> 
+
     
     <!---------------------------하단페이지 끝 ------------------------------------------------->
+    
+    
+    <!---------------------------내용 저장하기 ------------------------------------------------->
+    <style>
+        #saveBtn {
+            margin-top : 30px;
+            margin-left : 930px;
+            width : 200px;
+            height: 60px;
+            font-size: 1.3em;
+            border: 1px solid #ddd;
+        }
+        #saveBtn:hover {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+    </style>
+    
+    
+    <div><input type="button" value = "저장하기" id = "saveBtn"></div>
 
+    <script>
+        //저장하기 눌렀을때 이벤트
+        $("#saveBtn").click(function(){
+            if (confirm("해당 내용을 저장하시겠습니까?")) {
+                alert("저장 완료.");
 
+                location.href = "./adminMain.html";
+            }    
+        });
+
+    </script>
 
 
     <!-- **************************************************************************************** -->
