@@ -28,7 +28,7 @@
             left: 0px;
             top: 0px;
             width: 250px;
-            height: 5000px;
+            height: 3500px;
             /* border: 1px solid black; */
             background-color: #444;
             text-align: center;
@@ -650,16 +650,17 @@
     <!--------------------------- WHAT'S HOT 끝------------------------------------------------->
 
 
-       <!--------------------------- 중간배너 시작------------------------------------------------->
+    <!--------------------------- 중간배너 시작------------------------------------------------->
        <style>
 
         #middleBanner {
-                min-width: 1600px;
+                width : 1500px;
+                /* min-width: 1600px; */
                 height: 400px;
                 margin-top: 20px;
                 background-color: black;
                 text-align: center;
-                margin-left: 200px;
+                margin-left: 280px;
         }
         #bannerimg {
                 width: 286px;
@@ -813,6 +814,39 @@
 
     <hr class = "splitHr">
     <!--------------------------- AT'S PICKS 끝------------------------------------------------->
+
+
+   <!---------------------------내용 저장하기 시작------------------------------------------------->
+    <style>
+        #saveBtn {
+            margin-top : 30px;
+            margin-left : 930px;
+            width : 200px;
+            height: 60px;
+            font-size: 1.3em;
+            border: 1px solid #ddd;
+        }
+        #saveBtn:hover {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+    </style>
+    
+    
+    <div><input type="button" value = "저장하기" id = "saveBtn"></div>
+
+    <script>
+        //저장하기 눌렀을때 이벤트
+        $("#saveBtn").click(function(){
+            if (confirm("해당 내용을 저장하시겠습니까?")) {
+                alert("저장 완료.");
+
+                location.href = "./adminMain.html";
+            }    
+        });
+
+    </script>
+    <!---------------------------내용 저장하기 끝------------------------------------------------->
 
 
 
