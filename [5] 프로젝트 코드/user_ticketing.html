@@ -25,7 +25,9 @@
             /* border: 1px solid black; */
             min-width: 1600px;
             height: 50px;
-            margin: 0 auto;
+            /* margin: auto; */
+            margin: 130px auto;
+            margin-bottom: -185px;
         }
         #middle {
             /* border: 1px solid black; */
@@ -34,24 +36,64 @@
         }
         #bottom {
             /* border: 1px solid black; */
-            height: 200px;
+            min-width: 1300px;
+            height: 250px;
             background-color: #eee;
-            color: white;
+        }
+        #bottom > div {
+            float: left;
+            position: relative;
+            left: 21%;
+            top: 22%;
+        }
+        #bottom .txt {
+            margin-left: 30px;
+            line-height: 1.1em;
+            color: #666;
+            top: 28%;
+        }
+        #bottom .txt .black {
+            color: black;
+        }
+        #bottom #service {
+            margin-left: 200px;
+            top: 18%;
+        }
+        #bottom #service p:first-child {
+            border-bottom: 1px solid #BBB;
+            padding: 0 0 5px 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        #bottom #service p > span {
+            color: #444;
+            font-size: 1.3em;
+        }
+        #bottom #service p:nth-child(2) {
+            text-align: center;
+            font-size: 3em;
+            padding-left: 10px;
+        }
+        #bottom #service p {
+            margin-bottom: -2px;
+            padding-left: 20px;
         }
         #topmenu {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #eee;
             background-color: white;
             width: 100%;
             height: 40px;
-            color: black;
+            color: #333;
             text-align: center;
-            font-size: 15px;
+            font-size: 18px;
             padding: 40px 0;
             position: absolute;
             margin-top: -120px;
+            font-weight: bolder;
         }
         .menubar {
             margin: 0 5px;
+            cursor: pointer;
         }
         #topmenu > span {
             cursor: pointer;
@@ -84,11 +126,75 @@
 
         #search {
             border: 0;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid #333;
             background-color: transparent;
             outline: none;
-            color: black;
+            color: 333;
 
+        }
+
+        /* 태그 */
+        #tagsearch {
+            border: 1px solid #111;
+            width: 170px;
+            height: 205px;
+            position: relative;
+            float: right;
+            background-color: white;
+            margin-right: 60px;
+	        margin-top: 2px;
+            /* text-align: center; */
+            display: none;
+	        /* top: 24px; */
+        }
+        #tagsearch::after {
+            content: "";
+            display: none;
+            clear: both;
+        }
+        #tag {
+            width: 168px;
+            /* background-color: rgb(253, 236, 236); */
+            background-color: #f6f6f6;
+            height: 25px;
+            }
+        #tag > span {
+            color: #222;
+            font-size: 14px;
+            width: 50px;
+            height: 30px;
+            font-weight: normal;
+            font-family: "IBMPlexSansKR-Regular";
+            position: relative;
+            left: -20px;
+        }
+
+        #tag > label {
+            color: #111;
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        #tagsearch > a {
+            display: block;
+            color: #555;
+            font-size: 14px;
+            font-family: "IBMPlexSansKR-Regular";
+            font-weight: normal;
+            text-align: left;
+            margin-left: 20px;
+            margin-top: 2px;
+        }
+        #tagsearch > span {
+            font-size: 12px;
+            color: #999;
+            font-weight: normal;
+            font-family: "IBMPlexSansKR-Regular";
+
+            float: right;
+            margin-top: 5px;
+            margin-right: 5px;
         }
 
         #chatbot {
@@ -118,7 +224,7 @@
             padding-top: 3px;
         }
         #movetop:hover {
-            background-color: orange;
+            background-color: #FECA52;
         }
         #movetop a {
             text-decoration: none;
@@ -129,7 +235,7 @@
 
         #middleMain {
             width: 1600px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #333;
             background-color: white;
             /* margin-left: -100px; */
             z-index: 100;
@@ -147,7 +253,9 @@
         #middleTop div:first-child{
             width: 80px;
             height: 80px;
-            background-color: cornflowerblue;
+            /* 이미지 넣기 */
+            background-image: url(./images/consertPoster.jpg);
+            background-size: 80px;
             border-radius: 40px;
             float: left;
             margin-left: 10px;
@@ -178,7 +286,7 @@
         #mTTicketing {
             width: 250px;
             height: 40px;
-            background-color: tomato;
+            background-color: #FF7372;
             color: white;
             font-size: 20px;
             font-weight: bold;
@@ -201,18 +309,20 @@
             width: 1200px;
             margin: auto;
         }
-        #top{
+        #maintop{
             /* position: absolute; 
             top: 100px; */
             margin: 130px auto;
+            
         }
 
         #mainTitle {
             width: 1200px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #333;
             /* width: 1200px; */
             padding: 20px 0px;
             /* padding-bottom: 20px; */
+            /* color: #333; */
             
         }
         #mainTitleTop > div {
@@ -221,16 +331,16 @@
         }
         #mainTitleTop > div:nth-child(1) > a{
             text-decoration: none;
-            color: black;
+            color: #333;
         }
         #mainTitleTop > div:nth-child(2){
-            border: 1px solid tomato;
-            color: tomato;
+            border: 1px solid #FF7372;
+            color: #FF7372;
             margin-left: 10px;
         }
         #mainTitleTop > div:nth-child(3){
-            border: 1px solid orange;
-            background-color: orange;
+            border: 1px solid #FECA52;
+            background-color: #FECA52;
             color: white;
             margin-left: 10px;
         }
@@ -285,7 +395,7 @@
             /* position: relative; */
         }
         #basic{
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #333;
         }
         #basic  dt, #basic  dd {
             float: left;
@@ -310,8 +420,8 @@
         }
 
         #dialog1 td{
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
         }
         #dialog1 td:first-child{
             width: 270px;
@@ -322,11 +432,11 @@
         }
 
         #dialog1 table div {
-            border: 1px solid tomato;
+            border: 1px solid #FF7372;
             width: 50px;
             height: 25px;
             text-align: center;
-            color: tomato;
+            color: #FF7372;
         }
 
         #price{
@@ -352,11 +462,11 @@
             margin-bottom: 2px;
         }
         #price > ul span {
-            color: tomato;
+            color: #FF7372;
         }
 
         #basic2 {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #333;
             padding-bottom: 15px;
             margin-bottom: 40px;
         }
@@ -376,10 +486,10 @@
         #like img {
             width: 20px; height: 20px;
             position: relative;
-            top: 4px;
+            /* top: 4px; */
         }
         #like span:nth-child(2){
-            color: orange;
+            color: #FECA52;
         }
         #benner {
             width: 700px;
@@ -411,14 +521,14 @@
         }
 
         #data {
-            border: 1px solid orange;
+            border: 1px solid #FECA52;
             width: 660px;
             height: 400px;
             padding: 50px;
         }
 
         #datatitle{
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid #333;
             padding-bottom: 12px;
         }
 
@@ -442,19 +552,19 @@
         }
 
         #datasub {
-            border: 2px solid orange; border-radius: 15px;
+            border: 2px solid #FECA52; border-radius: 15px;
             padding: 0px 11px;
             margin-top: 5px;
             margin-left: 10px;
             font-size: 12px;
         }
         #datasub > span{
-            color: orange;
+            color: #FECA52;
         }
 
         /* 달력 */
         #celender {
-            border-right: 1px solid black;
+            border-right: 1px solid #333;
             width: 300px;
         }
 
@@ -468,15 +578,31 @@
             margin-top: 20px;
         }
 
-        
          .ui-state-active {
             color: black;
          }
 
+        #celender td, #celender th {
+            border: none;
+            background-color: white;
+            color: black;
+        }
+
+        .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+            border-left: 0px;
+            background: #FECA52;
+            color: black;
+        }
+
+        #celender .ui-state-hover {
+            background: #FECA52;
+        }
+
+
+
 
         /* 시간 */
         #clock {
-            border: 1px solid black;
             width: 210px;
             height: 30px;
             position: relative;
@@ -484,6 +610,18 @@
             left: 330px;
             text-align: center;
             padding-top: 5px;
+        }
+
+
+        #inputTime li{
+            border: 1px solid #333;
+            width: 210px;
+            height: 30px;
+            text-align: center;
+            margin-bottom: 5px;
+            list-style: none;
+            margin-left: -47px;
+            padding-top: 3px;
         }
 
         #sittitle{
@@ -508,14 +646,14 @@
             height: 210px;
             margin-top: 30px;
             text-align: center;
-            color: orange;
+            color: #FECA52;
             padding-top: 20px;
         }
 
         #ticketing {
             width: 180px;
             height: 40px;
-            background-color: tomato;
+            background-color: #FF7372;
             color: white;
             font-size: 20px;
             font-weight: bold;
@@ -541,7 +679,7 @@
             float: left;
             text-align: center;
             padding-top: 25px;
-            color: black;
+            color: #333;
             position: relative;
             top: 2px;
             font-weight: bold;
@@ -549,8 +687,8 @@
             margin-bottom: 8px;
         }
         .tabMenu:first-child{
-            border-top: 8px solid orange;
-            color: orange;
+            border-top: 8px solid #FECA52;
+            color: #FECA52;
         }
         .tabMenu:nth-child(2){
             border-top: 8px solid #eee;
@@ -558,8 +696,8 @@
         }
 
         .tabss {
-            border-top: 2px solid orange;
-            border-bottom: 2px solid orange;
+            border-top: 2px solid #FECA52;
+            border-bottom: 2px solid #FECA52;
             /* border-top: 0px; */
             margin-top: 0px;
             padding-top: 50px;
@@ -572,7 +710,7 @@
         }
 
         #company {
-            border-top: 1px solid black;
+            border-top: 1px solid #333;
             border-bottom: 1px solid #ddd;
             border-collapse: collapse;
             width: 960px;
@@ -591,7 +729,7 @@
         }
 
         #productInfo {
-            border-top: 1px solid black;
+            border-top: 1px solid #333;
             border-bottom: 1px solid #ddd;
             border-collapse: collapse;
             width: 960px;
@@ -831,38 +969,86 @@
             </div>
         </div>
         <!-------------------------------- 화면 상단부 -------------------------------->
-                <div id="top">
-                    <div id="topmenu">
-                        <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-                        <a href="main.html" id="topleft"></a>
-                        <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
-                        <span data-item="item1" class="menubar">콘서트</span>
-                        <span data-item="item2" class="menubar">뮤지컬</span>
-                        <span data-item="item3" class="menubar">연극</span>
-                        <span data-item="item4" class="menubar">클래식</span>
-                        <span data-item="item5" class="menubar">전시</span>
-                        <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
-        
-                        <div id="topright">
-                            <span data-item="item6" class="menubar">랭킹</span>
-                            <span data-item="item7" class="menubar">이벤트</span>
-                            <input type="text" value="" id="search">
-                            <label for="search" class="glyphicon glyphicon-search"
-                                style="font-size: 14px; cursor: pointer;"></label>
-                            <div class="glyphicon glyphicon-user" 
-                                style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
+        <div id="top">
+            <div id="topmenu">
+                <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
+                <a href="main.html" id="topleft"></a>
+                <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
+                <div id="topcenter">
+                    <span data-lo="user_concert.html" class="menubar"
+                        >콘서트</span
+                    >
+                    <span data-lo="user_musical.html" class="menubar"
+                        >뮤지컬</span
+                    >
+                    <span data-lo="user_theater.html" class="menubar"
+                        >연극</span
+                    >
+                    <span data-lo="user_classic.html" class="menubar"
+                        >클래식</span
+                    >
+                    <span data-lo="user_Exhibition.html" class="menubar"
+                        >전시</span
+                    >
+                </div>
+                <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
+                <div id="topright">
+                    <span data-lo="user_ranking.html" class="menubar"
+                        >랭킹</span
+                    >
+                    <span data-lo="user_event.html" class="menubar"
+                        >이벤트</span
+                    >
+                    <input
+                        type="text"
+                        value=""
+                        id="search"
+                        autocomplete="off"
+                    />
+                    <label
+                        for="search"
+                        class="glyphicon glyphicon-search"
+                        style="font-size: 14px; cursor: pointer;"
+                    ></label>
+                    <div
+                        class="glyphicon glyphicon-user"
+                        id="mypage"
+                        style="
+                            font-size: 14px;
+                            cursor: pointer;
+                            margin: 0 10px;
+                        "
+                    ></div>
+                </div>
+                            <!-- 검색 팝업 -->
+                            <div id="tagsearch">
+                                <div id="tag">
+                                    <span>태그 검색어 </span>
+                                    <label
+                                        id="tagremove"
+                                        class="glyphicon glyphicon-remove"
+                                    ></label>
+                                </div>
+                                <a href="#">#연극</a>
+                                <a href="#">#뮤지컬</a>
+                                <a href="#">#캣츠</a>
+                                <a href="#">#00</a>
+                                <a href="#">#서울 전시</a>
+                                <a href="#">#서울 전시</a>
+                                <a href="#">#서울 전시</a>
+                                <span>2020.07.23 기준</span>
+                            </div>
                         </div>
                     </div>
 
     <!-- 내용============================================================================================================================================= -->
     <div id="mainsection">
-        <div id="top">
+        <div id="maintop">
             <!-- 타이틀 -->
             <div id="mainTitle">
                     <div id="mainTitleTop">
                         <div><a href="./main.html" target="_self">콘서트</a></div>
                         <div>단독판매</div>
-                        <div>자동예매방지</div>
                     </div>
                     <div id="mainTitleName"><h1>크리스토퍼 내한공연（CHRISTOPHER LIVE IN SEOUL)</h1></div>
                     <div id="mainTitleBottom">
@@ -879,7 +1065,7 @@
                 <div class="content" id="postrtbox">
                 <div class="content" id="poster"></div>
                 <div id="like">
-                    <img src="./images/사람.PNG">
+                    <img src="./images/heart.png">
                     <span>1732</span> <span>Likes</span>
                 </div>
                 </div>
@@ -947,7 +1133,10 @@
                         <div id="celender"> </div>
                         <!-- 시간 선택 -->
                         <div id="clock">
-                            <div id="selectClock">1회 오후7시 00분</div>
+                            <!-- <div class="selectClock">1회 오후7시 00분</div> -->
+                            <ul id="inputTime">
+                                
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1224,11 +1413,25 @@
         </div>
 <!-------------------------------- 화면 하단부 -------------------------------->
         <div id="bottom">
-            <div style="width: 1600px; margin: auto;">
+            <div>
                 <!-- 회사 마크 -->
-                <img src="./images/title2.png" style="transform: translate(0, 40px);">
+                <img src="./images/title2.png"/>
+            </div>
+            <div class="txt">
+                <p class="black">At-Ticket (주)</p>
+                <p>서울시 강남구 역삼동 한독빌딩 8층 대표: 한시연 | 개인정보보호책임자: 한시연</p>
+                <p>it1234@atticket.com 사업자등록번호 229-81-37000</p>
+                <p class="black">Copyright &copy; At-Tickey Corp. All Rights Reserved.</p>
+            </div>
+            <div id="service">
+                <p><span>☎</span> 고객센터 전화상담</p>
+                <p>1544-6399</p>
+                <p>평일 09:00 ~ 18:00</p>
+                <p>토요일 09:00 ~ 17:00</p>
+                <p>일요일 공휴일 휴무</p>
             </div>
         </div>
+        
     </div>
 
             <!-- <div id="place"></div> -->
@@ -1244,6 +1447,25 @@
         $(".menubar").mouseout(function() {
             $(this).css("border-bottom", "");
         });
+
+        //상단 메뉴 클릭시
+        $(".menubar").click(function () {
+            location.href = $(this).data("lo");
+        });
+
+        //검색창 커서 있을때 팝업 띄우기
+            $("#search").focusin(function () {
+            $("#tagsearch").css("display", "block");
+            $("#search").css("border-bottom", "2px solid black");
+        });
+        //검색창 팝업 닫기
+        $("#search").focusout(function () {
+            $("#tagsearch").css("display", "none");
+        });
+        $("#tagremove").click(function () {
+            $("#tagsearch").css("display", "none");
+        });
+
 
         var flag = false;
  
@@ -1297,10 +1519,66 @@
 
 
         // 캘린더
-        $("#celender").datepicker({
-        dateFormat:"yy-mm-dd",
-        minDate : "2020-08-29",
-        maxDate : "2020-08-30"
+        // $("#celender").datepicker({
+        // dateFormat:"yy-mm-dd",
+        // minDate : "2020-08-29",
+        // maxDate : "2020-08-30"
+        // });
+
+        $( "#celender").datepicker({
+                dateFormat: "yy-mm-dd",
+                minDate: "2020-08-29",
+                maxDate: "2020-08-30",
+                altField: ".alternate",
+                altFormat: "yy.mm.dd(D)",
+                dayNamesShort: ["일","월","화","수","목","금","토"],
+
+                // defaultDate: new Date('2020-08-30'),
+
+                // setDate: "2020-08-30",
+
+                onSelect: function(dateText) {  
+
+                    if(dateText == "2020-08-29") {
+                        // $("#inputTime").html("[1]회 19시 00분");
+                           
+                        $("#inputTime" ).empty();
+                        $("#inputTime").append("<li>[1]회 19시 00분</li>");
+                        $("#inputTime").append("<li>[2]회 20시 00분</li>");
+                    }else {
+                        $( "#inputTime" ).empty();
+                        $("#inputTime").append("<li>[1]회 18시 00분</li>");
+                    }
+
+                    $("#inputTime li").click(function(){
+                        $("#inputTime li").css({
+                            "background-color":"white",
+                            "color": "#424242"
+                            })
+                        // $(this).css("background-color","#FF6D6D");
+                        $(this).css({
+                            "background-color": "#FECA52",
+                            "color": "white"
+                        });
+                        console.log($(this).text());
+                        $("#choicInfo dd:nth-child(5)").text($(this).text());
+                        clickNum = true;
+                    });
+                
+                },
+                
+                
+            });
+
+        //관심목록
+        $("#like img").click(function(){
+
+        if($("#like img").attr("src") == "./images/heart2.png"){
+            alert("이미 관심목록에 등록되어있습니다.");
+        }
+
+        $("#like img").attr("src","./images/heart2.png");
+
         });
 
         //탭
@@ -1310,17 +1588,19 @@
 
 
         //시간 선택 후 예매가능좌석 선택 가능
-        $("#selectClock").click(function(){
+        $("#inputTime").click(function(){
 
-            $("#clock").css("background-color","orange");
-            $("#clock").css("border","orange");
+            // $("#clock").css("background-color","#FECA52");
+            $("#clock").css("border","#FECA52");
             $("#clock").css("color","white");
             $("#data").css("border","1px solid #eeeeee");
-            $("#sit").css("border","1px solid orange");
+            $("#sit").css("border","1px solid #FECA52");
             $("#sittitle").css("border-bottom","2px solid black");
             $("#sittitle").css("color","black");
             $("#sitbox").css("border","1px solid black");
-            $("#sitbox").append("본 공연은 잔여좌석 서비스를 제공하지 않습니다.")
+            if($("#sitbox").empty()){
+                $("#sitbox").append("본 공연은 잔여좌석 서비스를 제공하지 않습니다.")
+            }
         });
 
         // 맵=========================================================
@@ -1596,8 +1876,8 @@
                     "color": "black"
                 })
                 $(this).css({
-                    "border-top" : "8px solid orange",
-                    "color": "orange"
+                    "border-top" : "8px solid #FECA52",
+                    "color": "#FECA52"
                 })
 
                 $(".tabss").css("display","none");
@@ -1607,11 +1887,13 @@
 
         // 예매하기 링크1
         $("#ticketing").click(function(){
-            $(location).attr('href','user_ticketpage.html');
+            // $(location).attr('href','user_ticketpage.html');
+            window.open("user_ticketpage.html", "PopupWin", "width=1000,height=672");
         });
         // 예매하기 링크2
         $("#mTTicketing").click(function(){
-            $(location).attr('href','user_ticketpage.html');
+            // $(location).attr('href','user_ticketpage.html');
+            window.open("user_ticketpage.html", "PopupWin", "width=1000,height=672");
         });
 
     </script>

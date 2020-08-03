@@ -14,8 +14,8 @@
         body{
             font-family: 'NanumBarunGothic';
         }
-        html{
-            width: 600px;
+         html{
+            width: 800px;
         }
 
         #title{
@@ -35,18 +35,16 @@
 
         #content {
             /* border: 1px solid red; */
-            width: 600px;
-            height: 100px;
-          
+            width: 86.5%;
+            height: 500px;
+
         }
 
         #add {
             width: 500px;
             height: 800px;
             position: relative;
-            left: 40px
-            /* margin: 20px auto; */
-            
+            left: 40px;
         }
         #content > #add > div {
             margin: 10px;
@@ -59,6 +57,7 @@
             margin-top: 0px;
             margin-left: 200px;
         }
+
     </style>
 
     <style type="text/css">
@@ -73,19 +72,19 @@
         }
 
     </style>
-   
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <title>adminShowAdd</title>
+    <title>adminShowModify</title>
 </head>
 
 <body>
 
     <div id = "title">
-        <h1>공연 추가</h1>
+        <h1 style="color: #444">공연 수정</h1>
     </div>
+
 
     <div id="content">
         <fieldset id="add" class="form-control" style="border: 0px;">
@@ -102,71 +101,49 @@
                 </select>
             </div>
 
-            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" autofocus></div>
+            <!-- ------------------------------- 선택 공연의 value값 넘겨오기 ----------------->
+            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" value="렌트" autofocus></div>
             <div><label for="txtdate">공연 기간 : </label>
-                <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="">
-                <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
-                <span> - </span>
-                <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="">
-                <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
+                 <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="2020-07-20">
+                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
+                 <span> - </span>
+                 <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="2020-09-17">
+                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
             </div>
-            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" style="width: 100px;" autofocus>원</div>
-            <div><label for="txtmin">소요 시간 : </label><input type="text" id="txtmin" style="width: 100px;" autofocus>분</div>
-            <div id="round">
-                <label for="txtround">공연 회차 : </label><input type="text" id="txtround" style="width: 100px;" autofocus>
-                <label for="txttime">공연 시간 : </label><input type="text" id="txttime"  style="width: 100px;" autofocus>
-
-                <button id="addbtn" class="btn btn-default" styl e="height: 27px;">회차 추가</button>
-            </div>
-            <div>
-                <label for="txtplace">공연 장소 : </label>
-                <input type="text" id="txtplace" style="width: 100px;" autofocus>
-            </div>
-            <div>
-                <!-- 공연장소 검색 결과 -->
-                <select size="3" id="searchplace" style="margin-left: 75px;">
-                    <option>yes24홀</option>
-                    <option>예술의전당</option>
-                    <option>월드컵경기장</option>
-                </select>
+            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" value="100,000" autofocus></div>
+            <div><label for="txttime">공연 시간 : </label><input type="text" id="txttime" value="15:00" autofocus></div>
+            <div><label for="txtplace" style="display: block;">공연 장소  </label>
+                <input type="text" id="sample6_postcode" placeholder="우편번호">
+                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" id="sample6_address" placeholder="주소"><br>
+                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
             </div>
 
             <!-- </label><input type="text" id="txtplace" autofocus></div> -->
             <!-- <div><label for="txtdelivery">배송 정보 : </label><input type="text" id="txtdelivery" autofocus></div> -->
-            <div>
-                <label for="txtnotice">유의 사항  </label>
-                <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
+            <div><label for="txtnotice">유의 사항  </label>
+                 <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
             </div>
 
-            <div>
-                <label for="txtsale">할인 정보  </label>
-                <textarea id="txtsale" class="form-control" style="width: 450px;" autofocus></textarea>
-            </div>
-
+            <!-- 포스터, 공연내용 이미지 미리보기*** -->
             <div><label for="txtheader">포스터  : </label><input type="file" id="txtheader" style="display: inline;" autofocus></div>
             <div class="img_wrap">
                 <img id="img1" />
             </div>
-
+    
             <div><label for="txtcontent">공연 내용 : </label><input type="file" id="txtcontent" style="display: inline;" autofocus></div>
             <div class="img_wrap">
                 <img id="img2" />
             </div>
 
             
-            <div><input type="button" id="btnadd" value="추가하기" class="btn btn-default"></div>
+            <div><input type="button" id="btnadd" value="수정하기" class="btn btn-default"></div>
         </fieldset>
     </div>
 
-
-
-
 </body>
 <script>
-
-    $("#btnadd").click(function() {
-        // 추가버튼 >> 입력된 정보 추가하기
-    });
 
     var sel_file;
 
@@ -174,7 +151,7 @@
         $("#txtheader").on("change", handleImgFileSelect1);
         $("#txtcontent").on("change", handleImgFileSelect2);
     }); 
-
+    
     function handleImgFileSelect1(e) {
         var files = e.target.files;
         var filesArr = Array.prototype.slice.call(files);
@@ -217,6 +194,10 @@
         });
     }
 
+    $("#btnadd").click(function() {
+        // 수정버튼 >> 입력된 정보 수정하기
+    });
+
 
     // var date = document.getElementsByClassName("date");
     var date = document.getElementById("date");
@@ -226,13 +207,6 @@
     if (date.value != null) {
         date.readOnly = true;
     }
-
-    $("#date").datepicker({
-            dateFormat: "yy-mm-dd",
-            minDate: now.getFullYear() + "-1-1",
-            maxDate: now.getFullYear() + "-12-" + "31"
-    });
-
     
     $("#date1").datepicker({
         dateFormat: "yy-mm-dd",
@@ -246,108 +220,12 @@
         maxDate: now.getFullYear() + "-12-" + "31"
     });
 
-   
-
-    document.body.bgColor = "white";
-    
-
-
-    //스위치 
-    var swCount = 1;
-    $("#sw").click(function () {
-        console.log("클릭함");
-
-            if(swCount % 2 == 0) {
-                console.log("들어옴");
-                sw.src="../images/switch_on.png";
-                $("body").css("background-color","white");
-                $("#homeLogo").css("color","#333333");
-                $("#adminName").css("color","#333333")
-            } else {
-                sw.src="../images/switch_off.png";
-                $("body").css("background-color","#292A2D");
-                $("#homeLogo").css("color","white");
-                $("#adminName").css("color","white");
-
-            }
-            swCount++;
-    });
-
-    $("#btn1").click(function(){
-        window.open("login.html","Login","width=300, height=300");
-    });
-    
-
-    $("#btn2").click(function(){
-        if(confirm("로그아웃하시겠습니까?")){
-            console.log("로그아웃 되었습니다.");
-         }
-    });
-
-    $(".container").accordion();
-    // $(".container2").accordion();
-    $('.collapse').collapse({
-        toggle: false
-    })
-
-
-    //홈버튼 링크
-    $("#homeLogo").click(function() {
-        location.href = "adminMain.html";
-    });
-
-    //상단 메뉴 고정
-    $(document).scroll(function() {
-        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
-            if ($(document).scrollTop() > $("#topmenu").position().top) {
-                $("#topmenu").css({
-                    width: "100%",
-                    position: "fixed",
-                    top: "0px",
-                    bottom: "",
-                    zIndex: "1"
-                });
-
-            };
-
-        //상단 헤더(top)이 눈에 보일때 쯤
-        if ($(document).scrollTop() <= $("#topmenu").position().top) {
-            $("#topmenu").css({
-                position: "absolute",
-                top: "0px",
-                bottom: ""
-            });             
-        }
-    });
-
-
-    $("#btn2").mouseenter(function(){
-        $("#btn2").css("background-color","cornflowerblue");
-    });
-    $("#btn2").mouseleave(function(){
-        $("#btn2").css("background-color","#C27BA0");
-    })
-
-    //티켓 홈
-    $("#tickethome").click(function() {
-        window.open("../main.html","At-Ticket");
-    });
 
 
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
 
-    var n = 1;
-
-    $("#addbtn").click(function() {
-
-        $("#round").append("<label for='txtround"+n+"'>공연 회차 : </label><input type='text' id='txtround"+n+"' style='width: 100px;'' autofocus>"+
-                "<label for='txttime"+n+"''>공연 시간 : </label><input type='text' id='txttime"+n+"''  style='width: 100px;' autofocus>");
-
-        n++;
-
-    });
-
+    
     
 
 </script>
