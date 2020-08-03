@@ -113,18 +113,18 @@
             <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" style="width: 100px;" autofocus>원</div>
             <div><label for="txtmin">소요 시간 : </label><input type="text" id="txtmin" style="width: 100px;" autofocus>분</div>
             <div id="round">
-                <label for="txtround">공연 회차 : </label><input type="text" id="txtround" style="width: 100px;" autofocus>
-                <label for="txttime">공연 시간 : </label><input type="text" id="txttime"  style="width: 100px;" autofocus>
+                <label for="txtround1">공연 회차 : </label><input type="text" id="txtround1" style="width: 100px;" autofocus>
+                <label for="txttime1">공연 시간 : </label><input type="text" id="txttime1"  style="width: 100px;" autofocus>
 
-                <button id="addbtn" class="btn btn-default" styl e="height: 27px;">회차 추가</button>
             </div>
+            <button id="addbtn" class="btn btn-default" style="height: 27px;">회차 추가</button>
             <div>
                 <label for="txtplace">공연 장소 : </label>
                 <input type="text" id="txtplace" style="width: 100px;" autofocus>
             </div>
             <div>
                 <!-- 공연장소 검색 결과 -->
-                <select size="3" id="searchplace" style="margin-left: 75px;">
+                <select size="3" id="searchplace" style="margin-left: 75px; outline: none;">
                     <option>yes24홀</option>
                     <option>예술의전당</option>
                     <option>월드컵경기장</option>
@@ -135,12 +135,12 @@
             <!-- <div><label for="txtdelivery">배송 정보 : </label><input type="text" id="txtdelivery" autofocus></div> -->
             <div>
                 <label for="txtnotice">유의 사항  </label>
-                <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
+                <textarea id="txtnotice" class="form-control" style="width: 450px; resize: none;" autofocus></textarea>
             </div>
 
             <div>
                 <label for="txtsale">할인 정보  </label>
-                <textarea id="txtsale" class="form-control" style="width: 450px;" autofocus></textarea>
+                <textarea id="txtsale" class="form-control" style="width: 450px; resize: none;" autofocus></textarea>
             </div>
 
             <div><label for="txtheader">포스터  : </label><input type="file" id="txtheader" style="display: inline;" autofocus></div>
@@ -337,12 +337,13 @@
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
 
-    var n = 1;
+    var n = 2;
 
     $("#addbtn").click(function() {
-
-        $("#round").append("<label for='txtround"+n+"'>공연 회차 : </label><input type='text' id='txtround"+n+"' style='width: 100px;'' autofocus>"+
-                "<label for='txttime"+n+"''>공연 시간 : </label><input type='text' id='txttime"+n+"''  style='width: 100px;' autofocus>");
+        console.log(111);
+        
+        $("#round").append("<label for='txtround"+ n +"'>공연 회차 : </label><input type='text' id='txtround"+ n +"' style='width: 100px;' autofocus>"+
+                "<label for='txttime"+ n +"'>공연 시간 : </label><input type='text' id='txttime"+ n +"' style='width: 100px;' autofocus>");
 
         n++;
 
