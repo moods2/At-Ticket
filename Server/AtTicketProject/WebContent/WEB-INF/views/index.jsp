@@ -20,21 +20,21 @@
 </head>
 <body>
 
-	<form style="width: 200px; margin: auto; margin-top: 50px; text-align: center;" name="login">
+	<form style="width: 200px; margin: auto; margin-top: 50px; text-align: center;" name="login" method = "POST" action = "/AtTicketProject/login.do">
         <div><img src="images/title2.png" ></div>
-        <%System.out.println(); %>
         <fieldset style="width: 200px;">
             <legend align="center">로그인</legend>
-            아이디: <input type="text" id="id" value=""><br>
-            암호: <input type="password" id="pwd">
-            <input type="button" value="로그인" id="btn1">
+            아이디: <input type="text" id="id" name = "id" required><br>
+            암호: <input type="password" id="pw" name = "pw" required>
+            <input type="submit" value="로그인" id="btn1">
         </fieldset>
     </form>
     
-    <button id = "btnss"></button>
     
     <script>
-    	
+    	$("#btnss").click(function(){
+    		console.log("???");
+    	});
     </script>
 
 
