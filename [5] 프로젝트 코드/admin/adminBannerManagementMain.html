@@ -65,10 +65,6 @@
             display: block;
         }
 
-        /* #btn1 {
-            margin-left: 50px;
-            margin-right: 20px;
-        } */
 
         #topmenu {
             /* border: 1px solid blue; */
@@ -78,9 +74,6 @@
             top: 0;
             float: right;
             align-content: right;
-            /* z-index: -1; */
-            /* background-color: #BBDED7; */
-            /* opacity: .3; */
             
         }
         #topmenu .search {
@@ -365,7 +358,7 @@
             margin-top : 20px;
             margin-left : 280px;
             width : 1500px;
-            height : 320px;
+            height : 330px;
 
         }
         /* 상단배너 그림 url 가져오기 */
@@ -378,7 +371,7 @@
         }
         #topBannerSelect td {
             border: 2px solid #ddd;
-            height : 35px;
+            height : 55px;
         }
         #topBannerSelect td:nth-child(1) {
             padding-left : 20px;
@@ -394,7 +387,12 @@
             font-size: 1.2em;
             font-weight: bold;
         }
-        
+        .topBannerInputType {
+            width : 98%;
+            height : 60%;
+            border: 0px;
+            
+        }
         /* --------------------상단배너 끝----------------------- */
 
         /*--------------------------- WHAT'S HOT 시작-------------------------------------------------*/
@@ -420,6 +418,8 @@
     </div>
     
     <!-- ------------------------상단배너 관리 시작-------------------------------------------->
+
+    
     <div class = "titlebanner">TOP배너 관리</div>
     <div id = "topbanner">
         <div id = "topcover">
@@ -454,6 +454,7 @@
                     $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
                     //document.getElementById("topImgName").textContent = parseInt(clickCountTop + 2) + " 번째 사진";
                     $("#topImgName").text(`상단배너 ${clickCountTop + 2} 번째 사진`);
+                    $("#nthPicNum").text(clickCountTop + 2);
                     clickCountTop++;
                 }
         });
@@ -463,6 +464,7 @@
                      positionTopX += 1400;
                     $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
                     $("#topImgName").text(`상단배너 ${clickCountTop} 번째 사진`);
+                    $("#nthPicNum").text(clickCountTop);
                     clickCountTop--;
                 }
         });
@@ -472,43 +474,38 @@
     <div class = "bannerTool" style = "margin-left: 330px; width : 1400px">
         <table id = "topBannerSelect">
             <tr>
-                <td>상단배너 1번째 사진</td>
-                <td><input type="file"></td>
+                <td>상단배너 <span id = "nthPicNum">1</span>번째 사진 선택</td>
+                <td style = "padding-top : 5px;"><input type="file" class = "topBannerInputType"></td>
             </tr>
             <tr>
-                <td>상단배너 2번째 사진</td>
-                <td><input type="file"></td>
+                <td>상단 기입 내용</td>
+                <td><input type="text" class = "topBannerInputType"></td>
             </tr>
             <tr>
-                <td>상단배너 3번째 사진</td>
-                <td><input type="file"></td>
+                <td>중간 기입 내용</td>
+                <td style = "height: 100px; padding-top : 5px;"><textarea name="" id="" cols="30" rows="3" style = "resize : none; width : 97%; height : 80%; border : 0px;"></textarea></td>
             </tr>
             <tr>
-                <td>상단배너 4번째 사진</td>
-                <td><input type="file"></td>
+                <td>하단 기입 내용</td>
+                <td><input type="text" class = "topBannerInputType"></td>
             </tr>
             <tr>
-                <td>상단배너 5번째 사진</td>
-                <td><input type="file"></td>
+                <td>기입 내용 글자색 지정</td>
+                <td><input type="color" style = "width : 300px;" ></td>
             </tr>
-            <tr>
-                <td>상단배너 6번째 사진</td>
-                <td><input type="file"></td>
-            </tr>
-            <tr>
-                <td>상단배너 7번째 사진</td>
-                <td><input type="file"></td>
-            </tr>
-            <tr>
-                <td>상단배너 8번째 사진</td>
-                <td><input type="file"></td>
-            </tr>
-            <tr>
-                <td>상단배너 9번째 사진</td>
-                <td><input type="file"></td>
-            </tr>
+          
         </table>
     </div>
+
+    <style>
+
+        #topImgContent {
+            border: 1px solid red;
+            margin-top : 20px;
+
+        }
+        
+    </style>
 
     <hr class = "splitHr">
 
