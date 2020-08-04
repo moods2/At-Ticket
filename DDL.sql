@@ -1,27 +1,27 @@
-/* È¸¿ø */
+/* íšŒì› */
 CREATE TABLE tblCustomer (
-	seq NUMBER NOT NULL, /* È¸¿ø ¹øÈ£ */
-	name VARCHAR2(50) NOT NULL, /* ÀÌ¸§ */
-	ssn VARCHAR2(50) NOT NULL, /* ÁÖ¹Î¹øÈ£ */
-	id VARCHAR2(50) NOT NULL, /* ¾ÆÀÌµğ */
-	pw VARCHAR2(50) NOT NULL, /* ºñ¹Ğ¹øÈ£ */
-	egg NUMBER NOT NULL, /* ¿¡±×¸Ó´Ï */
+	seq NUMBER NOT NULL, /* íšŒì› ë²ˆí˜¸ */
+	name VARCHAR2(50) NOT NULL, /* ì´ë¦„ */
+	ssn VARCHAR2(50) NOT NULL, /* ì£¼ë¯¼ë²ˆí˜¸ */
+	id VARCHAR2(50) NOT NULL, /* ì•„ì´ë”” */
+	pw VARCHAR2(50) NOT NULL, /* ë¹„ë°€ë²ˆí˜¸ */
+	egg NUMBER NOT NULL, /* ì—ê·¸ë¨¸ë‹ˆ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblCustomer IS 'È¸¿ø';
+COMMENT ON TABLE tblCustomer IS 'íšŒì›';
 
-COMMENT ON COLUMN tblCustomer.seq IS 'È¸¿ø ¹øÈ£';
+COMMENT ON COLUMN tblCustomer.seq IS 'íšŒì› ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblCustomer.name IS 'ÀÌ¸§';
+COMMENT ON COLUMN tblCustomer.name IS 'ì´ë¦„';
 
-COMMENT ON COLUMN tblCustomer.ssn IS 'ÁÖ¹Î¹øÈ£';
+COMMENT ON COLUMN tblCustomer.ssn IS 'ì£¼ë¯¼ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblCustomer.id IS '¾ÆÀÌµğ';
+COMMENT ON COLUMN tblCustomer.id IS 'ì•„ì´ë””';
 
-COMMENT ON COLUMN tblCustomer.pw IS 'ºñ¹Ğ¹øÈ£';
+COMMENT ON COLUMN tblCustomer.pw IS 'ë¹„ë°€ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblCustomer.egg IS '¿¡±×¸Ó´Ï';
+COMMENT ON COLUMN tblCustomer.egg IS 'ì—ê·¸ë¨¸ë‹ˆ';
 
 COMMENT ON COLUMN tblCustomer.delflag IS 'deflag';
 
@@ -32,23 +32,23 @@ ALTER TABLE tblCustomer
 			seq
 		);
 
-/* °ü¸®ÀÚ */
+/* ê´€ë¦¬ì */
 CREATE TABLE tblAdmin (
-	seq NUMBER NOT NULL, /* °ü¸®ÀÚ ¹øÈ£ */
-	img VARCHAR2(50) NOT NULL, /* ÀÌ¹ÌÁö */
-	id VARCHAR2(50) NOT NULL, /* ¾ÆÀÌµğ */
-	pw VARCHAR2(50) NOT NULL /* ºñ¹Ğ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ê´€ë¦¬ì ë²ˆí˜¸ */
+	img VARCHAR2(50) NOT NULL, /* ì´ë¯¸ì§€ */
+	id VARCHAR2(50) NOT NULL, /* ì•„ì´ë”” */
+	pw VARCHAR2(50) NOT NULL /* ë¹„ë°€ë²ˆí˜¸ */
 );
 
-COMMENT ON TABLE tblAdmin IS '°ü¸®ÀÚ';
+COMMENT ON TABLE tblAdmin IS 'ê´€ë¦¬ì';
 
-COMMENT ON COLUMN tblAdmin.seq IS '°ü¸®ÀÚ ¹øÈ£';
+COMMENT ON COLUMN tblAdmin.seq IS 'ê´€ë¦¬ì ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblAdmin.img IS 'ÀÌ¹ÌÁö';
+COMMENT ON COLUMN tblAdmin.img IS 'ì´ë¯¸ì§€';
 
-COMMENT ON COLUMN tblAdmin.id IS '¾ÆÀÌµğ';
+COMMENT ON COLUMN tblAdmin.id IS 'ì•„ì´ë””';
 
-COMMENT ON COLUMN tblAdmin.pw IS 'ºñ¹Ğ¹øÈ£';
+COMMENT ON COLUMN tblAdmin.pw IS 'ë¹„ë°€ë²ˆí˜¸';
 
 ALTER TABLE tblAdmin
 	ADD
@@ -57,33 +57,33 @@ ALTER TABLE tblAdmin
 			seq
 		);
 
-/* Á÷¿ø */
+/* ì§ì› */
 CREATE TABLE tblEmployee (
-	seq NUMBER NOT NULL, /* Á÷¿ø ¹øÈ£ */
-	name VARCHAR2(50) NOT NULL, /* ÀÌ¸§ */
-	jikwi VARCHAR2(50) NOT NULL, /* Á÷±Ş */
-	salary NUMBER NOT NULL, /* ¿ù±Ş */
-	ssn VARCHAR2(50) NOT NULL, /* ÁÖ¹Î¹øÈ£ */
-	tel VARCHAR2(50) NOT NULL, /* ÀüÈ­¹øÈ£ */
-	buseoSeq NUMBER NOT NULL, /* ºÎ¼­ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ì§ì› ë²ˆí˜¸ */
+	name VARCHAR2(50) NOT NULL, /* ì´ë¦„ */
+	jikwi VARCHAR2(50) NOT NULL, /* ì§ê¸‰ */
+	salary NUMBER NOT NULL, /* ì›”ê¸‰ */
+	ssn VARCHAR2(50) NOT NULL, /* ì£¼ë¯¼ë²ˆí˜¸ */
+	tel VARCHAR2(50) NOT NULL, /* ì „í™”ë²ˆí˜¸ */
+	buseoSeq NUMBER NOT NULL, /* ë¶€ì„œ ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblEmployee IS 'Á÷¿ø';
+COMMENT ON TABLE tblEmployee IS 'ì§ì›';
 
-COMMENT ON COLUMN tblEmployee.seq IS 'Á÷¿ø ¹øÈ£';
+COMMENT ON COLUMN tblEmployee.seq IS 'ì§ì› ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblEmployee.name IS 'ÀÌ¸§';
+COMMENT ON COLUMN tblEmployee.name IS 'ì´ë¦„';
 
-COMMENT ON COLUMN tblEmployee.jikwi IS 'Á÷±Ş';
+COMMENT ON COLUMN tblEmployee.jikwi IS 'ì§ê¸‰';
 
-COMMENT ON COLUMN tblEmployee.salary IS '¿ù±Ş';
+COMMENT ON COLUMN tblEmployee.salary IS 'ì›”ê¸‰';
 
-COMMENT ON COLUMN tblEmployee.ssn IS 'ÁÖ¹Î¹øÈ£';
+COMMENT ON COLUMN tblEmployee.ssn IS 'ì£¼ë¯¼ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblEmployee.tel IS 'ÀüÈ­¹øÈ£';
+COMMENT ON COLUMN tblEmployee.tel IS 'ì „í™”ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblEmployee.buseoSeq IS 'ºÎ¼­ ¹øÈ£';
+COMMENT ON COLUMN tblEmployee.buseoSeq IS 'ë¶€ì„œ ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblEmployee.delflag IS 'deflag';
 
@@ -94,45 +94,45 @@ ALTER TABLE tblEmployee
 			seq
 		);
 
-/* °ø¿¬ */
+/* ê³µì—° */
 CREATE TABLE tblShow (
-	seq NUMBER NOT NULL, /* °ø¿¬ ¹øÈ£ */
-	title VARCHAR2(50) NOT NULL, /* Á¦¸ñ */
-	startDate DATE NOT NULL, /* ½ÃÀÛ±â°£ */
-	endDate DATE NOT NULL, /* Á¾·á±â°£ */
-	price NUMBER NOT NULL, /* °¡°İ */
-	poster VARCHAR2(50) NOT NULL, /* Æ÷½ºÅÍ */
-	content VARCHAR2(1000) NOT NULL, /* °ø¿¬³»¿ë */
-	openDate DATE NOT NULL, /* ¿ÀÇÂÀÏ½Ã */
-	age NUMBER NOT NULL, /* ¿¬·É */
-	genre VARCHAR2(50) NOT NULL, /* Àå¸£ */
-	agencySeq NUMBER NOT NULL, /* ±âÈ¹»ç ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ê³µì—° ë²ˆí˜¸ */
+	title VARCHAR2(50) NOT NULL, /* ì œëª© */
+	startDate DATE NOT NULL, /* ì‹œì‘ê¸°ê°„ */
+	endDate DATE NOT NULL, /* ì¢…ë£Œê¸°ê°„ */
+	price NUMBER NOT NULL, /* ê°€ê²© */
+	poster VARCHAR2(50) NOT NULL, /* í¬ìŠ¤í„° */
+	content VARCHAR2(1000) NOT NULL, /* ê³µì—°ë‚´ìš© */
+	openDate DATE NOT NULL, /* ì˜¤í”ˆì¼ì‹œ */
+	age NUMBER NOT NULL, /* ì—°ë ¹ */
+	genre VARCHAR2(50) NOT NULL, /* ì¥ë¥´ */
+	agencySeq NUMBER NOT NULL, /* ê¸°íšì‚¬ ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblShow IS '°ø¿¬';
+COMMENT ON TABLE tblShow IS 'ê³µì—°';
 
-COMMENT ON COLUMN tblShow.seq IS '°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblShow.seq IS 'ê³µì—° ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblShow.title IS 'Á¦¸ñ';
+COMMENT ON COLUMN tblShow.title IS 'ì œëª©';
 
-COMMENT ON COLUMN tblShow.startDate IS '½ÃÀÛ±â°£';
+COMMENT ON COLUMN tblShow.startDate IS 'ì‹œì‘ê¸°ê°„';
 
-COMMENT ON COLUMN tblShow.endDate IS 'Á¾·á±â°£';
+COMMENT ON COLUMN tblShow.endDate IS 'ì¢…ë£Œê¸°ê°„';
 
-COMMENT ON COLUMN tblShow.price IS '°¡°İ';
+COMMENT ON COLUMN tblShow.price IS 'ê°€ê²©';
 
-COMMENT ON COLUMN tblShow.poster IS 'Æ÷½ºÅÍ';
+COMMENT ON COLUMN tblShow.poster IS 'í¬ìŠ¤í„°';
 
-COMMENT ON COLUMN tblShow.content IS '°ø¿¬³»¿ë';
+COMMENT ON COLUMN tblShow.content IS 'ê³µì—°ë‚´ìš©';
 
-COMMENT ON COLUMN tblShow.openDate IS '¿ÀÇÂÀÏ½Ã';
+COMMENT ON COLUMN tblShow.openDate IS 'ì˜¤í”ˆì¼ì‹œ';
 
-COMMENT ON COLUMN tblShow.age IS '¿¬·É';
+COMMENT ON COLUMN tblShow.age IS 'ì—°ë ¹';
 
-COMMENT ON COLUMN tblShow.genre IS 'Àå¸£';
+COMMENT ON COLUMN tblShow.genre IS 'ì¥ë¥´';
 
-COMMENT ON COLUMN tblShow.agencySeq IS '±âÈ¹»ç ¹øÈ£';
+COMMENT ON COLUMN tblShow.agencySeq IS 'ê¸°íšì‚¬ ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblShow.delflag IS 'deflag';
 
@@ -143,21 +143,21 @@ ALTER TABLE tblShow
 			seq
 		);
 
-/* °ø¿¬ ÅÂ±× */
+/* ê³µì—° íƒœê·¸ */
 CREATE TABLE tblTag (
-	seq NUMBER NOT NULL, /* ÅÂ±× ¹øÈ£ */
-	name VARCHAR2(50) NOT NULL, /* ÅÂ±×ÀÌ¸§ */
-	showSeq NUMBER NOT NULL, /* °ø¿¬ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* íƒœê·¸ ë²ˆí˜¸ */
+	name VARCHAR2(50) NOT NULL, /* íƒœê·¸ì´ë¦„ */
+	showSeq NUMBER NOT NULL, /* ê³µì—° ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblTag IS '°ø¿¬ ÅÂ±×';
+COMMENT ON TABLE tblTag IS 'ê³µì—° íƒœê·¸';
 
-COMMENT ON COLUMN tblTag.seq IS 'ÅÂ±× ¹øÈ£';
+COMMENT ON COLUMN tblTag.seq IS 'íƒœê·¸ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblTag.name IS 'ÅÂ±×ÀÌ¸§';
+COMMENT ON COLUMN tblTag.name IS 'íƒœê·¸ì´ë¦„';
 
-COMMENT ON COLUMN tblTag.showSeq IS '°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblTag.showSeq IS 'ê³µì—° ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblTag.delflag IS 'deflag';
 
@@ -168,20 +168,20 @@ ALTER TABLE tblTag
 			seq
 		);
 
-/* ¹æ¹®ÀÚ */
+/* ë°©ë¬¸ì */
 CREATE TABLE tblVisitor (
-	seq NUMBER NOT NULL, /* ¹æ¹®ÀÚ ¹øÈ£ */
-	date DATE NOT NULL, /* ³¯Â¥ */
-	cnt NUMBER NOT NULL /* ¹æ¹®ÀÚ ¼ö */
+	seq NUMBER NOT NULL, /* ë°©ë¬¸ì ë²ˆí˜¸ */
+	vdate DATE NOT NULL, /* ë‚ ì§œ */
+	cnt NUMBER NOT NULL /* ë°©ë¬¸ì ìˆ˜ */
 );
 
-COMMENT ON TABLE tblVisitor IS '¹æ¹®ÀÚ';
+COMMENT ON TABLE tblVisitor IS 'ë°©ë¬¸ì';
 
-COMMENT ON COLUMN tblVisitor.seq IS '¹æ¹®ÀÚ ¹øÈ£';
+COMMENT ON COLUMN tblVisitor.seq IS 'ë°©ë¬¸ì ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblVisitor.date IS '³¯Â¥';
+COMMENT ON COLUMN tblVisitor.vdate IS 'ë‚ ì§œ';
 
-COMMENT ON COLUMN tblVisitor.cnt IS '¹æ¹®ÀÚ ¼ö';
+COMMENT ON COLUMN tblVisitor.cnt IS 'ë°©ë¬¸ì ìˆ˜';
 
 ALTER TABLE tblVisitor
 	ADD
@@ -190,33 +190,33 @@ ALTER TABLE tblVisitor
 			seq
 		);
 
-/* ÀÌº¥Æ® */
+/* ì´ë²¤íŠ¸ */
 CREATE TABLE tblEvent (
-	seq NUMBER NOT NULL, /* ÀÌº¥Æ® ¹øÈ£ */
-	title VARCHAR2(100) NOT NULL, /* Á¦¸ñ */
-	startDate DATE NOT NULL, /* ½ÃÀÛ±â°£ */
-	endDate DATE NOT NULL, /* Á¾·á±â°£ */
-	index VARCHAR2(20) NOT NULL, /* ±¸ºĞ */
-	content VARCHAR2(1000) NOT NULL, /* ³»¿ë */
-	showSeq NUMBER NOT NULL, /* °ø¿¬ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ì´ë²¤íŠ¸ ë²ˆí˜¸ */
+	title VARCHAR2(100) NOT NULL, /* ì œëª© */
+	startDate DATE NOT NULL, /* ì‹œì‘ê¸°ê°„ */
+	endDate DATE NOT NULL, /* ì¢…ë£Œê¸°ê°„ */
+	eindex VARCHAR2(20) NOT NULL, /* êµ¬ë¶„ */
+	content VARCHAR2(1000) NOT NULL, /* ë‚´ìš© */
+	showSeq NUMBER NOT NULL, /* ê³µì—° ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblEvent IS 'ÀÌº¥Æ®';
+COMMENT ON TABLE tblEvent IS 'ì´ë²¤íŠ¸';
 
-COMMENT ON COLUMN tblEvent.seq IS 'ÀÌº¥Æ® ¹øÈ£';
+COMMENT ON COLUMN tblEvent.seq IS 'ì´ë²¤íŠ¸ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblEvent.title IS 'Á¦¸ñ';
+COMMENT ON COLUMN tblEvent.title IS 'ì œëª©';
 
-COMMENT ON COLUMN tblEvent.startDate IS '½ÃÀÛ±â°£';
+COMMENT ON COLUMN tblEvent.startDate IS 'ì‹œì‘ê¸°ê°„';
 
-COMMENT ON COLUMN tblEvent.endDate IS 'Á¾·á±â°£';
+COMMENT ON COLUMN tblEvent.endDate IS 'ì¢…ë£Œê¸°ê°„';
 
-COMMENT ON COLUMN tblEvent.index IS '±¸ºĞ';
+COMMENT ON COLUMN tblEvent.eindex IS 'êµ¬ë¶„';
 
-COMMENT ON COLUMN tblEvent.content IS '³»¿ë';
+COMMENT ON COLUMN tblEvent.content IS 'ë‚´ìš©';
 
-COMMENT ON COLUMN tblEvent.showSeq IS '°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblEvent.showSeq IS 'ê³µì—° ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblEvent.delflag IS 'deflag';
 
@@ -227,27 +227,27 @@ ALTER TABLE tblEvent
 			seq
 		);
 
-/* È¸Â÷Á¤º¸ */
+/* íšŒì°¨ì •ë³´ */
 CREATE TABLE tblRoundInfo (
-	seq NUMBER NOT NULL, /* È¸Â÷ ¹øÈ£ */
-	date DATE NOT NULL, /* ³¯Â¥ */
-	startDate DATE NOT NULL, /* °ø¿¬ ½ÃÀÛ½Ã°£ */
-	endDate DATE NOT NULL, /* °ø¿¬ Á¾·á½Ã°£ */
-	showSeq NUMBER, /* °ø¿¬ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* íšŒì°¨ ë²ˆí˜¸ */
+	rdate DATE NOT NULL, /* ë‚ ì§œ */
+	startDate DATE NOT NULL, /* ê³µì—° ì‹œì‘ì‹œê°„ */
+	endDate DATE NOT NULL, /* ê³µì—° ì¢…ë£Œì‹œê°„ */
+	showSeq NUMBER, /* ê³µì—° ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblRoundInfo IS 'È¸Â÷Á¤º¸';
+COMMENT ON TABLE tblRoundInfo IS 'íšŒì°¨ì •ë³´';
 
-COMMENT ON COLUMN tblRoundInfo.seq IS 'È¸Â÷ ¹øÈ£';
+COMMENT ON COLUMN tblRoundInfo.seq IS 'íšŒì°¨ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblRoundInfo.date IS '³¯Â¥';
+COMMENT ON COLUMN tblRoundInfo.rdate IS 'ë‚ ì§œ';
 
-COMMENT ON COLUMN tblRoundInfo.startDate IS '°ø¿¬ ½ÃÀÛ½Ã°£';
+COMMENT ON COLUMN tblRoundInfo.startDate IS 'ê³µì—° ì‹œì‘ì‹œê°„';
 
-COMMENT ON COLUMN tblRoundInfo.endDate IS '°ø¿¬ Á¾·á½Ã°£';
+COMMENT ON COLUMN tblRoundInfo.endDate IS 'ê³µì—° ì¢…ë£Œì‹œê°„';
 
-COMMENT ON COLUMN tblRoundInfo.showSeq IS '°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblRoundInfo.showSeq IS 'ê³µì—° ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblRoundInfo.delflag IS 'deflag';
 
@@ -258,23 +258,23 @@ ALTER TABLE tblRoundInfo
 			seq
 		);
 
-/* ±âÈ¹»ç */
+/* ê¸°íšì‚¬ */
 CREATE TABLE tblAgency (
-	seq NUMBER NOT NULL, /* ±âÈ¹»ç ¹øÈ£ */
-	host VARCHAR2(50) NOT NULL, /* ÁÖÃÖ */
-	management VARCHAR2(50) NOT NULL, /* ÁÖ°ü */
-	tel NUMBER NOT NULL /* ¹®ÀÇ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ê¸°íšì‚¬ ë²ˆí˜¸ */
+	host VARCHAR2(50) NOT NULL, /* ì£¼ìµœ */
+	management VARCHAR2(50) NOT NULL, /* ì£¼ê´€ */
+	tel NUMBER NOT NULL /* ë¬¸ì˜ë²ˆí˜¸ */
 );
 
-COMMENT ON TABLE tblAgency IS '±âÈ¹»ç';
+COMMENT ON TABLE tblAgency IS 'ê¸°íšì‚¬';
 
-COMMENT ON COLUMN tblAgency.seq IS '±âÈ¹»ç ¹øÈ£';
+COMMENT ON COLUMN tblAgency.seq IS 'ê¸°íšì‚¬ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblAgency.host IS 'ÁÖÃÖ';
+COMMENT ON COLUMN tblAgency.host IS 'ì£¼ìµœ';
 
-COMMENT ON COLUMN tblAgency.management IS 'ÁÖ°ü';
+COMMENT ON COLUMN tblAgency.management IS 'ì£¼ê´€';
 
-COMMENT ON COLUMN tblAgency.tel IS '¹®ÀÇ¹øÈ£';
+COMMENT ON COLUMN tblAgency.tel IS 'ë¬¸ì˜ë²ˆí˜¸';
 
 ALTER TABLE tblAgency
 	ADD
@@ -283,17 +283,17 @@ ALTER TABLE tblAgency
 			seq
 		);
 
-/* Á÷¿ø ºÎ¼­ */
+/* ì§ì› ë¶€ì„œ */
 CREATE TABLE tblBuseo (
-	seq NUMBER NOT NULL, /* ºÎ¼­ ¹øÈ£ */
-	name VARCHAR2(50) NOT NULL /* ºÎ¼­¸í */
+	seq NUMBER NOT NULL, /* ë¶€ì„œ ë²ˆí˜¸ */
+	name VARCHAR2(50) NOT NULL /* ë¶€ì„œëª… */
 );
 
-COMMENT ON TABLE tblBuseo IS 'Á÷¿ø ºÎ¼­';
+COMMENT ON TABLE tblBuseo IS 'ì§ì› ë¶€ì„œ';
 
-COMMENT ON COLUMN tblBuseo.seq IS 'ºÎ¼­ ¹øÈ£';
+COMMENT ON COLUMN tblBuseo.seq IS 'ë¶€ì„œ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblBuseo.name IS 'ºÎ¼­¸í';
+COMMENT ON COLUMN tblBuseo.name IS 'ë¶€ì„œëª…';
 
 ALTER TABLE tblBuseo
 	ADD
@@ -302,33 +302,33 @@ ALTER TABLE tblBuseo
 			seq
 		);
 
-/* ÄíÆù */
+/* ì¿ í° */
 CREATE TABLE tblCoupon (
-	seq NUMBER NOT NULL, /* ÄíÆù ¹øÈ£ */
-	title VARCHAR2(50) NOT NULL, /* Á¦¸ñ */
-	startDate DATE NOT NULL, /* ½ÃÀÛÀÏ½Ã */
-	endDate DATE NOT NULL, /* Á¾·áÀÏ½Ã */
-	discount NUMBER NOT NULL, /* ÇÒÀÎÀ² */
-	img VARCHAR2(50) NOT NULL, /* ÀÌ¹ÌÁö */
-	showSeq NUMBER NOT NULL, /* °ø¿¬ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ì¿ í° ë²ˆí˜¸ */
+	title VARCHAR2(50) NOT NULL, /* ì œëª© */
+	startDate DATE NOT NULL, /* ì‹œì‘ì¼ì‹œ */
+	endDate DATE NOT NULL, /* ì¢…ë£Œì¼ì‹œ */
+	discount NUMBER NOT NULL, /* í• ì¸ìœ¨ */
+	img VARCHAR2(50) NOT NULL, /* ì´ë¯¸ì§€ */
+	showSeq NUMBER NOT NULL, /* ê³µì—° ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblCoupon IS 'ÄíÆù';
+COMMENT ON TABLE tblCoupon IS 'ì¿ í°';
 
-COMMENT ON COLUMN tblCoupon.seq IS 'ÄíÆù ¹øÈ£';
+COMMENT ON COLUMN tblCoupon.seq IS 'ì¿ í° ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblCoupon.title IS 'Á¦¸ñ';
+COMMENT ON COLUMN tblCoupon.title IS 'ì œëª©';
 
-COMMENT ON COLUMN tblCoupon.startDate IS '½ÃÀÛÀÏ½Ã';
+COMMENT ON COLUMN tblCoupon.startDate IS 'ì‹œì‘ì¼ì‹œ';
 
-COMMENT ON COLUMN tblCoupon.endDate IS 'Á¾·áÀÏ½Ã';
+COMMENT ON COLUMN tblCoupon.endDate IS 'ì¢…ë£Œì¼ì‹œ';
 
-COMMENT ON COLUMN tblCoupon.discount IS 'ÇÒÀÎÀ²';
+COMMENT ON COLUMN tblCoupon.discount IS 'í• ì¸ìœ¨';
 
-COMMENT ON COLUMN tblCoupon.img IS 'ÀÌ¹ÌÁö';
+COMMENT ON COLUMN tblCoupon.img IS 'ì´ë¯¸ì§€';
 
-COMMENT ON COLUMN tblCoupon.showSeq IS '°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblCoupon.showSeq IS 'ê³µì—° ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblCoupon.delflag IS 'deflag';
 
@@ -339,30 +339,30 @@ ALTER TABLE tblCoupon
 			seq
 		);
 
-/* ¿¹¸Å */
+/* ì˜ˆë§¤ */
 CREATE TABLE tblBooking (
-	seq NUMBER NOT NULL, /* ¿¹¸Å¹øÈ£ */
-	bookdate DATE NOT NULL, /* ¿¹¸ÅÀÏ */
-	date DATE NOT NULL, /* °ü¶÷ÀÏ½Ã */
-	state NUMBER NOT NULL, /* ¿¹¸Å»óÅÂ */
-	cnt NUMBER NOT NULL, /* ¸Å¼ö */
-	roundSeq NUMBER, /* È¸Â÷ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ì˜ˆë§¤ë²ˆí˜¸ */
+	bookdate DATE NOT NULL, /* ì˜ˆë§¤ì¼ */
+	bdate DATE NOT NULL, /* ê´€ëŒì¼ì‹œ */
+	state NUMBER NOT NULL, /* ì˜ˆë§¤ìƒíƒœ */
+	cnt NUMBER NOT NULL, /* ë§¤ìˆ˜ */
+	roundSeq NUMBER, /* íšŒì°¨ ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblBooking IS '¿¹¸Å';
+COMMENT ON TABLE tblBooking IS 'ì˜ˆë§¤';
 
-COMMENT ON COLUMN tblBooking.seq IS '¿¹¸Å¹øÈ£';
+COMMENT ON COLUMN tblBooking.seq IS 'ì˜ˆë§¤ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblBooking.bookdate IS '¿¹¸ÅÀÏ';
+COMMENT ON COLUMN tblBooking.bookdate IS 'ì˜ˆë§¤ì¼';
 
-COMMENT ON COLUMN tblBooking.date IS '°ü¶÷ÀÏ½Ã';
+COMMENT ON COLUMN tblBooking.bdate IS 'ê´€ëŒì¼ì‹œ';
 
-COMMENT ON COLUMN tblBooking.state IS '¿¹¸Å»óÅÂ';
+COMMENT ON COLUMN tblBooking.state IS 'ì˜ˆë§¤ìƒíƒœ';
 
-COMMENT ON COLUMN tblBooking.cnt IS '¸Å¼ö';
+COMMENT ON COLUMN tblBooking.cnt IS 'ë§¤ìˆ˜';
 
-COMMENT ON COLUMN tblBooking.roundSeq IS 'È¸Â÷ ¹øÈ£';
+COMMENT ON COLUMN tblBooking.roundSeq IS 'íšŒì°¨ ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblBooking.delflag IS 'deflag';
 
@@ -373,24 +373,24 @@ ALTER TABLE tblBooking
 			seq
 		);
 
-/* ÄíÆù-È¸¿ø */
+/* ì¿ í°-íšŒì› */
 CREATE TABLE tblCusCoupon (
-	seq NUMBER NOT NULL, /* ÄíÈ¸ ¹øÈ£ */
-	regDate DATE NOT NULL, /* µî·ÏÀÏ */
-	couponSeq NUMBER NOT NULL, /* ÄíÆù ¹øÈ£ */
-	cusSeq NUMBER NOT NULL, /* È¸¿ø ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ì¿ íšŒ ë²ˆí˜¸ */
+	regDate DATE NOT NULL, /* ë“±ë¡ì¼ */
+	couponSeq NUMBER NOT NULL, /* ì¿ í° ë²ˆí˜¸ */
+	cusSeq NUMBER NOT NULL, /* íšŒì› ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblCusCoupon IS 'ÄíÆù-È¸¿ø';
+COMMENT ON TABLE tblCusCoupon IS 'ì¿ í°-íšŒì›';
 
-COMMENT ON COLUMN tblCusCoupon.seq IS 'ÄíÈ¸ ¹øÈ£';
+COMMENT ON COLUMN tblCusCoupon.seq IS 'ì¿ íšŒ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblCusCoupon.regDate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN tblCusCoupon.regDate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN tblCusCoupon.couponSeq IS 'ÄíÆù ¹øÈ£';
+COMMENT ON COLUMN tblCusCoupon.couponSeq IS 'ì¿ í° ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblCusCoupon.cusSeq IS 'È¸¿ø ¹øÈ£';
+COMMENT ON COLUMN tblCusCoupon.cusSeq IS 'íšŒì› ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblCusCoupon.delflag IS 'deflag';
 
@@ -401,24 +401,24 @@ ALTER TABLE tblCusCoupon
 			seq
 		);
 
-/* °ü½É°ø¿¬ */
+/* ê´€ì‹¬ê³µì—° */
 CREATE TABLE tblMyShow (
-	seq NUMBER NOT NULL, /* °ü½É°ø¿¬ ¹øÈ£ */
-	regdate DATE NOT NULL, /* µî·ÏÀÏ */
-	showSeq NUMBER NOT NULL, /* °ø¿¬ ¹øÈ£ */
-	cusSeq NUMBER NOT NULL, /* È¸¿ø ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ê´€ì‹¬ê³µì—° ë²ˆí˜¸ */
+	regdate DATE NOT NULL, /* ë“±ë¡ì¼ */
+	showSeq NUMBER NOT NULL, /* ê³µì—° ë²ˆí˜¸ */
+	cusSeq NUMBER NOT NULL, /* íšŒì› ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblMyShow IS '°ü½É°ø¿¬';
+COMMENT ON TABLE tblMyShow IS 'ê´€ì‹¬ê³µì—°';
 
-COMMENT ON COLUMN tblMyShow.seq IS '°ü½É°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblMyShow.seq IS 'ê´€ì‹¬ê³µì—° ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblMyShow.regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN tblMyShow.regdate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN tblMyShow.showSeq IS '°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblMyShow.showSeq IS 'ê³µì—° ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblMyShow.cusSeq IS 'È¸¿ø ¹øÈ£';
+COMMENT ON COLUMN tblMyShow.cusSeq IS 'íšŒì› ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblMyShow.delflag IS 'deflag';
 
@@ -429,24 +429,24 @@ ALTER TABLE tblMyShow
 			seq
 		);
 
-/* °ø¿¬Àå */
+/* ê³µì—°ì¥ */
 CREATE TABLE tblHall (
-	seq NUMBER NOT NULL, /* °ø¿¬Àå ¹øÈ£ */
-	name VARCHAR2(50) NOT NULL, /* ÀÌ¸§ */
-	addr VARCHAR2(50) NOT NULL, /* ÁÖ¼Ò */
-	region VARCHAR2(50) NOT NULL, /* Áö¿ª */
+	seq NUMBER NOT NULL, /* ê³µì—°ì¥ ë²ˆí˜¸ */
+	name VARCHAR2(50) NOT NULL, /* ì´ë¦„ */
+	addr VARCHAR2(50) NOT NULL, /* ì£¼ì†Œ */
+	region VARCHAR2(50) NOT NULL, /* ì§€ì—­ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblHall IS '°ø¿¬Àå';
+COMMENT ON TABLE tblHall IS 'ê³µì—°ì¥';
 
-COMMENT ON COLUMN tblHall.seq IS '°ø¿¬Àå ¹øÈ£';
+COMMENT ON COLUMN tblHall.seq IS 'ê³µì—°ì¥ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblHall.name IS 'ÀÌ¸§';
+COMMENT ON COLUMN tblHall.name IS 'ì´ë¦„';
 
-COMMENT ON COLUMN tblHall.addr IS 'ÁÖ¼Ò';
+COMMENT ON COLUMN tblHall.addr IS 'ì£¼ì†Œ';
 
-COMMENT ON COLUMN tblHall.region IS 'Áö¿ª';
+COMMENT ON COLUMN tblHall.region IS 'ì§€ì—­';
 
 COMMENT ON COLUMN tblHall.delflag IS 'deflag';
 
@@ -457,24 +457,24 @@ ALTER TABLE tblHall
 			seq
 		);
 
-/* ÁÂ¼® */
+/* ì¢Œì„ */
 CREATE TABLE tblSeat (
-	seq NUMBER NOT NULL, /* ÁÂ¼® ¹øÈ£ */
-	seat VARCHAR2(50) NOT NULL, /* ÁÂ¼® */
-	reserv NUMBER NOT NULL, /* ¿¹¾à¿©ºÎ */
-	thSeq NUMBER NOT NULL, /* »ó¿µ°ü ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ì¢Œì„ ë²ˆí˜¸ */
+	seat VARCHAR2(50) NOT NULL, /* ì¢Œì„ */
+	reserv NUMBER NOT NULL, /* ì˜ˆì•½ì—¬ë¶€ */
+	thSeq NUMBER NOT NULL, /* ìƒì˜ê´€ ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblSeat IS 'ÁÂ¼®';
+COMMENT ON TABLE tblSeat IS 'ì¢Œì„';
 
-COMMENT ON COLUMN tblSeat.seq IS 'ÁÂ¼® ¹øÈ£';
+COMMENT ON COLUMN tblSeat.seq IS 'ì¢Œì„ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblSeat.seat IS 'ÁÂ¼®';
+COMMENT ON COLUMN tblSeat.seat IS 'ì¢Œì„';
 
-COMMENT ON COLUMN tblSeat.reserv IS '¿¹¾à¿©ºÎ';
+COMMENT ON COLUMN tblSeat.reserv IS 'ì˜ˆì•½ì—¬ë¶€';
 
-COMMENT ON COLUMN tblSeat.thSeq IS '»ó¿µ°ü ¹øÈ£';
+COMMENT ON COLUMN tblSeat.thSeq IS 'ìƒì˜ê´€ ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblSeat.delflag IS 'deflag';
 
@@ -485,27 +485,27 @@ ALTER TABLE tblSeat
 			seq
 		);
 
-/* °ø¿¬ »ó¿µ°ü */
+/* ê³µì—° ìƒì˜ê´€ */
 CREATE TABLE tblTheater (
-	seq NUMBER NOT NULL, /* »ó¿µ°ü ¹øÈ£ */
-	name VARCHAR2(50) NOT NULL, /* ÀÌ¸§ */
-	totalSeat NUMBER NOT NULL, /* ÃÑ ÁÂ¼® ¼ö */
-	hallSeq NUMBER NOT NULL, /* °ø¿¬Àå ¹øÈ£ */
-	showSeq NUMBER, /* °ø¿¬ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ìƒì˜ê´€ ë²ˆí˜¸ */
+	name VARCHAR2(50) NOT NULL, /* ì´ë¦„ */
+	totalSeat NUMBER NOT NULL, /* ì´ ì¢Œì„ ìˆ˜ */
+	hallSeq NUMBER NOT NULL, /* ê³µì—°ì¥ ë²ˆí˜¸ */
+	showSeq NUMBER, /* ê³µì—° ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblTheater IS '°ø¿¬ »ó¿µ°ü';
+COMMENT ON TABLE tblTheater IS 'ê³µì—° ìƒì˜ê´€';
 
-COMMENT ON COLUMN tblTheater.seq IS '»ó¿µ°ü ¹øÈ£';
+COMMENT ON COLUMN tblTheater.seq IS 'ìƒì˜ê´€ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblTheater.name IS 'ÀÌ¸§';
+COMMENT ON COLUMN tblTheater.name IS 'ì´ë¦„';
 
-COMMENT ON COLUMN tblTheater.totalSeat IS 'ÃÑ ÁÂ¼® ¼ö';
+COMMENT ON COLUMN tblTheater.totalSeat IS 'ì´ ì¢Œì„ ìˆ˜';
 
-COMMENT ON COLUMN tblTheater.hallSeq IS '°ø¿¬Àå ¹øÈ£';
+COMMENT ON COLUMN tblTheater.hallSeq IS 'ê³µì—°ì¥ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblTheater.showSeq IS '°ø¿¬ ¹øÈ£';
+COMMENT ON COLUMN tblTheater.showSeq IS 'ê³µì—° ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblTheater.delflag IS 'deflag';
 
@@ -516,27 +516,27 @@ ALTER TABLE tblTheater
 			seq
 		);
 
-/* °áÁ¦ */
+/* ê²°ì œ */
 CREATE TABLE tblPay (
-	seq NUMBER NOT NULL, /* °áÁ¦ ¹øÈ£ */
-	total NUMBER NOT NULL, /* ÃÑ °áÁ¦ °¡°İ */
-	opSeq NUMBER NOT NULL, /* ¿É¼Ç ¹øÈ£ */
-	bookseq NUMBER NOT NULL, /* ¿¹¸Å¹øÈ£ */
-	cusSeq NUMBER NOT NULL, /* È¸¿ø ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ê²°ì œ ë²ˆí˜¸ */
+	total NUMBER NOT NULL, /* ì´ ê²°ì œ ê°€ê²© */
+	opSeq NUMBER NOT NULL, /* ì˜µì…˜ ë²ˆí˜¸ */
+	bookseq NUMBER NOT NULL, /* ì˜ˆë§¤ë²ˆí˜¸ */
+	cusSeq NUMBER NOT NULL, /* íšŒì› ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblPay IS '°áÁ¦';
+COMMENT ON TABLE tblPay IS 'ê²°ì œ';
 
-COMMENT ON COLUMN tblPay.seq IS '°áÁ¦ ¹øÈ£';
+COMMENT ON COLUMN tblPay.seq IS 'ê²°ì œ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblPay.total IS 'ÃÑ °áÁ¦ °¡°İ';
+COMMENT ON COLUMN tblPay.total IS 'ì´ ê²°ì œ ê°€ê²©';
 
-COMMENT ON COLUMN tblPay.opSeq IS '¿É¼Ç ¹øÈ£';
+COMMENT ON COLUMN tblPay.opSeq IS 'ì˜µì…˜ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblPay.bookseq IS '¿¹¸Å¹øÈ£';
+COMMENT ON COLUMN tblPay.bookseq IS 'ì˜ˆë§¤ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblPay.cusSeq IS 'È¸¿ø ¹øÈ£';
+COMMENT ON COLUMN tblPay.cusSeq IS 'íšŒì› ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblPay.delflag IS 'deflag';
 
@@ -547,17 +547,17 @@ ALTER TABLE tblPay
 			seq
 		);
 
-/* °áÁ¦ ¿É¼Ç */
+/* ê²°ì œ ì˜µì…˜ */
 CREATE TABLE tblOption (
-	seq NUMBER NOT NULL, /* ¿É¼Ç ¹øÈ£ */
-	option VARCHAR2(50) NOT NULL /* ¿É¼Ç */
+	seq NUMBER NOT NULL, /* ì˜µì…˜ ë²ˆí˜¸ */
+	op VARCHAR2(50) NOT NULL /* ì˜µì…˜ */
 );
 
-COMMENT ON TABLE tblOption IS '°áÁ¦ ¿É¼Ç';
+COMMENT ON TABLE tblOption IS 'ê²°ì œ ì˜µì…˜';
 
-COMMENT ON COLUMN tblOption.seq IS '¿É¼Ç ¹øÈ£';
+COMMENT ON COLUMN tblOption.seq IS 'ì˜µì…˜ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblOption.option IS '¿É¼Ç';
+COMMENT ON COLUMN tblOption.op IS 'ì˜µì…˜';
 
 ALTER TABLE tblOption
 	ADD
@@ -566,32 +566,32 @@ ALTER TABLE tblOption
 			seq
 		);
 
-/* °øÁö»çÇ× °Ô½ÃÆÇ */
+/* ê³µì§€ì‚¬í•­ ê²Œì‹œíŒ */
 CREATE TABLE tblNotice (
-	seq NUMBER NOT NULL, /* °øÁö»çÇ×¹øÈ£ */
-	index VARCHAR2(50) NOT NULL, /* ±¸ºĞ */
-	title VARCHAR2(100) NOT NULL, /* Á¦¸ñ */
-	openDate DATE NOT NULL, /* Æ¼ÄÏ¿ÀÇÂ³¯Â¥ */
-	content VARCHAR2(1000) NOT NULL, /* ³»¿ë */
-	regdate DATE NOT NULL, /* µî·ÏÀÏ */
-	view NUMBER NOT NULL /* Á¶È¸¼ö */
+	seq NUMBER NOT NULL, /* ê³µì§€ì‚¬í•­ë²ˆí˜¸ */
+	nindex VARCHAR2(50) NOT NULL, /* êµ¬ë¶„ */
+	title VARCHAR2(100) NOT NULL, /* ì œëª© */
+	openDate DATE NOT NULL, /* í‹°ì¼“ì˜¤í”ˆë‚ ì§œ */
+	content VARCHAR2(1000) NOT NULL, /* ë‚´ìš© */
+	regdate DATE NOT NULL, /* ë“±ë¡ì¼ */
+	nview NUMBER NOT NULL /* ì¡°íšŒìˆ˜ */
 );
 
-COMMENT ON TABLE tblNotice IS '°øÁö»çÇ× °Ô½ÃÆÇ';
+COMMENT ON TABLE tblNotice IS 'ê³µì§€ì‚¬í•­ ê²Œì‹œíŒ';
 
-COMMENT ON COLUMN tblNotice.seq IS '°øÁö»çÇ×¹øÈ£';
+COMMENT ON COLUMN tblNotice.seq IS 'ê³µì§€ì‚¬í•­ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblNotice.index IS '±¸ºĞ';
+COMMENT ON COLUMN tblNotice.nindex IS 'êµ¬ë¶„';
 
-COMMENT ON COLUMN tblNotice.title IS 'Á¦¸ñ';
+COMMENT ON COLUMN tblNotice.title IS 'ì œëª©';
 
-COMMENT ON COLUMN tblNotice.openDate IS 'Æ¼ÄÏ¿ÀÇÂ³¯Â¥';
+COMMENT ON COLUMN tblNotice.openDate IS 'í‹°ì¼“ì˜¤í”ˆë‚ ì§œ';
 
-COMMENT ON COLUMN tblNotice.content IS '³»¿ë';
+COMMENT ON COLUMN tblNotice.content IS 'ë‚´ìš©';
 
-COMMENT ON COLUMN tblNotice.regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN tblNotice.regdate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN tblNotice.view IS 'Á¶È¸¼ö';
+COMMENT ON COLUMN tblNotice.nview IS 'ì¡°íšŒìˆ˜';
 
 ALTER TABLE tblNotice
 	ADD
@@ -600,36 +600,36 @@ ALTER TABLE tblNotice
 			seq
 		);
 
-/* ¸®ºä */
+/* ë¦¬ë·° */
 CREATE TABLE tblReview (
-	seq NUMBER NOT NULL, /* ¸®ºä ¹øÈ£ */
-	title VARCHAR2(100) NOT NULL, /* Á¦¸ñ */
-	content VARCHAR2(1000) NOT NULL, /* ³»¿ë */
-	regdate DATE NOT NULL, /* µî·ÏÀÏ */
-	view NUMBER NOT NULL, /* Á¶È¸¼ö */
-	like NUMBER NOT NULL, /* ÁÁ¾Æ¿ä */
-	hate NUMBER NOT NULL, /* ºñÃß */
-	cusSeq NUMBER NOT NULL, /* È¸¿ø ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ë¦¬ë·° ë²ˆí˜¸ */
+	title VARCHAR2(100) NOT NULL, /* ì œëª© */
+	content VARCHAR2(1000) NOT NULL, /* ë‚´ìš© */
+	regdate DATE NOT NULL, /* ë“±ë¡ì¼ */
+	rview NUMBER NOT NULL, /* ì¡°íšŒìˆ˜ */
+	heart NUMBER NOT NULL, /* ì¢‹ì•„ìš” */
+	hate NUMBER NOT NULL, /* ë¹„ì¶” */
+	cusSeq NUMBER NOT NULL, /* íšŒì› ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblReview IS '¸®ºä';
+COMMENT ON TABLE tblReview IS 'ë¦¬ë·°';
 
-COMMENT ON COLUMN tblReview.seq IS '¸®ºä ¹øÈ£';
+COMMENT ON COLUMN tblReview.seq IS 'ë¦¬ë·° ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblReview.title IS 'Á¦¸ñ';
+COMMENT ON COLUMN tblReview.title IS 'ì œëª©';
 
-COMMENT ON COLUMN tblReview.content IS '³»¿ë';
+COMMENT ON COLUMN tblReview.content IS 'ë‚´ìš©';
 
-COMMENT ON COLUMN tblReview.regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN tblReview.regdate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN tblReview.view IS 'Á¶È¸¼ö';
+COMMENT ON COLUMN tblReview.rview IS 'ì¡°íšŒìˆ˜';
 
-COMMENT ON COLUMN tblReview.like IS 'ÁÁ¾Æ¿ä';
+COMMENT ON COLUMN tblReview.heart IS 'ì¢‹ì•„ìš”';
 
-COMMENT ON COLUMN tblReview.hate IS 'ºñÃß';
+COMMENT ON COLUMN tblReview.hate IS 'ë¹„ì¶”';
 
-COMMENT ON COLUMN tblReview.cusSeq IS 'È¸¿ø ¹øÈ£';
+COMMENT ON COLUMN tblReview.cusSeq IS 'íšŒì› ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblReview.delflag IS 'deflag';
 
@@ -640,38 +640,38 @@ ALTER TABLE tblReview
 			seq
 		);
 
-/* Q&A°Ô½ÃÆÇ */
+/* Q&Aê²Œì‹œíŒ */
 CREATE TABLE tblQnA (
-	seq NUMBER NOT NULL, /* qa¹øÈ£ */
-	title VARCHAR2(100) NOT NULL, /* Á¦¸ñ */
-	content VARCHAR2(1000) NOT NULL, /* ³»¿ë */
-	tag VARCHAR2(50) NOT NULL, /* ÅÂ±× */
-	regdate DATE NOT NULL, /* µî·ÏÀÏ */
-	view NUMBER NOT NULL, /* Á¶È¸¼ö */
-	cusSeq NUMBER NOT NULL, /* È¸¿ø ¹øÈ£ */
+	seq NUMBER NOT NULL, /* qaë²ˆí˜¸ */
+	title VARCHAR2(100) NOT NULL, /* ì œëª© */
+	content VARCHAR2(1000) NOT NULL, /* ë‚´ìš© */
+	tag VARCHAR2(50) NOT NULL, /* íƒœê·¸ */
+	regdate DATE NOT NULL, /* ë“±ë¡ì¼ */
+	qview NUMBER NOT NULL, /* ì¡°íšŒìˆ˜ */
+	cusSeq NUMBER NOT NULL, /* íšŒì› ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL, /* deflag */
-	ansSeq NUMBER /* ´äº¯¹øÈ£ */
+	ansSeq NUMBER /* ë‹µë³€ë²ˆí˜¸ */
 );
 
-COMMENT ON TABLE tblQnA IS 'Q&A°Ô½ÃÆÇ';
+COMMENT ON TABLE tblQnA IS 'QnAê²Œì‹œíŒ';
 
-COMMENT ON COLUMN tblQnA.seq IS 'qa¹øÈ£';
+COMMENT ON COLUMN tblQnA.seq IS 'qaë²ˆí˜¸';
 
-COMMENT ON COLUMN tblQnA.title IS 'Á¦¸ñ';
+COMMENT ON COLUMN tblQnA.title IS 'ì œëª©';
 
-COMMENT ON COLUMN tblQnA.content IS '³»¿ë';
+COMMENT ON COLUMN tblQnA.content IS 'ë‚´ìš©';
 
-COMMENT ON COLUMN tblQnA.tag IS 'ÅÂ±×';
+COMMENT ON COLUMN tblQnA.tag IS 'íƒœê·¸';
 
-COMMENT ON COLUMN tblQnA.regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN tblQnA.regdate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN tblQnA.view IS 'Á¶È¸¼ö';
+COMMENT ON COLUMN tblQnA.qview IS 'ì¡°íšŒìˆ˜';
 
-COMMENT ON COLUMN tblQnA.cusSeq IS 'È¸¿ø ¹øÈ£';
+COMMENT ON COLUMN tblQnA.cusSeq IS 'íšŒì› ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblQnA.delflag IS 'deflag';
 
-COMMENT ON COLUMN tblQnA.ansSeq IS '´äº¯¹øÈ£';
+COMMENT ON COLUMN tblQnA.ansSeq IS 'ë‹µë³€ë²ˆí˜¸';
 
 ALTER TABLE tblQnA
 	ADD
@@ -680,30 +680,30 @@ ALTER TABLE tblQnA
 			seq
 		);
 
-/* »ç³»°øÁö°Ô½ÃÆÇ */
+/* ì‚¬ë‚´ê³µì§€ê²Œì‹œíŒ */
 CREATE TABLE tblEmploNotice (
-	seq NUMBER NOT NULL, /* »ç³»°øÁö¹øÈ£ */
-	title VARCHAR2(100) NOT NULL, /* Á¦¸ñ */
-	content VARCHAR2(1000) NOT NULL, /* ³»¿ë */
-	regdate DATE NOT NULL, /* µî·ÏÀÏ */
-	view NUMBER NOT NULL, /* Á¶È¸¼ö */
-	emSeq NUMBER NOT NULL, /* Á÷¿ø ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ì‚¬ë‚´ê³µì§€ë²ˆí˜¸ */
+	title VARCHAR2(100) NOT NULL, /* ì œëª© */
+	content VARCHAR2(1000) NOT NULL, /* ë‚´ìš© */
+	regdate DATE NOT NULL, /* ë“±ë¡ì¼ */
+	nview NUMBER NOT NULL, /* ì¡°íšŒìˆ˜ */
+	emSeq NUMBER NOT NULL, /* ì§ì› ë²ˆí˜¸ */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
-COMMENT ON TABLE tblEmploNotice IS '»ç³»°øÁö°Ô½ÃÆÇ';
+COMMENT ON TABLE tblEmploNotice IS 'ì‚¬ë‚´ê³µì§€ê²Œì‹œíŒ';
 
-COMMENT ON COLUMN tblEmploNotice.seq IS '»ç³»°øÁö¹øÈ£';
+COMMENT ON COLUMN tblEmploNotice.seq IS 'ì‚¬ë‚´ê³µì§€ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblEmploNotice.title IS 'Á¦¸ñ';
+COMMENT ON COLUMN tblEmploNotice.title IS 'ì œëª©';
 
-COMMENT ON COLUMN tblEmploNotice.content IS '³»¿ë';
+COMMENT ON COLUMN tblEmploNotice.content IS 'ë‚´ìš©';
 
-COMMENT ON COLUMN tblEmploNotice.regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN tblEmploNotice.regdate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN tblEmploNotice.view IS 'Á¶È¸¼ö';
+COMMENT ON COLUMN tblEmploNotice.nview IS 'ì¡°íšŒìˆ˜';
 
-COMMENT ON COLUMN tblEmploNotice.emSeq IS 'Á÷¿ø ¹øÈ£';
+COMMENT ON COLUMN tblEmploNotice.emSeq IS 'ì§ì› ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblEmploNotice.delflag IS 'deflag';
 
@@ -714,26 +714,26 @@ ALTER TABLE tblEmploNotice
 			seq
 		);
 
-/* ¹è³Ê */
+/* ë°°ë„ˆ */
 CREATE TABLE tblBanner (
-	seq NUMBER NOT NULL, /* ¹è³Ê ¹øÈ£ */
-	name VARCHAR2(50) NOT NULL, /* ¹è³ÊÀÌ¸§ */
-	img VARCHAR2(50) NOT NULL, /* ÀÌ¹ÌÁöÀÌ¸§ */
-	link VARCHAR2(50) NOT NULL, /* ¸µÅ© */
-	backColor VARCHAR2(50) NOT NULL /* ¹è°æ»ö */
+	seq NUMBER NOT NULL, /* ë°°ë„ˆ ë²ˆí˜¸ */
+	name VARCHAR2(50) NOT NULL, /* ë°°ë„ˆì´ë¦„ */
+	img VARCHAR2(50) NOT NULL, /* ì´ë¯¸ì§€ì´ë¦„ */
+	link VARCHAR2(50) NOT NULL, /* ë§í¬ */
+	backColor VARCHAR2(50) NOT NULL /* ë°°ê²½ìƒ‰ */
 );
 
-COMMENT ON TABLE tblBanner IS '¹è³Ê';
+COMMENT ON TABLE tblBanner IS 'ë°°ë„ˆ';
 
-COMMENT ON COLUMN tblBanner.seq IS '¹è³Ê ¹øÈ£';
+COMMENT ON COLUMN tblBanner.seq IS 'ë°°ë„ˆ ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblBanner.name IS '¹è³ÊÀÌ¸§';
+COMMENT ON COLUMN tblBanner.name IS 'ë°°ë„ˆì´ë¦„';
 
-COMMENT ON COLUMN tblBanner.img IS 'ÀÌ¹ÌÁöÀÌ¸§';
+COMMENT ON COLUMN tblBanner.img IS 'ì´ë¯¸ì§€ì´ë¦„';
 
-COMMENT ON COLUMN tblBanner.link IS '¸µÅ©';
+COMMENT ON COLUMN tblBanner.link IS 'ë§í¬';
 
-COMMENT ON COLUMN tblBanner.backColor IS '¹è°æ»ö';
+COMMENT ON COLUMN tblBanner.backColor IS 'ë°°ê²½ìƒ‰';
 
 ALTER TABLE tblBanner
 	ADD
@@ -742,24 +742,24 @@ ALTER TABLE tblBanner
 			seq
 		);
 
-/* Q&A´äº¯ */
+/* Q&Aë‹µë³€ */
 CREATE TABLE tblAnswer (
-	seq NUMBER NOT NULL, /* ´äº¯¹øÈ£ */
-	content VARCHAR2(1000) NOT NULL, /* ³»¿ë */
-	regdate DATE NOT NULL, /* µî·ÏÀÏ */
-	adSeq NUMBER NOT NULL, /* °ü¸®ÀÚ ¹øÈ£ */
+	seq NUMBER NOT NULL, /* ë‹µë³€ë²ˆí˜¸ */
+	content VARCHAR2(1000) NOT NULL, /* ë‚´ìš© */
+	regdate DATE NOT NULL, /* ë“±ë¡ì¼ */
+	adSeq NUMBER NOT NULL, /* ê´€ë¦¬ì ë²ˆí˜¸ */
 	deflag NUMBER NOT NULL /* delflag */
 );
 
-COMMENT ON TABLE tblAnswer IS 'Q&A´äº¯';
+COMMENT ON TABLE tblAnswer IS 'Q&Aë‹µë³€';
 
-COMMENT ON COLUMN tblAnswer.seq IS '´äº¯¹øÈ£';
+COMMENT ON COLUMN tblAnswer.seq IS 'ë‹µë³€ë²ˆí˜¸';
 
-COMMENT ON COLUMN tblAnswer.content IS '³»¿ë';
+COMMENT ON COLUMN tblAnswer.content IS 'ë‚´ìš©';
 
-COMMENT ON COLUMN tblAnswer.regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN tblAnswer.regdate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN tblAnswer.adSeq IS '°ü¸®ÀÚ ¹øÈ£';
+COMMENT ON COLUMN tblAnswer.adSeq IS 'ê´€ë¦¬ì ë²ˆí˜¸';
 
 COMMENT ON COLUMN tblAnswer.deflag IS 'delflag';
 
