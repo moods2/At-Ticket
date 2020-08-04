@@ -94,6 +94,7 @@ ALTER TABLE tblEmployee
 			seq
 		);
 
+
 /* 공연 */
 CREATE TABLE tblShow (
 	seq NUMBER NOT NULL, /* 공연 번호 */
@@ -107,10 +108,13 @@ CREATE TABLE tblShow (
 	age NUMBER NOT NULL, /* 연령 */
 	genre VARCHAR2(50) NOT NULL, /* 장르 */
 	agencySeq NUMBER NOT NULL, /* 기획사 번호 */
+    theSeq NUMBER NOT NULL, /* 상영관 번호 */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
 COMMENT ON TABLE tblShow IS '공연';
+
+COMMENT ON TABLE tblShow.theSeq IS '상영관 번호';
 
 COMMENT ON COLUMN tblShow.seq IS '공연 번호';
 
@@ -491,7 +495,6 @@ CREATE TABLE tblTheater (
 	name VARCHAR2(50) NOT NULL, /* 이름 */
 	totalSeat NUMBER NOT NULL, /* 총 좌석 수 */
 	hallSeq NUMBER NOT NULL, /* 공연장 번호 */
-	showSeq NUMBER, /* 공연 번호 */
 	delflag NUMBER NOT NULL /* deflag */
 );
 
@@ -504,8 +507,6 @@ COMMENT ON COLUMN tblTheater.name IS '이름';
 COMMENT ON COLUMN tblTheater.totalSeat IS '총 좌석 수';
 
 COMMENT ON COLUMN tblTheater.hallSeq IS '공연장 번호';
-
-COMMENT ON COLUMN tblTheater.showSeq IS '공연 번호';
 
 COMMENT ON COLUMN tblTheater.delflag IS 'deflag';
 
