@@ -5,21 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-<link rel="stylesheet" href="../css/jquery-ui.css">
-<link rel="stylesheet" href="../css/bootstrap.css">
+
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
         /* 메인 */
-        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
-        @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
-        html{
+        @font-face {
+            font-family: 'NanumBarunGothic';
+            font-style: normal;
+            font-weight: 400;
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'NEXON Lv1 Gothic OTF Light';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        html {
             /* width: 2500px; */
             /* border : 1px solid red; */
         }
-        h1{
+
+        h1 {
             font-weight: bold;
             font-family: Arial;
-            font-size: 3em; 
+            font-size: 3em;
             color: #111;
         }
 
@@ -46,8 +60,8 @@
         .accomenu {
             /* margin-top: 30px; */
             margin-left: 10px;
-            width : 260px;
-            padding-right : 25px;
+            width: 260px;
+            padding-right: 25px;
         }
 
         .btn {
@@ -81,15 +95,17 @@
             /* z-index: -1; */
             /* background-color: #BBDED7; */
             /* opacity: .3; */
-            
+
         }
+
         #topmenu .search {
             /* border: 1px solid black; */
             width: 250px;
             margin-top: 10px;
             float: right;
-           
+
         }
+
         #topmenu .home {
             /* border: 1px solid black; */
             width: 50px;
@@ -100,8 +116,8 @@
         }
 
         #calendar {
-           margin-top: 70px;
-           margin-left: -20px;
+            margin-top: 70px;
+            margin-left: -20px;
         }
 
         #cal {
@@ -123,10 +139,10 @@
         /* 새로 추가한 코드 */
         /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
         .accomenu tr td:hover {
-            cursor : pointer;
+            cursor: pointer;
         }
 
-         #movetop {
+        #movetop {
             width: 40px;
             height: 40px;
             background-color: #777;
@@ -136,9 +152,10 @@
             text-align: center;
             padding-top: 3px;
         }
+
         #movetop:hover {
             background-color: #444;
-            cursor : pointer;
+            cursor: pointer;
         }
 
         #movetop {
@@ -148,7 +165,7 @@
             font-size: 1.5em;
         }
 
-        body{
+        body {
             font-family: 'NanumBarunGothic';
         }
 
@@ -157,6 +174,7 @@
             background-color: red;
             background-image: url();
         }
+
         .ui-state-hover {
             background-color: #444;
             background-image: url();
@@ -170,8 +188,9 @@
             border: 0px;
             font-family: 'NEXON Lv1 Gothic OTF Light';
             /* font-weight: bolder; */
-            
+
         }
+
         .ui-accordion-content {
             background: #444;
             color: white;
@@ -179,20 +198,24 @@
             border: 0px;
             font-family: 'NanumBarunGothic';
         }
+
         .ui-accordion-content div:hover {
             background: #333;
         }
-        .ui-widget-content a{
+
+        .ui-widget-content a {
             color: white;
             text-decoration: none;
         }
+
         .ui-widget-content span {
             font-size: 10px;
         }
+
         .ui-accordion .ui-accordion-header {
             /* border: 0px; */
             outline: none;
-          
+
         }
 
         /* 고객 정보 */
@@ -225,39 +248,45 @@
         }
 
         th {
-            background-color:  #999;
+            background-color: #999;
             /* color : white; */
         }
 
         .modified {
-            border : 0px;
+            border: 0px;
             border-radius: 5px;
             background-color: #999;
             outline: none;
             font-weight: border;
-            color : rgb(220,220,220);
-            height : 35px;
-            font-weight: bold    
+            color: rgb(220, 220, 220);
+            height: 35px;
+            font-weight: bold
         }
+
         .modified:hover {
-            color : white;
+            color: white;
             /* background-color: #333; */
 
         }
 
-        .customertitle{
+        .customertitle {
             margin-bottom: 20px;
             margin-top: 20px;
         }
 
-        #img1{
+        #img1 {
             width: 500px;
             margin-top: 20px;
             margin-left: -200px;
         }
 
-        th{
+        th {
             text-align: center;
+        }
+
+        .btnAll{
+            margin-left: 700px;
+            width: 200px;
         }
     </style>
 </head>
@@ -268,8 +297,8 @@
 <body>
     <!-- 메인 -->
     <div id="left">
-        
-        <img src="../images/man.png" 
+
+        <img src="../images/man.png"
             style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:     50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
@@ -279,64 +308,77 @@
             <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
                 class="btn">
         </div> -->
-        <div id = "logout">
-            <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
-                     type="button" value="Logout" id="btn2" class="btn">
+        <div id="logout">
+            <input
+                style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
+                type="button" value="Logout" id="btn2" class="btn">
         </div>
         <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
             <h3>공연</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminShow.html"><span>▶</span> 공연 조회</a></div>
             </div>
             <h3>통계</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
             </div>
             <h3>정산 관리</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
             </div>
             <h3>직원 정보</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
             </div>
             <h3>이벤트</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="coupon.html"><span>▶</span> 쿠폰 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="event.html"><span>▶</span> 이벤트 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="coupon.html"><span>▶</span> 쿠폰 조회</a></div>
             </div>
             <h3>1:1 문의</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
             </div>
             <h3>공연 랭킹</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
             </div>
             <h3>공지사항</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
             </div>
             <h3>고객 정보</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
             </div>
             <h3>업무 게시판</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
             </div>
             <h3>Q&A 게시판</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
-            </div>  
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a
+                        href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+            </div>
         </div>
 
 
         <!-- container -->
 
 
-        
+
         <!-- <div class="b">
             <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
                 class="btn">
@@ -344,13 +386,13 @@
 
         <div id="calendar">
             <input style="width: 100px;" type="text" name="date" id="date" value="">
-            <label for="date"><span style="font-size: 2.5em; color:white" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
+            <label for="date"><span style="font-size: 2.5em; color:white" class="glyphicon glyphicon-calendar"
+                    id="cal"></span></label>
         </div>
 
         <!-- 티켓 사이트 로고 바로가기 -->
         <div style="margin-top: 20px; position: fixed; bottom: 30px; left: 70px;">
-            <img src="../images/title.png" id="tickethome" 
-                    style="cursor: pointer; height: 50px;">
+            <img src="../images/title.png" id="tickethome" style="cursor: pointer; height: 50px;">
         </div>
 
 
@@ -359,7 +401,7 @@
 
     <div id="topmenu">
         <div class="home">
-            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
+            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id="homeLogo"></span>
         </div>
         <div class="search">
             <div class="form-group">
@@ -373,18 +415,18 @@
         </div>
     </div>
 
-    <div id = "fixedBtn">
-        <img src = "../images/switch_on.png" id="sw" name="sw"
+    <div id="fixedBtn">
+        <img src="../images/switch_on.png" id="sw" name="sw"
             style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
 
         <!-- 제일 위로 돌아가기 -->
-        <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
+        <div id="movetop" style="position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
     </div>
 
     <!-- 아래 회색 바닥 페이지 없앰 -->
     <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
-    
+
 
 
 
@@ -397,169 +439,199 @@
     </div>
 
     <div id="info" style="margin-left: 700px;">
-        <h2 class = "customertitle">최근 예매내역</h2>
+        <h2 class="customertitle">최근 예매내역</h2>
 
         <div id="box1" style="width: 1000px;">
             <table class="table table-bordered" style="width: 800px">
                 <tr>
+                    <th style="text-align: center; width: 50px;"><input type="checkbox" name="cbAll1"></th>
                     <th style="width: 100px; vertical-align: middle;">예매일</th>
-                    <td style="width: 850px;">
-                        <input id="row1" type="date" style="width: 150px;" type="text" class="form-control">
-                    </td>
-    
-                </tr>
-                <tr>
-                    <th style="vertical-align: middle; ">예매번호</th>
-                    <td>
-                        <input id="row2" style="width: 200px;" type="text" class="form-control" class="line">
-                      
-                    </td>
-                </tr>
-    
-                <tr>
+                    <th style="vertical-align: middle; width: 150px;">예매번호</th>
                     <th style="vertical-align: middle;">공연명</th>
-                    <td>
-                        <input id="row3" class="form-control" style="width: 500px;"></input>
-                    </td>
+                    <th style="vertical-align: middle; width: 100px;">관람일시</th>
+                    <th style="vertical-align: middle; width: 100px;">예매상태</th>
+
                 </tr>
                 <tr>
-                    <th style="vertical-align: middle;">관람일시</th>
-                    <td>
-                    <input id="row5" style="width: 150px;" type="date" class="form-control">
-                    </td>
+                    <td><input type="checkbox" class="cb1"></td>
+                    <td>2020-05-01</td>
+                    <td>A10001</td>
+                    <td>오페라의 유령</td>
+                    <td>2020-05-01</td>
+                    <td>만료</td>
                 </tr>
-    
                 <tr>
-                    <th style="vertical-align: middle;">예매상태</th>
-                    <td>
-                        <input id="row6" style="width: 100px;" type="text" class="form-control">
-                    </td>
-                   
+                    <td><input type="checkbox" class="cb1"></td>
+                    <td>2020-05-01</td>
+                    <td>A10001</td>
+                    <td>오페라의 유령</td>
+                    <td>2020-05-01</td>
+                    <td>만료</td>
                 </tr>
+
             </table>
-
-            <h2 class = "customertitle">Egg포인트 적립내역</h2>
+            <div class = "btnAll" id="manipulate1">
+                <button class = "modified" id = "makebtn1"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class="modified" id="modifybtn1"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+             
+            </div>
+            <h2 class="customertitle">Egg포인트 적립내역</h2>
 
             <div id="box1" style="width: 1000px;">
                 <table class="table table-bordered" style="width: 800px">
                     <tr>
+                        <th style="text-align: center; width: 50px;"><input type="checkbox" name="cbAll2"></th>
                         <th style="width: 200px; vertical-align: middle;">공연명(예매번호)</th>
-                        <td style="width: 900px;">
-                            <input id="row7" type="text" style="width: 150px;" type="text" class="form-control">
-                        </td>
-        
-                    </tr>
-                    <tr>
                         <th style="vertical-align: middle;">적립일</th>
-                        <td>
-                            <input id="row8" style="width: 200px;" type="text" class="form-control" class="line">
-                          
-                        </td>
-                    </tr>
-        
-                    <tr>
                         <th style="vertical-align: middle;">Egg포인트</th>
-                        <td>
-                            <input id="row9" class="form-control" style="width: 100px;"></input>
-                        </td>
-                    </tr>
-                    <tr>
                         <th style="vertical-align: middle;">적립상태</th>
-                        <td>
-                        <input id="row10" style="width: 100px;" type="text" class="form-control">
-                        </td>
-                    </tr>
-        
-                    <tr>
                         <th style="vertical-align: middle;">적립유형</th>
-                        <td>
-                            <input id="row11" style="width: 100px;" type="text" class="form-control">
-                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="cb2"></td>
+                        <td>A12100</td>
+                        <td>2020-02-06</td>
+                        <td>1000</td>
+                        <td>유효</td>
+                        <td>구매포인트</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="cb2"></td>
+                        <td>A12100</td>
+                        <td>2020-02-06</td>
+                        <td>1000</td>
+                        <td>유효</td>
+                        <td>구매포인트</td>
                     </tr>
                 </table>
-        </div>
+            </div>
+            <div class = "btnAll" id="manipulate2">
+                <button class = "modified" id = "makebtn2"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class="modified" id="modifybtn2"><i class="glyphicon glyphicon-pencil"></i>수정</button>
 
-        <h2 class = "customertitle">관심 공연</h2>
+            </div>
+            <h2 class="customertitle">관심 공연</h2>
 
             <div id="box1" style="width: 1000px;">
                 <table class="table table-bordered" style="width: 800px">
                     <tr>
+                        <th style="text-align: center; width: 50px;"><input type="checkbox" name="cbAll3"></th>
                         <th style="width: 100px; vertical-align: middle;">공연명</th>
-                        <td style="width: 900px;">
-                            <input id="row12" type="text" style="width: 300px;" type="text" class="form-control">
-                        </td>
-        
-                    </tr>
-                    <tr>
                         <th style="vertical-align: middle;">기간</th>
-                        <td>
-                            <input id="row13" style="width: 150px;" type="date" class="form-control" class="line">
-                          
-                        </td>
-                    </tr>
-        
-                    <tr>
                         <th style="vertical-align: middle;">장소</th>
-                        <td>
-                            <input id="row14" class="form-control" style="width: 300px;"></input>
-                        </td>
+
+
                     </tr>
+                    <td><input type="checkbox" class="cb3"></td>
+                    <td>오페라의 유령</td>
+                    <td>2020-05-01~2020-12-25</td>
+                    <td>강남 예술의 극장</td>
+                    <tr>
+
+                    </tr>
+                    <td><input type="checkbox" class="cb3"></td>
+                    <td>오페라의 유령</td>
+                    <td>2020-05-01~2020-12-25</td>
+                    <td>강남 예술의 극장</td>
+                    <tr>
 
                 </table>
             </div>
+            <div class = "btnAll" id="manipulate3">
+                <button class = "modified" id = "makebtn3"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class="modified" id="modifybtn3"><i class="glyphicon glyphicon-pencil"></i>수정</button>
 
-            <h2 class = "customertitle">관람 공연</h2>
+            </div>
+            <h2 class="customertitle">관람 공연</h2>
 
             <div id="box1" style="width: 1000px;">
                 <table class="table table-bordered" style="width: 800px">
                     <tr>
+                        <th style="text-align: center; width: 50px;"><input type="checkbox" name="cbAll4"></th>
                         <th style="width: 100px; vertical-align: middle;">공연명</th>
-                        <td style="width: 900px;">
-                            <input id="row15" type="text" style="width: 300px;" type="text" class="form-control">
-                        </td>
-        
-                    </tr>
-                    <tr>
                         <th style="vertical-align: middle;">기간</th>
-                        <td>
-                            <input id="row16" style="width: 150px;" type="date" class="form-control" class="line">
-                          
-                        </td>
-                    </tr>
-        
-                    <tr>
                         <th style="vertical-align: middle;">장소</th>
-                        <td>
-                            <input id="row17" class="form-control" style="width: 300px;"></input>
-                        </td>
                     </tr>
+                    <tr>
+                        <td><input type="checkbox" class="cb4"></td>
+                        <td>오페라의 유령</td>
+                        <td>2020-05-07~2020-12-30</td>
+                        <td>강남 예술의 극장</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="cb4"></td>
+                        <td>오페라의 유령</td>
+                        <td>2020-05-07~2020-12-30</td>
+                        <td>강남 예술의 극장</td>
+                    </tr>
+                </table>
+            </div>
+            <div class = "btnAll" id="manipulate4">
+                <button class = "modified" id = "makebtn4"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class="modified" id="modifybtn4"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+
+            </div>
+            <h2 class="customertitle">쿠폰</h2>
+
+            <div id="box1" style="width: 1000px;">
+                <table class="table table-bordered" style="width: 800px">
+                    <tr>
+                        <th style="text-align: center; width: 50px;"><input type="checkbox" name="cbAll5"></th>
+                        <th style="width: 100px; vertical-align: middle;">할인금액</th>
+                        <th style="vertical-align: middle;">사용조건</th>
+                        <th style="vertical-align: middle;">사용기간</th>
+                        <th style="vertical-align: middle;">등록일</th>
+
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="cb5"></td>
+                        <td>1000</td>
+                        <td>3만원 이상 구매시</td>
+                        <td>2020-09-10</td>
+                        <td>2020-05-01</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="cb5"></td>
+                        <td>1000</td>
+                        <td>3만원 이상 구매시</td>
+                        <td>2020-09-10</td>
+                        <td>2020-05-01</td>
+                    </tr>
+
 
                 </table>
             </div>
+            <div class = "btnAll" id="manipulate5">
+                <button class = "modified" id = "makebtn5"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class="modified" id="modifybtn5"><i class="glyphicon glyphicon-pencil"></i>수정</button>
 
-        <h2 class = "customertitle">프로필 사진</h2>
+            </div>
+            <h2 class="customertitle">프로필 사진</h2>
 
             <div id="box1" style="width: 1000px;">
                 <table class="table table-bordered" style="width: 800px">
                     <tr>
                         <th style="width: 100px; vertical-align: middle; text-align: center;">사진</th>
                         <td style="width: 1000px;">
-                            <div style="margin-left: -500px; margin-top: 15px;"><label for="txtphoto"></label><input type="file" id="txtphoto" style="display:inline-block; width: 200px;"></div>
+                            <div style="margin-left: -500px; margin-top: 15px;"><label for="txtphoto"></label><input
+                                    type="file" id="txtphoto" style="display:inline-block; width: 200px;"></div>
                             <div class="img_wrap">
                                 <img id="img1" />
                             </div>
                         </td>
-        
+
                     </tr>
                 </table>
-        </div>
+            </div>
 
-        <div id = "manipulate" style="margin-left: 750px; width: 200px;">
-            <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
-          
+            <div class = "btnAll" id="manipulate6">
+                <button class = "modified" id = "makebtn6"><i class="glyphicon glyphicon-plus"></i>추가</button>
+                <button class="modified" id="modifybtn6"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+
+            </div>
+            </tbody>
         </div>
-        </tbody>
-    </div>
 
 
 </body>
@@ -570,22 +642,22 @@
     var sw = document.images["sw"];
 
     //날짜 자동 입력, 읽기만 가능 
-    date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
+    date.value = now.getFullYear() + " / " + (now.getMonth() + 1) + " / " + now.getDate();
     if (date.value != null) {
         date.readOnly = true;
     }
 
     // 캘린더
-        $("#date").datepicker({
-            dateFormat: "yy-mm-dd",
-            minDate: now.getFullYear() + "-1-1",
-            maxDate: now.getFullYear() + "-12-" + "31"
-        });
+    $("#date").datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: now.getFullYear() + "-1-1",
+        maxDate: now.getFullYear() + "-12-" + "31"
+    });
 
-   
+
 
     document.body.bgColor = "white";
-    
+
 
 
     //스위치 
@@ -593,31 +665,31 @@
     $("#sw").click(function () {
         console.log("클릭함");
 
-            if(swCount % 2 == 0) {
-                console.log("들어옴");
-                sw.src="../images/switch_on.png";
-                $("body").css("background-color","white");
-                $("#homeLogo").css("color","#333333");
-                $("#adminName").css("color","#333333")
-            } else {
-                sw.src="../images/switch_off.png";
-                $("body").css("background-color","#292A2D");
-                $("#homeLogo").css("color","white");
-                $("#adminName").css("color","white");
+        if (swCount % 2 == 0) {
+            console.log("들어옴");
+            sw.src = "../images/switch_on.png";
+            $("body").css("background-color", "white");
+            $("#homeLogo").css("color", "#333333");
+            $("#adminName").css("color", "#333333")
+        } else {
+            sw.src = "../images/switch_off.png";
+            $("body").css("background-color", "#292A2D");
+            $("#homeLogo").css("color", "white");
+            $("#adminName").css("color", "white");
 
-            }
-            swCount++;
+        }
+        swCount++;
     });
 
     // $("#btn1").click(function(){
     //     window.open("login.html","Login","width=300, height=300");
     // });
-    
+
     // 버튼을 클릭하면 로그아웃 창이 뜸
-    $("#btn2").click(function(){
-        if(confirm("로그아웃하시겠습니까?")){
+    $("#btn2").click(function () {
+        if (confirm("로그아웃하시겠습니까?")) {
             console.log("로그아웃 되었습니다.");
-         }
+        }
     });
 
     $(".accomenu").accordion({
@@ -626,23 +698,23 @@
     });
 
     //홈버튼 링크
-    $("#homeLogo").click(function() {
+    $("#homeLogo").click(function () {
         location.href = "adminMain.html";
     });
 
     //상단 메뉴 고정
-    $(document).scroll(function() {
+    $(document).scroll(function () {
         //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
-            if ($(document).scrollTop() > $("#topmenu").position().top) {
-                $("#topmenu").css({
-                    width: "100%",
-                    position: "fixed",
-                    top: "0px",
-                    bottom: "",
-                    zIndex: "1"
-                });
+        if ($(document).scrollTop() > $("#topmenu").position().top) {
+            $("#topmenu").css({
+                width: "100%",
+                position: "fixed",
+                top: "0px",
+                bottom: "",
+                zIndex: "1"
+            });
 
-            };
+        };
 
         //상단 헤더(top)이 눈에 보일때 쯤
         if ($(document).scrollTop() <= $("#topmenu").position().top) {
@@ -650,192 +722,191 @@
                 position: "absolute",
                 top: "0px",
                 bottom: ""
-            });             
+            });
         }
     });
 
 
     //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
-    $("#btn2").mouseenter(function(){
+    $("#btn2").mouseenter(function () {
         // $("#btn2").css("background-color","cornflowerblue");
-        $("#btn2").css("color","white");
+        $("#btn2").css("color", "white");
     });
-    $("#btn2").mouseleave(function(){
+    $("#btn2").mouseleave(function () {
         // $("#btn2").css("background-color","#C27BA0");
-        $("#btn2").css("color","#D5D5D5");
+        $("#btn2").css("color", "#D5D5D5");
     })
 
     //티켓 홈
-    $("#tickethome").click(function() {
-        window.open("../main.html","At-Ticket");
+    $("#tickethome").click(function () {
+        window.open("../main.html", "At-Ticket");
     });
 
-    
+
     //상단으로 돌아가기 -> 스무스 하게 올림
-    $("#movetop").click(function(){
-        	
+    $("#movetop").click(function () {
+
         $("html,body").animate({
-			scrollTop: 0
-		}, 700);
-        
+            scrollTop: 0
+        }, 700);
+
     });
 
     //검색
-    $("#btnsearch").click(function(){
+    $("#btnsearch").click(function () {
         // 검색어 넘기기
-        window.location.href="adminSearch.html";
+        window.location.href = "adminSearch.html";
     });
 
 
     //메뉴 링크
-    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
-    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
-    
+    $("#showmanage").click(function () { window.location.href = "adminShow.html"; });
+    $("#emplomanage").click(function () { window.location.href = "adminEmployee.html"; });
+
     var sel_file;
 
-        $(document).ready(function () {
-            $("#txtphoto").on("change", handleImgFileSelect1);
+    $(document).ready(function () {
+        $("#txtphoto").on("change", handleImgFileSelect1);
+    });
+
+    function handleImgFileSelect1(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+
+        filesArr.forEach(function (f) {
+            if (!f.type.match("image.*")) {
+                alert("확장자는 이미지 확장자만 가능합니다.");
+                return;
+            }
+
+            sel_file = f;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#img1").attr("src", e.target.result);
+            }
+            reader.readAsDataURL(f);
+
         });
-
-        function handleImgFileSelect1(e) {
-            var files = e.target.files;
-            var filesArr = Array.prototype.slice.call(files);
-
-            filesArr.forEach(function (f) {
-                if (!f.type.match("image.*")) {
-                    alert("확장자는 이미지 확장자만 가능합니다.");
-                    return;
-                }
-
-                sel_file = f;
-
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#img1").attr("src", e.target.result);
-                }
-                reader.readAsDataURL(f);
-
-            });
-        }
+    }
 
     //고객 정보
-    // var cbAll = document.all.cbAll; // 일괄 체크박스
-    var child;
-    // var cb = document.getElementsByClassName("cb");
+    var cbAll1 = document.all.cbAll1; // 일괄 체크박스
+    var cb1 = document.getElementsByClassName("cb1");
 
     // 모두 선택 기능, 페이지 이동 
-    // cbAll.onchange = function () {
-    //     for (var i = 0; i < cb.length; i++) {
-    //         cb[i].checked = cbAll.checked;
-    //     }
-    // }
-
-    $("#row2").keyup(function () {
-    if (event.keyCode == 13) {
-        $("#row3").focus();
+    cbAll1.onchange = function () {
+        for (var i = 0; i < cb1.length; i++) {
+            cb1[i].checked = cbAll1.checked;
+        }
     }
-    });
 
-    $("#row3").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row5").focus();
-        }
-    });
+    var cbAll2 = document.all.cbAll2; // 일괄 체크박스
+    var cb2 = document.getElementsByClassName("cb2");
 
-    $("#row5").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row6").focus();
+    // 모두 선택 기능, 페이지 이동 
+    cbAll2.onchange = function () {
+        for (var i = 0; i < cb2.length; i++) {
+            cb2[i].checked = cbAll2.checked;
         }
-    });
+    }
 
-    $("#row6").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row7").focus();
-        }
-    });
 
-    $("#row7").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row8").focus();
-        }
-    });
+    var cbAll3 = document.all.cbAll3; // 일괄 체크박스
+    var cb3 = document.getElementsByClassName("cb3");
 
-    $("#row8").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row9").focus();
+    // 모두 선택 기능, 페이지 이동 
+    cbAll3.onchange = function () {
+        for (var i = 0; i < cb3.length; i++) {
+            cb3[i].checked = cbAll3.checked;
         }
-    });
+    }
 
-    $("#row9").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row10").focus();
-        }
-    });
+    var cbAll4 = document.all.cbAll5; // 일괄 체크박스
+    var cb4 = document.getElementsByClassName("cb4");
 
-    $("#row10").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row11").focus();
+    // 모두 선택 기능, 페이지 이동 
+    cbAll4.onchange = function () {
+        for (var i = 0; i < cb4.length; i++) {
+            cb4[i].checked = cbAll4.checked;
         }
-    });
+    }
 
-    $("#row10").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row11").focus();
+    var cbAll5 = document.all.cbAll5; // 일괄 체크박스
+    var cb5 = document.getElementsByClassName("cb5");
+
+    // 모두 선택 기능, 페이지 이동 
+    cbAll5.onchange = function () {
+        for (var i = 0; i < cb5.length; i++) {
+            cb5[i].checked = cbAll5.checked;
         }
+    }
+
+    //수정 
+     
+     $("#modifybtn1").click(function () {
+        window.open("cusReservationUpdate.html", "예매수정", "width=700,height=430");
     });
 
     
-
-    $("#row11").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row12").focus();
-        }
-    });
-
-    $("#row12").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row13").focus();
-        }
-    });
-
-    $("#row13").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row14").focus();
-        }
-    });
-
-    $("#row14").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row15").focus();
-        }
-    });
-
-    $("#row15").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row16").focus();
-        }
-    });
-
-    $("#row16").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#row17").focus();
-        }
+     $("#modifybtn2").click(function () {
+        window.open("cusPointUpdate.html", "포인트 적립수정", "width=700,height=430");
     });
 
   
-    $("#row17").keyup(function () {
-        if (event.keyCode == 13) {
-            $("#modifybtn").click();
-        }
+     $("#modifybtn3").click(function () {
+        window.open("cusInterestConcertUpdate.html", "관심공연 수정", "width=700,height=350");
+    });
+
+   
+     $("#modifybtn4").click(function () {
+        window.open("cusViewConcertUpdate.html", "관람공연 수정", "width=700,height=350");
+    });
+
+  
+     $("#modifybtn5").click(function () {
+        window.open("cusCouponUpdate.html", "쿠폰 수정", "width=700,height=400");
     });
 
     //추가
-    $("#modifybtn").click(function () {
+
+    $("#makebtn1").click(function () {
+        window.open("cusReservationInsert.html", "예매 추가", "width=700,height=430");
+    });
+
+    
+     $("#makebtn2").click(function () {
+        window.open("cusPointInsert.html", "포인트 적립추가", "width=700,height=430");
+    });
+
+  
+     $("#makebtn3").click(function () {
+        window.open("cusInterestConcertInsert.html", "관심공연 추가", "width=700,height=350");
+    });
+
+   
+     $("#makebtn4").click(function () {
+        window.open("cusViewConcertInsert.html", "관람공연 추가", "width=700,height=350");
+    });
+
+  
+     $("#makebtn5").click(function () {
+        window.open("cusCouponInsert.html", "쿠폰 추가", "width=700,height=400");
+    });
+
+  
+    $("#modifybtn6").click(function () {
         if(confirm("정말로 수정하시겠습니까?")){
             location.href = "adminCustomer.html";
         }
     });
 
+     //추가
+     $("#makebtn6").click(function () {
+                if (confirm("정말로 추가하시겠습니까?")) {
+                    location.href = "adminCustomer.html";
+                }
+            });
 
 </script>
 

@@ -634,6 +634,7 @@
         var tr = document.getElementsByTagName("tr");
         var cbAll = document.all.cbAll; // 일괄 체크박스
         var cb = document.getElementsByClassName("cb");
+        var td = document.getElementsByTagName("td");
       
         // select에서 바뀌면 검색창에 focus가 가도록 한 구문
        $("#sel1").change(function(){
@@ -657,6 +658,11 @@
                 }
                 index++;
                 tbody1.appendChild(tr);
+
+                tr.children[2].onclick = function () {
+                    console.log(1);
+                    location.href = "customerInfo.html"
+                };
             }
 
         } else {
@@ -702,6 +708,13 @@
                 }
 
             });
+            
+        // for (var i = 1; i < tr.length; i++) {
+        //     tr[i].children[2].onclick = function () {
+        //         console.log(1);
+        //         location.href = "customerInfo.html"
+        //     };
+        // }
 
         
     </script>
