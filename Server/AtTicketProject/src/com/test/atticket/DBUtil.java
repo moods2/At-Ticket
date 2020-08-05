@@ -55,28 +55,27 @@ public class DBUtil {
 	 * @param pw 비밀번호
 	 * @return 연결객체를 반환합니다.
 	 */
-	public Connection open(String host, String id, String pw) {//서버를 열어주는 메서드라고 생각하면 된다 -> 로컬 호스트가 아닌 다른 컴퓨터로 직접 연결해주는 메서드
-		
-		
-		String url = "jdbc:oracle:thin:@" + host + ":1521:xe";
-		
-	try {
-			//DB 작업 > 외부환경 > 예외처리 필수
-			//설치된 JDBC 드라이버 로딩(상투적인 구문) 일단 써주고 시작한다고 생각하면 편하다!
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
-			//접속(DB 연결 + connection 객체 생성 반환) -> 접속버튼 누른거와 같은 행동이 되는것이다!
-			conn = DriverManager.getConnection(url,id,pw);
-			return conn;//접속성공
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	/*
+	 * public Connection open(String host, String id, String pw) {//서버를 열어주는 메서드라고
+	 * 생각하면 된다 -> 로컬 호스트가 아닌 다른 컴퓨터로 직접 연결해주는 메서드
+	 * 
+	 * 
+	 * String url = "jdbc:oracle:thin:@" + host + ":1521:xe";
+	 * 
+	 * try { //DB 작업 > 외부환경 > 예외처리 필수 //설치된 JDBC 드라이버 로딩(상투적인 구문) 일단 써주고 시작한다고 생각하면
+	 * 편하다! Class.forName("oracle.jdbc.driver.OracleDriver");
+	 * 
+	 * //접속(DB 연결 + connection 객체 생성 반환) -> 접속버튼 누른거와 같은 행동이 되는것이다! conn =
+	 * DriverManager.getConnection(url,id,pw); return conn;//접속성공
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * return null;//접속실패
+	 * 
+	 * }//open
+	 */	
 	
-		return null;//접속실패
-
-	}//open
-	
+	//쓸일 없는 메서드임
 	
 
 	

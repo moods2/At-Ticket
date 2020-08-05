@@ -8,12 +8,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script src="../js/jquery-1.12.4.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/highcharts.js"></script>
+    <%@include file="/WEB-INF/views/inc/asset.jsp" %>
+    <!-- 여러가지 라이브러리 적용하기 -->
 
     <style>
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
@@ -827,7 +823,8 @@
             style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:     50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
-            <span>${session.id}</span>
+            <%-- <span><%=session.getAttribute("id")%></span> --%>
+            <span>${id}</span><!-- session에서 id를 받아옴 -->
         </div>
         <!-- <div class="b">
             <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
