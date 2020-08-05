@@ -19,7 +19,8 @@
 
 </head>
 <body>
-																												
+	
+	<!-- POST 방식으로 넘겨준다 AdminLogin.java 로 넘어갈 것이다-->													
 	<form style="width: 200px; margin: auto; margin-top: 50px; text-align: center;" name="login" method = "POST" action = "/AtTicketProject/adminlogin.do">
         <div><img src="images/title2.png" ></div>
         <fieldset style="width: 200px;">

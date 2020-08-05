@@ -20,7 +20,6 @@ public class AdminMain extends HttpServlet{
 		dispatcher.forward(req, resp);
 		
 		
-		
 	}
 	
 }

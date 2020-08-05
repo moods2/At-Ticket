@@ -2,18 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="/WEB-INF/views/inc/asset.jsp" %>
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <link rel="stylesheet" href="../css/jquery-ui.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <script src="../js/jquery-1.12.4.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/bootstrap.js"></script>
-    
-<meta charset="UTF-8">
-<title>Insert title here</title>
- <style>
+    <script src="../js/highcharts.js"></script>
+
+    <style>
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
         @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
         html{
@@ -246,17 +248,6 @@
             /* border: 1px solid black; */
             padding: 20px;
         }
-
-        /* .basicBox2 {
-            border: 1px solid black;
-            width : 590px;
-            width : 700px;
-            height : 500px;
-            margin : 0px;
-            margin-top : 0px;
-            float : left;
-            
-        }  */
 
         /* 그리드 사용 */
         .wrapper {
@@ -537,7 +528,14 @@
           color: black;
         }
 
+        
+
+        
     </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminMain</title>
 </head>
 
 <body>
@@ -561,105 +559,84 @@
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>공지명</th>
-                        <th>공지날짜</th>
-                        <th>대상</th>
-                        <th>열람여부</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>날짜</th>
+                        <th>조회수</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
                         <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "seesee">열람</span></td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><span class = "starpoint">new</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "seesee">열람</span></td>
-
-                        
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "seesee">열람</span></td>
-
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
-                        
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
-
-                        
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
-
-                        
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
-
-                        
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
-
-                        
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
-
-                        
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
+                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
+                        <td> 이몽룡</td>
+                        <td> 2020.02.17(월)</td>
+                        <td><span class = "seesee">180</span></td>
+                    </tr>
 
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>랜섬웨어로 인한 복구작업</td>
-                        <td> 2020.02.17(월) 15:00</td>
-                        <td> 임직원 전체</td>
-                        <td><span class = "notSee">미열람</span></td>
-                    </tr>
                 </tbody>
             </table>
 
@@ -850,7 +827,7 @@
             style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:     50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
-            <span><%= session.getAttribute("name") %></span>
+            <span>${session.id}</span>
         </div>
         <!-- <div class="b">
             <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
@@ -970,8 +947,17 @@
     <!-- 아래 회색 바닥 페이지 없앰 -->
     <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
     </div>
- 
- <script>
+    
+
+
+
+
+
+</body>
+
+
+
+<script>
     var date = document.getElementById("date");
     var now = new Date();
     var sw = document.images["sw"];
@@ -1462,11 +1448,6 @@ $("#nextbtn").click(function(){
     });
     
 
-</script>   
+</script>
 
-
-
-
-
-</body>
 </html>

@@ -27,12 +27,9 @@ public class AdminMemberDAO {
 	public int login(AdminMemberDTO dto) {
 		try {
 			
-			String sql = "select count(*) as cnt from tblAdminMember where id = ? and pw = ?"; 
+			String sql = "select count(*) as cnt from tblAdmin where id = ? and pw = ?"; 
 			
 			pstat = conn.prepareStatement(sql);
-			//System.out.println(dto.getId());
-			//System.out.println(dto.getPw());//여기까지 잘 들어오는데?
-			System.out.println(dto.getName());
 			
 			pstat.setString(1, dto.getId());//첫번째 ?에 집어넣는것
 			pstat.setString(2, dto.getPw());//두번째 ? 에 집어넣는것
@@ -50,6 +47,7 @@ public class AdminMemberDAO {
 		return 0;
 		
 	}
+	
 	
 	public AdminMemberDTO getMember(String id) {
 		

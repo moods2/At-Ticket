@@ -26,9 +26,10 @@ public class DBUtil {
 	public Connection open() {//서버를 열어주는 메서드라고 생각하면 편하다 -> 로컬 계정을 열때 사용하는 메서드
 		
 		
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String id = "hr";
+		String url = "jdbc:oracle:thin:@yoginolja.ccyezlxmksh2.ap-northeast-2.rds.amazonaws.com:1521:orcl";
+		String id = "Atticket";
 		String pw = "java1234";
+		
 		
 	try {
 			//DB 작업 > 외부환경 > 예외처리 필수

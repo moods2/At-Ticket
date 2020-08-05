@@ -17,81 +17,63 @@ public class AdminLogin extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		//1. 데이터 가져오기(id,pw)
 		//2. DB 작업  > select (입력한 아이디 비번이 진짜 db 에 있는지?)
 		//3. 결과 반환  > 완료 처리
 		
-	
+		//현재 req 객체에 jsp 에서 보내준 데이터가 저장되어 있다.** -> id와 pw 정보를 저장하고 있음.
 		
 		//1. 데이터 가져오기
-		String id = req.getParameter("id");//아이디 가져오기 -> 사용자가 쓴것
-		String pw = req.getParameter("pw");//비번 가져오기 -> 사용자가 쓴것
+		String id = req.getParameter("id");//아이디 가져오기 -> jsp 에서 사용자가 쓴것
+		String pw = req.getParameter("pw");//비번 가져오기 -> jsp 에서 사용자가 쓴것
 		
-//		System.out.println("here");
-//		System.out.println(id);
-//		System.out.println(pw);
 		
 		//2. DB 작업 -> DAO 위임
 		AdminMemberDAO dao = new AdminMemberDAO();
 		
-		//상자를 만들어서 담아서 데이터를 넘길것이다!
+		//상자를 만들어서 담아서 데이터를 넘길것이다! -> 하나하나씩 넘기는 것보단 한번에 넘기는게 좋음
 		AdminMemberDTO dto = new AdminMemberDTO();
 		dto.setId(id);
 		dto.setPw(pw);
-		//dto.setName(name);
-		System.out.println(dto.getId());
-		System.out.println(dto.getPw());
 		
 		
-		int result = dao.login(dto);//1,0
-		System.out.println("result = " + result);
+		int result = dao.login(dto);//1이 나오면 로그인이 성공인 것이고 0 이 나오면 로그인에 실패했다는것이다.
+		//System.out.println("result = " + result);
 		
 		//3.
 		if (result == 1) {
-			//로그인 o
+			//로그인 에 성공한 경우
 			//1.인증(Authentication) : 이 사람이 우리 고객이 맞는지 확인하는 작업임.
 			//- 인증티켓 을 발급할 것이다
 			//- 인증티켓은 개인적이어야 하고, 전역이어야 한다!(놀이동산 어디던지 돌아다닐 수 있으므로!) 
 			//	-> session 에 넣어주면 된다 인증티켓을 한번 발급받으면 어떤 페이지를 가던 죽어버리면 안된다.
 			
-			//세선을 어찌 가져오느냐?
+			//세선을 어찌 가져오느냐? -> 세션객체를 받아온다
 			HttpSession session = req.getSession();//이러한 방식으로 얻어와야 한다!
-			//session.setAttribute("num", 1);//일단 아무값이나 넣어준다. -> 인증을 받으면 num 이라는 변수에 1이 있는거고 인증을 못받으면 num 이라는 변수 자체가 없을것이다
-										   // 즉 어떠한 권한을 접근할때  num 이 있나 없나 확인 해서 들여보내주면 되는것이다!
-			//System.out.println(dto.getName());
-			//session.setAttribute("id", dto.getId());//아이디를 많이 넣어준다 -> 인증티켓
-			//session.setAttribute("name", dto.getName());//아이디를 많이 넣어준다 -> 인증티켓
-			//session.setAttribute("name", dto.getName());//아이디를 많이 넣어준다 -> 인증티켓
-			//session.setAttribute("pic", dto.getPic());//아이디를 많이 넣어준다 -> 인증티켓
-			//System.out.println("asdasd?");//여기까진 문제가 없음
-			//System.out.println(dto.getId());	
 			
-			AdminMemberDTO dto2 = dao.getMember(dto.getId());
-			System.out.println(dto2);
-			//System.out.println(dto2.getId());
-			//System.out.println(dto2.getPw());
-			
-			session.setAttribute("id", dto2.getId());//여기서 문제가 나타남
-			session.setAttribute("pw", dto2.getPw());
-			//System.out.println("확인확인");
-			//System.out.println(dto2.getName());
-			session.setAttribute("name", dto2.getName());
-			
-			resp.sendRedirect("/aaa/adminmain.do");
+			session.setAttribute("id", req.getAttribute("id"));//세션에 id 데이터를 넣어준다
+			session.setAttribute("pw", req.getAttribute("pw"));//세션에 pw 데이터를 넣어준다.
 			
 			
-			//2.허가(Authorization) : 자격이 있거나 없거나 한 대상을 어떤 행동을 할때 허가할지 말지 결정하는 것이다.
+			//Adminmain.java 로 정보를 옮겨준다.
+			resp.sendRedirect("/AtTicketProject/adminmain.do");
+			
+			
+			
 			
 		} else {
 			System.out.println(result);
-			//로그인 x
+			//로그인에 실패한 경우
+			//preintWriter 객체는 html에서 실제로 쓰는것처럼 만들어주는 것임.
+			resp.setContentType("text/html; charset=UTF-8");//이걸 해야 아래 html 에서 한글을 적어도 깨지지 않는다
+
+			PrintWriter writer = resp.getWriter();//printwriter
 			
-			PrintWriter writer = resp.getWriter();
 			writer.print("<html>");
 			writer.print("<body>");
 			writer.print("<script>");
-			writer.print("alert('failed'); history.back();");
+			writer.print("alert('아이디 또는 비밀번호를 확인해주세요'); history.back();");//알림 띄우고 뒤로가기
 			writer.print("</script>");
 			writer.print("</body>");
 			writer.print("</html>");
