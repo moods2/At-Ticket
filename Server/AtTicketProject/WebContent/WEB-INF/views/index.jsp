@@ -19,8 +19,8 @@
 
 </head>
 <body>
-
-	<form style="width: 200px; margin: auto; margin-top: 50px; text-align: center;" name="login" method = "POST" action = "/AtTicketProject/login.do">
+																												
+	<form style="width: 200px; margin: auto; margin-top: 50px; text-align: center;" name="login" method = "POST" action = "/AtTicketProject/adminlogin.do">
         <div><img src="images/title2.png" ></div>
         <fieldset style="width: 200px;">
             <legend align="center">로그인</legend>
@@ -32,9 +32,7 @@
     
     
     <script>
-    	$("#btnss").click(function(){
-    		console.log("???");
-    	});
+		
     </script>
 
 

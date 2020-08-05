@@ -331,11 +331,18 @@
 
     <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;">
     </div>
+
+    <style>
+        #tbl th:nth-child(1) {
+            background-color: #f0f0f0;
+        }
+
+    </style>
     
     <div id = "right">
 
         <table id="tbl" class="table table-bordered" style="width: 600px;">
-            <tr>
+            <!-- <tr>
                 <th style="width: 150px;">부서</th>
                 <td style="width: 450px;">
                     <select class="form-control">
@@ -347,9 +354,9 @@
                         <option>총무부</option>
                     </select>
                 </td>
-            </tr>
+            </tr> -->
             <tr>
-                <th style="width: 150px;">제목</th>
+                <th style="width: 150px">제목</th>
                 <td style="width: 450px;">
                     <!-- block태그로 바뀜 -->
                     <input type="text" class="form-control"> 
@@ -358,7 +365,7 @@
             <tr>
                 <th style="width: 150px;">내용</th>
                 <td style="width: 450px;">
-                    <textarea class="form-control" style="height: 300px;"></textarea>
+                    <textarea class="form-control" style="height: 300px; resize: none;"></textarea>
                 </td>
             </tr>
             <tr>
