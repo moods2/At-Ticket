@@ -9,42 +9,237 @@
     <script src="../js/bootstrap.js"></script>
 
     <style>
+
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
+        @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+        * { outline: none; }
+        html{
+            width: 1100px;
+        }
+        h1{
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 3em; 
+            color: #111;
+        }
+
+        #left {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 250px;
+            height: 2000px;
+            /* border: 1px solid black; */
+            background-color: #444;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #left .info {
+            margin-left: 56px;
+            text-align: left;
+            font-variant: small-caps;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .accomenu {
+            /* margin-top: 30px; */
+            /* margin-left: 10px; */
+            width : 260px;
+            padding-right : 25px;
+        }
+
+        .btn {
+            box-shadow: 3px 3px 0;
+        }
+
+        .b {
+            margin-top: 30px;
+            float: left;
+        }
+
+        .b::after {
+            content: " ";
+            clear: both;
+            display: block;
+        }
+
+        /* #btn1 {
+            margin-left: 50px;
+            margin-right: 20px;
+        } */
+
+        #topmenu {
+            /* border: 1px solid blue; */
+            width: 100%;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            float: right;
+            align-content: right;
+            /* z-index: -1; */
+            /* background-color: #BBDED7; */
+            /* opacity: .3; */
+            
+        }
+        #topmenu .search {
+            /* border: 1px solid black; */
+            width: 250px;
+            margin-top: 10px;
+            float: right;
+           
+        }
+        #topmenu .home {
+            /* border: 1px solid black; */
+            width: 50px;
+            float: right;
+            margin-top: 7px;
+            cursor: pointer;
+            color: #444
+        }
+
+        #calendar {
+           margin-top: 70px;
+           margin-left: -20px;
+        }
+
+        #cal {
+            position: relative;
+            top: 15px;
+            left: 5px;
+        }
+
+        #bottom {
+            position: absolute;
+            top: 2000px;
+        }
+
+        #sw {
+            margin-top: 850px;
+            cursor: pointer;
+        }
+
+        /* 새로 추가한 코드 */
+        /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
+        .accomenu tr td:hover {
+            cursor : pointer;
+        }
+
+         #movetop {
+            width: 40px;
+            height: 40px;
+            background-color: #777;
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            text-align: center;
+            padding-top: 3px;
+        }
+        #movetop:hover {
+            background-color: #444;
+            cursor : pointer;
+        }
+
+        #movetop {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
 
         body{
             font-family: 'NanumBarunGothic';
         }
-         html{
-            width: 800px;
+
+        /* 아코디언 메뉴 css */
+        .ui-state-active {
+            background-color: red;
+            background-image: url();
+        }
+        .ui-state-hover {
+            background-color: #444;
+            background-image: url();
+
         }
 
+        .ui-accordion-header {
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NEXON Lv1 Gothic OTF Light';
+            /* font-weight: bolder; */
+            
+        }
+        .ui-accordion-content {
+            background: #444;
+            color: white;
+            text-align: left;
+            border: 0px;
+            font-family: 'NanumBarunGothic';
+        }
+        .ui-accordion-content div:hover {
+            background: #333;
+        }
+        .ui-widget-content a{
+            color: white;
+            text-decoration: none;
+        }
+        .ui-widget-content span {
+            font-size: 10px;
+        }
+        .ui-accordion .ui-accordion-header {
+            /* border: 0px; */
+            outline: none;
+          
+        }
+       #right {
+            border : 1px solid red;
+            margin-left: 300px;
+            margin-top: 100px;
+            width : 700px;
+            /* color : white;
+            background-color: #C27BA0; */
+        }
+        #visitTitle {
+            margin : 15px auto;
+            border : 5px solid #C27BA0;
+            color : #C27BA0;
+            text-align: center;
+            width : 120px;
+            font-size: 2em;
+        }
+        #right2 {
+            border : 1px solid black;
+            /* text-align: center; */
+
+        }
+        
         #title{
-            margin-left: 30px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            width: 600px;
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
             border-bottom: 1px dashed black;
-        }
-
-        h1{
-            font-weight: bold;
-            font-family: Arial;
-            /* font-size: 3em;  */
-            color: #555;
         }
 
         #content {
             /* border: 1px solid red; */
-            width: 86.5%;
-            height: 500px;
-
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 300px;
+            top: 130px;
         }
 
         #add {
             width: 500px;
             height: 800px;
             position: relative;
-            left: 40px;
+            left: 40px
+            /* margin: 20px auto; */
+            
         }
         #content > #add > div {
             margin: 10px;
@@ -53,14 +248,14 @@
         #content > #add > div > label {
             margin: 5px;
         }
+
         #btnadd {
             margin-top: 0px;
             margin-left: 200px;
         }
+        .addshow { margin-left: 5px; }
+        .rtxt { margin: 5px ;}
 
-    </style>
-
-    <style type="text/css">
         .img_wrap {
             /* border: 1px solid black; */
             width: 300px;
@@ -70,29 +265,139 @@
         .img_wrap img {
             max-width: 30%;
         }
+        
+        .btn { box-shadow: none; }
+
+        
 
     </style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <title>adminShowModify</title>
+    <title>adminShowAdd</title>
 </head>
 
 <body>
 
     <div id = "title">
-        <h1 style="color: #444">공연 수정</h1>
+        <h1 style="color:#555">공연 추가 <small> > 공연관리 > Home  </small></h1>
     </div>
 
 
+    <div id="left">
+        
+        <img src="../images/man.png" 
+            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius: 50%; background-color: #999;">
+        <div class="info" style="color:white">
+            <span><br>Welcome,</span></br></span>
+            <span>Hong gil dong</span>
+        </div>
+        <!-- <div class="b">
+            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
+                class="btn">
+        </div> -->
+        <div id = "logout">
+            <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
+                     type="button" value="Logout" id="btn2" class="btn">
+        </div>
+        <div class="accomenu">
+            <!-- 여기에 메뉴 -->
+            <h3>공연</h3>
+            <div>
+             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
+             </div>
+            <h3>통계</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            </div>
+            <h3>정산 관리</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            </div>
+            <h3>직원 정보</h3>
+            <div>
+             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
+             </div>
+            <h3>이벤트</h3>
+            <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            </div>
+            <h3>1:1 문의</h3>
+            <div>
+             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            </div>
+             <h3>공연 랭킹</h3>
+         <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
+            </div>
+            <h3>공지사항</h3>
+            <div>
+                 <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+            </div>
+             <h3>고객 정보</h3>
+             <div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+             </div>
+             <h3>업무 게시판</h3>
+             <div>
+                 <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+             </div>
+             <h3>Q&A 게시판</h3>
+             <div>
+                 <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
+             </div>
+             
+         </div>
+        <!-- container -->
+
+
+        <div id="calendar">
+            <input style="width: 100px;" type="text" name="date" id="date" value="">
+            <label for="date"><span style="font-size: 2.5em; color:white" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
+        </div>
+
+        <!-- 티켓 사이트 로고 바로가기 -->
+        <div style="margin-top: 20px; position: fixed; bottom: 30px; left: 70px;">
+            <img src="../images/title.png" id="tickethome" 
+                    style="cursor: pointer; height: 50px;">
+        </div>
+    </div>
+
+
+    <div id="topmenu">
+        <div class="home">
+            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
+        </div>
+        <div class="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
+                            class="glyphicon glyphicon-search"></i></span>
+                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
+                        placeholder="검색어를 입력하세요.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id = "fixedBtn">
+        <img src = "../images/switch_on.png" id="sw" name="sw"
+            style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
+
+        <!-- 제일 위로 돌아가기 -->
+        <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
+    </div>
+
+    <!-- -------------------------------------------------------- 내용 ----------------------------------------------------------------------------------------- -->
+
     <div id="content">
+
         <fieldset id="add" class="form-control" style="border: 0px;">
             <!-- <legend class="form-control">공연 정보 추가하기</legend> -->
 
             <div>
                 <label>공연 장르 : </label>
-                <select style="width: 100px; display: inline;" class="form-control">
+                <select style="height: 25px;">
                     <option>뮤지컬</option>
                     <option>콘서트</option>
                     <option>연극</option>
@@ -101,49 +406,95 @@
                 </select>
             </div>
 
-            <!-- ------------------------------- 선택 공연의 value값 넘겨오기 ----------------->
-            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" value="렌트" autofocus></div>
+            <div><label for="txtname">공연 제목 : </label><input type="text" id="txtname" autofocus></div>
+            <div>
+                <label for="txtopen">오픈 일시 : </label>
+                <input style="width: 100px;" type="text" name="date3" id="date3" class="date" value="">
+                <label for "date3"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal3"></span></label>
+            </div>
             <div><label for="txtdate">공연 기간 : </label>
-                 <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="2020-07-20">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
-                 <span> - </span>
-                 <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="2020-09-17">
-                 <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
+                <input style="width: 100px;" type="text" name="date1" id="date1" class="date" value="">
+                <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
+                <span> - </span>
+                <input style="width: 100px;" type="text" name="date2" id="date2" class="date" value="">
+                <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
             </div>
-            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" value="100,000" autofocus></div>
-            <div><label for="txttime">공연 시간 : </label><input type="text" id="txttime" value="15:00" autofocus></div>
-            <div><label for="txtplace" style="display: block;">공연 장소  </label>
-                <input type="text" id="sample6_postcode" placeholder="우편번호">
-                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input type="text" id="sample6_address" placeholder="주소"><br>
-                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+            <div><label for="txtprice">공연 가격 : </label><input type="text" id="txtprice" style="width: 100px;" autofocus>원</div>
+            <div><label for="txtmin">소요 시간 : </label><input type="text" id="txtmin" style="width: 100px;" autofocus>분</div>
+            <div><label for="txtage">연령 제한 : </label><input type="text" id="txtage" style="width: 100px;" autofocus>세</div>
+            <div id="round">
+                <label for="txtround1">공연 회차 : </label><input type="text" id="txtround1" style="width: 100px;" autofocus>
+                <label for="txttime1">시작 시간 : </label><input type="text" id="txttime1"  style="width: 100px;" autofocus>
+                <button id="addbtn" class="btn btn-default" style="height: 30px; outline: none;">회차 추가</button>
+            </div>
+            
+            <div>
+                <label for="txtplace">공연 장소 : </label>
+                <input type="text" id="txtplace" style="width: 100px;" autofocus>
+                <input type="button" id="btnplace" value="찾기" class="btn btn-default" style="height: 30px;">
             </div>
 
-            <!-- </label><input type="text" id="txtplace" autofocus></div> -->
-            <!-- <div><label for="txtdelivery">배송 정보 : </label><input type="text" id="txtdelivery" autofocus></div> -->
-            <div><label for="txtnotice">유의 사항  </label>
-                 <textarea id="txtnotice" class="form-control" style="width: 450px;" autofocus></textarea>
+            <div>
+                <label for="txtagen">기획사 : </label>
+                <select>
+                    <option>㈜프라이빗커브</option>
+                    <option>㈜홍컴퍼니</option>
+                    <option>롯데엔터네인먼트</option>
+                    <option>오픈리뷰</option>
+                    <option>주식회사 스탠바이컴퍼니</option>
+                    <option>㈜월드쇼마켓</option>
+                    <option>롯데컬처웍스㈜</option>
+                    <option>㈜펜타토닉</option>
+                    <option>㈜엠피앤컴퍼니</option>
+                    <option>예술의전당</option>
+                    <option>(㈜인터파크</option>
+                    <option>페이지터너</option>
+                </select>
             </div>
 
-            <!-- 포스터, 공연내용 이미지 미리보기*** -->
             <div><label for="txtheader">포스터  : </label><input type="file" id="txtheader" style="display: inline;" autofocus></div>
             <div class="img_wrap">
                 <img id="img1" />
             </div>
-    
+
             <div><label for="txtcontent">공연 내용 : </label><input type="file" id="txtcontent" style="display: inline;" autofocus></div>
             <div class="img_wrap">
                 <img id="img2" />
             </div>
 
-            
-            <div><input type="button" id="btnadd" value="수정하기" class="btn btn-default"></div>
+            <div><input type="button" id="btnadd" value="추가하기" class="btn btn-default"></div>
+
         </fieldset>
+    
+
+       
+
     </div>
 
 </body>
 <script>
+
+    $("#btnplace").click(function() {
+        window.open("adminShowAdd_hall.html","adminShowAdd_hall","width=500, height=500");
+    });
+
+    var n = 2;
+
+    $("#addbtn").mousedown(function() {
+
+        
+        $("#round").append("<div class='addshow'><label for='txtround"+ n +"'>공연 회차 : </label><input type='text' class='rtxt' id='txtround"+ n +"' style='width: 100px;' autofocus>"+
+                "<label for='txttime"+ n +"'> 시작 시간 : </label><input type='text' class='rtxt' id='txttime"+ n +"' style='width: 100px;' autofocus></div>");
+
+        n++;
+
+    });
+
+
+    $("#btnadd").click(function() {
+        // 추가버튼 >> 입력된 정보 추가하기
+        history.back();
+    });
 
     var sel_file;
 
@@ -151,7 +502,7 @@
         $("#txtheader").on("change", handleImgFileSelect1);
         $("#txtcontent").on("change", handleImgFileSelect2);
     }); 
-    
+
     function handleImgFileSelect1(e) {
         var files = e.target.files;
         var filesArr = Array.prototype.slice.call(files);
@@ -194,84 +545,175 @@
         });
     }
 
-    $("#btnadd").click(function() {
-        // 수정버튼 >> 입력된 정보 수정하기
-    });
 
 
-    // var date = document.getElementsByClassName("date");
-    var date = document.getElementById("date");
-    var now = new Date();
-    var sw = document.images["sw"];
-    date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
-    if (date.value != null) {
-        date.readOnly = true;
-    }
-    
+
     $("#date1").datepicker({
         dateFormat: "yy-mm-dd",
-        minDate: now.getFullYear() + "-1-1",
-        maxDate: now.getFullYear() + "-12-" + "31"
     });
 
     $("#date2").datepicker({
-        dateFormat: "yy-mm-dd",
-        minDate: now.getFullYear() + "-1-1",
-        maxDate: now.getFullYear() + "-12-" + "31"
+        dateFormat: "yy-mm-dd"
+    });
+
+    $("#date3").datepicker({
+        dateFormat: "yy-mm-dd"
     });
 
 
 
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
-
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
+
+
+//-------------------------------------------------------------
+    
+    // 수정
+    $("#btnmodify").click(function(){
+        if ($("input:checkbox[name=is_check]:checked").length > 1 || $("input:checkbox[name=is_check]:checked").length < 1){
+            alert("하나만 선택하세요.");
+        }else {
+            //선택된 체크박스의 내용 불러오기
+
+            // window.location.href="adminShowModify.html";
+            window.open("adminShowModify.html","adminShowModify","width=800, height=800");
+        }
+    });
+    // 삭제
+    $("#btndelete").click(function(){
+        var result = confirm("정말 삭제하시겠습니까?");
+        console.log(result);
+        if(result) {
+            alert("삭제되었습니다.")
+        }else {
+
+        }
+    });
+
+    var date = document.getElementById("date");
+    var now = new Date();
+    var sw = document.images["sw"];
+    date.value = now.getFullYear() + " / " + now.getMonth() + " / " + now.getDate();
+    if (date.value != null) {
+        date.readOnly = true;
+    }
+
+    
+        $("#date").datepicker({
+            dateFormat: "yy-mm-dd",
+            minDate: now.getFullYear() + "-1-1",
+            maxDate: now.getFullYear() + "-12-" + "31"
+        });
+
+   
+
+    document.body.bgColor = "white";
+    
+    $(".accomenu").accordion({
+        collapsible: true,
+        active: false
+    });
+
+
+    //스위치 
+    var swCount = 1;
+    $("#sw").click(function () {
+        console.log("클릭함");
+
+            if(swCount % 2 == 0) {
+                console.log("들어옴");
+                sw.src="../images/switch_on.png";
+                $("body").css("background-color","white");
+                $("#homeLogo").css("color","#333333");
+                $("#adminName").css("color","#333333")
+            } else {
+                sw.src="../images/switch_off.png";
+                $("body").css("background-color","#292A2D");
+                $("#homeLogo").css("color","white");
+                $("#adminName").css("color","white");
+
+            }
+            swCount++;
+    });
+
+    $("#btn1").click(function(){
+        window.open("login.html","Login","width=300, height=300");
+    });
+    
+
+    $("#btn2").click(function(){
+        if(confirm("로그아웃하시겠습니까?")){
+            console.log("로그아웃 되었습니다.");
+         }
+    });
+
+    $(".container").accordion();
+    // $(".container2").accordion();
+    $('.collapse').collapse({
+        toggle: false
+    })
+
+
+    //홈버튼 링크
+    $("#homeLogo").click(function() {
+        location.href = "adminMain.html";
+    });
+
+    //상단 메뉴 고정
+    $(document).scroll(function() {
+        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            if ($(document).scrollTop() > $("#topmenu").position().top) {
+                $("#topmenu").css({
+                    width: "100%",
+                    position: "fixed",
+                    top: "0px",
+                    bottom: "",
+                    zIndex: "1"
+                });
+
+            };
+
+        //상단 헤더(top)이 눈에 보일때 쯤
+        if ($(document).scrollTop() <= $("#topmenu").position().top) {
+            $("#topmenu").css({
+                position: "absolute",
+                top: "0px",
+                bottom: ""
+            });             
+        }
+    });
+
+
+   //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
+   $("#btn2").mouseenter(function(){
+        // $("#btn2").css("background-color","cornflowerblue");
+        $("#btn2").css("color","white");
+    });
+    $("#btn2").mouseleave(function(){
+        // $("#btn2").css("background-color","#C27BA0");
+        $("#btn2").css("color","#D5D5D5");
+    })
+
+    //티켓 홈
+    $("#tickethome").click(function() {
+        window.open("../main.html","At-Ticket");
+    });
+
+   //메인검색
+   $("#btnsearch").click(function(){
+        // 검색어 넘기기
+        window.location.href="adminSearch.html";
+    });
+
+    //공연검색
+    $("#btnsearch2").click(function(){
+        // 검색어 넘기기
+        window.location.href="adminSearch.html";
+    });
+    
+    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
+    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
+
 
     
     
