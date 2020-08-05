@@ -1,0 +1,22 @@
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music1.jpeg', 'music1post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',10,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music2.jpeg', 'music2post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',3,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music3.jpeg', 'music3post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',3,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music4.jpeg', 'music4post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',2,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music5.jpeg', 'music5post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',9,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music6.jpeg', 'music6post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',9,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music7.jpeg', 'music7post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',6,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music8.jpeg', 'music8post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',5,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music9.jpeg', 'music9post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',2,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music10.jpeg', 'music10post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',2,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music11.jpeg', 'music11post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',10,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music12.jpeg', 'music12post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',8,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music13.jpeg', 'music13post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',3,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music14.jpeg', 'music14post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',4,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music15.jpeg', 'music15post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',2,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music16.jpeg', 'music16post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',1,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music17.jpeg', 'music17post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',2,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music18.jpeg', 'music18post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',3,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music19.jpeg', 'music19post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',4,default,1);
+insert into tblShow values(showSeq.nextVal,'to_date('2020-07-01','YYYY-MM-DD'),to_date('2020-08-10','YYYY-MM-DD'),80000,music20.jpeg', 'music20post.jpeg',to_date('2020-06-29','YYYY-MM-DD'),15,'¹ÂÁöÄÃ',2,default,1);
+
+
