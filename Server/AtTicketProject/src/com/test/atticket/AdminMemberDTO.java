@@ -2,17 +2,17 @@ package com.test.atticket;
 
 public class AdminMemberDTO {
 	
-	private String seq;
-	private String id;
-	private String name;
-	private String pw;
+	private int seq;//관리자 번호
+	private String id;//관리자 아이디
+	private String name;//관리자 이름
+	private String pw;//관리자 비번
 	
 	
 	
-	public String getSeq() {
+	public int getSeq() {
 		return seq;
 	}
-	public void setSeq(String seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 	public String getId() {

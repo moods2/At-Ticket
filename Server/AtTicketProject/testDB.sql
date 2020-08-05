@@ -18,3 +18,12 @@ insert into tblAdminMember values (seqAdminMember.nextVal,'lsy1234','한시연',
 insert into tblAdminMember values (seqAdminMember.nextVal,'jhw1234','전혜원','1234');
 
 select * from tblAdminMember;
+
+
+--select count(*) as cnt from tblMember where id = ? and pw = ?
+
+select * from tblinsa;
+
+select count(*) as cnt from tblAdminMember where id = 'jhw1234' and pw = 1234;
+
+select * from tblMember where id = 'jhw1234';

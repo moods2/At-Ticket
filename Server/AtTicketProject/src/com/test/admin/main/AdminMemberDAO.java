@@ -27,13 +27,17 @@ public class AdminMemberDAO {
 	public int login(AdminMemberDTO dto) {
 		try {
 			
-			String sql = "select count(*) as cnt from tblMember where id = ? and pw = ?"; 
+			String sql = "select count(*) as cnt from tblAdminMember where id = ? and pw = ?"; 
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, dto.getId());
-			pstat.setString(2, dto.getPw());
+			//System.out.println(dto.getId());
+			//System.out.println(dto.getPw());//여기까지 잘 들어오는데?
+			System.out.println(dto.getName());
 			
-			rs = pstat.executeQuery();
+			pstat.setString(1, dto.getId());//첫번째 ?에 집어넣는것
+			pstat.setString(2, dto.getPw());//두번째 ? 에 집어넣는것
+			
+			rs = pstat.executeQuery();//쿼리 실행
 			
 			if (rs.next()) {
 				return rs.getInt("cnt");//1아니면 0이 반환될것이다. -> 위의 cnt 를 말하는 것이다! alias
@@ -44,6 +48,40 @@ public class AdminMemberDAO {
 		}
 		
 		return 0;
+		
+	}
+	
+	public AdminMemberDTO getMember(String id) {
+		
+		try {
+			
+			String sql = "select * from tblAdminMember where id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				AdminMemberDTO dto = new AdminMemberDTO();
+				
+				dto.setSeq(rs.getInt("seq"));
+				dto.setId(rs.getString("id"));
+				dto.setPw(rs.getString("pw"));
+				dto.setName(rs.getString("name"));
+				
+				
+				
+				
+				return dto;
+			}
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 		
 	}
 	
