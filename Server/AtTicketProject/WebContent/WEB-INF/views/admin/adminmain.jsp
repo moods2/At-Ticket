@@ -838,7 +838,7 @@
         <div class="accomenu">
             <h3>공연</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a onclick="location.href='/AtTicketProject/show.do';"><span>▶</span> 공연 조회</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px; cursor:pointer;"><a onclick="location.href='/AtTicketProject/show.do';" ><span>▶</span> 공연 조회</a></div>
             </div>
             <h3>통계</h3>
             <div>
