@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AtTicketProject/show.do")
+@WebServlet("/show.do")
 public class Show extends HttpServlet{
 
 	@Override
