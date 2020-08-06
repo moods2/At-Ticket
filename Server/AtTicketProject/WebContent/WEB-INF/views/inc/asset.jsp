@@ -7,6 +7,6 @@
 <script src = "<%= request.getContextPath() %>/js/jquery-ui.js"></script>
 <script src = "<%= request.getContextPath() %>/js/bootstrap.js"></script>
 <script src = "<%= request.getContextPath() %>/js/highcharts.js"></script>
-
+<script src = "<%= request.getContextPath() %>/js/Backstretch.js"></script>
 <!-- request.getContextPath() WEB-INF 를 말하는 것이다. -->
 

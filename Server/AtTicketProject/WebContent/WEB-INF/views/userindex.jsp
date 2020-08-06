@@ -1346,14 +1346,19 @@
 
             //팝업창 가운데 배치
             var popupWidth = 600;
-            var popupheight = 630;
+            var popupheight = 400;
             var popupX = (window.screen.width / 2) - (popupWidth / 2);
             var popupY = (window.screen.height / 2) - (popupheight / 2);
             //관심 공연 담기 팝업창
+            
+            var loginUrl = "/AtTicketProject/userlogin.do";//jsp 로 넘어가기 위함임
+            
             $("#login").click(function() {
-                window.open("login.html","_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
+                //location.href = loginUrl;
+            	//window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
+            	window.open(loginUrl,"_black");
             });
-
+			//로그인 팝업창
         </script>
     </body>
 </html>

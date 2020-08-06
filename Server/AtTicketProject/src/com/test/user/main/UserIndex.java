@@ -21,6 +21,7 @@ public class UserIndex extends HttpServlet{
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/userindex.jsp");
 		dispatcher.forward(req, resp);
 		
+		
 		System.out.println(req.getContextPath());
 	}
 	
