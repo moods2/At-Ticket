@@ -23,7 +23,7 @@ public class UserDAO {
 	}
 	
 	//로그인 하기 위한 작업
-	public int login(UserDTO dto) {
+	public int userLogin(UserDTO dto) {
 		try {
 			
 			String sql = "select count(*) as cnt from tblCustomer where id = ? and pw = ?"; 
