@@ -111,17 +111,18 @@
     
     <div id="login">
         <h1>Sign In</h1>
-        <form >
+        
+        <form name = "userlogin" method = "POST" action = "/AtTicketProject/userloginend.do">
         <div>
-            <input type="text" placeholder="아이디" id="username" autocomplete=”off”>
-            <input type="password" placeholder="비밀번호" id="password">
+            <input type="text" placeholder="아이디" id="username" name = "userid" autocomplete="off">
+            <input type="password" placeholder="비밀번호" id="password" name = "userpw">
         </div>
         <div>
             <input type="checkbox" name="saveid" id="saveid">
             <label for="saveid">아이디 저장</label>
         </div>
         <div>
-            <input type="button" value="SIGN IN" id="enter">
+            <input type="submit" value="SIGN IN" id="enter">
         </div>
         </form>
         
