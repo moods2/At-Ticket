@@ -50,11 +50,15 @@ public class CustomerDAO {
 					CustomerDTO dto = new CustomerDTO();
 					
 					dto.setSeq(rs.getString("seq"));
-					dto.setId(rs.getString("name"));
-					dto.setName(rs.getString("id"));
+					dto.setName(rs.getString("name"));
+					dto.setId(rs.getString("id"));
 					dto.setSsn(rs.getString("ssn"));
 					dto.setPw(rs.getString("pw"));
 					dto.setEgg(rs.getString("egg"));
+					dto.setAddr(rs.getString("addr"));
+					dto.setEmail(rs.getString("email"));
+					dto.setGrade(rs.getString("grade"));
+					dto.setTel(rs.getString("tel"));
 					
 					list.add(dto);
 					// DB와 관계없는 객체 타입

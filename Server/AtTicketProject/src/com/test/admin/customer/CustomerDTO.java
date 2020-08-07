@@ -7,7 +7,35 @@ public class CustomerDTO {
 	private String id;
 	private String pw;
 	private String egg;
+	private String addr;
+	private String tel;
+	private String email;
+	private String grade;
 	
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	public String getSeq() {
 		return seq;
 	}

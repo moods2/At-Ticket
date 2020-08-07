@@ -136,6 +136,8 @@
                     <th style="width: 90px;">이름</th>
                     <th style="width: 110px;">아이디</th>
                     <th style="width: 160px;">주민번호</th>
+                    <th style="width: 110px;">고객등급</th>
+                    <th style="width: 160px;">이메일</th>
                     <th class="title" style="width: 150px;text-align: center;">전화번호</th>
                     <th class="title" style="width: 120px;text-align: center;">비번</th>
                     <th class="title" style="width: 250px;text-align: center;">주소</th>
@@ -155,9 +157,11 @@
 						<td>${dto.getName}</td>
 						<td>${dto.getId()}</td>
 						<td>${dto.getSsn()}</td>	
-						<td>010-1234-1234</td>	
+						<td>${dto.getGrade()}</td>
+						<td>${dto.getEmail()}</td>
+						<td>${dto.getTel()}</td>	
 						<td>${dto.getPwd()}</td>
-						<td>강남구 역삼동 한독빌딩 8층</td>
+						<td>${dto.getAddr()}</td>
 					</tr>
 				</c:forEach>
 				
