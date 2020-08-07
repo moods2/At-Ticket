@@ -1445,6 +1445,17 @@
                             }
                         }
                     });
+
+                    $('#dialog1').on('dialogclose', function(event) {
+                        $("#tabs").tabs({
+                            disabled: [0,1,2,3],
+                            active: 4
+                        });
+                        tabNum = [3,0,1,2];
+                        n = 4;
+                        $("#side1").css("display","block")
+                        $("#side2").css("display","none")
+                    });
                 }
             }
 
@@ -1511,6 +1522,8 @@
                 $("#side2").css("display","none")
                 $("#back").css("display","block")
             }
+
+
         })
         
 
