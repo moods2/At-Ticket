@@ -22,11 +22,12 @@ public class UserDAO {
 		conn = util.open();//연결 완료
 	}
 	
-	//로그인 하기 위한 작업
+	//로그인 하기 위한 작업 -> 삭제된 회원에 대한 처리도 해줘야하는데?
 	public int userLogin(UserDTO dto) {
 		try {
 			
-			String sql = "select count(*) as cnt from tblCustomer where id = ? and pw = ?"; 
+			String sql = "select count(*) as cnt from tblCustomer where id = ? and pw = ? and delflag = 0"; 
+			//delflag = 0 처리는 탈퇴한 회원은 다시 로그인 할 수 없으므로 로그인 하지 못하게 처리한다.
 			
 			pstat = conn.prepareStatement(sql);
 			
@@ -45,6 +46,46 @@ public class UserDAO {
 		
 		return 0;
 		
+	}
+	
+	//UserLoginEnd.java에서 넘어옴 -> 로그인 완료가 되면 해당 회원의 모든 정보를 세션에 넘겨주는 작업을 수행할 것이다.
+	public UserDTO getMember(String id) {
+		
+		try {
+			
+			String sql = "select * from tblCustomer where id = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, id);
+			
+			rs = pstat.executeQuery();//쿼리 날리기
+			
+			if (rs.next()) {
+				UserDTO dto = new UserDTO();
+				
+				dto.setSeq(rs.getInt("seq"));
+				dto.setName(rs.getString("name"));
+				dto.setSsn(rs.getString("ssn"));
+				dto.setId(rs.getString("id"));
+				dto.setPw(rs.getString("pw"));
+				dto.setEggMoney(rs.getInt("egg"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setTel(rs.getString("tel"));
+				dto.setEmail(rs.getString("email"));
+				dto.setGrade(rs.getString("grade"));
+				
+				
+				return dto;
+				
+			}//if
+			
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 	
 	

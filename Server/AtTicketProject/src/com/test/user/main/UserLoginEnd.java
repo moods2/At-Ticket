@@ -18,7 +18,7 @@ public class UserLoginEnd extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//여기를 들어오지도 않네?
+		//여기서 상대방이 입력한 id와 pw를 검증해준다
 		//System.out.println("asdasdasdasd???");
 		//1. 데이터 가져오기
 		String id = req.getParameter("userid");
@@ -35,18 +35,33 @@ public class UserLoginEnd extends HttpServlet{
 		
 		System.out.println(req.getParameter("userid"));
 		System.out.println(req.getParameter("userpw"));
+		System.out.println(id);
+		System.out.println(pw);
+		
 		
 		int result = dao.userLogin(dto);
 		
+		System.out.println(result);
 		
 		if (result == 1) {
 			//로그인에 성공한 경우
 			HttpSession session = req.getSession();
 			
-			session.setAttribute("id", id);
-			session.setAttribute("pw", pw);
+			//나머지 회원들의 정보들도 session에 넘겨줘야 한다.
+			UserDTO dto2 = dao.getMember(dto.getId());
 			
-			resp.sendRedirect("/AtTicketProject/userindex.do");//여기에 주소적을것
+			session.setAttribute("userseq", dto2.getSeq());//회원 번호
+			session.setAttribute("username", dto2.getName());//회원 이름 
+			session.setAttribute("userssn", dto2.getSsn());//회원 주민번호
+			session.setAttribute("userid", dto2.getId());//회원 아이디
+			session.setAttribute("userpw", dto2.getPw());//회원 비밀번호
+			session.setAttribute("useregg", dto2.getEggMoney());//회원 egg머니
+			session.setAttribute("useraddr", dto2.getAddr());//회원 주소
+			session.setAttribute("usertel", dto2.getTel());//회원 전화번호
+			session.setAttribute("useremail", dto2.getEmail());//회원 이메일
+			session.setAttribute("usergrade", dto2.getGrade());//회원 등급
+			
+			resp.sendRedirect("/AtTicketProject/userindex.do");//다시 메인페이지로 가는데 user의 session을 안고 가는것이다.
 			
 			
 		} else {

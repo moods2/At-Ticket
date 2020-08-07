@@ -117,14 +117,15 @@
             <input type="text" placeholder="아이디" id="username" name = "userid" autocomplete="off">
             <input type="password" placeholder="비밀번호" id="password" name = "userpw">
         </div>
-        <div>
+<!--         <div>
             <input type="checkbox" name="saveid" id="saveid">
             <label for="saveid">아이디 저장</label>
-        </div>
+        </div> -->
         <div>
-            <input type="submit" value="SIGN IN" id="enter">
+        	<!-- <button type="submit" id = "enter">SIGN IN</button> -->
+             <input type="submit" value="SIGN IN" id="enter">
         </div>
-        </form>
+    	</form>
         
         <div>
             <div style="width: 305px;">
@@ -135,6 +136,7 @@
             </div>
         </div>
     </div>
+    
     <div id="footer">
         <div id="copyright">
             Copyright &copy; <span>AT-Ticket Corp.</span> All rights reserved.
