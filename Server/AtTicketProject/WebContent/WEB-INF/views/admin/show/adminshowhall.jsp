@@ -1,12 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@include file="/WEB-INF/views/inc/asset.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script src="../js/jquery-1.12.4.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/bootstrap.js"></script>
 
     <style>
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
@@ -115,6 +113,7 @@
             margin: 5px;
         }
     </style>
+   
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -248,26 +247,6 @@
             
         });
     }
-
-
-
-    
-    $("#date1").datepicker({
-        dateFormat: "yy-mm-dd",
-        
-    });
-
-    $("#date2").datepicker({
-        dateFormat: "yy-mm-dd",
- 
-    });
-
-
-
-
-    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
-    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
-
     
 
 </script>

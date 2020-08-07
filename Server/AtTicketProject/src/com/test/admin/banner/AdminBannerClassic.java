@@ -1,4 +1,4 @@
-package com.test.show;
+package com.test.admin.banner;
 
 import java.io.IOException;
 
@@ -9,15 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/show.do")
-public class Show extends HttpServlet{
-
+@WebServlet("/customer/adminbannerclassic.do")
+public class AdminBannerClassic extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/show.jsp");
+	
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/banner/adminbannerclassic.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
 	
 }

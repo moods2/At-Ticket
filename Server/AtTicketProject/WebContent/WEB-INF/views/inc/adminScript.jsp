@@ -133,9 +133,3 @@
         // 검색어 넘기기
         window.location.href="adminSearch.html";
     });
-
-
-    //메뉴 링크
-    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
-    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
-    
