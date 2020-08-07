@@ -69,6 +69,11 @@ public class UserDAO {
 				dto.setId(rs.getString("id"));
 				dto.setPw(rs.getString("pw"));
 				dto.setEggMoney(rs.getInt("egg"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setTel(rs.getString("tel"));
+				dto.setEmail(rs.getString("email"));
+				dto.setGrade(rs.getString("grade"));
+				
 				
 				return dto;
 				

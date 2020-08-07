@@ -721,6 +721,21 @@
                                 >로그인</a>
                         </li>
                         </c:if>
+                        
+                        <c:if test = "${!empty userid}"><!-- 여기에 이런식으로 처리 해주는 이유는 -> 로그인을 하면 또 로그인을 할 필요가 없기 때문이다. -->
+                        <li>
+                            <span
+                                style="font-size: 2.4em;"
+                                class="glyphicon glyphicon-off"
+                            ></span>
+                            <br/>
+                            
+                            <a class="subfont" id="logout"
+                                >로그아웃</a>
+                        </li>
+                        </c:if>                   
+                        
+                        
                         <%-- <%} %> --%>
                     </ul>
                 </div>
@@ -1358,13 +1373,20 @@
             var popupY = (window.screen.height / 2) - (popupheight / 2);
             //관심 공연 담기 팝업창
             
-            var loginUrl = "/AtTicketProject/userlogin.do";//jsp 로 넘어가기 위함임
+            //var loginUrl = "/AtTicketProject/userlogin.do";//jsp 로 넘어가기 위함임
+            //var logoutUrl = "/AtTicketProject/userlogout.do";
             
             //***여기가 좀 문제가 보이기 때문에 나중에 처리를 하도록 해보자
+            //로그인 java 로 이동
             $("#login").click(function() {
-                location.href = loginUrl;
+                location.href = "/AtTicketProject/userlogin.do";
             	//window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
             	//window.open(loginUrl,"_black");
+            });
+            
+            //로그아웃 java 로 이동
+            $("#logout").click(function() {
+                location.href = "/AtTicketProject/userlogout.do";
             });
 			//로그인 팝업창
         </script>

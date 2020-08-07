@@ -8,10 +8,41 @@ public class UserDTO {
 	private String id;//회원 아이디
 	private String pw;//회원 비밀번호
 	private int eggMoney;//회원 에그머니
+	private String addr;//회원 주소
+	private String tel;//회원 전화번호
+	private String email;//회원 이메일번호
+	private String grade;//회원등급
 	private int delflag;//탈퇴한 회원유무 확인
 	
 	
 	
+	
+	
+	
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	public int getSeq() {
 		return seq;
 	}

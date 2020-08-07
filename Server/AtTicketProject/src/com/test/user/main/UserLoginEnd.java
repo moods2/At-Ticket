@@ -56,7 +56,10 @@ public class UserLoginEnd extends HttpServlet{
 			session.setAttribute("userid", dto2.getId());//회원 아이디
 			session.setAttribute("userpw", dto2.getPw());//회원 비밀번호
 			session.setAttribute("useregg", dto2.getEggMoney());//회원 egg머니
-			
+			session.setAttribute("useraddr", dto2.getAddr());//회원 주소
+			session.setAttribute("usertel", dto2.getTel());//회원 전화번호
+			session.setAttribute("useremail", dto2.getEmail());//회원 이메일
+			session.setAttribute("usergrade", dto2.getGrade());//회원 등급
 			
 			resp.sendRedirect("/AtTicketProject/userindex.do");//다시 메인페이지로 가는데 user의 session을 안고 가는것이다.
 			

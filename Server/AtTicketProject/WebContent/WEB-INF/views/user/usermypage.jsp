@@ -422,7 +422,7 @@
                 <!-- 유저 정보 -->
                 <div id="userinfo">
                     <p id="infohead">MY공연<small style="color: #BBB"> | MYPAGE</small></p>
-                    <p><span>${username}</span>님은 <span>일반회원</span>입니다.</p>
+                    <p><span>${username}</span>님은 <span>${usergrade}</span>입니다.</p>
                     <div id="point">
                         <p>Egg포인트 : ${useregg}원</p>
                     </div>
