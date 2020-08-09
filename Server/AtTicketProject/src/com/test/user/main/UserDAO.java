@@ -87,6 +87,33 @@ public class UserDAO {
 
 		return null;
 	}
+
+	
+	//UserCreateEnd.java에서 넘어옴 -> 회원가입 완료 시 회원의 모든 정보를 DB에 저장.
+	public int userCreate(UserDTO dto) {
+		
+		try {
+			
+			String sql = "INSERT INTO TBLCUSTOMER (SEQ, NAME, SSN, ID, PW, EGG, ADDR, TEL, EMAIL, GRADE, DELFLAG) "
+					+ "VALUES (CUSTOMERSEQ.NEXTVAL, ?, ?, ?, ?, DEFAULT, ?, ?, ?, DEFAULT, DEFAULT)";
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getName());
+			pstat.setString(2, dto.getSsn());
+			pstat.setString(3, dto.getId());
+			pstat.setString(4, dto.getPw());
+			pstat.setString(5, dto.getAddr());
+			pstat.setString(6, dto.getTel());
+			pstat.setString(7, dto.getEmail());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
 	
 	
 	

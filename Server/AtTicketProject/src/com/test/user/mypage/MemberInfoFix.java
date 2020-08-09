@@ -1,4 +1,4 @@
-package com.test.user.main;
+package com.test.user.mypage;
 
 import java.io.IOException;
 
@@ -8,17 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/usermypage.do")
-public class UserMypage extends HttpServlet{
+@WebServlet("/memberinfofix.do")
+public class MemberInfoFix extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/mypage/usermypage.jsp");
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/mypage/memberinfofix.jsp");
 		dispatcher.forward(req, resp);
 		
 	}
-	
+
 }

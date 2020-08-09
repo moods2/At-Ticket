@@ -17,7 +17,7 @@
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
-	   
+   
 
     document.body.bgColor = "white";
     
@@ -32,7 +32,7 @@
             if(swCount % 2 == 0) {
                 // 배경화면 기본상태
                 console.log("들어옴");
-                sw.src="<%= request.getContextPath() %>/images/switch_on.png";
+                sw.src="../images/switch_on.png";
                 $("body").css("background-color","white");
                 $("#homeLogo").css("color","#333333");
                 $("#adminName").css("color","#333333");
@@ -43,7 +43,7 @@
                 $("#moneyTitle").css("color","#333");
             } else {
                 // 배경화면이 어두운 색일 경우
-                sw.src="<%= request.getContextPath() %>/images/switch_off.png";
+                sw.src="../images/switch_off.png";
                 $("body").css("background-color","#292A2D");
                 $("#homeLogo").css("color","white");
                 $("#adminName").css("color","white");
@@ -65,10 +65,6 @@
     $("#btn2").click(function(){
         if(confirm("로그아웃하시겠습니까?")){
             console.log("로그아웃 되었습니다.");
-            <%
-            	session.invalidate();
-            %>
-            location.href = "/AtTicketProject/index.do";
          }
     });
 
@@ -96,8 +92,6 @@
 
             };
 
-		
-
         //상단 헤더(top)이 눈에 보일때 쯤
         if ($(document).scrollTop() <= $("#topmenu").position().top) {
             $("#topmenu").css({
@@ -113,8 +107,6 @@
     $("#btn2").mouseenter(function(){
         // $("#btn2").css("background-color","cornflowerblue");
         $("#btn2").css("color","white");
-        
-        
     });
     $("#btn2").mouseleave(function(){
         // $("#btn2").css("background-color","#C27BA0");

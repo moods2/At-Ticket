@@ -99,8 +99,7 @@ $("#tagremove").click(function () {
 
 //마이페이지 클릭시 이동
 $("#mypage").click(function () {
-    location.href = "mypage.html";
+    location.href = "/AtTicketProject/usermypage.do";
 });
-
 
 </script>
