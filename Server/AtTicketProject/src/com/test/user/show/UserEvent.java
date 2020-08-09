@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/userconcert.do")
-public class UserConcert extends HttpServlet{
+@WebServlet("/userevent.do")
+public class UserEvent extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,7 +19,7 @@ public class UserConcert extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userconcert.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userevent.jsp");
 		dispatcher.forward(req, resp);
 		
 		

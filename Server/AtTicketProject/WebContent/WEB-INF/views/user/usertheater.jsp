@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="css/slick.css" />
         <link rel="shortcut icon" href="./images/favicon.ico" />
         
-        <style>
+    <style>
             * {
                 outline: none;
             }
@@ -27,11 +27,6 @@
                 font-family: "Noto Sans KR", sans-serif;
                 font-size: 2em;
                 margin: 30px 0;
-            }
-            h1 > i {
-                color: #ff7d1e;
-                margin-left: 5px;
-                font-size: 0.9em;
             }
             #main {
                 width: 100%;
@@ -119,19 +114,20 @@
             }
             #banner {
                 min-width: 1600px;
-                height: 400px;
+                height: 250px;
                 margin-top: 20px;
-                background-image: linear-gradient(
-                    120deg,
-                    #e0c3fc 0%,
-                    #8ec5fc 100%
-                );
+
+                background-image: url("./images/theaterbanner.gif");
+
                 text-align: center;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
             }
             #bannerimg {
                 width: 286px;
                 height: 400px;
-                background-image: url("./images/bannerimg.jpg");
+                background-image: url("./images/bannerimg.png");
                 display: inline-block;
                 margin-right: 160px;
             }
@@ -139,69 +135,6 @@
             #middle2 input {
                 outline: none;
             }
-            #rankpage {
-                background-color: #f6f6f6;
-                padding: 50px;
-                margin: 0 auto;
-                text-align: center;
-            }
-            #wrap_rankpage {
-                width: 1200px;
-                height: 490px;
-                margin: 0 auto;
-            }
-            #weekly {
-                border: 1px solid #ddd;
-                background-color: white;
-                width: 490px;
-                height: 490px;
-                padding: 40px;
-                float: left;
-            }
-
-            #region {
-                border: 1px solid #ddd;
-                background-color: white;
-                width: 690px;
-                height: 490px;
-                padding: 40px 0;
-                float: right;
-                text-align: center;
-            }
-            #wrap_region {
-                padding: 15px 0;
-            }
-            #wrap_region > div {
-                display: inline-block;
-                margin-right: 30px;
-                height: 300px;
-                overflow: hidden;
-                cursor: pointer;
-            }
-            #wrap_region > div p {
-                font-size: 13px;
-                height: 30px;
-            }
-            #wrap_region > div span {
-                font-size: 12px;
-                color: #888;
-            }
-            #wrap_region > div:last-child {
-                margin-right: 0;
-            }
-            #wrap_region > div > div:first-child {
-                overflow: hidden;
-                height: 220px;
-                margin-bottom: 10px;
-                background-color: black;
-            }
-            .regionimg {
-                width: 170px;
-                height: 220px;
-                margin-bottom: 10px;
-                transition: all 0.3s;
-            }
-
             #movetop {
                 width: 40px;
                 height: 40px;
@@ -279,97 +212,55 @@
             }
 
             #bigimg {
-                background-image: url("./images/big_consert.jpeg");
+                background-image: url("./images/big_theater.jpeg");
             }
             .img1 {
-                background-image: url("./images/consert1.jpeg");
+                background-image: url("./images/theater1.jpeg");
                 background-size: contain;
             }
             .img2 {
-                background-image: url("./images/consert2.jpeg");
+                background-image: url("./images/theater3.jpeg");
                 background-size: contain;
             }
             .img3 {
-                background-image: url("./images/consert3.jpeg");
+                background-image: url("./images/theater3.jpeg");
                 background-size: contain;
             }
             .img4 {
-                background-image: url("./images/consert4.jpeg");
+                background-image: url("./images/theater4.jpeg");
                 background-size: contain;
             }
             .img5 {
-                background-image: url("./images/consert5.jpeg");
+                background-image: url("./images/theater5.jpeg");
                 background-size: contain;
             }
             .img6 {
-                background-image: url("./images/consert6.jpeg");
+                background-image: url("./images/theater6.jpeg");
                 background-size: contain;
             }
             .atimg1 {
-                background-image: url("./images/consert2.jpeg");
+                background-image: url("./images/theater7.jpeg");
                 background-size: contain;
             }
             .atimg2 {
-                background-image: url("./images/consert3.jpeg");
+                background-image: url("./images/theater8.jpeg");
                 background-size: contain;
             }
             .atimg3 {
-                background-image: url("./images/consert4.jpeg");
+                background-image: url("./images/theater21.jpeg");
                 background-size: contain;
             }
             .atimg4 {
-                background-image: url("./images/consert10.jpeg");
+                background-image: url("./images/theater22.jpeg");
                 background-size: contain;
             }
             .atimg5 {
-                background-image: url("./images/consert11.jpeg");
+                background-image: url("./images/theater11.jpeg");
                 background-size: contain;
             }
             .atimg6 {
-                background-image: url("./images/consert1.jpeg");
+                background-image: url("./images/theater1.jpeg");
                 background-size: contain;
-            }
-
-            #weekly_list {
-                border-top: 2px solid black;
-                border-bottom: 1px solid black;
-                overflow: hidden;
-                width: 410px;
-                height: 270px;
-            }
-            #weekly_list dt,
-            #weekly_list dd {
-                display: inline-block;
-            }
-            #weekly_list dt {
-                padding-right: 20px;
-                font-size: 16px;
-                text-decoration: underline;
-            }
-            #weekly_list dd p {
-                font-weight: bold;
-                /* border: 1px solid black; */
-                width: 230px;
-                height: 25px;
-                font-size: 16px;
-                text-overflow: ellipsis;
-            }
-            #weekly_list dd span {
-                position: relative;
-                top: 30px;
-                font-size: 12px;
-                color: #888;
-            }
-            #weekly_list img {
-                width: 120px;
-                height: 160px;
-            }
-            #weekly_list ul {
-                list-style-type: none;
-                padding: 0;
-            }
-            #weekly_list ul li {
-                padding: 50px 0;
             }
 
             #submenu {
@@ -488,19 +379,7 @@
                         ></div>
                     </div>
                 </div>
-              
-            <!-- 메인화면 슬라이더 -->
-            <!-- 이미지 다시 만들어야함 ^^.. -->
-                <!-- <div class="slider">
-                    <div><img src="./consertSlide1.jpeg" /></div>
-                    <div><img src="./consertSlide2.jpeg" /></div>
-                    <div><img src="./consertSlide3.jpeg" /></div>
-                    <div><img src="./consertSlide4.jpeg" /></div>
-                    <div><img src="./consertSlide5.jpeg" /></div>
-                </div>
-            </div> -->
-            <!-- <hr /> -->
-              <!-- 메인화면 슬라이더 -->
+                <!-- 메인화면 슬라이더 -->
                 <div class="slider">
                     <div><img src="./images/theaterslide1.jpeg" /></div>
                     <div><img src="./images/theaterslide2.jpeg" /></div>
@@ -573,6 +452,46 @@
                         </li>
                     </ul>
                 </div>
+                <hr>
+                <div
+                    style="width: 1300px; margin: 0px auto; text-align: center;"
+                >
+                    <h1>Focus On</h1>
+                    <div
+                        style="
+                            display: inline-block;
+                            border: 1px solid #eeeeee;
+                        "
+                    >
+                        <div
+                            style="
+                                display: inline-block;
+                                border: 1px solid #eeeeee;
+                            "
+                        >
+                            <img src="./images/focus1.jpeg" alt="" />
+                        </div>
+                        <div
+                            style="
+                                display: inline-block;
+                                border: 1px solid #eeeeee;
+                                float: left;
+                            "
+                        >
+                            <img src="./images/focus2.jpeg" alt="" />
+                        </div>
+                        <div
+                            style="
+                                display: inline-block;
+                                border: 1px solid #eeeeee;
+                                float: left;
+                            "
+                        >
+                            <img src="./images/focus3.jpeg" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
                 <!-- 최신, 인기 공연 목록(순위별) -->
                 <div style="text-align: center;">
                     <h1>WHAT'S HOT</h1>
@@ -651,155 +570,17 @@
             </div>
             <!-- 동영상 들어갈 자리 -->
             <div id="banner">
-                <div id="bannerimg"></div>
-                <iframe
-                    width="711"
-                    height="400"
-                    src="https://www.youtube.com/embed/o_nxIQTM_B0"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
-            </div>
-            <hr />
-            <!-- 주간 랭킹, 지역별 추천 -->
-            <div id="rankpage">
-                <div id="wrap_rankpage">
-                    <!-- 주간 랭킹 -->
-                    <div id="weekly">
-                        <h1>WEEKLY RANKING</h1>
-                        <div id="weekly_list">
-                            <ul>
-                                <li>
-                                    <dt>1위</dt>
-                                    <dd>
-                                        <img
-                                            src="./images/weekly_concert1.jpg"
-                                        />
-                                    </dd>
-                                    <dd>
-                                        <p>2020 WILD KARD IN SEOUL</p>
-                                        <span>
-                                            2020.08.22 ~ 2020.08.22<br />
-                                            노들섬 라이브하우스
-                                        </span>
-                                    </dd>
-                                </li>
-                                <li>
-                                    <dt>2위</dt>
-                                    <dd>
-                                        <img src="./images/rankbest2.jpg" />
-                                    </dd>
-                                    <dd>
-                                        <p>2020 태사자 콘서트 [THE RETURN]</p>
-                                        <span>
-                                            2020.07.25 ~ 2020.07.26<br />
-                                            YES24 LIVE HALL(구, 악스홀)
-                                        </span>
-                                    </dd>
-                                </li>
-                                <li>
-                                    <dt>3위</dt>
-                                    <dd>
-                                        <img
-                                            src="./images/weekly_concert3.jpg"
-                                        />
-                                    </dd>
-                                    <dd>
-                                        <p>
-                                            가을방학 정규 4집 발매 기념 공연
-                                            [세상은 한 장의 손수건]
-                                        </p>
-                                        <span>
-                                            2020.09.05 ~ 2020.09.06<br />
-                                            노들섬 라이브하우스
-                                        </span>
-                                    </dd>
-                                </li>
-                                <li>
-                                    <dt>4위</dt>
-                                    <dd>
-                                        <img
-                                            src="./images/weekly_concert4.jpg"
-                                        />
-                                    </dd>
-                                    <dd>
-                                        <p>
-                                            2020 DMZPOP DRIVE IN CONCERT in
-                                            CHEOLWON [무료공연]
-                                        </p>
-                                        <span>
-                                            2020.08.15 ~ 2020.08.15<br />
-                                            김화생활체육공원 특설무대
-                                        </span>
-                                    </dd>
-                                </li>
-                                <li>
-                                    <dt>5위</dt>
-                                    <dd>
-                                        <img
-                                            src="./images/weekly_concert5.jpg"
-                                        />
-                                    </dd>
-                                    <dd>
-                                        <p>
-                                            SURL (설) concert 'Ah, ah, ah, ah
-                                            What can I do?'
-                                        </p>
-                                        <span>
-                                            2020.08.15 ~ 2020.08.16<br />
-                                            노들섬 라이브하우스
-                                        </span>
-                                    </dd>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- 지역별 추천 -->
-                    <div id="region">
-                        <h1>
-                            지역별 추천<i
-                                class="glyphicon glyphicon-map-marker"
-                            ></i>
-                        </h1>
-                        <div id="wrap_region">
-                            <div>
-                                <div>
-                                    <img
-                                        src="./images/consert3.jpeg"
-                                        class="regionimg"
-                                    />
-                                </div>
-                                <p>십센치X데이브레이크</p>
-                                <span>KBS부산홀</span>
-                            </div>
-                            <div>
-                                <div>
-                                    <img
-                                        src="./images/consert11.jpeg"
-                                        class="regionimg"
-                                    />
-                                </div>
-                                <p>
-                                    2020 빅3 "행복한 만남"<br />(진성,김용임,강진)
-                                </p>
-                                <span>KBS부산홀</span>
-                            </div>
-                            <div>
-                                <div>
-                                    <img
-                                        src="./images/consert5.jpeg"
-                                        class="regionimg"
-                                    />
-                                </div>
-                                <p>서울숲재즈페스티벌 2020</p>
-                                <span>서울숲공원</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <img
+                    style="height: 250px;"
+                    src="./images/theaterbanner.gif"
+                    alt=""
+                />
             </div>
             <div id="middle2">
+                <!-- 주간 랭킹, 지역별 추천 -->
+                <!-- <div style="text-align: center; background-color: #FBFBFB;">
+                    
+                </div> -->
                 <hr />
                 <!-- 뮤지컬, 연극 목록 -->
                 <div style="text-align: center; margin-bottom: 50px;">
@@ -1052,58 +833,6 @@
                 );
             });
 
-            //지역별 추천 이미지
-            $("#wrap_region div").mouseover(function () {
-                $(this)
-                    .children()
-                    .children("img")
-                    .css("transform", "scale(1.1, 1.1)")
-                    .css("opacity", ".8");
-            });
-            $("#wrap_region div").mouseout(function () {
-                $(this)
-                    .children()
-                    .children("img")
-                    .css("transform", "scale(1, 1)")
-                    .css("opacity", "1");
-            });
-
-            //주간 랭킹
-            $(document).ready(function () {
-                var banner = $("#weekly_list").find("ul");
-                var bannerHeight = banner.children().outerHeight();
-                var bannerLength = banner.children().length;
-
-                var rollingTimer;
-
-                rollingTimer = setInterval(function () {
-                    rollingStart();
-                }, 3000);
-
-                banner.mouseover(function () {
-                    clearInterval(rollingTimer);
-                    $(this).css("cursor", "pointer");
-                });
-                banner.mouseout(function () {
-                    rollingTimer = setInterval(function () {
-                        rollingStart();
-                    }, 3000);
-                    $(this).css("cursor", "default");
-                });
-
-                function rollingStart() {
-                    banner.animate({ top: bannerHeight + "px" }, function () {
-                        $(this).append(
-                            "<li>" + $(this).find("li:first").html() + "</li>"
-                        );
-
-                        $(this).find("li:first").remove();
-
-                        $(this).css("top", 0);
-                    });
-                }
-            });
-
             //팝업창 가운데 배치
             var popupWidth = 600;
             var popupheight = 630;
@@ -1117,4 +846,3 @@
         </script>
     </body>
 </html>
-        

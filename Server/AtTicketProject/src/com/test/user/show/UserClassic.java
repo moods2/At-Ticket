@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/userconcert.do")
-public class UserConcert extends HttpServlet{
-
+@WebServlet("/userclassic.do")
+public class UserClassic extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
 		HttpSession session = req.getSession();
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userconcert.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/usermusical.jsp");
 		dispatcher.forward(req, resp);
 		
 		
