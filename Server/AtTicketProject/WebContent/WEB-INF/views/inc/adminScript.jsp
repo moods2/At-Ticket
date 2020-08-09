@@ -17,7 +17,7 @@
             maxDate: now.getFullYear() + "-12-" + "31"
         });
 
-   
+	   
 
     document.body.bgColor = "white";
     
@@ -65,6 +65,10 @@
     $("#btn2").click(function(){
         if(confirm("로그아웃하시겠습니까?")){
             console.log("로그아웃 되었습니다.");
+            <%
+            	session.invalidate();
+            %>
+            location.href = "/AtTicketProject/index.do";
          }
     });
 
@@ -109,6 +113,8 @@
     $("#btn2").mouseenter(function(){
         // $("#btn2").css("background-color","cornflowerblue");
         $("#btn2").css("color","white");
+        
+        
     });
     $("#btn2").mouseleave(function(){
         // $("#btn2").css("background-color","#C27BA0");

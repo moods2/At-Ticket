@@ -14,7 +14,7 @@
         </div> -->
         <div id = "logout">
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
-                     type="button" value="Logout" id="btn2" class="btn">
+                     type="submit" value="Logout" id="btn2" class="btn">
         </div>
         <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
@@ -41,7 +41,7 @@
             </div>
             <h3>1:1 문의</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admincustomerqna.do"><span>▶</span> 문의 조회</a></div>
             </div>
             <h3>공연 랭킹</h3>
             <div>

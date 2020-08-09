@@ -1,198 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="/WEB-INF/views/inc/asset.jsp" %> 
+
+
+  
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script src="../js/jquery-1.12.4.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/bootstrap.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
-    <style>
-        @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
-        @font-face { font-family: 'NEXON Lv1 Gothic OTF Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff'); font-weight: normal; font-style: normal; }
-        html{
-            width: 2500px;
-        }
-        h1{
-            font-weight: bold;
-            font-family: Arial;
-            font-size: 3em; 
-            color: #111;
+<link rel="stylesheet" href="/AtTicketProject/css/adminmain.css">
+
+<style>
+        /* 최상단 타이틀 */
+        #title{
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
+            color : #444444;
         }
 
-        #left {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 250px;
-            height: 2000px;
-            /* border: 1px solid black; */
-            background-color: #444;
-            text-align: center;
-            z-index: 10;
-        }
+</style>
 
-        #left .info {
-            margin-left: 56px;
-            text-align: left;
-            font-variant: small-caps;
-            font-weight: bold;
-            font-size: 1em;
-        }
+</head>
+<body>
+	
+	
+	<div id = "title">
+        <h1 id = "titesub">1:1 문의 <small id = "mainHome" style = "color : #777;"> > 문의조회  </small></h1>
+    </div>
 
-        .accomenu {
-            /* margin-top: 30px; */
-            /* margin-left: 10px; */
-            width : 260px;
-            padding-right : 25px;
-        }
-
-        .btn {
-            box-shadow: 3px 3px 0;
-        }
-
-        .b {
-            margin-top: 30px;
-            float: left;
-        }
-
-        .b::after {
-            content: " ";
-            clear: both;
-            display: block;
-        }
-
-        /* #btn1 {
-            margin-left: 50px;
-            margin-right: 20px;
-        } */
-
-        #topmenu {
-            /* border: 1px solid blue; */
-            width: 100%;
-            height: 60px;
-            position: absolute;
-            top: 0;
-            float: right;
-            align-content: right;
-            /* z-index: -1; */
-            /* background-color: #BBDED7; */
-            /* opacity: .3; */
-            
-        }
-        #topmenu .search {
-            /* border: 1px solid black; */
-            width: 250px;
-            margin-top: 10px;
-            float: right;
-           
-        }
-        #topmenu .home {
-            /* border: 1px solid black; */
-            width: 50px;
-            float: right;
-            margin-top: 7px;
-            cursor: pointer;
-            color: #444
-        }
-
-        #calendar {
-           margin-top: 70px;
-           margin-left: -20px;
-        }
-
-        #cal {
-            position: relative;
-            top: 15px;
-            left: 5px;
-        }
-
-        #bottom {
-            position: absolute;
-            top: 2000px;
-        }
-
-        #sw {
-            margin-top: 850px;
-            cursor: pointer;
-        }
-
-        /* 새로 추가한 코드 */
-        /* 관리자 메인메뉴 위에 커서 두면 커서가 포인터로 변환하게만듦 */
-        .accomenu tr td:hover {
-            cursor : pointer;
-        }
-
-         #movetop {
-            width: 40px;
-            height: 40px;
-            background-color: #777;
-            position: fixed;
-            bottom: 0px;
-            right: 0px;
-            text-align: center;
-            padding-top: 3px;
-        }
-        #movetop:hover {
-            background-color: #444;
-            cursor : pointer;
-        }
-
-        #movetop {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-
-        body{
-            font-family: 'NanumBarunGothic';
-        }
-
-        /* 아코디언 메뉴 css */
-        .ui-state-active {
-            background-color: red;
-            background-image: url();
-        }
-        .ui-state-hover {
-            background-color: #444;
-            background-image: url();
-
-        }
-
-        .ui-accordion-header {
-            background: #444;
-            color: white;
-            text-align: left;
-            border: 0px;
-            font-family: 'NEXON Lv1 Gothic OTF Light';
-            /* font-weight: bolder; */
-            
-        }
-        .ui-accordion-content {
-            background: #444;
-            color: white;
-            text-align: left;
-            border: 0px;
-            font-family: 'NanumBarunGothic';
-        }
-        .ui-accordion-content div:hover {
-            background: #333;
-        }
-        .ui-widget-content a{
-            color: white;
-            text-decoration: none;
-        }
-        .ui-widget-content span {
-            font-size: 10px;
-        }
-        .ui-accordion .ui-accordion-header {
-            /* border: 0px; */
-            outline: none;
-          
-        }
-
+	<!-- ------------------- 문의조회 게시판 시작-------------------  -->
+ 	<!-- 게시판 -->
+ 	
+ 	<style>
         /* 페이지 하단바  색 조정 */
         .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
                background-color:#999999;
@@ -221,7 +66,6 @@
             height : 1700px;
             margin-top : 100px;
         }
-        
         .selectNotice {
             width : 100px;
             text-align: center;
@@ -260,7 +104,7 @@
         #nttable tbody td {
             /* color :red; */
             text-align: center;
-            font-size: 1.3em;
+            font-size: 1em;
         }
         
         /*  제목은 중앙정렬 하지 않는다.*/
@@ -312,25 +156,12 @@
             color : red;
             font-size: .7em;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-        
-        
-        
-        
-    </style>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminMain</title>
-</head>
-
-<body>
-
-    <div id = "title">
-        <h1 id = "titesub">1:1 문의 <small id = "mainHome" style = "color : #777;"> > 문의조회  </small></h1>
-    </div>
-
-    <!-- 게시판 -->
+        } 	
+ 	
+ 	
+ 	
+ 	</style>
+ 	
     <!-- 등록순 오름차순 조회순 -->
     <div id = "selectable">
         
@@ -689,298 +520,32 @@
             </nav>
         
     </div><!-- selectable -->
-
-
-    <div id="left">
-        
-        <img src="../images/man.png" 
-            style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius: 50%; background-color: #999;">
-        <div class="info" style="color:white">
-            <span><br>Welcome,</span></br></span>
-            <span>Hong gil dong</span>
-        </div>
-        <!-- <div class="b">
-            <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
-                class="btn">
-        </div> -->
-        <div id = "logout">
-            <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
-                     type="button" value="Logout" id="btn2" class="btn">
-        </div>
-        <!-- 왼쪽 바 메뉴 -->
-        <div class="accomenu">
-            <h3>공연</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
-            </div>
-            <h3>통계</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
-            </div>
-            <h3>정산 관리</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
-            </div>
-            <h3>직원 정보</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
-            </div>
-            <h3>이벤트</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-            </div>
-            <h3>1:1 문의</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminQuestion.html"><span>▶</span> 문의 조회</a></div>
-            </div>
-            <h3>공연 랭킹</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="Ranking.html"><span>▶</span> 랭킹 조회</a></div>
-            </div>
-            <h3>공지사항</h3>
-            <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
-            </div>
-            <h3>고객 정보</h3>
-            <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
-            </div>
-            <h3>업무 게시판</h3>
-            <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
-            </div>
-            <h3>Q&A 게시판</h3>
-            <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="hansiyeonBoard.html"><span>▶</span> Q&A 게시판 조회</a></div>
-            </div>  
-        </div>
-        <!-- container -->
-
-
-        
-        <!-- <div class="b">
-            <input style="font-weight: bold; background-color: #D5A6BD;" type="button" value="Login" id="btn1"
-                class="btn">
-        </div> -->
-
-        <div id="calendar">
-            <input style="width: 100px;" type="text" name="date" id="date" value="">
-            <label for="date"><span style="font-size: 2.5em; color:white" class="glyphicon glyphicon-calendar" id = "cal"></span></label>
-        </div>
-
-        <!-- 티켓 사이트 로고 바로가기 -->
-        <div style="margin-top: 20px; position: fixed; bottom: 30px; left: 70px;">
-            <img src="../images/title.png" id="tickethome" 
-                    style="cursor: pointer; height: 50px;">
-        </div>
-
-
-    </div>
-
-
-    <div id="topmenu">
-        <div class="home">
-            <span style="font-size: 2.5em;" class="glyphicon glyphicon-home" id = "homeLogo"></span>
-        </div>
-        <div class="search">
-            <div class="form-group">
-                <div class="input-group">
-                    <span style="border-radius: 30px; cursor: pointer;" class="input-group-addon" id="btnsearch"><i
-                            class="glyphicon glyphicon-search"></i></span>
-                    <input style="border-radius: 30px; width: 200px;" type="text" class="form-control"
-                        placeholder="검색어를 입력하세요.">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id = "fixedBtn">
-        <img src = "../images/switch_on.png" id="sw" name="sw"
-            style="width: 70px; position: fixed; bottom: 0px; right: 50px; margin-bottom : 45px;">
-
-        <!-- 제일 위로 돌아가기 -->
-        <div id="movetop" style = "position: fixed; bottom: 0px; right: 0px;margin-bottom : 63px;">↑</div>
-    </div>
-
-    <!-- <div id="bottom" style="width: 100%; height: 50px; background-color: #eeeeee;"> -->
-    </div>
     
+    <script>
+    	
+    
+    
+    </script>	
+	
+	
+	
+	
+	<!-- ------------------- 문의조회 게시판 끝-------------------  -->
+	
+	
+	
+	
+	
 
-
-
-
+	<%@include file="/WEB-INF/views/inc/menu.jsp" %><!-- 왼쪽 메뉴 페이지 -->
 
 </body>
+
+
 <script>
-    var date = document.getElementById("date");
-    var now = new Date();
-    var sw = document.images["sw"];
 
-    //날짜 자동 입력, 읽기만 가능 
-    date.value = now.getFullYear() + " / " + (now.getMonth()+1) + " / " + now.getDate();
-    if (date.value != null) {
-        date.readOnly = true;
-    }
-
-    // 캘린더
-        $("#date").datepicker({
-            dateFormat: "yy-mm-dd",
-            minDate: now.getFullYear() + "-1-1",
-            maxDate: now.getFullYear() + "-12-" + "31"
-        });
-
-   
-
-    document.body.bgColor = "white";
-    
-
-
-    //스위치 
-    var swCount = 1;
-    $("#sw").click(function () {
-        console.log("클릭함");
-
-            if(swCount % 2 == 0) {
-                //배경이 하얀색일때
-                sw.src="../images/switch_on.png";
-                $("body").css("background-color","white");
-                $("#homeLogo").css("color","#333333");
-                $("#adminName").css("color","#333333");
-                $("#nttable > tbody > tr:nth-child(2n)").css("color","#333333");
-                $("#mainHome").css("color","#777");
-                $("#titesub").css("color","#111");
-            } else {
-                // 배경이 어두운색일때
-                sw.src="../images/switch_off.png";
-                $("body").css("background-color","#292A2D");
-                $("#homeLogo").css("color","white");
-                $("#adminName").css("color","white");
-                $("#nttable > tbody > tr:nth-child(2n)").css("color","white");
-                $("#mainHome").css("color","white");
-                $("#titesub").css("color","white");
-
-
-            }
-            swCount++;
-    });
-
-    // $("#btn1").click(function(){
-    //     window.open("login.html","Login","width=300, height=300");
-    // });
-    
-    // 버튼을 클릭하면 로그아웃 창이 뜸
-    $("#btn2").click(function(){
-        if(confirm("로그아웃하시겠습니까?")){
-            console.log("로그아웃 되었습니다.");
-         }
-    });
-
-    $(".accomenu").accordion({
-        collapsible: true,
-        active: false
-    });
-
-    //홈버튼 링크
-    $("#homeLogo").click(function() {
-        location.href = "adminMain.html";
-    });
-
-    //상단 메뉴 고정
-    $(document).scroll(function() {
-        //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
-            if ($(document).scrollTop() > $("#topmenu").position().top) {
-                $("#topmenu").css({
-                    width: "100%",
-                    position: "fixed",
-                    top: "0px",
-                    bottom: "",
-                    zIndex: "1"
-                });
-
-            };
-
-        //상단 헤더(top)이 눈에 보일때 쯤
-        if ($(document).scrollTop() <= $("#topmenu").position().top) {
-            $("#topmenu").css({
-                position: "absolute",
-                top: "0px",
-                bottom: ""
-            });             
-        }
-    });
-
-
-    //logout 버튼 관련 -> 커서 가져다 대면 더 밝아짐    
-    $("#btn2").mouseenter(function(){
-        // $("#btn2").css("background-color","cornflowerblue");
-        $("#btn2").css("color","white");
-    });
-    $("#btn2").mouseleave(function(){
-        // $("#btn2").css("background-color","#C27BA0");
-        $("#btn2").css("color","#D5D5D5");
-    })
-
-    //티켓 홈
-    $("#tickethome").click(function() {
-        window.open("../main.html","At-Ticket");
-    });
-
-    
-    //상단으로 돌아가기 -> 스무스 하게 올림
-    $("#movetop").click(function(){
-        	
-        $("html,body").animate({
-			scrollTop: 0
-		}, 700);
-        
-    });
-
-    //검색
-    $("#btnsearch").click(function(){
-        // 검색어 넘기기
-        window.location.href="adminSearch.html";
-    });
-
-
-    //메뉴 링크
-    $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
-    $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
-    
-
-    // 관리자 질문 답해주는 링크로 가기
-    var adminChild;//자식객체
-
-    $("#t1input").click(function(){
-        // 새로운 링크를 띄워야 한다.
-
-        adminChild = window.open("./adminQuestionAnswer.html","QA","width=900,height=900");
-        // 질문에 대한 답을 해주는 페이지로 이동한다. 
-    
-    });
-
-    // 최상단 텍스트박스 누르면 다 체크되는 형식을 택함 -> 또 누르게 되면 다 체크가 풀리게 된다.
-    var t5title = document.getElementById("t5title");
-    var t5 = document.getElementsByClassName("t5");
-    
-    t5title.onclick = function(){
-        if (t5title.checked) {
-            console.log("체크가 됨");
-            for (var i = 0; i < t5.length; i++) {
-                t5[i].checked = true;
-            }
-
-        } else {
-            console.log("체크가 안됨");
-            
-            for (var i = 0; i < t5.length; i++) {
-                t5[i].checked = false;
-            }
-        }
-    }
-
-    
-    
-
+	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	/* 기본적인 자바스크립트 */
+	
 </script>
 
 </html>
