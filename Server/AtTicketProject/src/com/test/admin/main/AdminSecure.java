@@ -19,8 +19,8 @@ public class AdminSecure extends HttpServlet{
 		
 		Random rnd = new Random();
 		
-		String[] secureSubjectObject = {"bird","cat","dog","laptop"};//보안코드 이미지의 들어갈 객체이름 생성
-		String[] secureSubjectName = {"새","고양이","개","노트북"};//보안코드 이미지의 들어갈 객체이름 생성
+		String[] secureSubjectObject = {"bird","cat","dog","laptop","airplane","apartment","car","phone","sea"};//보안코드 이미지의 들어갈 객체이름 생성
+		String[] secureSubjectName = {"새","고양이","개","노트북","비행기","아파트","자동차","스마트폰","바다"};//보안코드 이미지의 들어갈 객체이름 생성
 		
 		int selectNum =  rnd.nextInt(secureSubjectObject.length);
 		String throwSubject = secureSubjectObject[selectNum];//넘길객체 랜덤으로 지정
@@ -31,7 +31,13 @@ public class AdminSecure extends HttpServlet{
 		req.setAttribute("throwName", throwName);//객체의 이름을 넘김
 		
 		//전체 사진을 나열해준다
-		String[] toitalNameList = {"bird01.jpg","bird02.jpg","cat01.jpg","cat02.jpg","cat03.jpg","cat04.jpg","dog01.jpg","dog02.jpg","dog03.jpg","dog04.jpg","dog05.jpg","laptop01.jpg","laptop02.jpg","laptop03.jpg","laptop04.jpg","laptop05.jpg"};
+		String[] toitalNameList = {"bird01.jpg","bird02.jpg","cat01.jpg","cat02.jpg","cat03.jpg","cat04.jpg","dog01.jpg","dog02.jpg","dog03.jpg","dog04.jpg","dog05.jpg","laptop01.jpg","laptop02.jpg","laptop03.jpg","laptop04.jpg","laptop05.jpg",
+		"airplane01.jpg","airplane02.jpg","airplane03.jpg","airplane04.jpg","airplane05.jpg","airplane06.jpg","airplane07.jpg","airplane08.jpg","airplane09.jpg","airplane10.jpg",
+		"apartment01.jpg","apartment02.jpg","apartment03.jpg","apartment04.jpg","apartment05.jpg","apartment06.jpg","apartment07.jpg","apartment08.jpg","apartment09.jpg","apartment10.jpg",
+		"car01.jpg","car02.jpg","car03.jpg","car04.jpg","car05.jpg","car06.jpg","car07.jpg","car08.jpg","car09.jpg","car10.jpg",
+		"phone01.jpg","phone02.jpg","phone03.jpg","phone04.jpg","phone05.jpg","phone06.jpg","phone07.jpg","phone08.jpg","phone09.jpg","phone10.jpg",
+		"sea01.jpg","sea02.jpg","sea03.jpg","sea04.jpg","sea05.jpg","sea06.jpg","sea07.jpg","sea08.jpg","sea09.jpg","sea10.jpg"
+		};
 		
 		
 		//섞기 알고리즘

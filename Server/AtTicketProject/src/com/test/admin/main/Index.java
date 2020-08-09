@@ -25,6 +25,8 @@ public class Index extends HttpServlet{
 		
 		System.out.println(session.getAttribute("id"));
 		
+		
+		
 	}	
 }
 
