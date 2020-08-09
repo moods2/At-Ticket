@@ -22,6 +22,8 @@ public class Index extends HttpServlet{
 		
 		System.out.println(req.getContextPath());
 		
+		
+		
 
 	}	
 }
