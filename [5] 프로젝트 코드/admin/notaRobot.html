@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/highcharts.js"></script>
+</head>
+<body>
+
+    <style>
+        /* 테이블 감싸는 div */
+        #security {
+            border : 1px solid red;
+            width : 700px;
+            height : 700px;
+            margin: 200px auto;
+        }
+        
+
+        .standardRule {
+
+            margin-left : 100px;
+            width : 700px;
+            padding : 10px;
+            padding-left : 40px;
+            
+        }
+
+        /*보안 테이블 */
+        #secTable  {
+            /* border: 1px solid green; */
+            /* height : 500px; */
+        }
+        #secTable td {
+            padding : 5px;
+            width : 100px;
+            height : 200px;
+            /* background-color: black; */
+            /* border: 1px solid green; */
+        }
+
+        /* 제목을 감싸는 박스 */
+        #secSubject {
+            /* border: 1px solid red; */
+            background-color: #4A91E3;
+            color : white;
+            width : 690px;
+            margin-left : 105px;
+
+        }        
+
+        /* 선택해야 할 것의 제목 */
+        #secTitle {
+            font-size: 2.5em;
+            font-weight:bold;
+        }
+        
+        img {
+            width : 100%;
+            height : 100%;
+        }
+
+        /* 질문에 대한 답을 제출할 것이다. -> 버튼 */
+        #answerSubmit {
+            margin-top : 30px;
+            margin-left : 100px;
+            /* border: 1px solid green; */
+            width : 700px;
+            height: 100px;
+
+        }
+        /* 제출하기 혹은 건너뛰기 버튼 */
+        #answerSubmitBtn {
+            border: 0px;
+            width : 150px;
+            height : 50px;
+            font-size: 1.2em;
+            /* font-weight: bold; */
+            color : white;
+            background-color: #4A91E3;
+            margin-left : 460px;
+        }
+
+        /* 업데이트 아이콘 */
+        #updateIcon {
+            /* border : 1px solid red; */
+            width : 45px;
+            font-size: 2em;
+        }
+        #updateIcon:hover {
+            cursor : pointer;
+            font-weight: bold;
+        }
+
+        /* 정보를 주는 아이콘 */
+        #infoIcon {
+            width : 45px;
+            font-size: 2em;
+        }
+        #infoIcon:hover {
+            cursor : pointer;
+            font-weight: bold;
+        }
+        
+        /* 이미지에 커서를 올렸을때 반응 새로추가한 코드 */
+        .images:hover {
+            cursor:pointer;
+            /* opacity: .4; */
+        }
+        
+
+    </style>
+
+        <!-- <span><i class = "glyphicon glyphicon-pushpin"></i></span> -->
+        <div id = "secSubject" class = "standardRule" style = "margin-top : 100px;">
+            <span id = "secTitle">고양이</span><br>이(가) 있는 타일을 모두 선택하세요<br>아무것도 없으면 <span style = "font-weight : bold;">건너뛰기를</span> 클릭하세요
+        </div>
+        <table id = "secTable" class = "standardRule">
+            <tr>
+                <td><img src="../images/securefile/bird01.jpg" alt="" class = "images" id = "img0"></td>
+                <td><img src="../images/securefile/bird02.jpg" alt="" class = "images" id = "img1"></td>
+                <td><img src="../images/securefile/cat01.jpg" alt="" class = "images" id = "img2"></td>
+            </tr>
+            <tr>
+                <td><img src="../images/securefile/cat02.jpg" alt="" class = "images" id = "img3"></td>
+                <td><img src="../images/securefile/cat03.jpg" alt="" class = "images" id = "img4"></td>
+                <td><img src="../images/securefile/cat04.jpg" alt="" class = "images" id = "img5"></td>
+            </tr>
+            <tr>
+                <td><img src="../images/securefile/dog01.jpg" alt="" class = "images" id = "img6"></td>
+                <td><img src="../images/securefile/dog02.jpg" alt="" class = "images" id = "img7"></td>
+                <td><img src="../images/securefile/dog03.jpg" alt="" class = "images" id = "img8"></td>
+            </tr>
+            
+        </table>
+        
+        
+        
+    <div id = "answerSubmit">
+        <hr style = "border:1px solid #f0f0f0">
+        <div style = "float : left;"><span><i class = "glyphicon glyphicon-refresh" id = "updateIcon"></i></span></div>
+        <div style = "float : left;"><span><i class = "glyphicon glyphicon-exclamation-sign" id = "infoIcon"></i></span></div>
+        <div style = "float : left;"><button id = "answerSubmitBtn">건너뛰기</button></div>
+    </div>
+
+    <script>
+        //click event 를 걸어야 한다.
+        var imges = $(".images");
+
+        var clickNum = new Array();//클릭한 이미지의 번호를 저장할 배열.
+
+        console.log(imges.length);
+        console.log(imges[0]);
+
+        var onoffimges = [0,0,0,0,0,0,0,0,0];//0은 눌려지지 않은 상태
+        var nextcheck = false;//건너뛰기를 표시할지 제출을 표시할지 정해준다.
+
+        for (var i = 0; i < imges.length ; i++) {
+            
+            
+
+            imges[i].onclick = function(){
+                
+                //눌리고 안눌리고 상태를 정할것이다.
+                if (onoffimges[event.srcElement.id.substr(3)] == 0) {
+                    
+                    onoffimges[event.srcElement.id.substr(3)] = 1;
+                    event.srcElement.style.border = "10px solid red";
+                    
+                } else {
+                    
+                    onoffimges[event.srcElement.id.substr(3)] = 0;
+                    event.srcElement.style.border = "0px";
+                    
+                } 
+                //하나라도 1이 되면 제출하기로 바꿀것임
+                for (var i = 0; i < onoffimges.length; i++) {
+                    //console.log(i);
+                    if (onoffimges[i] == 1) {
+                        nextcheck = true;
+                        break;
+                    } else {
+                        nextcheck = false;
+                    }
+                }
+
+                if (nextcheck) {
+                    $("#answerSubmitBtn").text("제출하기");        
+                } else {
+                    $("#answerSubmitBtn").text("건너뛰기");
+                }
+            }
+        }
+
+        //일단정답을 정해보자-> 아 이거 구현 ..어렵네
+        var myCount = 0;
+        var answer = 4;//해당 정답개수가 넘어옴
+        var title = "cat";//정답이 넘어오고
+
+        //제출을 눌렀을 경우
+        $("#answerSubmitBtn").click(function() {
+            console.log("정답");
+            //console.log(onoffimges);
+            //console.log("??---------------??");
+            for (var i = 0; i < onoffimges.length; i++) {
+                if (onoffimges[i] == 1) {
+                    if ($("#img" + i).attr("src").includes(title)) {
+                        myCount++;     
+                    }
+                     //일단 내가 클릭 했을때 -> 들어오게 된다
+                    //console.log($("#img" + i).attr("src"));
+                    //console.log($("#img" + i).attr("src").includes("consert"));
+                    else {
+                        myCount--;
+                    }
+                }
+            }
+
+            if (myCount == answer) {
+                alert("성공");
+            } else {
+                alert("실패");
+                window.close();
+            }
+
+        });
+
+       // document.getElementById
+
+        
+        //console.log($("#apple").attr("src"));
+
+        //총9개의 그림이 존재 즉 index -> 0 ~ 8 까지 존재한다.
+        //var list = $("#secTable img");
+        
+        //console.log($(list[0]).attr("src").substr(10));
+        
+        //console.log(list.getAttribute("src"));
+        //console.log(list[0]);
+        //console.log(list[1].getAttribute);
+        //console.log(list[0].getAttribute('src'));
+
+        //console.log($(list[0]));
+
+        // var findsrc = function(list){
+        //     return list;
+        // }
+        
+        //console.log(findsrc(list));
+        
+
+
+    </script>
+
+    
+
+</body>
+</html>

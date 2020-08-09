@@ -9,21 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index.do")//xml 연결
-public class Index extends HttpServlet{
-	
-	//관리자 로그인 시작하는 페이지
-	//링크만 연결할 것이므로  Get방식으로 연결해준다
+@WebServlet("/adminsecurepass.do")
+public class AdminSecurePass extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		boolean robot = true;
+		
+		req.setAttribute("robot", robot);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/index.jsp");
 		dispatcher.forward(req, resp);
 		
-		System.out.println(req.getContextPath());
-		
-
-	}	
+	}
+	
 }
-
-
