@@ -520,7 +520,7 @@
     <div id="main">
 
         <!-------------------------------- 화면 상단부 -------------------------------->
-        <%@include file="/WEB-INF/views/inc/mypagetopbar.jsp" %>
+        <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
         </div>
             
             <!-- 챗봇 : 단비봇 --------------------------------------------------------------------------------------------------------------------------------->
@@ -939,7 +939,7 @@
 
 
             <!-------------------------------- 화면 하단부 -------------------------------->
-            <%@include file="/WEB-INF/views/inc/mypagebottom.jsp" %>
+            <%@include file="/WEB-INF/views/inc/userbottombar.jsp" %>
         </div>
 
             <!-- <div id="place"></div> -->
