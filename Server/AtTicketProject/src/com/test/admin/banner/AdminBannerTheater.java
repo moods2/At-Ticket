@@ -17,6 +17,8 @@ public class AdminBannerTheater extends HttpServlet{
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/banner/adminbannertheater.jsp");
 		dispatcher.forward(req, resp);
 		
+		
+		
 	}
 	
 }
