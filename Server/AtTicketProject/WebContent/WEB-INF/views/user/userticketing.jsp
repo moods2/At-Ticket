@@ -1,22 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="shortcut icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="./css/jquery-ui.css">
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="css/slick-theme.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <script src="./js/jquery-1.12.4.js"></script>
-    <script src="./js/jquery-ui.js"></script>
-    <script src="./js/bootstrap.js"></script>
-    <script src="js/Backstretch.js"></script>
-    <!-- Kakao Map -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9e03849d7b36324a660633928754affe&libraries=services"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        
+        <%@include file="/WEB-INF/views/inc/asset.jsp" %>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet"/>
+        <link rel="shortcut icon" href="./images/favicon.ico" />
+		<link rel="stylesheet" href="css/usermain.css" />
 
+        <!-- Kakao Map -->
+    	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9e03849d7b36324a660633928754affe&libraries=services"></script>
     <style>
+    
+    #submenu {
+    	/* display: block; */
+    	top: 250px;
+    }
 
     body { margin: 0 auto; }
         h1 { font-family: "Arial Black"; }
@@ -974,11 +980,13 @@
             </div>
         </div>
         <!-------------------------------- 화면 상단부 -------------------------------->
-        <div id="top">
+        <%@include file="/WEB-INF/views/inc/mypagetopbar.jsp" %>
+        
+        <!-- <div id="top">
             <div id="topmenu">
-                <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
+                상단메뉴 좌측(메인화면으로 돌아가기)
                 <a href="main.html" id="topleft"></a>
-                <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
+                상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시)
                 <div id="topcenter">
                     <span data-lo="user_concert.html" class="menubar"
                         >콘서트</span
@@ -996,7 +1004,7 @@
                         >전시</span
                     >
                 </div>
-                <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
+                상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지)
                 <div id="topright">
                     <span data-lo="user_ranking.html" class="menubar"
                         >랭킹</span
@@ -1025,7 +1033,7 @@
                         "
                     ></div>
                 </div>
-                            <!-- 검색 팝업 -->
+                            검색 팝업
                             <div id="tagsearch">
                                 <div id="tag">
                                     <span>태그 검색어 </span>
@@ -1044,9 +1052,10 @@
                                 <span>2020.07.23 기준</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
     <!-- 내용============================================================================================================================================= -->
+    <%@include file="/WEB-INF/views/inc/usersidebar.jsp" %>
     <div id="mainsection">
         <div id="maintop">
             <!-- 타이틀 -->
@@ -1396,14 +1405,15 @@
             <div style="clear:both;"></div>
             
             <!-- 챗봇 : 단비봇 --------------------------------------------------------------------------------------------------------------------------------->
-            <!-- <img src="./images/face35.png" id="chatbot"> -->
+            <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
 
-            <div id="frogue-container" class="position-right-bottom"
+ <!--         <img src="./images/face35.png" id="chatbot">
+             <div id="frogue-container" class="position-right-bottom"
                 data-chatbot="e4957de9-dad9-448d-a709-e43eeb644f63"
                 data-user="사용자ID"
                 data-init-key="value">
             </div>
-            <!-- data-init-식별키=값 으로 셋팅하면 챗플로우에 파라미터와 연동가능. 식별키는 소문자만 가능 -->
+  
             <script>
                 (function(d, s, id){
                     var js, fjs = d.getElementsByTagName(s)[0];
@@ -1412,14 +1422,19 @@
                     js.src = "https:\/\/danbee.ai/js/plugins/frogue-embed/frogue-embed.min.js";
                     fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'frogue-embed'));
-            </script>
+            </script>  -->
+
+
+            
             <!-- 제일 위로 돌아가기 버튼 -->
             <div id="movetop"><a href="#top">↑</a></div>
         </div>
-<!-------------------------------- 화면 하단부 -------------------------------->
-        <div id="bottom">
+        
+		<!-------------------------------- 화면 하단부 -------------------------------->
+        <%@include file="/WEB-INF/views/inc/mypagebottom.jsp" %>
+<!--         <div id="bottom">
             <div>
-                <!-- 회사 마크 -->
+                회사 마크
                 <img src="./images/title2.png"/>
             </div>
             <div class="txt">
@@ -1437,7 +1452,7 @@
             </div>
         </div>
         
-    </div>
+    </div> -->
 
             <!-- <div id="place"></div> -->
 
@@ -1850,9 +1865,11 @@
                         // bottom: "",
                         zIndex: "2"
                     });  
+                    $("#submenu").css("display", "block");
                 }
                 if ($(document).scrollTop() < $("#ticketing").position().top) {
-                    $("#middleMain").hide()
+                    $("#middleMain").hide();
+                    $("#submenu").css("display", "none");
                 }
             // }
         });

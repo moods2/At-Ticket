@@ -8,9 +8,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-		<%@include file="/WEB-INF/views/inc/asset.jsp" %>
-		<link rel="stylesheet" href="css/usermain.css" />
-		
+      <%@include file="/WEB-INF/views/inc/asset.jsp" %>
+      <link rel="stylesheet" href="css/usermain.css" />
+      
         <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
             rel="stylesheet"
@@ -23,7 +23,7 @@
             <!-------------------------------- 화면 상단부 -------------------------------->
             <div id="top">
             
-				<%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
+            <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
                     
                 <!-- 메인화면 좌우로 넘기는 버튼 -->
                 <div class="switch">
@@ -597,15 +597,15 @@
             //로그인 java 로 이동
             $("#login").click(function() {
                 location.href = "/AtTicketProject/userlogin.do";
-            	//window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
-            	//window.open(loginUrl,"_black");
+               //window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
+               //window.open(loginUrl,"_black");
             });
             
             //로그아웃 java 로 이동
             $("#logout").click(function() {
                 location.href = "/AtTicketProject/userlogout.do";
             });
-			//로그인 팝업창
+         //로그인 팝업창
         </script>
     </body>
 </html>
