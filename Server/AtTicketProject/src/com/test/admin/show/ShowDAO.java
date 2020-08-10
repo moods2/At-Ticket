@@ -33,7 +33,6 @@ public class ShowDAO {
 	public ShowDTO getList() {
 		
 		try {
-			
 			String sql = "select * from tblShow order by seq desc"; 	
 			
 			ShowDTO dto = new ShowDTO();
@@ -45,16 +44,16 @@ public class ShowDAO {
 				dto.setSeq(rs.getString("seq"));
 				dto.setTitle(rs.getString("title"));
 				dto.setGenre(rs.getString("genre"));
+				dto.setStartDate(rs.getString("startdate"));
+				dto.setEndDate(rs.getString("enddate"));
 				
+				return dto;
 			}
-			
-			
-			
-				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return null;
-	}
+	}//getList()
+	
+	
 }

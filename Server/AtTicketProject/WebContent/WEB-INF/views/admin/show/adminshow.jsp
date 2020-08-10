@@ -194,10 +194,10 @@
                 
                 <tr>
                     <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>1</td>
-                    <td>뮤지컬</td>
-                    <td>렌트</td>
-                    <td>2020.07.20-2020.09.17</td>
+                    <td>${dto.seq}</td>
+                    <td>${dto.genre}</td>
+                    <td>${dto.title}</td>
+                    <td>${dto.startdate}-${dto.enddate}</td>
                 </tr>
                 
             </tbody>

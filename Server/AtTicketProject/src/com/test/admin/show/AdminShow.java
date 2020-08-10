@@ -23,7 +23,7 @@ public class AdminShow extends HttpServlet{
 		
 		ShowDTO dto = dao.getList();
 		
-		
+		req.setAttribute("dto", dto);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/show/adminshow.jsp");
 		dispatcher.forward(req, resp);
