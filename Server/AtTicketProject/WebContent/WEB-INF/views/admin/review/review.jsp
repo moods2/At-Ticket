@@ -134,6 +134,26 @@
             /* background-color: #333; */
 
         }
+        
+        #manipulate2 {
+            margin-left: 1560px;
+        }
+        
+          .modified2 {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #999;
+            outline: none;
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modified2:hover {
+            color : white;
+            /* background-color: #333; */
+
+        }
 
         tr td:nth-child(4):hover {
             cursor: pointer;
@@ -213,6 +233,19 @@
             	margin-left:280px;
             }
             
+             #boxtable {
+            	margin-left:150px;
+            }
+            
+            #topmenu{
+            	margin-left:-150px;
+            }
+            
+            .eventcb{
+            	margin-left:115px;
+            }
+            
+             
 </style>
 
 
@@ -238,6 +271,7 @@
 
                             <p class="eve-mlist-dday">1000 포인트 지급</p>
                         </div>
+                            <span class = "eventcb"><input class = "eventch" type = "checkbox"></span>
                     </div>
                     <div id="eventbox">
                         <img
@@ -253,6 +287,7 @@
                             <p class="evetxt">2020.07-15 ~ 2020.08.31</p>
 
                             <p class="eve-mlist-dday">1000 포인트 지급</p>
+                             <span class = "eventcb"><input class = "eventch" type = "checkbox"></span>
                         </div>
                     </div>
                     <div id="eventbox">
@@ -267,6 +302,7 @@
                             <p class="evetxt">2020.07-15 ~ 2020.08.31</p>
 
                             <p class="eve-mlist-dday">1000 포인트 지급</p>
+                             <span class = "eventcb"><input class = "eventch" type = "checkbox"></span>
                         </div>
                     </div>
                     <div id="eventbox">
@@ -281,6 +317,7 @@
                             <p class="evetxt">2020.07-15 ~ 2020.08.31</p>
 
                             <p class="eve-mlist-dday">1000 포인트 지급</p>
+                             <span class = "eventcb"><input class = "eventch" type = "checkbox"></span>
                         </div>
                     </div>
                     <div id="eventbox">
@@ -295,10 +332,18 @@
                             <p class="evetxt">2020.07-15 ~ 2020.08.31</p>
 
                             <p class="eve-mlist-dday">1000 포인트 지급</p>
+                             <span class = "eventcb"><input class = "eventch" type = "checkbox"></span>
                         </div>
                     </div>
                 </div>
+                
+        <div id = "manipulate2">
+            <button class = "modified" id = "makebtn2"><i class="glyphicon glyphicon-plus"></i>추가</button>
+            <button class = "modified" id = "modifybtn2"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+            <button class = "modified" id = "delbtn2"><i class="glyphicon glyphicon-trash"></i>삭제</button>
+        </div>
       <!-- 그림 끝 부분 -->
+  <div id = "boxtable">
     <div id="selectable">
 
         <div id="slctp1">
@@ -516,7 +561,7 @@
                 </li>
             </ul>
         </nav>
-
+		</div>
 	<%@include file="/WEB-INF/views/inc/menu.jsp"%>
 	<script>
 	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	
@@ -537,7 +582,17 @@
     // });
 
     $("#delbtn").click(function(){
-        if($('input').is(':checked') == true) {
+        if($('.cb').is(':checked') == true) {
+            if(confirm("정말로 삭제하시겠습니까?")){
+
+            }
+        } else {
+            alert("하나 이상을 체크하시오.");
+        }
+    });
+    
+    $("#delbtn2").click(function(){
+        if($('.eventch').is(':checked') == true) {
             if(confirm("정말로 삭제하시겠습니까?")){
 
             }
@@ -551,8 +606,19 @@
         	 location.href = "/AtTicketProject/review/reviewupdate.do";
         };
     }
-
+	
+    $("#makebtn2").click(function(){
+    	   window.open("/AtTicketProject/review/eventupdate.do", "예매추가", "width=500,height=300");
+    });
     
+    $("#modifybtn2").click(function(){
+    	if($('.eventch').is(':checked') == true) {
+ 	   		window.open("/AtTicketProject/event/eventinfoupdate.do", "예매수정", "width=500,height=300");
+    	} else {
+    		  alert("하나 이상을 체크하시오.");
+    	}
+ 	});
+  
 
     </script>
 </body>
