@@ -288,7 +288,7 @@
     <div id="main">
 
         <!-------------------------------- 화면 상단부 -------------------------------->
-        <%@include file="/WEB-INF/views/inc/mypagetopbar.jsp" %>
+        <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
             
             <!-- 챗봇 : 단비봇 --------------------------------------------------------------------------------------------------------------------------------->
             <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
@@ -359,7 +359,7 @@
 
 	
 		<!-------------------------------- 화면 하단부 -------------------------------->
-	 	<%@include file="/WEB-INF/views/inc/mypagebottom.jsp" %>	
+	 	<%@include file="/WEB-INF/views/inc/userbottombar.jsp" %>
     </div>
 
     <script>

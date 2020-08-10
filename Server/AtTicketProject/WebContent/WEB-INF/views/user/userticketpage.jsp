@@ -1445,7 +1445,7 @@
                         buttons: {
                             // "text": function(){ alert();}
                             "예" : function() {
-                                opener.location.href  = 'mypage_reservation.html';
+                                opener.location.href  = '/AtTicketProject/usermypage.do';
                                 window.close();
                             },
                             "아니오" : function(){
