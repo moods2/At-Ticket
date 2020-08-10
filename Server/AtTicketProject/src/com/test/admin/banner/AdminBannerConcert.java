@@ -9,17 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/adminbannermain.do")
-public class AdminBannerMain extends HttpServlet{
+@WebServlet("/admin/adminbannerconcert.do")
+public class AdminBannerConcert extends HttpServlet{
+	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/banner/adminbannermain.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/banner/adminbannerconcert.jsp");
 		dispatcher.forward(req, resp);
-		
-		
+
 	}
+	
 }

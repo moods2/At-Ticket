@@ -18,7 +18,7 @@
            left: 0px;
            top: 0px;
            width: 250px;
-           height: 6000px;
+           height: 6500px;
            /* border: 1px solid black; */
            background-color: #444;
            text-align: center;
@@ -185,8 +185,8 @@
         <div id = "topImgName">상단배너 1 번째 사진</div>
     </div>
     
-    <div><img src="<%= request.getContextPath() %>/images/slide-dir-prev.png" alt="" id = "mainprev"></div>
-    <div><img src="<%= request.getContextPath() %>/images/slide-dir-next.png" alt="" id = "mainnext"></div>
+    <div><img src="../images/slide-dir-prev.png" alt="" id = "mainprev"></div>
+    <div><img src="../images/slide-dir-next.png" alt="" id = "mainnext"></div>
     
     
     <!-- 사진 움직이게 하려는 컨트롤 -->

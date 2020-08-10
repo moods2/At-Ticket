@@ -70,12 +70,12 @@
             </div> 
             <h3>배너 관리</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementMain.html"><span>▶</span>메인 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementConcert.html"><span>▶</span>콘서트 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementMusical.html"><span>▶</span>뮤지컬 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementTheater.html"><span>▶</span>연극 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementClassic.html"><span>▶</span>클래식 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementDisplay.html"><span>▶</span>전시 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannermain.do"><span>▶</span>메인 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerconcert.do"><span>▶</span>콘서트 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannermusical.do"><span>▶</span>뮤지컬 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannertheater.do"><span>▶</span>연극 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerclassic.do"><span>▶</span>클래식 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerdisplay.do"><span>▶</span>전시 배너 수정</a></div>
             </div> 
         </div>
 
