@@ -1,18 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="shortcut icon" href="./images/favicon.ico" />
-        <link rel="stylesheet" href="css/jquery-ui.css" />
-        <link rel="stylesheet" href="css/bootstrap.css" />
+        <%@include file="/WEB-INF/views/inc/asset.jsp" %>
+        
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="css/slick-theme.css" />
         <link rel="stylesheet" href="css/slick.css" />
-        <script src="js/jquery-1.12.4.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/Backstretch.js"></script>
+        <link rel="shortcut icon" href="./images/favicon.ico" />
+        
         <style>
             * {
                 outline: none;
@@ -323,6 +326,12 @@
                     $("#topcenter").css("transform", "translate(0, 0)");
                 }
             });
+            
+            //쿠폰
+            $("#coupon").click(function(){
+            	
+            	alert("쿠폰이 발급되었습니다.");
+            });
 
             //마이페이지 클릭시 이동
             $("#mypage").click(function () {
@@ -331,3 +340,4 @@
         </script>
     </body>
 </html>
+        
