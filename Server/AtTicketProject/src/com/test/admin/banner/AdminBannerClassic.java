@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/customer/adminbannerclassic.do")
+@WebServlet("/adminbannerclassic.do")
 public class AdminBannerClassic extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/banner/adminbannerclassic.jsp");
 		dispatcher.forward(req, resp);
 	}
