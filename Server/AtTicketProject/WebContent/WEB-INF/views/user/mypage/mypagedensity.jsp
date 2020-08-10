@@ -9,6 +9,7 @@
     <title>Document</title>
     <link rel="shortcut icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="css/usermypage.css" />
+    <link rel="stylesheet" href="css/usermypage.css" />
     <style>
   * {
         outline: none;
@@ -507,7 +508,8 @@
 </head>
 <body>
     
-    
+    <%@include file="/WEB-INF/views/inc/mypagetopbar.jsp"%>
+    <%@include file="/WEB-INF/views/inc/mypageleft.jsp"%>
     <div id="main" style="margin: 20px auto;">
 
         <div class="wrapper">
@@ -775,7 +777,7 @@
             </div> -->
 
         </div>
-
+		<%@include file="/WEB-INF/views/inc/mypagebottom.jsp"%>
 
 
    
@@ -1014,7 +1016,7 @@
                 }]
             });
         </script>
-
+		
         <script>
             var rbox = document.getElementById("rbox")
             var distance = 0;
