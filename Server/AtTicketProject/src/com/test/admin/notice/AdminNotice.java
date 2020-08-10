@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("adminnotice.do")
+@WebServlet("/notice/adminnotice.do")
 public class AdminNotice extends HttpServlet{
 	
 	@Override
