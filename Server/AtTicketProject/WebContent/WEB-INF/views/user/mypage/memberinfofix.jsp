@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,7 @@
             /* border: 1px solid white; */
             width: 100px;
             height: 65px;
-            background-image: url("../images//title.png");
+            background-image: url("./images//title.png");
             background-repeat: no-repeat;
             background-position: center center;
             cursor: pointer;
@@ -240,6 +241,7 @@
                 <li id="withdraw">회원탈퇴</li>
             </ul>
         </div>
+        <form method="POST" action="/AtTicketProject/memberinfofixend.do">
         <div id="info">
             <h2>필수정보</h2>
             <table id="tbl1">
@@ -248,24 +250,24 @@
                         <th>아이디</th>
                         <td><span class="info">${userid}</span></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th>닉네임</th>
                         <td>
                             <input type="text" id="nickname">
                             <span class="text">20자 이내로 입력해주세요.</span>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>이름</th>
                         <td>
                             <div id="nameori">
-                                <input type="text" id="name" value="${username}" class="name" readonly>
-                                <button class="btn btn-default" id="btnname">이름변경</button>
+                                <input type="text" id="name" value="${username}" class="name" name="fixedname" readonly>
+                                <button type="button" class="btn btn-default" id="btnname">이름변경</button>
                                 <span class="text">개명하신 경우 본인인증 후 이름변경이 가능합니다.</span>
                             </div>
                             <div id="namefix">
                                 <input type="text" id="namefixed" class="name" autocomplete="">
-                                <button class="btn btn-default" id="btnnamefix">이름변경 완료</button>
+                                <button type="button" class="btn btn-default" id="btnnamefix">이름변경 완료</button>
                                 <span class="text">개명하신 경우 본인인증 후 이름변경이 가능합니다.</span>
                             </div>
                         </td>
@@ -273,20 +275,39 @@
                     <tr>
                         <th>성별</th>
                         <td>
-                            <span class="info">남</span>
+                            <span class="info">
+                            <c:set var = "ssn" value = "${userssn}"/>
+                            <c:choose>
+                            	<c:when test="${fn:substring(ssn,7,8) eq 1 || fn:substring(ssn,7,8) eq 3}">
+                            		남
+                            	</c:when>
+                            	<c:when test="${fn:substring(ssn,7,8) eq 2 || fn:substring(ssn,7,8) eq 4}">
+                            		여
+                            	</c:when>
+                            </c:choose>
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <th>생년월일</th>
                         <td>
-                            <span class="info">****년 **월 **일</span>
+                            <span class="info">
+                            <c:choose>
+                            	<c:when test="${fn:substring(ssn,7,8) eq 1 || fn:substring(ssn,7,8) eq 2}">
+                            		19${fn:substring(ssn,0,2)}년 ${fn:substring(ssn,2,4)}월 ${fn:substring(ssn,4,6)}일
+                            	</c:when>
+                            	<c:when test="${fn:substring(ssn,7,8) eq 3 || fn:substring(ssn,7,8) eq 4}">
+                            		20${fn:substring(ssn,0,2)}년 ${fn:substring(ssn,2,4)}월 ${fn:substring(ssn,4,6)}일
+                            	</c:when>
+                            </c:choose>
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <th>비밀번호</th>
                         <td>
                             <!-- Modal 사용예정 -->
-                            <button class="btn btn-default" id="btnpassword">비밀번호 변경</button>
+                            <button type="button" class="btn btn-default" id="btnpassword">비밀번호 변경</button>
                         </td>
                     </tr>
                     <tr>
@@ -299,7 +320,7 @@
                     <tr>
                         <!-- <th></th> -->
                         <td>
-                            <input type="text" id="address" readonly>
+                            <input type="text" id="address" name="fixedaddress" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -312,8 +333,8 @@
                         <th>전화번호</th>
                         <td>
                             <div id="telori">
-                                <input type="text" value="${usertel}" id="telnum" readonly>
-                                <button class="btn btn-default" id="btntel">수정</button>
+                                <input type="text" value="${usertel}" id="telnum" name="fixedtel" readonly>
+                                <button type="button" class="btn btn-default" id="btntel">수정</button>
                             </div>
                             <div id="telfix">
                                 <select id="frontphonenum" class="phonenum">
@@ -326,7 +347,7 @@
                                 <input type="text" id="middlephonenum" class="phonenum" autocomplete="">
                                 -
                                 <input type="text" id="backphonenum" class="phonenum" autocomplete="">
-                                <button class="btn btn-default" id="btntelfix">수정완료</button>
+                                <button type="button" class="btn btn-default" id="btntelfix">수정완료</button>
                             </div>
                         </td>
                     </tr>
@@ -334,8 +355,8 @@
                         <th>이메일주소</th>
                         <td>
                             <div id="emailori">
-                                <input type="text" value="${useremail}" id="emailaddress" class="email" readonly>
-                                <button class="btn btn-default" id="btnemail">수정</button>
+                                <input type="text" value="${useremail}" id="emailaddress" name="fixedemail" class="email" readonly>
+                                <button type="button" class="btn btn-default" id="btnemail">수정</button>
                             </div>
                             <div id="emailfix">
                                 <input type="text" id="frontemail" class="email" autocomplete="off">
@@ -347,7 +368,7 @@
                                     <option value="google.com">google.com</option>
                                     <option value="hanmail.net">hanmail.net</option>
                                 </select>
-                                <button class="btn btn-default" id="btnemailfix">수정완료</button>
+                                <button type="button" class="btn btn-default" id="btnemailfix">수정완료</button>
                             </div>
                         </td>
                     </tr>
@@ -355,8 +376,9 @@
             </table>
         </div>
         <div id="buttonbox">
-            <button class="btn btn-primary" id="enter">회원정보 수정</button>
+            <input type="submit" class="btn btn-primary" id="enter" value="회원정보 수정">
         </div>
+        </form>
     </div>
     <div id="footer">
         <div id="copyright">
@@ -391,8 +413,11 @@
     
                     // 우편번호와 주소 정보를 해당 필드에 넣는다.
                     document.getElementById('postcode').value = data.zonecode;
-                    document.getElementById("address").value = roadAddr;
-                    document.getElementById("address").value = data.jibunAddress;
+                    if (roadAddr == null) {
+                    	document.getElementById("address").value = data.jibunAddress;
+                    } else {
+                    	document.getElementById("address").value = roadAddr;
+                    }
 
                 }
             }).open();

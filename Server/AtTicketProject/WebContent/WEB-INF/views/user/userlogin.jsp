@@ -161,11 +161,11 @@
                 return false;
             };
             
-            if ($("#saveid").prop("checked")) {
+            /* if ($("#saveid").prop("checked")) {
                 console.log("아이디 저장");
             } else {
                 console.log("아이디 미저장");
-            };
+            }; */
 
             window.opener.location.href = "/AtTicketProject/userindex.do";
             window.close();
