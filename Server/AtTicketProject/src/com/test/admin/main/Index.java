@@ -22,8 +22,11 @@ public class Index extends HttpServlet{
 		dispatcher.forward(req, resp);
 		
 		HttpSession session = req.getSession();
-		
 		System.out.println(session.getAttribute("id"));
+		
+
+		
+		
 		
 		
 		
