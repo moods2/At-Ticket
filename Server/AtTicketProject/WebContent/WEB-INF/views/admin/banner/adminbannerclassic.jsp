@@ -213,11 +213,11 @@
     <div id = "topbanner">
         <div id = "topcover">
             <div id = "topbaby">
-                <div class = "topsetting" style = "background-image: url(../images/classicSlide1.jpeg);"></div>
-                <div class = "topsetting" style = "background-image: url(../images/classicSlide2.jpeg);"></div>
-                <div class = "topsetting" style = "background-image: url(../images/classicSlide3.jpeg);"></div>
-                <div class = "topsetting" style = "background-image: url(../images/classicSlide4.jpeg);"></div>
-                <div class = "topsetting" style = "background-image: url(../images/classicSlide5.jpeg);"></div>
+                <div class = "topsetting" style = "background-image: url('../images/classicSlide1.jpeg');"></div>
+                <div class = "topsetting" style = "background-image: url('../images/classicSlide2.jpeg');"></div>
+                <div class = "topsetting" style = "background-image: url('../images/classicSlide3.jpeg');"></div>
+                <div class = "topsetting" style = "background-image: url('../images/classicSlide4.jpeg');"></div>
+                <div class = "topsetting" style = "background-image: url('../images/classicSlide5.jpeg');"></div>
             </div>
         </div>
         <div id = "topImgName">상단배너 1 번째 사진</div>

@@ -8,9 +8,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-      <%@include file="/WEB-INF/views/inc/asset.jsp" %>
-      <link rel="stylesheet" href="css/usermain.css" />
-      
+		<%@include file="/WEB-INF/views/inc/asset.jsp" %>
+		<link rel="stylesheet" href="css/usermain.css" />
+		
         <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
             rel="stylesheet"
@@ -23,7 +23,7 @@
             <!-------------------------------- 화면 상단부 -------------------------------->
             <div id="top">
             
-            <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
+				<%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
                     
                 <!-- 메인화면 좌우로 넘기는 버튼 -->
                 <div class="switch">
@@ -225,35 +225,35 @@
                         class="btn btn-default"
                         value="#뮤지컬"
                         id="hashmusical"
-                        onclick="location.href='user_ranking.html'"
+                        onclick="location.href='/AtTicketProject/userranking.do'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#콘서트"
                         id="hashconcert"
-                        onclick="location.href='user_ranking.html'"
+                        onclick="location.href='/AtTicketProject/userranking.do'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#연극"
                         id="hashplay"
-                        onclick="location.href='user_ranking.html'"
+                        onclick="location.href='/AtTicketProject/userranking.do'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#클래식"
                         id="hashclassic"
-                        onclick="location.href='user_ranking.html'"
+                        onclick="location.href='/AtTicketProject/userranking.do'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#전시"
                         id="hashexhibition"
-                        onclick="location.href='user_ranking.html'"
+                        onclick="location.href='/AtTicketProject/userranking.do'"
                     />
                     <!-- 랭킹 이미지 -->
                     <div style="margin-top: 20px;">
@@ -289,7 +289,7 @@
                         class="btn btn-default"
                         id="btnrank"
                         style="margin-top: 20px;"
-                        onclick="location.href='user_ranking.html'"
+                        onclick="location.href='/AtTicketProject/userranking.do'"
                     />
                 </div>
                 <hr />
@@ -597,15 +597,15 @@
             //로그인 java 로 이동
             $("#login").click(function() {
                 location.href = "/AtTicketProject/userlogin.do";
-               //window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
-               //window.open(loginUrl,"_black");
+            	//window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
+            	//window.open(loginUrl,"_black");
             });
             
             //로그아웃 java 로 이동
             $("#logout").click(function() {
                 location.href = "/AtTicketProject/userlogout.do";
             });
-         //로그인 팝업창
+			//로그인 팝업창
         </script>
     </body>
 </html>

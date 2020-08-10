@@ -511,7 +511,7 @@
     <div id="main">
 
         <!-------------------------------- 화면 상단부 -------------------------------->
-       	<%@include file="/WEB-INF/views/inc/mypagetopbar.jsp" %>
+       	<%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
             
 
                 <!-- 검색 팝업 -->
@@ -973,7 +973,7 @@
 
 
         <!-------------------------------- 화면 하단부 -------------------------------->
-		<%@include file="/WEB-INF/views/inc/mypagetopbar.jsp" %>
+		<%@include file="/WEB-INF/views/inc/userbottombar.jsp" %>
         </div>
 
     <script>

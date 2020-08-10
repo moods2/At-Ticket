@@ -191,110 +191,13 @@
                     <th>기간</th>
 
                 </tr>
+                
                 <tr>
                     <td><input type="checkbox" class="cb" name="is_check"></td>
                     <td>1</td>
                     <td>뮤지컬</td>
                     <td>렌트</td>
                     <td>2020.07.20-2020.09.17</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>2</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>3</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>4</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>5</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>6</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>7</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>8</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>9</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>10</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>11</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>12</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>13</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>14</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>15</td>
-                    <td>뮤지컬</td>
-                    <td>마틸다</td>
-                    <td>2020.06.11-2020.08.24</td>
                 </tr>
                 
             </tbody>

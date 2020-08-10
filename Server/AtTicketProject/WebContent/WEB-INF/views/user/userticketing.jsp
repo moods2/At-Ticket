@@ -980,7 +980,7 @@
             </div>
         </div>
         <!-------------------------------- 화면 상단부 -------------------------------->
-        <%@include file="/WEB-INF/views/inc/mypagetopbar.jsp" %>
+        <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
         
         <!-- <div id="top">
             <div id="topmenu">
@@ -1431,7 +1431,7 @@
         </div>
         
 		<!-------------------------------- 화면 하단부 -------------------------------->
-        <%@include file="/WEB-INF/views/inc/mypagebottom.jsp" %>
+        <%@include file="/WEB-INF/views/inc/userbottombar.jsp" %>
 <!--         <div id="bottom">
             <div>
                 회사 마크
@@ -1909,13 +1909,15 @@
 
         // 예매하기 링크1
         $("#ticketing").click(function(){
-            // $(location).attr('href','user_ticketpage.html');
-            window.open("user_ticketpage.html", "PopupWin", "width=1000,height=672");
+            window.open("/AtTicketProject/userticketpage.do", "PopupWin", "width=1000,height=672");
         });
         // 예매하기 링크2
         $("#mTTicketing").click(function(){
-            // $(location).attr('href','user_ticketpage.html');
-            window.open("user_ticketpage.html", "PopupWin", "width=1000,height=672");
+            window.open("/AtTicketProject/userticketpage.do", "PopupWin", "width=1000,height=672");
+        });
+        
+        $("#ranking input")click(function(){
+        	$(location).attr('href','/AtTicketProject/userranking.do');
         });
 
     </script>

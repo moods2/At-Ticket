@@ -11,13 +11,15 @@
         <span data-lo="user_Exhibition.html" class="menubar">전시</span>
         <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
         <div id="topright">
-            <span data-lo="user_ranking.html" class="menubar">랭킹</span>
+            <span data-lo="/AtTicketProject/userranking.do" class="menubar">랭킹</span>
             <span data-lo="user_event.html" class="menubar">이벤트</span>
             <input type="text" value="" id="search">
             <label for="search" class="glyphicon glyphicon-search"
                 style="font-size: 14px; cursor: pointer;"></label>
+            <c:if test = "${!empty userid}">
             <div class="glyphicon glyphicon-user" id="mypage" 
                 style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
+            </c:if>
         </div>
     </div>
 </div>

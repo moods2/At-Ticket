@@ -1,4 +1,4 @@
-package com.test.user.ticket.copy;
+package com.test.user.ticket;
 
 import java.io.IOException;
 

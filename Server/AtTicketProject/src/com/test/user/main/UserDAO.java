@@ -114,6 +114,46 @@ public class UserDAO {
 		
 		return 0;
 	}
+
+	//MemberInfoFixEnd.java에서 넘어옴 -> 회원정보 수정 시 수정된 정보를 DB에 저장.
+	public void userUpdate(UserDTO dto) {
+		
+		try {
+			
+			String sql = "UPDATE TBLCUSTOMER SET NAME = ?, ADDR = ?, TEL = ?, EMAIL = ? WHERE SEQ = ?";
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getName());
+			pstat.setString(2, dto.getAddr());
+			pstat.setString(3, dto.getTel());
+			pstat.setString(4, dto.getEmail());
+			pstat.setInt(5, dto.getSeq());
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	//MemberInfoDeleteEnd.java에서 넘어옴 -> 회원 탈퇴.
+	public void userDelete(int seq) {
+		
+		try {
+			
+			String sql = "UPDATE TBLCUSTOMER SET DELFLAG = 1 WHERE SEQ = ?";
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, seq);
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
 	
 	
 	
