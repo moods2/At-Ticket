@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,15 +159,22 @@
                 <div class="event">
                     <p>COUPON</p>
                     <ul>
-                        <li>공연 할인 쿠폰 : 사용가능 <span class="coupon">0</span> 매</li>
+                        <li>공연 할인 쿠폰 : 사용가능 <span class="coupon">${fn:length(clist)}</span> 매</li>
                         <li>공연 예매권 : 사용가능 <span class="coupon">0</span> 매</li>
                     </ul>
                 </div>
                 <div class="event">
-                    <p>EVENT <span>| 현재 진행 중인 이벤트 <span>1</span>건</span><input type="button" value="더보기" class="btn btn-default btn-xs" id="eventmore" style="float: right; outline: none;"></p>
+                    <p>EVENT <span>| 현재 진행 중인 이벤트 <span>${fn:length(elist)}</span>건</span><input type="button" value="더보기" class="btn btn-default btn-xs" id="eventmore" style="float: right; outline: none;"></p>
                     <ul>
-                        <li><a href="user_event_promotion.html">컴백 스테이지</a></li>
-                        <li><a href="#!">진행중인 이벤트가 없습니다.</a></li>
+                    <c:forEach items="${elist}" var="event" begin="0" end="1" step="1">
+                    
+                        <li><a href="/AtTicketProject/userevent.do">${event.title}</a></li>
+                        
+                        <c:if test="${empty event.title}">
+                        	<li><a href="#!">진행중인 이벤트가 없습니다.</a></li>
+                        </c:if>
+                        
+                    </c:forEach>
                     </ul>
                 </div>
                 <div style="clear: both;"></div>
@@ -271,7 +279,7 @@
 
         //이벤트 더보기 클릭시 이동
         $("#eventmore").click(function() {
-            location.href = "user_event.html";
+            location.href = "/AtTicketProject/userevent.do";
         });
 
         //movetop
@@ -294,7 +302,7 @@
 
         //쿠폰에 매수 클릭시
         $(".coupon").click(function() {
-            location.href = "mypage_coupon.html";
+            location.href = "/AtTicketProject/mypagecoupon.do";
         });
 
     </script>
