@@ -192,6 +192,7 @@
 
                 </tr>
                 
+                <c:forEach items="${list}" var="dto">
                 <tr>
                     <td><input type="checkbox" class="cb" name="is_check"></td>
                     <td>${dto.seq}</td>
@@ -199,6 +200,7 @@
                     <td>${dto.title}</td>
                     <td>${dto.startdate}-${dto.enddate}</td>
                 </tr>
+                </c:forEach>
                 
             </tbody>
         </table>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.test.atticket.DBUtil;
 
@@ -30,25 +31,30 @@ public class ShowDAO {
 	}//close()
 
 	//Show 서블릿 -> 공연 목록 불러오기
-	public ShowDTO getList() {
+	public ArrayList<ShowDTO> getList() {
 		
 		try {
-			String sql = "select * from tblShow order by seq desc"; 	
+			String sql = "select * from tblShow"; 	
 			
-			ShowDTO dto = new ShowDTO();
+			ArrayList<ShowDTO> list = new ArrayList<ShowDTO>();
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			
-			if(rs.next()) {
+			while (rs.next()) {
+				ShowDTO dto = new ShowDTO();
+
 				dto.setSeq(rs.getString("seq"));
 				dto.setTitle(rs.getString("title"));
 				dto.setGenre(rs.getString("genre"));
 				dto.setStartDate(rs.getString("startdate"));
 				dto.setEndDate(rs.getString("enddate"));
-				
-				return dto;
+
+				list.add(dto);
 			}
+
+			return list;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
