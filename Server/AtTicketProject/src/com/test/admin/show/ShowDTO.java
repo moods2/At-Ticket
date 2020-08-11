@@ -11,7 +11,7 @@ public class ShowDTO {
 	private String openDate;
 	private String age;
 	private String genre;
-	private String agencySeq; //기획사
+	private String host; //기획사
 	private String theSeq; //상영관
 	
 	
@@ -75,18 +75,19 @@ public class ShowDTO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getAgencySeq() {
-		return agencySeq;
-	}
-	public void setAgencySeq(String agencySeq) {
-		this.agencySeq = agencySeq;
-	}
 	public String getTheSeq() {
 		return theSeq;
 	}
 	public void setTheSeq(String theSeq) {
 		this.theSeq = theSeq;
 	}
+	public String getHost() {
+		return host;
+	}
+	public void setHost(String host) {
+		this.host = host;
+	}
+	
 	
 	
 	
