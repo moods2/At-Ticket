@@ -21,7 +21,7 @@ public class AdminWorking extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//1. DB 작업 > select
+				//1. DB 작업 > select
 				//2. 결과값 전달 + JSP 호출하기
 				
 				HttpSession session = req.getSession();
@@ -66,7 +66,7 @@ public class AdminWorking extends HttpServlet{
 				String page = req.getParameter("page");
 				
 				if (page == null || page == "") nowPage = 1; //default
-				else nowPage = Integer.parseInt(page); //
+				else nowPage = Integer.parseInt(page); 
 				
 				//nowPage -> 보려는 페이지 번호!!
 				//1page -> where rnum >= 1 and rnum <= 10
@@ -155,11 +155,8 @@ public class AdminWorking extends HttpServlet{
 				
 				
 				
-				//새로고침 조회수 증가 방지
+				//새로고침 ~~> 조회수 증가 방지
 				session.setAttribute("read", false);
-				
-				
-				
 				
 				
 				

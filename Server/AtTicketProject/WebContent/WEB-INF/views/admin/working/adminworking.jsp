@@ -194,7 +194,8 @@
             </tbody>
         </table>
         <hr style="width: 940px;">
-
+		
+		
         <nav class="pagebar" style="width: 500px; position: relative; margin: 20px auto;">
             <ul class="pagination">
               <li>

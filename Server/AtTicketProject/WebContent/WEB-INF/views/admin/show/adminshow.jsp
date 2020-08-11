@@ -190,7 +190,7 @@
 			</div>
         </div>
         </form>
-
+		
         <table id="tbl" class="table table-striped table-bordered table-condensed">
             <tbody id="tbody">
                 <tr>

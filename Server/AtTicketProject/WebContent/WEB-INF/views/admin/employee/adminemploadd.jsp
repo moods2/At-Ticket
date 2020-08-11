@@ -103,8 +103,16 @@
             </div>
             <div><label for="txtgrade">직급 : </label><input type="text" id="txtgrade" style="width: 70px;" autofocus></div>
             <div><label for="txtsalary">월급 : </label><input type="text" id="txtsalary" style="width: 70px;" autofocus></div>
-
-            <div><label for="txtphoto">증명사진 </label><input type="file" id="txtphoto" style="display: inline;" autofocus></div>
+			<div><label for="txtbuseo">부서배치 : </label>
+				<select>
+					<option value = "">인사부</option>
+					<option value = "">개발부</option>
+					<option value = "">기획부</option>
+					<option value = "">경영지원</option>
+					<option value = "">홍보부</option>
+					<option value = "">영업부</option>
+				</select>
+			</div>
             <div class="img_wrap">
                 <img id="img1" />
             </div>
