@@ -7,14 +7,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<link rel="stylesheet" href="/AtTicketProject/css/adminbanner.css">
+	<link rel="stylesheet" href="/AtTicketProject/css/adminbanner.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 <style>
         /* 매인배너 타이틀 */
 
-
+       #left {
+           position: absolute;
+           left: 0px;
+           top: 0px;
+           width: 250px;
+           height: 2800px;
+           background-color: #444;
+           text-align: center;
+           z-index: 10;
+       }
         
         #bannermg {
             border : 0px;
@@ -46,6 +55,14 @@
             width: 1500px;
             border-bottom: 1px dashed black;
         }
+        
+       /* 구분선 */
+      .splitHr {
+          margin-top : 40px;
+          border : 1px solid #999999;
+          margin-left : 280px;
+          width : 1500px;
+      }
 
 
 </style>
@@ -511,12 +528,24 @@
         }
         .modified:hover {
             color : white;
-            /* background-color: #333; */
-
         }
         .pagebar {
             margin-left : 400px;
         }
+        
+        /* 게시판 th 관리 */
+        .tableth {
+            text-align: center;
+        }
+
+       .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+           background-color:#999999;
+           border-color: #eeeeee;
+       }
+        
+      .pagination > li > a, .pagination > li > span{
+          color: black;
+      }
 
 
 
@@ -732,20 +761,7 @@
  
 
     </div><!-- selectable -->	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	<!-------------------------- 회원대상 공지사항 끝 -------------------------->	
 	
 	

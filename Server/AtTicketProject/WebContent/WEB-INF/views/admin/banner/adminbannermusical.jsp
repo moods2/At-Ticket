@@ -179,7 +179,11 @@
                      positionTopX -= 450;
                     $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
                     //document.getElementById("topImgName").textContent = parseInt(clickCountTop + 2) + " 번째 사진";
-                    $("#topImgName").text(`상단배너 ${clickCountTop + 2} 번째 사진`);
+                    //$("#topImgName").text(`상단배너 ${clickCountTop + 2} 번째 사진`);
+                    var sta1 = "상단배너 ";
+                    var one = clickCountTop + 2
+                   	var sta2 = " 번째 사진";
+                    $("#topImgName").text(sta1 + one + sta2);
                     clickCountTop++;
                 }
         });
@@ -188,7 +192,11 @@
                 if (clickCountTop > 0) {
                      positionTopX += 450;
                     $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
-                    $("#topImgName").text(`상단배너 ${clickCountTop} 번째 사진`);
+                    //$("#topImgName").text(`상단배너 ${clickCountTop} 번째 사진`);
+                   	var sta1 = "상단배너 ";
+                    var one = clickCountTop;
+                   	var sta2 = " 번째 사진";
+                   	$("#topImgName").text(sta1 + one + sta2);
                     clickCountTop--;
                 }
         });
