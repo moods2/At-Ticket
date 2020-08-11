@@ -54,7 +54,7 @@
             </div>
             <h3>공지사항</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/usernotice/adminusernotice.do"><span>▶</span> 공지사항 조회</a></div>
             </div>
             <h3>고객 정보</h3>
             <div>
@@ -78,6 +78,7 @@
                 <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerdisplay.do"><span>▶</span>전시 배너 수정</a></div>
             </div> 
         </div>
+        
 
 
         <!-- container -->
