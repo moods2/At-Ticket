@@ -1,4 +1,4 @@
-package com.test.admin.working;
+package com.test.admin.usernotice;
 
 import java.io.IOException;
 
@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/customer/adminworking.do")
-public class AdminWorking extends HttpServlet{
+@WebServlet("/usernotice/adminusernotice.do")
+public class AdminUserNotice extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/working/adminworking.jsp");
-		dispatcher.forward(req, resp);
 		
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/notice/adminusernotice.jsp");
+		dispatcher.forward(req, resp);
 	}
+	
 }

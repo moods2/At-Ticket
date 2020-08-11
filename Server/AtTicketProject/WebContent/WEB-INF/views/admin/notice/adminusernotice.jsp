@@ -222,9 +222,8 @@
             /* border : 1px solid orange; */
             display: inline-block;
             visibility: hidden;
-            /* float: left; */
         }
-
+		
         /* 이미지 내 수정버튼 */
         .innerbtn1 {
             width : 200px;
@@ -452,7 +451,7 @@
     <hr class = "splitHr">
     
 
-    <!-------------------------- 회원대상 공지사항  게시판 시작 -------------------------->	
+    <!-------------------------------------------- 회원대상 공지사항  게시판 시작 ------------------------------------------->	
     <style>
         #selectable {
             /* border : 1px solid blue; */
@@ -757,7 +756,76 @@
               </ul>
             </nav>
 
-     
+ 
+ 	<script>
+    
+ 	// 게시판 맨 상단박스가 체크 되면 아래 박스 모두 체크 해준다. -> 고객공지 대상    
+    var ck = document.getElementById("total5");
+    var t5 = document.getElementsByClassName("t5");
+    
+    ck.onclick = function(){
+        if (ck.checked) {
+            console.log("체크가 됨");
+            for (var i = 0; i < t5.length; i++) {
+                t5[i].checked = true;
+            }
+
+        } else {
+            console.log("체크가 안됨");
+
+            for (var i = 0; i < t5.length; i++) {
+                t5[i].checked = false;
+            }
+        }
+    }//
+    
+    
+    // 배너 그림 위에 수정 버튼 눌렀을 때! 
+    var bannerChild;//자식객체 -> 새로운 페이지에 대한 자식객체라고 생각하면 된다.
+
+    $(".innerbtn1").click(function(){
+        
+        // console.log(event.srcElement.id);
+        
+        //bannerChild = window.open("./adminBannerSelect.html","bs","width=630,height=1000");
+        popupCenter("/AtTicketProject/usernotice/adminusernoticeimgmodify.do",630,1000);
+
+    });
+    
+    
+    //팝업 중앙정렬 알고리즘
+    function popupCenter(href, w, h) {
+    	var xPos = (document.body.offsetWidth/2) - (w/2); // 가운데 정렬
+    	xPos += window.screenLeft; 
+    	var yPos = (document.body.offsetHeight/2) - (h/2);
+
+    	window.open(href, "pop_name", "width="+w+", height="+h+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
+    }
+ 	
+ 	
+    // 고객 공지 삭제 작성 수정 버튼 눌렀을때 반응 crud
+    
+    //삭제
+    $("#delbtn").click(function(){
+        if(confirm("해당 공지를 삭제하시겠습니까?")) {
+            alert("삭제완료");
+        }
+    });
+
+    //작성
+    // adminNctModify(fix).html
+    $("#makebtn").click(function(){
+        location.href = "/AtTicketProject/usernotice/adminusernoticecreate.do";
+    });
+
+    
+    //수정
+    $("#modifybtn").click(function(){
+        location.href = "/AtTicketProject/usernotice/adminusernoticemodify.do";
+    });
+    
+ 	
+ 	</script>    
  
 
     </div><!-- selectable -->	
