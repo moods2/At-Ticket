@@ -8,351 +8,44 @@
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/highcharts.js"></script>
     <script src="../js/bootstrap.js"></script>
-    <script src="../js/highcharts.js"></script>
-
-
-<style>
-	/* 등록순, 오름차순, 내림차순 */
-	        .selectNotice {
-                width : 80px;
-                /* text-align: center; */
-                margin: 10px 0px;
-                margin-bottom: -10px;
-                background-color: white;
-                border : 0px;
-                height : 20px;
-                border-right: 1px solid #999;
-                color : #777;
-                padding: 0px;
-                padding-right: 5px;
-                /* font-size: 1.5em; */
-        }
-        .selectNotice:last-child {
-            border-right: 0px;
-        }
-
-        .selectNotice:hover {
-            color : #111;
-            font-weight: bold;
-        }
-
-	/* 테이블 */
-        #nttable {
-            margin-left : 0px;
-        }
-        #nttable th {
-            background-color:  #999;
-            /* color : white; */
-        }
-        #nttable th:nth-child(1) {width : 25px;}
-        #nttable th:nth-child(2) {width :   130px;}
-        #nttable th:nth-child(3) {width : 775px;}
-        #nttable th:nth-child(4) {width : 300px;}
-        #nttable th:nth-child(5) {width : 100px;}
-
-
-        #nttable tbody td {
-            /* color :red; */
-            /* font-size: 1.3em; */
-            text-align: center;
-
-        }
-
-        #nttable tbody td:nth-child(3) {
-            text-align: left;
-            padding-left: 20px;
-        }
-
-
-        #nttable > tbody > tr > td:nth-child(3):hover {
-            cursor : pointer;
-            text-decoration: underline;
-        }
-
-        .modified {
-            border : 0px;
-            border-radius: 5px;
-            background-color: #999;
-            outline: none;
-            font-weight: border;
-            color : rgb(220,220,220);
-            height : 35px;
-            font-weight: bold    
-        }
-        .modified:hover {
-            color : white;
-            /* background-color: #333; */
-
-        }
-        .pagebar {
-            margin-left : 400px;
-        }
-        #slctp1, #slctp2 {
-            float : left;
-            /* margin-left : 100px; */
-            margin-bottom: 0px;
-        }
-
-        #slctp2 {
-            margin-top : 10px;
-            margin : 10px auto;
-            margin-bottom: 10px;
-            width : 300px;
-            margin-left: 720px;
-        }
-        #searchlogo:hover {
-            cursor: pointer;
-            /* background-color: rgb(red, green, blue); */
-        }
-
-        #manipulate {
-            margin-left: 1080px;
-        }
-        /* 수정하는 버튼  */
-        .edit {
-            width : 120px;
-            height : 50px;
-            border: 0px;
-            font-size: 1.3em;
-            font-weight: bold;
-            margin: auto 30px;
-            margin-top : 80px;
-            background-color: #D5D5D5;
-            color:#333;
-            border-radius: 10px;
-            visibility: hidden;
-        }
-
-
-     /* 페이징바 색상 */
-       .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-           background-color:#999999;
-           border-color: #eeeeee;
-       }
-        
-      .pagination > li > a, .pagination > li > span{
-          color: black;
-      }
-</style>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>adminViews</title>
 
+<style>
+
+</style>
+
+
+
 </head>
 
 <body>
-	<!-- 게시판 -->
-    <!-- 등록순 오름차순 조회순 -->
-    <div id = "selectable">
-        
-        <div id = "slctp1">
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
-            <!-- <input type="button" class = "selectNotice" value = "등록순">
-            <input type="button" class = "selectNotice" value = "오름차순">
-            <input type="button" class = "selectNotice" value = "내림차순"> -->
-        </div>
 
-        <div id = "slctp2">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
-				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
-			</div>
-        </div>
-        
-        <table style = "width:1330px;" class = "table table-striped table-bordered table-condensed" id = "nttable">
-            <thead>
-                <tr>
-                    <th><input type="checkbox" id = "total5"></th>
-                    <th class = "tableth">구분</th>
-                    <th class = "tableth">제목</th>
-                    <th class = "tableth">티켓오픈일시</th>
-                    <th class = "tableth">조회수</th>
-                   
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td id = "remi">레미제라블 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td id = "morning">아침을여는 클래식</td>
-                    <td> 2020.03.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>                
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-
-                </tr>               
-                 <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>               
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>                
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>                
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>               
-                 <tr>
-                     <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>                
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>                
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>                
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>                
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>티켓오픈</td>
-                    <td>지킬 엔 하이드 - 박효신 출현 서울시 강남구 상섬동 코엑스</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>2016</td>
-                    
-
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 내용물 수정/삭제 페이지 -->
-        <div id = "manipulate">
-            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 공지삭제</button>
-            <button class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i> 공지작성</button>
-            <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i> 공지수정</button>
-        </div>
-            <!-- <input type="button" class = "modified" value = "공지삭제"> -->
-        <!-- <input type="button" class = "modified" value = "공지작성"> -->
-        <!-- <input type="button" class = "modified" value = "공지수정"> -->
+    <input type = "text" id = "txtjuminfirst">
+    <input type = "text" id = "txtjuminlast">
+    <button type = "submit" id="subbtn">제출</button>
 
 
-        <!-- 하단 페이지 선택 바 -->
-            <nav class = "pagebar">
-              <ul class="pagination">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li class = "active"><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="">6</a></li>
-                <li><a href="">7</a></li>
-                <li><a href="">8</a></li>
-                <li><a href="">9</a></li>
-                <li><a href="">10</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-        
-    </div><!-- selectable -->
 
 </body>
 <script>
     
+    $("#subbtn").click(function(){
+        
 
+        var txtjuminfirst = document.getElementById("txtjuminfirst");
+        var txtjuminlast = document.getElementById("txtjuminlast");
+        var juminList = [txtjuminfirst,txtjuminlast];
+        
+        
+        console.log(juminList[0] == txtjuminfirst);
+
+        
+
+
+
+    });
 
 
 
