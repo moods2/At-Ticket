@@ -47,7 +47,7 @@
         #tbl {
             /* border: 1px solid gray; */
             border-collapse: collapse;
-            width: 800px;
+            width: 1000px;
             height: 100px;
             position: relative;
             margin: 0px auto;
@@ -73,19 +73,19 @@
             text-align: center;
         }
         #tbl th:nth-child(4), #tbl td:nth-child(4) {
-            width: 200px;
+            width: 350px;
             padding-left: 10px;
             text-align: center;
         }
         #tbl th:nth-child(5), #tbl td:nth-child(5) {
-            width: 300px;
+            width: 250px;
             text-align: center;
         }
         
         #btns {
             width: 600px;
             position: relative;
-            margin-left: 940px;
+            margin-left: 1040px;
             outline: none;
             font-weight: border;
             height : 35px;
@@ -117,13 +117,13 @@
             width: 250px;
             /* margin-top: px; */
             position: relative;
-            left: 365px;
+            left: 270px;
             top: 40px;
         }
         #slctp2 {
             margin-top : 10px;
             margin-bottom: 10px;
-            margin-left: 860px;
+            margin-left: 960px;
             /* margin : 10px auto; */
             width : 300px;
         }
@@ -149,6 +149,14 @@
             color : #111;
             font-weight: bold;
         }
+        #pbar{
+        	
+        	width:500px;
+        	position: relative;
+        	left: 550px;
+        	top: 0px;
+        	
+        }
         
     </style>
 
@@ -169,17 +177,19 @@
     <div id="content">
 
         <div id = "slctp1">
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>오름차순</button>
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>내림차순</button>
+            <button class = "selectNotice" style = "outline : none;" onclick="location.href='/AtTicketProject/adminshow.do?sort=write&page=${page}&search=${search}';"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
+            <button class = "selectNotice" style = "outline : none;" onclick="location.href='/AtTicketProject/adminshow.do?sort=desc&page=${page}&search=${search}';"><span><i class = "glyphicon glyphicon-sort"></i></span>오름차순</button>
+            <button class = "selectNotice" style = "outline : none;" onclick="location.href='/AtTicketProject/adminshow.do?sort=asc&page=${page}&search=${search}';"><span><i class = "glyphicon glyphicon-sort"></i></span>내림차순</button>
         </div>
-
+	
+		<form method="GET" action="/AtTicketProject/adminshow.do" id="searchForm">
         <div id = "slctp2">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
-				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
+				<input type="text" class="form-control" placeholder="검색어를 입력하세요." aria-describedby="basic-addon2" name="search" id="search" value="${search}">
+				<span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick="$('#searchForm').submit();"><i class="glyphicon glyphicon-search"></i></span>
 			</div>
         </div>
+        </form>
 
         <table id="tbl" class="table table-striped table-bordered table-condensed">
             <tbody id="tbody">
@@ -192,13 +202,15 @@
 
                 </tr>
                 
+                <c:forEach items="${list}" var="dto">
                 <tr>
                     <td><input type="checkbox" class="cb" name="is_check"></td>
                     <td>${dto.seq}</td>
                     <td>${dto.genre}</td>
                     <td>${dto.title}</td>
-                    <td>${dto.startdate}-${dto.enddate}</td>
+                    <td>${dto.startDate} ~ ${dto.endDate}</td>
                 </tr>
+                </c:forEach>
                 
             </tbody>
         </table>
@@ -208,32 +220,10 @@
             <a class="btn btn-primary" id="btnmodify"><i class="glyphicon glyphicon-pencil"></i> 수정</a>
             <a class="btn btn-primary" id="btndelete"><i class="glyphicon glyphicon-trash"></i> 삭제</a>
         </div>
-
-        <nav class="pagebar" style="width: 500px; position: relative; margin: 20px auto;">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li><a href="#">7</a></li>
-              <li><a href="#">8</a></li>
-              <li><a href="#">9</a></li>
-              <li><a href="#">10</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-            
-        </nav>
+ 
+ 		<div id="pbar">
+	       	${pagebar}
+ 		</div>
         
 
        
@@ -246,8 +236,7 @@
     
     // 추가
     $("#btnadd").click(function(){
-        // window.location.href="adminShowAdd.html";
-        window.open("adminShowAdd.html","_self");
+        window.open("/AtTicketProject/adminshowadd.do","_self");
     });
     // 수정
     $("#btnmodify").click(function(){
@@ -271,6 +260,27 @@
         }
     });
     
+    
+    var index = 0;
+	
+	//서블릿에서 request.setAttribute로 넘긴 거는 el로 사용해야 한다.
+	// "${sort}" ""를 붙여야 문자열로 처리되어 비교 가능해진다.
+	if("${sort}" == "seq") {
+		index = 0;
+	} else if("${sort}" == "heart") {
+		index = 1;
+	} else if("${sort}" == "readcount") {
+		index = 2;
+	}
+		
+	$(".fbtns").children().eq(index).addClass("active");
+	
+	function movePage() {
+		//alert(event.srcElement.value);
+		location.href= "/codestudy/board/list.do?page="+event.srcElement.value;
+	}
+	
+	$("#pagebar").val(${page});
 
 </script>
 

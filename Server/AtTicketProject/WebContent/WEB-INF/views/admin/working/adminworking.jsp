@@ -169,7 +169,7 @@
 
 
         <table id="tbl" class="table table-striped table-bordered table-condensed">
-            <tbody id="tbody">
+            <thead>
                 <tr>
                     <th>번호</th>
                     <!-- <th>부서</th> -->
@@ -178,132 +178,24 @@
                     <th>날짜</th>
                     <th>조회수</th>
                 </tr>
+           </thead>
+           <tbody>
+                <c:forEach items="${list}" var="dto">
                 <tr>
-                    <td>1</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
+                    <td>${dto.seq}</td>                    
+                    <td>${dto.title}</td>
+                    <td>${dto.name}</td>
+                    <td>${dto.regdate}</td>
+                    <td>${dto.nview }</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <!-- <td>영업부</td> -->
-                    <td>새로운 이벤트 정보입니다.</td>
-                    <td>[영]홍길동</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                
-                <tr>
-                    <td>3</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <!-- <td>개발부</td> -->
-                    <td>이벤트 디자인 파일 보내주세요.</td>
-                    <td>[개]아무개</td>
-                    <td>2020-07-21</td>
-                    <td>3</td>
-                </tr>
+                </c:forEach>
+            </tbody>
 
             </tbody>
         </table>
         <hr style="width: 940px;">
-
+		
+		
         <nav class="pagebar" style="width: 500px; position: relative; margin: 20px auto;">
             <ul class="pagination">
               <li>

@@ -12,9 +12,14 @@
             <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
                 class="btn">
         </div> -->
+        <!-- 로그아웃 버튼 관련 -->
         <div id = "logout">
+        	<%
+        		session.invalidate();//해당 세션을 비워준다. -> 로그아웃을 진행해야 하므로
+        	
+        	%>
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
-                     type="button" value="Logout" id="btn2" class="btn">
+                     type="button" value="Logout" id="btn2" class="btn" onclick = "location.href = '/AtTicketProject/index.do';">
         </div>
         <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
@@ -49,7 +54,7 @@
             </div>
             <h3>공지사항</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminNtc(Fix).html"><span>▶</span> 공지사항 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/usernotice/adminusernotice.do"><span>▶</span> 공지사항 조회</a></div>
             </div>
             <h3>고객 정보</h3>
             <div>
@@ -65,14 +70,15 @@
             </div> 
             <h3>배너 관리</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementMain.html"><span>▶</span>메인 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementConcert.html"><span>▶</span>콘서트 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementMusical.html"><span>▶</span>뮤지컬 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementTheater.html"><span>▶</span>연극 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementClassic.html"><span>▶</span>클래식 배너 수정</a></div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminBannerManagementDisplay.html"><span>▶</span>전시 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannermain.do"><span>▶</span>메인 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerconcert.do"><span>▶</span>콘서트 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannermusical.do"><span>▶</span>뮤지컬 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannertheater.do"><span>▶</span>연극 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerclassic.do"><span>▶</span>클래식 배너 수정</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerdisplay.do"><span>▶</span>전시 배너 수정</a></div>
             </div> 
         </div>
+        
 
 
         <!-- container -->
