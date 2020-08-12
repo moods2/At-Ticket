@@ -61,7 +61,7 @@
     <%@include file="/WEB-INF/views/inc/menu.jsp" %>
     
     <div id = "right">
-
+	<form method="POST" action = "/AtTicketProject/adminnoticeeditok.do">
         <table id="tbl" class="table table-bordered" style="width: 600px;">
             <!-- <tr>
                 <th style="width: 150px;">부서</th>
@@ -96,9 +96,14 @@
                 </td>
             </tr>
         </table>
-
-        <input type="button" class="btn btn-default" value="글쓰기"
+		
+		<input type="button" class="btn btn-default" value="뒤로" onclick="location.href='/AtTicketProject/adminworking.do'"
                 style="margin-left: 300px; box-shadow: none; outline: none;">
+	
+        <input type="submit" class="btn btn-default" value="글쓰기"
+                style="box-shadow: none; outline: none;">
+                
+         </form>
 
 
         

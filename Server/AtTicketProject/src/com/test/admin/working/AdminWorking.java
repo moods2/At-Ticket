@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.test.admin.working.BoardDAO;
 import com.test.admin.working.BoardDTO;
 
-@WebServlet("/customer/adminworking.do")
+@WebServlet("/adminworking.do")
 public class AdminWorking extends HttpServlet{
 
 	@Override
@@ -39,9 +39,9 @@ public class AdminWorking extends HttpServlet{
 				// - list.do?sort=readcount
 				String sort = req.getParameter("sort");
 				
-				if (sort == null || sort == "") {
-					sort = "thread"; //기본값
-				}
+//				if (sort == null || sort == "") {
+//					sort = "thread"; //기본값
+//				}
 				
 				HashMap<String,String> map = new HashMap<String,String>();
 				map.put("search", search);
@@ -193,7 +193,7 @@ public class AdminWorking extends HttpServlet{
 					pagebar += "</li>";
 				} else {
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/customer/adminworking.do?page=%d\" aria-label=\"Previous\">", n-1);
+					pagebar += String.format("<a href=\"/AtTicketProject/adminworking.do?page=%d\" aria-label=\"Previous\">", n-1);
 					pagebar += "<span aria-hidden=\"true\">&laquo;</span>";
 					pagebar += "</a>";
 					pagebar += "</li>";
@@ -211,7 +211,7 @@ public class AdminWorking extends HttpServlet{
 					pagebar += "</li>";
 					} else {			
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/customer/adminworking.do?page=%d\">%d</a>", n, n);
+					pagebar += String.format("<a href=\"/AtTicketProject/adminworking.do?page=%d\">%d</a>", n, n);
 					pagebar += "</li>";			
 					}
 					loop++;
@@ -230,7 +230,7 @@ public class AdminWorking extends HttpServlet{
 					pagebar += "</nav>";
 				} else {
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/codestudy/board/list.do?page=%d\" aria-label=\"Next\">", n);
+					pagebar += String.format("<a href=\"adminworking.do?page=%d\" aria-label=\"Next\">", n);
 					pagebar += "<span aria-hidden=\"true\">&raquo;</span>";
 					pagebar += "</a>";
 					pagebar += "</li>";
