@@ -107,7 +107,7 @@
                 width: 230px;
                 height: 325px;
                 /* border: 1px solid black; */
-                background-color: cornflowerblue;
+                background-color: #eee;
                 display: inline-block;
                 margin: 10px 0 0 10px;
                 cursor: pointer;
@@ -116,9 +116,6 @@
                 min-width: 1600px;
                 height: 250px;
                 margin-top: 20px;
-
-                background-image: url("./images/theaterbanner.gif");
-
                 text-align: center;
                 background-position: center center;
                 background-repeat: no-repeat;
@@ -127,7 +124,6 @@
             #bannerimg {
                 width: 286px;
                 height: 400px;
-                background-image: url("./images/bannerimg.png");
                 display: inline-block;
                 margin-right: 160px;
             }
@@ -184,10 +180,11 @@
             .text {
                 /* border: 1px solid white; */
                 position: absolute;
-                text-align: center;
                 color: white;
-                margin-left: 150px;
-                margin-top: 300px;
+                top: 50%;
+			    left: 50%;
+			    text-align: center;
+			    transform: translate(-50%, -50%);
                 z-index: 2;
                 opacity: 0;
             }
@@ -205,37 +202,14 @@
                 /* border: 1px solid white; */
                 position: absolute;
                 color: white;
-                margin-top: 100px;
-                margin-left: -70px;
+                top: 50%;
+			    left: 50%;
+			    text-align: center;
+			    transform: translate(-50%, -50%);
                 z-index: 2;
                 opacity: 0;
             }
-
-            #bigimg {
-                background-image: url("./images/big_theater.jpeg");
-            }
-            .img1 {
-                background-image: url("./images/theater1.jpeg");
-                background-size: contain;
-            }
-            .img2 {
-                background-image: url("./images/theater3.jpeg");
-                background-size: contain;
-            }
-            .img3 {
-                background-image: url("./images/theater3.jpeg");
-                background-size: contain;
-            }
-            .img4 {
-                background-image: url("./images/theater4.jpeg");
-                background-size: contain;
-            }
-            .img5 {
-                background-image: url("./images/theater5.jpeg");
-                background-size: contain;
-            }
-            .img6 {
-                background-image: url("./images/theater6.jpeg");
+            .img1, .img2, .img3, .img4, .img5, .img6 {
                 background-size: contain;
             }
             .atimg1 {
@@ -327,131 +301,88 @@
                 margin-bottom: -2px;
                 padding-left: 20px;
             }
+            
+			#tagsearch {
+			    border: 1px solid #111;
+			    width: 170px;
+			    height: 205px;
+			    position: relative;
+			    float: right;
+			    background-color: white;
+			    margin-right: 60px;
+			    /* text-align: center; */
+			
+			    display: none;
+			}
+			#tagsearch::after {
+			    content: "";
+			    display: none;
+			    clear: both;
+			}
+			#tag {
+			    width: 168px;
+			    /* background-color: rgb(253, 236, 236); */
+			    background-color: #f6f6f6;
+			    height: 25px;
+			}
+			#tag > span {
+			    color: #222;
+			    font-size: 14px;
+			    width: 50px;
+			    height: 30px;
+			    font-weight: normal;
+			    font-family: "IBMPlexSansKR-Regular";
+			    position: relative;
+			    left: -20px;
+			}
+			
+			#tag > label {
+			    color: #111;
+			    float: right;
+			    cursor: pointer;
+			    font-size: 20px;
+			    font-weight: 100;
+			}
+			#tagsearch > a {
+			    display: block;
+			    color: #555;
+			    font-size: 14px;
+			    font-family: "IBMPlexSansKR-Regular";
+			    font-weight: normal;
+			    text-align: left;
+			    margin-left: 20px;
+			    margin-top: 2px;
+			}
+			#tagsearch > span {
+			    font-size: 12px;
+			    color: #999;
+			    font-weight: normal;
+			    font-family: "IBMPlexSansKR-Regular";
+			
+			    float: right;
+			    margin-top: 5px;
+			    margin-right: 5px;
+			}
         </style>
     </head>
     <body>
         <div id="main">
             <!-------------------------------- 화면 상단부 -------------------------------->
             <div id="top">
-                <div id="topmenu">
-                    <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-                    <a href="main.html" id="topleft"></a>
-                    <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
-                    <div id="topcenter">
-                        <span data-lo="user_concert.html" class="menubar"
-                            >콘서트</span
-                        >
-                        <span data-lo="user_musical.html" class="menubar"
-                            >뮤지컬</span
-                        >
-                        <span data-lo="user_theater.html" class="menubar"
-                            >연극</span
-                        >
-                        <span data-lo="user_classic.html" class="menubar"
-                            >클래식</span
-                        >
-                        <span data-lo="user_Exhibition.html" class="menubar"
-                            >전시</span
-                        >
-                    </div>
-                    <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
-                    <div id="topright">
-                        <span data-lo="user_ranking.html" class="menubar"
-                            >랭킹</span
-                        >
-                        <span data-lo="user_event.html" class="menubar"
-                            >이벤트</span
-                        >
-                        <input type="text" value="" id="search" />
-                        <label
-                            for="search"
-                            class="glyphicon glyphicon-search"
-                            style="font-size: 14px; cursor: pointer;"
-                        ></label>
-                        <div
-                            class="glyphicon glyphicon-user"
-                            id="mypage"
-                            style="
-                                font-size: 14px;
-                                cursor: pointer;
-                                margin: 0 10px;
-                            "
-                        ></div>
-                    </div>
-                </div>
+                <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
+                
                 <!-- 메인화면 슬라이더 -->
                 <div class="slider">
-                    <div><img src="./images/theaterslide1.jpeg" /></div>
-                    <div><img src="./images/theaterslide2.jpeg" /></div>
-                    <div><img src="./images/theaterslide3.jpeg" /></div>
-                    <div><img src="./images/theaterslide4.jpeg" /></div>
-                    <div><img src="./images/theaterslide5.jpeg" /></div>
-                </div>
+                  <c:forEach items="${map}" var="map">
+                  <div><img src="./images/${map.value}" /></div>
+              	</c:forEach>
+              </div>
             </div>
             <!-- <hr /> -->
             <!-------------------------------- 내용부분 -------------------------------->
             <div id="middle1">
-                <div id="submenu">
-                    <ul>
-                        <li>
-                            <span
-                                style="font-size: 2.4em;"
-                                class="glyphicon glyphicon-list-alt"
-                            ></span>
-                            <br />
-                            <a class="subfont" href="user_notice.html"
-                                >공지사항</a
-                            >
-                        </li>
-                        <li>
-                            <span
-                                style="font-size: 2.4em;"
-                                class="glyphicon glyphicon-pencil"
-                            ></span>
-                            <br />
-                            <a class="subfont" href="user_localboard.html"
-                                >커뮤니티</a
-                            >
-                        </li>
-                        <li>
-                            <span
-                                style="font-size: 2.4em;"
-                                class="glyphicon glyphicon-search"
-                            ></span>
-                            <br />
-                            <a class="subfont" href="user_concerthall.html"
-                                >공연장 검색</a
-                            >
-                        </li>
-                        <li>
-                            <span
-                                style="font-size: 2.4em;"
-                                class="glyphicon glyphicon-map-marker"
-                            ></span>
-                            <br />
-                            <a class="subfont" href="user_local.html"
-                                >지역 검색</a
-                            >
-                        </li>
-                        <li>
-                            <span
-                                style="font-size: 2.4em;"
-                                class="glyphicon glyphicon-question-sign"
-                            ></span>
-                            <br />
-                            <a class="subfont" href="user_qna.html">Q & A</a>
-                        </li>
-                        <li>
-                            <span
-                                style="font-size: 2.4em;"
-                                class="glyphicon glyphicon-off"
-                            ></span>
-                            <br /><a class="subfont" id="login"
-                                >로그인</a
-                            >
-                        </li>
-                    </ul>
-                </div>
+                <%@include file="/WEB-INF/views/inc/usersidebar.jsp" %>
+                
                 <hr>
                 <div
                     style="width: 1300px; margin: 0px auto; text-align: center;"
@@ -503,66 +434,32 @@
                                 width: 420px;
                                 height: 675px;
                                 display: inline-block;
+                                background-image: url(./images/${hot.get(0).img});
                             "
                             value="temp0"
                         >
                             <div class="img-cover cover0" value="cover0">
                                 <div class="text temp0">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
+                                    <h4>${hot.get(0).genre}</h4>
+                                    <span>${hot.get(0).name}</span>
                                 </div>
                             </div>
                         </div>
-                        <div style="display: inline-block;">
-                            <div class="img img1" value="temp1">
-                                <div class="img-cover1 cover1" value="cover1">
-                                    <div class="text1 temp1">
-                                        <h4>select shop</h4>
-                                        <span>10cm X 데이브레이크</span>
+                        <div style="display: inline-block; width: 730px;">
+                        
+                        <c:set var="i" value="1" />
+                        <c:forEach items="${hot}" var="hot" begin="1" end="6" step="1">
+                        	<div class="img img${i}" value="temp${i}" style="background-image: url(./images/${hot.img});">
+                                <div class="img-cover1 cover${i}" value="cover${i}">
+                                    <div class="text1 temp${i}">
+	                                    <h4>${hot.genre}</h4>
+	                                    <span>${hot.name}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="img img2" value="temp2">
-                                <div class="img-cover1 cover2" value="cover2">
-                                    <div class="text1 temp2">
-                                        <h4>select shop</h4>
-                                        <span>10cm X 데이브레이크</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img img3" value="temp3">
-                                <div class="img-cover1 cover3" value="cover3">
-                                    <div class="text1 temp3">
-                                        <h4>select shop</h4>
-                                        <span>10cm X 데이브레이크</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="display: block;"></div>
-                            <div class="img img4" value="temp4">
-                                <div class="img-cover1 cover4" value="cover4">
-                                    <div class="text1 temp4">
-                                        <h4>select shop</h4>
-                                        <span>10cm X 데이브레이크</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img img5" value="temp5">
-                                <div class="img-cover1 cover5" value="cover5">
-                                    <div class="text1 temp5">
-                                        <h4>select shop</h4>
-                                        <span>10cm X 데이브레이크</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img img6" value="temp6">
-                                <div class="img-cover1 cover6" value="cover6">
-                                    <div class="text1 temp6">
-                                        <h4>select shop</h4>
-                                        <span>10cm X 데이브레이크</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <c:set var="i" value="${i + 1}" />
+                        </c:forEach>
+                        
                         </div>
                     </div>
                 </div>
@@ -572,7 +469,7 @@
             <div id="banner">
                 <img
                     style="height: 250px;"
-                    src="./images/theaterbanner.gif"
+                    src="./images/${banner.img}"
                     alt=""
                 />
             </div>
@@ -638,28 +535,8 @@
                 </div>
                 <hr />
                 <!-- 챗봇 : 단비봇 -->
-                <div
-                    id="frogue-container"
-                    class="position-right-bottom"
-                    data-chatbot="e4957de9-dad9-448d-a709-e43eeb644f63"
-                    data-user="사용자ID"
-                    data-init-key="value"
-                ></div>
-                <!-- data-init-식별키=값 으로 셋팅하면 챗플로우에 파라미터와 연동가능. 식별키는 소문자만 가능 -->
-                <script>
-                    (function (d, s, id) {
-                        var js,
-                            fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) {
-                            return;
-                        }
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src =
-                            "https:\/\/danbee.ai/js/plugins/frogue-embed/frogue-embed.min.js";
-                        fjs.parentNode.insertBefore(js, fjs);
-                    })(document, "script", "frogue-embed");
-                </script>
+                <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
+                
                 <!-- 제일 위로 돌아가기 버튼 -->
                 <div id="movetop">↑</div>
             </div>
@@ -692,19 +569,6 @@
 
         <script src="js/slick.min.js"></script>
         <script>
-            //상단 메뉴 css
-            $(".menubar").mouseover(function () {
-                $(this).css("border-bottom", "5px solid orange");
-            });
-            $(".menubar").mouseout(function () {
-                $(this).css("border-bottom", "");
-            });
-            //상단 메뉴 클릭시
-            $(".menubar").click(function () {
-                location.href = $(this).data("lo");
-            });
-
-            var flag = false;
 
             $(document).scroll(function () {
                 //메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
@@ -757,7 +621,7 @@
             $(".img-cover, .img-cover1").mouseover(function () {
                 var add = "." + $(this).attr("value");
                 $(this).css("transition", "all 0.5s");
-                $(add).css("opacity", "0.7");
+                $(add).css("opacity", "1");
             });
             //이미지에 마우스 뗄때
             $(".img-cover, .img-cover1").mouseout(function () {
@@ -817,11 +681,6 @@
                 ],
             });
 
-            //마이페이지 클릭시 이동
-            $("#mypage").click(function () {
-                location.href = "mypage.html";
-            });
-
             //movetop
             $("#movetop").click(function () {
                 event.preventDefault();
@@ -833,14 +692,16 @@
                 );
             });
 
-            //팝업창 가운데 배치
-            var popupWidth = 600;
-            var popupheight = 630;
-            var popupX = (window.screen.width / 2) - (popupWidth / 2);
-            var popupY = (window.screen.height / 2) - (popupheight / 2);
-            //관심 공연 담기 팝업창
+          	//로그인 java 로 이동
             $("#login").click(function() {
-                window.open("login.html","_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
+                location.href = "/AtTicketProject/userlogin.do";
+            	//window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
+            	//window.open(loginUrl,"_black");
+            });
+            
+            //로그아웃 java 로 이동
+            $("#logout").click(function() {
+                location.href = "/AtTicketProject/userlogout.do";
             });
 
         </script>

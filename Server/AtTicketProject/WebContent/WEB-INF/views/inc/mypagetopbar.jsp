@@ -4,15 +4,15 @@
         <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
         <a href="/AtTicketProject/userindex.do" id="topleft"></a>
         <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
-        <span data-lo="user_concert.html" class="menubar">콘서트</span>
-        <span data-lo="user_musical.html" class="menubar">뮤지컬</span>
-        <span data-lo="user_theater.html" class="menubar">연극</span>
-        <span data-lo="user_classic.html" class="menubar">클래식</span>
-        <span data-lo="user_Exhibition.html" class="menubar">전시</span>
+        <span data-lo="/AtTicketProject/userconcert.do" class="menubar">콘서트</span>
+        <span data-lo="/AtTicketProject/usermusical.do" class="menubar">뮤지컬</span>
+        <span data-lo="/AtTicketProject/usertheater.do" class="menubar">연극</span>
+        <span data-lo="/AtTicketProject/userclassic.do" class="menubar">클래식</span>
+        <span data-lo="/AtTicketProject/userexhibition.do" class="menubar">전시</span>
         <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
         <div id="topright">
             <span data-lo="/AtTicketProject/userranking.do" class="menubar">랭킹</span>
-            <span data-lo="user_event.html" class="menubar">이벤트</span>
+            <span data-lo="/AtTicketProject/userevent.do" class="menubar">이벤트</span>
             <input type="text" value="" id="search">
             <label for="search" class="glyphicon glyphicon-search"
                 style="font-size: 14px; cursor: pointer;"></label>
