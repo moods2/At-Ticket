@@ -80,14 +80,14 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminShowAdd</title>
+    <title>adminShowEdit</title>
     <%@include file="/WEB-INF/views/inc/menu.jsp" %>
 </head>
 
 <body>
 
     <div id = "title">
-        <h1 style="color:#555">공연 추가 <small> > 공연관리 > Home  </small></h1>
+        <h1 style="color:#555">공연 수정 <small> > 공연관리 > Home  </small></h1>
     </div>
 
     <div id="content">
@@ -96,50 +96,50 @@
         <fieldset id="add" class="form-control" style="border: 0px;">
             <!-- <legend class="form-control">공연 정보 추가하기</legend> -->
             
-			<form method="POST" enctype="multipart/form-data" action="/AtTicketProject/adminshowaddok.do">
+			<form method="POST" enctype="multipart/form-data" action="/AtTicketProject/adminshoweditok.do">
 			
             <div>
                 <label>공연 장르 : </label>
-                <select name="genre" style="height: 25px;">
-                    <option value="musical">뮤지컬</option>
-                    <option value="concert">콘서트</option>
-                    <option value="theater">연극</option>
-                    <option value="classic">클래식</option>
-                    <option value="exhibition">전시</option>
+                <select name="genre" id="genre" style="height: 25px;">
+				   	<option value="musical" <c:if test="${dto.genre=='musical'}">selected</c:if>>뮤지컬</option>
+                    <option value="concert" <c:if test="${dto.genre=='concert'}">selected</c:if>>콘서트</option>
+                    <option value="theater" <c:if test="${dto.genre=='theater'}">selected</c:if>>연극</option>
+                    <option value="classic" <c:if test="${dto.genre=='classic'}">selected</c:if>>클래식</option>
+                    <option value="exhibition" <c:if test="${dto.genre=='exhibition'}">selected</c:if>>전시</option>
                 </select>
             </div>
 
-            <div><label for="name">공연 제목 : </label><input type="text" id="name" name="name" autofocus required></div>
+            <div><label for="name">공연 제목 : </label><input type="text" id="name" name="name" value="${dto.title}" autofocus required></div>
             <div>
                 <label for="openDate">오픈 일시 : </label>
-                <input style="width: 100px;" type="text" name="openDate" id="openDate" class="date" value="" required>
-                <label for="date3"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal3"></span></label>
+                <input style="width: 100px;" type="text" name="openDate" id="openDate" class="date" value="${dto.openDate}" required>
+                <label for "date3"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal3" ></span></label>
             </div>
             <div><label for="startDate">공연 기간 : </label>
-                <input style="width: 100px;" type="text" name="startDate" id="startDate" class="date" value="" required>
-                <label for="date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
+                <input style="width: 100px;" type="text" name="startDate" id="startDate" class="date" value="${dto.startDate}" required>
+                <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
                 <span> - </span>
-                <input style="width: 100px;" type="text" name="endDate" id="endDate" class="date" value="" required>
-                <label for="date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
+                <input style="width: 100px;" type="text" name="endDate" id="endDate" class="date" value="${dto.endDate}" required>
+                <label for "date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
             </div>
-            <div><label for="price">공연 가격 : </label><input type="text" name="price" id="price" style="width: 100px;" autofocus required>원</div>
-            <div><label for="min">소요 시간 : </label><input type="text" name="min" id="min" style="width: 100px;" autofocus required>분</div>
-            <div><label for="age">연령 제한 : </label><input type="text" name="age" id="age" style="width: 100px;" autofocus required>세</div>
+            <div><label for="price">공연 가격 : </label><input type="text" name="price" id="price" style="width: 100px;" value="${dto.price}" autofocus required>원</div>
+            <div><label for="min">소요 시간 : </label><input type="text" name="min" id="min" style="width: 100px;" value="${dto.min}" autofocus required>분</div>
+            <div><label for="age">연령 제한 : </label><input type="text" name="age" id="age" style="width: 100px;"value="${dto.age}" autofocus required>세</div>
             <div id="round">
-                <label for="round">공연 회차 : </label><input type="text" name="round" id="round" style="width: 100px;" autofocus required>
-                <label for="time">시작 시간 : </label><input type="text" name="time" id="time"  style="width: 100px;" autofocus required>
+                <label for="round">공연 회차 : </label><input type="text" name="round" id="round" style="width: 100px;" value="1" autofocus required>
+                <label for="time">시작 시간 : </label><input type="text" name="time" id="time"  style="width: 100px;" value="${dto.time}" autofocus required>
                 <button id="addbtn" class="btn btn-default" style="height: 30px; outline: none;">회차 추가</button>
             </div>
             
             <div>
                 <label for="place">공연 장소 : </label>
                 <select name="region" id="region">
-                <option value="0" selected disabled hidden>지역</option>
-               	<option value="서울">서울</option>
-               	<option value="인천">인천</option>
-               	<option value="부산">부산</option>
-               	<option value="광주">광주</option>
-               	<option value="대전">대전</option>
+               	<option value="서울" <c:if test="${dto.place=='서울'}">selected</c:if>>서울</option>
+               	<option value="인천" <c:if test="${dto.place=='인천'}">selected</c:if>>인천</option>
+               	<option value="부산" <c:if test="${dto.place=='부산'}">selected</c:if>>부산</option>
+               	<option value="광주" <c:if test="${dto.place=='광주'}">selected</c:if>>광주</option>
+               	<option value="대전" <c:if test="${dto.place=='대전'}">selected</c:if>>대전</option>
+               	
                 </select>
                 
                	<select name="hall" id="hall">
@@ -147,29 +147,29 @@
                	</select>
                	
                	<select name="theater" id="theater">
-               <option value="0" selected disabled hidden>상영관</option>
+               	<!-- <option value="0" selected disabled hidden>상영관</option> -->
                	</select>
             </div>
 
             <div>
                 <label for="txtagen">기획사 : </label>
                 <select name="agency">
-                	<option value="0" selected disabled hidden>기획사</option>
-                    <option value="1">㈜프라이빗커브</option>
-                    <option value="2">㈜홍컴퍼니</option>
-                    <option value="3">롯데엔터네인먼트</option>
-                    <option value="4">오픈리뷰</option>
-                    <option value="5">주식회사 스탠바이컴퍼니</option>
-                    <option value="6">㈜월드쇼마켓</option>
-                    <option value="7">롯데컬처웍스㈜</option>
-                    <option value="8">㈜펜타토닉</option>
-                    <option value="9">㈜엠피앤컴퍼니</option>
-                    <option value="10">예술의전당</option>
-                    <option value="11">(㈜인터파크</option>
-                    <option value="12">페이지터너</option>
+             		<option value="1" <c:if test="${dto.agencyName=='㈜프라이빗커브'}">selected</c:if>>㈜프라이빗커브</option>
+                    <option value="2" <c:if test="${dto.agencyName=='㈜홍컴퍼니'}">selected</c:if>>㈜홍컴퍼니</option>
+                    <option value="3" <c:if test="${dto.agencyName=='롯데엔터네인먼트'}">selected</c:if>>롯데엔터네인먼트</option>
+                    <option value="4" <c:if test="${dto.agencyName=='오픈리뷰'}">selected</c:if>>오픈리뷰</option>
+                    <option value="5" <c:if test="${dto.agencyName=='주식회사 스탠바이컴퍼니'}">selected</c:if>>주식회사 스탠바이컴퍼니</option>
+                    <option value="6" <c:if test="${dto.agencyName=='㈜월드쇼마켓'}">selected</c:if>>㈜월드쇼마켓</option>
+                    <option value="7" <c:if test="${dto.agencyName=='롯데컬처웍스㈜'}">selected</c:if>>롯데컬처웍스㈜</option>
+                    <option value="8" <c:if test="${dto.agencyName=='㈜펜타토닉'}">selected</c:if>>㈜펜타토닉</option>
+                    <option value="9" <c:if test="${dto.agencyName=='㈜엠피앤컴퍼니'}">selected</c:if>>㈜엠피앤컴퍼니</option>
+                    <option value="10" <c:if test="${dto.agencyName=='예술의전당'}">selected</c:if>>예술의전당</option>
+                    <option value="11" <c:if test="${dto.agencyName=='㈜인터파크'}">selected</c:if>>(㈜인터파크</option>
+                    <option value="12" <c:if test="${dto.agencyName=='페이지터너'}">selected</c:if>>페이지터너</option>
                 </select>
             </div>
 
+			
             <div><label for="poster">포스터  : </label><input type="file" id="poster" name="poster" style="display: inline;" autofocus required></div>
             <div class="img_wrap">
                 <img id="img1" />
@@ -180,7 +180,9 @@
                 <img id="img2" />
             </div>
 
-            <div><input type="submit" id="btnadd" value="추가하기" class="btn btn-default"></div>
+            <div><input type="submit" id="btnadd" value="수정하기" class="btn btn-default"></div>
+            
+            <input type="hidden" name="seq" value="${dto.seq}">
             
 			</form>
 			
@@ -195,10 +197,8 @@
 <script>
 	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>
 	
-	$(document).on('input', '#min', function(){
-	    alert($(this).val());
-	});
 	
+
 	//ajax 공연장 목록
 	$("#region").change(function(){
 		//alert($(this).find(":selected").val());
@@ -210,7 +210,7 @@
 			success: function(result) {
 				$("#hall *").remove();
 				$(result).each(function(index, item){
-					$("#hall").append("<option value = " + item.seq + ">" + item.name +"</option>");
+					$("#hall").append("<option value = " + item.seq + "<c:if test='${dto.hallName=="+ ${dto.hallName} +"}'>selected</c:if>>" + item.name +"</option>");
 				});
 				$("#hall").change(loadtlist);
 			},
@@ -232,7 +232,7 @@
 			success: function(result) {
 				$(result).each(function(index, item){
 				/* 	$("#theater *").remove(); */
-					$("#theater").append("<option value=" + item.seq + ">" + item.name + "</option>");
+					$("#theater").append("<option value=" + item.seq + "<c:if test='${dto.hallName=="+ ${dto.theaterName} +"}'>selected</c:if>>" + item.name + "</option>");
 				});
 			},
 			error: function(a,b,c){
