@@ -225,35 +225,35 @@
                         class="btn btn-default"
                         value="#뮤지컬"
                         id="hashmusical"
-                        onclick="location.href='/AtTicketProject/userranking.do'"
+                        onclick="location.href='/AtTicketProject/userranking.do?sort=musical'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#콘서트"
                         id="hashconcert"
-                        onclick="location.href='/AtTicketProject/userranking.do'"
+                        onclick="location.href='/AtTicketProject/userranking.do?sort=concert'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#연극"
                         id="hashplay"
-                        onclick="location.href='/AtTicketProject/userranking.do'"
+                        onclick="location.href='/AtTicketProject/userranking.do?sort=theater'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#클래식"
                         id="hashclassic"
-                        onclick="location.href='/AtTicketProject/userranking.do'"
+                        onclick="location.href='/AtTicketProject/userranking.do?sort=classic'"
                     />
                     <input
                         type="button"
                         class="btn btn-default"
                         value="#전시"
                         id="hashexhibition"
-                        onclick="location.href='/AtTicketProject/userranking.do'"
+                        onclick="location.href='/AtTicketProject/userranking.do?sort=exhibition'"
                     />
                     <!-- 랭킹 이미지 -->
                     <div style="margin-top: 20px;">

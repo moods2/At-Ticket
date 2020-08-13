@@ -34,8 +34,8 @@
         }
         #btnadd {
             position: relative;
-            top: 80px;
-            left: 650px;
+            top: -35px;
+            left: 250px;
 
             border : 0px;
             border-radius: 5px;
@@ -124,15 +124,6 @@
       .pagination > li > a, .pagination > li > span{
           color: black;
       }
-      .pagination {
-		      style="width: 500px; position: relative; margin: 20px auto;
-      }
-      .pagebar {
-      width: 600px;
-      margin: 0px auto;
-      margin-left: 800px;
-      }
-      
     </style>
 
     <meta charset="UTF-8">
@@ -151,15 +142,14 @@
     
     <div id = "right">
 
-        <!-- <div id = "slctp1">
+        <div id = "slctp1">
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
-        </div> -->
             <!-- <input type="button" class = "selectNotice" value = "등록순">
             <input type="button" class = "selectNotice" value = "오름차순">
             <input type="button" class = "selectNotice" value = "내림차순"> -->
-        
+        </div>
         
         <!-- <select style=" position: relative; left: 370px; top: 43px; height: 30px; outline: none;">
             <option>개발부</option>
@@ -169,22 +159,13 @@
             <option>디자인부</option>
             <option>총무부</option>
         </select> -->
-		
-		
-        <!-- <div id = "slctp2">
+
+        <div id = "slctp2">
 			<div class="input-group">
 				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
 				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
 			</div>
-        </div> -->
-        <form method="GET" action="/AtTicketProject/adminworking.do" id="searchForm">
-	                <div class="input-group search">
-	                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2" name="search" id="search" required value="${search}">
-	                    <span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick="$('#searchForm').submit();"><span class="glyphicon glyphicon-search"></span></span>
-	                </div>
-                </form>
-                
-                <div style="clear:both;"></div>
+        </div>
 
 
         <table id="tbl" class="table table-striped table-bordered table-condensed">
@@ -199,26 +180,10 @@
                 </tr>
            </thead>
            <tbody>
-           <c:if test="${not empty search and list.size() == 0}">
-                    	<tr>
-                    		<td colspan="5">검색 결과가 없습니다.</td>
-                    	</tr>                    	
-                    	</c:if>
-                    	
-                    	<c:if test="${empty search and list.size() == 0}">
-                    	<tr>
-                    		<td colspan="5">게시물이 없습니다.</td>
-                    	</tr>                    	
-                    	</c:if>
                 <c:forEach items="${list}" var="dto">
                 <tr>
-                    <td>${dto.seq}</td>              
-                          
-                    <td>
-                    <a href="/AtTicketProject/adminnoticecontent.do?seq=${dto.seq}&search=${search}">
-                    ${dto.title}
-                    </a>
-                    </td>
+                    <td>${dto.seq}</td>                    
+                    <td>${dto.title}</td>
                     <td>${dto.name}</td>
                     <td>${dto.regdate}</td>
                     <td>${dto.nview }</td>
@@ -229,8 +194,9 @@
             </tbody>
         </table>
         <hr style="width: 940px;">
-
-       <!--  <nav class="pagebar" style="width: 500px; position: relative; margin: 20px auto;">
+		
+		
+        <nav class="pagebar" style="width: 500px; position: relative; margin: 20px auto;">
             <ul class="pagination">
               <li>
                 <a href="#" aria-label="Previous">
@@ -254,14 +220,11 @@
                 
               </li>
             </ul>
-             </nav> 
-            -->
-             <nav style="width: 500px; position: relative; margin: 20px auto;">
             <a class="btn" id="btnadd"><i class="glyphicon glyphicon-plus"></i> 글쓰기</a>
-       		 </nav> 
+        </nav>
 
     </div>
-    	${pagebar}
+    
     <%@include file="/WEB-INF/views/inc/menu.jsp" %>
 
 </body>
@@ -269,20 +232,13 @@
 <script>
 	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>
     $("#btnadd").click(function(){
-        location.href="adminnoticeedit.do";
+        location.href="boardWrite.html";
     });
 
     var date = document.getElementById("date");
     var now = new Date();
     var sw = document.images["sw"];
-	
-    function movePage() {
-		//alert(event.srcElement.value);
-		location.href = "/AtTicketProject/adminworking.do?page=" + event.srcElement.value;
-	}
-    
-    
-	$("#pagebar").val(${page});
+
 
 </script>
 

@@ -28,9 +28,8 @@
         #right2 {
             border : 1px solid black;
             /* text-align: center; */
-
         }
-        
+       	
         #title{
             /* text-align: center; */
             margin-left: 280px;
@@ -94,6 +93,7 @@
             width: 150px;
             text-align: center;
         }
+
         
         #btns {
             width: 800px;
@@ -130,15 +130,10 @@
       }
 
       #slctp1, #slctp2 {
-            /* float : left; */
-            /* margin-left : 100px; */
             margin-bottom: 0px;
-            /* margin: 0 auto; */
-            /* border: 1px solid red; */
         }
         #slctp1 {
             width: 250px;
-            /* margin-top: px; */
             position: relative;
             left: 325px;
             top: 40px;
@@ -147,7 +142,6 @@
             margin-top : 10px;
             margin-bottom: 10px;
             margin-left: 900px;
-            /* margin : 10px auto; */
             width : 300px;
         }
         .selectNotice {
@@ -188,218 +182,63 @@
     </div>
 	<%@include file="/WEB-INF/views/inc/menu.jsp" %>
 
-
+	
     <div id="content">
         <div id = "slctp1">
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
-            <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
-            <!-- <input type="button" class = "selectNotice" value = "등록순">
-            <input type="button" class = "selectNotice" value = "오름차순">
-            <input type="button" class = "selectNotice" value = "내림차순"> -->
+            <button class = "selectNotice" style = "outline : none;" onclick="location.href='/AtTicketProject/adminemployee.do?sort=write';"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
+            <button class = "selectNotice" style = "outline : none;" onclick="location.href='/AtTicketProject/adminemployee.do?sort=desc';"><span><i class = "glyphicon glyphicon-sort"></i></span>오름차순</button>
+            <button class = "selectNotice" style = "outline : none;" onclick="location.href='/AtTicketProject/adminemployee.do?sort=asc';"><span><i class = "glyphicon glyphicon-sort"></i></span>내림차순</button>
         </div>
-
-        <div id = "slctp2">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
-				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
-			</div>
-        </div>
-        <!-- <div class="search" style="margin-left: 980px;">
-            <div class="form-group">
-                <div class="input-group">
-                    <span style="cursor: pointer;" class="input-group-addon" id="btnsearch"><i
-                            class="glyphicon glyphicon-search"></i></span>
-                    <input style=" width: 200px;" type="text" class="form-control"
-                        placeholder="검색어를 입력하세요.">
-                </div>
-            </div>
-        </div> -->
+        
+		
+		<!-- 검색어 입력하는 곳..! -->
+		<form method = "GET" action = "/AtTicketProject/adminemployee.do" id = "searchform">
+	        <div id = "slctp2">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="검색어를 입력하세요." aria-describedby="basic-addon2" name="search" id="search" value="${search}">
+					<span class="input-group-addon" id="basic-addon2" style="cursor:pointer;" onclick="$('#searchForm').submit();"><i class="glyphicon glyphicon-search"></i></span>
+				</div>
+	        </div>
+        </form>
+        
         <table id="tbl" class="table table-striped table-bordered table-condensed">
             <tbody id="tbody">
                 <tr>
                     <th>선택</th>
                     <th>번호</th>
-                    <th>이름</th>
+                    <th>이름(부서)</th>
                     <th>주민번호</th>
                     <th>전화번호</th>
                     <th>직급</th>
                     <th>월급</th>
                 </tr>
+                <c:forEach items="${list}" var="dto">
                 <tr>
                     <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>1</td>
-                    <td>홍길동</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2200000</td>
+                    <td>${dto.seq}</td>
+                    <td>${dto.name}(${dto.buseo})</td>
+                    <td>${dto.ssn}</td>
+                    <td>${dto.tel}</td>
+                    <td>${dto.jikwi}</td>
+                    <td>${dto.salary}</td>
                 </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="is_check" class="cb"></td>
-                    <td>2</td>
-                    <td>아무개</td>
-                    <td>910101-1010101</td>
-                    <td>010-9999-9999</td>
-                    <td>대리</td>
-                    <td>2100000</td>
-                </tr>
+                </c:forEach>
             </tbody>
         </table>
         <!-- <hr style="width: 940px;"> -->
-
-        <nav class="pagebar" style="width: 500px; position: relative; margin: 10px auto;">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li><a href="#">7</a></li>
-              <li><a href="#">8</a></li>
-              <li><a href="#">9</a></li>
-              <li><a href="#">10</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-            <div id="btns">
-                <a class="btn" id="btnadd"><i class="glyphicon glyphicon-plus"></i> 추가</a>
-                <a class="btn" id="btnmodify"><i class="glyphicon glyphicon-pencil"></i> 수정</a>
-                <a class="btn" id="btndelete"><i class="glyphicon glyphicon-trash"></i> 삭제</a>
-            </div>
-        </nav>
+ 		
+ 		<div id="pbar">
+	       	${pagebar}
+ 		</div>
         
-
+        	
+       <div id="btns">
+           <a class="btn" id="btnadd"><i class="glyphicon glyphicon-plus"></i> 추가</a>
+           <a class="btn" id="btnmodify"><i class="glyphicon glyphicon-pencil"></i> 수정</a>
+           <a class="btn" id="btndelete"><i class="glyphicon glyphicon-trash"></i> 삭제</a>
+       </div>
     </div>
-
-
-
+    
 </body>
 <script>
 <%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	
