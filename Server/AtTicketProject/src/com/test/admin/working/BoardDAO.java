@@ -115,6 +115,7 @@ public class BoardDAO {
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getTitle());
+			System.out.println(dto.getContent());
 			pstat.setString(2, dto.getContent());
 			//pstat.setString(3, dto.getEmseq());			
 			pstat.setString(3, dto.getGetInputfile());
@@ -186,6 +187,51 @@ public class BoardDAO {
 		
 		return null;
 	}
+
+	public int delete(String seq) {
+		
+		try {
+
+			String sql = "delete from tblemplonotice where seq = ?";
+			
+			System.out.println("바보");
+			System.out.println(seq);
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.delete()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int edit(BoardDTO dto) {
+		
+		try {
+
+			String sql = "update tblemplonotice set title = ?, content = ? where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getTitle());
+			pstat.setString(2, dto.getContent());
+			pstat.setString(3, dto.getSeq());
+			
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("BoardDAO.edit()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	
 
 
 	

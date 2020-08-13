@@ -63,29 +63,27 @@
 
         <table id="tbl" class="table table-bordered" style="width: 600px;">
             <tr>
-                <th style="width: 150px;">개발부</th>
-                <td style="width: 450px;">${dto.title}</td>
+                <td style="text-align: center;">삭제</td>                
             </tr>
             <tr>
-                <th style="width: 150px;">작성자</th>
-                <td style="width: 450px;">${dto.name}</td>
+            	<td style="text-align: center;">
+                 <button type="button" class="btn btn-default" onclick="location.href='/AtTicketProject/adminnoticecontent.do?seq=${seq}';">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+								뒤로
+                 </button>
+                 <button type="button" class="btn btn-default" onclick="location.href='/AtTicketProject/adminnoticedeleteok.do?seq=${seq}';">
+                        <span class="glyphicon glyphicon-remove"></span>
+								삭제
+                 </button>
+                 </td>              
             </tr>
-            <tr>
-                <th style="width: 150px;">내용</th>
-                <td style="width: 450px;"><p>${dto.content}</p></td>
-            </tr>
+            
         </table>
-        <hr>
+        
 
 
 
-        <!-- <hr> -->
-        <input type="button" class="btn btn-default" value="목록" onclick="location.href='/AtTicketProject/adminworking.do'"
-                style="margin-left: 350px; margin-top: 10px; box-shadow: none; outline: none;" >
-        <input type="button" class="btn btn-default" value="수정" onclick="location.href='/AtTicketProject/adminnoticemodify.do?seq=${dto.seq}';"
-        style="margin-top: 10px; box-shadow: none; outline: none;" >
-        <input type="button" class="btn btn-default" value="삭제" onclick="location.href='/AtTicketProject/adminnoticedelete.do?seq=${dto.seq}';"
-        style="margin-top: 10px; box-shadow: none; outline: none;" >
+        
         
     </div>
 

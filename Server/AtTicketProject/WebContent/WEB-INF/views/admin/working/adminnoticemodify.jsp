@@ -61,7 +61,7 @@
     <%@include file="/WEB-INF/views/inc/menu.jsp" %>
     
     <div id = "right">
-	<form method="POST" action = "/AtTicketProject/adminnoticeeditok.do">
+	<form method="POST" action = "/AtTicketProject/adminnoticemodifyok.do">
         <table id="tbl" class="table table-bordered" style="width: 600px;">
             <!-- <tr>
                 <th style="width: 150px;">부서</th>
@@ -80,13 +80,13 @@
                 <th style="width: 150px">제목</th>
                 <td style="width: 450px;">
                     <!-- block태그로 바뀜 -->
-                    <input name = "title" type="text" class="form-control"> 
+                    <input name = "title" type="text" class="form-control" value="${dto.title}"> 
                 </td>
             </tr>
             <tr>
                 <th style="width: 150px;">내용</th>
                 <td style="width: 450px;">
-                    <textarea name = "content" class="form-control" style="height: 300px; resize: none;"></textarea>
+                    <textarea name = "content" class="form-control" style="height: 300px; resize: none;">${dto.content}</textarea>
                 </td>
             </tr>
             <tr>
@@ -100,9 +100,10 @@
 		<input type="button" class="btn btn-default" value="뒤로" onclick="location.href='/AtTicketProject/adminworking.do'"
                 style="margin-left: 300px; box-shadow: none; outline: none;">
 	
-        <input type="submit" class="btn btn-default" value="글쓰기"
+        <input type="submit" class="btn btn-default" value="수정"
                 style="box-shadow: none; outline: none;">
                 
+        <input type= "hidden" name ="seq" value="${dto.seq}">
          </form>
 
 

@@ -115,14 +115,15 @@ public class AdminWorking extends HttpServlet{
 					
 					//b. 오늘 쓴글 구분하기
 					//2020-08-04
-					if (dto.getRegdate().startsWith(String.format("%tF", now))) 
-					{ 
-						dto.setRegdate(dto.getRegdate().substring(11));
-					} else {
-						//a. 날짜 추출하기
-						//System.out.println(dto.getRegdate());
-						dto.setRegdate(dto.getRegdate().substring(0, 10));
-					}
+//					if (dto.getRegdate().startsWith(String.format("%tF", now))) 
+//					{ 
+//						dto.setRegdate(dto.getRegdate().substring(11));
+//					} else {
+//						//a. 날짜 추출하기
+//						//System.out.println(dto.getRegdate());
+//						dto.setRegdate(dto.getRegdate().substring(0, 10));
+//					}
+					dto.setRegdate(dto.getRegdate().substring(0, 10));
 					
 					
 					//search != null
