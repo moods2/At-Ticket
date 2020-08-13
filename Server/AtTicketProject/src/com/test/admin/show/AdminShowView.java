@@ -9,15 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/adminshowadd.do")
-public class AdminShowAdd extends HttpServlet{
-	
+@WebServlet("/adminshowview.do")
+public class AdminShowView extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/show/adminshowadd.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/show/adminshowview.jsp");
 		dispatcher.forward(req, resp);
-		
 	}
 	
 }
