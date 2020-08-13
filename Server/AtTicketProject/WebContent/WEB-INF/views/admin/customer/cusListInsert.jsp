@@ -60,20 +60,17 @@
 		<li>주소 :
 			<div style="display: inline-block; margin-left: 30px;">
 				<div style="display: inline-block;">
-					<input type="text" id="sample4_postcode" placeholder="우편번호">
-					<input id="addr" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input name="sample4_roadAddress" type="text" id="sample4_roadAddress" placeholder="도로명주소"> 
-					<input name="sample4_jibunAddress" type="text" id="sample4_jibunAddress" placeholder="지번주소"> 
-					<span id="guide" style="color: #999; display: none"></span> 
-					<input name="sample4_detailAddress" type="text"	id="sample4_detailAddress" placeholder="상세주소"> 
-					<input name="sample4_extraAddress" type="text" id="sample4_extraAddress" placeholder="참고항목">
+					<input type="text" id="postcode" placeholder="우편번호">
+					<input id="addr" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+					<input name="address" type="text" id="address" placeholder="도로명주소"> 
+					
 					<%@include file="/WEB-INF/views/inc/adminaddress.jsp"%>
 				</div>
 		</li>
 		<li> 파일 : <div class = "data" style="width:500px;margin-left:70px;margin-top:-25px;"><input name = "attach" type="file" class="form-control"></div></li>
     </ul>
     
-    <div id="b" style="margin-left: 730px;">    
+    <div id="b" style="margin-left: 300px;">    
         <button type = "submit" class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
         <button class = "modified" id = "closebtn">닫기</button>
     </div>

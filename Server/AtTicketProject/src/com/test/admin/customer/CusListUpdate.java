@@ -12,19 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/customer/cuslistupdate.do")
 public class CusListUpdate extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String search = req.getParameter("search");
 		String page = req.getParameter("page");
-		String cb = req.getParameter("cb");
+		String seq = req.getParameter("seq");
 		
 		req.setAttribute("search", search);
-		req.setAttribute("cb", cb);
+		req.setAttribute("seq", seq);
 		
 		CustomerDAO dao = new CustomerDAO();
 		CustomerDTO dto2 = new CustomerDTO();
 		
-		dto2.setSeq(cb);
+		dto2.setSeq(seq);
 		
 		CustomerDTO dto = dao.get(dto2);
 		

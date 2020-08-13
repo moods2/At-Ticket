@@ -67,24 +67,24 @@
 		<li>주소 :
 			<div style="display: inline-block; margin-left: 30px;">
 				<div style="display: inline-block;">
-					<input type="text" id="sample4_postcode" value = "${dto.addr}" placeholder="우편번호">
-					<input id="addr" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input name="sample4_roadAddress" type="text" id="sample4_roadAddress" placeholder="도로명주소"> 
-					<input name="sample4_jibunAddress" type="text" id="sample4_jibunAddress" placeholder="지번주소"> 
-					<span id="guide" style="color: #999; display: none"></span> 
-					<input name="sample4_detailAddress" type="text"	id="sample4_detailAddress" placeholder="상세주소"> 
-					<input name="sample4_extraAddress" type="text" id="sample4_extraAddress" placeholder="참고항목">
+					<input type="text" id="postcode" placeholder="우편번호">
+					<input id="addr" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+					<input name="address" type="text" id="address" placeholder="도로명주소" value = "${dto.addr}"> 
+					
 					<%@include file="/WEB-INF/views/inc/adminaddress.jsp"%>
 				</div>
 		</li>
-		<li> 파일 : <div class = "data" style="width:500px;margin-left:70px;margin-top:-25px;"><input value = "${dto.photo}" name = "attach" type="file" class="form-control"></div>
+		<li>파일 : <div class = "data" style="width:500px;margin-left:70px;margin-top:-25px;"><input value = "${dto.photo}" name = "attach" type="file" class="form-control">
+			 	 <div style="margin-top:5px;">기존 파일 이름 : <input type = "text" value = "${dto.photo}" disabled></div>
+			  	</div>
+		 	
 		</li>
 		<input type = "hidden" value = "${dto.seq}" name = "seq">
 		<input type="hidden" name="page" value="${page}">
     	<input type="hidden" name="search" value="${search}">
     </ul>
     
-    <div id="b" style="margin-left: 730px;">    
+    <div id="b" style="margin-left: 300px;">    
         <button type = "submit" class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
         <button class = "modified" id = "closebtn">닫기</button>
     </div>

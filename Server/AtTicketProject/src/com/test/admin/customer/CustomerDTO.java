@@ -12,7 +12,7 @@ public class CustomerDTO {
 	private String email;
 	private String grade;
 	private String photo;
-	
+
 	public String getAddr() {
 		return addr;
 	}

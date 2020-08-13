@@ -170,8 +170,8 @@
     <div style="clear:both;"></div>
     
     <form method = "POST" action = "/AtTicketProject/customer/cuslistdelete.do" id="deleteForm">
-    <div id="box" style="margin-left: 200px; margin-top:30px;">
-        <table style="width: 1220px; margin-left: 280px;" class="table  table-bordered table-striped table-condensed"
+    <div id="box" style="margin-left: 100px; margin-top:30px;">
+        <table style="width: 1320px; margin-left: 280px;" class="table  table-bordered table-striped table-condensed"
             id="tbl">
             <tbody id="tbody1">
                 <thead>
@@ -183,7 +183,7 @@
                         <th style="width: 200px;">주민번호</th>
                         <th style="width: 110px;">아이디</th>
                          <th style="width: 110px;">비밀번호</th>
-                        <th class="title" style="width: 200px; text-align: center;">주소</th>
+                        <th class="title" style="width: 300px; text-align: center;">주소</th>
                         <th style="width: 110px;">고객등급</th>
                         <th class="title" style="width: 150px; text-align: center;">전화번호</th>
                         <th style="width: 160px;">이메일</th>
@@ -205,15 +205,15 @@
                         <td><input type="checkbox" class="cb" name = "cb" value = "${dto.seq}"></td>
                         <td>${dto.seq}</td>
                         <td>${dto.name}</td>
-                        <td>${dto.getSsn()}</td>
-                        <td><a href="/AtTicketProject/customer/admincustomerinfo.do?seq=${dto.seq}&search=${search}">${dto.getId()}</a>
+                        <td>${dto.ssn}</td>
+                        <td><a href="/AtTicketProject/customer/admincustomerinfo.do?seq=${dto.seq}&page=${page}&search=${search}">${dto.getId()}</a>
                                </td>
-                        <td>${dto.getPw()}</td>
-                        <td>${dto.getAddr()}</td>
-                        <td>${dto.getGrade()}</td>
-                        <td>${dto.getTel()}</td>
-                        <td>${dto.getEmail()}</td>
-                        <td>${dto.getPhoto()}</td>       
+                        <td>${dto.pw}</td>
+                        <td>${dto.addr}</td>
+                        <td>${dto.grade}</td>
+                        <td>${dto.tel}</td>
+                        <td>${dto.email}</td>
+                        <td>${dto.photo}</td>       
                     </tr>
                     
                 </c:forEach>
@@ -236,7 +236,7 @@
     <input type="hidden" name="search" value="${search}">
     
     </form>
-    <div style="margin-left: 850px;">${pagebar}</div>
+    <div style="margin-left: 800px;">${pagebar}</div>
 
     <%@include file="/WEB-INF/views/inc/menu.jsp"%>
     <script>
@@ -307,7 +307,7 @@
         /* $("#dialog1").hide(); */
      
         $("#makebtn").click(function () {
-            window.open("/AtTicketProject/customer/cuslistinsert.do","추가","width=880,height=550");
+            window.open("/AtTicketProject/customer/cuslistinsert.do","추가","width=910,height=550");
         });
         
         var cnt = 0;
@@ -320,9 +320,9 @@
 			});
 	        
         	 if ($('.cb').is(':checked') == true && cnt == 1) {
-                $("form").attr("action","/AtTicketProject/customer/cuslistupdate.do");
-                $("#deleteForm").submit();	
-                //window.open("/AtTicketProject/customer/cuslistupdate.do","수정","width=880,height=550");
+                //$("form").attr("action","/AtTicketProject/customer/cuslistupdate.do");
+                //$("#deleteForm").submit();	
+                window.open("/AtTicketProject/customer/cuslistupdate.do?seq=" + $('.cb:checked').val(),"수정","width=880,height=550");
              } else {
                  alert("하나만 체크하시오.");
              }

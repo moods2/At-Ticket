@@ -61,8 +61,8 @@ public class CusInsertOk extends HttpServlet{
 			email = multi.getParameter("email");
 			tel = multi.getParameter("tel");
 			pw = multi.getParameter("pw");
-			photo = filename+","+orgfilename;
-			addr = multi.getParameter("sample4_roadAddress")+","+multi.getParameter("sample4_jibunAddress")+","+multi.getParameter("sample4_detailAddress")+","+multi.getParameter("sample4_extraAddress");
+			photo = orgfilename;
+			addr = multi.getParameter("address");
 			
 		} catch (Exception e) {
 			System.out.println("CusInsertOk.doPost()");

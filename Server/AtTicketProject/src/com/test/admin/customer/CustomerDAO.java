@@ -205,13 +205,16 @@ public class CustomerDAO {
 		}
 
 		public int edit(CustomerDTO dto) {
+			String sql = null;
 			try {
-				String sql = "update tblCustomer set name = ?, id = ? , ssn = ?, photo = ?, tel = ?, addr = ?, egg = ?, pw = ?, grade = ?, email = ? where seq = ?";
+				sql = "update tblCustomer set name = ?, id = ? , ssn = ?, photo = ?, tel = ?, addr = ?, egg = ?, pw = ?, grade = ?, email = ? where seq = ?";
 				pstat = conn.prepareStatement(sql);
 				pstat.setString(1, dto.getName());
 				pstat.setString(2, dto.getId());
 				pstat.setString(3, dto.getSsn());
+				if(dto.getPhoto()!=null) {
 				pstat.setString(4, dto.getPhoto());
+				}
 				pstat.setString(5, dto.getTel());
 				pstat.setString(6, dto.getAddr());
 				pstat.setString(7, dto.getEgg());
@@ -228,5 +231,37 @@ public class CustomerDAO {
 			}
 			return 0;
 		}
+
+		public ArrayList<CusBookDTO> getBook(String seq) {
+			String sql = null;
+			try {
+				
+				sql = "select * from vwcusbook where cusseq = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, seq);
+				rs = pstat.executeQuery();
+				ArrayList<CusBookDTO> list = new ArrayList<CusBookDTO>();
+				
+				while(rs.next()) {
+					CusBookDTO bookdto = new CusBookDTO();
+					bookdto.setShowtitle(rs.getString("showtitle"));
+					bookdto.setBdate(rs.getString("bdate").substring(0,10));
+					bookdto.setBookdate(rs.getString("bookdate").substring(0,10));
+					bookdto.setBookseq(rs.getString("bookseq"));
+					bookdto.setBookstate(rs.getString("bookstate"));
+					bookdto.setCusseq(rs.getString("cusseq"));
+					list.add(bookdto);
+				}
+				return list;
+				
+			} catch (Exception e) {
+				System.out.println("CustomerDAO.getBook()");
+				e.printStackTrace();
+			}
+			
+			return null;
+		}
+
+		
 		
 }

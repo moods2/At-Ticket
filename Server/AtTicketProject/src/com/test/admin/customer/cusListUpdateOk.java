@@ -61,8 +61,8 @@ public class cusListUpdateOk extends HttpServlet {
 			tel = multi.getParameter("tel");
 			seq = multi.getParameter("seq");
 			pw = multi.getParameter("pw");
-			photo = filename+","+orgfilename;
-			addr = multi.getParameter("sample4_roadAddress")+","+multi.getParameter("sample4_jibunAddress")+","+multi.getParameter("sample4_detailAddress")+","+multi.getParameter("sample4_extraAddress");
+			photo = orgfilename;
+			addr = multi.getParameter("address");
 			page = multi.getParameter("page");
 			search = multi.getParameter("search");
 		} catch (Exception e) {
@@ -93,7 +93,7 @@ public class cusListUpdateOk extends HttpServlet {
 		result = dao.edit(dto);
 		PrintWriter writer = resp.getWriter();
 		if(result == 1) {
-			resp.sendRedirect(String.format("/AtTicketProject/customer/admincustomerlist.do?page=%s&search=%s",page,search));
+//			resp.sendRedirect(String.format("/AtTicketProject/customer/admincustomerlist.do?page=%s&search=%s",page,search));
 //			writer.print("<html>");
 //			writer.print("<body>");
 //			writer.print("<script>");
@@ -105,6 +105,15 @@ public class cusListUpdateOk extends HttpServlet {
 //			writer.print("</body>");
 //			writer.print("</html>");
 //			writer.close();
+			writer.print("<html>");
+			writer.print("<body>");
+			writer.print("<script>");
+			writer.print("opener.location.reload();");
+			writer.print("window.close();");
+			writer.print("</script>");
+			writer.print("</body>");
+			writer.print("</html>");
+			writer.close();
 			
 		} else {
 			//글쓰기 실패 
