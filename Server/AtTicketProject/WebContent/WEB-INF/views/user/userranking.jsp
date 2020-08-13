@@ -417,7 +417,7 @@
 								<fmt:formatNumber value="${rank.cnt / count * 1000}" pattern="0.00"/>%
 								</c:when>
 								<c:when test="${sort ne 'all'}">
-								<fmt:formatNumber value="${rank.cnt / count * 500}" pattern="0.00"/>%
+								<fmt:formatNumber value="${rank.cnt / count * 200}" pattern="0.00"/>%
 								</c:when>
 							</c:choose>
 							<span><i class="glyphicon glyphicon-heart"></i>${rank.cnt}</span>
@@ -451,7 +451,7 @@
 									<fmt:formatNumber value="${rank.cnt / count * 1000}" pattern="0.00"/>%
 									</c:when>
 									<c:when test="${sort ne 'all'}">
-									<fmt:formatNumber value="${rank.cnt / count * 500}" pattern="0.00"/>%
+									<fmt:formatNumber value="${rank.cnt / count * 200}" pattern="0.00"/>%
 									</c:when>
 								</c:choose>
                                 </p>

@@ -62,7 +62,7 @@
             </div>
             <h3>업무 게시판</h3>
             <div>
-                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminWorking.html"><span>▶</span> 업무 게시판 조회</a></div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminworking.do"><span>▶</span> 업무 게시판 조회</a></div>
             </div>
             <h3>Q&A 게시판</h3>
             <div>
