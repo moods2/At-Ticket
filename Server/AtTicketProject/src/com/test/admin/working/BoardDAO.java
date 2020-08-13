@@ -111,7 +111,7 @@ public class BoardDAO {
 		try {
 
 			
-			String sql = "insert into tblemplonotice (seq, title, content, regdate, nview, emseq, delflag, inputfile) values (emplonoticeseq.nextval, ?, ?, default,default,3,default,?)";
+			String sql = "insert into tblemplonotice (seq, title, content, regdate, nview, emseq, delflag, inputfile) values (emplonoticeseq.nextval, ?, ?, default,default,999,default,?)";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getTitle());
