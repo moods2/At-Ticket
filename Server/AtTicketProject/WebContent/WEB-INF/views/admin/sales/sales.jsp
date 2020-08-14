@@ -141,14 +141,16 @@
         font-family: Arial;
         font-size: 3em;">매출 관리 <small>> Home </small></h1>
     </div>
+    
     <div style="margin-left: 400px; margin-top: 20px; width: 1000px;">
+    <form method="GET" action="/AtTicketProject/adminsales.do" id="searchForm">
         <select style="margin-left: 280px; margin-top: 10px;" name="genre" id="genre">
             <optgroup label="장르">
-                <option value="1">콘서트</option>
-                <option value="2">뮤지컬</option>
-                <option value="3">연극</option>
-                <option value="4">클래식</option>
-                <option value="5">전시</option>
+                <option value="concert">콘서트</option>
+                <option value="musical">뮤지컬</option>
+                <option value="theater">연극</option>
+                <option value="classic">클래식</option>
+                <option value="exhibition">전시</option>
             </optgroup>
         </select>
 
@@ -166,11 +168,11 @@
         <div id="box">
             <div style="margin-top: 5px;"><label for="txtname" style="font-weight: bold;">&nbsp기간별 조회 :
                     &nbsp&nbsp&nbsp</label>
-                <input style="width: 100px; text-align: center; " type="text" name="date2" value=" /      /"
+                <input style="width: 100px; text-align: center; " type="text" name="sdate" value=" /      /"
                     id="date2"><label for="date2"><span
                         style="font-size: 1em; margin-top: -30px; margin-left: 10px; position: relative; top: 2px; left: 0px;"
                         class="glyphicon glyphicon-calendar" id="cal"></span></label> ~ <input
-                    style="width: 100px; text-align: center;" type="text" name="date1" value=" /      /"
+                    style="width: 100px; text-align: center;" type="text" name="edate" value=" /      /"
                     id="date1"><label for="date1"><span style="font-size: 1em; margin-left: 10px;"
                         class="glyphicon glyphicon-calendar" id="cal1"></span></label>
                 <input style="margin-left: 34px; background-color: #333333; color: white; border: 0px;" type="button"
@@ -178,7 +180,7 @@
             </div>
             <div style="margin-top: 30px;">
                 <span style="font-weight: bold; margin-right: 20px; margin-left: 2px;">공연 제목 : </span>
-                <input style="width: 300px;" type="text" name="txt" id="txt" autofocus>
+                <input style="width: 300px;" type="text" name="search" id="txt" autofocus>
                 <input style="margin-left: 10px; background-color:#333333; color: white;  border: 0px;" type="button"
                     value="조회">
             </div>
@@ -272,10 +274,11 @@
                 </li>
             </ul>
         </nav>
-
+		
+		</form>
     </div><!-- selectable -->
+	
 
-    </div>
     <div id="manipulate" style="margin-top:20px; margin-bottom: 80px; margin-left: 1300px; width: 130px;">
         <button class="modified" id="modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
         <button class="modified" id="delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
