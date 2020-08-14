@@ -50,10 +50,6 @@
             margin-top: -50px;
             margin-bottom: 100px;
         }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 50px;
-        }
         #goback {
             float: right;
             position: relative;
@@ -78,11 +74,14 @@
         #tbl1 th, #tbl2 th {
             width: 20%;
             padding: 15px 0;
+            font-size: 14px;
         }
         #tbl1 > tbody > tr > td > input,
         #tbl2 > tbody > tr > td > input {
             outline: none;
             padding: 2px 5px;
+            font-size: 13px;
+            height: 30px;
         }
         #tbl2 span {
             font-size: 12px;
@@ -103,7 +102,7 @@
         #tbl1 + div, #essential + div { text-align: center; }
         #userid { width: 150px; }
         #password, #passwordcheck { width: 200px;}
-        .address { outline: none; }
+        .address { outline: none; font-size: 13px; height: 30px; }
         #address { width: 300px; }
         #detailAddress { width: 250px; }
         #idcheck { height: 30px; font-size: 12px; font-weight: bold; }
@@ -157,8 +156,8 @@
     </div>
     <div id="info">
     
-    <form name = "usercreate" method = "POST" action = "/AtTicketProject/usercreateend.do">
         <h1>필수 정보 입력</h1>
+    	<form name = "usercreate" method = "POST" action = "/AtTicketProject/usercreateend.do">
         <div class="line"></div>
         <!-- 회원가입 개인정보 입력 -->
         <div id="personal">
@@ -181,7 +180,7 @@
                     <tr>
                         <th>* 휴대폰 번호</th>
                         <td>
-                            <select id="frontphonenum" name="frontphonenum" class="phone">
+                            <select id="frontphonenum" name="frontphonenum" class="phone" style="font-size: 13px;">
                                 <option value="010">010</option>
                                 <option value="011">011</option>
                                 <option value="017">017</option>
@@ -199,7 +198,7 @@
                             <input type="text" id="frontemail" name="frontemail" class="email" autocomplete="off">
                             @
                             <input type="text" id="backemail" name="backemail" class="email" autocomplete="off">
-                            <select id="emaillist" class="email">
+                            <select id="emaillist" class="email" style="font-size: 13px;">
                                 <option value="default">email.com</option>
                                 <option value="naver.com">naver.com</option>
                                 <option value="google.com">google.com</option>
@@ -223,7 +222,7 @@
                         <td>
                             <input type="text" id="userid" name="userid" autocomplete="off">
                             <input type="button" class="btn btn-default btn-xs" value="중복확인" id="idcheck">
-                            <span>※ 영문, 숫자를 조합한 6~12자를 입력해주세요.</span>
+                            <span id="idresult">※ 영문, 숫자를 조합한 6~12자를 입력해주세요.</span>
                         </td>
                     </tr>
                     <tr>
@@ -772,9 +771,9 @@
             </div>
         </div>
         <div>
-            <input type="submit" class="btn btn-primary btn-sm" id="joinin" value="회원 가입">
+            <input type="submit" class="btn btn-primary btn-sm" id="joinin" value="회원 가입" disabled>
         </div>
-    </form>
+    	</form>
     
     </div>
     <div id="footer">
@@ -960,23 +959,57 @@
                 }
                 return true;
             };
-
+            
+            var ssn = $("#frontregnum").val() + "-" + $("#backregnum").val();
+            
+            $.ajax({
+				type: "POST",
+				url: "/AtTicketProject/usercheckid.do",
+				data: "ssn=" + ssn,
+				dataType: "json",
+				success: function(result) {
+					if (result.use2 == 0) {
+						alert("본인 확인이 완료되었습니다.")
+					} else {
+						alert("중복 가입은 불가능합니다.")
+						return false;
+					}
+				},
+				error: function(a, b, c) {
+					console.log(a, b, c);
+				}
+			});
+            
             //다 만족하면 본인 확인 완료
             identify = true;
 
-            alert("본인 확인이 완료되었습니다.")
         });
 
-
-        //아이디 중복확인 했는지 체크
-        var duplicateId = false;
-
-        //아이디 중복확인 클릭시
+        
+        //아이디 중복확인 클릭 시
         $("#idcheck").click(function() {
-            alert("중복 확인!");
-            duplicateId = true;
+        	$.ajax({
+				type: "POST",
+				url: "/AtTicketProject/usercheckid.do",
+				data: "id=" + $("#userid").val(),
+				dataType: "json",
+				success: function(result) {
+					if (result.use == 0) {
+						$("#idresult").text("사용 가능한 아이디입니다.");
+						$("#idresult").css("color", "royalblue");
+						$("#joinin").attr("disabled", false);
+					} else {
+						$("#idresult").text("이미 사용중인 아이디입니다.");
+						$("#idresult").css("color", "tomato");
+						$("#joinin").attr("disabled", true);
+					}
+				},
+				error: function(a, b, c) {
+					console.log(a, b, c);
+				}
+			});
         });
-
+        
         //모든 이용약관 체크
         $("#checkall").click(function() {
             if ($(".check").prop("checked")) {
@@ -1028,11 +1061,6 @@
                 alert("형식에 맞게 입력해주세요.");
                 $("#userid").val('');
                 $("#userid").focus();
-                return false;
-            };
-            //아이디 중복확인을 해야 회원가입 가능
-            if (!duplicateId) {
-                alert("아이디 중복 확인을 해주세요.");
                 return false;
             };
 
