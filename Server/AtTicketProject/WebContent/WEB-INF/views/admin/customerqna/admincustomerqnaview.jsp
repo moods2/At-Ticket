@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script src="../js/jquery-1.12.4.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="/WEB-INF/views/inc/asset.jsp" %> 
 
-    <style>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
         html {
             /* border: 1px solid black; */
             width : 900px;
@@ -58,25 +56,24 @@
             margin-top : 10px;
             font-weight: bold;
         }
-        
-    </style>
-<!-- ../images/woman.png -->
+
+</style>
+
 </head>
 <body>
-    
+
     <div id = "title" >아니 이 사이트 관리자는 노는겁니까?</div>
     <div id = "cusotomerInfo">
         <div id = "face"></div>
         <div class = "csinfo">성춘향</div>
         <div class = "csinfo">2020.08.10&nbsp;&nbsp;&nbsp;02:45</div>
     </div>
-    <hr class = "splitLine">
-
-      <!-- 이쪽이 상대방이 쓴 글 -->
-      <p style="margin-top:45px; font-size : 1.2em;">&nbsp;&nbsp;&nbsp;&nbsp;아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나  
-      </p>
     
-      <style>
+          <p style="margin-top:45px; font-size : 1.2em;">&nbsp;&nbsp;&nbsp;&nbsp;아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나  
+      </p>
+
+    
+          <style>
           #commentgo {
             font-size: 1.2em;  
             margin-left : 10px;
@@ -143,13 +140,10 @@
 
           
       </script>
-
+    
+    
     
     <img src="../images/title.png" alt="">
 
-    
-    
-
-    
 </body>
 </html>
