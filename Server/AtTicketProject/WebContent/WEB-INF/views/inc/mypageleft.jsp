@@ -83,7 +83,7 @@ $("#btninfo").click(function() {
 
 //상세보기 클릭시
 $("#btndetail").click(function() {
-    location.href = "siyeondensityMypage.html";
+    location.href = "/AtTicketProject/mypagedensity.do";
 });
 
 //로그아웃 클릭시

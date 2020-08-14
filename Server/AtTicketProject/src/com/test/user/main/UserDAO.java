@@ -1,10 +1,10 @@
 package com.test.user.main;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.test.atticket.DBUtil;
 import com.test.atticket.UserDTO;
@@ -114,7 +114,168 @@ public class UserDAO {
 		
 		return 0;
 	}
+
+	//MemberInfoFixEnd.java에서 넘어옴 -> 회원정보 수정 시 수정된 정보를 DB에 저장.
+	public void userUpdate(UserDTO dto) {
+		
+		try {
+			
+			String sql = "UPDATE TBLCUSTOMER SET NAME = ?, ADDR = ?, TEL = ?, EMAIL = ? WHERE SEQ = ?";
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getName());
+			pstat.setString(2, dto.getAddr());
+			pstat.setString(3, dto.getTel());
+			pstat.setString(4, dto.getEmail());
+			pstat.setInt(5, dto.getSeq());
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	//MemberInfoDeleteEnd.java에서 넘어옴 -> 회원 탈퇴.
+	public void userDelete(int seq) {
+		
+		try {
+			
+			String sql = "UPDATE TBLCUSTOMER SET DELFLAG = 1 WHERE SEQ = ?";
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, seq);
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	//UserCheckId.java에서 넘어옴 -> 아이디 중복 확인
+	public int checkid(String id) {
+		
+		try {
+			
+			String sql = "SELECT COUNT(*) AS CNT FROM TBLCUSTOMER WHERE ID = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, id);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("cnt"); //1,0
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	//UserCheckId.java에서 넘어옴 -> 주민번호 중복 확인 (회원가입 두번 방지)
+	public int checkssn(String ssn) {
+		
+		try {
+			
+			String sql = "SELECT COUNT(*) AS CNT FROM TBLCUSTOMER WHERE SSN = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, ssn);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("cnt"); //1,0
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	//UserMypage.java에서 넘어옴 -> 쿠폰 매수 확인
+	public ArrayList<CouponDTO> getCoupon(int seq) {
+		
+		try {
+			
+			String sql = "SELECT * FROM TBLCUSCOUPON WHERE CUSSEQ = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<CouponDTO> clist = new ArrayList<CouponDTO>();
+			
+			while (rs.next()) {
+				CouponDTO dto = new CouponDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setRegdate(rs.getString("regdate"));
+				dto.setCouponseq(rs.getInt("couponseq"));
+				dto.setCusseq(rs.getInt("cusseq"));
+				
+				clist.add(dto);
+			}
+			
+			return clist;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	//UserMypage.java에서 넘어옴 -> 이벤트 확인
+	public ArrayList<EventDTO> getEvent() {
+		
+		try {
+			
+			String sql = "SELECT * FROM TBLEVENT WHERE STARTDATE < SYSDATE AND ENDDATE > SYSDATE ORDER BY STARTDATE";
+			
+			stat = conn.createStatement();
+			
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<EventDTO> elist = new ArrayList<EventDTO>();
+			
+			while (rs.next()) {
+				EventDTO dto = new EventDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setStartdate(rs.getString("startdate"));
+				dto.setEnddate(rs.getString("enddate"));
+				dto.setEindex(rs.getString("eindex"));
+				dto.setBanner(rs.getString("banner"));
+				dto.setContent(rs.getString("content"));
+				dto.setShowseq(rs.getInt("showseq"));
+				
+				elist.add(dto);
+			}
+			
+			return elist;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
 	
-	
-	
+
+
 }

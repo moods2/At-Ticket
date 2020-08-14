@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/customer/adminbannerdisplay.do")
+@WebServlet("/admin/adminbannerdisplay.do")
 public class AdminBannerDisplay extends HttpServlet{
 
 	@Override

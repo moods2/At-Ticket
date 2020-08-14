@@ -25,7 +25,7 @@
             /* border: 1px solid white; */
             width: 100px;
             height: 65px;
-            background-image: url("../images//title.png");
+            background-image: url("./images//title.png");
             background-repeat: no-repeat;
             background-position: center center;
             cursor: pointer;
@@ -219,13 +219,17 @@
             <div>
                 <h1>정확한 본인확인을 위해 비밀번호를 입력해 주세요.</h1>
             </div>
+            
+            <form method="POST" action="/AtTicketProject/memberinfodeleteend.do">
             <div id="recheck">
                 <div>
                     <input type="text" class="txt" value="${userid}" readonly>
-                    <input type="password" class="txt" id="password" placeholder="비밀번호">
-                    <button class="btn btn-primary" id="enter">회원탈퇴</button>
+                    <input type="password" class="txt" id="password" name="password" placeholder="비밀번호">
+                    <input type="submit" class="btn btn-primary" id="enter" value="회원탈퇴">
                 </div>
             </div>
+            </form>
+            
         </div>
     </div>
     <div id="footer">
@@ -239,7 +243,7 @@
 
         //회원정보 수정 페이지로 이동
         $("#revisionFix").click(function() {
-        	location.href = "/AtTicketProject/memberinfofix.do";
+        	location.href = "/AtTicketProject/mypagememberinfo.do";
         });
 
         //마이페이지로 이동
@@ -249,7 +253,7 @@
         
 
         //비밀번호 입력 후 확인 클릭시
-        $("#enter").click(function() {
+        /* $("#enter").click(function() {
 
             if ($("#password").val() == "") {
                 alert("비밀번호를 입력해주세요.");
@@ -260,7 +264,7 @@
             alert("회원탈퇴가 완료되었습니다.");
             location.href = "/AtTicketProject/userindex.do";
 
-        });
+        }); */
 
     </script>
 

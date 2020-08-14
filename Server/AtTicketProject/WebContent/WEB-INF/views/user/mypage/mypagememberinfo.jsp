@@ -25,7 +25,7 @@
             /* border: 1px solid white; */
             width: 100px;
             height: 65px;
-            background-image: url("../images//title.png");
+            background-image: url("./images//title.png");
             background-repeat: no-repeat;
             background-position: center center;
             cursor: pointer;
@@ -160,11 +160,15 @@
                 <p>개인정보보호를 위해 회원님의 비밀번호를 다시 한번 확인합니다.</p>
             </div>
             <div id="recheck">
+            
+            <form method="POST" action="/AtTicketProject/mypagememberinfoend.do">
                 <div>
                     <input type="text" class="txt" value="${userid}" readonly>
-                    <input type="password" class="txt" id="password" autofocus="">
-                    <button class="btn btn-primary" id="enter">확인</button>
+                    <input type="password" class="txt" id="password" name="password" autofocus="">
+                    <input type="submit" class="btn btn-primary" id="enter" value="확인">
                 </div>
+            </form>
+            
             </div>
             <div>
                 <button class="btn btn-default btn-xs" id="findpassword">비밀번호 찾기</button>
@@ -182,7 +186,7 @@
 
         //마이페이지로 이동
         $("#mypage").click(function() {
-            location.href = "/AtTicketProject/userindex.do";
+            location.href = "/AtTicketProject/usermypage.do";
         });
 
         //회원탈퇴 페이지로 이동
@@ -191,17 +195,21 @@
         });
 
         //비밀번호 입력 후 확인 클릭시
-        $("#enter").click(function() {
+        /* $("#enter").click(function() {
 
             if ($("#password").val() == "") {
                 alert("비밀번호를 입력해주세요.");
                 $("#password").focus();
                 return false;
+            } elsf if ($("#password").val() != ${userpw}) {
+            	alert("비밀번호를 확인해주세요.");
+            	$("#password").focus();
+                return false;
             }
             
             location.href = "/AtTicketProject/memberinfofix.do";
 
-        });
+        }); */
 
     </script>
 

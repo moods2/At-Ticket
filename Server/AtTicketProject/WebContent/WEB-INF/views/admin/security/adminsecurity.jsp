@@ -199,6 +199,7 @@
         var myCount = 0;//나의 정답 카운트
         var answer = ${matchCount};//해당 정답개수가 넘어옴
         var title = "${throwSubject}";//정답이 넘어오고
+        
 
         //제출을 눌렀을 경우
         $("#answerSubmitBtn").click(function() {
@@ -233,8 +234,10 @@
         //refresh를 눌렀을 경우...
         $("#updateIcon").click(function(){
         	
-        	popupCenter("/AtTicketProject/adminsecure.do", 1000, 1000);
+        	//popupCenter("/AtTicketProject/adminsecure.do", 1000, 1000);
         	//window.close();
+        	//위의 형식으로 해주면 상당히 복잡해진다.. 그냥 페이지 리로드가 더 편한방법
+        	location.reload();
         	
         });
         
@@ -245,8 +248,9 @@
         	var xPos = (document.body.offsetWidth/2) - (w/2); // 가운데 정렬
         	xPos += window.screenLeft; 
         	var yPos = (document.body.offsetHeight/2) - (h/2);
-
-        	window.open(href, "pop_name", "width="+w+", height="+h+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
+			
+        	//window.open(href, "pop_name", "width="+w+", height="+h+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
+        	
         }
 
         

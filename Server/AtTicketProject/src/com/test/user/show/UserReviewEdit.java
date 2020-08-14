@@ -1,4 +1,4 @@
-package com.test.view;
+package com.test.user.show;
 
 import java.io.IOException;
 
@@ -8,15 +8,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/customer/adminview.do")
-public class AdminView extends HttpServlet{
+@WebServlet("/userreviewedit.do")
+public class UserReviewEdit extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/view/adminview.jsp");
+		
+		HttpSession session = req.getSession();
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userreviewedit.jsp");
 		dispatcher.forward(req, resp);
+		
+		
+		System.out.println(req.getContextPath());
+		
+		
+		System.out.println(session.getAttribute("userid"));
+		
 	}
 	
 }
+

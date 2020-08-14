@@ -192,7 +192,9 @@
             outline: none;
           
         }
-     #banner {
+
+/* -------------------------------------------------- */
+        #banner {
             /* border : 1px solid blue; */
             width :120px;
             height : 100px;
@@ -224,120 +226,82 @@
             margin-bottom: 20px;
         }
 
-        #selectable {
-            /* border : 1px solid blue; */
-            width : 1330px;
-            margin-left : 350px;
-            height : 1100px;
-        }
-        .selectNotice {
-                width : 80px;
-                /* text-align: center; */
-                margin: 10px 0px;
-                margin-bottom: -10px;
-                background-color: white;
-                border : 0px;
-                height : 20px;
-                border-right: 1px solid #999;
-                color : #777;
-                padding: 0px;
-                /* padding-left : -120px; */
-                padding-right: 5px;
-                font-size: 1.1em;
-        }
-        .selectNotice:last-child {
-            border-right: 0px;
-        }
 
-        .selectNotice:hover {
-            color : #111;
+/* -------------------------------------------------- */
+
+
+
+
+        
+      
+        /* 매인배너 타이틀 */
+        #banner {
+            /* border : 1px solid black; */
+            color:#333;
+            padding : 20px;
+            width : 400px;
             font-weight: bold;
+            font-size: 1.5em;
+            padding-top : 60px;
+            margin-left : 10px;
         }
-        /* 고객들을 위한 공지 */
-        #nttable {
-            margin-left : 0px;
-        }
-        #nttable th {
-            background-color:  #999;
-            /* color : white; */
-        }
-        #nttable th:nth-child(1) {width : 25px;}
-        #nttable th:nth-child(2) {width : 130px;}
-        #nttable th:nth-child(3) {width : 775px;}
-        #nttable th:nth-child(4) {width : 300px;}
-        #nttable th:nth-child(5) {width : 100px;}
-
-
-        #nttable tbody td {
-            /* color :red; */
-            /* font-size: 1.3em; */
-            text-align: center;
-
+        #title{
+            /* text-align: center; */
+            margin-left: 280px;
+            margin-top: 50px;
+            width: 1500px;
+            border-bottom: 1px dashed black;
         }
 
-        #nttable tbody td:nth-child(3) {
-            text-align: left;
-            padding-left: 20px;
-        }
-
-
-        #nttable > tbody > tr > td:nth-child(3):hover {
-            cursor : pointer;
-            text-decoration: underline;
-        }
-
-        /* 직원들을 위한 공지 */
-        #nttable2 {
-            margin-left : 0px;
-        }
-        #nttable2 th {
-            background-color:  #999;
-        }
-        #nttable2 th:nth-child(1) {width : 25px;}
-        #nttable2 th:nth-child(2) {width : 130px;}
-        #nttable2 th:nth-child(3) {width : 675px;}
-        #nttable2 th:nth-child(4) {width : 300px;}
-        #nttable2 th:nth-child(5) {width : 130px;}
-
-
-        #nttable2 tbody td {
+        /* 게시판 th 관리 */
+        .tableth {
             text-align: center;
         }
 
-        #nttable2 tbody td:nth-child(3) {
-            text-align: left;
-            padding-left: 20px;
-        }
+       .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+           background-color:#999999;
+           border-color: #eeeeee;
+       }
+        
+      .pagination > li > a, .pagination > li > span{
+          color: black;
+      }
 
+      /* 구분선 */
+      .splitHr {
+          margin-top : 40px;
+          border : 1px solid #999999;
+          margin-left : 280px;
+          width : 1500px;
+      }
 
-        #nttable2 > tbody > tr > td:nth-child(3):hover {
-            cursor : pointer;
-            text-decoration: underline;
-        }
+      /* 공지 타이틀 */
+      .tableInnerTitle {
+          /* border: 1px solid red; */
+          font-size : 1.6em;
+          font-weight: bold;
+          margin-top : 50px;
+          margin-bottom : 20px;
 
+      }
+        
+    </style>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminMain</title>
+</head>
 
+<body>
 
+    <!-- 최상단 -->
+    <div id = "title">
+        <h1 id = "rltitle">공지사항 <small id = "mainHome"> > Home  </small></h1>
+    </div>
 
-
-        .modified {
-            border : 0px;
-            border-radius: 5px;
-            background-color: #999;
-            outline: none;
-            font-weight: border;
-            color : rgb(220,220,220);
-            height : 35px;
-            font-weight: bold    
-        }
-        .modified:hover {
-            color : white;
-            /* background-color: #333; */
-
-        }
-        .pagebar {
-            margin-left : 400px;
-        }
+    
+    <!-------------------------- 회원공지 메인배너 관리 시작 -------------------------->
+    <style>
         #slctp1, #slctp2 {
             float : left;
             /* margin-left : 100px; */
@@ -426,8 +390,7 @@
             background-size: cover;
         }
 
-        
-        /* 이미지 배너 내에 들어가는 화살표 */
+          /* 이미지 배너 내에 들어가는 화살표 */
         /* 이전 표시 */
         #lookprev {
             position : absolute;
@@ -461,9 +424,6 @@
             transition: all 1s;
             position:relative;
         }
-        /* #look:hover {
-            transform: translate(-2000px);
-        } */
 
         /* 내부에 들어가는 요소집합 -> 수정버튼과 내용버튼을 감싸는 div 태그라고 보면 된다. */
         .inner {
@@ -497,69 +457,9 @@
             background-color: #F0F0F0;
 
         }
-        /* 매인배너 타이틀 */
-        #banner {
-            /* border : 1px solid black; */
-            color:#333;
-            padding : 20px;
-            width : 400px;
-            font-weight: bold;
-            font-size: 1.5em;
-            padding-top : 60px;
-            margin-left : 10px;
-        }
-        #title{
-            /* text-align: center; */
-            margin-left: 280px;
-            margin-top: 50px;
-            width: 1500px;
-            border-bottom: 1px dashed black;
-        }
 
-        /* 게시판 th 관리 */
-        .tableth {
-            text-align: center;
-        }
 
-       .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-           background-color:#999999;
-           border-color: #eeeeee;
-       }
-        
-      .pagination > li > a, .pagination > li > span{
-          color: black;
-      }
-
-      /* 구분선 */
-      .splitHr {
-          margin-top : 40px;
-          border : 1px solid #999999;
-          margin-left : 280px;
-          width : 1500px;
-      }
-
-      /* 공지 타이틀 */
-      .tableInnerTitle {
-          /* border: 1px solid red; */
-          font-size : 1.6em;
-          font-weight: bold;
-          margin-top : 50px;
-          margin-bottom : 20px;
-
-      }
-        
     </style>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminMain</title>
-</head>
-
-<body>
-    <div id = "title">
-        <h1 id = "rltitle">공지사항 <small id = "mainHome"> > Home  </small></h1>
-    </div>
-
     
     
     <div id = "mainBanner" style = "padding : 0px; padding-left : 70px; background-color: #F0F0F0;">
@@ -653,9 +553,104 @@
         </div>
         
     </div>
+
+    <!-------------------------- 회원공지 메인배너 관리 끝 -------------------------->
     
     <hr class = "splitHr">
+    
+    
+    
+    <!-------------------------- 회원공지 게시판 관리 시작 -------------------------->
+
     <!-- 게시판 -->
+    
+    <style>
+        #selectable {
+            /* border : 1px solid blue; */
+            width : 1330px;
+            margin-left : 350px;
+            height : 1100px;
+        }
+        .selectNotice {
+                width : 80px;
+                /* text-align: center; */
+                margin: 10px 0px;
+                margin-bottom: -10px;
+                background-color: white;
+                border : 0px;
+                height : 20px;
+                border-right: 1px solid #999;
+                color : #777;
+                padding: 0px;
+                /* padding-left : -120px; */
+                padding-right: 5px;
+                font-size: 1.1em;
+        }
+        .selectNotice:last-child {
+            border-right: 0px;
+        }
+
+        .selectNotice:hover {
+            color : #111;
+            font-weight: bold;
+        }
+
+
+        /* 고객들을 위한 공지 */
+        #nttable {
+            margin-left : 0px;
+        }
+        #nttable th {
+            background-color:  #999;
+            /* color : white; */
+        }
+        #nttable th:nth-child(1) {width : 25px;}
+        #nttable th:nth-child(2) {width : 130px;}
+        #nttable th:nth-child(3) {width : 775px;}
+        #nttable th:nth-child(4) {width : 300px;}
+        #nttable th:nth-child(5) {width : 100px;}
+
+
+        #nttable tbody td {
+            text-align: center;
+
+        }
+
+        #nttable tbody td:nth-child(3) {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+
+        #nttable > tbody > tr > td:nth-child(3):hover {
+            cursor : pointer;
+            text-decoration: underline;
+        }
+
+        .modified {
+            border : 0px;
+            border-radius: 5px;
+            background-color: #999;
+            outline: none;
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modified:hover {
+            color : white;
+            /* background-color: #333; */
+
+        }
+        .pagebar {
+            margin-left : 400px;
+        }
+
+
+
+    </style>
+    
+    
     <!-- 등록순 오름차순 조회순 -->
     <div id = "selectable">
         <div class = "tableInnerTitle">회원 대상 공지</div>
@@ -865,7 +860,7 @@
 
     </div><!-- selectable -->
 
-    
+    <!-------------------------- 회원공지 게시판 관리 시작 -------------------------->
 
 
     <div id="left">
@@ -1122,6 +1117,10 @@
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
     
+
+
+
+
 
     // 배너사진 효과 수정**
     

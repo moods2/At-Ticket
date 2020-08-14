@@ -237,7 +237,11 @@
                      positionTopX -= 450;
                     $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
                     //document.getElementById("topImgName").textContent = parseInt(clickCountTop + 2) + " 번째 사진";
-                    $("#topImgName").text(`상단배너 ${clickCountTop + 2} 번째 사진`);
+                    //$("#topImgName").text(`상단배너 ${clickCountTop + 2} 번째 사진`);
+                    var sta1 = "상단배너 ";
+                    var one = clickCountTop + 2
+                   	var sta2 = " 번째 사진";
+                    $("#topImgName").text(sta1 + one + sta2);
                     clickCountTop++;
                 }
         });
@@ -246,7 +250,12 @@
                 if (clickCountTop > 0) {
                      positionTopX += 450;
                     $("#topbaby").css("transform","translate(" + positionTopX + "px,0px)");
-                    $("#topImgName").text(`상단배너 ${clickCountTop} 번째 사진`);
+                    //$("#topImgName").text(`상단배너 ${clickCountTop} 번째 사진`);
+                    var sta1 = "상단배너 ";
+                    var one = clickCountTop;
+                   	var sta2 = " 번째 사진";
+                   	$("#topImgName").text(sta1 + one + sta2);
+                    
                     clickCountTop--;
                 }
         });
@@ -411,18 +420,21 @@
 
         //작은 이미지 처리
         for (var i = 1; i <= 6; i++) {
-            $(`#smallpic${i}`).mouseenter(function(){
+            //$(`#smallpic${i}`).mouseenter(function(){
+            $("#smallpic"+i).mouseenter(function(){
                 $("#" + $(this).context.id + " button").css("visibility","visible");
                 $("#" + $(this).context.id + " img").css("opacity",".2");
             });
             
             // 클릭했을 경우~
-            $(`#whatHotBtn${i+1}`).click(function(){
+            //$(`#whatHotBtn${i+1}`).click(function(){
+           	$("#whatHotBtn"+(i+1)).click(function() {
                 console.log($(this)[0].id);
             });
             
-            $(`#smallpic${i}`).mouseleave(function(){
-                $("#" + $(this).context.id + " button").css("visibility","hidden");
+            //$(`#smallpic${i}`).mouseleave(function(){
+            $("#smallpic"+i).mouseleave(function(){
+            	$("#" + $(this).context.id + " button").css("visibility","hidden");
                 $("#" + $(this).context.id + " img").css("opacity","1");
 
                 
@@ -502,21 +514,22 @@
         
         for (var i = 1; i <= 6; i++) {
             //사진 영역 내에 마우스 커서를 올렸을 때
-            $(`#mOpen${i}`).mouseenter(function(){
-                console.log($(this).context.id);
+            //$(`#mOpen${i}`).mouseenter(function(){
+            $("#mOpen" + i).mouseenter(function(){
+                //console.log($(this).context.id);
                 // console.log($(this).context.id);
                 $("#" + $(this).context.id + " button").css("visibility","visible")
                 $("#" + $(this).context.id + " img").css("opacity",".2");
-
-                console.log($(this).context.children[1].children[0].id);
             });
 
             // 수정 버튼을 클릭했을때
-            $(`#mBtn${i}`).click(function(){
+            //$(`#mBtn${i}`).click(function(){
+            $("#mBtn" + i).click(function(){
                 console.log($(this)[0].id);
             })
             //사진 영역 내에 마우스 커서를 똇을 때
-            $(`#mOpen${i}`).mouseleave(function(){
+            //$(`#mOpen${i}`).mouseleave(function(){
+            $("#mOpen"+i).mouseleave(function(){
                 console.log($(this).context.id);
                 $("#" + $(this).context.id + " button").css("visibility","hidden");
                 $("#" + $(this).context.id + " img").css("opacity","1");
@@ -619,7 +632,7 @@
         
         for (var i = 1; i <= 6; i++) {
             //사진 영역 내에 마우스 커서를 올렸을 때
-            $(`#atpOpen${i}`).mouseenter(function(){
+            $("#atpOpen" + i).mouseenter(function(){
                 console.log($(this).context.id);
                 // console.log($(this).context.id);
                 $("#" + $(this).context.id + " button").css("visibility","visible")
@@ -629,11 +642,11 @@
             });
 
             // 수정 버튼을 클릭했을때
-            $(`#atpBtn${i}`).click(function(){
+            $("#atpBtn" + i).click(function(){
                 console.log($(this)[0].id);
             })
             //사진 영역 내에 마우스 커서를 똇을 때
-            $(`#atpOpen${i}`).mouseleave(function(){
+            $("#atpOpen" + i).mouseleave(function(){
                 console.log($(this).context.id);
                 $("#" + $(this).context.id + " button").css("visibility","hidden");
                 $("#" + $(this).context.id + " img").css("opacity","1");
