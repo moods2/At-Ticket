@@ -1,4 +1,4 @@
-package com.test.view;
+package com.test.admin.view;
 
 public class ViewDTO {
 
@@ -21,6 +21,29 @@ public class ViewDTO {
 	private String ggenre;
 	private float grate;
 	
+	//성별 연령별 예매율
+	private String age;
+	private float man;
+	private float woman;
+	
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
+	public float getMan() {
+		return man;
+	}
+	public void setMan(float man) {
+		this.man = man;
+	}
+	public float getWoman() {
+		return woman;
+	}
+	public void setWoman(float woman) {
+		this.woman = woman;
+	}
 	public String getGgenre() {
 		return ggenre;
 	}

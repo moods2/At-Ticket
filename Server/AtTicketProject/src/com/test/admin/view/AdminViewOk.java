@@ -1,4 +1,4 @@
-package com.test.view;
+package com.test.admin.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;

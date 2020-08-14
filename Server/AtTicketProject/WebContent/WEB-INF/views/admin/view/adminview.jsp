@@ -191,12 +191,12 @@
         <div class="wrapper">
             <div class="item1" style="border-radius: 10px; background-color: rgb(244, 244, 244);">
                 <h4 style="margin-right: 140px; color: #666;">방문자</h4>
-                <span style="color: #555; font-size: 25px;">11.2k</span><span style="color:red"> ▲ 2.1k</span>
+                <span style="color: #555; font-size: 25px;" id="visitorNow"></span><span style="color:red"id="visitorPluse"></span>
                 <span class="glyphicon glyphicon-stats" style="font-size: 35px; margin-left: 100px; color: #e09b9b;"></span>
             </div>
             <div class="item2" style="border-radius: 10px; background-color: rgb(244, 244, 244);">
                 <h4 style="margin-right: 140px; color: #666;">예매율</h4>
-                <span style="color: #555; font-size: 25px;">11.1%</span><span style="color: blue"> ▼ 1.6%</span>
+                <span style="color: #555; font-size: 25px;" id="rateNow"></span><span style="color: blue" id="ratePluse"></span>
                 <span class="glyphicon glyphicon-stats" style="font-size: 35px; margin-left: 100px; color: #e09b9b;"></span>
 
             </div>
@@ -258,101 +258,6 @@
 </body>
 <script>
 	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>
-	
-    //성별/연령별
-    var categories = [
-        '10-14', '15-19',
-        '20-24', '25-29', '30-34', '35-39', '40-44',
-        '45-49', '50-54', '55-59', '60-64', '65-69',
-        '70-74', '75-79', '80-84', '85-89'
-    ];
-
-    Highcharts.chart('container3', {
-        colors: [
-            "cornflowerblue","orange"
-        ],
-        chart: {
-            type: 'bar'
-        },
-        title: {
-            text: '성별/연령별 예매율  통계'
-        },
-        subtitle: {
-            text: 'At-Ticket.com'
-        },
-        accessibility: {
-            point: {
-                valueDescriptionFormat: '{index}. Age {xDescription}, {value}%.'
-            }
-        },
-        xAxis: [{
-            categories: categories,
-            reversed: false,
-            labels: {
-                step: 1
-            },
-            accessibility: {
-                description: '나이 (남)'
-            }
-        }, { // mirror axis on right side
-            opposite: true,
-            reversed: false,
-            categories: categories,
-            linkedTo: 0,
-            labels: {
-                step: 1
-            },
-            accessibility: {
-                description: '나이 (여자)'
-            }
-        }],
-        yAxis: {
-            title: {
-                text: null
-            },
-            labels: {
-                formatter: function () {
-                    return Math.abs(this.value) + '%';
-                }
-            },
-            accessibility: {
-                description: 'Percentage population',
-                rangeDescription: 'Range: 0 to 5%'
-            }
-        },
-        
-        plotOptions: {
-            series: {
-                stacking: 'normal'
-            }
-        },
-
-        tooltip: {
-            formatter: function () {
-                return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
-                    'Population: ' + Highcharts.numberFormat(Math.abs(this.point.y), 1) + '%';
-            }
-        },
-
-        series: [{
-            name: '남',
-            data: [
-                 -2.2, -2.4,
-                -2.7, -3.0, -3.3, -3.2,
-                -2.9, -3.5, -4.4, -4.1,
-                -3.4, -2.7, -2.3, -2.2,
-                -1.6, -0.6
-            ]
-        }, {
-            name: '여',
-            data: [
-                2.1, 2.3, 2.6,
-                2.9, 3.2, 3.1, 2.9, 3.4,
-                4.3, 4.0, 3.5, 2.9, 2.5,
-                2.7, 2.2, 1.1
-            ]
-        }]
-    });
 
     $("#tabs").tabs({
             active: 0 //기본으로 선택할 것 고르기
@@ -373,7 +278,7 @@ $(document).ready(function (){
 	fn_dailyVisitor(); // 일일방문자 Tran
 	fn_dailyBookRate(); //일일예매율 Tran
 	fn_realTimeBookRank(); //실시간예매순위 Tran
-	//jin fn_ageBookRate(); //성별연령별예매율 Tran
+	fn_ageBookRate(); //성별연령별예매율 Tran
 	fn_genreBookRate(); // 장르별예매율 Tran
 });
 
@@ -413,8 +318,8 @@ function fn_realTimeBookRank(){
 function fn_ageBookRate(){
 	var url = '/AtTicketProject/customer/ageBookRateOk.do';
 	var method = 'GET';
-	var s_Callback = 'fn_callback_ageBookRate';
-	var e_Callback = 'fn_err_callback_ageBookRate';
+	var s_Callback = fn_callback_ageBookRate;
+	var e_Callback = fn_err_callback_ageBookRate;
 	
 	callAjax(url, method, '' , s_Callback, e_Callback);
 }
@@ -441,6 +346,23 @@ function fn_callback_dailyVisitor(response){
 	
 	console.log(vData);
 	console.log(vCnt);
+	
+	
+	$("#visitorNow").html(vCnt[6]+'k');
+	
+	if( vCnt[6]-vCnt[5] > 0 ){
+		$("#visitorPluse").html('▲ ' +(vCnt[6]-vCnt[5]).toFixed(1)+'k')
+		$("#visitorPluse").css({
+			"color" : "red",
+			"margin-left": "10px"
+		});
+	} else {
+		$("#visitorPluse").html('▼ ' +(vCnt[6]-vCnt[5]).toFixed(1)+'k')
+		$("#visitorPluse").css({
+			"color" : "blue",
+			"margin-left": "10px"
+		});
+	}
 	
 	Highcharts.chart('container2', {
         colors: [
@@ -491,9 +413,27 @@ function fn_callback_dailyBookRate(response){
 	});
 	//alert("일일예매율 콜백 성공");
 	
+	$("#rateNow").html(dbRate[2]+'%');
+	
+	if( dbRate[2]-dbRate[1] > 0 ){
+		$("#ratePluse").html('▲ ' +(dbRate[2]-dbRate[1]).toFixed(1)+'%')
+		$("#ratePluse").css({
+			"color" : "red",
+			"margin-left": "10px"
+		});
+	} else {
+		$("#ratePluse").html('▼ ' +(dbRate[2]-dbRate[1]).toFixed(1)+'%')
+		$("#ratePluse").css({
+			"color" : "blue",
+			"margin-left": "10px"
+		});
+	};
+	
+	
 	console.log("일일예애: "+dbData);
 	console.log(dbRate);
 	
+
 	
     Highcharts.chart('container1', {
         colors: [
@@ -594,6 +534,100 @@ function fn_callback_realTimeBookRank(response){
 //성별연령별예매율 콜백
 function fn_callback_ageBookRate(response){
 	alert("성별연령별예매율 콜백");
+    //성별/연령별
+    var abAge = [];
+	var abMan = [];
+	var abWoman = [];
+	$(response).each(function (index, item){
+		abAge.push(item.age);
+		abMan.push(parseFloat(-item.man, 10));
+		abWoman.push(parseFloat(item.woman, 10));
+	});
+    
+        /* '10-14', '15-19',
+        '20-24', '25-29', '30-34', '35-39', '40-44',
+        '45-49', '50-54', '55-59', '60-64', '65-69',
+        '70-74', '75-79', '80-84', '85-89' */
+    var categories = abAge;
+    
+
+    Highcharts.chart('container3', {
+        colors: [
+            "cornflowerblue","orange"
+        ],
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '성별/연령별 예매율  통계'
+        },
+        subtitle: {
+            text: 'At-Ticket.com'
+        },
+        accessibility: {
+            point: {
+                valueDescriptionFormat: '{index}. Age {xDescription}, {value}%.'
+            }
+        },
+        xAxis: [{
+            categories: categories,
+            reversed: false,
+            labels: {
+                step: 1
+            },
+            accessibility: {
+                description: '나이 (남)'
+            }
+        }, { // mirror axis on right side
+            opposite: true,
+            reversed: false,
+            categories: categories,
+            linkedTo: 0,
+            labels: {
+                step: 1
+            },
+            accessibility: {
+                description: '나이 (여자)'
+            }
+        }],
+        yAxis: {
+            title: {
+                text: null
+            },
+            labels: {
+                formatter: function () {
+                    return Math.abs(this.value) + '%';
+                }
+            },
+            accessibility: {
+                description: 'Percentage population',
+                rangeDescription: 'Range: 0 to 5%'
+            }
+        },
+        
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
+                    'Population: ' + Highcharts.numberFormat(Math.abs(this.point.y), 1) + '%';
+            }
+        },
+
+        series: [{
+            name: '남',
+            data: abMan
+            
+        }, {
+            name: '여',
+            data: abWoman
+            
+        }]
+    });
 }
 
 // 장르별예매율 콜백

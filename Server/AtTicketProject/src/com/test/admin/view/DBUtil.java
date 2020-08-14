@@ -1,4 +1,4 @@
-package com.test.view;
+package com.test.admin.view;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

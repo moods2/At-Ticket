@@ -1,4 +1,4 @@
-package com.test.view;
+package com.test.admin.view;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -157,6 +157,37 @@ public class ViewDAO {
 			
 		} catch (Exception e) {
 			System.out.println("ViewDAO().dbTime()");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public ArrayList<ViewDTO> abTime() {
+		try {
+			
+			String sql = "select * from vwGenderRate";
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<ViewDTO> abTime = new ArrayList<ViewDTO>();
+			
+			while (rs.next()) {
+				
+				ViewDTO dto = new ViewDTO();
+				
+				dto.setAge(rs.getString("agegroup"));
+				dto.setMan(rs.getFloat("man"));
+				dto.setWoman(rs.getFloat("Woman"));
+				
+				abTime.add(dto);
+				
+			}
+			
+			return abTime;
+			
+			
+		} catch (Exception e) {
+			System.out.println("ViewDAO().abTime()");
 			e.printStackTrace();
 		}
 		return null;

@@ -1,4 +1,4 @@
-package com.test.view;
+package com.test.admin.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,42 +10,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/customer/dailyBookRateOk.do")
-public class DailyBookRateOk extends HttpServlet{
+@WebServlet("/customer/ageBookRateOk.do")
+public class AgeBookRateOk extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		ViewDAO dao = new ViewDAO();
-		ArrayList<ViewDTO> dbTime = dao.dbTime();
+		ArrayList<ViewDTO> abTime = dao.abTime();
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/json");
 		
 		PrintWriter writer = resp.getWriter();
 		
-		String dbTemp = "";
+		String abtemp = "";
 		
-		dbTemp += "[";
+		abtemp += "[";
 		
-		for (ViewDTO dto : dbTime) {
-			dbTemp += "{";
-			dbTemp += String.format("\"dbdate\":\"%s\"", dto.getDbdate());
-			dbTemp += ",";
-			dbTemp += String.format("\"dbrate\":\"%s\"", dto.getDbrate());
-			dbTemp += "}";
-			dbTemp += ",";
+		for (ViewDTO dto : abTime) {
+			abtemp += "{";
+			abtemp += String.format("\"age\":\"%s\"", dto.getAge());
+			abtemp += ",";
+			abtemp += String.format("\"man\":\"%s\"", dto.getMan());
+			abtemp += ",";
+			abtemp += String.format("\"woman\":\"%s\"", dto.getWoman());
+			abtemp += "}";
+			abtemp += ",";
 		}
 		
-		dbTemp = dbTemp.substring(0, dbTemp.length()-1);
+		abtemp = abtemp.substring(0, abtemp.length()-1);
 		
-		dbTemp += "]";
+		abtemp += "]";
 		
-		writer.print(dbTemp);
+		writer.print(abtemp);
 		
 		writer.close();
 	
 	}
-	
 	
 }

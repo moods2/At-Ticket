@@ -1,4 +1,4 @@
-package com.test.view;
+package com.test.admin.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,41 +10,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/customer/genreBookRateOk.do")
-public class GenreBookRateOk extends HttpServlet{
+@WebServlet("/customer/dailyBookRateOk.do")
+public class DailyBookRateOk extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		ViewDAO dao = new ViewDAO();
-		ArrayList<ViewDTO> gTime = dao.gTime();
+		ArrayList<ViewDTO> dbTime = dao.dbTime();
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/json");
 		
 		PrintWriter writer = resp.getWriter();
 		
-		String gTemp = "";
+		String dbTemp = "";
 		
-		gTemp += "[";
+		dbTemp += "[";
 		
-		for (ViewDTO dto : gTime) {
-			gTemp += "{";
-			gTemp += String.format("\"ggenre\":\"%s\"", dto.getGgenre());
-			gTemp += ",";
-			gTemp += String.format("\"grate\":\"%s\"", dto.getGrate());
-			gTemp += "}";
-			gTemp += ",";
+		for (ViewDTO dto : dbTime) {
+			dbTemp += "{";
+			dbTemp += String.format("\"dbdate\":\"%s\"", dto.getDbdate());
+			dbTemp += ",";
+			dbTemp += String.format("\"dbrate\":\"%s\"", dto.getDbrate());
+			dbTemp += "}";
+			dbTemp += ",";
 		}
 		
-		gTemp = gTemp.substring(0, gTemp.length()-1);
+		dbTemp = dbTemp.substring(0, dbTemp.length()-1);
 		
-		gTemp += "]";
+		dbTemp += "]";
 		
-		writer.print(gTemp);
+		writer.print(dbTemp);
 		
 		writer.close();
 	
 	}
+	
 	
 }
