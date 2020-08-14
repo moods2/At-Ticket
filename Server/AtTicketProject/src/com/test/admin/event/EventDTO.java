@@ -67,5 +67,6 @@ public class EventDTO {
 		this.delflag = delflag;
 	}
 	
+	
 
 }

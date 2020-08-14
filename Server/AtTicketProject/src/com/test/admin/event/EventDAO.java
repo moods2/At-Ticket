@@ -110,6 +110,95 @@ public class EventDAO {
 		return null;
 	}
 
+	public int write(EventDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblevent (seq, title, startdate, enddate,eindex,banner,content,showseq,delflag) values (eventseq.nextval,?, to_date(?,'yy-mm-dd'),to_date(?,'yy-mm-dd'),?,?,?,?,default)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getTitle());
+			pstat.setString(2, dto.getStartdate());
+			pstat.setString(3, dto.getEnddate());
+			pstat.setString(4, dto.getEindex());
+			pstat.setString(5, dto.getBanner());
+			pstat.setString(6, dto.getContent());
+			pstat.setInt(7, dto.getShowseq());
+			
+			return pstat.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public EventDTO get(EventDTO dto2) {
+		 
+		try {
+			
+			String sql = "select * from tblevent where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);			
+			pstat.setString(1, dto2.getSeq());
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				EventDTO dto = new EventDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setStartdate(rs.getString("startdate"));
+				dto.setEnddate(rs.getString("enddate"));
+				dto.setEindex(rs.getString("eindex"));
+				dto.setBanner(rs.getString("banner"));
+				dto.setContent(rs.getString("content"));
+				dto.setShowseq(rs.getInt("showseq"));
+				dto.setDelflag(rs.getString("delflag"));
+				
+				return dto;
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public int edit(EventDTO dto) {
+		
+		try {
+			
+			//String sql = "update tblevent set title = ?, startdate = to_date(?,'yy/mm/dd'), enddate = to_date(?,'yy/mm/dd'), eindex = ?, banner = ? , content = ?, showseq=?, delflag = ?  where seq = ?";
+			String sql = "update tblevent set title = ?, startdate = to_date(?,'yy-mm-dd hh24:mi:ss'), enddate = to_date(?,'yy-mm-dd hh24:mi:ss'), eindex = ?, banner = ? , content = ?, showseq=?, delflag = ?  where seq = ?";
+//			String sql = "update tblevent set title = ?, startdate = to_date(?,'yy-mm-dd hh24:mi:ss'), enddate = to_date(?,'yy-mm-dd hh24:mi:ss'), eindex = ?, banner = ? , content = ?, showseq=? where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getTitle());
+			pstat.setString(2, dto.getStartdate());
+			pstat.setString(3, dto.getEnddate());
+			pstat.setString(4, dto.getEindex());
+			pstat.setString(5, dto.getBanner());
+			pstat.setString(6, dto.getContent());
+			pstat.setInt(7, dto.getShowseq());
+			pstat.setString(8, dto.getDelflag());
+			pstat.setString(9, dto.getSeq());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 //	public int write(EventDTO dto) {
 //		
 //		try {

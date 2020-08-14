@@ -101,15 +101,17 @@
                    </tr>
                     
                 <c:forEach items="${list}" var="dto">
+                <c:if test="${dto.delflag==0}">
                 <tr >
                  
                     <td class="data" id="index">${dto.seq}</td>
-                    <td class="data">${dto.title}</td>
+                    <td class="data" ><a id="edit" href="/AtTicketProject/event/eventedit.do?seq=${dto.seq}" onclick="window.open(this.href, '_blanck', 'width= 700, height = 500'); return false">${dto.title}</a></td>
                     <td class="data">${dto.startdate}-${dto.enddate}</td>
                     <td class="data">${dto.eindex}</td>
                     <td class="data">${dto.banner}</td>
                     <td class="data">${dto.content}</td>
                 </tr>
+                </c:if>
                 </c:forEach>
                 
         	</tbody>
@@ -118,7 +120,7 @@
         <div style="margin-left: 700px; width: 150px;">
             <button class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
             <button class="modified" id="viewbtn">보기</button>
-            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>수정</button>
         </div>
         <!-- <nav style="margin-left: 230px;" class = "pagebar">
             <ul class="pagination">
@@ -151,7 +153,16 @@
 	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	
 	
 
-       
+	$("#makebtn").click(function () {        
+            window.open("/AtTicketProject/event/eventinsert.do", "추가", "width=700, height=500");
+        
+    });
+	
+	$("#delbtn").click(function () {        
+        window.open("/AtTicketProject/event/eventedit.do", "수정", "width=700, height=500");
+    
+});
+	
    
    function movePage() {
 		//alert(event.srcElement.value);
