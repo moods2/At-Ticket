@@ -266,10 +266,10 @@
 <script>
 <%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	
 	
-	//로봇이 아님을 증명할 것이다.
+	/* 	//로봇이 아님을 증명할 것이다.
 	$("#robotTest").click(function(){
 		 popupCenter("/AtTicketProject/adminsecure.do", 1000, 1000); 
-	});
+	}); */
 	
 	
     // 추가 -> 완료
@@ -311,9 +311,9 @@
                 } 
         	}//for
         	
-        	edithref += throwNum;
+        	//edithref += throwNum;
         	
-			popupCenter(edithref,600,600);
+			popupCenter(edithref + throwNum,600,600);
     			
     	}
 
