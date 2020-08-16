@@ -209,8 +209,13 @@
             font-weight: lighter;
         }
 
-        body {
+        /* body {
             outline: none;
+        } */
+
+        body {
+            border: 1px solid red;
+            width : 3000px;
         }
 
         #info {
@@ -218,32 +223,14 @@
             margin-left: 280px;
         }
 
-        #tbl td {
-            text-align: center;
-            vertical-align: middle;
-            
-        }
+
 
         th {
             background-color:  #999;
             /* color : white; */
         }
 
-        .modified {
-            border : 0px;
-            border-radius: 5px;
-            background-color: #999;
-            outline: none;
-            font-weight: border;
-            color : rgb(220,220,220);
-            height : 35px;
-            font-weight: bold    
-        }
-        .modified:hover {
-            color : white;
-            /* background-color: #333; */
 
-        }
     </style>
 </head>
 
@@ -372,41 +359,195 @@
 
     
     <!-- 쿠폰 정보 -->
+
+    <style>
+        .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+           background-color:#999999;
+           border-color: #eeeeee;
+       }
+        
+      .pagination > li > a, .pagination > li > span{
+          color: black;
+      }
+
+      /* 쿠폰 이미지 처리*/
+      .cimages {
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width : 250px;
+        height :200px;
+        /* border: 1px solid blue; */
+      }
+      .cimages > div {
+          /* border: 1px solid red; */
+          width : 250px;
+          height : 200px;
+          font-size: 1.3em;
+          font-weight: bolder;
+          position: relative;
+          top : 90px;
+          left : -20px;
+      }
+
+      /* 테이블  내 td 조정 */
+        #tbl td {
+            text-align: center;
+            vertical-align: middle;    
+        }
+
+        /* 추가 수정 삭제 관련 버튼. */
+
+        .modf {
+            border: 0px;
+            border-radius: 5px;
+            background-color: #999;
+            outline: none;
+            font-weight: border;
+            color : rgb(220,220,220);
+            height : 35px;
+            font-weight: bold    
+        }
+        .modf:hover {
+            color : white;
+
+        }
+        
+
+
+    </style>
+    
     <div id="title">
         <h1 style="color: #555; font-weight: bold;
         font-family: Arial;
         font-size: 3em;">쿠폰 정보 <small>> 쿠폰 관리 > Home </small></h1>
     </div>
 
-    <div id="info" style="position: relative; left: 350px;">
+    <!-- 쿠폰관리 화면단. -->
+    <div id="info" style="position: relative; left: 250px;border: 1px solid yellow; width : 3400px;">
         <h2>쿠폰 정보</h2>
-       
-        <table style="width: 810px;" class="table  table-bordered table-striped table-condensed" id="tbl">
+        
+        <!-- 검색 창 시작 -->
+        <div style="margin-bottom: 10px; margin-left: 700px; width : 422px;" id="header">
+
+            <span class="search">
+                <span class="form-group">
+                    <span style="width: 300px;" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+                    </span>
+                </span>
+            </span>
+        </div>
+        <!-- 검색 창 끝 -->
+        
+        <table style="width: 1000px;" class="table  table-bordered table-striped table-condensed" id="tbl">
             <tbody id="tbody1">
                 <tr>
                     <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
-                    <th class="title" style="width: 50px;text-align: center;">Index</th>
-                    <th class="title" style="width: 290px;text-align: center;">제목</th>
-                    <th class="title" style="width: 200px;text-align: center;">기간</th>
-                    <th class="title" style="width: 70px;text-align: center;">할인율</th>
-                    <th class="title" style="width: 200px;text-align: center;">할인</th>
+                    <th class="title" style="width: 80px;text-align: center;">Index</th>
+                    <th class="title" style="width: 320px;text-align: center;">제목</th>
+                    <th class="title" style="width: 250px;text-align: center;">기간</th>
+                    <th class="title" style="width: 100px;text-align: center;">할인금액</th>
+                    <th class="title" style="width: 250px;text-align: center;">쿠폰이미지</th>
                 <tr value="1">
                     <td><input type="checkbox" class="cb" name="checkRow" value="1"></td>
                     <td class="data" id="index">1</td>
                     <td class="data">[매거진 수신회원] 뮤지컬 2,000원 할인</td>
                     <td class="data">2020.01.01-2020.12.31</td>
                     <td class="data">2000</td>
-                    <td class="data"><img src="../images/redcp.png" width="200px" height="200px"></td>
-                   
+                    <td class="data"><div class = "cimages" id = "img1" style = "background-image: url(../images/redcp.png);"><div>2000원 할인쿠폰</div></div></td>
                 </tr>
+                <tr value="1">
+                    <td><input type="checkbox" class="cb" name="checkRow" value="1"></td>
+                    <td class="data" id="index">1</td>
+                    <td class="data">[매거진 수신회원] 뮤지컬 2,000원 할인</td>
+                    <td class="data">2020.01.01-2020.12.31</td>
+                    <td class="data">3000</td>
+                    <td class="data"><div class = "cimages" id = "img1" style = "background-image: url(../images/redcp.png);"><div>3000원 할인쿠폰</div></div></td>
                 </tr>
+            </tbody>
         </table>
-        <div id = "manipulate" style="margin-left: 700px; width: 200px;">
-            <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
-            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
-        </div>
-        </tbody>
     </div>
+
+            <!-- 내용물 수정/삭제 페이지 -->
+        <div style = "margin-left: 1200px; width : 300px; border: 1px solid red;">
+        <button class = "modf" id = "makebtn" ><i class="glyphicon glyphicon-plus"></i> 쿠폰추가</button>
+        <button class = "modf" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i> 쿠폰수정</button>
+        <button class = "modf" id = "delbtn"><i class="glyphicon glyphicon-trash"></i> 쿠폰삭제</button>
+        </div>
+
+        <!-- <div id = "manipulate" style="margin-left: 840px; width: 200px; border: 1px solid red">
+ 
+            <button class = "modified" id="makebtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+            <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
+            <button class = "modified" id = "delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button> 
+        </div> -->
+
+        <nav style="margin-left: 380px;" class = "pagebar" >
+            <ul class="pagination">
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li class = "active"><a href="#">5</a></li>
+   
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+
+     <script>
+    //쿠폰 정보 -> 일괄체크박스 하기 위함이다.
+    var cbAll = document.all.cbAll; // 일괄 체크박스
+    var child;
+    var cb = document.getElementsByClassName("cb");
+
+    // 모두 선택 기능, 페이지 이동 
+    cbAll.onchange = function () {
+        for (var i = 0; i < cb.length; i++) {
+            cb[i].checked = cbAll.checked;
+        }
+    }
+
+    //추가
+        $("#makebtn").click(function () {
+            if ($('input').is(':checked') == true) {
+                child = window.open("couponInsert.html", "추가", "width=500, height=330");
+            } else {
+                alert("하나 이상을 체크하시오.");
+            }
+        });
+
+   //수정
+    $("#modifybtn").click(function(){
+        location.href = "./adminNctModify(fix).html";
+    });
+
+
+    // 직원 공지 삭제 작성 수정 버튼 눌렀을때 반응
+    
+    //삭제
+    $("#delbtn2").click(function(){
+        if(confirm("해당 공지를 삭제하시겠습니까?")) {
+            alert("삭제완료");
+        }
+    });
+
+
+    
+
+
+         
+     </script>
   
 </body>
 <script>
@@ -537,42 +678,13 @@
     $("#showmanage").click(function(){  window.location.href="adminShow.html"; });
     $("#emplomanage").click(function(){  window.location.href="adminEmployee.html"; });
     
-    //쿠폰 정보
-    var cbAll = document.all.cbAll; // 일괄 체크박스
-    var child;
-    var cb = document.getElementsByClassName("cb");
+    // -------------------------------------------
 
-    // 모두 선택 기능, 페이지 이동 
-    cbAll.onchange = function () {
-        for (var i = 0; i < cb.length; i++) {
-            cb[i].checked = cbAll.checked;
-        }
-    }
+    // -------------------------------------------
 
-    //수정
-    $("#modifybtn").click(function () {
-            if ($('input').is(':checked') == true) {
-                child = window.open("couponUpdate.html", "수정", "width=500, height=330");
-            } else {
-                alert("하나 이상을 체크하시오.");
-            }
-        });
 
-    //삭제
-    $("#delbtn").click(function () {
-            if ($('input').is(':checked') == true) {
-                if (confirm("정말로 삭제하시겠습니까?")) {
-                    $("input[name=checkRow]:checked").each(function () {
-                        var tr_value = $(this).val();
-                        var tr = $("tr[value='" + tr_value + "']");
-                        tr.remove();
-                    });
-                    }
-                } else {
-                    alert("하나 이상을 체크하시오.");
-                }
 
-    });
+
 
 
 </script>

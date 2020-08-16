@@ -67,10 +67,6 @@
             display: block;
         }
 
-        /* #btn1 {
-            margin-left: 50px;
-            margin-right: 20px;
-        } */
 
         #topmenu {
             /* border: 1px solid blue; */
@@ -80,9 +76,6 @@
             top: 0;
             float: right;
             align-content: right;
-            /* z-index: -1; */
-            /* background-color: #BBDED7; */
-            /* opacity: .3; */
             
         }
         #topmenu .search {
@@ -215,13 +208,7 @@
             margin-left: 280px;
         }
 
-        #tbl{
-            margin-top: 20px;
-        }
 
-       #tbl td {
-            text-align: center;
-        }
         @font-face { font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype'); }
         body{
             font-family: 'NanumBarunGothic'; 
@@ -387,6 +374,19 @@
 
     
    <!-- 쿠폰 -->
+
+    <style>
+        #tbl{
+            margin-top: 20px;
+        }
+
+       #tbl td {
+            text-align: center;
+        }
+
+
+    </style>
+
     <div id="title">
         <h1 style="color: #555; font-weight: bold;
         font-family: Arial;
@@ -401,7 +401,7 @@
                 <option value="name">제목</option>
                 <option value="month">기간(월)</option>
                 <option value="year">기간(년)</option>
-                <option value="sale">할인율(미만)</option>
+                <option value="sale">할인금액(미만)</option>
             </select>
 
             <span class="search">
@@ -413,57 +413,39 @@
                 </span>
             </span>
         </div>
-
-        <table style="width: 560px;" class="table  table-bordered table-striped table-condensed" id="tbl">
+        <!-- 이쪽이 쿠폰 테이블.... -->
+        <table style="width: 1000px;" class="table table-bordered table-striped table-condensed" id="tbl">
             <tbody id="tbody1">
                 <tr>
                     <th style="text-align: center;"><input type="checkbox" name="cbAll"></th>
                     <th class="title" style="width: 60px;text-align: center;">번호</th>
                     <th class="title" style="width: 200px;text-align: center;">제목</th>
                     <th class="title" style="width: 200px;text-align: center;">기간</th>
-                    <th class="title" style="width: 100px;text-align: center;">할인율</th>
+                    <th class="title" style="width: 100px;text-align: center;">할인</th>
                   
                 <tr value="1">
                     <td><input type="checkbox" class="cb" name="checkRow" value="1"></td>
                     <td class="data" id="index">1</td>
-                    <td class="data">첫예매쿠폰</td>
+                    <td class="data">[매거진 수신회원] 뮤지컬 2,000원 할인</td>
                     <td class="data">2020.01.01-2020.12.31</td>
-                    <td class="data">2000</td>
+                    <!-- <td class="data">2000</td> -->
+                    <td class="data"><img src="../images/redcp.png" width="200px" height="200px"></td>
                 </tr>
                 <tr value="2">
                     <td><input type="checkbox" class="cb" name="checkRow" value="2"></td>
                     <td class="data" id="index">2</td>
-                    <td class="data">첫예매쿠폰</td>
+                    <td class="data">[매거진 수신회원] 뮤지컬 2,000원 할인</td>
                     <td class="data">2020.01.01-2020.12.31</td>
-                    <td class="data">2000</td>
+                    <!-- <td class="data">2000</td> -->
+                    <td class="data"><img src="../images/redcp.png" width="200px" height="200px"></td>
                 </tr>
                 <tr value="3">
                     <td><input type="checkbox" class="cb" name="checkRow" value="3"></td>
                     <td class="data" id="index">3</td>
-                    <td class="data">첫예매쿠폰</td>
+                    <td class="data">[매거진 수신회원] 뮤지컬 2,000원 할인</td>
                     <td class="data">2020.01.01-2020.12.31</td>
-                    <td class="data">2000</td>
-                </tr>
-                <tr value="4">
-                    <td><input type="checkbox" class="cb" name="checkRow" value="4"></td>
-                    <td class="data" id="index">4</td>
-                    <td class="data">첫예매쿠폰</td>
-                    <td class="data">2020.01.01-2020.12.31</td>
-                    <td class="data">2000</td>
-                </tr>
-                <tr value="5">
-                    <td><input type="checkbox" class="cb" name="checkRow" value="5"></td>
-                    <td class="data" id="index">5</td>
-                    <td class="data">첫예매쿠폰</td>
-                    <td class="data">2020.01.01-2020.12.31</td>
-                    <td class="data">2000</td>
-                </tr>
-                <tr value="6">
-                    <td><input type="checkbox" class="cb" name="checkRow" value="6"></td>
-                    <td class="data" id="index">7</td>
-                    <td class="data">첫예매쿠폰</td>
-                    <td class="data">2020.01.01-2020.12.31</td>
-                    <td class="data">2000</td>
+                    <!-- <td class="data">2000</td> -->
+                    <td class="data"><img src="../images/redcp.png" width="200px" height="200px"></td>
                 </tr>
         </table>
         
