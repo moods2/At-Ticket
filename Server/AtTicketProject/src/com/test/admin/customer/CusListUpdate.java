@@ -1,6 +1,7 @@
 package com.test.admin.customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ public class CusListUpdate extends HttpServlet {
 		String page = req.getParameter("page");
 		String seq = req.getParameter("seq");
 		
+	
 		req.setAttribute("search", search);
 		req.setAttribute("seq", seq);
 		

@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-@WebServlet("/customer/cusinsertok.do")
-public class CusInsertOk extends HttpServlet{
+@WebServlet("/customer/cuslistinsertok.do")
+public class CusListInsertOk extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -61,7 +61,7 @@ public class CusInsertOk extends HttpServlet{
 			email = multi.getParameter("email");
 			tel = multi.getParameter("tel");
 			pw = multi.getParameter("pw");
-			photo = orgfilename;
+			photo = filename;
 			addr = multi.getParameter("address");
 			
 		} catch (Exception e) {

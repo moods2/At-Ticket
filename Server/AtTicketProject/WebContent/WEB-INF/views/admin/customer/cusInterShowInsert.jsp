@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,7 @@
 <title>Admin</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp"%>
 <style>
- td {
+td {
             text-align: center;
         }
 
@@ -24,7 +25,7 @@
             color : rgb(220,220,220);
             height : 35px;
             font-weight: bold;    
-            margin-left: 390px; 
+            margin-left: 410px; 
             width: 60px;
         }
         .modified:hover {
@@ -32,45 +33,55 @@
             /* background-color: #333; */
 
         }
-
 </style>
 </head>
 <body>
 	  <div id="info" style="margin-left: 50px;">
-        <legend style="width: 300px; margin:20px -1px; font-weight: bold;">관람공연 수정</legend>
-        
+        <legend style="width: 300px; margin:20px -1px; font-weight: bold;">관심공연 추가</legend>
+       <form method = "POST" action="/AtTicketProject/customer/cusintershowinsertok.do">
         <div id="box1" style="width: 1000px;">
-            <table class="table table-bordered" style="width: 450px">
+            <table class="table table-bordered" style="width: 470px">
                 <tr>
                     <th style="width: 70px; vertical-align: middle;">공연명</th>
-                    <td style="width: 380px;">
+                   <!--  <td style="width: 400px;">
                         <input id="row1" type="text" style="width: 300px;" type="text" class="form-control">
+                    </td> -->
+                    <td>
+                        <c:if test = "${list.size()!=0}">
+                    	<select style="width:200px;" id = "myshowseq" name = "myshowseq" class = "form-control row3">
+                    		<optgroup label="공연제목">
+                    		   <c:forEach items="${list}" var="dto">
+                    			<option value="${dto.showseq}">${dto.showtitle}</option>
+                    			</c:forEach>
+                    		</optgroup>
+                    	</select>
+                       <!--  <input id="row3" name = "showtitle" class="form-control" style="width: 500px;"></input> -->
+                      </c:if>
                     </td>
-    
+    		
                 </tr>
-                <tr>
+               <!--  <tr>
                     <th style="vertical-align: middle;">기간</th>
                     <td>
-                       <input id="row2" style="width: 160px; display:block; float:left;" type="date" class="form-control" class="line">
-                         <span style="display:block; float:left; margin-top:5px;"> &nbsp;~&nbsp; </span> <input id="row2" style="width: 160px; display:block; float:left;" type="date" class="form-control" class="line">
-                      
+                        <input id="row2" style="width: 160px; display:block; float:left;" type="date" class="form-control" class="line" disabled>
+                        <span style="display:block; float:left; margin-top:5px;"> &nbsp;~&nbsp; </span> <input id="row2" style="width: 160px; display:block; float:left;" type="date" class="form-control" class="line" disabled>
+                      	
                     </td>
                 </tr>
     
                 <tr>
                     <th style="vertical-align: middle;">장소</th>
                     <td>
-                        <input id="row3" class="form-control" type = "text" style="width: 300px;"></input>
+                        <input id="row3" class="form-control" style="width: 300px;" disabled></input>
                     </td>
-                </tr>
-
+                </tr> -->
+				<input type = "hidden" value = "${seq}" name = "seq">
             </table>
         </div>
             <div id = "manipulate">
-                <button class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
-              
+                <button type = "submit" class = "modified" id = "modifybtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
             </div>
-
+			</form>
         <script>
                     
             $("#row1").keyup(function () {
@@ -84,7 +95,6 @@
                     $("#row3").focus();
                 }
             });
-
         
             $("#row3").keyup(function () {
                 if (event.keyCode == 13) {
@@ -94,8 +104,8 @@
 
             //추가
             $("#modifybtn").click(function () {
-                if(confirm("정말로 수정하시겠습니까?")){
-                    location.href = "adminCustomer.html";
+                if(confirm("정말로 추가하시겠습니까?")){
+                	  location.href = "/AtTicketProject/customer/cusintershowinsertok.do?seq=${cusseq}";
                 }
             });
         </script>

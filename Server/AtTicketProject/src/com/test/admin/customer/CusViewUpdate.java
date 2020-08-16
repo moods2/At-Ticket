@@ -10,28 +10,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/customer/cuspointupdate.do")
-public class CusPointUpdate extends HttpServlet {
+@WebServlet("/customer/cusviewupdate.do")
+public class CusViewUpdate extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String cusseq = req.getParameter("seq");
+		String cusseq = req.getParameter("cusseq");
 		String bookseq = req.getParameter("bookseq");
 		
-		req.setAttribute("cusseq", cusseq);
+		
+		req.setAttribute("seq", cusseq);
 		req.setAttribute("bookseq", bookseq);
 		
+		
 		CustomerDAO dao = new CustomerDAO();
-		CusPointDTO dto2 = new CusPointDTO();
+		//CusShowViewDTO dto2 = new CusShowViewDTO();
 		
-		dto2.setCusseq(cusseq);
-		dto2.setBookseq(bookseq);
+		ArrayList<ShowDTO> list = new ArrayList<ShowDTO>();
+		list = dao.getShow();
 		
-		CusPointDTO dto = dao.getPoint(dto2);
+		req.setAttribute("list", list);
+		
+		dao = new CustomerDAO();
+		//dto2.setCusseq(cusseq);
+		//dto2.setBookseq(bookseq);
+		
+		CusShowViewDTO dto = dao.getShowView(bookseq);
 		
 		req.setAttribute("dto", dto);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/customer/cusPointUpdate.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/customer/cusViewUpdate.jsp");
 		dispatcher.forward(req, resp);
 	}
+
 }
