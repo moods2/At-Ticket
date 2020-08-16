@@ -36,28 +36,28 @@
 </head>
 <body>
 
-    <legend style="width: 200px; margin:20px 25px; font-weight: bold;">쿠폰 추가</legend>
+    <legend style="width: 200px; margin:20px 25px; font-weight: bold;">쿠폰 수정</legend>
 	
-	<form method = "POST" action = "/AtTicketProject/coupon/couponinsertok.do">
+	<form method = "POST" action = "/AtTicketProject/coupon/couponeditok.do">
 		<div style="margin-left:30px;" id="box">
-			쿠폰명 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="position: relative; top: -2px;" type="text" placeholder="제목을 입력하세요." name="titletxt" id="titletxt" autofocus autocomplete = "off">
+			쿠폰명 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="position: relative; top: -2px;" type="text" value="${coupTitle}" name="titletxt" id="titletxt" autofocus>
 			
 			<div style="margin-top: 10px;">
 					<label for="txtname">쿠폰 사용 가능 기간 : </label>
-						<input style="width: 100px; text-align: center;" type="text" name="datefirst" id="datefirst" autocomplete = "off">
+						<input style="width: 100px; text-align: center;" type="text" name="datefirst" id="datefirst" value = "${coupStartDate}">
 						
 					<label for="datefirst">
 						<span style="font-size: 1em; margin-left: 10px;" class="glyphicon glyphicon-calendar" id="cal"></span>
 					</label> &nbsp;&nbsp; ~ &nbsp;&nbsp;
 					
-					<input style="width: 100px; text-align: center;" type="text" name="datesecond" id="datesecond" autocomplete = "off">
+					<input style="width: 100px; text-align: center;" type="text" name="datesecond" id="datesecond" value = "${coupEndDate}">
 					
 					<label for="datesecond">
 						<span style="font-size: 1em; margin-left: 10px;" class="glyphicon glyphicon-calendar" id="cal1"></span>
 					</label>
 			</div>
 			
-			<div style="margin-top: 10px;">할인금액 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="position: relative; top: -2px;" type="text" name="pricetxt" id="pricetxt" autocomplete = "off"></div>
+			<div style="margin-top: 10px;">할인금액 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="position: relative; top: -2px;" type="text" name="pricetxt" id="pricetxt" value = "${coupDiscount}"></div>
 			
 	    	<!-- 여기서 모든 공연을 불러옴. -->
 			<div style="margin-top: 10px;">
@@ -66,22 +66,27 @@
 							<option value="" selected disabled hidden>==선택하세요==</option>
 								<!-- <option value = "default">선택</option> -->
 								<c:forEach items="${showList}" var="dto">
-								<option value = "${dto.seq}">${dto.title}</option>
+								<option value = "${dto.seq}" <c:if test="${dto.seq == editShowSeq}">selected='selected'</c:if>>${dto.title}</option>
 	        					</c:forEach>
 	    					</select>
+	    					<!-- editShowSeq -->
 	    	</div>
 	 		<div style="margin-top: 10px;">
 	 			해당 공연 기간 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	 			<input type = "text" id = "term" name = "term" readonly>
+	 			<input type = "text" id = "term" name = "term"  value = "${seqShowTerm}"readonly>
 	 		</div>
 		</div>
 		<br>
 		<br>
 			
 		<div style="margin: 10px 20px; margin-left: 280px;">
-	            <button type = "button" class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i>추가</button>
+	            <button type = "button" class = "modified" id = "makebtn"><i class="glyphicon glyphicon-plus"></i>수정</button>
 	            <button type = "button" class = "modified" id = "closebtn"><i class="glyphicon glyphicon-remove"></i>닫기</button>
 	    </div>
+	    <div style = "visibility : hidden;">
+	    	<input type = "text" value = "${editNum}" name = "editNum">
+	    </div>
+	    <!-- 안보이게... 수정되어야 하는 쿠폰 seq 를 넣어준다. -->
     </form>
     
     <script>   
@@ -268,7 +273,8 @@
         		//console.log(date1.getTime() < date2.getTime());
         		
         		if (date1 < date2 && date1 >= date3 && date2 <= date4) {
-        			//모든 조건을 만족한 경우.
+        			
+        			//모든 조건을 만족한 경우. -> 수정을 해줘야한다.
         			$("#makebtn").attr("type","submit");
         			
         		} else if (date1 >= date2) {

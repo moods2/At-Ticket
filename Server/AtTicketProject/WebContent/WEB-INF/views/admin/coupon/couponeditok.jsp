@@ -1,22 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@include file="/WEB-INF/views/inc/asset.jsp" %>
+
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script src="../js/jquery-1.12.4.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/highcharts.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>adminViews</title>
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <style>
     body {
         width : 700px;
         height : 400px;
-        border: 1px solid red;
     }
 
     #empcheck {
@@ -40,15 +35,14 @@
         background-color: #ddd;
         font-weight: bold;
     }
+
+
 </style>
 
-
-
 </head>
-
 <body>
     
-    <div id = "empcheck">쿠폰 추가가 성공적으로 완료되었습니다.</div>
+    <div id = "empcheck">쿠폰 수정이 성공적으로 완료되었습니다.</div>
     <button id = "ckbtn">확인</button>
 	
 	
@@ -56,6 +50,7 @@
 	<script>
 		
 	$("#ckbtn").click(function(){
+		opener.location.reload();
 		window.close();
 	});
 	
@@ -63,8 +58,5 @@
 	</script>
 	
 
-
 </body>
-
-
 </html>

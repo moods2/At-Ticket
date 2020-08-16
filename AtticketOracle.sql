@@ -221,9 +221,18 @@ where rnum >= 1 and rnum <= 10 order by seq asc;
 
 
 
-select * from tblShow;
+select count(*) from tblShow where title = '\<wife\>';
 
+select count(*) from tblShow;
 
+select * from tblShow where title like '%WIFE%';
+--seq = 48
+
+commit;
+
+update tblShow set title = 'WIFE' where seq = 48;
+
+select * from tblShow where seq = 48;
 
 select * from tblEvent;
 
@@ -231,6 +240,105 @@ select * from tblEvent;
 select 
     *
 from tblCoupon tc inner join tblShow ts on tc.showseq = ts.seq;
+
+
+select startdate,enddate from tblShow where seq=3;
+
+
+select * from tblShow;
+
+select * from tblcoupon;
+
+insert into tblcoupon values(couponSeq.nextVal,'test용',TO_DATE('2020/06/30','yyyy/mm/dd'),TO_DATE('2020/08/31','yyyy/mm/dd'),5000,'coupon.jpg',1,0);
+
+
+commit;
+
+insert into tblShow values (999,'test',to_date('20/09/09','yy/mm/dd'),to_date('20/12/12','yy/mm/dd'),10000,'test.jpeg','test.jpg',to_date('20/09/08','yy/mm/dd'),15,'test',1,0,2);
+
+select * from tblcoupon;
+
+delete tblcoupon where seq = 19;
+
+
+
+create or replace view vwCoupons as
+select * from tblCoupon order by seq asc;
+
+
+select * from vwCoupons;
+
+commit;
+
+select a.* from (select rownum as rnum, v.* from vwCoupons v  where (delflag = 0)) a;
+
+
+select * from tblCoupon;
+
+update tblcoupon set delflag = 1 where seq = 27;
+
+select * from tblCoupon;
+
+
+select 
+    tc.seq,
+    tc.title,
+        
+from tblcoupon tc 
+    inner join tblShow ts
+        on ts.seq = tc.showSeq;
+        
+        
+        
+select ts.seq from tblcoupon tc inner join tblShow ts on ts.seq = tc.showSeq where tc.seq = 21;
+
+
+    
+select * from tblCoupon;
+
+select * from tblShow where seq = 20;
+
+
+select * from tblCoupon where seq = 21;
+
+
+select title,startdate,enddate,discount from tblCoupon where seq = 21;
+
+
+select title,startdate,enddate,discount from tblCoupon where seq = 21;
+
+select * from tblCoupon where seq = 21;
+
+
+update tblcoupon set title = '하하하 쿠폰', startdate = to_date, enddate = ?, discount = ?, showseq = ? where seq = 21;
+
+update tblcoupon set title = '하하하 쿠폰', startdate = TO_DATE(?,'yyyy/mm/dd'), enddate = TO_DATE(?,'yyyy/mm/dd'), discount = ?, showseq = ? where seq = ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

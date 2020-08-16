@@ -329,9 +329,7 @@
     
     
     // 삭제 
-/*     var innerlist = $(".cb");
-    	var count = 0; */
-    
+
     $("#btndelete").click(function(){
     	count = 0;
     	//alert(innerlist.length);

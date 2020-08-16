@@ -23,9 +23,15 @@ public class CouponInsert extends HttpServlet{
 		
 		list  = dao.getShowList();
 		
-		System.out.println(list.get(0));
-
+		//System.out.println(list.size());
 		
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getTitle());
+		}
+		
+		
+		
+		req.setAttribute("showList", list);//list 를 넘겨줄 것이다.
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/coupon/couponInsert.jsp");

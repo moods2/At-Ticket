@@ -161,6 +161,12 @@
 	       	${pagebar}
  		</div>
  		
+ 		 <!-- 삭제 -->
+ 		<form method = "POST" action = "/AtTicketProject/coupon/coupondelete.do" id = "delnumform" style = " visibility : hidden;">
+ 			<input type = "text" name = "delNum" id = "delNum">
+ 			<input type="submit" id = "delsubmit">
+ 		</form>
+ 		
  		
     </div>	
 
@@ -199,10 +205,12 @@
     var innerlist = $(".cb");
     var count = 0;
     
-    //삭제
+    
+    //삭제 -> 히든태그에 정보를 담아서 넘겨버릴것이다.
     $("#delbtn").click(function(){
     	count = 0;
     	
+    	//카운트를 몇번했는지 알기위해 써준것이다.
     	for (var i = 0; i < innerlist.length; i++) {
     		
             if($(innerlist[i]).is(":checked")) {
@@ -213,16 +221,38 @@
     	if(count == 0) {
     		alert("적어도 하나이상 체크해주세요.");
     	} else {
-    		alert("삭제를 시작합니다.");
-    	}
+    		//여기서 삭제 시작할것이다.
+    		
+    		alert("삭제되었습니다");
+    		
+    		var throwNum = "";//넘겨줄 번호
+    		
+    		for (var i = 0; i < innerlist.length; i++) {
+    			
+    			if ($(innerlist[i]).is(":checked")) {
+    				
+    				throwNum += $(innerlist[i]).parent().parent().children().eq(1).text() + ",";
+    				
+    			}	
+    		}//for
+    		
+    		//alert(throwNum);
+    		
+    		$("#delNum").val(throwNum);//값을 변경해준다
+			$("#delsubmit").trigger("click");
+    		
+    		
+    	}//else
     	
     });
     
     
     //수정
+    var edithref = "/AtTicketProject/coupon/couponedit.do?editnum="//get방식으로 넘겨줄것이다.
+    
     $("#modifybtn").click(function(){
     	count = 0;
-    	
+    	//여기서는 몇개의 체크박스에 체크를 걸었는지 확인해줄것이다.
     	for (var i = 0; i < innerlist.length; i++) {
     		
             if($(innerlist[i]).is(":checked")) {
@@ -230,12 +260,25 @@
             } 
     	}
     	
+    	
     	if(count != 1) {
     		alert("하나만 선택해주세요");
     	} else if (count == 0){
     		alert("하나만 선택해주세요");
     	} else {
-    		alert("수정을 시작합시다.");
+    		//alert("수정을 시작합시다.");
+    		//수정시작
+    		var throwNum = "";//넘겨줄 번호
+			for (var i = 0; i < innerlist.length; i++) {
+        		
+                if($(innerlist[i]).is(":checked")) {
+              	  
+                	throwNum = $(innerlist[i]).parent().parent().children().eq(1).text() + "";
+            		    	
+                } 
+        	}//for
+    		
+			popupCenter(edithref + throwNum,700,400);
     	}
     });
     

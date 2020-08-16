@@ -76,7 +76,7 @@ public class AdminCoupon extends HttpServlet {
 		
 		
 		//총 페이지 수 계산하기
-		//총 페이지 수 = 총 게시물 수 / 한 페이지당 출력 게시물 수
+		//총 페이지 수 = 총 게시물 수 / 한 페이지당 출력 게시물 수 
 		totalCount =  dao.getTotalCount(map);//총 게시물수!
 		System.out.println(totalCount);//확인 잘 불러왔음
 		
@@ -84,7 +84,7 @@ public class AdminCoupon extends HttpServlet {
 		//System.out.println(dao.getList(map).get(0).getName());
 		list = dao.getList(map);
 		
-		System.out.println(list);
+		//System.out.println(list);
 		
 		
 		
