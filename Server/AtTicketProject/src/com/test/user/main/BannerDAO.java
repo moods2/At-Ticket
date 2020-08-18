@@ -485,5 +485,44 @@ public class BannerDAO {
 		
 		return null;
 	}
+
+	public ArrayList<BannerDTO> atspick(String whatshot) {
+		
+		try {
+			
+			String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM "
+					+ "(SELECT TITLE, POSTER, GENRE FROM TBLSHOW WHERE GENRE = ?) A) "
+					+ "WHERE RNUM IN (6, 2, 14, 8, 11, 9)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, whatshot);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<BannerDTO> list = new ArrayList<BannerDTO>();
+			
+			while (rs.next()) {
+				
+				BannerDTO dto = new BannerDTO();
+				
+				dto.setSeq(rs.getString("rnum"));
+				dto.setName(rs.getString("title"));
+				dto.setImg(rs.getString("poster"));
+				dto.setGenre(rs.getString("genre").toUpperCase());
+				
+				list.add(dto);
+				
+			}
+			rs.close();
+			pstat.close();
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
 	
 }
