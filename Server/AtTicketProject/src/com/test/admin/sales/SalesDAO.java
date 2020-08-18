@@ -35,7 +35,7 @@ public class SalesDAO {
 		try {
 			String search = "";
 			
-			if(dto.getSearch() != null || !dto.getSearch().equals("")) {
+			if(dto.getSearch() != null) {
 				search = String.format("and title like '%% || %s || %%'",dto.getSearch());
 			}
 			
@@ -44,7 +44,24 @@ public class SalesDAO {
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getGenre());
 			
+			rs = pstat.executeQuery();
 			
+			ArrayList<SalesDTO> list = new ArrayList<SalesDTO>(); 
+			
+			while(rs.next()) {
+				SalesDTO dto2 = new SalesDTO();
+				dto2.setSeq(rs.getString("seq"));
+				dto2.setTitle(rs.getString("title"));
+				dto2.setStartDay(rs.getString("startdate"));
+				dto2.setEndDay(rs.getString("enddate"));
+				dto2.setPrice(rs.getInt("price"));
+				dto2.setPoster(rs.getString("poster"));
+				dto2.setGenre(rs.getString("genre"));
+				
+				list.add(dto2);
+			}
+			
+			return list;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
