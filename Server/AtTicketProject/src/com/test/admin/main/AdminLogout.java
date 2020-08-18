@@ -10,23 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/index.do")//xml 연결
-public class Index extends HttpServlet{
+@WebServlet("/adminlogout.do")
+public class AdminLogout extends HttpServlet{
 	
-	//관리자 로그인 시작하는 페이지
-	//링크만 연결할 것이므로  Get방식으로 연결해준다
+	//로그아웃 서블릿이므로 여기서 세션을 비워줄것이다.
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/index.jsp");
-		dispatcher.forward(req, resp);
+		//RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/adminmain.jsp");
+		//dispatcher.forward(req, resp);
 		
 		HttpSession session = req.getSession();
-		System.out.println(session.getAttribute("id"));//처음에는 세션내부에 값이 없어지는게 정상이다.
+		
+		session.invalidate();//세션삭제
 		
 		
-
-	}	
+		resp.sendRedirect("/AtTicketProject/index.do");
+		
+	}
+	
 }
-
-

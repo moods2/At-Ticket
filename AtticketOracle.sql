@@ -328,6 +328,8 @@ select * from tblEmployee ;
 
 select * from tblEmployee;
 
+select * from tblAdmin;
+
 
 
 create or replace view vwCempInfoJam as
@@ -346,6 +348,8 @@ from tblEmployee te
             order by te.seq desc;
 
 
+commit;
+
 
 select * from vwCempInfoJam;
 
@@ -362,10 +366,21 @@ select count(*) from vwemployeeinfo;
 
 
 
+select * from tblCustomer order by seq asc;
+
+select * from tblCoupon;
 
 
+select * from tblCusCoupon order by regdate;
 
 
+select cuscouponSeq.currval from dual
+
+commit;
+
+rollback;
+
+insert into tblCusCoupon values (cuscouponSeq.nextval,to_date(sysdate,'yyyy/mm/dd hh24:mi'),8,3,0);
 
 
 

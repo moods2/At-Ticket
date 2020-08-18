@@ -2,15 +2,14 @@
 	pageEncoding="UTF-8"%>
   <div id="left">
         
+        
         <img src="<%= request.getContextPath() %>/images/man.png" 
             style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
-            <span><%=
-            
-            session.getAttribute("id")
-            
-            %></span>
+            <span>
+            	${sessionScope.id} 
+            </span>
         </div>
         <!-- <div class="b">
             <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
@@ -19,12 +18,18 @@
         <!-- 로그아웃 버튼 관련 -->
         <div id = "logout">
         	<%
-        		session.invalidate();//해당 세션을 비워준다. -> 로그아웃을 진행해야 하므로
-        	
+        		//session.invalidate();//해당 세션을 비워준다. -> 로그아웃을 진행해야 하므로
+        		
         	%>
             <input style="font-weight: bold; background-color: #999; margin-top : 30px; margin-bottom : 50px; color: #D5D5D5; width: 70px; height: 30px; outline: none;"
-                     type="button" value="Logout" id="btn2" class="btn" onclick = "location.href = '/AtTicketProject/index.do';">
+                     type="button" value="Logout" id="btn2" class="btn" onclick = "location.href = '/AtTicketProject/adminlogout.do';">
         </div>
+        <!-- 로그아웃버튼을 눌렀을때 취할 행동 -->
+        <script>
+        	
+        
+        </script>
+        
         <!-- 왼쪽 바 메뉴 -->
         <div class="accomenu">
             <h3>공연</h3>
