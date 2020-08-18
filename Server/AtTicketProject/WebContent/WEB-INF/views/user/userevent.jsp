@@ -358,15 +358,16 @@
        		 <c:forEach items="${list}" var="dto">        
        		 <c:if test="${dto.delflag==0}">   
                     <div id="eventbox">
-                        <img src="./images/${dto.banner}" alt="">
+                    <a href="http://localhost:8090/AtTicketProject/userpromotion.do" target='_self'>
+                        <img style="cursor: pointer;" src="./images/${dto.banner}" ></a>
                         <div class="eve-mlist-box">
                             <p class="evemark">${dto.eindex}</p>
                             <p class="evetit">${dto.title}</p>
                             <p class="evetxt">${dto.startdate} ~ ${dto.enddate}</p>
-                            <div class="evepc" data-percent="20">
-                                <progress value="20" max="100" class="pbar"></progress>                         
+                            <div class="evepc" data-percent="90">
+                                <progress value="90" max="100" class="pbar"></progress>                         
                             </div>
-                            <p class="eve-mlist-dday">44일 남음</p>
+                            <p class="eve-mlist-dday">10일 남음</p>
                         </div>           
                     </div>      
              </c:if>
