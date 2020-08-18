@@ -524,5 +524,28 @@ public class BannerDAO {
 		
 		return null;
 	}
+
+	public int setBanner(BannerDTO dto) {
+		
+		try {
+			
+			String sql = "UPDATE TBLBANNER SET IMG = ?, INTRO1 = ?, INTRO2 = ?, INTRO3 = ?, FONTCOLOR = ? WHERE NAME = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getImg());
+			pstat.setString(2, dto.getIntro1());
+			pstat.setString(3, dto.getIntro2());
+			pstat.setString(4, dto.getIntro3());
+			pstat.setString(5, dto.getFontcolor());
+			pstat.setString(6, dto.getName());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
 	
 }
