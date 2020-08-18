@@ -909,6 +909,8 @@
     
     });
 	
+    
+    
 	</script>   	
    		
      
@@ -917,6 +919,7 @@
     
     
 	<%@include file="/WEB-INF/views/inc/menu.jsp" %><!-- 왼쪽 메뉴 페이지 -->
+	
 
 
 <script>

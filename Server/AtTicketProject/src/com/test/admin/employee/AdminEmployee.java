@@ -26,7 +26,7 @@ public class AdminEmployee extends HttpServlet{
 		String temp = "";
 		
 		if(sort == null || sort == "") {//차순정렬값이 없는경우 -> 그냥 보고 있는경우 -> seq 오름차순으로 정렬할것이다
-			sort = "seq asc"; //기본값
+			sort = "seq desc"; //기본값
 		}
 		
 		AdminEmployeeDAO dao = new AdminEmployeeDAO();

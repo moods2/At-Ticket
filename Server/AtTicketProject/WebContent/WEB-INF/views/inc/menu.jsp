@@ -6,7 +6,11 @@
             style="margin-top: 40px; width: 80px; border: 1px solid #333; border-radius:50%; background-color: #999;">
         <div class="info" style="color:white">
             <span><br>Welcome,</span></br></span>
-            <span>${id}</span>
+            <span><%=
+            
+            session.getAttribute("id")
+            
+            %></span>
         </div>
         <!-- <div class="b">
             <input style="font-weight: bold; background-color: #C27BA0; margin : 80px;" type="button" value="Logout" id="btn2"
@@ -37,12 +41,12 @@
             </div>
             <h3>직원 정보</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminEmployee.html"><span>▶</span> 직원 조회</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/adminemployee.do"><span>▶</span> 직원 조회</a></div>
             </div>
             <h3>이벤트</h3>
             <div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="coupon.html"><span>▶</span> 쿠폰 조회</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/coupon/admincoupon.do"><span>▶</span> 쿠폰 조회</a></div>
             </div>
             <h3>1:1 문의</h3>
             <div>

@@ -260,10 +260,14 @@ select * from tblcoupon;
 
 delete tblcoupon where seq = 19;
 
-
+commit;
 
 create or replace view vwCoupons as
-select * from tblCoupon order by seq asc;
+select * from tblCoupon order by seq desc;
+
+
+select * from tblCoupon order by seq desc;
+
 
 
 select * from vwCoupons;
@@ -312,25 +316,49 @@ select * from tblCoupon where seq = 21;
 
 update tblcoupon set title = '하하하 쿠폰', startdate = to_date, enddate = ?, discount = ?, showseq = ? where seq = 21;
 
-update tblcoupon set title = '하하하 쿠폰', startdate = TO_DATE(?,'yyyy/mm/dd'), enddate = TO_DATE(?,'yyyy/mm/dd'), discount = ?, showseq = ? where seq = ?
+commit;
+
+update tblcoupon set title = '하하하 쿠폰', startdate = TO_DATE('2020/08/21','yyyy/mm/dd'), enddate = TO_DATE('2020/09/13','yyyy/mm/dd'), discount = 15000, showseq = 21 where seq = 21;
+
+
+select * from tblEmployee ;
 
 
 
 
+select * from tblEmployee;
 
 
 
+create or replace view vwCempInfoJam as
+select 
+    te.seq,
+    te.name,
+    te.jikwi,
+    te.salary,
+    te.ssn,
+    te.tel,
+    tb.name as tn,
+    te.delflag
+from tblEmployee te
+    inner join tblBuseo tb
+        on te.buseoSeq = tb.seq
+            order by te.seq desc;
 
 
 
+select * from vwCempInfoJam;
+
+select count(*) from vwCempInfoJam;
+
+select * from vwCempInfoJam;
+
+select count(*) from vwCempInfoJam;
 
 
+select * from vwemployeeinfo;
 
-
-
-
-
-
+select count(*) from vwemployeeinfo;
 
 
 

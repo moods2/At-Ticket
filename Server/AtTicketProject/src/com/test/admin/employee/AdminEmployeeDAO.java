@@ -48,7 +48,7 @@ public class AdminEmployeeDAO {
 			}
 			
 			//페이징 조건이 여기서 들어가게 된다.
-			String sql = String.format("select a.* from (select rownum as rnum, v.* from vwemployeeinfo v  %s) a where rnum >= %s and rnum <= %s order by %s"
+			String sql = String.format("select a.* from (select rownum as rnum, v.* from vwCempInfoJam v  %s) a where rnum >= %s and rnum <= %s order by %s"
 					, where,map.get("begin"), map.get("end"),map.get("sort"));
 			
 			stat = conn.createStatement();
