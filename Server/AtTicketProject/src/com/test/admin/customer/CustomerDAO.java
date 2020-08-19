@@ -1,14 +1,13 @@
 package com.test.admin.customer;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import com.test.admin.coupon.CouponInfo;
 import com.test.atticket.DBUtil;
 
 public class CustomerDAO {
@@ -133,19 +132,6 @@ public class CustomerDAO {
 				} else {
 				 sql = "insert into tblCustomer values (customerSeq.nextVal,?,?,?,?,?,?,?,?,?,default, default)";
 				}
-				
-//				SEQ     NOT NULL NUMBER       
-//				NAME    NOT NULL VARCHAR2(50) 
-//				SSN     NOT NULL VARCHAR2(50) 
-//				ID      NOT NULL VARCHAR2(50) 
-//				PW      NOT NULL VARCHAR2(50) 
-//				EGG     NOT NULL NUMBER       
-//				ADDR    NOT NULL VARCHAR2(90) 
-//				TEL     NOT NULL VARCHAR2(15) 
-//				EMAIL   NOT NULL VARCHAR2(30) 
-//				GRADE   NOT NULL VARCHAR2(10) 
-//				DELFLAG NOT NULL NUMBER       
-//				PHOTO   NOT NULL VARCHAR2(30) 
 				
 				pstat = conn.prepareStatement(sql);
 				pstat.setString(1, dto.getName());
@@ -864,6 +850,26 @@ public class CustomerDAO {
 				e.printStackTrace();
 			}
 			return 0;
+		}
+
+		public ArrayList<String> getGrade() {
+			try {
+				
+				String sql = "select distinct grade from tblcustomer group by grade";
+				stat = conn.createStatement();
+				
+				rs = stat.executeQuery(sql);
+				ArrayList<String> list = new ArrayList<String>();
+				while(rs.next()) {
+					list.add(rs.getString("grade"));
+				}
+				return list;
+				
+			} catch (Exception e) {
+				System.out.println("CustomerDAO.getGrade()");
+				e.printStackTrace();
+			}
+			return null;
 		}
 		
 

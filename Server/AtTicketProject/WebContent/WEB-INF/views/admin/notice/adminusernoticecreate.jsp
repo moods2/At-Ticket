@@ -1,3 +1,4 @@
+@@ -0,0 +1,595 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,7 +9,7 @@
 <head>
 <link rel="stylesheet" href="/AtTicketProject/css/adminbanner.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin</title>
 
 
 <style>
@@ -199,7 +200,7 @@
  	
  	
  	<!-- 게시판 -->
-    <div id = "selectable">
+    <!-- <div id = "selectable">
         <div id = "slctp1">
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
@@ -301,7 +302,7 @@
         </table>
 
 
-        <!-- 하단 페이지 선택 바 -->
+        하단 페이지 선택 바
             <nav class = "pagebar">
               <ul class="pagination">
                 <li>
@@ -327,28 +328,54 @@
               </ul>
             </nav>
         
-    </div><!-- selectable -->
+    </div> --><!-- selectable -->
     
     <!-- -----------------------------게시판 양식 끝------------------------------- --> 
 	
 	
 	<!-- -----------------------------뮤지컬 정보 공지등록 시작------------------------------- --> 
+	
+	<form method = "POST" id = "createForm" action="/AtTicketProject/usernotice/adminusernoticecreateok.do?page=${page}&search=${search}&sort=${sort}" enctype = "multipart/form-data">
     <div class = "inputTitle">
-        현재화면 상태
     </div>
-    <div class = "inputInfo" style = "height : 840px;">
+    <div class = "inputInfo" style = "height : 1000px;">
         <table  style = "height : 800px;">
             <tr>
                 <td colspan="2"><iframe src="" frameborder="0" style = "width : 1300px; height : 720px;" id = "picframe"></iframe></td>
             </tr>  
             <tr style = "height : 70px;">
                 <td class = title>&nbsp;&nbsp;파일첨부</td>
-                <td><input type="file" id = "fileinputer"></td>
+                <td><input type="file" id = "fileinputer" name = "content"></td>
+            </tr>       
+            <tr  style = "height : 70px;">
+            	<td class = "title">&nbsp;&nbsp;구분</td>
+            	<td><select style="width:150px" name = "nindex" class = "form-control">
+            				<c:forEach items = "${list}" var = "nindex">
+        						<option value = "${nindex}" class = "data">${nindex}</option>
+        					</c:forEach>
+            		</select>
+            	</td>
+            </tr> 
+             <tr  style = "height : 70px;">
+            	<td class = "title" name = "title">&nbsp;&nbsp;제목</td>
+            	<td>
+            		<input style="width:500px;" name = "title" type = "text" class = "form-control">
+            	</td>
+            </tr>  
+             <tr  style = "height : 70px;">
+            	<td class = "title">&nbsp;&nbsp;티켓오픈일시</td>
+            	<td>
+            		<input style="width:200px;" name = "opendate" type = "date" class = "form-control">
+            	</td>
+            </tr>   
             </table>
-            </tr>          
     </div> 
-
-    <script>
+    <div style = "margin-left : 950px;">
+        <input id = "confirmation" type="submit" value = "작성" style = "width : 120px; margin-top:20px; height : 40px; font-size: 1.3em; font-weight: bold;">
+    </div>
+    
+	</form>
+   <script>
         //파일선택을 하면  현재화면상태에 변화를 준다 -> 서버 구현할떄 바뀌어야 하는 코드이다.
         var fileTimer = 0;
         $("#fileinputer").click(function(){
@@ -358,7 +385,7 @@
         });
     </script>
 
-    <div class = "inputTitle">
+  <!--   <div class = "inputTitle">
         티켓정보
     </div>
     <div class = "inputInfo">
@@ -484,7 +511,7 @@
                 <td colspan = "3"><input type="text" style = "width : 480px; height : 30px;"></td>
             </tr>
             <tr>
-                <td class = "title">&nbsp;&nbsp;티켓 가격</td><!-- 가격은 나중에 더 생각해보자 -->
+                <td class = "title">&nbsp;&nbsp;티켓 가격</td>가격은 나중에 더 생각해보자
                 <td><input type="text" class = "inputBox"> 원</td>
                 <td class = "title">&nbsp;&nbsp;관람연령</td>
                 <td>
@@ -502,7 +529,7 @@
         공연소개
     </div>
     <div class = "inputInfo">
-        <!-- 공연소개 내용 입력하는 칸 -->
+        공연소개 내용 입력하는 칸
         <textarea name="" id="" cols="30" rows="10" placeholder = "공연소개 내용을 입력하세요" style = " border : 2px solid #D2D2D2; resize : none; width : 1290px; height : 210px; margin-top : 20px; margin-left:20px"></textarea>
 
     </div>
@@ -525,7 +552,7 @@
                 <td><input type="text" style = "width: 700px; height :30px;"></td>
             </tr>
         </table>
-    </div>	
+    </div>	 -->
 
 	<!-------------------------------뮤지컬 정보 공지등록 끝---------------------------------> 
 
@@ -534,7 +561,7 @@
 
 
 	
-<script>
+	<script>
 		var date = document.getElementById("date");
 		var now = new Date();
 		var sw = document.images["sw"];
@@ -552,10 +579,10 @@
 		        maxDate: now.getFullYear() + "-12-" + "31"
 		    });
 		
-		var cal1 = document.getElementById("cal1");
-		cal1.value = now.getFullYear() + "-" + parseInt(now.getMonth()+1) + "-" + now.getDate();
+		/* var cal1 = document.getElementById("cal1");
+		cal1.value = now.getFullYear() + "-" + parseInt(now.getMonth()+1) + "-" + now.getDate(); */
 		
-		$("#cal1").datepicker({
+		/* $("#cal1").datepicker({
 		    dateFormat: "yy-mm-dd",
 		    minDate: now.getFullYear() + "-1-1",
 		    maxDate: now.getFullYear() + "-12-" + "31"
@@ -586,7 +613,7 @@
 		    dateFormat: "yy-mm-dd",
 		    minDate: now.getFullYear() + "-1-1",
 		    maxDate: now.getFullYear() + "-12-" + "31"
-		});  
+		});   */
 	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>
 	
 </script>

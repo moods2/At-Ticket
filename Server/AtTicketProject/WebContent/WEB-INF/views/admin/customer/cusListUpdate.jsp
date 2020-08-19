@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,11 +60,9 @@
         <li>주민번호 : <input type="text" name="ssn" id="ssn" class="data" required value = "${dto.ssn}"></li>
         <li>고객등급 : <div style="margin-top:-25px; margin-left:70px;"><select name="grade" style="width:100px;" class = "form-control">
         				<optgroup label="고객등급">
-        					<option value = "vip" class = "data">vip</option>
-        					<option value ="vvip" class = "data">vvip</option>
-        					<option value = "gold" class = "data">gold</option>
-        					<option value = "bronze" class = "data">bronze</option>
-        					<option value = "siliver" class = "data">siliver</option>
+        					<c:forEach items = "${list1}" var = "grade">
+        					<option value = "${grade}" class = "data">${grade}</option>
+        					</c:forEach>
         				</optgroup>
         			</select>
         			</div>
