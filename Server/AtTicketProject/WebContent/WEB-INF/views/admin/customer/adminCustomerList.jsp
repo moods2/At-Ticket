@@ -173,7 +173,6 @@
     <div id="box" style="margin-left: 100px; margin-top:30px;">
         <table style="width: 1320px; margin-left: 280px;" class="table  table-bordered table-striped table-condensed"
             id="tbl">
-            <tbody id="tbody1">
                 <thead>
                     <tr>
                         <th style="text-align: center;">
@@ -190,6 +189,7 @@
                         <th style="width: 110px;">사진</th>
                     </tr>
                 </thead>
+            <tbody id="tbody1">
                 <c:if test="${not empty search and list.size() == 0}">
                     <tr>
                         <td colspan="11">검색 결과가 없습니다.</td>

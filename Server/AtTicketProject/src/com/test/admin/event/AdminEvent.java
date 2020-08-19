@@ -156,10 +156,7 @@ public class AdminEvent extends HttpServlet {
 		
 		
 		
-		
-		//새로고침 ~~> 조회수 증가 방지
-		session.setAttribute("read", false);
-		
+	
 		
 		
 		//페이지바 제작

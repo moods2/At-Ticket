@@ -35,7 +35,7 @@
 <body>
 	 <legend style="width: 200px; margin:20px 25px; font-weight: bold;">이벤트 추가</legend>
     <div id = "right">
-	<form method="POST" action = "/AtTicketProject/adminnoticeeditok.do">
+	<form method="POST" action = "/AtTicketProject/event/eventinsertok.do">
         <table id="tbl" class="table table-bordered" style="width: 600px;">
             <!-- <tr>
                 <th style="width: 150px;">부서</th>
@@ -55,6 +55,18 @@
                 <td style="width: 450px;">
                     <!-- block태그로 바뀜 -->
                     <input name = "title" type="text" class="form-control"> 
+                </td>
+            </tr>
+            <tr>
+            	<th>
+            		<label for="startDate">공연 기간 : </label>
+            	</th>
+            	<td>
+	                <input style="width: 100px;" type="text" name="startdate" id="startdate" class="date" value="" required>
+	                <label for="date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal1"></span></label>
+	                <span> - </span>
+	                <input style="width: 100px;" type="text" name="enddate" id="enddate" class="date" value="" required>
+	                <label for="date1"><span style="font-size: 1em;" class="glyphicon glyphicon-calendar" id = "cal2"></span></label>
                 </td>
             </tr>
             <tr>
@@ -85,7 +97,7 @@
                 <th style="width: 150px">공연번호</th>
                 <td style="width: 450px;">
                     <!-- block태그로 바뀜 -->
-                    <input name = "title" type="text" class="form-control"> 
+                    <input name = "showseq" type="text" class="form-control"> 
                 </td>
             </tr>
             
@@ -107,7 +119,14 @@
     <script>
 
         var now = new Date();
+        $("#startdate").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
 
+
+        $("#enddate").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
        
      </script>
 </body>

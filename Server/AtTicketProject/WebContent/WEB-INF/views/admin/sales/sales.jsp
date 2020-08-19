@@ -141,15 +141,18 @@
         font-family: Arial;
         font-size: 3em;">매출 관리 <small>> Home </small></h1>
     </div>
+    
     <div style="margin-left: 400px; margin-top: 20px; width: 1000px;">
+    <form method="GET" action="/AtTicketProject/adminsales.do" id="searchForm">
         <select style="margin-left: 280px; margin-top: 10px;" name="genre" id="genre">
-            <optgroup label="장르">
-                <option value="1">콘서트</option>
-                <option value="2">뮤지컬</option>
-                <option value="3">연극</option>
-                <option value="4">클래식</option>
-                <option value="5">전시</option>
-            </optgroup>
+        
+               <option value="-1">장르</option>
+               <option value="concert">콘서트</option>
+               <option value="musical">뮤지컬</option>
+               <option value="theater">연극</option>
+               <option value="classic">클래식</option>
+               <option value="exhibition">전시</option>
+ 
         </select>
 
 
@@ -166,302 +169,105 @@
         <div id="box">
             <div style="margin-top: 5px;"><label for="txtname" style="font-weight: bold;">&nbsp기간별 조회 :
                     &nbsp&nbsp&nbsp</label>
-                <input style="width: 100px; text-align: center; " type="text" name="date2" value=" /      /"
-                    id="date2"><label for="date2"><span
-                        style="font-size: 1em; margin-top: -30px; margin-left: 10px; position: relative; top: 2px; left: 0px;"
-                        class="glyphicon glyphicon-calendar" id="cal"></span></label> ~ <input
-                    style="width: 100px; text-align: center;" type="text" name="date1" value=" /      /"
-                    id="date1"><label for="date1"><span style="font-size: 1em; margin-left: 10px;"
-                        class="glyphicon glyphicon-calendar" id="cal1"></span></label>
+                <input style="width: 100px; text-align: center; " type="text" name="sdate" value=" /      /"
+                    id="sdate"><label for="date2"></label> ~ <input
+                    style="width: 100px; text-align: center;" type="text" name="edate" value=" /      /"
+                    id="edate"><label for="date1"></label>
                 <input style="margin-left: 34px; background-color: #333333; color: white; border: 0px;" type="button"
                     value="조회">
             </div>
-            <div style="margin-top: 30px;">
-                <span style="font-weight: bold; margin-right: 20px; margin-left: 2px;">공연 제목 : </span>
-                <input style="width: 300px;" type="text" name="txt" id="txt" autofocus>
-                <input style="margin-left: 10px; background-color:#333333; color: white;  border: 0px;" type="button"
-                    value="조회">
-            </div>
+
+	         
         </div>
 
+		<figure class="highcharts-figure">
+		    <div id="container"></div>
+		</figure>
 
-        <div id="box1">
-            <div class="info" style="float: left; margin-right: 90px;" id="info1">
-                <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value="1">
-                <div class="img" style="display: inline-block;"></div>
-                <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아>
-                        </span>
-                <span class="p"
-                    style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-                <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
-                    2관</span>
-
-            </div>
-
-            <figure style="float: left;" class="highcharts-figure">
-                <div style="width:300px; margin-left: 60px;" id="container"></div>
-                <p class="highcharts-description">
-                </p>
-            </figure>
-        </div>
-
-        <div style="clear: both;"></div>
-
-        <div id="box2">
-            <div class="info" style="float: left;margin-right: 90px;" id="info2">
-                <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value="2">
-                <div class="img" style="display: inline-block;"></div>
-                <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아>
-                        </span>
-                <span class="p"
-                    style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-                <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
-                    2관</span>
-
-            </div>
-
-            <figure style="float: left;" class="highcharts-figure">
-                <div style="width:300px; margin-left: 60px;" id="container1"></div>
-                <p class="highcharts-description">
-                </p>
-            </figure>
-        </div>
-        <div style="clear: both;"></div>
-        <div id="box3">
-            <div class="info" style="float: left;margin-right: 90px;" id="info3">
-                <input style="position: relative; top: -100px;" type="checkbox" class="cb" name="checkRow" value="3">
-                <div class="img" style="display: inline-block;"></div>
-                <span class="p" style="position:relative; top: -170px; left: 250px; font-weight: bold;">뮤지컬<미아 파밀리아>
-                        </span>
-                <span class="p"
-                    style="position:relative; top: -180px; left: 250px; font-weight: bold;"><br>2020.06.09~2020.08.23</span>
-                <span class="p" style="position:relative; top: -190px; left: 250px; font-weight: bold;"><br>예스24스테이지
-                    2관</span>
-
-            </div>
-
-            <figure style="float: left;" class="highcharts-figure">
-                <div style="width:300px; margin-left: 60px;" id="container2"></div>
-                <p class="highcharts-description">
-                </p>
-            </figure>
-        </div>
-
-        <div style="clear: both;"></div>
-        <nav class="pagebar" style="margin-left: 400px;">
-            <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li class="active"><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="">6</a></li>
-                <li><a href="">7</a></li>
-                <li><a href="">8</a></li>
-                <li><a href="">9</a></li>
-                <li><a href="">10</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-    </div><!-- selectable -->
-
+		</form>
     </div>
-    <div id="manipulate" style="margin-top:20px; margin-bottom: 80px; margin-left: 1300px; width: 130px;">
-        <button class="modified" id="modifybtn"><i class="glyphicon glyphicon-pencil"></i>수정</button>
-        <button class="modified" id="delbtn"><i class="glyphicon glyphicon-trash"></i>삭제</button>
-    </div>
+	
 
 	<%@include file="/WEB-INF/views/inc/menu.jsp"%>
 	
-
+	<script src="/WEB-INF/lib/highcharts.js"></script>
     <script type="text/javascript">
-        // Make monochrome colors
-        var pieColors = (function () {
-            var colors = [],
-                base = Highcharts.getOptions().colors[0],
-                i;
+    
+    	$("#genre").change(function() {
+    		var genre = $(this).val();
+    		//alert(genre);
+    		
+    		$.ajax({
+    			type: "GET",
+    			url: "/ajax/ex12ok.do",
+    			data: "buseo=" + buseo,
+    			success: function(result) {
+    				
+    				
+    				
+    			},
+    			
+    			error: function (a,b,c) {
+    				console.log(a,b,c);
+    			}
+    		});
+    		
+    		
+    	});
+    	
+    	var options = {
+        	    chart: {
+        	        type: 'column'
+        	    },
+        	    title: {
+        	        text: '장르별 매출액'
+        	    },
+        	    xAxis: {
+        	        categories: [
+        	            'Jan',
+        	            'Feb'
+        	        ],
+        	        crosshair: true
+        	    },
+        	    yAxis: {
+        	        min: 0,
+        	        title: {
+        	            text: '매출액(원)'
+        	        }
+        	    },
+        	    tooltip: {
+        	        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        	        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        	            '<td style="padding:0"><b>{point.y:.1f} 원</b></td></tr>',
+        	        footerFormat: '</table>',
+        	        shared: true,
+        	        useHTML: true
+        	    },
+        	    plotOptions: {
+        	        column: {
+        	            pointPadding: 0.2,
+        	            borderWidth: 0
+        	        }
+        	    },
+        	    series: [{
+        	        name: 'Tokyo',
+        	        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
 
-            for (i = 0; i < 10; i += 1) {
-                // Start out with a darkened base color (negative brighten), and end
-                // up with a much brighter color
-                colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
-            }
-            return colors;
-        }());
+        	    }]
+        	};
 
-        // Build the chart
-        Highcharts.chart('container', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },  credits: {
-                enabled: false
-            },
-
-            title: {
-                text: 'sales Rate (총매출액: 10억)'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    colors: pieColors,
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-                        distance: -50,
-                        filter: {
-                            property: 'percentage',
-                            operator: '>',
-                            value: 4
-                        }
-                    }
-                }
-            },
-            series: [{
-                name: 'Share',
-                data: [
-                    { name: '순이익', y: 55 },
-                    { name: '비용', y: 45 },
-
-                ]
-            }]
+    
+        Highcharts.chart('container', options);
+        
+        $("#sdate").datepicker({
+            dateFormat: "yy-mm-dd"
         });
 
-        Highcharts.chart('container1', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },   credits: {
-                enabled: false
-            },
-
-            title: {
-                text: 'sales Rate (총매출액: 10억)'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    colors: pieColors,
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-                        distance: -50,
-                        filter: {
-                            property: 'percentage',
-                            operator: '>',
-                            value: 4
-                        }
-                    }
-                }
-            },
-            series: [{
-                name: 'Share',
-                data: [
-                    { name: '순이익', y: 55 },
-                    { name: '비용', y: 45 },
-
-                ]
-            }]
+        $("#edate").datepicker({
+            dateFormat: "yy-mm-dd"
         });
 
-        Highcharts.chart('container2', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },  credits: {
-                enabled: false
-            },
-
-            title: {
-                text: 'sales Rate (총매출액: 10억)'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    colors: pieColors,
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-                        distance: -50,
-                        filter: {
-                            property: 'percentage',
-                            operator: '>',
-                            value: 4
-                        }
-                    }
-                }
-            },
-            series: [{
-                name: 'Share',
-                data: [
-                    { name: '순이익', y: 55 },
-                    { name: '비용', y: 45 },
-
-                ]
-            }]
-        });
-        // Make monochrome colors
-        var pieColors = (function () {
-            var colors = [],
-                base = Highcharts.getOptions().colors[0],
-                i;
-
-            for (i = 0; i < 10; i += 1) {
-                // Start out with a darkened base color (negative brighten), and end
-                // up with a much brighter color
-                colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
-            }
-            return colors;
-        }());
-
-        // Build the chart
-
-        // $("#btn1").click=function(){
-
-        // };
+      
     </script>
 
     <script>
