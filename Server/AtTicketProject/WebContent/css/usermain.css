@@ -142,19 +142,13 @@ h1 {
 .img {
     width: 230px;
     height: 330px;
-    /* border: 1px solid black; */
-    background-color: cornflowerblue;
+    background-color: #eee;
     display: inline-block;
     margin: 10px 0 0 10px;
     cursor: pointer;
 }
-#banner {
-    background-color: #f19b00;
-}
 #bannerimg {
-    /* border: 1px solid black; */
     height: 400px;
-    background-image: url("../images//banner.png");
     background-repeat: no-repeat;
     background-position: center center;
     margin-top: 20px;
@@ -215,10 +209,11 @@ h1 {
 .text {
     /* border: 1px solid white; */
     position: absolute;
-    text-align: center;
     color: white;
-    margin-left: 150px;
-    margin-top: 300px;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
     z-index: 2;
 }
 .img-cover1 {
@@ -234,49 +229,18 @@ h1 {
     /* border: 1px solid white; */
     position: absolute;
     color: white;
-    margin-top: 100px;
-    margin-left: -70px;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
     z-index: 2;
 }
 
 #bigimg {
-    background-image: url("../images/big_consert.jpeg");
-    /* position: relative; */
     transform: scale(0.97);
     transition: all 0.5s;
 }
-.img1 {
-    background-image: url("../images/consert1.jpeg");
-    background-size: contain;
-    transform: scale(0.97);
-    transition: all 0.5s;
-}
-.img2 {
-    background-image: url("../images/consert2.jpeg");
-    background-size: contain;
-    transform: scale(0.97);
-    transition: all 0.5s;
-}
-.img3 {
-    background-image: url("../images/consert3.jpeg");
-    background-size: contain;
-    transform: scale(0.97);
-    transition: all 0.5s;
-}
-.img4 {
-    background-image: url("../images/consert4.jpeg");
-    background-size: contain;
-    transform: scale(0.97);
-    transition: all 0.5s;
-}
-.img5 {
-    background-image: url("../images/consert5.jpeg");
-    background-size: contain;
-    transform: scale(0.97);
-    transition: all 0.5s;
-}
-.img6 {
-    background-image: url("../images/consert6.jpeg");
+.img1, .img2, .img3, .img4, .img5, .img6 {
     background-size: contain;
     transform: scale(0.97);
     transition: all 0.5s;
@@ -301,88 +265,16 @@ h1 {
     background-image: url("../images/noticeimage.jpg");
     background-size: contain;
 }
-.rank1 {
-    background-image: url("../images/rank1.jpeg");
+.rank {
     background-size: contain;
 }
-.rank2 {
-    background-image: url("../images/rank2.jpeg");
+.musicimg {
     background-size: contain;
 }
-.rank3 {
-    background-image: url("../images/rank3.jpeg");
+.consertimg {
     background-size: contain;
 }
-.musicimg1 {
-    background-image: url("../images/music1.jpeg");
-    background-size: contain;
-}
-.musicimg2 {
-    background-image: url("../images/music2.jpeg");
-    background-size: contain;
-}
-.musicimg3 {
-    background-image: url("../images/music3.jpeg");
-    background-size: contain;
-}
-.musicimg4 {
-    background-image: url("../images/music4.jpeg");
-    background-size: contain;
-}
-.musicimg5 {
-    background-image: url("../images/music5.jpeg");
-    background-size: contain;
-}
-.musicimg6 {
-    background-image: url("../images/music6.jpeg");
-    background-size: contain;
-}
-.consertimg1 {
-    background-image: url("../images/consert1.jpeg");
-    background-size: contain;
-}
-.consertimg2 {
-    background-image: url("../images/consert2.jpeg");
-    background-size: contain;
-}
-.consertimg3 {
-    background-image: url("../images/consert3.jpeg");
-    background-size: contain;
-}
-.consertimg4 {
-    background-image: url("../images/consert4.jpeg");
-    background-size: contain;
-}
-.consertimg5 {
-    background-image: url("../images/consert5.jpeg");
-    background-size: contain;
-}
-.consertimg6 {
-    background-image: url("../images/consert6.jpeg");
-    background-size: contain;
-}
-.dpimg1 {
-    background-image: url("../images/Exhibition1.jpeg");
-    background-size: contain;
-}
-.dpimg2 {
-    background-image: url("../images/Exhibition2.jpeg");
-    background-size: contain;
-}
-.dpimg3 {
-    background-image: url("../images/Exhibition3.jpeg");
-    background-size: contain;
-}
-.dpimg4 {
-    background-image: url("../images/Exhibition4.jpeg");
-    background-size: contain;
-}
-.dpimg5 {
-    background-image: url("../images/Exhibition5.jpeg");
-    background-size: contain;
-}
-.dpimg6 {
-    background-image: url("../images/Exhibition6.jpeg");
+.dpimg {
     background-size: contain;
 }
 .img-cover1 {
@@ -396,7 +288,6 @@ h1 {
 }
 .rect {
     width: 450px;
-    color: white;
     font-weight: bold;
     position: absolute;
     left: 380px;
