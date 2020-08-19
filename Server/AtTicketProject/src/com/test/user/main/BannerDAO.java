@@ -525,7 +525,7 @@ public class BannerDAO {
 		return null;
 	}
 
-	public int setBanner(BannerDTO dto) {
+	public int setMainBg(BannerDTO dto) {
 		
 		try {
 			
@@ -547,5 +547,49 @@ public class BannerDAO {
 		
 		return 0;
 	}
-	
+
+	public int setBanner(BannerDTO dto2) {
+		
+		try {
+			
+			String sql = "UPDATE TBLBANNER SET IMG = ?, LINK = ?, BACKCOLOR = ? WHERE NAME = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto2.getImg());
+			pstat.setString(2, dto2.getLink());
+			pstat.setString(3, dto2.getBackcolor());
+			pstat.setString(4, dto2.getName());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	public int setLogo(LogoDTO dto3) {
+		
+		try {
+			
+			String sql = "UPDATE TBLLOGO SET COMPANY = ?, ADDRESS = ?, OWNER = ?, MANAGER = ?, EMAIL = ?, LICENSE = ?, IMG = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto3.getCompany());
+			pstat.setString(2, dto3.getAddress());
+			pstat.setString(3, dto3.getOwner());
+			pstat.setString(4, dto3.getManager());
+			pstat.setString(5, dto3.getEmail());
+			pstat.setString(6, dto3.getLicense());
+			pstat.setString(7, dto3.getImg());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
 }
