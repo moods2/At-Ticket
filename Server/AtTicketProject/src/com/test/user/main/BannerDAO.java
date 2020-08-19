@@ -69,7 +69,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT RNUM, TITLE, POSTER, GENRE FROM (SELECT ROWNUM AS RNUM, A.* FROM "
+			String sql = "SELECT SEQ, TITLE, POSTER, GENRE FROM (SELECT ROWNUM AS RNUM, A.* FROM "
 					+ "(SELECT * FROM VWRANK) A) WHERE ROWNUM <= 3";
 			
 			stat = conn.createStatement();
@@ -82,7 +82,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rnum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -107,7 +107,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM (SELECT ROWNUM, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
+			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
 					+ "WHERE GENRE = 'musical' OR GENRE = 'theater' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
@@ -120,7 +120,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rownum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -145,7 +145,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM (SELECT ROWNUM, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
+			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
 					+ "WHERE GENRE = 'concert' OR GENRE = 'classic' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
@@ -158,7 +158,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rownum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -183,7 +183,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM (SELECT ROWNUM, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
+			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
 					+ "WHERE GENRE = 'exhibition' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
@@ -196,7 +196,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rownum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -256,7 +256,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT RNUM, TITLE, POSTER, GENRE, STARTDATE, ENDDATE, HALL, THEATER"
+			String sql = "SELECT RNUM, SEQ, TITLE, POSTER, GENRE, STARTDATE, ENDDATE, HALL, THEATER"
 					+ " FROM (SELECT ROWNUM AS RNUM, A.* FROM "
 					+ "(SELECT * FROM VWRANK WHERE GENRE = 'concert') A) WHERE ROWNUM <= 5";
 			
@@ -270,7 +270,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rnum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -346,7 +346,7 @@ public class BannerDAO {
 			}
 			
 			String sql = String.format("SELECT ROWNUM AS RNUM, A.* FROM "
-					+ "(SELECT TITLE, POSTER, GENRE FROM TBLSHOW %s ORDER BY STARTDATE) A "
+					+ "(SELECT SEQ, TITLE, POSTER, GENRE FROM TBLSHOW %s ORDER BY STARTDATE) A "
 					+ "WHERE ROWNUM <= 7", where);
 			
 			stat = conn.createStatement();
@@ -359,7 +359,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rnum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -525,7 +525,7 @@ public class BannerDAO {
 		return null;
 	}
 
-	public int setBanner(BannerDTO dto) {
+	public int setMainBg(BannerDTO dto) {
 		
 		try {
 			
@@ -547,5 +547,49 @@ public class BannerDAO {
 		
 		return 0;
 	}
-	
+
+	public int setBanner(BannerDTO dto2) {
+		
+		try {
+			
+			String sql = "UPDATE TBLBANNER SET IMG = ?, LINK = ?, BACKCOLOR = ? WHERE NAME = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto2.getImg());
+			pstat.setString(2, dto2.getLink());
+			pstat.setString(3, dto2.getBackcolor());
+			pstat.setString(4, dto2.getName());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	public int setLogo(LogoDTO dto3) {
+		
+		try {
+			
+			String sql = "UPDATE TBLLOGO SET COMPANY = ?, ADDRESS = ?, OWNER = ?, MANAGER = ?, EMAIL = ?, LICENSE = ?, IMG = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto3.getCompany());
+			pstat.setString(2, dto3.getAddress());
+			pstat.setString(3, dto3.getOwner());
+			pstat.setString(4, dto3.getManager());
+			pstat.setString(5, dto3.getEmail());
+			pstat.setString(6, dto3.getLicense());
+			pstat.setString(7, dto3.getImg());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
 }
