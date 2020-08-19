@@ -20,8 +20,7 @@ public class CusListUpdate extends HttpServlet {
 		String seq = req.getParameter("seq");
 		
 	
-		req.setAttribute("search", search);
-		req.setAttribute("seq", seq);
+		
 		
 		CustomerDAO dao = new CustomerDAO();
 		CustomerDTO dto2 = new CustomerDTO();
@@ -29,7 +28,10 @@ public class CusListUpdate extends HttpServlet {
 		dto2.setSeq(seq);
 		
 		CustomerDTO dto = dao.get(dto2);
+		ArrayList<String> list1 = dao.getGrade();
 		
+		req.setAttribute("list1", list1);
+		req.setAttribute("seq", seq);
 		req.setAttribute("dto", dto);	
 		req.setAttribute("search", search);
 		req.setAttribute("page", page);
