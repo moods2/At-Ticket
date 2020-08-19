@@ -30,46 +30,69 @@ public class SalesDAO {
 		}
 	}//close()
 
-	public ArrayList<SalesDTO> get(SalesDTO dto) {
+	//총 매출액 구하기
+	public int getTotalSales(SalesDTO dto) {
 		
 		try {
-			String search = "";
-			
-			if(dto.getSearch() != null) {
-				search = String.format("and title like '%% || %s || %%'",dto.getSearch());
-			}
-			
-			String sql = String.format("select seq, title, startDate, endDate, price, poster, genre from tblShow where genre = ? %s",search);
+			String sql = "select sum(s.price) as total " + 
+					"from tblPay p inner join tblBooking b on p.bookseq = b.seq " + 
+					"inner join tblRoundInfo r on b.roundSeq = r.seq " + 
+					"inner join tblShow s on r.showSeq = s.seq " + 
+					"where b.bookdate >= ? and b.bookdate <= ?";
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, dto.getGenre());
+			pstat.setString(1, dto.getSdate());
+			pstat.setString(2, dto.getEdate());
 			
 			rs = pstat.executeQuery();
 			
-			ArrayList<SalesDTO> list = new ArrayList<SalesDTO>(); 
-			
-			while(rs.next()) {
-				SalesDTO dto2 = new SalesDTO();
-				dto2.setSeq(rs.getString("seq"));
-				dto2.setTitle(rs.getString("title"));
-				dto2.setStartDay(rs.getString("startdate"));
-				dto2.setEndDay(rs.getString("enddate"));
-				dto2.setPrice(rs.getInt("price"));
-				dto2.setPoster(rs.getString("poster"));
-				dto2.setGenre(rs.getString("genre"));
-				
-				list.add(dto2);
+			if(rs.next()) {
+				return rs.getInt("total");
 			}
-			
-			return list;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		return 0;
+	}
+
+	//장르별 매출액 구하기
+	public ArrayList<SalesDTO> getGenreSales(SalesDTO dto) {
+		
+		try {
+			String sql = "select s.genre, sum(s.price * b.cnt) as sum " + 
+					"from tblShow s inner join tblRoundInfo r on s.seq=r.showseq " + 
+					"inner join tblbooking b on r.seq=b.roundseq " + 
+					"inner join tblPay p on b.seq=p.bookseq " + 
+					"where b.bookdate >= ? and b.bookdate <= ? " + 
+					"group by s.genre";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSdate());
+			pstat.setString(2, dto.getEdate());
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<SalesDTO> list = new ArrayList<SalesDTO>();
+			
+			while(rs.next()) {
+				SalesDTO dto2 = new SalesDTO();
+				dto2.setGenre(rs.getString("genre"));
+				dto2.setSales(rs.getInt("sum"));
+				dto2.setStrSales(dto2.getSales());
+				
+				list.add(dto2);
+			}
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
-	
+
+
 	
 	
 }

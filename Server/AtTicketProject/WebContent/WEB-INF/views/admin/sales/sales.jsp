@@ -143,7 +143,7 @@
     </div>
     
     <div style="margin-left: 400px; margin-top: 20px; width: 1000px;">
-    <form method="GET" action="/AtTicketProject/adminsales.do" id="searchForm">
+    <form method="GET" action="/AtTicketProject/adminsalesOk.do" id="searchForm">
         <select style="margin-left: 280px; margin-top: 10px;" name="genre" id="genre">
         
                <option value="-1">장르</option>
@@ -151,7 +151,7 @@
                <option value="musical">뮤지컬</option>
                <option value="theater">연극</option>
                <option value="classic">클래식</option>
-               <option value="exhibition">전시</option>
+                <option value="exhibition">전시</option>
  
         </select>
 
@@ -162,27 +162,30 @@
                 <td
                     style="width: 100px; background-color: #555555; text-align: center; vertical-align: middle; color: white;">
                     총 매출액</td>
-                <td style="text-align: center; font-weight: bold; font-size: 2em;">30억</td>
+                <td style="text-align: center; font-weight: bold; font-size: 2em;">${total}</td>
             </tr>
         </table>
 
         <div id="box">
             <div style="margin-top: 5px;"><label for="txtname" style="font-weight: bold;">&nbsp기간별 조회 :
                     &nbsp&nbsp&nbsp</label>
-                <input style="width: 100px; text-align: center; " type="text" name="sdate" value=" /      /"
-                    id="sdate"><label for="date2"></label> ~ <input
-                    style="width: 100px; text-align: center;" type="text" name="edate" value=" /      /"
+                <input style="width: 100px; text-align: center; " type="text" name="sdate" value="${dto.sdate}" id="sdate"><label for="date2"></label> ~ <input
+                    style="width: 100px; text-align: center;" type="text" name="edate" value="${dto.edate}"
                     id="edate"><label for="date1"></label>
-                <input style="margin-left: 34px; background-color: #333333; color: white; border: 0px;" type="button"
+                <input style="margin-left: 34px; background-color: #333333; color: white; border: 0px;" type="button" onclick="$('#searchForm').submit();"
                     value="조회">
             </div>
 
 	         
         </div>
 
-		<figure class="highcharts-figure">
-		    <div id="container"></div>
-		</figure>
+			<figure class="highcharts-figure">
+				<div id="containerPie"></div>
+			</figure>
+
+			<figure class="highcharts-figure">
+				<div id="container"></div>
+			</figure>
 
 		</form>
     </div>
@@ -192,6 +195,7 @@
 	
 	<script src="/WEB-INF/lib/highcharts.js"></script>
     <script type="text/javascript">
+    
     
     	$("#genre").change(function() {
     		var genre = $(this).val();
@@ -266,38 +270,86 @@
         $("#edate").datepicker({
             dateFormat: "yy-mm-dd"
         });
+        
+        var classic = <c:out value="${list}"/>;
+        
+        
+        var pieOptions = {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: '장르별 매출액'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.y}원</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '원'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.y} 원'
+                        }
+                    }
+                },
+                series: [{
+                    name: '매출액',
+                    colorByPoint: true,
+                    data: [{
+                        name: 'classic',
+                        y: ${genreSalesList[0].strSales},
+                        sliced: true,
+                        selected: true
+                    }, {
+                        name: 'theater',
+                        y: ${genreSalesList[1].strSales}
+                    }, {
+                        name: 'concert',
+                        y: ${genreSalesList[2].strSales}
+                    }, {
+                        name: 'exhibition',
+                        y: ${genreSalesList[3].strSales}
+                    }, {
+                        name: 'classic',
+                        y: ${genreSalesList[4].strSales}
+                    }]
+                }]
+            };
+        
+        Highcharts.chart('containerPie', pieOptions);
+        
+        var date = new Date();
+        date = getFormatDate(date);
+        
+     /*    if(${dto.sdate} == null) {
+        	$("#sdate").val(date);
+        	$("#edate").val(date);
+        } */
+        
+        function getFormatDate(date) {
+            var year = date.getFullYear();              //yyyy
+            var month = (1 + date.getMonth());          //M
+            month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+            var day = date.getDate();                   //d
+            day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+            return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+        };
+        
+        
 
       
-    </script>
-
-    <script>
     <%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	
-
-        $("#modifybtn").click(function () {
-                if ($('input').is(':checked') == true) {
-                    window.open("/AtTicketProject/sales/salesupdate.do", "수정", "width=400 ,height=300");
-                } else {
-                    alert("하나 이상을 체크하시오.");
-                }
-
-            });
-
-            $("#delbtn").click(function () {
-                if ($('input').is(':checked') == true) {
-                    if (confirm("정말로 삭제하시겠습니까?")) {
-                        $("input[name=checkRow]:checked").each(function () {
-                            var tr_value = $(this).val();
-                            var box = $("#box" + tr_value);
-                            console.log(1);
-                            box.remove();
-                        });
-                    }
-                } else {
-                alert("하나 이상을 체크하시오.");
-                }
-            });
-
-
     </script>
+
 </body>
 </html>
