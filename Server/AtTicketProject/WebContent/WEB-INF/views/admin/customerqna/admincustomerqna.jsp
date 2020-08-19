@@ -95,10 +95,10 @@
             text-align: center;
         }
         #nttable th:nth-child(1) {width : 30px;}
-        #nttable th:nth-child(2) {width : 130px;}
-        #nttable th:nth-child(3) {width : 375px;}
-        #nttable th:nth-child(4) {width : 200px;}
-        #nttable th:nth-child(5) {width : 180px;}
+        #nttable th:nth-child(2) {width : 100px;}
+        #nttable th:nth-child(3) {width : auto;}
+        #nttable th:nth-child(4) {width : 150px;}
+        #nttable th:nth-child(5) {width : 200px;}
         #nttable th:nth-child(6) {width : 100px;}
         
         #nttable tbody td {
@@ -132,7 +132,10 @@
             color : white;
         }
         .pagebar {
-            margin-left : 400px;
+            /* margin-left : 400px; */
+            text-align: center;
+            width: 600px;
+            margin: 0px auto;
         }
 
 
@@ -169,355 +172,68 @@
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
-            <!-- <input type="button" class = "selectNotice" value = "등록순">
-            <input type="button" class = "selectNotice" value = "오름차순">
-            <input type="button" class = "selectNotice" value = "내림차순"> -->
         </div>
-
-        <div id = "slctp2">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요.">
-				<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
-			</div>
-        </div>
+		
+		<form method="GET" action="/AtTicketProject/admincustomerqna.do" id="searchForm">
+	        <div id = "slctp2" >
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="검색어를 입력하세요." name="search" id="search" required value="${search}">
+					<span class="input-group-addon" id = "searchlogo" onclick="$('#searchForm').submit();"><i class="glyphicon glyphicon-search"></i></span>
+				</div>
+	        </div>
+        </form> 
         
         <table style = "width:1330px;" class = "table table-striped table-bordered table-condensed" id = "nttable">
             <thead>
                 <tr>
                     <th><input type="checkbox" id = "t5title"></th>
-                    <th>구분</th>
-                    <th>제목</th>
-                    <th>작성날짜</th>
                     <th>문의유형</th>
+                    <th>제목</th>
+                    <th>이름</th>
+                    <th>작성날짜</th>
                     <th>열람확인</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont"><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont"><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont"><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont"><span class = "secret">비밀글</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont"><span class = "secret">삭제대기</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont"><span class = "secret">삭제대기</span>&nbsp;&nbsp;아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>미확인</td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class = "t5"></td>
-                    <td>구매자</td>
-                    <td class = "inputcont">아니 이 사이트는 관리자는 노는겁니까?</td>
-                    <td> 2020.02.17(월) 15:00</td>
-                    <td>반품/환불/교환</td>
-                    <td>확인</td>
-                </tr>
+            
+	            <c:if test="${not empty search and list.size() == 0}">
+	        	<tr>
+	        		<td colspan="6">검색 결과가 없습니다.</td>
+	        	</tr>                    	
+	        	</c:if>
+	        	
+	        	<c:if test="${empty search and list.size() == 0}">
+	        	<tr>
+	        		<td colspan="6">게시물이 없습니다.</td>
+	        	</tr>                    	
+	        	</c:if>
+	            
+	            <!-- 목록  -->  
+	            <c:forEach items="${list}" var="dto">
+	            <tr>	            	
+	            	<td><input type="checkbox" class = "t5"></td>
+	                <td style="width: 200px">${dto.tag}</td>
+	                <td class = "inputcont">${dto.subject}</td>
+	                <td>${dto.name}</td>
+	                <td>${dto.regdate} </td>
+	                <td>
+	                ${dto.qview}
+	                </td>
+	            </tr>
+	            </c:forEach>
+
             </tbody>
         </table>
 
         <!-- 내용물 수정/삭제 페이지 -->
         <div id = "manipulate">
-            <button class = "modified" style = "margin-left : 1193px;"><i class="glyphicon glyphicon-trash"></i>해당 문의 내역 삭제</button>
-            <!-- <button class = "modified"><i class="glyphicon glyphicon-plus"></i> 공지작성</button>
-            <button class = "modified"><i class="glyphicon glyphicon-pencil"></i> 공지수정</button> -->
+            <button class = "modified" style = "float:right;" onclick="location.href='/AtTicketProject/admincustomerqna.do';"><i class="glyphicon glyphicon-list" ></i>목록</button>
+            <button class = "modified" style = "float:right; margin-right: 10px;"><i class="glyphicon glyphicon-trash"></i>해당 문의 내역 삭제</button>
+            <div style="clear: both;"></div>
         </div>
-            <!-- <input type="button" class = "modified" value = "공지삭제"> -->
-        <!-- <input type="button" class = "modified" value = "공지작성"> -->
-        <!-- <input type="button" class = "modified" value = "공지수정"> -->
-
 
         <!-- 하단 페이지 선택 바 -->
-            <nav class = "pagebar">
-              <ul class="pagination">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li class = "active"><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="">6</a></li>
-                <li><a href="">7</a></li>
-                <li><a href="">8</a></li>
-                <li><a href="">9</a></li>
-                <li><a href="">10</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+        ${pagebar}
         
     </div><!-- selectable -->
     
@@ -545,7 +261,14 @@
 	    	window.open(href, "pop_name", "width="+w+", height="+h+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
 	    }
 	    
-    
+		function movePage() {
+			//alert(event.srcElement.value);
+			location.href = "AtTicketProject/admincustomerqna.do?page=" + event.srcElement.value;
+		}
+	    
+	    $("#pagebar").val(${page});
+	    
+
     
     </script>	
 	
