@@ -84,7 +84,7 @@ h1 { font-family: "Arial Black"; font-weight: bold; }
     /* border: 1px solid white; */
     width: 100px;
     height: 65px;
-    background-image: url("../images//title.png");
+    background-image: url("/AtTicketProject/images//title.png");
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;

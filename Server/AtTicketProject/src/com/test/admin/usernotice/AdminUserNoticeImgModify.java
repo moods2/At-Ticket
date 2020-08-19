@@ -15,6 +15,10 @@ public class AdminUserNoticeImgModify extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String page = req.getParameter("page");
+		
+		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/notice/adminusernoticeimgmodify.jsp");
 		dispatcher.forward(req, resp);
 		

@@ -357,7 +357,7 @@
 
 
 <!-- 관리자가 뮤지컬 등의 정보를 등록한다. -->
-    <div class = "inputTitle">
+   <!--  <div class = "inputTitle">
   
     </div>
     <div class = "inputInfo" style = "height : 840px;">
@@ -389,7 +389,47 @@
             	</td>
             </tr>    
             </table>
+    </div>  -->
+    <form method = "POST" id = "createForm" action="/AtTicketProject/usernotice/adminusernoticemodifyok.do?page=${page}&search=${search}&sort=${sort}" enctype = "multipart/form-data">
+    <div class = "inputTitle">
+    </div>
+    <div class = "inputInfo" style = "height : 1000px;">
+        <table  style = "height : 800px;">
+            <tr>
+                <td colspan="2"><iframe src="" frameborder="0" style = "width : 1300px; height : 720px;" id = "picframe"></iframe></td>
+            </tr>  
+            <tr style = "height : 70px;">
+                <td class = title>&nbsp;&nbsp;파일첨부</td>
+                <td><input type="file" id = "fileinputer" name = "content"></td>
+            </tr>       
+            <tr  style = "height : 70px;">
+            	<td class = "title">&nbsp;&nbsp;구분</td>
+            	<td><select style="width:150px" name = "nindex" class = "form-control">
+            				<c:forEach items = "${list}" var = "nindex">
+        						<option value = "${nindex}" class = "data">${nindex}</option>
+        					</c:forEach>
+            		</select>
+            	</td>
+            </tr> 
+             <tr  style = "height : 70px;">
+            	<td class = "title" name = "title">&nbsp;&nbsp;제목</td>
+            	<td>
+            		<input style="width:500px;" name = "title" type = "text" class = "form-control">
+            	</td>
+            </tr>  
+             <tr  style = "height : 70px;">
+            	<td class = "title">&nbsp;&nbsp;티켓오픈일시</td>
+            	<td>
+            		<input style="width:200px;" name = "opendate" type = "date" class = "form-control">
+            	</td>
+            </tr>   
+            </table>
     </div> 
+    <div style = "margin-left : 950px;">
+        <input id = "confirmation" type="submit" value = "작성" style = "width : 120px; margin-top:20px; height : 40px; font-size: 1.3em; font-weight: bold;">
+    </div>
+    
+	</form>
     <script>
         //파일선택을 하면  현재화면상태에 변화를 준다 -> 서버 구현할떄 바뀌어야 하는 코드이다.
         var fileTimer = 0;
