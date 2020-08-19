@@ -15,6 +15,22 @@ public class QnaDTO {
 	private String id;
 	private String commentcount;
 	
+	//답변
+	private String ancontent;
+	private String anregdate;
+	
+	public String getAncontent() {
+		return ancontent;
+	}
+	public void setAncontent(String ancontent) {
+		this.ancontent = ancontent;
+	}
+	public String getAnregdate() {
+		return anregdate;
+	}
+	public void setAnregdate(String anregdate) {
+		this.anregdate = anregdate;
+	}
 	public String getSeq() {
 		return seq;
 	}
