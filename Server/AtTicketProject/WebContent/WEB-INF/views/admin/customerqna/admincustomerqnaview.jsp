@@ -13,7 +13,8 @@
         html {
             /* border: 1px solid black; */
             width : 900px;
-            height : 900px;
+            /* height : 900px; */
+            min-height: 500px;
         }
         /* 회원이 적은 제목 */
         #title {
@@ -56,21 +57,26 @@
             margin-top : 10px;
             font-weight: bold;
         }
+        
+        .btn {
+        	float: right;
+        }
 
 </style>
 
 </head>
 <body>
 
-    <div id = "title" >아니 이 사이트 관리자는 노는겁니까?</div>
+    <div id = "title" >${dto.subject}</div>
     <div id = "cusotomerInfo">
         <div id = "face"></div>
-        <div class = "csinfo">성춘향</div>
-        <div class = "csinfo">2020.08.10&nbsp;&nbsp;&nbsp;02:45</div>
+        <div class = "csinfo">${dto.name}(${dto.id})</div>
+        <div class = "csinfo">${dto.regdate}</div>
     </div>
     
-          <p style="margin-top:45px; font-size : 1.2em;">&nbsp;&nbsp;&nbsp;&nbsp;아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나아니 환불문의를 엊그제 한거 같은데 아직도 답이없어요? 아니 사람을 졸로 보는것도 아니고...참나  
-      </p>
+          <p style="margin:45px 0px 0px 15px; font-size : 1.2em;">
+          	${dto.content}
+          </p>
 
     
           <style>
@@ -97,18 +103,34 @@
 
       
       <div id = "comment" style = "margin-top : 100px;">
-        <span id = "commentgo">댓글쓰기</span>
+        <!-- <span id = "commentgo">댓글쓰기</span> -->
         <hr class = "splitLine">
 
         <div class = "commenttxt">
-            <span>죄송합니다 고객님</span>
-            <div>2020.08.09</div>
-            <div class = "reply"><button>답글달기</button></div>
-            <div class = "replyon" style = "visibility : hidden;">
+        	
+        	<div id ="textInput">
+            	<span>${dto.ancontent}</span>
+            	<textarea style='display:block; width: 870px; min-height:300px; resize:none; display: none;' id='textW'></textarea>
+            </div>
+            <div>${dto.anregdate}</div>
+            
+            <!-- 댓글달기 버튼 -->
+            <c:if test="${empty dto.ancontent}">
+            	<div class = "reply"><button class ="btn btn-default">답변하기</button></div>
+            </c:if>
+            
+            <!-- 수정하기 버튼 -->
+            <c:if test="${not empty dto.ancontent}">
+            	<button class ="btn btn-default" id="reWrite">수정하기</button>
+            	<button class ='btn btn-default' id='rwOk' style="display: none;">완료</button>
+            </c:if>
+            
+            <div class = "replyon" style = "display : none;">
                 <textarea style = "resize:none;" rows = "5" cols = "100"></textarea>
                 <div><input type="submit"></div>
             </div> 
         </div>
+        <div style="clear: both;"></div>
         <hr class = "splitLine">
 
 
@@ -122,11 +144,11 @@
           $(".reply").click(function(){
 
                 if (onoff) {
-                    $(".replyon").css("visibility","hidden");
+                    $(".replyon").css("display","none");
                     onoff = false;
               
                 } else {
-                    $(".replyon").css("visibility","visible");
+                    $(".replyon").css("display","block");
                     onoff = true;
                 }
 
@@ -137,8 +159,35 @@
                 
             
           });
-
           
+        
+          
+          $("#reWrite").click(function() {
+			
+        	  var txt = "${dto.ancontent}";
+        	  txt = txt.replace(/<br>/gi, "\n");
+        	  
+        	  $("#textW").css("display","block");
+        	  $("#textW").val(txt);
+        	  
+        	  $("#textInput span").css("display","none");
+        	  
+        	  $("#reWrite").css("display","none");
+        	  $("#rwOk").css("display","block");
+        	  
+		  }); 
+          
+          $("#rwOk").click(function() {
+        	  
+        	  $("#reWrite").css("display","block");
+        	  $("#textInput span").css("display","block");
+        	  $("#rwOk").css("display","none");
+        	  $("#textW").css("display","none");
+        	  alert("수정이 완료되었습니다.");
+        	  
+          });
+
+ 
       </script>
     
     

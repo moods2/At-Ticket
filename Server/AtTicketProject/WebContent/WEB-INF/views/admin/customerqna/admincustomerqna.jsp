@@ -118,6 +118,12 @@
             cursor : pointer;
             text-decoration: underline;
         }
+        
+        .inputcont a {
+        	color : #333;
+        	font-weight: normal;
+        }
+        
         .modified {
             border : 0px;
             border-radius: 5px;
@@ -213,7 +219,11 @@
 	            <tr>	            	
 	            	<td><input type="checkbox" class = "t5"></td>
 	                <td style="width: 200px">${dto.tag}</td>
-	                <td class = "inputcont">${dto.subject}</td>
+	                <td class = "inputcont">
+	                	<a href="/AtTicketProject/customerqna/admincustomerqnaview.do?seq=${dto.seq}&search=${search}" onclick="window.open(this.href, '_blanck', 'width=910, height=700'); return false">
+	                		${dto.subject}
+	                	</a> 
+	                </td>
 	                <td>${dto.name}</td>
 	                <td>${dto.regdate} </td>
 	                <td>
@@ -246,7 +256,10 @@
 	        //adminChild = window.open("./adminQuestionAnswer.html","QA","width=900,height=900");
 	        // 질문에 대한 답을 해주는 페이지로 이동한다. 
 	    	
-	    	popupCenter("/AtTicketProject/customerqna/admincustomerqnaview.do",1000,1000);
+	    	//popupCenter("/AtTicketProject/customerqna/admincustomerqnaview.do",1000,1000);
+	    	//popupCenter("AtTicketProject/admincustomerqna.do?seq=${dto.seq}&search=${search}",1000,1000);
+	        
+	        
 	        
 	        
 	    });
@@ -260,11 +273,11 @@
 
 	    	window.open(href, "pop_name", "width="+w+", height="+h+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
 	    }
-	    
+/* 	    
 		function movePage() {
 			//alert(event.srcElement.value);
 			location.href = "AtTicketProject/admincustomerqna.do?page=" + event.srcElement.value;
-		}
+		} */
 	    
 	    $("#pagebar").val(${page});
 	    

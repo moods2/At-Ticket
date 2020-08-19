@@ -48,8 +48,6 @@ public class QnaDAO {
 			
 			ArrayList<QnaDTO> list = new ArrayList<QnaDTO>();
 			
-			System.out.println("======================================================="+map.get("search"));
-			
 			while (rs.next()) {
 				QnaDTO dto = new QnaDTO();
 				
@@ -104,6 +102,43 @@ public class QnaDAO {
 		}
 		
 		return 0;
+	}
+
+	//글내용 가져오기
+	public QnaDTO get(String seq) {
+		
+		try {
+			
+			String sql = "select * from vwAnswer where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq); //글번호
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				QnaDTO dto = new QnaDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setSubject(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegdate(rs.getString("regdate"));
+				
+				dto.setName(rs.getString("name"));
+				dto.setId(rs.getString("id"));
+				
+				dto.setAncontent(rs.getString("ancontent"));
+				dto.setAnregdate(rs.getString("anregdate"));
+				
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("QnaDTO get()");
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 }
