@@ -69,7 +69,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT RNUM, TITLE, POSTER, GENRE FROM (SELECT ROWNUM AS RNUM, A.* FROM "
+			String sql = "SELECT SEQ, TITLE, POSTER, GENRE FROM (SELECT ROWNUM AS RNUM, A.* FROM "
 					+ "(SELECT * FROM VWRANK) A) WHERE ROWNUM <= 3";
 			
 			stat = conn.createStatement();
@@ -82,7 +82,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rnum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -107,7 +107,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM (SELECT ROWNUM, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
+			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
 					+ "WHERE GENRE = 'musical' OR GENRE = 'theater' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
@@ -120,7 +120,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rownum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -145,7 +145,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM (SELECT ROWNUM, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
+			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
 					+ "WHERE GENRE = 'concert' OR GENRE = 'classic' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
@@ -158,7 +158,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rownum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -183,7 +183,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT * FROM (SELECT ROWNUM, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
+			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
 					+ "WHERE GENRE = 'exhibition' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
@@ -196,7 +196,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rownum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -256,7 +256,7 @@ public class BannerDAO {
 		
 		try {
 			
-			String sql = "SELECT RNUM, TITLE, POSTER, GENRE, STARTDATE, ENDDATE, HALL, THEATER"
+			String sql = "SELECT RNUM, SEQ, TITLE, POSTER, GENRE, STARTDATE, ENDDATE, HALL, THEATER"
 					+ " FROM (SELECT ROWNUM AS RNUM, A.* FROM "
 					+ "(SELECT * FROM VWRANK WHERE GENRE = 'concert') A) WHERE ROWNUM <= 5";
 			
@@ -270,7 +270,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rnum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
@@ -346,7 +346,7 @@ public class BannerDAO {
 			}
 			
 			String sql = String.format("SELECT ROWNUM AS RNUM, A.* FROM "
-					+ "(SELECT TITLE, POSTER, GENRE FROM TBLSHOW %s ORDER BY STARTDATE) A "
+					+ "(SELECT SEQ, TITLE, POSTER, GENRE FROM TBLSHOW %s ORDER BY STARTDATE) A "
 					+ "WHERE ROWNUM <= 7", where);
 			
 			stat = conn.createStatement();
@@ -359,7 +359,7 @@ public class BannerDAO {
 				
 				BannerDTO dto = new BannerDTO();
 				
-				dto.setSeq(rs.getString("rnum"));
+				dto.setSeq(rs.getString("seq"));
 				dto.setName(rs.getString("title"));
 				dto.setImg(rs.getString("poster"));
 				dto.setGenre(rs.getString("genre").toUpperCase());
