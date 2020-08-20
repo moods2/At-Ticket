@@ -31,11 +31,13 @@ public class AdminCustomerQnaWrite extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		
+		System.out.println("000000000000000000000000"+session.getAttribute("adminSeq").toString());
+		
 		dto.setMseq(session.getAttribute("adminSeq").toString());
 		dto.setSeq(seq);
 		dto.setAncontent(answer);
 		
-		int result1 = dao.write(dto);
+		 QnaDTO result2 = dao.write(dto);
 		
 		int result = dao.writeUp(dto);
 		
