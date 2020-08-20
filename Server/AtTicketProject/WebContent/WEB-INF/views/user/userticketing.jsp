@@ -1064,11 +1064,11 @@
                         <div><a href="./main.html" target="_self">콘서트</a></div>
                         <div>단독판매</div>
                     </div>
-                    <div id="mainTitleName"><h1>크리스토퍼 내한공연（CHRISTOPHER LIVE IN SEOUL)</h1></div>
+                    <div id="mainTitleName"><h1>${dto.title}</h1></div>
                     <div id="mainTitleBottom">
-                        <div id="titledate">2020.08.29 ~ 2020.08.30</div>
+                        <div id="titledate">${dto.startDate} ~ ${dto.endDate}</div><!-- 여기서 정보를 받아와야 한다. -->
                         <div id="place">
-                            <a href="./main.html"></a>YES24 LIVE HALL(구,악스홀)
+                            <a href="./main.html"></a>${splaceName}
                         </div>
                     </div>
                 </div>
@@ -1078,27 +1078,47 @@
             <div id="contentsBox">
                 <div class="content" id="postrtbox">
                 <div class="content" id="poster"></div>
+                
+                <c:if test = "${not empty userid}">
                 <div id="like">
                     <img src="./images/heart.png">
-                    <span>1732</span> <span>Likes</span>
+                    <span>${likeCount}</span> <span>Likes</span>
                 </div>
+                </c:if>
+                
                 </div>
+                
+                <script>
+	                //관심목록 -> 추가 하거나
+	                $("#like img").click(function(){
+	                	
+		
+	                /* if($("#like img").attr("src") == "./images/heart2.png"){
+	                    alert("이미 관심목록에 등록되어있습니다.");
+	                } */
+	
+	                /* $("#like img").attr("src","./images/heart2.png"); */
+	
+	                });
+                </script>
+                
+                
                 <div class="content" id="contents" >
                     <dl id="basic">
                         <dt>등급</dt>
-                            <dd>미취학 아동 입장불가</dd>
+                            <dd>${dto.age}세 이상 관람 가능</dd>
                         <div style="clear:both;"></div>
                         <dt>관람시간</dt>
-                            <dd>총 70 분</dd>
+                            <dd>총 ${showDuration} 분</dd>
                         <div style="clear:both;"></div>
-                        <dt>출연</dt>
-                            <dd> 크리스토퍼</dd>
+                        <!-- <dt>출연</dt>
+                            <dd> 크리스토퍼</dd> -->
                         <div style="clear:both;"></div>
                         <dt>가격</dt>
                             <dd id="price">
                                 <ul>
-                                    <li>스탠딩석 <span>77,000</span>원</li>
-                                    <li>지정석 <span>77,000</span>원 </li>
+                                    <li>지정석 type-A : <span>${ticketPc}</span>원</li>
+                                    <li>지정석 type-B : <span>${ticketPc}</span>원 </li>
                                 </ul>
                             </dd>
                         <div style="clear:both;"></div>
@@ -1121,12 +1141,12 @@
                     </dl>
                     <!-- 공연정보 -->
                     <dl id="basic2">
-                        <dt>공연시간 안내</dt>
+<!--                         <dt>공연시간 안내</dt>
                             <dd>2020년 8월 29일 (토) 오후 7시</dd>
-                            <dd>2020년 8월 30일 (일) 오후 6시</dd>
+                            <dd>2020년 8월 30일 (일) 오후 6시</dd> -->
                         <div style="clear:both;"></div>
                         <dt>배송정보</dt>
-                            <dd>본 상품은 일괄배송 상품으로 2020년 08월 05일부터 순차 배송됩니다.</dd>
+                            <dd>본 상품은 일괄배송 상품으로 공연시작 5일전부터 순차 배송됩니다.</dd>
                     </dl>
                     <div id="benner"></div>
                 </div>
@@ -1139,7 +1159,7 @@
                     <div id="datatitle">
                         <div style="font-size: 20px; font-weight: bold;">날짜/시간 선택</div>
                         <div id="datasub" >
-                            관람<span>4시간전</span>예매가능
+                            관람<span>4시간전 까지</span>예매가능
                         </div>
                     </div>
                     <div id="datacontent">
@@ -1191,7 +1211,7 @@
                     <table id="company">
                         <tr>
                             <td>기획사 정보</td>
-                            <td>주최: (주)프라이빗커브</td>
+                            <td>${agencyHost}</td>
                         </tr>
                     </table>
 
@@ -1199,21 +1219,21 @@
                     <table id="productInfo">
                         <tr>
                             <td class="tdGray">주최/기획</td>
-                            <td>㈜프라이빗커브</td>
+                            <td>${agencyManage}</td>
                             <td class="tdGray">소비자상담	</td>
-                            <td>02-563-0595</td>
+                            <td>${agencyTel}</td>
                         </tr>
                         <tr>
-                            <td class="tdGray">주연</td>
-                            <td>크리스토퍼</td>
+                            <td class="tdGray">장르</td>
+                            <td>${dto.genre}</td>
                             <td class="tdGray">관람등급</td>
-                            <td>미취학 아동 입장불가</td>
+                            <td>${dto.age}세 이상 관람 가능</td>
                         </tr>
                         <tr>
                             <td class="tdGray">공연시간</td>
-                            <td>총 70 분</td>
+                            <td>총 ${showDuration} 분</td>
                             <td class="tdGray">공연장소</td>
-                            <td>YES24 LIVE HALL(구,악스홀)</td>
+                            <td>${splaceName}<br>(${splace})</td>
                         </tr>
                         <tr>
                             <td class="tdGray">취소/환불방법</td>
@@ -1327,11 +1347,11 @@
                                     결제수단을 복수로 선택한 경우 인터넷으로 부분취소가 불가하오니, 고객센터로 문의해주시기 바랍니다.</p>
                             </table>
                         </div>
-                        <div class="tCLeft"><h2>취소수수료</h2></div>
+                        <!-- <div class="tCLeft"><h2>취소수수료</h2></div> -->
                         <div class="tCRight"> 
 
                         </div>
-                        <div class="tCLeft"><h2>환불</h2></div>
+                        <!-- <div class="tCLeft"><h2>환불</h2></div> -->
                         <div class="tCRight"> 
 
                         </div>
@@ -1344,10 +1364,10 @@
             <div id="container">
 
                 <span class="glyphicon glyphicon-map-marker"></span>
-                <h1>YES24 LIVE HALL(구,악스홀)</h1>
-                <small>서울특별시 광진구 구천면로 20</small>
-                <small>02-457-5114</small>
-                <small>http://yes24livehall.com</small>
+                <h1>${splaceName}</h1>
+                <small>${splace}</small>
+                <small>${agencyTel}</small>
+                <!-- <small>http://yes24livehall.com</small> -->
 
                 <div style="height: 600px;">
                     <div style="width: 1200px; height: 200px;  margin: 150px auto;">
@@ -1544,11 +1564,12 @@
         // minDate : "2020-08-29",
         // maxDate : "2020-08-30"
         // });
-
+		
+        /* 날짜 */
         $( "#celender").datepicker({
                 dateFormat: "yy-mm-dd",
-                minDate: "2020-08-29",
-                maxDate: "2020-08-30",
+                minDate: "2020-08-29",/* 오늘날짜로 해야한다. */
+                maxDate: "2020-09-30",
                 altField: ".alternate",
                 altFormat: "yy.mm.dd(D)",
                 dayNamesShort: ["일","월","화","수","목","금","토"],
@@ -1590,16 +1611,7 @@
                 
             });
 
-        //관심목록
-        $("#like img").click(function(){
 
-        if($("#like img").attr("src") == "./images/heart2.png"){
-            alert("이미 관심목록에 등록되어있습니다.");
-        }
-
-        $("#like img").attr("src","./images/heart2.png");
-
-        });
 
         //탭
         // $("#tabs").tabs({
@@ -1652,7 +1664,7 @@
         
         
         // 주소로 좌표를 검색합니다
-        geocoder.addressSearch('서울특별시 광진구 구천면로 20', function(result, status) {
+        geocoder.addressSearch('${splace}', function(result, status) {
         
             // 정상적으로 검색이 완료됐으면 
             if (status === kakao.maps.services.Status.OK) {
@@ -1667,7 +1679,7 @@
         
                 // 인포윈도우로 장소에 대한 설명을 표시합니다
                 var infowindow = new kakao.maps.InfoWindow({
-                    content: '<div style="width:150px;text-align:center;padding:6px 0;">예스24 라이브홀</div>'
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">${splaceName}</div>'
                 });
                 infowindow.open(map, marker);
         

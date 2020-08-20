@@ -17,7 +17,8 @@ public class AdminCoupon extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-
+		
+		
 		String search = req.getParameter("search");//검색창에 뭘 적었는
 		String sort = req.getParameter("sort");//차순정렬을 시행하고 있는지
 		sort = "seq desc";

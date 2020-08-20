@@ -377,11 +377,11 @@
                 $(this).css("transform", "scale(0.97)");
             });
 
-            //이미지 클릭시 이동
+            //이미지 클릭시 이동 -> 여기서 해당 공연seq 를 넘겨준다!
             $(".img").click(function () {
-                //alert($(this).children('input').val());
                 location.href = "/AtTicketProject/usertickekting.do?seq=" + $(this).children('input').val();
             });
+            
 
             //movetop
             $("#movetop").click(function () {

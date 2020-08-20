@@ -53,5 +53,4 @@ public class UserIndex extends HttpServlet{
 		System.out.println(session.getAttribute("userid"));
 		
 	}
-	
 }

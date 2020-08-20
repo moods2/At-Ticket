@@ -19,7 +19,7 @@ public class AdminCustomerQna extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
+		//String seq = req.getParameter("seq");
 		String search = req.getParameter("search");
 		
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -86,6 +86,8 @@ public class AdminCustomerQna extends HttpServlet{
 			dto.setTag(tag);
 			int qview = dto.getQview();
 			dto.setQview(qview);
+			int ansSeq = dto.getAnsSeq();
+			dto.setAnsSeq(ansSeq);
 		}
 		
 		//페이지바 제작

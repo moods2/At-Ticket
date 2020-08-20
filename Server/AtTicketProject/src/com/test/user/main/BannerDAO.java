@@ -592,4 +592,28 @@ public class BannerDAO {
 		return 0;
 	}
 
+	public int setConcertBg(HashMap<Integer, String> map) {
+		
+		try {
+			
+			String sql = "UPDATE TBLBANNER SET IMG = ? WHERE NAME = ?";
+			
+			for (int i=1; i<=map.size(); i++) {
+				
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, map.get(i));
+				pstat.setString(2, "concertslider0"+i);
+				pstat.executeQuery();
+				pstat.close();
+			}
+			
+			return 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 }
