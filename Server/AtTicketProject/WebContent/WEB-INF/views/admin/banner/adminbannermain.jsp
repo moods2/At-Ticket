@@ -180,7 +180,7 @@
             <div id = "topbaby">
             <c:set var="i" value="1" />
             <c:forEach items="${slide}" var="slide">
-                <div class = "topsetting" id="topsetting${i}" style = "background-image: url(./images/${slide.img});"></div>
+                <div class = "topsetting" id="topsetting${i}" style = "background-image: url(../images/${slide.img});"></div>
 			<c:set var="i" value="${i + 1}" />
             </c:forEach>
             </div>
@@ -188,8 +188,8 @@
         </div>
     </div>
     
-    <div><img src="./images/slide-dir-prev.png" alt="" id = "mainprev"></div>
-    <div><img src="./images/slide-dir-next.png" alt="" id = "mainnext"></div>
+    <div><img src="../images/slide-dir-prev.png" alt="" id = "mainprev"></div>
+    <div><img src="../images/slide-dir-next.png" alt="" id = "mainnext"></div>
     
     
     <!-- 사진 움직이게 하려는 컨트롤 -->
@@ -242,7 +242,7 @@
 					var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
 				}
 
-				$("#topsetting" + id).css("background-image", "url(./images/" + filename + ")");
+				$("#topsetting" + id).css("background-image", "url(../images/" + filename + ")");
 				
 			});
 				
@@ -255,7 +255,7 @@
     <div class = "bannerTool" style = "margin-left: 330px; width : 1400px">
     	<c:set var="i" value="1" />
         <c:forEach items="${slide}" var="slide">
-    	<form method="POST" action="/AtTicketProject/adminbannermainend.do" id="form${i}">
+    	<form method="POST" action="/AtTicketProject/admin/adminbannermainend.do" id="form${i}">
 	        <table class="topBannerSelect topBannerSelect${i}">
 	            <tr>
 	                <td>상단배너 <span>${i}</span>번째 사진 선택</td>
@@ -342,7 +342,7 @@
         
     </style>
     
-    <form method="POST" action="/AtTicketProject/adminbannermainend.do">
+    <form method="POST" action="/AtTicketProject/admin/adminbannermainend.do">
     <div class = "titlebanner"> MIDDLE 배너 관리</div>  
     <div id = "middleBanner">
         <div id = "middleImg" style="background-color: ${banner.backcolor}">
@@ -387,7 +387,15 @@
             window.open("/AtTicketProject/admin/adminbannermodify.do", "adminbanner", "width=1250,height=950");
         });
         
-        $("#middleBackcolor").val($("#middleImg").css("background-color"));
+        function rgb2hex(rgb) {
+            rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            function hex(x) {
+                return ("0" + parseInt(x).toString(16)).slice(-2);
+            }
+            return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+        };
+        
+        $("#middleBackcolor").val(rgb2hex($("#middleImg").css("background-color")));
         $("#middleSrc").val($("#middlePic").attr("src").substring($("#middlePic").attr("src").lastIndexOf('/')).substring(1));
         
     </script>
