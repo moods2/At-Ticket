@@ -52,10 +52,13 @@ public class AdminLogin extends HttpServlet{
 			//세선을 어찌 가져오느냐? -> 세션객체를 받아온다
 			HttpSession session = req.getSession();//세션 객체 생성
 			
-			//System.out.println();
+			//관리자의 seq 를 알아내자
+			int adminSeq = dao.getAdminSeq(id,pw);
 			
+			session.setAttribute("adminSeq", adminSeq);//세션에  관리자 seq 를 넘긴다
 			session.setAttribute("id", req.getParameter("id"));//세션에 id 데이터를 넣어준다
 			session.setAttribute("pw", req.getParameter("pw"));//세션에 pw 데이터를 넣어준다.
+			
 			
 			
 			//Adminmain.java 로 정보를 옮겨준다.
