@@ -2,6 +2,7 @@ package com.test.admin.sales;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,24 +20,31 @@ public class AdminSales extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		String genre = req.getParameter("genre");
-		String sdate = req.getParameter("sdate");
-		String edate = req.getParameter("edate");
-		String search = req.getParameter("search");
+
+		Calendar c = Calendar.getInstance();
+//		String sdate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
+//		String edate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
+		String sdate = "2020-08-22";
+		String edate = "2020-08-22";
 		
+
 		SalesDAO dao = new SalesDAO();
 		SalesDTO dto = new SalesDTO();
 		
 		dto.setGenre(genre);
 		dto.setSdate(sdate);
 		dto.setEdate(edate);
-		dto.setSearch(search);
 		
-		ArrayList<SalesDTO> list = dao.get(dto); 
+		int total = dao.getTotalSales(dto);
+		
 	
+//		ArrayList<SalesDTO> list = dao.getGenreSales(dto);
+
+		String strTotal = String.format("%,d",total);
 		
-		
-		
-		
+		req.setAttribute("dto", dto);
+		req.setAttribute("total", strTotal);
+//		req.setAttribute("genreSalesList", list);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/sales/sales.jsp");
 		dispatcher.forward(req, resp);

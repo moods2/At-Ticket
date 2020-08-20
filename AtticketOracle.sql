@@ -17,9 +17,22 @@ select count(*) from tblEmployee;
 
 select * from tblBuseo;
 
+commit;
+
+select * from tblMyShow where cusSeq = 1;
+
+insert into tblMyShow values (myshowSeq.nextVal,to_date(sysdate,'yyyy/mm/dd'),36,1,0);
 
 
+select * from tblMyShow order by seq desc;
+
+
+select * from tblMyShow where cusseq = 1 and showseq = 35;
+
+select seq from tblAdmin where id = 'testadmin' and pw = '1234';
         
+        
+select * from tblNotice;
         
 --------------------------        
 --직원의 정보를 볼 수 있는 뷰 
@@ -165,7 +178,7 @@ select * from tblShow;
 
 
 
-select * from tblCusCoupon;
+select * from tblCusCoupon order by seq desc;
 
 select * from tblcoupon;
 
@@ -383,6 +396,53 @@ rollback;
 insert into tblCusCoupon values (cuscouponSeq.nextval,to_date(sysdate,'yyyy/mm/dd hh24:mi'),8,3,0);
 
 
+select * from tblBanner;
+
+select name,addr from tblhall where seq =(select hallseq from tbltheater where seq = (select theaterseq from tblshow where seq= 2));
+
+
+select * from tblshow where seq=2;
+
+select * from tblroundinfo where showseq = (select seq from tblshow where seq=3);
+
+
+select * from tblCustomer order by seq;
+
+
+select * from tblShow;
+
+select * from tblroundinfo where showseq = (select seq from tblshow where seq=100);
+
+insert into tblroundinfo 
+
+select * from tblroundinfo where showseq = (select seq from tblshow where seq=2);
+
+select * from tblRoundInfo where showSeq = 2;
+
+select * from tblBooking where roundSeq = 1;
+
+select * from tblshow where seq=2;
+
+select * from tblshow where seq=2;
+
+select * from tblroundinfo where showseq = (select seq from tblshow where seq=2);
+
+
+select name,addr from tblhall where seq =(select hallseq from tbltheater where seq = (select theaterseq from tblshow where seq= 2));
+
+select startdate,enddate from tblroundinfo where showseq = (select seq from tblshow where seq=2);
+
+
+select startdate,enddate from tblroundinfo where showseq = (select seq from tblshow where seq=2);
+
+select startdate,enddate from tblroundinfo where showseq = (select seq from tblshow where seq='2')
+
+select name,addr from tblhall where seq =(select hallseq from tbltheater where seq = (select theaterseq from tblshow where seq=2))
+
+select * from tblShow where seq = 1;
+
+select count(*) as cnt from tblmyshow where showseq= 2;
 
 
 
+select host, management, tel from tblagency where seq = (select agencyseq from tblshow where seq=2);
