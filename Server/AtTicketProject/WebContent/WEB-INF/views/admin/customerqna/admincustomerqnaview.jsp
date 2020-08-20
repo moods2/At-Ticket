@@ -206,7 +206,7 @@
         	  
           });
 	
-          alert(${dto.anSeq});
+          /* alert(${dto.anSeq}); */
  
       </script>
     

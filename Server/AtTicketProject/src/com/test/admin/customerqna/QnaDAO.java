@@ -132,9 +132,9 @@ public class QnaDAO {
 				dto.setAncontent(rs.getString("ancontent"));
 				dto.setAnregdate(rs.getString("anregdate"));
 				
-				System.out.println(rs.getString("anseq"));
+				//System.out.println(rs.getString("anseq"));
 				
-				System.out.println("======================"+rs.getString("content"));
+				//System.out.println("======================"+rs.getString("content"));
 				
 				return dto;
 			}
@@ -173,23 +173,29 @@ public class QnaDAO {
 	public QnaDTO write(QnaDTO dto) {
 		
 		try {
+			String sql ="";
 			
-			String sql = "insert into tblanswer values (answerSeq.nextVal, ?, difault, ?, default)";
+			sql = "insert into tblanswer values (answerSeq.nextVal, ?, difault, ?, default)";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getAncontent());
 			pstat.setString(2, dto.getMseq());
 			
-			sql = "select answerSeq.currVal from dual";
+			System.out.println("========================"+dto.getMseq());
 			
-			rs = stat.executeQuery(sql);
+			pstat.executeUpdate();
 			
-			while(rs.next()) {
-				
-				dto.setMaxSeq(rs.getString("currVal"));
-				
-				return dto;
-			}
+			//sql = "select answerSeq.currVal from dual";
+			
+			//rs = stat.executeQuery(sql);
+			
+			/*
+			 * while(rs.next()) {
+			 * 
+			 * dto.setMaxSeq(rs.getString("currVal"));
+			 * 
+			 * return dto; }
+			 */
 			
 			
 		} catch (Exception e) {
