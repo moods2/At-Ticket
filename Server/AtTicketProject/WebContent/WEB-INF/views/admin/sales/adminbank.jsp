@@ -110,36 +110,19 @@
                     <th>은행</th>
                     <th>계좌 번호</th>
                 </tr>
+                
+                
+               	<c:forEach items="${list}" var="dto">
+               	
                 <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>1</td>
-                    <td>국민은행</td>
-                    <td>123-12-3747-184</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>2</td>
-                    <td>국민은행</td>
-                    <td>123-12-3747-184</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>3</td>
-                    <td>국민은행</td>
-                    <td>123-12-3747-184</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>4</td>
-                    <td>국민은행</td>
-                    <td>123-12-3747-184</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="cb" name="is_check"></td>
-                    <td>5</td>
-                    <td>국민은행</td>
-                    <td>123-12-3747-184</td>
-                </tr>
+                    <td><input type="checkbox" class="cb" name="is_check" value="${dto.seq}"></td>
+                    <td>${dto.seq}</td>
+                    <td>${dto.name}</td>
+                    <td>${dto.account}</td>
+                </tr>               	
+               	
+               	</c:forEach>
+                
                 
             </tbody>
         </table>
@@ -150,8 +133,6 @@
             <a class="btn btn-primary" id="btndelete"><i class="glyphicon glyphicon-trash"></i> 삭제</a>
         </div>
         
-
-       
 
     </div>
 
@@ -167,18 +148,22 @@
 
     // 추가
     $("#btnadd").click(function(){
-        window.open("adminBankAdd.html","adminBankAdd","width=500, height=300");
+        window.open("/AtTicketProject/adminbankadd.do","adminBankAdd","width=500, height=300");
 
     });
+    
+    
     // 수정
     $("#btnmodify").click(function(){
-        if ($("input:checkbox[name=is_check]:checked").length > 1 || $("input:checkbox[name=is_check]:checked").length < 1){
+	    var seq = $("input:checkbox[class=cb]:checked").val();
+    	
+        if ($("input:checkbox[class=cb]:checked").length > 1 || $("input:checkbox[class=cb]:checked").length < 1){
             alert("하나만 선택하세요.");
         }else {
             //선택된 체크박스의 내용 불러오기
 
             // window.location.href="adminShowModify.html";
-            window.open("adminBankAdd.html","_self");
+            window.open("/AtTicketProject/adminbankedit.do?seq="+ seq,"adminBankEdit","width=500, height=300");
         }
     });
     // 삭제

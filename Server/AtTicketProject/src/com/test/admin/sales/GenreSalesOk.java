@@ -21,11 +21,28 @@ public class GenreSalesOk extends HttpServlet{
 		
 		req.setCharacterEncoding("UTF-8");
 		
-//		String sdate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
-//		String edate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
-		String sdate = "2020-08-22";
-		String edate = "2020-08-22";
-
+		String rsdate = req.getParameter("sdate");
+		String redate = req.getParameter("edate");
+		
+//		System.out.println("rsdate : " + rsdate);
+//		System.out.println("redate : " + redate);
+		
+		String sdate = "";
+		String edate = "";
+		
+		if(rsdate == null && redate == null) {
+			//지정 날짜 없으면 현재 날짜로 조회하기
+			
+//			String sdate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
+//			String edate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
+			
+			sdate = "2020-08-26";
+			edate = "2020-08-26";
+		}else {
+			sdate = rsdate;
+			edate =redate;
+		}
+		
 		SalesDAO dao = new SalesDAO();
 		SalesDTO dto = new SalesDTO();
 		
@@ -39,8 +56,8 @@ public class GenreSalesOk extends HttpServlet{
 		for(SalesDTO dtos : list) {
 			JSONObject obj = new JSONObject();
 			
-			obj.put("name",dto.getGenre());
-			obj.put("y",dto.getSales());
+			obj.put("name",dtos.getGenre());
+			obj.put("y",dtos.getSales());
 			
 			arr.add(obj);
 		}

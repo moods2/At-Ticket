@@ -92,6 +92,76 @@ public class SalesDAO {
 		return null;
 	}
 
+	//AdminBank 서블릿 -> 현재 개설된 계좌 목록 불러오기
+	public ArrayList<BankDTO> getBank() {
+		
+		try {
+			String sql = "select * from tblaccount";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<BankDTO> list = new ArrayList<BankDTO>();
+			
+			while(rs.next()) {
+				BankDTO dto = new BankDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setName(rs.getString("bank"));
+				dto.setAccount(rs.getString("accountnumber"));
+				
+				list.add(dto);
+			}
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	//AdminBankAddOk 서블릿 -> 새로운 은행 계좌 insert
+	public int insertBank(BankDTO dto) {
+		try {
+			
+			String sql = "insert into tblAccount (seq,bank,accountnumber) values (bankSeq.nextval, ?, ?)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getName());
+			pstat.setString(2, dto.getAccount());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	//AdminBankEdit 서블릿 -> 불러오기
+	public BankDTO getBank(String seq) {
+		
+		try {
+			String sql = "select * from tblAccount where seq=?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			BankDTO dto = new BankDTO();
+					
+			if(rs.next()) {
+				dto.setName(rs.getString("bank"));
+				dto.setAccount(rs.getString("accountnumber"));
+			}
+			
+			return dto;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 
 	
 	

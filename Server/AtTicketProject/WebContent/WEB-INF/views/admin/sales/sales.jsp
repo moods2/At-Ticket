@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
             margin-left: 280px;
             background-color: #999999;
             padding: 20px;
-            width: 700px;
+            width: 500px;
         }
 
         .img {
@@ -143,19 +144,8 @@
     </div>
     
     <div style="margin-left: 400px; margin-top: 20px; width: 1000px;">
-    <form method="GET" action="/AtTicketProject/adminsalesOk.do" id="searchForm">
-        <select style="margin-left: 280px; margin-top: 10px;" name="genre" id="genre">
-        
-               <option value="-1">장르</option>
-               <option value="concert">콘서트</option>
-               <option value="musical">뮤지컬</option>
-               <option value="theater">연극</option>
-               <option value="classic">클래식</option>
-                <option value="exhibition">전시</option>
- 
-        </select>
-
-
+    <form method="GET" action="/AtTicketProject/adminsalesok.do" id="searchForm">
+   
         <table style="margin-left: 280px; margin-top: 10px; width: 500px;"
             class="table  table-bordered table-striped table-hover">
             <tr>
@@ -180,10 +170,6 @@
         </div>
 
 			<figure class="highcharts-figure">
-				<div id="containerPie"></div>
-			</figure>
-
-			<figure class="highcharts-figure">
 				<div id="container"></div>
 			</figure>
 
@@ -196,70 +182,58 @@
 	<script src="/WEB-INF/lib/highcharts.js"></script>
     <script type="text/javascript">
     
-    
-    	$("#genre").change(function() {
-    		var genre = $(this).val();
-    		//alert(genre);
-    		
-    		$.ajax({
-    			type: "GET",
-    			url: "/ajax/ex12ok.do",
-    			data: "buseo=" + buseo,
-    			success: function(result) {
-    				
-    				
-    				
-    			},
-    			
-    			error: function (a,b,c) {
-    				console.log(a,b,c);
-    			}
-    		});
-    		
-    		
-    	});
     	
-    	var options = {
-        	    chart: {
-        	        type: 'column'
-        	    },
-        	    title: {
-        	        text: '장르별 매출액'
-        	    },
-        	    xAxis: {
-        	        categories: [
-        	            'Jan',
-        	            'Feb'
-        	        ],
-        	        crosshair: true
-        	    },
-        	    yAxis: {
-        	        min: 0,
-        	        title: {
-        	            text: '매출액(원)'
-        	        }
-        	    },
-        	    tooltip: {
-        	        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        	        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        	            '<td style="padding:0"><b>{point.y:.1f} 원</b></td></tr>',
-        	        footerFormat: '</table>',
-        	        shared: true,
-        	        useHTML: true
-        	    },
-        	    plotOptions: {
-        	        column: {
-        	            pointPadding: 0.2,
-        	            borderWidth: 0
-        	        }
-        	    },
-        	    series: [{
-        	        name: 'Tokyo',
-        	        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        	    }]
-        	};
-
+    	var sdate = $("#sdate").val();
+    	var edate = $("#edate").val();
+    
+	    $.ajax({
+			type: "GET",
+			url: "/AtTicketProject/genresalesok.do",
+			data: "sdate="+ sdate + "&edate=" + edate,
+			dataType: "json",
+			success: function(result) {
+				options.series[0].data = result;
+				Highcharts.chart('container',options);
+			},
+			error: function (a,b,c) {
+				console.log(a,b,c);
+			}
+		});
+    	
+    	var options =  {
+   			chart: {
+		        plotBackgroundColor: null,
+		        plotBorderWidth: null,
+		        plotShadow: false,
+		        type: 'pie'
+		    },
+		    title: {
+		        text: '장르별 매출액'
+		    },
+		    tooltip: {
+		        pointFormat: '{series.name}: <b>{point.y}원</b>'
+		    },
+		    accessibility: {
+		        point: {
+		            valueSuffix: '원'
+		        }
+		    },
+		    plotOptions: {
+		        pie: {
+		            allowPointSelect: true,
+		            cursor: 'pointer',
+		            dataLabels: {
+		                enabled: true,
+		                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+		            }
+		        }
+		    },
+		    series: [{
+		        name: '매출액',
+		        colorByPoint: true,
+		        data: [ ]
+		    }]
+		};
     
         Highcharts.chart('container', options);
         
@@ -271,63 +245,7 @@
             dateFormat: "yy-mm-dd"
         });
         
-        var classic = <c:out value="${list}"/>;
-        
-        
-        var pieOptions = {
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-                    type: 'pie'
-                },
-                title: {
-                    text: '장르별 매출액'
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.y}원</b>'
-                },
-                accessibility: {
-                    point: {
-                        valueSuffix: '원'
-                    }
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            format: '<b>{point.name}</b>: {point.y} 원'
-                        }
-                    }
-                },
-                series: [{
-                    name: '매출액',
-                    colorByPoint: true,
-                    data: [{
-                        name: 'classic',
-                        y: ${genreSalesList[0].strSales},
-                        sliced: true,
-                        selected: true
-                    }, {
-                        name: 'theater',
-                        y: ${genreSalesList[1].strSales}
-                    }, {
-                        name: 'concert',
-                        y: ${genreSalesList[2].strSales}
-                    }, {
-                        name: 'exhibition',
-                        y: ${genreSalesList[3].strSales}
-                    }, {
-                        name: 'classic',
-                        y: ${genreSalesList[4].strSales}
-                    }]
-                }]
-            };
-        
-        Highcharts.chart('containerPie', pieOptions);
-        
+      
         var date = new Date();
         date = getFormatDate(date);
         
@@ -345,9 +263,7 @@
             return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
         };
         
-        
-
-      
+       
     <%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	
     </script>
 

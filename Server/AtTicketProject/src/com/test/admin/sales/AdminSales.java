@@ -18,20 +18,18 @@ public class AdminSales extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		
-		String genre = req.getParameter("genre");
 
 		Calendar c = Calendar.getInstance();
+		//현재날짜
 //		String sdate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
 //		String edate = c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DATE);
-		String sdate = "2020-08-22";
-		String edate = "2020-08-22";
 		
-
+		String sdate = "2020-08-26";
+		String edate = "2020-08-26";
+		
 		SalesDAO dao = new SalesDAO();
 		SalesDTO dto = new SalesDTO();
-		
-		dto.setGenre(genre);
+
 		dto.setSdate(sdate);
 		dto.setEdate(edate);
 		

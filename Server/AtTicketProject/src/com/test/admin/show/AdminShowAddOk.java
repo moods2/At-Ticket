@@ -131,7 +131,6 @@ public class AdminShowAddOk extends HttpServlet{
 		
 		//결과
 		if(resultShow == 1 && resultRound == 1 && resultTag == 1) {
-
 			//글쓰기 성공 -> 게시판 목록 보기로 이동
 			resp.sendRedirect("/AtTicketProject/adminshow.do");
 		}else {
