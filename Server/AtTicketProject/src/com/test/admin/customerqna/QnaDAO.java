@@ -57,6 +57,7 @@ public class QnaDAO {
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setTag(rs.getString("tag"));
 				dto.setQview(rs.getInt("qview"));
+				dto.setAnsSeq(rs.getInt("ansSeq"));
 				
 				list.add(dto);
 			}
@@ -127,8 +128,13 @@ public class QnaDAO {
 				dto.setName(rs.getString("name"));
 				dto.setId(rs.getString("id"));
 				
+				dto.setAnSeq(rs.getString("anseq"));
 				dto.setAncontent(rs.getString("ancontent"));
 				dto.setAnregdate(rs.getString("anregdate"));
+				
+				System.out.println(rs.getString("anseq"));
+				
+				System.out.println("======================"+rs.getString("content"));
 				
 				return dto;
 			}
@@ -139,6 +145,81 @@ public class QnaDAO {
 		}
 		
 		return null;
+	}
+	
+	//댓글 수정하기
+	public int ok(QnaDTO dto) {
+		
+		try {
+		
+			String sql = "update tblAnswer set content = ? where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getAncontent());
+			pstat.setString(2, dto.getSeq());
+			
+			return pstat.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("int ok(String seq)");
+		}
+		
+		return 0;
+	}
+
+
+	public QnaDTO write(QnaDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblanswer values (answerSeq.nextVal, ?, difault, ?, default)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getAncontent());
+			pstat.setString(2, dto.getMseq());
+			
+			sql = "select answerSeq.currVal from dual";
+			
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				dto.setMaxSeq(rs.getString("currVal"));
+				
+				return dto;
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("write(QnaDTO dto)");
+		}
+		
+		
+		return null;
+	}
+
+	public int writeUp(QnaDTO dto) {
+		try {
+			
+			String sql = "update tblqna set ansseq = ? where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getMaxSeq());
+			pstat.setString(2, dto.getSeq());
+			
+			return pstat.executeUpdate();
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("write(QnaDTO dto)");
+		}
+		return 0;
 	}
 
 }

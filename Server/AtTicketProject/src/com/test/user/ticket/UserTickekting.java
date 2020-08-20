@@ -16,11 +16,10 @@ public class UserTickekting extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		HttpSession session = req.getSession();
+		//HttpSession session = req.getSession();
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userticketing.jsp");
 		dispatcher.forward(req, resp);
-		
 		
 //		System.out.println(req.getContextPath());
 		

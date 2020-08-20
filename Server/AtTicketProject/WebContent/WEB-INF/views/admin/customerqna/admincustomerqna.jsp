@@ -167,7 +167,13 @@
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         } 	
  	
- 	
+ 		.ok {
+ 			color: #44BADF ;
+ 		}
+ 		
+ 		.no {
+ 			color: #FF7372 ;
+ 		}
  	
  	</style>
  	
@@ -197,7 +203,7 @@
                     <th>제목</th>
                     <th>이름</th>
                     <th>작성날짜</th>
-                    <th>열람확인</th>
+                    <th>답변</th>
                 </tr>
             </thead>
             <tbody>
@@ -217,17 +223,25 @@
 	            <!-- 목록  -->  
 	            <c:forEach items="${list}" var="dto">
 	            <tr>	            	
-	            	<td><input type="checkbox" class = "t5"></td>
+	            	<td><input type="checkbox" class = "t5" name= "${dto.seq}"></td>
 	                <td style="width: 200px">${dto.tag}</td>
 	                <td class = "inputcont">
 	                	<a href="/AtTicketProject/customerqna/admincustomerqnaview.do?seq=${dto.seq}&search=${search}" onclick="window.open(this.href, '_blanck', 'width=910, height=700'); return false">
 	                		${dto.subject}
+	                		
 	                	</a> 
 	                </td>
 	                <td>${dto.name}</td>
 	                <td>${dto.regdate} </td>
 	                <td>
-	                ${dto.qview}
+		                <c:if test="${not empty dto.ansSeq}">
+		                <%-- ${dto.ansSeq} --%>
+		                	<span class="complete ok">완료</span>
+		                </c:if> 
+		                
+		                <c:if test="${empty dto.ansSeq}">
+		                	<span class="complete no">미완료</span>
+		                </c:if> 
 	                </td>
 	            </tr>
 	            </c:forEach>
@@ -266,14 +280,15 @@
     	
     	
 	    //팝업 중앙정렬 알고리즘
-	    function popupCenter(href, w, h) {
+	 /*    function popupCenter(href, w, h) {
 	    	var xPos = (document.body.offsetWidth/2) - (w/2); // 가운데 정렬
 	    	xPos += window.screenLeft; 
 	    	var yPos = (document.body.offsetHeight/2) - (h/2);
 
 	    	window.open(href, "pop_name", "width="+w+", height="+h+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
-	    }
-/* 	    
+	    } */
+		
+	    /* 	    
 		function movePage() {
 			//alert(event.srcElement.value);
 			location.href = "AtTicketProject/admincustomerqna.do?page=" + event.srcElement.value;
@@ -281,7 +296,13 @@
 	    
 	    $("#pagebar").val(${page});
 	    
-
+		//alert($(".complete").text());
+		
+/* 		if($(".complete").text() == '완료'){
+			$(".complete").addClass('ok');
+		}else {
+			$(".complete").addClass('no');
+		} */
     
     </script>	
 	

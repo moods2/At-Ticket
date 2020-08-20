@@ -9,13 +9,17 @@ public class QnaDTO {
 	private String tag;
 	private String mseq;
 	private int qview;
-
+	private int ansSeq;
+	
 	private String name;
 	private int gap;
 	private String id;
 	private String commentcount;
 	
+	private String maxSeq;
+	
 	//답변
+	private String anSeq;
 	private String ancontent;
 	private String anregdate;
 	
@@ -96,6 +100,24 @@ public class QnaDTO {
 	}
 	public void setQview(int qview) {
 		this.qview = qview;
+	}
+	public int getAnsSeq() {
+		return ansSeq;
+	}
+	public void setAnsSeq(int ansSeq) {
+		this.ansSeq = ansSeq;
+	}
+	public String getAnSeq() {
+		return anSeq;
+	}
+	public void setAnSeq(String anSeq) {
+		this.anSeq = anSeq;
+	}
+	public String getMaxSeq() {
+		return maxSeq;
+	}
+	public void setMaxSeq(String maxSeq) {
+		this.maxSeq = maxSeq;
 	}
 	
 	

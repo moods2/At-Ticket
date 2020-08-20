@@ -93,11 +93,19 @@
           }
           .reply {
               margin-top : 10px;
+              
           }
           .replyon {
               margin-top : 10px;
           }
-
+          
+          textarea {
+          	outline: none;
+          	border-color: #ddd;
+          	padding: 10px;
+          }
+			
+		
 
       </style>
 
@@ -108,27 +116,34 @@
 
         <div class = "commenttxt">
         	
-        	<div id ="textInput">
-            	<span>${dto.ancontent}</span>
-            	<textarea style='display:block; width: 870px; min-height:300px; resize:none; display: none;' id='textW'></textarea>
-            </div>
-            <div>${dto.anregdate}</div>
+        	<form method="POST" action="/AtTicketProject/admincustomerqnaOk.do">
+	        	<div id ="textInput">
+	            	<span>${dto.ancontent}</span>
+	            	<textarea style='display:block; width: 870px; min-height:300px; resize:none; display: none;' id='textW' name="content"></textarea>
+	            	<input type="text" value="${dto.seq}" style="display: none;" name="seq">
+	            	<input type="text" value="${dto.anSeq}" style="display: none;" name="seq">
+	     
+	            </div>
+	            <div>${dto.anregdate}</div>
+	            <!-- 수정하기 버튼 -->
+	            <c:if test="${not empty dto.ancontent}">
+	            	<button class ="btn btn-default" id="reWrite" type="button">수정하기</button>
+	            	<button class ='btn btn-default' id='rwOk' style="display: none;" type="submit">완료</button>
+	            </c:if>
+            </form>
+	        
+	        <form method="POST" action="/AtTicketProject/admincustomerqnaWrite.do">
+	            <!-- 댓글달기 버튼 -->
+	            <c:if test="${empty dto.ancontent}">
+		            <div class = "replyon">
+		                <textarea style='display:block; width: 870px; min-height:200px; resize:none;' id='answer' name="answer" placeholder="질문에대한 답변을 입력해주세요."></textarea>
+		            	<input type="text" value="${dto.seq}" style="display: none;" name="seq">
+		            </div> 
+	            	<div class = "reply"><button class ="btn btn-default" id="answer" style="margin-right: 25px;" type="submit">답변하기</button></div>
+	            </c:if>
+	        </form>
+	            
             
-            <!-- 댓글달기 버튼 -->
-            <c:if test="${empty dto.ancontent}">
-            	<div class = "reply"><button class ="btn btn-default">답변하기</button></div>
-            </c:if>
-            
-            <!-- 수정하기 버튼 -->
-            <c:if test="${not empty dto.ancontent}">
-            	<button class ="btn btn-default" id="reWrite">수정하기</button>
-            	<button class ='btn btn-default' id='rwOk' style="display: none;">완료</button>
-            </c:if>
-            
-            <div class = "replyon" style = "display : none;">
-                <textarea style = "resize:none;" rows = "5" cols = "100"></textarea>
-                <div><input type="submit"></div>
-            </div> 
         </div>
         <div style="clear: both;"></div>
         <hr class = "splitLine">
@@ -176,6 +191,7 @@
         	  $("#rwOk").css("display","block");
         	  
 		  }); 
+         
           
           $("#rwOk").click(function() {
         	  
@@ -183,10 +199,14 @@
         	  $("#textInput span").css("display","block");
         	  $("#rwOk").css("display","none");
         	  $("#textW").css("display","none");
-        	  alert("수정이 완료되었습니다.");
+        	  
+        	  //var content = $("#textW").val();
+        	  //content = content.replace(/<\n>/gi, "<br>");
+        	  //location.href = "AtTicketProject/admincustomerqnaOk.do?seq=" + ${dto.seq}+"&content="+content;
         	  
           });
-
+	
+          alert(${dto.anSeq});
  
       </script>
     
