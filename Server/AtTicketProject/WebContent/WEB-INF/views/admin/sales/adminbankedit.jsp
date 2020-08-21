@@ -104,6 +104,9 @@
                 <input type="button" id="btnclose" value="닫기" class="btn btn-default">
             </div>
             
+            <input type="hidden" name="seq" value="${seq}">
+            
+            
             </form>
         </fieldset>
     </div>
@@ -113,7 +116,6 @@
 
 </body>
 <script>
-
 
     $("#btnclose").click(function() {
         window.close();

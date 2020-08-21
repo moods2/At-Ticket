@@ -25,7 +25,6 @@ public class AdminShowEditOk extends HttpServlet{
 		
 		req.setCharacterEncoding("UTF-8");
 		
-		
 		//파일 업로드
 		String path = req.getRealPath("/images");
 		System.out.println(path);
@@ -35,7 +34,7 @@ public class AdminShowEditOk extends HttpServlet{
 		String filename2 = ""; //첨부파일명
 		String orgfilename2 = ""; //첨부파일명
 
-		MultipartRequest multi = new MultipartRequest(	req, //기존의 request 객체
+		MultipartRequest multi = new MultipartRequest(req, //기존의 request 객체
 				path, //업로드 폴더
 				size, //업로드 크기
 				"UTF-8", //인코딩

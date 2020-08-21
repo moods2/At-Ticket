@@ -20,6 +20,8 @@ public class AdminBankEdit extends HttpServlet{
 		BankDTO dto = dao.getBank(seq);
 	
 		req.setAttribute("dto", dto);
+		req.setAttribute("seq", seq);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/sales/adminbankedit.jsp");
 		dispatcher.forward(req, resp);
 	}

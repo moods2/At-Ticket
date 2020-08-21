@@ -168,12 +168,18 @@
     });
     // 삭제
     $("#btndelete").click(function(){
+    	var seq = $("input:checkbox[class=cb]:checked").val();
+    	
+    	if ($("input:checkbox[class=cb]:checked").length < 1){
+            alert("하나 이상  선택하세요.");
+            return;
+        }
+    	
+    	
         var result = confirm("정말 삭제하시겠습니까?");
-        console.log(result);
+        //console.log(result);
         if(result) {
-            alert("삭제되었습니다.")
-        }else {
-
+        	location.href='/AtTicketProject/adminbankdelete.do?seq='+seq;
         }
     });
 

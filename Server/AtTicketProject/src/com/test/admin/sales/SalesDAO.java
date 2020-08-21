@@ -96,7 +96,7 @@ public class SalesDAO {
 	public ArrayList<BankDTO> getBank() {
 		
 		try {
-			String sql = "select * from tblaccount";
+			String sql = "select * from tblaccount order by seq";
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			
@@ -122,8 +122,7 @@ public class SalesDAO {
 	//AdminBankAddOk 서블릿 -> 새로운 은행 계좌 insert
 	public int insertBank(BankDTO dto) {
 		try {
-			
-			String sql = "insert into tblAccount (seq,bank,accountnumber) values (bankSeq.nextval, ?, ?)";
+			String sql = "insert into tblAccount (seq,bank,accountnumber) values (accountSeq.nextval, ?, ?)";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getName());
 			pstat.setString(2, dto.getAccount());
@@ -160,6 +159,38 @@ public class SalesDAO {
 		}
 		
 		return null;
+	}
+
+	//AdminBankEditOk 서블릿 -> update
+	public int editBank(BankDTO dto) {
+		try {
+			String sql = "update tblAccount set bank=?, accountnumber=? where seq=?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getName());
+			pstat.setString(2, dto.getAccount());
+			pstat.setString(3, dto.getSeq());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	//AdminBankDelete 서블릿 -> delete
+	public int deleteBank(String seq) {
+		try {
+			String sql = "delete from tblAccount where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 
