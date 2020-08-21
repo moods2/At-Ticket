@@ -152,7 +152,7 @@ public class UserShowDAO {
 		
 		try {
 			
-			String sql = "select count(*) as cnt from tblmyshow where showseq = ?";
+			String sql = "select count(*) as cnt from tblmyshow where showseq = ? and delflag = 0";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, conSeq);
@@ -172,7 +172,7 @@ public class UserShowDAO {
 		return null;
 	}
 
-	//주최 기획사정보 전화번오 가져오기
+	//주최 기획사정보 전화번호 가져오기
 	public List<String> getAgencyInfo(String conSeq) {
 		
 		try {
@@ -206,7 +206,7 @@ public class UserShowDAO {
 	}
 
 	//내가 이미 좋아요를 누른 데이터인지 확인한다
-	public Integer getLikeTrue(String conSeq,int mySeq) {
+	public int getLikeTrue(String conSeq,int mySeq) {
 		
 		try {
 			
@@ -223,12 +223,86 @@ public class UserShowDAO {
 			}
 			
 			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		
-		return null;
+		return -1;
 	}
+
+	//해당 show에 대하여 내가 좋아요를 누른적이 있는지 없는지 판단해주는 도구라고 생각하면 된다.
+	public int likecheck(String conSeq,int mySeq) {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from tblMyShow where cusseq = ? and showseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, mySeq);
+			pstat.setString(2, conSeq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return -1;
+	}
+
+	//heart insert 작업
+	public void insertHeart(int mySeq, String showSeq) {
+		
+		
+		try {
+			
+			String sql = "insert into tblMyShow values (myshowSeq.nextVal,to_date(sysdate,'yyyy/mm/dd'),?,?,0)";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, showSeq);
+			pstat.setInt(2, mySeq);
+			
+			pstat.executeUpdate();
+			
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	//좋아요한 공연을 좋아요 상태를 바꾸는 작업.
+	public void updateLikeState(String showSeq, int mySeq, int state) {
+		
+		try {
+			String sql = "update tblmyshow set delflag=? where cusseq = ? and showseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, state);
+			pstat.setInt(2,mySeq);
+			pstat.setString(3, showSeq);
+			
+			pstat.executeUpdate();
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
 	
 }

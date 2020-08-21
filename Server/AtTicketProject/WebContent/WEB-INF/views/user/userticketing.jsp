@@ -492,12 +492,15 @@
         }
         #like {
             position: relative;
-            top: 15px;
+            top: 8px;
         }
         #like img {
-            width: 20px; height: 20px;
+            width: 40px; height: 40px;
             position: relative;
             /* top: 4px; */
+        }
+        #like img:hover {
+        	cursor:pointer;
         }
         #like span:nth-child(2){
             color: #FECA52;
@@ -1081,25 +1084,67 @@
                 
                 <c:if test = "${not empty userid}">
                 <div id="like">
-                    <img src="./images/heart.png">
-                    <span>${likeCount}</span> <span>Likes</span>
+                	<c:if test = "${likePush == 1}">
+                    	<img src="./images/heart.png">
+                    </c:if>
+                    
+                    <c:if test = "${likePush == 0}">
+                    	<img src="./images/heart2.png">
+                    </c:if>
+                    <span id = "showLikeCount">${likeCount}</span> <span id = "likesWrite">Likes</span>
                 </div>
+                
                 </c:if>
                 
                 </div>
+                
+                <style>
+                	#showLikeCount {
+                		font-size : 1.3em;	
+                	}
+                	
+                	#likesWrite {
+                		font-size : 1.3em;
+                	}
+                
+                </style>
                 
                 <script>
 	                //관심목록 -> 추가 하거나
 	                $("#like img").click(function(){
 	                	
+	                	$.ajax({
+	                		type : "GET",
+	                		url : "/AtTicketProject/userheart.do",
+	                		data : "showseq=" + ${dto.seq} + "&likeCount=" + $("#showLikeCount").text(),
+	                		async: true,
+	                		dataType: "json",
+	                		success : function(result) {
+								//서블릿에서 해결하고 다시 와야함.
+								//alert("왜 안되는걸까?");
+								//alert(result);
+								//alert(result.img);
+								$("#showLikeCount").text(result.likeCount);
+								
+								$("#like img").attr("src",result.img);
+								
+								
+	                			
+	                		},
+	                		error : function(a,b,c) {
+	                			console.log(a,b,c);
+	                		}
+	                	});
+	                	
 		
 	                /* if($("#like img").attr("src") == "./images/heart2.png"){
 	                    alert("이미 관심목록에 등록되어있습니다.");
 	                } */
-	
+					
 	                /* $("#like img").attr("src","./images/heart2.png"); */
 	
 	                });
+	                
                 </script>
                 
                 
@@ -1932,10 +1977,11 @@
         // $("#ranking input")click(function(){
         //	$(location).attr('href','/AtTicketProject/userranking.do');
         // }); 
-
+		
+        
     </script>
 
-
+	
 
         </div>
     </div>

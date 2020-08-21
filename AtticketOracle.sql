@@ -441,8 +441,55 @@ select name,addr from tblhall where seq =(select hallseq from tbltheater where s
 
 select * from tblShow where seq = 1;
 
-select count(*) as cnt from tblmyshow where showseq= 2;
 
 
+select count(*) as cnt from tblmyshow where showseq = 35 and cusseq = 1;
+
+
+select * from tblMyShow;
+
+
+insert into tblMyShow values (myshowSeq.nextVal,)
+
+select * from tblmyshow where cusseq = 1;
+
+commit;
+
+update tblmyshow set delflag=1 where cusseq = 1 and showseq = 35; 
+
+
+
+insert into tblMyShow values (myshowSeq.nextVal,to_date(sysdate,'yyyy/mm/dd'),36,1,0);
+
+
+select * from tbl
+
+
+
+select count(*) as cnt from tblmyshow where showseq = 35 and delflag = 0;
 
 select host, management, tel from tblagency where seq = (select agencyseq from tblshow where seq=2);
+
+
+select count(*) as cnt from tblMyShow where cusseq = 1 and showseq = 35;
+
+
+select count(*) as cnt from tblMyShow where cusseq = 1 and showseq = 35;
+
+select * from tblMyShow where cusseq = 1 and showseq = 35;
+
+select count(*) as cnt from tblmyshow where showseq = 35 and delflag = 0;
+
+
+select * from tblmyshow;
+
+select * from tblmyshow where cusseq = 1 and showseq = 35;
+
+
+select * from tblmyshow where cusseq = 1;
+
+--공연관련
+select * from tblShow where seq = 30;
+
+
+
