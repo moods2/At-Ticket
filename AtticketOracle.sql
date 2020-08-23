@@ -493,3 +493,168 @@ select * from tblShow where seq = 30;
 
 
 
+--고객에게 쿠폰을 발급해주기 위해서 관련된 쿼리문 
+select * from tblCoupon where showseq = 2 and delflag = 0;
+
+select * from tblCusCoupon where cusseq = 1;
+
+select count(*) as cnt from tblCusCoupon where cusseq = 1 and couponseq = 8 and delflag = 0;
+
+commit;
+
+update tblCusCoupon set delflag = 1 where cusseq = 1;
+
+
+select count(*) as cnt where 
+
+select * from tblCusCoupon where cusseq = 1;
+
+select * from tblCoupon where seq = 4;
+
+select * from tblshow;
+
+
+select count(*) from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert';  
+
+
+select a.* from (select distinct ts.seq from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert') a;
+
+ 
+ 
+            
+            
+select * from where seq = (select distinct ts.seq from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert')         
+
+            
+--매우 힘들어질텐데            
+select count(*) from tblBooking tb inner join tblRoundInfo tr on tb.roundSeq = tr.seq inner join tblShow ts on tr.showseq = ts.seq where ts.genre = 'concert' and ts.seq = 6;
+
+            
+select distinct ts.seq from tblBooking tb inner join tblRoundInfo tr on tb.roundSeq = tr.seq inner join tblShow ts on tr.showseq = ts.seq where ts.genre = 'concert'            
+
+
+            
+            
+select count(*) from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert' and ts.seq = 4;
+            
+
+select * from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert';
+
+
+select count(*) as cnt from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert';
+            
+            
+select distinct ts.seq as a from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert' and ts.seq =             
+(select a from (select distinct ts.seq as a from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert')) b;
+            
+
+select count(*) as cnt from tblBooking tb inner join tblRoundInfo tr on tb.roundSeq = tr.seq inner join tblShow ts on tr.showseq = ts.seq where ts.genre = 'concert' and ts.seq = 1;
+
+
+--각 예매건수
+select ts.poster as cnt from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            where ts.genre = 'concert' and ts.seq = 1;
+ 
+ 
+select * from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+  
+  
+select title,count(*) from tblBooking tb
+    inner join tblRoundInfo tr on tb.roundSeq = tr.seq
+        inner join tblShow ts on tr.showseq = ts.seq
+            group by genre,title;
+
+select * from tblShow where seq = 8;
+           
+select poster from tblShow where seq = 3;
+
+select poster from tblShow where seq = 3;
+
+
+SELECT * FROM VWRANK where genre = 'concert';
+
+
+select poster from (select 
+    sh.seq, sh.title, count(*) as cnt, sh.startdate, sh.enddate, ha.name as hall, tea.name as theater, sh.poster, sh.genre
+from tblpay pay
+    inner join tblBooking bk
+        on pay.bookseq = bk.seq
+            inner join tblRoundinfo rin
+                on bk.roundseq = rin.seq
+                    inner join tblshow sh
+                        on rin.showseq = sh.seq
+                            inner join tblTheater tea
+                                on sh.theaterseq = tea.seq
+                                    inner join tblHall ha
+                                        on tea.hallseq = ha.seq
+                    group by sh.seq, sh.title, sh.startdate, sh.enddate, ha.name, tea.name, sh.poster, sh.genre
+                         order by cnt desc) where genre = 'concert';
+
+
+
+
+select seq,poster from vwfivepic where genre = 'concert';
+
+
+
+select * from tblShow where seq = 16;
+
+
+create or replace view vwfivepic as
+select 
+    sh.seq, sh.title, count(*) as cnt, sh.startdate, sh.enddate, ha.name as hall, tea.name as theater, sh.poster, sh.genre
+from tblpay pay
+    inner join tblBooking bk
+        on pay.bookseq = bk.seq
+            inner join tblRoundinfo rin
+                on bk.roundseq = rin.seq
+                    inner join tblshow sh
+                        on rin.showseq = sh.seq
+                            inner join tblTheater tea
+                                on sh.theaterseq = tea.seq
+                                    inner join tblHall ha
+                                        on tea.hallseq = ha.seq
+                    group by sh.seq, sh.title, sh.startdate, sh.enddate, ha.name, tea.name, sh.poster, sh.genre
+                         order by cnt desc;
+
+
+
+select poster from vwrank where genre = 'consert';
+
+
+select * from vwrank;
+
+
+rollback;
+commit;
+
+insert into tblCusCoupon values (cuscouponSeq.nextVal,to_date(sysdate,'yyyy/mm/dd'),8,1,0);
+

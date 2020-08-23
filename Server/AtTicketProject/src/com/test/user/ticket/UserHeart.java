@@ -87,6 +87,8 @@ public class UserHeart extends HttpServlet{
 	
 		"likeCount" : "31"
 		"img" : "./images/heart2.png"
+		
+		"pass" : "fail"
 	
 		*/
 		

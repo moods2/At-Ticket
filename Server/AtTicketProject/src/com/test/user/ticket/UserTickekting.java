@@ -2,6 +2,7 @@ package com.test.user.ticket;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +30,7 @@ public class UserTickekting extends HttpServlet{
 		
 		
 		String conSeq = req.getParameter("seq");//넘어온 공연seq(실전용)
-		//String conSeq = "30";//테스트용 공연
+		//String conSeq = "1";//테스트용 공연
 
 
 		//System.out.println("?!what");//왜 두번씩 나타나지?
@@ -81,6 +82,18 @@ public class UserTickekting extends HttpServlet{
 		String agencyTel = agencyInfo.get(2);
 		
 		
+		
+		//해당 공연에 허용되는 쿠폰도 가져갈 것이다.
+		List<UserShowCouponDTO> couponList = dao.getCouponList(conSeq);
+		int couponListLen = couponList.size();
+		
+		//해당 공연분류의 랭킹 1~5에 대한 정보를 가져오자. -> 이미지 이름과 해당 공연의 seq 를 받은 객체가 UserShowTopFive 라고 보면 된다.
+		List<UserShowTopFive> bigFiveImgList = dao.getFiveImgList(dto.getGenre());
+		
+
+		req.setAttribute("bigFiveImgList", bigFiveImgList);
+		req.setAttribute("couponListLen", couponListLen);//가용 쿠폰 몇개인지 넘겨준다.
+		req.setAttribute("couponList", couponList);//해당 show에서 사용할 수 있는 쿠폰리스트.
 		req.setAttribute("likePush", likePush);//1이 넘어가면 해제 되어있는 상태 0 이 넘어가면 좋아요가 눌린상태
 		req.setAttribute("agencyHost", agencyHost);//주최 이름
 		req.setAttribute("agencyManage", agencyManage);//주관 이름
@@ -90,7 +103,7 @@ public class UserTickekting extends HttpServlet{
 		req.setAttribute("showDuration", showDuration);//공연 시간 기간
 		req.setAttribute("splaceName", splaceName);//show 공연 장소이름
 		req.setAttribute("splace", splace);//show 공연 장소 주소
-		req.setAttribute("dto", dto);
+		req.setAttribute("dto", dto);//show의 기본적인 정보.
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userticketing.jsp");

@@ -395,7 +395,8 @@
             width: 430px; 
             height: 602px; 
             /* background-color: rgb(184, 201, 233); */
-            background-image: url(./images/consertPoster.jpg);
+            /* background-image: url(./images/consertPoster.jpg); */
+            background-image : url(./images/${dto.poster});
             background-size: 430px;
         }
 
@@ -1064,7 +1065,7 @@
             <!-- 타이틀 -->
             <div id="mainTitle">
                     <div id="mainTitleTop">
-                        <div><a href="./main.html" target="_self">콘서트</a></div>
+                        <div><a href="./main.html" target="_self">${dto.genre}</a></div>
                         <div>단독판매</div>
                     </div>
                     <div id="mainTitleName"><h1>${dto.title}</h1></div>
@@ -1167,8 +1168,12 @@
                                 </ul>
                             </dd>
                         <div style="clear:both;"></div>
+                        
+                        <!-- 쿠폰 혜택 부분 -->
+                        <c:if test="${not empty userid}">
                         <dt>혜택</dt>
-                            <dd id="cupon">사용가능 쿠폰 (<span>1</span>)</dd>
+                            <dd id="cupon">사용가능 쿠폰 (<span>${couponListLen}</span>)</dd>
+                        </c:if>
                             <div id="dialog1">
                                 <table>
                                     <thead>
@@ -1176,14 +1181,54 @@
                                         <td>할인</td>
                                         <td>다운</td>
                                     </thead>
+                                    <c:forEach items = "${couponList}" var ="cdto">
                                     <tr>
-                                        <td>[YES마니아] 예매수수료 면제쿠폰</td>
-                                        <td>0원</td>
-                                        <td><div>다운</div></td>
+                                        <td>${cdto.title}</td>
+                                        <td>${cdto.discount} 원</td>
+                                        <td><div class = "downCoupon" id = "${cdto.seq}">다운<span></span></div></td>
                                     </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                     </dl>
+                    <style>
+						.downCoupon:hover {
+							cursor : pointer;
+							background-color : red;
+							color : white
+						}
+                    </style>
+                    
+                    <script>
+                    	//쿠폰다운을 눌렀을때 처리해줄것이다.
+                    	$(".downCoupon").click(function(){
+                    		//alert($(this).attr("id"));
+                    		var couponSeq = $(this).attr("id");
+    	                	
+                    		$.ajax({
+    	                		type : "GET",
+    	                		url : "/AtTicketProject/userdowncoupon.do",
+    	                		data : "showseq=" + ${dto.seq} + "&couponseq=" + couponSeq,
+    	                		async: true,
+    	                		dataType: "json",
+    	                		success : function(result) {
+    								//서블릿에서 해결하고 다시 와야함.
+    								if (result.pass == "success") {
+    									alert("쿠폰이 발급되었습니다.");
+    								} else {
+    									alert("해당쿠폰을 이미 발급받으셨습니다.");
+    								}
+
+    	                		},
+    	                		error : function(a,b,c) {
+    	                			console.log(a,b,c);
+    	                		}
+    	                	});
+                    	})
+                    	
+                    	
+                    </script>
+                    
                     <!-- 공연정보 -->
                     <dl id="basic2">
 <!--                         <dt>공연시간 안내</dt>
@@ -1454,11 +1499,9 @@
             <div id="ranking">
                 <div id="rankingImg"></div>
                 <input type="button" value="더보기">
-                <div class="rank1"><img src="./images/consertRank1.jpg"></div>
-                <div class="rank1"><img src="./images/consertRank2.jpg"></div>
-                <div class="rank1"><img src="./images/consertRank3.jpg"></div>
-                <div class="rank1"><img src="./images/consertRank4.jpg"></div>
-                <div class="rank1"><img src="./images/consertRank5.jpg"></div>
+                <c:forEach items = "${bigFiveImgList}" var ="imgdto">
+                <div class="rank1" id = "${imgdto.seq}"><img src="./images/${imgdto.imgName}"></div>
+                </c:forEach>
                 <div style="clear:both;"></div>
                 <div class="num"><span>1위</span></div>
                 <div class="num"><span>2위</span></div>
@@ -1468,6 +1511,24 @@
                 <div style="clear:both;"></div>
             </div>
             <div style="clear:both;"></div>
+            
+            <style>
+				
+				.rank1:hover {
+				cursor : pointer;
+				}
+				
+            </style>
+            
+            <script>
+            	$(".rank1").click(function(){
+            		//alert($(this).attr("id"));
+            		location.href = "/AtTicketProject/usertickekting.do?seq=" + $(this).attr("id");
+            	})
+            	
+            
+            </script>
+            
             
             <!-- 챗봇 : 단비봇 --------------------------------------------------------------------------------------------------------------------------------->
             <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
