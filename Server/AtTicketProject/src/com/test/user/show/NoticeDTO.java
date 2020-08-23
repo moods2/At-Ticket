@@ -1,6 +1,8 @@
-package com.test.admin.usernotice;
+package com.test.user.show;
+
 
 public class NoticeDTO {
+	
 	private String seq;
 	private String nindex;
 	private String title;
@@ -61,5 +63,4 @@ public class NoticeDTO {
 	}
 	
 	
-
 }

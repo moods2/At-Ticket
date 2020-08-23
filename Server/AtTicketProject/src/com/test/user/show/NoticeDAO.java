@@ -1,6 +1,7 @@
-package com.test.admin.usernotice;
+package com.test.user.show;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,11 +9,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.test.atticket.DBUtil;
-import com.test.user.show.NtShowDTO;
+import javax.servlet.http.HttpServlet;
 
-public class NoticeDAO {
-	
+import com.test.atticket.DBUtil;
+
+public class NoticeDAO extends HttpServlet {
 	private Connection conn;
 	private Statement stat;
 	private PreparedStatement pstat;
@@ -102,25 +103,6 @@ public class NoticeDAO {
 			}
 			
 			return 0;
-		}
-
-		public NoticeDTO getNotice() {
-			
-			try {
-				
-				String sql = null;
-				sql = "select * from tblnotice where seq = ?";
-				pstat = conn.prepareStatement(sql);
-				
-				
-				
-				
-			} catch (Exception e) {
-				System.out.println("NoticeDAO.getNotice()");
-				e.printStackTrace();
-			}
-			
-			return null;
 		}
 
 		public int insertOk(NoticeDTO dto) {
@@ -245,7 +227,7 @@ public class NoticeDAO {
 		public NoticeDTO getNotice(String noticeseq) {
 			try {
 				
-				String sql = "select * from tblNotice where seq = ?";
+				String sql = "select a.*, to_char(opendate,'dy') as dy from tblNotice a where seq = ?";
 				pstat = conn.prepareStatement(sql);
 				pstat.setString(1, noticeseq);
 				rs = pstat.executeQuery();
@@ -254,9 +236,10 @@ public class NoticeDAO {
 					dto.setSeq(rs.getString("seq"));
 					dto.setNindex(rs.getString("nindex"));
 					dto.setTitle(rs.getString("title"));
-					dto.setOpendate(rs.getString("opendate").substring(0,10));
+					dto.setOpendate(rs.getString("opendate").replace("-", "."));
+					dto.setDy(rs.getString("dy"));
 					dto.setContent(rs.getString("content"));
-					dto.setRegdate(rs.getString("regdate"));
+					dto.setRegdate(rs.getString("regdate").substring(0,10));
 					dto.setNview(rs.getString("nview"));
 					return dto;
 				}
@@ -267,18 +250,46 @@ public class NoticeDAO {
 			}
 			return null;
 		}
+		
+		public NtShowDTO getNtShowDTO(String noticeseq) {
+			try {
+				
+				String sql = "select distinct s.title, n.title, n.seq, s.poster from tblShow s, tblnotice n where n.title like '%' || s.title || '%' and n.seq = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, noticeseq);
+				rs = pstat.executeQuery();
+				
+				if(rs.next()) {
+					NtShowDTO dto = new NtShowDTO();
+					dto.setPoster(rs.getString("poster"));
+					dto.setTitle(rs.getString("title"));
+					return dto;
+				}
+				
+			} catch (Exception e) {
+				System.out.println("NoticeDAO.getNtShowDTO()");
+				e.printStackTrace();
+			}
+			
+			
+			return null;
+		}
 
+		public void updateReadcount(String noticeseq) {
+			
+			try {
+				
+				String sql = "update tblnotice set nview = nview + 1 where seq = ?";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, noticeseq);
+				pstat.executeUpdate();
+				
+			} catch (Exception e) {
+				System.out.println("NoticeDAO.updateReadcount()");
+				e.printStackTrace();
+			}
+			
+		}
 		
 }
-
-
-
-
-
-
-
-
-
-
-
 

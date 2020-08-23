@@ -486,13 +486,13 @@ th {
 		<div id="middle">
 			<%@include file="/WEB-INF/views/inc/mypageleft.jsp"%>
 
-			<div id="right" style="position:relative; left:-350px;top:-120px;">
+			<div id="right" style="position:relative; left:-350px;top:-75px;">
 				<div class="wrapper">
 					<div class="item1">
 						<div id="top">
 						</div>
 						<div
-							style="position: relative; top: -560px; left: 380px; font-weight: bold; font-size: 1.3em; background-color: #FAE4D9; text-align: center; width: 140px; color: white;">
+							style="font-weight: bold; margin-left:380px; font-size: 1.3em; background-color: #FAE4D9; text-align: center; width: 140px; color: white;">
 							MyPage 상세</div>
 					</div>
 
