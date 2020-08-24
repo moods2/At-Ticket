@@ -90,7 +90,9 @@ public class UserTickekting extends HttpServlet{
 		//해당 공연분류의 랭킹 1~5에 대한 정보를 가져오자. -> 이미지 이름과 해당 공연의 seq 를 받은 객체가 UserShowTopFive 라고 보면 된다.
 		List<UserShowTopFive> bigFiveImgList = dao.getFiveImgList(dto.getGenre());
 		
-
+		//
+		
+		
 		req.setAttribute("bigFiveImgList", bigFiveImgList);
 		req.setAttribute("couponListLen", couponListLen);//가용 쿠폰 몇개인지 넘겨준다.
 		req.setAttribute("couponList", couponList);//해당 show에서 사용할 수 있는 쿠폰리스트.

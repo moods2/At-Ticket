@@ -658,3 +658,57 @@ commit;
 
 insert into tblCusCoupon values (cuscouponSeq.nextVal,to_date(sysdate,'yyyy/mm/dd'),8,1,0);
 
+
+
+
+select * from tblSeat where floor = 2;
+
+
+select * from tblCustomer order by seq;
+
+
+--공연에 대한 좌석!
+select * from tblseat where thseq =(select theaterseq from tblshow where seq = 21);
+
+
+select * from tblticket where bookingseq = 1;
+
+
+-- subquery 내에 있는seq 가 공연번호
+select seq as bookseq  
+from tblbooking
+,(select seq as round ,showseq as 공연번호  from tblroundinfo 
+where showseq = (select theaterseq from tblshow where seq = 1)) c where roundseq = c.round
+
+
+--모든 예매번호
+select * from tblBooking;
+
+select tb.seq from tblShow ts
+    inner join tblRoundInfo tr
+        on ts.seq = tr.showseq 
+            inner join tblBooking tb
+                on tb.roundSeq = tr.seq
+                    where tb.roundSeq = 1 and ts.seq = 1;
+
+
+--select * from tblBooking;
+
+select * from tblPay;
+
+--해당 공연에 대해 좌석이 얼마나 찬건지 알려준다.
+select distinct seat, d.bdate, d.roundseq as 회차  from tblticket t
+inner join 
+(select *
+from tblbooking
+,(select seq as round ,showseq as 공연번호  from tblroundinfo 
+where showseq = (select theaterseq from tblshow where seq = 3)) c where roundseq = c.round) d
+on t.bookingseq = d.seq where d.bdate = '20/08/27' order by t.seat
+
+select count(*) from tblShow
+SELECT * FROM TBLSHOW;
+
+
+select * from tblroundinfo;
+--where d.bdate = '20/08/27' 
+
