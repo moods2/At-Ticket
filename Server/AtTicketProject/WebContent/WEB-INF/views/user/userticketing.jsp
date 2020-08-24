@@ -1295,8 +1295,7 @@
                     <p>※ 장애인(본인) 50%할인: 고객센터 전화예매시 1544-6399<br>
                         티켓은 현장에서 예매자 본인이 직접 증빙자료 확인 후 수령가능 (미지참 시 차액지불)</p>
                     <h2>공연정보</h2>
-                    <img src="./images/공연정보1.jpg">
-                    <img src="./images/공연정보.jpg">
+                    <img src="./images/${dto.content}">                    
 
                     <table id="company">
                         <tr>
