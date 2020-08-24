@@ -310,7 +310,8 @@
                 left: 1650px;
             }
 
-
+			
+		
 
     </style>
 </head>
@@ -348,45 +349,40 @@
         <hr>
 <!-------------------------------- 내용부분 -------------------------------->
         <p class="event-main-tit" style="margin-top: 150px; font-size:2em;"></p>
-        <h2 style="text-align: center;">리뷰 게시판</h2>
+        <h2 style="text-align: center; font-weight: bold; ">리뷰 게시판</h2>
 
-            <table class="table table-borderd" style="width: 1200px; margin: 0px auto;">
+            <table class="table table-borderd" style="width: 1200px; margin: 0px auto;" id="tblView">
                 <tr>
                     <th style="width: 120px;">제목</th>
                     <th style="width: 650px;">
-                        	제목입니다.
+                        	${dto.title}
                     </th>
                 </tr>
                 <tr>
                     <th style="width: 150px;">장르</th>
                     <th style="width: 650px;">
-                        		콘서트
+                        	${dto.genre}
                     </th>
                 </tr>
                 <tr>
                     <th style="width: 150px;">공연제목</th>
                     <th style="width: 650px; ">
-                        
-                            	베르테르
-                        
+                        	${dto.showName}
                     </th>
                 </tr>
                 
                 <tr>
                     <th style="width: 150px;">내용</th>
                     <th style="width: 650px; height:200px;">
-                        	베르테르 어쩌구 저쩌구 어쩌구 저쩌구
-                    </th>
-                </tr>
-               
-                <tr>
-                    <th style="width: 150px;">파일</th>
-                    <th style="width: 650px;">
-                        <img alt="" src="./images/title2.png">
+                    	<c:if test="${dto.rfile != null}">
+                    		<img alt="" src="./images/reviewFile/${dto.rfile}">
+                    	</c:if>
+                        	${dto.content}
                     </th>
                 </tr>
                
             </table>
+            
             <div class="banner3">
                 <img style="margin-left: 40px; width: 200px; height: 600px;" src="./images/banner3.jpg" alt="">
             </div>
@@ -404,11 +400,19 @@
                      
         </div>
         <div class="btns">                
-                <button class="btn btn-primary">
-                    <span class="glyphicon glyphicon-ok"></span>목록
+                <button class="btn btn-default">
+                    <span class="glyphicon glyphicon-th-list"></span>목록
                 </button>
+                <c:if test="${userseq} == ${dto.cseq}">
+                	 <button class="btn btn-default">
+                    <span class="glyphicon glyphicon-th-list"></span>수정
+                	</button>
+                	 <button class="btn btn-default">
+                    <span class="glyphicon glyphicon-th-list"></span>삭제
+                	</button>
+                </c:if>
             </div>
-            <div class="banner2">
+           	<div class="banner2">
             <img style="margin-bottom: 40px; width: 1200px;" src="./images/banner2.png" alt="">
             </div>
             

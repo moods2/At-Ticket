@@ -1,4 +1,4 @@
-package com.test.user.show;
+package com.test.user.review;
 
 import java.io.IOException;
 

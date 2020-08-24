@@ -1,4 +1,4 @@
-package com.test.user.show;
+package com.test.user.review;
 
 import java.io.IOException;
 
@@ -10,25 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/userreviewwrite.do")
-public class UserReviewWrite extends HttpServlet{
+@WebServlet("/userreviewread.do")
+public class UserReviewRead extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
 		HttpSession session = req.getSession();
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userreviewwrite.jsp");
+		String rseq = req.getParameter("rseq");
+		
+		ReviewDAO dao = new ReviewDAO();
+		ReviewDTO dto = dao.getReview(rseq);
+		
+		req.setAttribute("dto", dto);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userreviewread.jsp");
 		dispatcher.forward(req, resp);
-		
-		
-		System.out.println(req.getContextPath());
-		
-		
-		System.out.println(session.getAttribute("userid"));
-		
+	
 	}
 	
 }
-
