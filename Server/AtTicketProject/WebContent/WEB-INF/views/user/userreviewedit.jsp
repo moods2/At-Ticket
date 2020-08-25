@@ -396,6 +396,7 @@
                 <tr>
                     <th style="width: 150px;">파일</th>
                     <th style="width: 650px;">
+                    	
                         <input type="file" class="form-control" name="rfile"/>
                         <c:if test="${not empty dto.rfile}">
                         <span>${dto.rfile}</span>

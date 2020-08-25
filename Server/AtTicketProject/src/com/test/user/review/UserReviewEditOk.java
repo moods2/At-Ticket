@@ -51,7 +51,7 @@ public class UserReviewEditOk extends HttpServlet{
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
 		String showSeq = multi.getParameter("showTitle"); //공연 번호
-		String rfile = multi.getParameter("rfile");
+		String rfile = orgfilename;
 
 		System.out.println("rfile:" + rfile);
 //		System.out.println(rseq);

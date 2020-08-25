@@ -320,6 +320,10 @@
 				float: right;
 				margin-right: 5px;
 			}
+			
+			#cimg{
+				width: 200px;
+			}
 		
 
     </style>
@@ -388,9 +392,10 @@
                 <tr>
                     <th style="width: 150px;">내용</th>
                     <td style="width: 650px; height:200px;">
-                    	${dto.rfile}
+                    	<%-- ${dto.rfile} --%>
                     	<c:if test="${not empty dto.rfile}">
-                    		<img alt="" src="./images/reviewFile/${dto.rfile}">
+                    		<img id="cimg" alt="" src="<%= request.getContextPath() %>/images/reviewFile/${dto.rfile}"> <br>
+<%--                     		<img alt="" src="./images/reviewFile/${dto.rfile}"> --%>
                     	</c:if>
                         	${dto.content}
                     </td>

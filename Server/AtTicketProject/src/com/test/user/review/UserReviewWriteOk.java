@@ -26,7 +26,7 @@ public class UserReviewWriteOk extends HttpServlet{
 		int cseq = (int)session.getAttribute("userseq");
 		
 		String path = req.getRealPath("/images/reviewFile");
-		System.out.println(path);
+//		System.out.println(path);
 		int size = 1024 * 1024 * 10; // 100MB
 		String filename = ""; // 첨부파일명
 		String orgfilename = ""; // 첨부파일명
@@ -51,7 +51,7 @@ public class UserReviewWriteOk extends HttpServlet{
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
 		String showSeq = multi.getParameter("showTitle"); //공연 번호
-		String rfile = multi.getParameter("rfile");
+		String rfile = orgfilename;
 		
 		ReviewDAO dao = new ReviewDAO();
 		ReviewDTO dto = new ReviewDTO();
@@ -64,8 +64,10 @@ public class UserReviewWriteOk extends HttpServlet{
 		
 		int result = dao.insertReview(dto);
 		
+		String rseq = dao.getRseq();
+		
 		if(result == 1) {
-			resp.sendRedirect("/AtTicketProject/userreview.do");
+			resp.sendRedirect("/AtTicketProject/userreviewread.do?rseq="+rseq);
 		}else {
 			PrintWriter writer = resp.getWriter();
 			writer.print("<html>");

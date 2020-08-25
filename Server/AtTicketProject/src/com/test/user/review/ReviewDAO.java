@@ -296,6 +296,23 @@ public class ReviewDAO {
 		return 0;
 	}
 
+	//UserReviewWriteOk 서블릿 -> 방금 넣은 리뷰 번호 가져오기
+	public String getRseq() {
+		try {
+			String sql = "select max(seq) as rseq from tblReview";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if(rs.next()) {
+				return rs.getString("rseq");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 	
 	

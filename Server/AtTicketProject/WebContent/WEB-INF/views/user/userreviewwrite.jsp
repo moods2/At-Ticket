@@ -438,6 +438,7 @@
             <div class="banner2">
             <img style="margin-bottom: 40px; width: 1200px;" src="./images/banner2.png" alt="">
             </div>
+            
         </form>
 
         
