@@ -97,13 +97,13 @@
             <div id="right">
                 <h1>나의 관람 공연</h1>
                 <div id="datesearch">
-                    <p><span>${username}</span>님의 관란 공연은 총<span>0</span>건 입니다.(<span id="today"></span>기준)</p>
+                    <p><span>${username}</span>님의 관람 공연은 총<span id = "totalcount">${totalCountV}</span>건 입니다.(<span id="today"></span>기준)</p>
                     <ul>
                         <li>
                             ▶ 기간별
-                            <input type="text" id="from">
+                            <input type="text" id="from" name = "from">
                             ~
-                            <input type="text" id="to">
+                            <input type="text" id="to" name = "to">
                         </li>
                         <li>
                             ▶ 장르별
@@ -125,12 +125,34 @@
                     </ul>
                 </div>
                 <div id="list">
-                    <div>
-                        <p style="padding-top: 100px;">관람하신 공연이 없습니다.</p>
+                    <div id = "box">
+                        <table id = "tbl1">
+	                       	<tbody>
+	                    	<c:if test = "${vlist.size() == 0}">
+	                        	<td style="text-align:center;padding-top: 100px;width:1000px;">관람하신 공연이 없습니다.</td>
+	                        </c:if>
+	                        <c:if test = "${vlist.size() != 0}">
+	                        	
+	                        <c:forEach items="${vlist}" var="dto">
+	                        		<tr>
+	                        			<td>
+	                        				<img style="width:200px;" src = "/AtTicketProject/images/${dto.showposter}">
+	                        			</td>
+	                        			<td style="text-align:center;line-height:2em;">
+	                        				<b>공연명:</b> ${dto.showtitle}<br>
+	                        				<b>관람일:</b> ${dto.bdate}<br>
+	                        				<b>예매번호:</b> ${dto.bookseq}<br>	
+	                        				<b>주소:</b> ${dto.showaddr}
+	                        			<td>
+	                        		</tr>
+	                        </c:forEach>
+	                        </c:if>
+                       		</tbody>
+                        </table>
                     </div>
                 </div>
+            	<div style="margin:30px 400px;width:100px;"><button id = "btnMore" class = "btn btn-default" type = "button">더 보기</button></div>
             </div>
-            
             <!-- 챗봇 : 단비봇 -->
             <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
             <!-- 제일 위로 돌아가기 버튼 -->
@@ -143,46 +165,292 @@
 
     <script>
 
-        //주문일자 텍스트창 css
-        $("#from, #to").css("width", "90px");
-        $("#genresearch, #namesearch")
-            .css("background-color", "#666")
-            .css("color", "white")
-            .css("padding", "3px 7px");
+	var begin = ${map.begin};
+	var end = ${map.end};
+	
+	var now = new Date();
+	var year = now.getFullYear();
+	var month = now.getMonth()+1;
+	var day = now.getDate();
+	
+	if((month+"").length < 2) {
+		month = "0" + month;
+	}
+	
+	if((day+"").length < 2) {
+		day = "0" + day;
+	}
+	
+	$("#today").text(year+"년 "+month+"월 "+day+"일");
+	
+    $("#genresearch").click(function() {
+    	begin = 1;
+    	end = 3;
+    	var from = $("#from").val();
+    	var to = $("#to").val();
+    	var genre = $("#genre").val();
+    	
+		$.ajax({
+			type: "GET",
+			url: "/AtTicketProject/mypagewatchedgenreok.do",
+			data: "begin=" + begin + "&end=" + end + "&from=" + from + "&to=" + to + "&genre=" + genre,
+			dataType: "json",
+			success: function(result) {
+				
+				if (result.length == 0) {
+					return;
+				}
+				
+				//alert(result.length);
+				$("tbody").empty();
+				$(result).each(function(index, item) {
+					//게시물 1개
+					var temp = "";
+					temp += "<tr>";
+					temp += "<td><img style='width:200px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+					temp += "<td  style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+					temp += "<b>관람일:</b> "+item.bdate+"<br>";
+					temp += "<b>예매번호:</b> " + item.bookseq +"<br>"
+					temp += "<b>주소:</b> " + item.showaddr + "</td>";
+					temp += "</tr>";
+					
+					$("table > tbody").append(temp);
+					$("#totalcount").text(item.totalCountG);
+				});
+				
+			},
+			error: function(a,b,c) {
+				console.log(a,b,c);
+			}
+			
+		}); //ajax
+		
+		$("#btnMore").click(function() {
+			
+	    	var from = $("#from").val();
+	    	var to = $("#to").val();
+	    	var showtitle = $("#nametxt").val();
+	    	begin+=3;
+	    	end+=3;
+			$.ajax({
+				type: "GET",
+				url: "/AtTicketProject/mypagewatchedgenreok.do",
+				data: "begin=" + begin + "&end=" + end + "&from=" + from + "&to=" + to + "&genre=" + genre,
+				dataType: "json",
+				success: function(result) {
+					
+					if (result.length == 0) {
+						$("#btnMore").attr("disabled",true);
+						return;
+					}
+					
+					//alert(result.length);
+					$("tbody").empty();
+					$(result).each(function(index, item) {
+						//게시물 1개
+						var temp = "";
+						temp += "<tr>";
+						temp += "<td><img style='width:200px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+						temp += "<td style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+						temp += "<b>관람일:</b> "+item.bdate+"<br>";
+						temp += "<b>예매번호:</b> " + item.bookseq +"<br>"
+						temp += "<b>주소:</b> " + item.showaddr + "</td>";
+						temp += "</tr>";
+						
+						$("table > tbody").append(temp);
+						$("#totalcount").text(item.totalCountG);
+					});
+					
+				},
+				error: function(a,b,c) {
+					$("#btnMore").attr("disabled",true);
+					console.log(a,b,c);
+				}
+				
+			}); //ajax
+			
+			begin += 3;
+			end += 3;
+			
+		});
+	    
+	});
+    
+    $("#namesearch").click(function() {
+		
+    	begin = 1;
+    	end = 3;
+    	var from = $("#from").val();
+    	var to = $("#to").val();
+    	var showtitle = $("#nametxt").val();
+    	
+		$.ajax({
+			type: "GET",
+			url: "/AtTicketProject/mypagewatchedtitleok.do",
+			data: "begin=" + begin + "&end=" + end + "&showtitle=" + showtitle,
+			dataType: "json",
+			success: function(result) {
+				
+				if (result.length == 0) {
+					return;
+				}
+				
+				//alert(result.length);
+				$("tbody").empty();
+				$(result).each(function(index, item) {
+					//게시물 1개
+					var temp = "";
+					temp += "<tr>";
+					temp += "<td><img style='width:200px'; src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+					temp += "<td style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+					temp += "<b>관람일:</b> "+item.bdate+"<br>";
+					temp += "<b>예매번호:</b> " + item.bookseq +"<br>"
+					temp += "<b>주소:</b> " + item.showaddr + "</td>";
+					temp += "</tr>";
+					$("#totalcount").text(item.totalCountT);
+					
+					$("table > tbody").append(temp);
+				});
+				
+			},
+			error: function(a,b,c) {
+				console.log(a,b,c);
+			}
+			
+		}); //ajax
+		
+		$("#btnMore").click(function() {
+			
+	    	var from = $("#from").val();
+	    	var to = $("#to").val();
+	    	var showtitle = $("#nametxt").val();
+	    	begin+=3;
+	    	end+=3;
+			//서버에게 그 다음 10개 게시물을 주세요~ 요청
+			$.ajax({
+				type: "GET",
+				url: "/AtTicketProject/mypagewatchedtitleok.do",
+				data: "begin=" + begin + "&end=" + end + "&showtitle=" + showtitle,
+				dataType: "json",
+				success: function(result) {
+					
+					if (result.length == 0) {
+						$("#btnMore").attr("disabled",true);
+						return;
+					}
+					
+					//alert(result.length);
+					$("tbody").empty();
+					$(result).each(function(index, item) {
+						//게시물 1개
+						var temp = "";
+						temp += "<tr>";
+						temp += "<td><img src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+						temp += "<td style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+						temp += "<b>관람일:</b> "+item.bdate+"<br>";
+						temp += "<b>예매번호:</b> " + item.bookseq +"<br> </td>";
+						temp += "<b>주소:</b> " + item.showaddr + "</td>";
+						temp += "</tr>";
+						$("#totalcount").text(item.totalCountT);
+						
+						$("table > tbody").append(temp);
+					});
+					
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+				
+			}); //ajax
+			
+			begin += 3;
+			end += 3;
+			
+		});
+		
+	});
+    
+     //주문일자 텍스트창 css
+     $("#from, #to").css("width", "90px");
+     $("#genresearch, #namesearch")
+         .css("background-color", "#666")
+         .css("color", "white")
+         .css("padding", "3px 7px");
 
-        //주문일자 선택
-        $(function() {
-            $.datepicker.setDefaults({
-                dateFormat: "yy-mm-dd",
-                showOn: "button",
-                buttonText: "달력"
-            });
-            $("#from").datepicker();
-            $("#to").datepicker();
+     //주문일자 선택
+     $(function() {
+         $.datepicker.setDefaults({
+             dateFormat: "yy-mm-dd",
+             showOn: "button",
+             buttonText: "달력"
+         });
+         $("#from").datepicker();
+         $("#to").datepicker();
 
-            $("#from").datepicker("setDate", "-6M");
-            $("#to").datepicker("setDate", "today");
-        });
+         $("#from").datepicker("setDate", "-6M");
+         $("#to").datepicker("setDate", "today");
+     });
 
-        //기간별 조회 클릭시
-        $(".month").click(function() {
-            $("#from").datepicker("setDate", "-" + $(this).data("month") + "M");
-        });
+     //기간별 조회 클릭시
+     $(".month").click(function() {
+         $("#from").datepicker("setDate", "-" + $(this).data("month") + "M");
+     });
 
-        //조회 클릭시
-        $("#genresearch, #namesearch").click(function() {
-            console.log($("#from").val());
-            console.log($("#to").val());
-        });
+     //조회 클릭시
+     $("#genresearch, #namesearch").click(function() {
+         console.log($("#from").val());
+         console.log($("#to").val());
+     });
 
-        //movetop
-        $("#movetop").click(function() {
-            event.preventDefault();
-            $("html, body").animate({
-                scrollTop: 0
-            }, 500);
-        });
+     //movetop
+     $("#movetop").click(function() {
+         event.preventDefault();
+         $("html, body").animate({
+             scrollTop: 0
+         }, 500);
+     });
 
+         //주문일자 텍스트창 css
+         $("#from, #to").css("width", "90px");
+         $("#genresearch, #namesearch")
+             .css("background-color", "#666")
+             .css("color", "white")
+             .css("padding", "3px 7px");
+
+         //주문일자 선택
+         $(function() {
+             $.datepicker.setDefaults({
+                 dateFormat: "yy-mm-dd",
+                 showOn: "button",
+                 buttonText: "달력"
+             });
+             $("#from").datepicker();
+             $("#to").datepicker();
+
+             $("#from").datepicker("setDate", "-6M");
+             $("#to").datepicker("setDate", "today");
+         });
+
+         //기간별 조회 클릭시
+         $(".month").click(function() {
+             $("#from").datepicker("setDate", "-" + $(this).data("month") + "M");
+         });
+
+         //조회 클릭시
+         $("#genresearch, #namesearch").click(function() {
+             console.log($("#from").val());
+             console.log($("#to").val());
+         });
+
+         //movetop
+         $("#movetop").click(function() {
+             event.preventDefault();
+             $("html, body").animate({
+                 scrollTop: 0
+             }, 500);
+         });
+			
+            
     </script>
 
 </body>

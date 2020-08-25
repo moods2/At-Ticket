@@ -15,38 +15,33 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-@WebServlet("/mypage/mypagereservationok.do")
-public class MyPageReservationOk extends HttpServlet {
+@WebServlet("/mypagewatchedgenreok.do")
+public class MyPageWatchedGenreOk extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
 		String cusseq = String.valueOf(session.getAttribute("userseq"));
 		String begin = req.getParameter("begin");
 		String end = req.getParameter("end");
 		String from = req.getParameter("from");
 		String to = req.getParameter("to");
-		String nowPage = req.getParameter("nowPage");
+		String genre = req.getParameter("genre");
+
 		HashMap<String,String> map = new HashMap<String,String>();
-		req.setCharacterEncoding("UTF-8");
-		
-		map.put("cusseq", cusseq);
 		map.put("begin", begin);
 		map.put("end", end);
+		map.put("genre", genre);
 		map.put("from", from);
 		map.put("to", to);
-		map.put("end", end);
+		map.put("cusseq", cusseq);
 		
 		//2.
 		MyPageHDAO dao = new MyPageHDAO();
-//		(int)Math.ceil((double)totalCount/pageSize);
-		int pageSize = 3;
-		int totalPage = (int)Math.ceil((double)dao.getTotalCountR(map)/pageSize);
-		if(totalPage == 0) {
-			totalPage = 1;
-		}
-		
-		ArrayList<MyReDTO> list = dao.getlistB(map);
+		ArrayList<MyWaDTO> glist = dao.getGenre(map);
+		int totalCountG = dao.getTotalCountG(map);
 		
 		dao.close();
 		
@@ -54,26 +49,29 @@ public class MyPageReservationOk extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		
-		
+		PrintWriter writer = resp.getWriter();
 		JSONArray arr = new JSONArray();
 		
-		for (MyReDTO dto : list) {
+		for (MyWaDTO dto : glist) {
 			JSONObject obj = new JSONObject();
-			obj.put("bdate",dto.getBdate());
-			obj.put("bookdate",dto.getBookdate());
-			obj.put("bookseq",dto.getBookseq());
-			obj.put("bookstate",dto.getBookstate());
-			obj.put("cnt",dto.getCnt());
-			obj.put("showtitle",dto.getShowtitle());
-			obj.put("nowPage", nowPage);
-			obj.put("totalPage", totalPage);
+//			공연명: ${dto.showtitle}<br>
+//			관람일: ${dto.bdate}<br>
+//			예매번호: ${bookseq}<br>	
+			obj.put("showposter", dto.getShowposter());
+			obj.put("showtitle", dto.getShowtitle());
+			obj.put("bdate", dto.getBdate());
+			obj.put("bookseq", dto.getBookseq());
+			obj.put("showaddr", dto.getShowaddr());
+			obj.put("totalCountG", totalCountG);
 			arr.add(obj);
 		}
-		
-		PrintWriter writer = resp.getWriter();
-		
+		System.out.println("사이즈"+totalCountG);
 		writer.print(arr);
 		writer.close();
 		
+		
 	}
 }
+
+
+

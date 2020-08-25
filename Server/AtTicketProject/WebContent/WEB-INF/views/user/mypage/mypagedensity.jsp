@@ -143,41 +143,27 @@ body {
         background-color: rgb(0,0,0,0.7);
         z-index:1;
     } */
-#myimg1:hover {
+img1:hover {
 	/* position: fixed; */
 	cursor: pointer;
 	/* filter: brightness(60%);  */
 	/* position: absolute; */
 }
 
-#myimg2:hover {
-	cursor: pointer;
-	/* filter: brightness(60%);  */
-	/* position: absolute; */
-}
-
-#myimg3:hover {
-	cursor: pointer;
-	/* filter: brightness(60%);  */
-	/* position: absolute; */
-}
-
-#myimg1 {
+img1 {
 	background-image: url("/AtTicketProject/images/big_theater.jpeg");
 	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat;
-	/* width: auto;
-        height: 300px; */
+	
 }
 
-#myimg2 {
+/* #myimg2 {
 	background-image: url("/AtTicketProject/images/classic10.jpeg");
 	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat;
-	/* width: 300px;
-        height: auto; */
+	
 }
 
 #myimg3 {
@@ -185,9 +171,8 @@ body {
 	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat;
-	/* width: 300px;
-        height: auto; */
-}
+	
+} */
 
 .highcharts-figure {
 	width: 10px;
@@ -275,11 +260,6 @@ th {
 	margin-bottom: 20px;
 }
 
-#date1 {
-	margin-left: 50px;
-	margin-bottom: 20px;
-}
-
 .item6 {
 	position: relative;
 	left: 20px;
@@ -294,7 +274,7 @@ th {
 	margin-left: -2px;
 }
 
-#sel1 {
+#month1 {
 	position: relative;
 	top: 13px;
 	z-index: 1;
@@ -343,10 +323,14 @@ th {
 	margin-bottom: 10px;
 }
 
+#ul2 {
+	margin-top:50px;
+}
+
 #ul2 li {
 	/* color: #8AC6D1; */
 	/* line-height: 14px; */
-	margin-bottom: -10px;
+	margin-bottom: 10px;
 	margin-left: 20px;
 }
 
@@ -384,7 +368,7 @@ tr:nth-child(4) {
 	opacity: 0;
 }
 
-#myimg1:hover #txt1 {
+.img1:hover #txt1 {
 	opacity: 1;
 	animation-name: key1;
 	animation-duration: .5s;
@@ -393,30 +377,13 @@ tr:nth-child(4) {
 	z-index: 2;
 }
 
-#myimg2:hover #txt2 {
-	opacity: 1;
-	animation-name: key1;
-	animation-duration: .5s;
-	filter: brightness(100%);
-	transform: scale(1, 1);
-	z-index: 2;
-}
-
-#myimg3:hover #txt3 {
-	opacity: 1;
-	animation-name: key1;
-	animation-duration: .5s;
-	filter: brightness(100%);
-	transform: scale(1, 1);
-	z-index: 2;
-}
 
 th {
 	color: white;
 	font-weight: bold;
 }
 
-#myimg1 {
+.img1 {
 	position: relative;
 	/* left: -30px; */
 	height: 200px;
@@ -425,25 +392,7 @@ th {
 	z-index: 1;
 }
 
-#myimg2 {
-	position: relative;
-	/* left: 140px; */
-	height: 200px;
-	width: 140px;
-	/* background-color: rgba(0, 0, 0, 0.1); */
-	z-index: 1;
-}
-
-#myimg3 {
-	position: relative;
-	/* left: 140px; */
-	height: 200px;
-	width: 140px;
-	/* background-color: rgba(0, 0, 0, 0.1); */
-	z-index: 1;
-}
-
-#myimg1:hover .img-cover {
+.img1:hover .img-cover {
 	display: block;
 	position: relative;
 	top: -60px;
@@ -453,7 +402,7 @@ th {
 	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 100;
 }
-
+/* 
 #myimg2:hover .img-cover {
 	display: block;
 	position: relative;
@@ -474,7 +423,7 @@ th {
 	height: 200px;
 	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 100;
-}
+} */
 </style>
 </head>
 <body>
@@ -501,16 +450,15 @@ th {
 						<div id="tt">나의 정보</div>
 						<div class="b">
 							<p></p>
-							<img id="photo" src="/AtTicketProject/images/아이유.png"
+							<img id="photo" src="/AtTicketProject/images/${cdto.photo}"
 								width="125px" height="125px" style="float: left;">
 							<div style="position: relative; top: 40px;" id="content">
-								<span style="font-weight: bold;">이름 : 홍길동</span><br> <span
-									style="font-weight: bold;">나이 : 26</span><br> <span
-									style="font-weight: bold;">주소 : 서울 강남구 역삼동</span><br> <span
-									style="font-weight: bold;">이메일 : cherry1234@naver.com</span><br>
-								<span style="font-weight: bold;">전화번호 : 010-1234-5678</span><br>
-								<span style="font-weight: bold;">닉네임 : 냠냠</span><br> <span
-									style="font-weight: bold;">아이디 : sunny96</span><br>
+								<span style="font-weight: bold;">이름 : ${cdto.name}</span><br> <span
+									style="font-weight: bold;">나이 : ${cdto.age}</span><br> <span
+									style="font-weight: bold;">주소 : ${cdto.addr}</span><br> <span
+									style="font-weight: bold;">이메일 : ${cdto.email}</span><br>
+								<span style="font-weight: bold;">전화번호 : ${cdto.tel}</span><br>
+								 <span style="font-weight: bold;">아이디 : ${cdto.id}</span><br>
 							</div>
 							<div
 								style="margin-top: 60px; margin-left: 30px; font-size: 1.2em;">
@@ -533,76 +481,60 @@ th {
 									style="width: 100px; text-align: center; margin-top: 10px;"
 									type="text" id="date">
 							</div>
+							<c:if test = "${qlist.size()==0}">
+							<div style="margin-left:150px;margin-top:40px;">답변이 없습니다.</div>
+							</c:if>
+							<c:if test="${qlist.size()!=0}">
 							<ul id="ul1">
-								<li>1. <b>구분: </b>공연 문의<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>답변
-										시간:</b> 2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;<b>[047]</b>번이
+							<c:forEach items = "${qlist}" var = "qdto">  
+								<li>${qdto.qseq}. <b>구분: ${qdto.tag}</b>qdto.tag<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>답변
+										날짜:</b>${qdto.answerdate}<br> &nbsp;&nbsp;&nbsp;&nbsp;<b>[${qdto.qseq}]</b>번이
 									답변 되었습니다.
-								</li>
-								<li>2. <b>구분: </b>공연 문의<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>답변
-										시간:</b> 2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;<b>[047]</b>번이
-									답변 되었습니다.
-								</li>
-								<li>3. <b>구분: </b>공연 문의<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>답변
-										시간:</b> 2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;<b>[047]</b>번이
-									답변 되었습니다.
-								</li>
-								<li>4. <b>구분: </b>공연 문의<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>답변
-										시간:</b> 2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;<b>[047]</b>번이
-									답변 되었습니다.
-								</li>
-								<li>5. <b>구분: </b>공연 문의<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>답변
-										시간:</b> 2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;<b>[047]</b>번이
-									답변 되었습니다.
-								</li>
-								<li>6. <b>구분: </b>공연 문의<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>답변
-										시간:</b> 2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;<b>[047]</b>번이
-									답변 되었습니다.
-								</li>
+								</li>	
+							</c:forEach>		
 							</ul>
+							</c:if>
 						</div>
 						<div id="free" style="margin-left: -6px; margin-top: 8px;">
-							<div id="tt5">자유게시판</div>
+							<div id="tt5">리뷰게시판</div>
 							<div
 								style="overflow-y: auto; width: 402px; height: 254px; position: relative; top: -0.5px;">
 								<div>
-									<input
+									<!-- <input
 										style="width: 100px; text-align: center; margin-left: 50px; margin-top: 10px;"
-										type="text" id="date1">
+										type="text" id="date1"> -->
 								</div>
+								<c:if test = "${rlist.size()==0}">
+									<div style="margin-left:150px;margin-top:40px;">답변이 없습니다.</div>
+								</c:if>
+								<c:if test="${rlist.size()!= 0}">
 								<ul id="ul2">
-									<li>1. <b>태그: </b>후기<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>시간:</b>
-										2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;
-									</li>
-									<li>2. <b>태그: </b>후기<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>시간:</b>
-										2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;
-									</li>
-									<li>3. <b>태그: </b>후기<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>시간:</b>
-										2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;
-									</li>
-									<li>4. <b>태그: </b>후기<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>시간:</b>
-										2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;
-									</li>
-									<li>5. <b>태그: </b>후기<br>&nbsp;&nbsp;&nbsp;&nbsp;<b>시간:</b>
-										2020-07-23 13:00<br> &nbsp;&nbsp;&nbsp;&nbsp;
-									</li>
+								<c:forEach items = "${rlist}" var = "rdto">  
+									<li>＃<b>${rdto.rseq}.</b> <b><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목 : </b>${rdto.rtitle}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>시간 : </b>
+										 ${rdto.regdate}<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<b>조회수 : </b>${rdto.rview}
+									</li>	
+								</c:forEach>		
 								</ul>
+								</c:if>
 							</div>
 						</div>
 					</div>
 					<div class="item4" style="margin: -80px auto; margin-left: 380px;">
 						<div id="tt2">구매 티켓 내역</div>
 						<div id="bb1">
-							<select style="margin-left: 250px;" name="sel1" id="sel1">
+							<select style="margin-left: 250px;" name="month1" id="month1">
 								<optgroup label="월">
-									<option value="1">1월</option>
-									<option value="2">2월</option>
-									<option value="3">3월</option>
-									<option value="4">4월</option>
-									<option value="5">5월</option>
-									<option value="6">6월</option>
-									<option value="7">7월</option>
-									<option value="8">8월</option>
-									<option value="9">9월</option>
+									<option value = "-1">월 선택</option>
+									<option value="01">1월</option>
+									<option value="02">2월</option>
+									<option value="03">3월</option>
+									<option value="04">4월</option>
+									<option value="05">5월</option>
+									<option value="06">6월</option>
+									<option value="07">7월</option>
+									<option value="08">8월</option>
+									<option value="09">9월</option>
 									<option value="10">10월</option>
 									<option value="11">11월</option>
 									<option value="12">12월</option>
@@ -620,12 +552,12 @@ th {
 											style="color: white; text-align: center; padding-top: 60px; float: left;"
 											id="myimg1" class="img1">
 											<div class="img-cover">
-												<span id="txt1">셜록 홈즈 <br> 2020-07-24<br>강남구
+												<span class = "txt" id="txt1">셜록 홈즈 <br> 2020-07-24<br>강남구
 													역삼동
 												</span>
 											</div>
 										</div>
-										<div
+										<!-- <div
 											style="color: white; text-align: center; padding-top: 60px; float: left;"
 											id="myimg2" class="img-cover img1">
 											<div class="img-cover">
@@ -642,7 +574,7 @@ th {
 													역삼동
 												</span>
 											</div>
-										</div>
+										</div> -->
 										<!-- <img class="img1" src="./images/big_theater.jpeg" id="myimg1">
                         <img class="img1" src="./images/classic10.jpeg" id="myimg2">
                         <img class="img1" src="./images/classic11.jpeg" id="myimg3"> -->
@@ -664,59 +596,35 @@ th {
 							</div>
 
 							<div
-								style="border: 1px solid #7E9CB6; width: 900px; height: 150px; overflow-y: auto; margin-left: 180px; margin-top: -10px; position: relative; top: -30px;">
+								style="border: 1px solid #7E9CB6; width: 1000px; height: 150px; overflow-y: auto; margin-left: 180px; margin-top: -10px; position: relative; top: -30px;">
 								<table
-									style="width: 100%; height: 150px; border: 1px solid #eeee; margin: 0px;"
-									class="table table-hover">
-									<tr>
+									style="width: 100%; height: auto; border: 1px solid #eeee; margin: 0px;"
+									class="table table-hover" id = "tbl1">
+									<tr style="vertical-align: middle;height:10px;">
 										<th>상태</th>
 										<th>내역</th>
 										<th>날짜</th>
 										<th>가격</th>
 										<th>장소</th>
 									</tr>
-									<tr>
-										<td>취소</td>
-										<td>오페라 유령 연극이 취소가 되었습니다.</td>
-										<td>2020-07-21</td>
-										<td>50000</td>
-										<td>서울 강남구 역삼동 예술의 전당</td>
+									<tbody id = "tbody1">
+									<c:if test = "${blist.size()==0}">
+									<tr style="height:140px;">
+										<td style="padding-top:40px;" colspan="5">내역이 없습니다.</td>
 									</tr>
-									<tr>
-										<td>예약</td>
-										<td>뮤지컬 타이타닉이 예약되었습니다.</td>
-										<td>2020-07-23</td>
-										<td>30000</td>
-										<td>경기 부천시 소사 레인보우 전당</td>
-									</tr>
-									<tr>
-										<td>예약</td>
-										<td>뮤지컬 타이타닉이 예약되었습니다.</td>
-										<td>2020-07-23</td>
-										<td>30000</td>
-										<td>경기 부천시 소사 레인보우 전당</td>
-									</tr>
-									<tr>
-										<td>예약</td>
-										<td>공연 블핑 콘서트가 예약되었습니다.</td>
-										<td>2020-07-25</td>
-										<td>150000</td>
-										<td>경기 부천시 소사 레인보우 전당</td>
-									</tr>
-									<tr>
-										<td>예약</td>
-										<td>공연 블핑 콘서트가 예약되었습니다.</td>
-										<td>2020-07-25</td>
-										<td>150000</td>
-										<td>경기 부천시 소사 레인보우 전당</td>
-									</tr>
-									<tr>
-										<td>예약</td>
-										<td>공연 블핑 콘서트가 예약되었습니다.</td>
-										<td>2020-07-25</td>
-										<td>150000</td>
-										<td>경기 부천시 소사 레인보우 전당</td>
-									</tr>
+									</c:if>
+									<c:if test = "${blist.size()!=0}">
+										<c:forEach items = "${blist}" var = "bdto">
+										<tr style="height:140px;">
+											<td>${bdto.state}</td>
+											<td>${bdto.title}이 ${bdto.state} 되었습니다.</td>
+											<td>${bdto.bookdate}</td>
+											<td>${bdto.showprice}</td>
+											<td>${bdto.showaddr}</td>
+										</tr>	
+										</c:forEach>
+									</c:if>
+									</tbody>
 								</table>
 
 							</div>
@@ -752,7 +660,7 @@ th {
 					</div>
 
 					<div class="item6" style="margin-left: 40px;">
-						<div id="tt3">나의 방문 횟수</div>
+						<div id="tt3">결제한 날짜</div>
 						<select name="sel2" id="sel2">
 							<optgroup label="월">
 								<option value="1">1월</option>
@@ -859,68 +767,12 @@ th {
 			});
 
 			// Build the chart
-			Highcharts
+			/* Highcharts
 					.chart(
 							'container1',
-							{
-								chart : {
-									plotBackgroundColor : null,
-									plotBorderWidth : null,
-									plotShadow : false,
-									type : 'pie'
-								},
-
-								title : {
-									text : ' ♡ 장르별 구매 티켓 ♡'
-								},
-								tooltip : {
-									pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
-								},
-								accessibility : {
-									point : {
-										valueSuffix : '%'
-									}
-								},
-								plotOptions : {
-									pie : {
-										allowPointSelect : true,
-										cursor : 'pointer',
-										dataLabels : {
-											enabled : false
-										},
-										showInLegend : true
-									}
-								},
-								credits : {
-									enabled : false
-								},
-								series : [ {
-									name : 'Brands',
-									colorByPoint : true,
-									data : [ {
-										name : '콘서트',
-										y : 61.41,
-										sliced : true,
-										selected : true
-									}, {
-										name : '뮤지컬',
-										y : 11.84
-									}, {
-										name : '연극',
-										y : 10.85
-									}, {
-										name : '클래식',
-										y : 4.67
-									}, {
-										name : '전시',
-										y : 4.18
-									}, {
-										name : 'Other',
-										y : 7.05
-									} ]
-								} ]
-							});
-
+							{ */
+			
+				
 			Highcharts
 					.chart(
 							'container2',
@@ -950,7 +802,7 @@ th {
 								yAxis : {
 									min : 0,
 									title : {
-										text : '방문횟수'
+										text : '결제횟수'
 									}
 								},
 								tooltip : {
@@ -979,32 +831,128 @@ th {
 		</script>
 
 		<script>
-			var rbox = document.getElementById("rbox")
-			var distance = 0;
-			$("#conright").click(
-					function() {
+			$("#month1").change(function(){
+				var month1 = $(this).val();
+				//alert(buseo);
+				
+				//ajax 요청 -> 결과 -> 차트에 반영 
+				$.ajax({
+					type:"GET",
+					url:"/AtTicketProject/mydenticket.do",
+					data:"month1="+month1,
+					dataType:"json",
+					success:function(result){
+						
+						options.series[0].data = result;
+						Highcharts.chart('container1', options);
+						
+					},
+					erro:function(a,b,c){
+						console.log(a,b,c);
+					}
+				});
+				
+				$.ajax({
+					type:"GET",
+					url:"/AtTicketProject/mybuyinfo.do",
+					data:"month1="+month1,
+					dataType:"json",
+					success:function(result){
+						
+						$("#tbody1").html("");
+						$(result).each(function(index,item){
+							var temp = "";
+							temp+="<tr style='height:auto;'>";
+							temp+="<td>" + item.state + "</td>";
+							temp+="<td>" + item.title+"이" + item.state + " 되었습니다.</td>";
+							temp+="<td>" + item.bookdate + "</td>";
+							temp+="<td>" + item.showprice + "</td>";
+							temp+="<td>" + item.showaddr + "</td>";
+							temp+="</tr>";	
+						$("#tbody1").append(temp);	
+						});
+						
+						
+					},
+					erro:function(a,b,c){
+						console.log(a,b,c);
+					}
+				});
+				
+				
+			});
+			
+			var options	= {
+				chart : {
+				plotBackgroundColor : null,
+				plotBorderWidth : null,
+				plotShadow : false,
+				type : 'pie'
+			},
 
-						if (distance == 270) {
-							distance = 0;
-							rbox.style.transform = "translate(0px,0px)";
-						} else {
-							distance += 135;
-							rbox.style.transform = "translate(-" + distance
-									+ "px,0px)";
-						}
-					});
-			distance = 270;
-			$("#conleft").click(
-					function() {
-						if (distance == -135) {
-							distance = 270;
-						} else {
-							console.log(distance);
-							rbox.style.transform = "translate(-" + distance
-									+ "px,0px)";
-							distance -= 135;
-						}
-					});
+			title : {
+				text : ' ♡ 장르별 구매 티켓 ♡'
+			},
+			tooltip : {
+				pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+			},
+			accessibility : {
+				point : {
+					valueSuffix : '%'
+				}
+			},
+			plotOptions : {
+				pie : {
+					allowPointSelect : true,
+					cursor : 'pointer',
+					dataLabels : {
+						enabled : false
+					},
+					showInLegend : true
+				}
+			},
+			credits : {
+				enabled : false
+			},
+			series : [ {
+				name : '비율:',
+				colorByPoint : true,
+				data : [ 
+					
+				]
+			}]
+		};
+
+		Highcharts.chart('container1', options);
+			
+		
+		
+		var rbox = document.getElementById("rbox")
+		var distance = 0;
+		$("#conright").click(
+				function() {
+					
+					if (distance == 270) {
+						distance = 0;
+						rbox.style.transform = "translate(0px,0px)";
+					} else {
+						distance += 135;
+						rbox.style.transform = "translate(-" + distance
+								+ "px,0px)";
+					}
+				});
+		distance = 270;
+		$("#conleft").click(
+				function() {
+					if (distance == -135) {
+						distance = 270;
+					} else {
+						console.log(distance);
+						rbox.style.transform = "translate(-" + distance
+								+ "px,0px)";
+						distance -= 135;
+					}
+				});
 
 			$("#photo").mouseenter(function() {
 				$("#photo").css("opacity", 0.7);
@@ -1015,11 +963,11 @@ th {
 			});
 
 			$("#photo").click(function() {
-				alert("VVIp");
+				alert("${cdto.grade}");
 			});
 
 			var date = document.getElementById("date");
-			var date1 = document.getElementById("date1");
+			/* var date1 = document.getElementById("date1"); */
 			var now = new Date();
 
 			//날짜 자동 입력, 읽기만 가능 
@@ -1028,11 +976,11 @@ th {
 			if (date.value != null) {
 				date.readOnly = true;
 			}
-			date1.value = now.getFullYear() + " / " + (now.getMonth() + 1)
+			/* date1.value = now.getFullYear() + " / " + (now.getMonth() + 1)
 					+ " / " + now.getDate();
 			if (date1.value != null) {
 				date1.readOnly = true;
-			}
+			} */
 
 			$(".img1").mouseover(function() {
 				$(this).css("opacity", 0.5);
