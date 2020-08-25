@@ -96,7 +96,23 @@
                 <div style="text-align: center;">
                     <h1>TICKET OPEN</h1>
                     <div>
-                        <div class="img opne1" value="temp7">
+                    
+						<c:set var="i" value="1" />
+                        <c:forEach items="${open}" var="open">
+                        	<div class="img opne${i}" value="temp${i+6}" style="background-image: url(./images/${open.img});">
+                                <div class="img-cover1 cover${i+6}" value="cover${i+6}">
+                                    <div class="text1 temp${i+6}">
+                                    	<p style="color: orange; font-size: 16px; font-weight: bold;">D${open.opendate}</p>
+	                                    <h4>${open.genre}</h4>
+	                                    <span>${open.name}</span>
+                                    </div>
+                                </div>
+                                <input type="hidden" value="${open.seq}">
+                            </div>
+                        <c:set var="i" value="${i + 1}" />
+                        </c:forEach>                    
+                    
+                        <!-- <div class="img opne1" value="temp7">
                             <div class="img-cover1 cover7" value="cover7">
                                 <div class="text1 temp7">
                                     <h4>select shop</h4>
@@ -135,7 +151,7 @@
                                     <span>10cm X 데이브레이크</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- 티켓오픈 더보기 버튼 -->
                     <input

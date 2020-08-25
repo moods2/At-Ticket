@@ -5,12 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import com.test.admin.banner.LogoDTO;
 import com.test.atticket.DBUtil;
-import com.test.user.show.RankDTO;
 
 public class BannerDAO {
 	
@@ -108,7 +109,7 @@ public class BannerDAO {
 		try {
 			
 			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
-					+ "WHERE GENRE = 'musical' OR GENRE = 'theater' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
+					+ "WHERE DELFLAG = 0 AND GENRE = 'musical' OR GENRE = 'theater' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
 			
@@ -146,7 +147,7 @@ public class BannerDAO {
 		try {
 			
 			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
-					+ "WHERE GENRE = 'concert' OR GENRE = 'classic' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
+					+ "WHERE DELFLAG = 0 AND GENRE = 'concert' OR GENRE = 'classic' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
 			
@@ -184,7 +185,7 @@ public class BannerDAO {
 		try {
 			
 			String sql = "SELECT * FROM (SELECT ROWNUM, SEQ, TITLE, POSTER, GENRE FROM (SELECT * FROM TBLSHOW "
-					+ "WHERE GENRE = 'exhibition' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
+					+ "WHERE DELFLAG = 0 AND GENRE = 'exhibition' ORDER BY AGENCYSEQ) A) WHERE ROWNUM <= 6";
 			
 			stat = conn.createStatement();
 			
@@ -342,11 +343,11 @@ public class BannerDAO {
 
 			
 			if (!whatshot.equals("")) {
-				where = String.format("where genre = \'%s\'", whatshot);
+				where = String.format("and genre = \'%s\'", whatshot);
 			}
 			
 			String sql = String.format("SELECT ROWNUM AS RNUM, A.* FROM "
-					+ "(SELECT SEQ, TITLE, POSTER, GENRE FROM TBLSHOW %s ORDER BY STARTDATE) A "
+					+ "(SELECT SEQ, TITLE, POSTER, GENRE FROM TBLSHOW WHERE DELFLAG = 0 %s ORDER BY STARTDATE) A "
 					+ "WHERE ROWNUM <= 7", where);
 			
 			stat = conn.createStatement();
@@ -491,7 +492,7 @@ public class BannerDAO {
 		try {
 			
 			String sql = "SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM "
-					+ "(SELECT TITLE, POSTER, GENRE FROM TBLSHOW WHERE GENRE = ?) A) "
+					+ "(SELECT TITLE, POSTER, GENRE FROM TBLSHOW WHERE DELFLAG = 0 AND GENRE = ?) A) "
 					+ "WHERE RNUM IN (6, 2, 14, 8, 11, 9)";
 			
 			pstat = conn.prepareStatement(sql);
@@ -614,6 +615,46 @@ public class BannerDAO {
 		}
 		
 		return 0;
+	}
+
+	public ArrayList<BannerDTO> mainopen() {
+		
+		try {
+			
+			String sql = "SELECT * FROM TBLSHOW WHERE DELFLAG = 0 AND STARTDATE > SYSDATE";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			ArrayList<BannerDTO> list = new ArrayList<BannerDTO>();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date today = new Date();
+			
+			while (rs.next()) {
+				
+				BannerDTO dto = new BannerDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setName(rs.getString("title"));
+				dto.setStartdate(rs.getString("startdate"));
+				dto.setEnddate(rs.getString("enddate"));
+				dto.setImg(rs.getString("poster"));
+				dto.setGenre(rs.getString("genre").toUpperCase());
+				
+				Date open = format.parse(rs.getString("opendate"));
+				long diffDay = (today.getTime() - open.getTime()) / (24*60*60*1000);
+				
+				dto.setOpendate(Long.toString(diffDay));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 }
