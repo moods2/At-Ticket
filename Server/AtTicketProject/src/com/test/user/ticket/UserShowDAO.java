@@ -459,6 +459,45 @@ public class UserShowDAO {
 		return null;
 	}
 
+	//공연에 대한 회차정보 객체를 돌려주는 메서드
+	public List<UserShowRoundDTO> getRoundInfo(String showSeq) {
+		
+		try {
+			
+			String sql = "select * from tblRoundInfo where showseq = ? and delflag = 0 order by startdate";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, showSeq);
+			rs = pstat.executeQuery();
+			
+			List<UserShowRoundDTO> dtoList = new ArrayList<UserShowRoundDTO>();
+			
+			while(rs.next()) {
+				
+				UserShowRoundDTO dto = new UserShowRoundDTO();
+				
+				dto.setRseq(rs.getString("seq"));
+				dto.setRstartTime(rs.getString("startdate"));
+				dto.setRendTime(rs.getString("enddate"));
+				dto.setShowSeq(rs.getString("showseq"));
+				dto.setDelflag(rs.getString("delflag"));
+				
+				
+				dtoList.add(dto);
+				
+			}
+			
+			return dtoList;
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+
 	//map 형식으로 맨 위에 
 
 	

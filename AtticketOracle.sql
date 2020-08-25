@@ -712,3 +712,8 @@ SELECT * FROM TBLSHOW;
 select * from tblroundinfo;
 --where d.bdate = '20/08/27' 
 
+--아 뭔데 ㅋㅋㅋㅋ
+
+
+
+

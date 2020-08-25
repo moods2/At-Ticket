@@ -819,10 +819,7 @@
              background: gray;
          }
 
-         .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
-             background: gray;
-             border: 1px solid gray;
-         }
+
          .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
              color: black;
          }
@@ -994,11 +991,12 @@
             <!-- 사이드 -->
             <div id="side">
                 <div id="cosertInfo">
-                    <img src="./images/consertPoster.jpg">
+                    <img src="./images/${dto.poster}">
+                    <!-- 여기서 해당 공연에 대한 사진등 정보를 바꿔줄 것이다. -->
                     <div id="InforContent">
-                        <h2>크리스토퍼 내한공연（CHRISTOPHER LIVE IN SEOUL)</h2>
-                        <div>2020-08-29 ~ 2020-08-30</div>
-                        <div>YES24 LIVE HALL</div>
+                        <h2>${dto.title}</h2>
+                        <div>${dto.startDate} ~ ${dto.endDate}</div>
+                        <div>${splaceName}</div>
                     </div>
                 </div>
                 <div id="choicInfo">
@@ -1142,6 +1140,7 @@
                     </tbody>
                 </table>
                 <table id="tbl2">
+                
                     <tr>
                         <td>유의사항</td>
                         <td>
@@ -1351,7 +1350,14 @@
             <!-- <button>버튼</button> -->
         </div>
     </div>
-
+	
+	<style>
+		.timeRound:hover {
+			cursor : pointer;
+		}
+	
+	</style>
+	
     <script>
 
         var tabNum = [1,2,3,4];
@@ -1365,7 +1371,7 @@
             disabled: tabNum
         });
 
-        var n = 0;
+        var n = 0;//텝번호
 
         var tabNumMinus = [];
 
@@ -1411,7 +1417,43 @@
                 alert("좌석을 선택해 주세요");
                 event.preventDefault();
             } else {
+            	
+            	//이쪽이쪽
+            	//여기서 ajax 처리를 해준다.
+            	
+            	$.ajax({
+                		type : "GET",
+                		url : "/AtTicketProject/usersemishowreservation.do",
+                		data : "showseq=${showSeq}",
+                		async: true,
+                		dataType: "json",
+                		success : function(result) {
+                			
+                			
+                			
+                			
+							//var list = result;
+							
+							
+/* 							var showRound = 1;
+							$(result).each(function(index, item) {
+								$("#inputTime").append("<li class = 'timeRound' id ='"+ item.rseq +"'> [" + showRound + "]회 " + item.rstartTime + " ~ " + item.rendTime + "</li>");
+								
+								showRound++;
+								
+							}); */
+							//ajax 정보가 유실되므로 ajax 내에서 함수를 부른다.
+							//testClick();
+                		},
+                		error : function(a,b,c) {
+                			console.log(a,b,c);
+                		}
+                	});//여기까지가 ajax
+            	
+            	
+            	
                 
+            	alert("메롱메롱메롱");
                 tabNumMinus = tabNum.shift(),
                 tabNum.push(n),
                 n++;
@@ -1419,7 +1461,7 @@
                     disabled: tabNum,
                     active: n
                 });
-
+				//다음버튼
                 if(n == 1) {
                     $("#side2").css("display","block")
                 }
@@ -1465,9 +1507,7 @@
                         $("#side2").css("display","none")
                     });
                 }
-            }
-
-            
+            }            
         });
         
         //이전화면
@@ -1534,12 +1574,14 @@
 
         })
         
-
+		//달력처리
         // $(function() {
             $( "#celender").datepicker({
                 dateFormat: "yy-mm-dd",
-                minDate: "2020-08-29",
-                maxDate: "2020-08-30",
+	            //minDate : "2020-09-01",
+	            //maxDate : "2020-12-12",
+                minDate: "${minDateInfo}",//
+                maxDate: "${dto.endDate}",
                 altField: ".alternate",
                 altFormat: "yy.mm.dd(D)",
                 dayNamesShort: ["일","월","화","수","목","금","토"],
@@ -1549,8 +1591,38 @@
                 // setDate: "2020-08-30",
 
                 onSelect: function(dateText) {  
-
-                    if(dateText == "2020-08-29") {
+                	
+                	$("#inputTime").empty();
+                	
+                	$.ajax({
+                		type : "GET",
+                		url : "/AtTicketProject/usersemishowreservation.do",
+                		data : "showseq=${showSeq}",
+                		async: true,
+                		dataType: "json",
+                		success : function(result) {
+                			
+							//var list = result;
+							
+							
+							var showRound = 1;
+							$(result).each(function(index, item) {
+								$("#inputTime").append("<li class = 'timeRound' id ='"+ item.rseq +"'> [" + showRound + "]회 " + item.rstartTime + " ~ " + item.rendTime + "</li>");
+								
+								showRound++;
+								
+							});
+							//ajax 정보가 유실되므로 ajax 내에서 함수를 부른다.
+							testClick();
+                		},
+                		error : function(a,b,c) {
+                			console.log(a,b,c);
+                		}
+                	});//여기까지가 ajax
+                	
+                	
+                	
+/*                     if(dateText == "2020-08-29") {
                         // $("#inputTime").html("[1]회 19시 00분");
                            
                         $("#inputTime" ).empty();
@@ -1559,7 +1631,7 @@
                     }else {
                         $( "#inputTime" ).empty();
                         $("#inputTime").append("<li>[1]회 18시 00분</li>");
-                    }
+                    } */
 
                     $("#inputTime li").click(function(){
                         $("#inputTime li").css({
@@ -1576,11 +1648,43 @@
                         clickNum = true;
                     });
                 
-                },
-                
-                
+                }
+                  
             });
         // } );
+        
+        var showroundSeq = 0;//회자seq.
+        
+        function testClick() {
+        	
+        	$(".timeRound").click(function(){
+        		
+        		
+        		$(".timeRound").css("background-color","#FFF");//모든 회차 배경을 하얀색으로 돌리고 밑에서 색을 다시 돌린다.
+        		
+        		showroundSeq = $(this).attr("id");//전역변수에 회차 seq 넣어줌.
+				alert($(this).attr("id"));//애가 회차 seq 임.
+				$(this).css("background-color","#FECA52");
+				
+	             //$("#clock").css("background-color","#FECA52");
+	             //$("#clock").css("border","#FECA52");
+	             //$("#clock").css("color","white");
+	             $("#data").css("border","1px solid #eeeeee");
+	             $("#sit").css("border","1px solid #FECA52");
+	             $("#sittitle").css("border-bottom","2px solid black");
+	             $("#sittitle").css("color","black");
+	             $("#sitbox").css("border","1px solid black");
+	             
+	             if($("#sitbox").empty()){
+	                 $("#sitbox").append("본 공연은 잔여좌석 서비스를 제공하지 않습니다.")
+	             }
+	             clickNum = true;
+				
+			}); 
+        }
+        
+        
+        
 
         //미니맵 옮기기     
         $("#miniMapImg").click(function(){
@@ -1603,7 +1707,8 @@
         })
         
 
-
+		//좌석채우기
+		//.s13 -> 애가 회색으로 채울 부분.
         // div 만들기 1층
         //행
         var r = 5;
@@ -1621,7 +1726,8 @@
         for(r=5; r<45; r++){
 
             for(m=13; m<68; m++){
-
+				
+            	//
                 $("#container").append('<div class="s6" id="t'+ r+'000'+ m +'" style="left:'+l+'px; top:'+t+'px;" name="tk" value="'+ r+'000'+ m +'" title= "1층 '+g+'구역 '+(r-4)+'열 '+gn+'번" grade="지정석"></div>');
 
                 //열이동
