@@ -88,7 +88,7 @@ public class AdminMemberDAO {
 		
 		try {
 			
-			String sql = "select seq from tblAdmin where id = ? and pw = ?;";
+			String sql = "select seq from tblAdmin where id = ? and pw = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			
