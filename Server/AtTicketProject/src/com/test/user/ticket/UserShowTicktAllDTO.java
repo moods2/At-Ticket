@@ -2,11 +2,11 @@ package com.test.user.ticket;
 
 public class UserShowTicktAllDTO {
 	
-	private String seq;
-	private String floor;
-	private String area;
-	private String seatrow;
-	private String seatcol;
+	private String seq;//좌석 seq
+	private String floor;//좌석 층
+	private String area;//좌석 구역
+	private String seatrow;//좌석 행
+	private String seatcol;//좌석 열
 	
 	
 	

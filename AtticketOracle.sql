@@ -712,7 +712,35 @@ SELECT * FROM TBLSHOW;
 select * from tblroundinfo;
 --where d.bdate = '20/08/27' 
 
---아 뭔데 ㅋㅋㅋㅋ
+--
+
+--좌석정보 가져오기
+select tls.seq,tls.floor,tls.area,tls.seatrow,tls.seatcol from tblShow ts
+    inner join tblTheater tt
+        on ts.theaterseq = tt.seq
+            inner join tblRoundInfo tr
+                on tr.showSeq = ts.seq
+                    inner join tblBooking tb
+                        on tb.roundSeq = tr.seq
+                            inner join tblSeat tls
+                                on tls.thSeq = tt.seq where ts.seq = 2 and tb.roundseq = 2 and tb.delflag = 0 and tr.delflag = 0 and ts.delflag = 0 and tt.delflag = 0 and tb.bdate = '2020/08/27';
+
+
+
+select tls.seq,tls.floor,tls.area,tls.seatrow,tls.seatcol from tblShow ts
+    inner join tblTheater tt
+        on ts.theaterseq = tt.seq
+            inner join tblRoundInfo tr
+                on tr.showSeq = ts.seq
+                    inner join tblBooking tb
+                        on tb.roundSeq = tr.seq
+                            inner join tblSeat tls
+                                on tls.thSeq = tt.seq
+where ts.seq = 2 and tb.roundseq = 2;
+
+
+select * from tblBooking;
+
 
 
 

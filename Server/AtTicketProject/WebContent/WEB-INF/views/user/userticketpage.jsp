@@ -1003,7 +1003,7 @@
                     <h2>선택내역</h2>
                     <dl>
                         <dt>날짜</dt>
-                            <dd><input type="text" class="alternate" size="30"></dd>
+                            <dd><input type="text" class="alternate" size="30" id = "inputDate"></dd>
                         <div style="clear: both;"></div>
                         <dt>시간</dt>
                         <dd></dd>
@@ -1363,7 +1363,10 @@
         var tabNum = [1,2,3,4];
         var clickNum = false;
         var ticketNum = false;
-
+        
+        var userSeatInfoList = new Array();
+        var userNum;
+        var resullt;
         // console.log(tabNum);
 
         $("#tabs").tabs({
@@ -1374,12 +1377,17 @@
         var n = 0;//텝번호
 
         var tabNumMinus = [];
-
+		
+        //여기서도 좌석선택이 가능함
         $("#sitBtn").click(function(){
             if(clickNum == false){
                 alert("날짜를 선택해 주세요.");
 				event.preventDefault();
             } else {
+            	
+            	
+            	
+            	
                 tabNumMinus = tabNum.shift(),
                 tabNum.push(n),
                 n++;
@@ -1404,10 +1412,13 @@
         });
 
         $("#dialog1").hide();
+		
 
         // 다음단계
         $("#nextBtn").click(function(){
-
+			
+        	//alert($("#inputDate").attr("text"));
+        	
             if(clickNum == false){
                 alert("날짜를 선택해 주세요.");
 				event.preventDefault();
@@ -1417,42 +1428,63 @@
                 alert("좌석을 선택해 주세요");
                 event.preventDefault();
             } else {
-            	
-            	//이쪽이쪽
+            	//alert($(".alternate").attr("text"));
+            	//진짜 신청 페이지에서 문제없이 다음페이지로 가는 경우!.
             	//여기서 ajax 처리를 해준다.
+            	//여기서 해줄 작업은 -> 사용가능한 좌석을 불러올 것이다...!
             	
             	$.ajax({
                 		type : "GET",
-                		url : "/AtTicketProject/usersemishowreservation.do",
-                		data : "showseq=${showSeq}",
+                		url : "/AtTicketProject/usershowavailseat.do",
+                		data : "showseq=${showSeq}&showroundSeq="+showroundSeq + "&conDate="+conDate,
                 		async: true,
                 		dataType: "json",
                 		success : function(result) {
                 			
+                			//json type 으로 받아온 사용가능한 좌석정보들이 존재할것이다.
+                			//좌석 seq,층,구역,행,열 을 받아온다.
                 			
-                			
-                			
-							//var list = result;
-							
-							
-/* 							var showRound = 1;
 							$(result).each(function(index, item) {
-								$("#inputTime").append("<li class = 'timeRound' id ='"+ item.rseq +"'> [" + showRound + "]회 " + item.rstartTime + " ~ " + item.rendTime + "</li>");
 								
-								showRound++;
 								
-							}); */
-							//ajax 정보가 유실되므로 ajax 내에서 함수를 부른다.
-							//testClick();
+								//userNum = item.userSeq; //전역변수 선택이 아예 안된다
+								//alert(item.usedSeq);// 이건 되는데 아 ...
+								/* var user = new Object();
+								user.usedSeq = item.usedSeq;
+								
+                				userSeatInfoList[userNum] = user;
+                				userNum++; */
+								
+                				/* var user = {
+                    					usedSeq : item.usedSeq,
+                    					usedFloor : item.usedFloor,
+                    					usedArea : item.usedArea,
+                    					usedSearCol : item.usedSearCol,
+                    					userSeatRow : item.userSeatRow	
+                    			};
+                				userSeatInfoList[userNum] = user;
+                				userNum++; */
+                				
+								//제발
+								//$("#inputTime").append("<li class = 'timeRound' id ='"+ item.rseq +"'> [" + showRound + "]회 " + item.rstartTime + " ~ " + item.rendTime + "</li>");
+								
+								
+	                    			
+								
+							});
+								
                 		},
                 		error : function(a,b,c) {
                 			console.log(a,b,c);
                 		}
                 	});//여기까지가 ajax
             	
-            	
-            	
-                
+                alert(userNum);
+               // alert(userSeatInfoList[0]);
+                //alert(userNum);
+           		//alert(userSeatInfoList.length);
+            	//alert(userSeatInfoList[0]);
+                //alert(resullt);
             	alert("메롱메롱메롱");
                 tabNumMinus = tabNum.shift(),
                 tabNum.push(n),
@@ -1574,24 +1606,28 @@
 
         })
         
+        var conDate;//몇일공연인지 -> 애도 ajax 로 넘겨줘야 함.
 		//달력처리
         // $(function() {
             $( "#celender").datepicker({
                 dateFormat: "yy-mm-dd",
 	            //minDate : "2020-09-01",
 	            //maxDate : "2020-12-12",
-                minDate: "${minDateInfo}",//
+                minDate: "${minDateInfo}",
                 maxDate: "${dto.endDate}",
                 altField: ".alternate",
                 altFormat: "yy.mm.dd(D)",
                 dayNamesShort: ["일","월","화","수","목","금","토"],
-
+				
+                
                 // defaultDate: new Date('2020-08-30'),
 
                 // setDate: "2020-08-30",
 
                 onSelect: function(dateText) {  
                 	
+                	conDate = dateText;
+                	//alert(conDate);
                 	$("#inputTime").empty();
                 	
                 	$.ajax({
@@ -1653,6 +1689,7 @@
             });
         // } );
         
+        //회차 seq 를  전역변수로 받아준다.
         var showroundSeq = 0;//회자seq.
         
         function testClick() {
@@ -1663,7 +1700,7 @@
         		$(".timeRound").css("background-color","#FFF");//모든 회차 배경을 하얀색으로 돌리고 밑에서 색을 다시 돌린다.
         		
         		showroundSeq = $(this).attr("id");//전역변수에 회차 seq 넣어줌.
-				alert($(this).attr("id"));//애가 회차 seq 임.
+				//alert($(this).attr("id"));//애가 회차 seq 임.
 				$(this).css("background-color","#FECA52");
 				
 	             //$("#clock").css("background-color","#FECA52");
@@ -1719,15 +1756,15 @@
         //위
         var t = 135;
         // 구역
-        var g = "";
+        var g = "A";
         // 번호
         var gn = 1;
-
+		
         for(r=5; r<45; r++){
 
             for(m=13; m<68; m++){
 				
-            	//
+            	
                 $("#container").append('<div class="s6" id="t'+ r+'000'+ m +'" style="left:'+l+'px; top:'+t+'px;" name="tk" value="'+ r+'000'+ m +'" title= "1층 '+g+'구역 '+(r-4)+'열 '+gn+'번" grade="지정석"></div>');
 
                 //열이동
@@ -2068,6 +2105,8 @@
             })
                 
             }
+        
+        	
                 
     </script>
 

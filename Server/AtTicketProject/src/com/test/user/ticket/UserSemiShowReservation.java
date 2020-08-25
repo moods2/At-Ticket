@@ -31,10 +31,9 @@ public class UserSemiShowReservation extends HttpServlet{
 		List<UserShowRoundDTO> roundList = dao.getRoundInfo(showSeq);//해당 공연번호에 해당하는 회차객체를 가져옴
 		
 		
-		
-//		System.out.println("size size");
-		System.out.println(roundList.size());
-//		System.out.println("size size");
+
+		//System.out.println(roundList.size());
+
 
 		
 		JSONArray arr = new JSONArray();//json 에 넘겨줄 객체생성
@@ -52,10 +51,7 @@ public class UserSemiShowReservation extends HttpServlet{
 			arr.add(obj);
 		}
 				
-		//System.out.println("^^^^^^^^^^^^^^^^^^^^^");
-		//System.out.println(arr.get(0));
-		//System.out.println(arr.get(1));
-		//System.out.println("^^^^^^^^^^^^^^^^^^^^^");
+
 
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");

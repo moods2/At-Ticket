@@ -498,7 +498,50 @@ public class UserShowDAO {
 		return null;
 	}
 
-	//map 형식으로 맨 위에 
+	//이미 예약된 좌석에 대한 정보를 돌려줄것이다.
+	public List<UserShowTicktAllDTO> getUsedSeat(String showSeq, String showRoundSeq, String conDate) {
+		
+		try {
+			
+			String sql = "select distinct ts.seq,ts.floor,ts.area,ts.seatrow,ts.seatcol from tblTheater tt inner join tblSeat ts on tt.seq = ts.thSeq inner join TBLTICKET tk on tk.seat = ts.seq inner join tblBooking tbb on tbb.seq = tk.bookingseq inner join tblshow tsh on tsh.theaterseq = tt.seq where tsh.seq = ? and tbb.roundSeq = ? and tbb.bdate = ? and tt.delflag = 0 and tbb.delflag = 0 and tsh.delflag = 0 order by seq";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, showSeq);
+			pstat.setString(2, showRoundSeq);
+			pstat.setString(3, conDate);
+			
+			rs = pstat.executeQuery();
+			
+			List<UserShowTicktAllDTO> usedSeatList = new ArrayList<UserShowTicktAllDTO>();
+			
+			while(rs.next()) {
+				
+				UserShowTicktAllDTO dto = new UserShowTicktAllDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setFloor(rs.getString("floor"));
+				dto.setArea(rs.getString("area"));
+				dto.setSeatrow(rs.getString("seatrow"));
+				dto.setSeatcol(rs.getString("seatcol"));
+				
+				
+				usedSeatList.add(dto);
+				
+			}
+			
+			return usedSeatList;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+
+	
+	
 
 	
 	
