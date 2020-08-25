@@ -1,7 +1,6 @@
 package com.test.admin.sales;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 @WebServlet("/adminsalesok.do")
 public class AdminSalesOk extends HttpServlet{
 
@@ -19,21 +19,16 @@ public class AdminSalesOk extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		
-		String genre = req.getParameter("genre");
 		String sdate = req.getParameter("sdate");
 		String edate = req.getParameter("edate");
 		
 		SalesDAO dao = new SalesDAO();
 		SalesDTO dto = new SalesDTO();
 		
-		dto.setGenre(genre);
 		dto.setSdate(sdate);
 		dto.setEdate(edate);
 		
 		int total = dao.getTotalSales(dto);
-	
-		
-		
 		
 		String strTotal = String.format("%,d",total);
 		

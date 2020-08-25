@@ -194,12 +194,7 @@
                     <tr>
                         <td colspan="11">검색 결과가 없습니다.</td>
                     </tr>
-                </c:if>
-                <c:if test="${empty search and list.size() == 0}">
-                    <tr>
-                        <td colspan="11">검색 결과가 없습니다.</td>
-                    </tr>
-                </c:if>
+                </c:if> 
                 <c:forEach items="${list}" var="dto">
                     <tr>
                         <td><input type="checkbox" class="cb" name = "cb" value = "${dto.seq}"></td>

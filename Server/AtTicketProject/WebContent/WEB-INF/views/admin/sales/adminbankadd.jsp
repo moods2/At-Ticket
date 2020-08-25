@@ -88,21 +88,23 @@
         <fieldset id="add" class="form-control" style="border: 0px;">
             <!-- <legend class="form-control">공연 정보 추가하기</legend> -->
             
+            <form method="POST" action="/AtTicketProject/adminbankaddok.do">
             <div>
                 <label for="txtbank">은행 이름 : </label>
-                <input type="text" id="txtbank">
+                <input type="text" id="txtbank" name="name">
             </div>
             <div>
                 <label for="txtaccount">계좌 번호 : </label>
-                <input type="text" id="txtaccount">
+                <input type="text" id="txtaccount" name="account">
             </div>
-
             
             
             <div id="btns">
-                <input type="button" id="btnok" value="확인" class="btn btn-default">
+                <input type="submit" id="btnok" value="확인" class="btn btn-default">
                 <input type="button" id="btnclose" value="닫기" class="btn btn-default">
             </div>
+            
+            </form>
         </fieldset>
     </div>
 
@@ -112,9 +114,6 @@
 </body>
 <script>
 
-    $("#btnok").click(function() {
-        window.close();
-    });
 
     $("#btnclose").click(function() {
         window.close();

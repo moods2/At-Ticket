@@ -8,6 +8,7 @@ public class NoticeDTO {
 	private String content;
 	private String regdate;
 	private String nview;
+	private String dy;
 	
 	
 	public String getSeq() {
@@ -51,6 +52,12 @@ public class NoticeDTO {
 	}
 	public void setNview(String nview) {
 		this.nview = nview;
+	}
+	public String getDy() {
+		return dy;
+	}
+	public void setDy(String dy) {
+		this.dy = dy;
 	}
 	
 	
