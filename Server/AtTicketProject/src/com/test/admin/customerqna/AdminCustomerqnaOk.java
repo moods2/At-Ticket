@@ -19,6 +19,7 @@ public class AdminCustomerqnaOk extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		
 		String seq = req.getParameter("seq");
+		String anSeq = req.getParameter("anSeq");
 		String content = req.getParameter("content");
 		
 		//System.out.println(content);
@@ -28,6 +29,7 @@ public class AdminCustomerqnaOk extends HttpServlet{
 		QnaDTO dto = new QnaDTO();
 		
 		dto.setSeq(seq);
+		dto.setAnSeq(anSeq);
 		dto.setAncontent(content);
 		
 		int result = dao.ok(dto);

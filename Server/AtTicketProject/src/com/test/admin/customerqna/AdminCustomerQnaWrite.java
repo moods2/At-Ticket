@@ -31,18 +31,22 @@ public class AdminCustomerQnaWrite extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		
-		System.out.println("000000000000000000000000"+session.getAttribute("adminSeq").toString());
+		//System.out.println("000000000000000000000000"+session.getAttribute("adminSeq").toString());
 		
 		dto.setMseq(session.getAttribute("adminSeq").toString());
 		dto.setSeq(seq);
 		dto.setAncontent(answer);
 		
-		 QnaDTO result2 = dao.write(dto);
+		String max = dao.write(dto)+"";
 		
+		dto.setMaxSeq(max);
+		
+		 System.out.println("----------------------------------------------------"+dto.getMaxSeq());
+		 
+		 
 		int result = dao.writeUp(dto);
 		
 		
-		//System.out.println(result);
 		
 		if (result == 1) {
 			resp.sendRedirect("/AtTicketProject/customerqna/admincustomerqnaview.do?seq="+seq);			

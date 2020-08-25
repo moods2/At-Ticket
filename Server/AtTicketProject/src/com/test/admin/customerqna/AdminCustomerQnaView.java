@@ -19,7 +19,7 @@ public class AdminCustomerQnaView extends HttpServlet{
 		String seq = req.getParameter("seq");
 		String search = req.getParameter("search");
 		
-		System.out.println(seq);
+		//System.out.println(seq);
 		//DB
 		QnaDAO dao = new QnaDAO();
 		
@@ -35,14 +35,14 @@ public class AdminCustomerQnaView extends HttpServlet{
 		//질문
 		
 		String content = dto.getContent();
-		System.out.println(content);
+		//System.out.println(content);
 		content = content.replace("\n", "<br>");
 		dto.setContent(content);
 		
 		//답변
 		String ancontent = dto.getAncontent();
 		if(ancontent != null) {
-		ancontent = ancontent.replace("\n", "<br>");
+		ancontent = ancontent.replace("\r\n", "<br>");
 		dto.setAncontent(ancontent);
 		}
 		

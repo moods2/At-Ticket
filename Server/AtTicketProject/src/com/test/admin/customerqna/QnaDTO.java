@@ -8,6 +8,7 @@ public class QnaDTO {
 	private String regdate;
 	private String tag;
 	private String mseq;
+	private String cusSeq;
 	private int qview;
 	private int ansSeq;
 	
@@ -118,6 +119,12 @@ public class QnaDTO {
 	}
 	public void setMaxSeq(String maxSeq) {
 		this.maxSeq = maxSeq;
+	}
+	public String getCusSeq() {
+		return cusSeq;
+	}
+	public void setCusSeq(String cusSeq) {
+		this.cusSeq = cusSeq;
 	}
 	
 	

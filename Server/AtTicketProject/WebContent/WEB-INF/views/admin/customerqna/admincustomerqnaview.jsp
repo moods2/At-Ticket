@@ -121,7 +121,7 @@
 	            	<span>${dto.ancontent}</span>
 	            	<textarea style='display:block; width: 870px; min-height:300px; resize:none; display: none;' id='textW' name="content"></textarea>
 	            	<input type="text" value="${dto.seq}" style="display: none;" name="seq">
-	            	<input type="text" value="${dto.anSeq}" style="display: none;" name="seq">
+	            	<input type="text" value="${dto.anSeq}" style="display: none;" name="anSeq">
 	     
 	            </div>
 	            <div>${dto.anregdate}</div>
@@ -147,36 +147,16 @@
         </div>
         <div style="clear: both;"></div>
         <hr class = "splitLine">
+        
+        
 
 
       </div>
 
       <script>
           
-          //답글달기
-          var onoff = false;
+      //alert();
 
-          $(".reply").click(function(){
-
-                if (onoff) {
-                    $(".replyon").css("display","none");
-                    onoff = false;
-              
-                } else {
-                    $(".replyon").css("display","block");
-                    onoff = true;
-                }
-
-          })
-
-          //글쓰기
-          $("#commentgo").click(function(){
-                
-            
-          });
-          
-        
-          
           $("#reWrite").click(function() {
 			
         	  var txt = "${dto.ancontent}";
@@ -203,8 +183,13 @@
         	  //var content = $("#textW").val();
         	  //content = content.replace(/<\n>/gi, "<br>");
         	  //location.href = "AtTicketProject/admincustomerqnaOk.do?seq=" + ${dto.seq}+"&content="+content;
+        	  opener.parent.location.reload();
         	  
           });
+          
+          $("#answer").click(function() {
+        	  opener.parent.location.reload();
+          }
 	
           /* alert(${dto.anSeq}); */
  

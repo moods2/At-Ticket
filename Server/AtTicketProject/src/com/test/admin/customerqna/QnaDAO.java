@@ -39,12 +39,27 @@ public class QnaDAO {
 				where = String.format("and (name like '%%%s%%' or title like '%%%s%%' or content like '%%%s%%')", map.get("search"), map.get("search"), map.get("search"));
 			}
 			
-			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminQnaBoard order by seq desc) a) where rnum >= %s and rnum <=%s %s", 
+			String sort = "";
+			String sql = "";
+			
+			if (map.get("sort") != null) {
+				
+				sort = String.format("where tag = '%s'", map.get("sort"));
+				
+				sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminQnaBoard %s order by seq desc) a) where rnum >= %s and rnum <=%s %s", 
+						sort, map.get("begin"), map.get("end"), 
+						 where);
+			}
+			
+			if (map.get("sort") == null) {
+				sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwAdminQnaBoard order by seq desc) a) where rnum >= %s and rnum <=%s %s", 
 					map.get("begin"), map.get("end"), 
 					where);
+			}
 
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
+
 			
 			ArrayList<QnaDTO> list = new ArrayList<QnaDTO>();
 			
@@ -87,11 +102,24 @@ public class QnaDAO {
 				where = String.format("where (name like '%%%s%%' or subject like '%%%s%%' or content like '%%%s%%')", map.get("search"), map.get("search"), map.get("search"));
 			}
 			
-			String sql = String.format("select count(*) as cnt from tblqna %s", where);
+			String sql = "";
+			String sort = "";
 			
+			
+			if (map.get("sort") != null) {
+				
+				sort = String.format("where tag = '%s'", map.get("sort"));
+				sql = String.format("select count(*) as cnt from tblqna %s %s", where, sort);
+			}
+			
+			if (map.get("sort") == null) {
+				sql = String.format("select count(*) as cnt from tblqna %s", where);
+			}
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
+			
+			//System.out.println("==="+sql);
 			
 			if(rs.next()) {
 				return rs.getInt("cnt");
@@ -124,6 +152,7 @@ public class QnaDAO {
 				dto.setSubject(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getString("regdate"));
+				dto.setTag(rs.getString("tag"));
 				
 				dto.setName(rs.getString("name"));
 				dto.setId(rs.getString("id"));
@@ -131,10 +160,7 @@ public class QnaDAO {
 				dto.setAnSeq(rs.getString("anseq"));
 				dto.setAncontent(rs.getString("ancontent"));
 				dto.setAnregdate(rs.getString("anregdate"));
-				
-				//System.out.println(rs.getString("anseq"));
-				
-				//System.out.println("======================"+rs.getString("content"));
+				dto.setAnsSeq(rs.getInt("ansseq"));
 				
 				return dto;
 			}
@@ -156,7 +182,7 @@ public class QnaDAO {
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getAncontent());
-			pstat.setString(2, dto.getSeq());
+			pstat.setString(2, dto.getAnSeq());
 			
 			return pstat.executeUpdate();
 			
@@ -170,32 +196,36 @@ public class QnaDAO {
 	}
 
 
-	public QnaDTO write(QnaDTO dto) {
+	public int write(QnaDTO dto) {
 		
 		try {
 			String sql ="";
 			
-			sql = "insert into tblanswer values (answerSeq.nextVal, ?, difault, ?, default)";
+			sql = "insert into tblanswer values (ANSWERSEQ.nextval, ?, default, ?, default)";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getAncontent());
 			pstat.setString(2, dto.getMseq());
 			
-			System.out.println("========================"+dto.getMseq());
-			
 			pstat.executeUpdate();
 			
-			//sql = "select answerSeq.currVal from dual";
+			//방금쓴 글 seq 가져오기
+			sql = "select ANSWERSEQ.nextval from dual";
 			
-			//rs = stat.executeQuery(sql);
+			int max = 0;
 			
-			/*
-			 * while(rs.next()) {
-			 * 
-			 * dto.setMaxSeq(rs.getString("currVal"));
-			 * 
-			 * return dto; }
-			 */
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			 //while(rs.next()) {
+			 if(rs.next()) {
+			 //dto.setMaxSeq(rs.getString("nextval"));
+			max = rs.getInt("nextval");
+			 
+			 return max-1; 
+			 
+			 }
+			 
 			
 			
 		} catch (Exception e) {
@@ -204,7 +234,7 @@ public class QnaDAO {
 		}
 		
 		
-		return null;
+		return 0;
 	}
 
 	public int writeUp(QnaDTO dto) {
@@ -225,6 +255,33 @@ public class QnaDAO {
 			e.printStackTrace();
 			System.out.println("write(QnaDTO dto)");
 		}
+		return 0;
+	}
+
+	public int deleteMessage(String[] cbDelete) {
+		
+		try {
+
+			String sql = "update tblqna set delflag = 1 where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			
+			int result = 0;
+			
+			for (String seq : cbDelete) {
+				pstat.setString(1, seq);
+				result += pstat.executeUpdate();
+			}
+			
+			System.out.println(result);
+			return result;
+
+		} catch (Exception e) {
+			System.out.println("deleteMessage()");
+			e.printStackTrace();
+		}
+		
+		
+		
 		return 0;
 	}
 

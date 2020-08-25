@@ -174,17 +174,21 @@
  		.no {
  			color: #FF7372 ;
  		}
+ 		
+ 		#searchForm {
+ 			float: right;
+ 		}
  	
  	</style>
  	
     <!-- 등록순 오름차순 조회순 -->
     <div id = "selectable">
         
-        <div id = "slctp1">
+<!--         <div id = "slctp1">
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i></span>등록순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>오름차순</button>
             <button class = "selectNotice" style = "outline : none;"><span><i class = "glyphicon glyphicon-sort"></i>내림차순</button>
-        </div>
+        </div> -->
 		
 		<form method="GET" action="/AtTicketProject/admincustomerqna.do" id="searchForm">
 	        <div id = "slctp2" >
@@ -223,7 +227,7 @@
 	            <!-- 목록  -->  
 	            <c:forEach items="${list}" var="dto">
 	            <tr>	            	
-	            	<td><input type="checkbox" class = "t5" name= "${dto.seq}"></td>
+	            	<td><input type="checkbox" class = "t5 cbDelete" name="cbDelete" value="${dto.seq}"></td>
 	                <td style="width: 200px">${dto.tag}</td>
 	                <td class = "inputcont">
 	                	<a href="/AtTicketProject/customerqna/admincustomerqnaview.do?seq=${dto.seq}&search=${search}" onclick="window.open(this.href, '_blanck', 'width=910, height=700'); return false">
@@ -234,12 +238,12 @@
 	                <td>${dto.name}</td>
 	                <td>${dto.regdate} </td>
 	                <td>
-		                <c:if test="${not empty dto.ansSeq}">
+		                <c:if test="${dto.ansSeq ne 0}">
 		                <%-- ${dto.ansSeq} --%>
 		                	<span class="complete ok">완료</span>
 		                </c:if> 
 		                
-		                <c:if test="${empty dto.ansSeq}">
+		                <c:if test="${dto.ansSeq eq 0}">
 		                	<span class="complete no">미완료</span>
 		                </c:if> 
 	                </td>
@@ -252,7 +256,7 @@
         <!-- 내용물 수정/삭제 페이지 -->
         <div id = "manipulate">
             <button class = "modified" style = "float:right;" onclick="location.href='/AtTicketProject/admincustomerqna.do';"><i class="glyphicon glyphicon-list" ></i>목록</button>
-            <button class = "modified" style = "float:right; margin-right: 10px;"><i class="glyphicon glyphicon-trash"></i>해당 문의 내역 삭제</button>
+            <button class = "modified" style = "float:right; margin-right: 10px;" onclick="deleteMessage()"><i class="glyphicon glyphicon-trash"></i>해당 문의 내역 삭제</button>
             <div style="clear: both;"></div>
         </div>
 
@@ -324,6 +328,23 @@
 <script>
 
 	<%@include file="/WEB-INF/views/inc/adminScript.jsp" %>	/* 기본적인 자바스크립트 */
+	
+ 	$("#t5title").click(function() {
+		if($("#t5title").is(":checked") == true) {
+			$("input[name='cbDelete']").prop("checked", true);
+		}else{
+			$("input[name='cbDelete']").prop("checked", false);
+		}
+	}); 
+	
+	function deleteMessage() {
+		
+		if($(".cbDelete:checked").length >0){
+		 	location.href = "/AtTicketProject/customerqna/admincustomerqnadeleteok.do?" + $(".cbDelete").serialize();
+		}else{
+			alert("삭제할 문의내역를 선택하세요.");
+		}
+	}
 	
 </script>
 
