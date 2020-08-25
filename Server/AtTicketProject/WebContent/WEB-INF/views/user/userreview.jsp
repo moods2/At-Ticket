@@ -562,7 +562,9 @@
                 </table>
                 
                 <c:if test="${not empty userseq}">
-              		<button id="btnWrite" class="btn btn-default" onclick="location.href='/AtTicketProject/userreviewwrite.do?userseq=${userseq}';">리뷰쓰기</button>
+              		<button id="btnWrite" class="btn btn-default" onclick="location.href='/AtTicketProject/userreviewwrite.do?userseq=${userseq}';">
+              		<span class="glyphicon glyphicon-pencil"></span>
+              		리뷰쓰기</button>
               	</c:if>
 
                 ${pagebar}
@@ -624,7 +626,7 @@
                     </div>
                 
             </div>
-        </div>
+ 
 
         <script src="js/slick.min.js"></script>
         <script>

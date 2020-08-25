@@ -192,13 +192,6 @@
     margin-bottom: 60px;
 }
 
-
-
-
-
-
-
-
    
 .pbar {
     width: 370px;
@@ -212,33 +205,38 @@
 
             #tblList {
                 width: 1200px;
+                height: 500px;
                 margin: 15px auto;
+                
             }
 
             #tblList th:nth-child(1) {
                 width: 60px;
+                height: 30px;
             }
-            #tblList th:nth-child(2) {
+            #tblList td:nth-child(1) {
                 width: 360px;
             }
-            #tblList th:nth-child(3) {
+            #tblList th:nth-child(2) {
                 width: 90px;
+                height: 30px;
             }
-            #tblList th:nth-child(4) {
+            #tblList td:nth-child(2) {
                 width: 110px;
             }
-            #tblList th:nth-child(5) {
+            #tblList th:nth-child(3) {
                 width: 60px;
+                height: 50px;
             }
-            #tblList th:nth-child(6) {
+            #tblList td:nth-child(3) {
                 width: 60px;
             }
 
-            tblList th,
+            #tblList th,
             #tblList td {                
-                text-align: center;
+                /* text-align: center; */
             }
-            #tblList td:nth-child(2) {
+            #tblList td:nth-child(4) {
                 text-align: left;
             }
 
@@ -289,28 +287,39 @@
                 bottom: -20px;
             }
             .banner2 {                            
-                
                 width: 1200px;
                 margin: 0px auto;
-                
-                
-                
+                margin-top: 50px;
             }
             .banner3 {
                 position: relative;
-                bottom: 350px;
+                bottom: 500px;
                 width: 200px;
                 height: 500px;
             }
             .banner4 {
                 position: relative;
-                bottom: 850px;
+                bottom: 1000px;
                 width: 200px;
                 height: 500px;
                 left: 1650px;
             }
 
+			#btnHeart{
+				position: relative;
+				left: -200px;
+			}
 			
+			.rtitle {
+				float: right;
+				font-size: 0.9em;
+				margin: 3px;
+			}
+			
+			.btnplus {
+				float: right;
+				margin-right: 5px;
+			}
 		
 
     </style>
@@ -349,40 +358,47 @@
         <hr>
 <!-------------------------------- 내용부분 -------------------------------->
         <p class="event-main-tit" style="margin-top: 150px; font-size:2em;"></p>
-        <h2 style="text-align: center; font-weight: bold; ">리뷰 게시판</h2>
+        <h2 style="text-align: center; font-weight: bold; margin-bottom:30px;">리뷰 게시판</h2>
 
-            <table class="table table-borderd" style="width: 1200px; margin: 0px auto;" id="tblView">
+            <table class="table table-borderd" style="width: 1200px; margin: 0px auto;" id="tblList">
                 <tr>
                     <th style="width: 120px;">제목</th>
-                    <th style="width: 650px;">
-                        	${dto.title}
-                    </th>
+                    <td style="width: 650px;">
+                    
+                    <span class="title">${dto.title}</span>
+                    <span class="readcount rtitle"> 읽음(${dto.rview}) </span>
+                    <span class="date rtitle"> ${dto.regdate} </span>
+                    <span class="writer rtitle"> 작성자:  ${dto.id} </span>
+                        	
+                    </td>
                 </tr>
                 <tr>
                     <th style="width: 150px;">장르</th>
-                    <th style="width: 650px;">
+                    <td style="width: 650px;">
                         	${dto.genre}
-                    </th>
+                    </td>
                 </tr>
                 <tr>
                     <th style="width: 150px;">공연제목</th>
-                    <th style="width: 650px; ">
+                    <td style="width: 650px; ">
                         	${dto.showName}
-                    </th>
+                    </td>
                 </tr>
                 
                 <tr>
                     <th style="width: 150px;">내용</th>
-                    <th style="width: 650px; height:200px;">
-                    	<c:if test="${dto.rfile != null}">
+                    <td style="width: 650px; height:200px;">
+                    	${dto.rfile}
+                    	<c:if test="${not empty dto.rfile}">
                     		<img alt="" src="./images/reviewFile/${dto.rfile}">
                     	</c:if>
                         	${dto.content}
-                    </th>
+                    </td>
                 </tr>
                
             </table>
             
+
             <div class="banner3">
                 <img style="margin-left: 40px; width: 200px; height: 600px;" src="./images/banner3.jpg" alt="">
             </div>
@@ -392,37 +408,37 @@
 
             
 
-        </div>
-        </div>
+        </div><!-- top -->
+        </div><!-- main -->
         <div class="event-main-list">                
                     
                     
                      
         </div>
         <div class="btns">                
-                <button class="btn btn-default">
-                    <span class="glyphicon glyphicon-th-list"></span>목록
-                </button>
-                <c:if test="${userseq} == ${dto.cseq}">
-                	 <button class="btn btn-default">
-                    <span class="glyphicon glyphicon-th-list"></span>수정
-                	</button>
-                	 <button class="btn btn-default">
-                    <span class="glyphicon glyphicon-th-list"></span>삭제
-                	</button>
-                </c:if>
-            </div>
-           	<div class="banner2">
-            <img style="margin-bottom: 40px; width: 1200px;" src="./images/banner2.png" alt="">
-            </div>
+       	 	<button id="btnHeart" style="outline:none;" class="btn btn-default <c:if test="${dto.heart == 1}">active</c:if>" onclick="location.href='/AtTicketProject/heart.do?rseq=${dto.rseq}'">
+               <span class="glyphicon glyphicon-thumbs-up" ></span>
+               추천 ${dto.heart}
+          	</button>
+           <c:if test="${userseq == dto.cseq}">
+           	 <button class="btn btn-default btnplus" id="btnDelete">
+               <span class="glyphicon glyphicon-trash"></span>삭제
+           	</button>
+           	 <button class="btn btn-default btnplus" onclick="location.href='/AtTicketProject/userreviewedit.do?rseq=${dto.rseq}';">
+               <span class="glyphicon glyphicon-pencil"></span>수정
+           	</button>
+           </c:if>
+           <button class="btn btn-default btnplus" id="btnlist">
+               <span class="glyphicon glyphicon-th-list"></span>목록
+           </button>          
+        </div>
+        <div style="clear:both;"></div>
+       	<div class="banner2">
+        	<img style="margin-bottom: 40px; margin-top: 60px; width: 1200px;" src="./images/banner2.png" alt="">
+        </div>
             
 
-        
-        
-         
-            
-            
-            
+
 <!-------------------------------- 화면 하단부 -------------------------------->
         <div id="bottom">
             <div style="width: 1600px; margin: auto;">
@@ -430,12 +446,30 @@
                 <img src="./images/title2.png" style="transform: translate(0, 40px);">
             </div>
         </div>
-    </div>
+
 
 
 
     <script src="js/slick.min.js"></script>
     <script>
+    	
+    	var rseq = ${dto.rseq};
+    	
+    	$("#btnDelete").click(function() {
+    		var result = confirm("정말 삭제하시겠습니까?");
+            console.log(result);
+            if(result) {
+            	location.href='/AtTicketProject/userrivewdelete.do?rseq=' + rseq;
+            }
+    	});
+    
+    	$("#btnEdit").click(function() {
+    		location.href="/AtTicketProject/userreviewedit.do?rseq="+rseq;
+    	});
+    	
+    	$("#btnlist").click(function() {
+    		location.href="/AtTicketProject/userreview.do";
+		});
 
         //상단 메뉴 css
         $(".menubar").mouseover(function() {

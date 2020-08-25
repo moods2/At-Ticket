@@ -15,18 +15,18 @@ public class UserReviewEdit extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+				
 		HttpSession session = req.getSession();
+		
+		String rseq = req.getParameter("rseq");
+		
+		ReviewDAO dao = new ReviewDAO();
+		ReviewDTO dto = dao.getReview(rseq);
+		
+		req.setAttribute("dto", dto);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userreviewedit.jsp");
 		dispatcher.forward(req, resp);
-		
-		
-		System.out.println(req.getContextPath());
-		
-		
-		System.out.println(session.getAttribute("userid"));
 		
 	}
 	

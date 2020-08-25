@@ -42,7 +42,7 @@ public class UserReview extends HttpServlet{
 		HashMap<String,String> map = new HashMap<String, String>();
 		
 		if (sort == null || sort == "") {
-			sort = "seq asc"; // 기본값
+			sort = "seq desc"; // 기본값
 		}else if(sort.equals("rview")) {
 			sort = "rview desc";
 		}else if(sort.equals("heart")) {
@@ -88,6 +88,9 @@ public class UserReview extends HttpServlet{
 
 		totalPage = (int) Math.ceil((double) totalCount / pageSize);
 		list = dao.getList(map);
+		
+		//새로고침 조회수 증가 방지
+		session.setAttribute("read", false);
 
 		// 페이지바 제작
 		loop = 1;

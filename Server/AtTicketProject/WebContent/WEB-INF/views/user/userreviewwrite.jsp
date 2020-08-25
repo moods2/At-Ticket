@@ -453,7 +453,7 @@
                 <img src="./images/title2.png" style="transform: translate(0, 40px);">
             </div>
         </div>
-    </div>
+
 
 
 

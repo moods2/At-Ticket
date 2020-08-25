@@ -186,6 +186,117 @@ public class ReviewDAO {
 		}
 		return null;
 	}
+
+	//Heart 서블릿 -> 추천 눌렀는지 확인
+	public boolean checkHeart(HeartDTO dto) {
+		try {
+			String sql = "select count(*) as cnt from tblLike where revseq = ? and cusseq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getRevseq());
+			pstat.setString(2, dto.getCusseq());
+			
+			rs = pstat.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("cnt") == 1 ? true : false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public int addHeart(HeartDTO dto) {
+		try {
+			String sql = "insert into tblLike (seq,revseq,cusseq) values (likeSeq.nextVal, ?, ?)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getRevseq());
+			pstat.setString(2, dto.getCusseq());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public int removeHeart(HeartDTO dto) {
+		try {
+			String sql = "delete from tblLike where revseq = ? and cusseq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getRevseq());
+			pstat.setString(2, dto.getCusseq());
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	//UserReviewRead 서블릿 -> 조회수 증가
+	public void updateReadcount(String rseq) {
+		try {
+			String sql = "update tblReview set rview = rview + 1 where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, rseq);
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	//UserReviewEditOk 서블릿 -> 리뷰 수정
+	public int updateReview(ReviewDTO dto) {
+		try {
+			
+			if(dto.getRfile() == null) {
+				String sql = "update tblReview set title=?, content=?, showseq=? where seq = ?";
+
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, dto.getTitle());
+				pstat.setString(2, dto.getContent());
+				pstat.setString(3, dto.getShowSeq());
+				pstat.setString(4, dto.getRseq());
+
+				return pstat.executeUpdate();
+			}else {
+				String sql = "update tblReview set title=?, content=?, showseq=?, rfile=? where seq = ?";
+
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, dto.getTitle());
+				pstat.setString(2, dto.getContent());
+				pstat.setString(3, dto.getShowSeq());
+				pstat.setString(4, dto.getRfile());
+				pstat.setString(5, dto.getRseq());
+
+				return pstat.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	//UserReviewDelete 서블릿 -> 리뷰 삭제
+	public int deleteReview(String rseq) {
+		try {
+			String sql = "update tblReview set delflag=1 where seq = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, rseq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+
 	
 	
 
