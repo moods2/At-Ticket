@@ -1040,13 +1040,13 @@
                 <div id="payment1">
                     <h2>결제내역</h2>
                     <dl>
-                        <dt>티켓금액</dt>
+                        <dt>티켓금액(￦)</dt>
                         <dd id="tickectPice"></dd>
                         <div style="clear: both;"></div>
-                        <dt>예매수수료</dt>
+                        <dt>예매수수료(￦)</dt>
                         <dd id="susu"></dd>
                         <div style="clear: both;"></div>
-                        <dt>배송료</dt>
+                        <dt>배송료(￦)</dt>
                         <dd></dd>
                         <div style="clear: both;"></div>
                         <dt>총 금액(+)</dt>
@@ -1056,7 +1056,7 @@
                 </div>
                 <div id="sale">
                     <dl>
-                        <dt>할인금액</dt>
+                        <dt>할인금액(￦)</dt>
                             <dd id = "discountPrice">0</dd>
                         <div style="clear: both;"></div>
                         <dt>할인쿠폰</dt>
@@ -1075,8 +1075,8 @@
                 </div>
                 <div id="finalPay">
                     <dl>
-                        <dt>최종 결제금액</dt>
-                        <dd id="finull">원</dd>
+                        <dt>최종 결제금액(￦)</dt>
+                        <dd id="finull"></dd>
                     </dl>
                     <div style="clear: both;"></div>
                  </div>
@@ -1240,18 +1240,14 @@
             </div>
             
             <script>
-            	//var fixedM = $("#finull").text();	
-            
+            	
+            	//여기서 정산 처리를 해줄것이다.
+            	
             	$(".btncoupon").click(function(){
-            		$("#finull").text($("#totalPrice").text());
-            		
+            		$("#finull").text($("#totalPrice").text());	
             		$("#discountPrice").text($(this).val());
             		$("#discountTotalPrice").text($(this).val());
-            		//alert(parseInt($("#finull").text()));
-            	//alert(parseInt($(this).val()));
-            		$("#finull").text(parseInt($("#finull").text()) - parseInt($(this).val()) + "원");
-            		//alert($(this).val());
-            		
+            		$("#finull").text(parseInt($("#finull").text()) - parseInt($(this).val()));
             	});
             	
             </script>
@@ -1325,16 +1321,84 @@
                         </tbody>
                     </table>
                 </div>
+				
+				<style>
+					#eggUseBtn {
 
+						    color: tomato; 
+						    background-color: rgb(240, 237, 237); 
+				            outline: none; 
+				            border: 1px solid #ccc; 
+				            border-radius: 3px;
+					}
+					
+					#eggUseBtn:hover {
+						cursor : pointer; 
+					}
+				
+				</style>
 
                 <div id="payment1">
                     <h4>결제방법</h4>
 
                     <div id="egg" class="pay">
                         <label for "eggpt">에그머니 </label><input type="text" id="eggpt" value="0" Style="width: 100px;">원<input type="checkbox" id="cbegg"><label for="cbegg">전액사용 (총 <span class="pspan" id = "myeggmoney">${userEggMoney}</span>원)</label>
+                    	<button id = "eggUseBtn">에그머니 적용</button>
+                    
                     </div>
                     
                     <script>
+                    
+                    	//$("#finull").text(parseInt($("#finull").text()) - parseInt($(this).val()));
+                    	var eggCheck = 0;
+                    	//에그 머니 적용하면 더 빼져야한다.
+                    	//에그머니 적용하는경우
+                    	//1. 내가 가지고 있는 에그머니보다 더 사용할 수 없게 만들어줘야한다.
+                    	//2. 값을 잘 빼야하고
+                    	//3. 숫자만 입력받아야 한다.
+                    	//아 왜 안되는걸까 고민을 해봐라 젭라...;ㅣㅣ
+                    	var pricetxt = document.getElementById("eggpt");
+                    	var pf = 0;
+                    	$("#eggUseBtn").click(function(){
+                    		pf = 0;
+                    		//3. 숫자만 입력받아야 한다.
+			        		for (var i = 0; i < pricetxt.value.length; i++) {
+			        			
+			        			var price = pricetxt.value.charAt(i);
+			        			
+			        			if (price < "0" || price > "9") {
+			        				alert("할인금액은 숫자로만 입력이 가능합니다.")
+			        				pricetxt.select();
+			        				pf++;
+			        				return;
+			        			}
+			        		} 
+                    		
+                    		//순수 숫자로만 적었을 경우에 적용.
+                    		if (pf == 0) {
+        		        		//1.내가 가지고 있는 에그머니보다 더 사용할 수 없게 만들어줘야한다.
+                        		if ($("#eggpt").val() > ${userEggMoney}) {
+                        			alert("보유하신 에그머니보다 많은 포인트를 사용할 수 없습니다.");
+                        		} else {
+                            		if (eggCheck % 2 == 0) {
+                            			//에그머니 적용하는 경우
+                                		$("#discountTotalPrice").text(parseInt($("#discountTotalPrice").text()) + parseInt($("#eggpt").val()));//총 할인액
+                                		$("#finull").text(parseInt($("#finull").text()) - parseInt($("#eggpt").val()));//결국 총 가격
+                                		eggCheck++;
+                                		$("#eggUseBtn").text("에그머니 적용 취소");
+                            		} else {
+                            			//에그머니 다시 한번 누르는 경우
+                            			$("#discountTotalPrice").text(parseInt($("#discountTotalPrice").text()) - parseInt($("#eggpt").val()));//총 할인액
+                            			$("#finull").text(parseInt($("#finull").text()) + parseInt($("#eggpt").val()));//결국 총 가격
+                            			eggCheck++;
+                            			$("#eggUseBtn").text("에그머니 적용");
+                            		}
+                        		}                    			
+                    		}
+                    		
+	
+ 
+                    	});
                     	
                     	$("#cbegg").click(function(){
                     		if ($(this).is(":checked")) {
@@ -1444,8 +1508,10 @@
             active: 0,
             disabled: tabNum
         });
-
-        var n = 0;//텝번호
+		
+       	
+        
+        var n = 0;//탭번호
 
         var tabNumMinus = [];
 		
@@ -1504,7 +1570,7 @@
                     disabled: tabNum,
                     active: n
                 });
-
+				
                 if(n == 1) {
                     $("#side2").css("display","block")
                 }
@@ -1523,7 +1589,7 @@
         $("#dialog1").hide();
 		
 		var seatResult;
-        // 다음단계
+        // 다음단계 -> 클릭이벤트는 여기서 발생한다.
         $("#nextBtn").click(function(){
 			
         	//alert($("#inputDate").attr("text"));
@@ -1605,12 +1671,67 @@
                     $("#back").css("display","block")
                 }
 				
-
+				
+                function nextBlock() {
+            		$("#tabs").tabs({
+                        disabled: [0,1,2,3],
+                        active: 4
+                    });
+                    tabNum = [0,1,2,3];
+                    n = 4;
+                    $("#side1").css("display","block")
+                    $("#side2").css("display","none")
+                }
                 
                 
+                var finalPass = 0;
                 //결제까지 완료시 창닫기 and 예매완료 페이지 이동
                 if(n == 5) {
-                    $("#dialog1").dialog({
+                	//여기서 결제완료를 해야 하는데 그러려면 여러정보가 필요하다. -> ajax 로 처리를 해주자 : 결제 & 예약 처리 
+                	finalPass = 0;//한번 초기화를 해준다.
+                	//alert("결제하즈아!");
+                	
+                	//약관 동의1을 안누른 경우
+                	if ($("#pcb1").is(":checked") == false) {
+                		alert("취소기한 확인을 동의해주세요.");
+                		finalPass++;
+                		nextBlock();//블락 처리로 넘어가지 못하게 하자.
+                		return;
+                	}
+                	
+                	//약관 동의2를 안누른 경우
+                	if ($("#pcb2").is(":checked") == false) {
+                		alert("제3자 정보제공 내용에 동의해주세요.");
+                		finalPass++;
+                		nextBlock();//블락 처리로 넘어가지 못하게 하자.
+                		return;
+                	}
+                	
+                	//최종 결제 금액이 0 이 되지 않았는데 결제방법을 선택하지 않은 경우.
+                	//rb1,rb2 가 존재함.
+                	if ($("#finull").text() == "0") {
+                		//결제방식을 선택하지 않아도 된다 -> 넘어가줘도 된다는 말. -> 그럴경우는 거의 없을것이다.
+                		
+                	} else {
+                		//금액이 0 이 되지 않았으므로 결제를 무조건 선택해야한다.
+                		
+                		if ($("#rb1").is(":checked") == false && $("#rb2").is(":checked") == false) {
+                			alert("결제방식을 선택해주세요");
+                			finalPass++;
+                			nextBlock();//블락 처리로 넘어가지 못하게 하자.
+                			return;
+                		} 
+                		
+                		
+                	}
+                	
+                	
+                	/* if ($("#pcb1").attr('checked') && $("#pcb1").attr('checked')) {
+                		
+                	} */
+                	
+                	
+/*                     $("#dialog1").dialog({
                         // title: "인삿말",
                         width: 500,
                         height: 250,
@@ -1638,8 +1759,8 @@
                         n = 4;
                         $("#side1").css("display","block")
                         $("#side2").css("display","none")
-                    });
-                }
+                    }); */
+                }//n == 5
             }            
         });
         
@@ -2041,9 +2162,9 @@
                     $("#sitFinul").append(sitFinul);
                     $("#ticketNum").text($("#sitFinul").children().length);
                     ticketNum = true;
-                    $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice} +"원");
+                    $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice});
                     $("#totalPrice").text($("#ticketNum").text() * ${tickectPrice} +2000);
-                    $("#finull").text($("#ticketNum").text() * ${tickectPrice} +2000 +"원");
+                    $("#finull").text($("#ticketNum").text() * ${tickectPrice} +2000);
 
                     // 체크이미지로 변환
                     $(obj).attr({
@@ -2086,9 +2207,9 @@
                 $("#sitFinul").append(sitFinul);
                 $("#ticketNum").text($("#sitFinul").children().length);
                 ticketNum = false;
-                $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice} +"원");
+                $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice});
                 $("#totalPrice").text($("#ticketNum").text() * ${tickectPrice} +2000);
-                $("#finull").text($("#ticketNum").text() * ${tickectPrice} +2000 +"원");
+                $("#finull").text($("#ticketNum").text() * ${tickectPrice} +2000);
 
             }
             
@@ -2157,8 +2278,8 @@
                     $("#sitFinul").append(sitFinul2);
                     $("#ticketNum").text($("#sitFinul").children().length);
                     ticketNum = true;
-                    $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice} +"원");
-                    $("#susu").text(2000+ "원");
+                    $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice});
+                    $("#susu").text(2000);
                     $("#totalPrice").text($("#ticketNum").text() * ${tickectPrice} +2000);
                     $("#finull").text($("#ticketNum").text() * ${tickectPrice} +2000);
                     
@@ -2204,9 +2325,9 @@
                 $("#ticketNum").text($("#sitFinul").children().length);
                 ticketNum = false;
                 // ticketNum = true;
-                $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice} +"원");
+                $("#tickectPice").text($("#ticketNum").text() * ${tickectPrice});
                 $("#totalPrice").text($("#ticketNum").text() * ${tickectPrice} +2000);
-                $("#finull").text($("#ticketNum").text() * ${tickectPrice} +2000 +"원");
+                $("#finull").text($("#ticketNum").text() * ${tickectPrice} +2000);
 
             }
             

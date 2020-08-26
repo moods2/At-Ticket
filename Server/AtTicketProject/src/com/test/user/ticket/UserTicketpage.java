@@ -23,9 +23,6 @@ public class UserTicketpage extends HttpServlet{
 		HttpSession session = req.getSession();
 		int userSeq = (int)session.getAttribute("userseq");//유저 seq
 		
-		System.out.println("==============");
-		System.out.println(userSeq);
-		System.out.println("==============");
 		
 		String showSeq = req.getParameter("showSeq");//공연seq
 		
@@ -42,23 +39,17 @@ public class UserTicketpage extends HttpServlet{
 		
 		//오늘 날짜+1를 넘겨줄 것이다
 		Calendar minDate = Calendar.getInstance();
-		minDate.add(Calendar.DATE, 1);//날짜 하루뒤부터 예약이 가능함.
+		minDate.add(Calendar.DATE, 0);//날짜 하루뒤부터 예약이 가능함.
 		
 		String minDateInfo = minDate.get(Calendar.YEAR) + "-" + (minDate.get(Calendar.MONTH) + 1) + "-" + (minDate.get(Calendar.DATE));
 		
 		//가지고 있는 쿠폰을 넘겨준다.
 		List<UserShowCouponDTO> hasCouponList = dao.getMyCouponList(userSeq,showSeq);
 		 
-		//System.out.println("**************************");
-		//System.out.println(hasCouponList.size());
-		//System.out.println("**************************");
 		
 		//가격을 넘겨줘야 한다.
 		int tickectPrice = dao.getTicketPrice(showSeq);//공연정보에 대한 price를 가져온다.
 		
-		//System.out.println("#################33");
-		//System.out.println(hasCouponList);
-		//System.out.println("#################33");
 		
 		
 		//전화번호
@@ -70,10 +61,13 @@ public class UserTicketpage extends HttpServlet{
 		//초기 에그머니
 		int userEggMoney = (int)session.getAttribute("useregg");
 		
+		//취소 가능 마감시간을 위해 공연 시작일자를 받아올것이다.
+		
+		
 		//-----------------------------------------------------------------------------------//
 		req.setAttribute("userEggMoney", userEggMoney);//에그머니 넘겨준다.
-		req.setAttribute("userEmail", userEmail);
-		req.setAttribute("userTelNum", userTelNum);
+		req.setAttribute("userEmail", userEmail);//유저의 이메일을 넘겨준다
+		req.setAttribute("userTelNum", userTelNum);//유저의 전화번호를 넘겨준다
 		req.setAttribute("tickectPrice", tickectPrice);//티켓 가격 넘겨준다
 		req.setAttribute("hasCouponList", hasCouponList);//가지고 있는 쿠폰 넘겨준다.
 		req.setAttribute("splaceName", splaceName);//공연장소이름
