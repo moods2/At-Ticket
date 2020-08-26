@@ -128,9 +128,9 @@ public class CustomerDAO {
 			String sql = null;
 			try {
 				if(dto.getPhoto()!=null) {
-				 sql = "insert into tblCustomer values (customerSeq.nextVal,?,?,?,?,?,?,?,?,?,default,?)";
+				 sql = "insert into tblCustomer values (customerSeq.nextVal,?,?,?,?,?,?,?,?,?,default,?,default)";
 				} else {
-				 sql = "insert into tblCustomer values (customerSeq.nextVal,?,?,?,?,?,?,?,?,?,default, default)";
+				 sql = "insert into tblCustomer values (customerSeq.nextVal,?,?,?,?,?,?,?,?,?,default, default,default)";
 				}
 				
 				pstat = conn.prepareStatement(sql);

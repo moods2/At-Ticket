@@ -427,7 +427,7 @@ public class MyPageHDAO {
 	public ArrayList<MyTicketDTO> getDenTicket(HashMap<String, String> map) {
 		try {
 			
-			String sql = "select * from vwmyTicket where cusseq = ? and to_char(bookdate,'mm') = ?";
+			String sql = "select * from vwmyTicket where cusseq = ? and bookdate = ?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1,map.get("cusseq"));
 			pstat.setString(2, map.get("month1"));
@@ -484,7 +484,7 @@ public class MyPageHDAO {
 	public ArrayList<MyPostDTO> getPoster(HashMap<String, String> map) {
 		try {
 			
-			String sql = "select * from vwmyposter where cusseq = ? and b.bookdate = ?";
+			String sql = "select * from vwmyposter where cusseq = ? and to_char(bookdate,'mm') = ?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, map.get("cusseq"));
 			pstat.setString(2, map.get("month1"));
@@ -494,16 +494,65 @@ public class MyPageHDAO {
 				MyPostDTO dto = new MyPostDTO();
 				dto.setPoster(rs.getString("poster"));
 				dto.setCusseq(rs.getString("cusseq"));
-				dto.setBookdate(rs.getString("bookdate"));
+				dto.setBookdate(rs.getString("bookdate").substring(0,10));
 				dto.setShowaddr(rs.getString("showaddr"));
 				dto.setShowtitle(rs.getString("showtitle"));
 				list.add(dto);
-				
+				System.out.println(rs.getString("poster"));
 			}
+		
 			return list;
 			
 		} catch (Exception e) {
 			System.out.println("MyPageHDAO.getPoster()");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public ArrayList<MyPointDTO> getPoint(HashMap<String, String> map) {
+		try {
+			
+			String sql = "select * from vwmypoint where cusseq = ? and to_char(bookdate,'mm') = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, map.get("cusseq"));
+			pstat.setString(2, map.get("month2"));
+			rs = pstat.executeQuery();
+			ArrayList<MyPointDTO> plist = new ArrayList<MyPointDTO>();
+			while(rs.next()) {
+				MyPointDTO dto = new MyPointDTO();
+				dto.setBookdate(rs.getString("bookdate"));
+				dto.setEgg(rs.getString("egg"));
+				plist.add(dto);
+			}
+			
+			return plist;
+			
+		} catch (Exception e) {
+			System.out.println("MyPageHDAO.getPoint()");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public ArrayList<MyBdateDTO> getBdate(HashMap<String, String> map) {
+		try {
+			String sql = "select * from vwmybdate where cusseq = ? and to_char(bookdate,'mm') = ?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, map.get("cusseq"));
+			pstat.setString(2, map.get("month3"));
+			
+			rs = pstat.executeQuery();
+			ArrayList<MyBdateDTO> blist = new ArrayList<MyBdateDTO>();
+			while(rs.next()) {
+				MyBdateDTO dto = new MyBdateDTO();
+				dto.setBookdate(rs.getString("bookdate"));
+				dto.setCnt(rs.getString("cnt"));
+				blist.add(dto);
+			}
+			return blist;
+		} catch (Exception e) {
+			System.out.println("MyPageHDAO.getBdate()");
 			e.printStackTrace();
 		}
 		return null;

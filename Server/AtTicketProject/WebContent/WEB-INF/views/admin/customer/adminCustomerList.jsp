@@ -251,12 +251,12 @@
         });
 
 
-        for (var i = 2; i < tr.length; i++) {
+        /* for (var i = 2; i < tr.length; i++) {
             tr[i].children[2].onclick = function () {
-                // location.href="hansiyeoncontent.html";
+               
 
             };
-        }
+        } */
 
         cbAll.onchange = function () {
             for (var i = 0; i < cb.length; i++) {

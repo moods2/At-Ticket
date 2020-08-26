@@ -27,12 +27,14 @@ public class MyPageDensity extends HttpServlet {
 		ArrayList<MyQDTO> qlist = dao.getQus(cusseq);
 		ArrayList<MyReviewDTO> rlist = dao.getReview(cusseq);
 		ArrayList<MyBuyDTO> blist = dao.getBuy(map);
+		ArrayList<MyPostDTO> plist = dao.getPoster(map);
 		
 		resp.setCharacterEncoding("UTF-8");
 		req.setAttribute("cdto",cdto);
 		req.setAttribute("qlist", qlist);
 		req.setAttribute("rlist", rlist);
 		req.setAttribute("blist", blist);
+		req.setAttribute("plist", plist);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/mypage/mypagedensity.jsp");
 		dispatcher.forward(req, resp);

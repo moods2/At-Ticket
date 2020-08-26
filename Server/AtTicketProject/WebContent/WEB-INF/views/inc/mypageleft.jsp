@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div id="left">
+<div id="left" style="z-index:10;">
     <!-- 유저 정보 -->
     <div id="userinfo">
         <p id="infohead">MY공연<small style="color: #BBB"> | MYPAGE</small></p>
@@ -68,6 +68,7 @@ $(".usermenu").mouseout(function() {
 //유저메뉴 클릭시 이동
 $(".usermenu").click(function() {
     // console.log($(this).data("lo"));
+    alert();
     location.href = $(this).data("lo");
 });
 
