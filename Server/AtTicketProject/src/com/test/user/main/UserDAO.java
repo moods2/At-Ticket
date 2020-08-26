@@ -21,6 +21,14 @@ public class UserDAO {
 		DBUtil util = new DBUtil();
 		conn = util.open();//연결 완료
 	}
+
+	public void close() {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	//로그인 하기 위한 작업 -> 삭제된 회원에 대한 처리도 해줘야하는데?
 	public int userLogin(UserDTO dto) {
