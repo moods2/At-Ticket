@@ -112,46 +112,6 @@
                         <c:set var="i" value="${i + 1}" />
                         </c:forEach>                    
                     
-                        <!-- <div class="img opne1" value="temp7">
-                            <div class="img-cover1 cover7" value="cover7">
-                                <div class="text1 temp7">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img opne2" value="temp8">
-                            <div class="img-cover1 cover8" value="cover8">
-                                <div class="text1 temp8">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img opne3" value="temp9">
-                            <div class="img-cover1 cover9" value="cover9">
-                                <div class="text1 temp9">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img opne4" value="temp10">
-                            <div class="img-cover1 cover10" value="cover10">
-                                <div class="text1 temp10">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="img opne5" value="temp11">
-                            <div class="img-cover1 cover11" value="cover11">
-                                <div class="text1 temp11">
-                                    <h4>select shop</h4>
-                                    <span>10cm X 데이브레이크</span>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <!-- 티켓오픈 더보기 버튼 -->
                     <input
@@ -422,29 +382,26 @@
                 );
             });
 
-            //팝업창 가운데 배치
-            var popupWidth = 600;
-            var popupheight = 400;
-            var popupX = (window.screen.width / 2) - (popupWidth / 2);
-            var popupY = (window.screen.height / 2) - (popupheight / 2);
-            //관심 공연 담기 팝업창
-            
-            //var loginUrl = "/AtTicketProject/userlogin.do";//jsp 로 넘어가기 위함임
-            //var logoutUrl = "/AtTicketProject/userlogout.do";
-            
-            //***여기가 좀 문제가 보이기 때문에 나중에 처리를 하도록 해보자
             //로그인 java 로 이동
             $("#login").click(function() {
                 location.href = "/AtTicketProject/userlogin.do";
-            	//window.open(loginUrl,"_black",`left=${popupX}, top=${popupY}, width=${popupWidth}, height=${popupheight};`);
-            	//window.open(loginUrl,"_black");
             });
             
             //로그아웃 java 로 이동
             $("#logout").click(function() {
                 location.href = "/AtTicketProject/userlogout.do";
             });
-			//로그인 팝업창
+            
+            //로그인 java 로 이동
+            $("#slogin").click(function() {
+                location.href = "/AtTicketProject/userlogin.do";
+            });
+            
+            //로그아웃 java 로 이동
+            $("#slogout").click(function() {
+                location.href = "/AtTicketProject/userlogout.do";
+            });
+            
         </script>
     </body>
 </html>
