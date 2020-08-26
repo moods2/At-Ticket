@@ -173,7 +173,10 @@
                 margin-bottom: -2px;
                 padding-left: 20px;
             }
+            
+            #openAlarm{ cursor: pointer; }
         
+
         
       
     </style>
@@ -220,7 +223,19 @@
             <div style=" padding-left: 30px; padding-top: 18px; background-color: rgb(253, 221, 190); position: relative; bottom: 120px; margin-left: 300px; margin-bottom: 500px; border: 1px solid gray; width: 840px; height: 60px;">
                 <span class="glyphicon glyphicon-time" style= "color: orange; font-weight: bold;">&nbsp;${dto.nindex}</span><span style="padding-left: 30px;">|</span>
                 <span style="padding-left: 30px; font-weight: bold; font-size: 17px;">${dto.opendate}(${dto.dy})</span>                
-                <div style=" width: 236px; height: 46px; border: 3px solid orange; margin-top: 80px; position: relative; left: -30px; padding-top: 10px; text-align: center; background-color: white; color: orange; font-weight: bold; font-size: 18px;">티켓오픈 알림<span class="glyphicon glyphicon-bell"></span></div>
+                <div id="openAlarm" style=" width: 236px; height: 46px; border: 3px solid orange; margin-top: 80px; position: relative; left: -30px; padding-top: 10px; text-align: center; background-color: white; color: orange; font-weight: bold; font-size: 18px;">티켓오픈 알림<span class="glyphicon glyphicon-bell"></span></div>
+	        <div id="dialog1">
+	        	<div style="border:1px solid black"></div>
+	        	<div id = "middle">
+	        		티켓오픈 알람 신청 시
+	        		<span style="color:red;">티켓 오픈 1시간 전에 회원님께 SMS를 보내드립니다.</span>
+	        		<div style="width:200px;height:50px;"></div>
+	        		<div id = "bottom">일반 티켓 오픈 시간을 기준으로 발송됩니다.<br>
+						(팬클럽 선예매 등은 발송 대상이 아닙니다.)<br>
+						알림 받을 휴대전화번호 변경을 원하시면, <span style="text-decoration:underline;">마이페이지</span>>회원정보관리 에서<br>
+						변경하신 후 신청하시면 됩니다.</div>
+	        	</div>
+	    	</div>
             </div>
             
         </div>
@@ -366,7 +381,6 @@ Special 2. 지정석 20% <br>
         
 </div>        
             
-            
 
         
       
@@ -428,6 +442,37 @@ Special 2. 지정석 20% <br>
 
     <script src="/AtTicketProject/js/slick.min.js"></script>
     <script>
+    	var userseq = ${userseq};
+    	$("#dialog1").hide();
+    	
+    	$("#openAlarm").click(function() {
+			id(userseq == null) {
+				alert("로그인이 필요한 서비스 입니다.");
+				return;
+			}else {
+				//모달
+				 $("#dialog1").dialog({//작은 팝업창 생성
+		                title: "티켓오픈 알람 신청",
+		                width: 300,
+		                height: 250,
+		                draggable: false,
+		                resizable: false,
+		                modal: true,
+		                buttons: {
+		                    // "text": function() { alert(); }
+		                    "등록": function() {
+		                        alert("티켓오픈 알람 신청을 등록했습니다.");
+		                    },
+		                    "취소" : function() {
+		                        $("#dialog1").dialog("close");
+		                    }
+		                }
+		            }); 
+		        });
+			}
+			
+		});
+
 
         //상단 메뉴 css
         $(".menubar").mouseover(function() {
