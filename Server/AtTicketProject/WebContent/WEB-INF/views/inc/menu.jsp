@@ -34,7 +34,7 @@
         <div class="accomenu">
             <h3>공연</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminShow.html"><span>▶</span> 공연 조회</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/adminshow.do"><span>▶</span> 공연 조회</a></div>
             </div>
             <h3>통계</h3>
             <div>
@@ -42,7 +42,8 @@
             </div>
             <h3>정산 관리</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="salesManagement.html"><span>▶</span> 매출액 통계</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/adminsales.do"><span>▶</span> 매출액 통계</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbank.do"><span>▶</span> 계좌 관리</a></div>
             </div>
             <h3>직원 정보</h3>
             <div>
