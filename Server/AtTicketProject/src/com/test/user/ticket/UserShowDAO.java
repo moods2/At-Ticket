@@ -540,6 +540,69 @@ public class UserShowDAO {
 		return null;
 	}
 
+	//해당 유저의 쿠폰목록을 가져올것
+	public List<UserShowCouponDTO> getMyCouponList(int userSeq, String showSeq) {
+		try {
+			
+			String sql  = "select tcc.seq,tc.title,tc.startdate,tc.enddate,tc.discount,tc.showseq from tblCusCoupon tcc inner join tblCoupon tc on tcc.couponSeq = tc.seq where tc.showSeq = ? and tcc.cusSeq = ? and tcc.delflag = 0";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, showSeq);
+			pstat.setInt(2, userSeq);
+			
+			rs = pstat.executeQuery();
+			
+			List<UserShowCouponDTO> hasCouponList = new ArrayList<UserShowCouponDTO>();
+			
+			while(rs.next()) {
+				UserShowCouponDTO dto = new UserShowCouponDTO();	
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setStartDate(rs.getString("startdate").substring(0,10));
+				dto.setEndDate(rs.getString("enddate").substring(0,10));
+				dto.setDiscount(rs.getString("discount"));
+				dto.setShowSeq(rs.getString("showseq"));
+				
+				hasCouponList.add(dto);
+				
+			}
+			
+			return hasCouponList;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	
+	//티켓 가격
+	public int getTicketPrice(String showSeq) {
+		try {
+			
+			String sql = "select price from tblShow where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1,showSeq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("price");
+			}
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
 	
 	
 

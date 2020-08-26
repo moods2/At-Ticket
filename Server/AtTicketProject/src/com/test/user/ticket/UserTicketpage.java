@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/userticketpage.do")
 public class UserTicketpage extends HttpServlet{
@@ -18,6 +19,13 @@ public class UserTicketpage extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//여기서 좌석상황 쿠폰 등등 다 넘겨줘야된다.
+		
+		HttpSession session = req.getSession();
+		int userSeq = (int)session.getAttribute("userseq");//유저 seq
+		
+		System.out.println("==============");
+		System.out.println(userSeq);
+		System.out.println("==============");
 		
 		String showSeq = req.getParameter("showSeq");//공연seq
 		
@@ -38,14 +46,36 @@ public class UserTicketpage extends HttpServlet{
 		
 		String minDateInfo = minDate.get(Calendar.YEAR) + "-" + (minDate.get(Calendar.MONTH) + 1) + "-" + (minDate.get(Calendar.DATE));
 		
-		//List<UserShowTicktAllDTO> allSeatList = dao.getResvSeatList();
+		//가지고 있는 쿠폰을 넘겨준다.
+		List<UserShowCouponDTO> hasCouponList = dao.getMyCouponList(userSeq,showSeq);
+		 
+		//System.out.println("**************************");
+		//System.out.println(hasCouponList.size());
+		//System.out.println("**************************");
+		
+		//가격을 넘겨줘야 한다.
+		int tickectPrice = dao.getTicketPrice(showSeq);//공연정보에 대한 price를 가져온다.
+		
+		//System.out.println("#################33");
+		//System.out.println(hasCouponList);
+		//System.out.println("#################33");
 		
 		
+		//전화번호
+		String[] userTelNum = ((String)session.getAttribute("usertel")).split("-");
 		
-		
-		
+		//이메일
+		String[] userEmail = ((String)session.getAttribute("useremail")).split("@");
+
+		//초기 에그머니
+		int userEggMoney = (int)session.getAttribute("useregg");
 		
 		//-----------------------------------------------------------------------------------//
+		req.setAttribute("userEggMoney", userEggMoney);//에그머니 넘겨준다.
+		req.setAttribute("userEmail", userEmail);
+		req.setAttribute("userTelNum", userTelNum);
+		req.setAttribute("tickectPrice", tickectPrice);//티켓 가격 넘겨준다
+		req.setAttribute("hasCouponList", hasCouponList);//가지고 있는 쿠폰 넘겨준다.
 		req.setAttribute("splaceName", splaceName);//공연장소이름
 		req.setAttribute("dto", dto);//show 객체자체를 넘겨줄것이다.
 		req.setAttribute("minDateInfo", minDateInfo);//최소공연시작 선택일

@@ -336,10 +336,38 @@
             
             //쿠폰
             $("#coupon").click(function(){
+            	//여기서 session 이 있을때랑 없을때랑 나눠주면 된다.
+            	<c:if test = "${not empty userseq}">
+	            	
+	            	$.ajax({
+                		type : "GET",
+                		url : "/AtTicketProject/userpromotionadd.do",
+                		data : "",
+                		async: true,
+                		dataType: "text",
+                		success : function(result) {
+                			
+                			if (result == 1) {
+                				//이미 발급받은 경우
+                				alert("해당 쿠폰을 소유중입니다.");
+                			} else {
+                				//발급받은적이 없는 경우
+                				alert("쿠폰이 발급되었습니다.");
+                			}
+							
+                			
+                		},
+                		error : function(a,b,c) {
+                			console.log(a,b,c);
+                		}
+                	});//여기까지가 ajax
+	            	
+	            	
+            	</c:if>
+	            <c:if test = "${empty userseq}">
+	            	alert("로그인이 필요한 서비스 입니다.");
+	            </c:if>
             	
-            	alert("쿠폰이 발급되었습니다.");
-            	//쿠폰을 주는 서블릿으로 이동.
-            	location.href = "/AtTicketProject/userpromotionadd.do"
             	
             }); 
 
