@@ -453,6 +453,7 @@
             width: 170px;
             height: 205px;
             position: relative;
+            left: -15px;
             float: right;
             background-color: white;
             margin-right: 60px;
@@ -988,7 +989,7 @@
         //검색창 커서 있을때 팝업 띄우기
         $("#search").focusin(function () {
             $("#tagsearch").css("display", "block");
-            $("#search").css("border-bottom", "2px solid black");
+            //$("#search").css("border-bottom", "2px solid black");
         });
         //검색창 팝업 닫기
         $("#search").focusout(function () {
@@ -1104,6 +1105,17 @@
         // 문의하기 링크
         $("#qLink").click(function() {
             $(location).attr('href','/AtTicketProject/userqna.do');
+        });
+        
+        //로그인 java 로 이동
+        $("#login").click(function() {
+            location.href = "/AtTicketProject/userlogin.do";
+        });
+        
+        //로그아웃 java 로 이동
+        $("#logout").click(function() {
+            location.href = "/AtTicketProject/userlogout.do";            
+        //로그인 java 로 이동
         });
 
     </script>
