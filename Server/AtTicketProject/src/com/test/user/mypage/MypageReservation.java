@@ -41,12 +41,12 @@ public class MypageReservation extends HttpServlet {
 		if(page == null || page == "") nowPage = 1; //default
 		else nowPage = Integer.parseInt(page);
 		
-		totalCount = dao.getTotalCount(cusseq);
-		totalPage = (int)Math.ceil((double)totalCount/pageSize);
 		map.put("begin", "1");
 		map.put("end", "3");
 		map.put("from", from);
 		map.put("to", to);
+		totalCount = dao.getTotalCount(map);
+		totalPage = (int)Math.ceil((double)totalCount/pageSize);
 		
 		if(from1 != null && to1 != null) {
 			map.put("from", from1);

@@ -78,6 +78,17 @@
             font-weight: bold;
             text-align: center;
         }
+       
+       	#tbl1 {
+       		width:850px;
+       		margin-top:10px;
+       	}
+        
+        #tbl1 th{
+        	text-align:center;
+        }
+        
+       
 
     </style>
 </head>
@@ -126,24 +137,31 @@
                 </div>
                 <div id="list">
                     <div id = "box">
-                        <table id = "tbl1">
+                        <table id = "tbl1" class = "table table-bordered table-striped table-hover">
 	                       	<tbody>
 	                    	<c:if test = "${vlist.size() == 0}">
-	                        	<td style="text-align:center;padding-top: 100px;width:1000px;">관람하신 공연이 없습니다.</td>
+	                        	<td style="text-align:center;padding-top: 100px;">관람하신 공연이 없습니다.</td>
 	                        </c:if>
 	                        <c:if test = "${vlist.size() != 0}">
-	                        	
+	                  		<tr>
+                        		<th>
+                        			공연 이미지
+                        		</th>
+                        		<th>
+                        			내용
+                        		</th>
+                        	</tr>
 	                        <c:forEach items="${vlist}" var="dto">
 	                        		<tr>
 	                        			<td>
-	                        				<img style="width:200px;" src = "/AtTicketProject/images/${dto.showposter}">
+	                        				<img style="height:200px;margin-left:100px;" src = "/AtTicketProject/images/${dto.showposter}">
 	                        			</td>
-	                        			<td style="text-align:center;line-height:2em;">
+	                        			<td style="text-align:center;line-height:2em;vertical-align:middle;">
 	                        				<b>공연명:</b> ${dto.showtitle}<br>
 	                        				<b>관람일:</b> ${dto.bdate}<br>
 	                        				<b>예매번호:</b> ${dto.bookseq}<br>	
 	                        				<b>주소:</b> ${dto.showaddr}
-	                        			<td>
+	                        			</td>
 	                        		</tr>
 	                        </c:forEach>
 	                        </c:if>
@@ -151,7 +169,7 @@
                         </table>
                     </div>
                 </div>
-            	<div style="margin:30px 400px;width:100px;"><button id = "btnMore" class = "btn btn-default" type = "button">더 보기</button></div>
+            	<div style="margin:5px 400px;width:100px;"><button id = "btnMore" class = "btn btn-default btn-sm" type = "button">더 보기</button></div>
             </div>
             <!-- 챗봇 : 단비봇 -->
             <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
@@ -172,6 +190,11 @@
 	var year = now.getFullYear();
 	var month = now.getMonth()+1;
 	var day = now.getDate();
+	
+    $("#usermenu p:nth-child(4)").css("color","#4C7CCE");
+    $("#usermenu p:nth-child(4)").mouseout(function(){
+    	$("#usermenu p:nth-child(4)").css("color","#4C7CCE");
+    });	
 	
 	if((month+"").length < 2) {
 		month = "0" + month;
@@ -207,13 +230,17 @@
 					//게시물 1개
 					var temp = "";
 					temp += "<tr>";
-					temp += "<td><img style='width:200px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
-					temp += "<td  style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+					temp += "<th>공연 이미지</th>";
+					temp += "<th>내용</th>";
+					temp += "</tr>";
+					temp += "<tr>";
+					temp += "<td><img style='height:200px;margin-left:100px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+					temp += "<td style='text-align:center;line-height:2em;vertical-align:middle;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
 					temp += "<b>관람일:</b> "+item.bdate+"<br>";
 					temp += "<b>예매번호:</b> " + item.bookseq +"<br>"
 					temp += "<b>주소:</b> " + item.showaddr + "</td>";
 					temp += "</tr>";
-					
+			
 					$("table > tbody").append(temp);
 					$("#totalcount").text(item.totalCountG);
 				});
@@ -250,8 +277,12 @@
 						//게시물 1개
 						var temp = "";
 						temp += "<tr>";
-						temp += "<td><img style='width:200px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
-						temp += "<td style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+						temp += "<th>공연 이미지</th>";
+						temp += "<th>내용</th>";
+						temp += "</tr>";
+						temp += "<tr>";
+						temp += "<td><img style='height:200px;margin-left:100px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+						temp += "<td style='text-align:center;line-height:2em;vertical-align:middle;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
 						temp += "<b>관람일:</b> "+item.bdate+"<br>";
 						temp += "<b>예매번호:</b> " + item.bookseq +"<br>"
 						temp += "<b>주소:</b> " + item.showaddr + "</td>";
@@ -269,8 +300,8 @@
 				
 			}); //ajax
 			
-			begin += 3;
-			end += 3;
+			/* begin += 3;
+			end += 3;  */
 			
 		});
 	    
@@ -301,8 +332,12 @@
 					//게시물 1개
 					var temp = "";
 					temp += "<tr>";
-					temp += "<td><img style='width:200px'; src = '/AtTicketProject/images/"+item.showposter+"'></td>";
-					temp += "<td style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+					temp += "<th>공연 이미지</th>";
+					temp += "<th>내용</th>";
+					temp += "</tr>";
+					temp += "<tr>";
+					temp += "<td><img style='height:200px;margin-left:100px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+					temp += "<td style='text-align:center;line-height:2em;vertical-align:middle;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
 					temp += "<b>관람일:</b> "+item.bdate+"<br>";
 					temp += "<b>예매번호:</b> " + item.bookseq +"<br>"
 					temp += "<b>주소:</b> " + item.showaddr + "</td>";
@@ -345,8 +380,12 @@
 						//게시물 1개
 						var temp = "";
 						temp += "<tr>";
-						temp += "<td><img src = '/AtTicketProject/images/"+item.showposter+"'></td>";
-						temp += "<td style='padding-left:200px;line-height:3em;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+						temp += "<th>공연 이미지</th>";
+						temp += "<th>내용</th>";
+						temp += "</tr>";
+						temp += "<tr>";
+						temp += "<td><img style='height:200px;margin-left:100px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+						temp += "<td style='text-align:center;line-height:2em;vertical-align:middle;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
 						temp += "<b>관람일:</b> "+item.bdate+"<br>";
 						temp += "<b>예매번호:</b> " + item.bookseq +"<br> </td>";
 						temp += "<b>주소:</b> " + item.showaddr + "</td>";
@@ -363,9 +402,9 @@
 				
 			}); //ajax
 			
-			begin += 3;
+			/* begin += 3;
 			end += 3;
-			
+			 */
 		});
 		
 	});

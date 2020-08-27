@@ -27,15 +27,17 @@ body {
 }
 
 .b {
+	margin-left:10px;
+	margin-top:50px;
 	width: 405px;
-	margin-top: 100px;
 	height: 255px;
 	border: 1px solid #7E9CB6;
 }
 
 #tt {
+	margin-left:10px;
 	position: relative;
-	top: 100px;
+	top: 50px;
 	width: 405px;
 	height: 30px;
 	background-color: #7E9CB6;
@@ -241,9 +243,10 @@ th {
 }
 
 .item4 {
-	margin-left: 380px;
+	margin-left: 10px;
 	grid-column: 1/4;
 	grid-row: 3/4;
+	margin-top:-170px;
 	/* margin-top: 30px; */
 }
 /* 
@@ -265,10 +268,11 @@ th {
 .item6 {
 	position: relative;
 	/* left: 30px; */
-	top: -150px;
+	top: -200px;
 	grid-column: 1/3;
 	grid-row: 4/5;
-	margin-top: 40px;
+	margin-top: 10px;
+	margin-left:10px;
 	width: 615px;
 	height: 300px;
 	/* margin-right: 380px; */
@@ -412,6 +416,14 @@ th {
 	
 }
 
+.item2{
+	margin-top:-50px;
+}
+
+.item3{
+	margin-top:0px;
+}
+
 </style>
 </head>
 <body>
@@ -426,10 +438,10 @@ th {
 			<div id="right">
 				<div class="wrapper">
 					<div class="item1">
-						<div id="top">
-						</div>
+						<!-- <div id="top">
+						</div> -->
 						<div
-							style="font-weight: bold; margin-left:380px; font-size: 1.3em; background-color: #FAE4D9; text-align: center; width: 150px; color: white;">
+							style="font-weight: bold; margin-left:50px; font-size: 1.3em;margin-top:30px; background-color: #FAE4D9; text-align: center; width: 150px; color: white;">
 							MyPage 상세</div>
 					</div>
 
@@ -508,7 +520,7 @@ th {
 							</div>
 						</div>
 					</div>
-					<div class="item4" style="margin: -80px auto; ">
+					<div class="item4" style="margin:">
 						<div id="tt2">구매 티켓 내역</div>
 						<div id="bb1">
 							<select style="margin-left: 250px;" name="month1" id="month1">
