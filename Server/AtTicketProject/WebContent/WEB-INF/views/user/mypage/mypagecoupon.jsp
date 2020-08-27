@@ -244,7 +244,10 @@
 
         
         //alert(couponSeq.indexOf($('#coupontxt').val()));
-
+		 $("#usermenu p:nth-child(2)").css("color","#4C7CCE");
+	    $("#usermenu p:nth-child(2)").mouseout(function(){
+	    	$("#usermenu p:nth-child(2)").css("color","#4C7CCE");
+	    });
         
 
 

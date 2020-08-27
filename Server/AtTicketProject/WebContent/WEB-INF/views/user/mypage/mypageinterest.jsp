@@ -216,6 +216,12 @@
     			alert("삭제할 문의내역를 선택하세요.");
     		}
     	}
+    	
+        //alert(couponSeq.indexOf($('#coupontxt').val()));
+		 $("#usermenu p:nth-child(3)").css("color","#4C7CCE");
+	    $("#usermenu p:nth-child(3)").mouseout(function(){
+	    	$("#usermenu p:nth-child(3)").css("color","#4C7CCE");
+	    });
 
     </script>
 

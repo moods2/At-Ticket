@@ -57,9 +57,9 @@ public class MypagePersonalize extends HttpServlet {
 		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
-		ArrayList<MypageJDTO> list = dao.myPagePersonalizeList(map);
+		ArrayList<MypageJDTO> list1 = dao.myPagePersonalizeList(map);
 		
-		for (MypageJDTO dto : list) {
+		for (MypageJDTO dto : list1) {
 			
 			String msseq = dto.getMsseq();
 			dto.setMsseq(msseq);
@@ -167,10 +167,6 @@ public class MypagePersonalize extends HttpServlet {
 				map2.put("end", end2 + "");
 				map2.put("userseq", userseq);
 				
-				System.out.println(map.get("begin"));
-				System.out.println(map.get("end"));
-				System.out.println(map.get("userseq"));
-				
 				totalCount2 = dao.getMyticketVellTotalCount(map2);
 				
 				totalPage2 = (int)Math.ceil((double)totalCount2 / pageSize2);
@@ -254,7 +250,7 @@ public class MypagePersonalize extends HttpServlet {
 						pagebar2 += "</nav>";
 		
 		//리스트 목록
-		req.setAttribute("list", list);
+		req.setAttribute("list1", list1);
 		req.setAttribute("list2", list2);
 		//페이징바
 		req.setAttribute("page", page);

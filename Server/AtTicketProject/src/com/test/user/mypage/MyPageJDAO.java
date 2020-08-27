@@ -476,7 +476,7 @@ public class MyPageJDAO {
 			rs = stat.executeQuery(sql);
 
 			
-			ArrayList<MypageJDTO> list = new ArrayList<MypageJDTO>();
+			ArrayList<MypageJDTO> list1 = new ArrayList<MypageJDTO>();
 			
 			while (rs.next()) {
 				MypageJDTO dto = new MypageJDTO();
@@ -490,10 +490,10 @@ public class MyPageJDAO {
 				dto.setMyShowRegistration(rs.getString("myShowRegistration"));
 				dto.setMyShowTheater(rs.getString("myShowTheater"));
 				
-				list.add(dto);
+				list1.add(dto);
 			}
 			
-			return list;
+			return list1;
 			
 			
 		} catch (Exception e) {

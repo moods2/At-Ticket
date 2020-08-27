@@ -208,10 +208,10 @@
                     <p><i class="glyphicon glyphicon-ok-sign"></i>맞춤 알람 공연<small>해당 공연과 관련된 티켓오픈, 주요 이벤트/쿠폰 등에 대해 알려드립니다.</small></p>
                     <div>
                         <ul>
-                            <c:if test="${list.size() == 0}">
+                            <c:if test="${list1.size() == 0}">
                         	<p style="padding-top: 40px; text-align: center;">'맞춤 알람 공연'으로 설정된 공연이 없습니다.</p> 
                         	</c:if>
-                        	<c:forEach items="${list}" var="dto">
+                        	<c:forEach items="${list1}" var="dto">
 	                            <li>
 	                                <img src="./images/${dto.myShowPoster}">
 	                                <input type="checkbox" class="check cbDelete" name="cbDelete" value="${dto.msseq}">
@@ -358,6 +358,11 @@
         $("#checknotice").click(function() {
             location.href = "/AtTicketProject/show/usernotice.do";
         });
+        
+		 $("#usermenu p:nth-child(5)").css("color","#4C7CCE");
+		    $("#usermenu p:nth-child(5)").mouseout(function(){
+		    	$("#usermenu p:nth-child(5)").css("color","#4C7CCE");
+		    });
 
     </script>
 
