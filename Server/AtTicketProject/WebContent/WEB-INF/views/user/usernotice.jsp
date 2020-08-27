@@ -380,38 +380,16 @@
         <div id="main">
             <!-------------------------------- 화면 상단부 -------------------------------->
             <div id="top">
-                <div id="topmenu">
-                    <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-                    <a href="#" id="topleft"></a>
-                    <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
-                    <span data-item="item1" class="menubar">콘서트</span>
-                    <span data-item="item2" class="menubar">뮤지컬</span>
-                    <span data-item="item3" class="menubar">연극</span>
-                    <span data-item="item4" class="menubar">클래식</span>
-                    <span data-item="item5" class="menubar">전시</span>
-                    <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
-                    <div id="topright">
-                        <span data-item="item6" class="menubar">랭킹</span>
-                        <span data-item="item7" class="menubar">이벤트</span>
-                        <input type="text" value="" id="search" />
-                        <label
-                            for="search"
-                            class="glyphicon glyphicon-search"
-                            style="font-size: 14px; cursor: pointer;"
-                        ></label>
-                        <div
-                            class="glyphicon glyphicon-user"
-                            style="
-                                font-size: 14px;
-                                cursor: pointer;
-                                margin: 0 10px;
-                            "
-                        ></div>
-                    </div>
-                </div>
+                <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
+                
                 <!-- 메인화면 슬라이더 -->
-
-                <hr />
+                <div class="slider">
+                <c:forEach items="${map}" var="map">
+                  <div><img src="./images/${map.value}" /></div>
+              	</c:forEach>
+              </div>
+            </div>
+            <hr />
                 <!-------------------------------- 내용부분 -------------------------------->
                 <p
                     class="event-main-tit"
@@ -572,15 +550,15 @@
                 </div>
             </div>
                         <!-- 챗봇 : 단비봇 -->
-                        <div
+                      <!--   <div
                             id="frogue-container"
                             class="position-right-bottom"
                             data-chatbot="e4957de9-dad9-448d-a709-e43eeb644f63"
                             data-user="사용자ID"
                             data-init-key="value"
-                        ></div>
+                        ></div> -->
                         <!-- data-init-식별키=값 으로 셋팅하면 챗플로우에 파라미터와 연동가능. 식별키는 소문자만 가능 -->
-                        <script>
+                        <!-- <script>
                             (function (d, s, id) {
                                 var js,
                                     fjs = d.getElementsByTagName(s)[0];
@@ -594,12 +572,13 @@
                                 fjs.parentNode.insertBefore(js, fjs);
                             })(document, "script", "frogue-embed");
                         </script>
-                        <!-- 제일 위로 돌아가기 버튼 -->
+                        제일 위로 돌아가기 버튼
                         <div id="movetop">↑</div>
                     </div>
                 
-            </div>
-       <!--  </div> -->
+            </div> -->
+        </div>
+       <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
 
         <script src="/AtTicketProject/js/slick.min.js"></script>
         <script>

@@ -82,7 +82,13 @@ public class UserNoticeTemp extends HttpServlet{
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("showdto", showdto);
+		HashMap<String,String> map = new HashMap<String,String>();
+		map.put("cusseq", cusseq);
+		map.put("showseq", showseq);
+
+		int repeat = dao.getRepeat(map);
 		
+		req.setAttribute("repeat", repeat);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/usernoticetemp.jsp");
 		dispatcher.forward(req, resp);
 		
