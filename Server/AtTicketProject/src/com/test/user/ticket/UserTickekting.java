@@ -115,7 +115,7 @@ public class UserTickekting extends HttpServlet{
 		//********** req에 넘겨줄 정보들 **********
 		req.setAttribute("minDateInfo", minDateInfo);//최소공연시작 선택일
 		req.setAttribute("rankingImgUrl", rankingImgUrl);//랭킹사진 링크를 바꿔주기 위한 작업
-		req.setAttribute("bigFiveImgList", bigFiveImgList);
+		req.setAttribute("bigFiveImgList", bigFiveImgList);//랭킹5개!
 		req.setAttribute("couponListLen", couponListLen);//가용 쿠폰 몇개인지 넘겨준다.
 		req.setAttribute("couponList", couponList);//해당 show에서 사용할 수 있는 쿠폰리스트.
 		req.setAttribute("likePush", likePush);//1이 넘어가면 해제 되어있는 상태 0 이 넘어가면 좋아요가 눌린상태
@@ -132,6 +132,8 @@ public class UserTickekting extends HttpServlet{
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userticketing.jsp");
 		dispatcher.forward(req, resp);
+		
+		
 		
 	}
 	
@@ -160,5 +162,4 @@ public class UserTickekting extends HttpServlet{
 		
 		return newPrice;
 	}
-	
 }
