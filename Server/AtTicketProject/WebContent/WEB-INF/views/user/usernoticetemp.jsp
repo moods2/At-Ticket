@@ -206,7 +206,7 @@
 		    text-decoration: underline;
         }
         
-        #dialog1 div,p,span{
+        #dialog1 div,p,span,a{
          outline: none;
         }
         
@@ -252,30 +252,17 @@
     
     <div id="main">
 <!-------------------------------- 화면 상단부 -------------------------------->
-        <div id="top">
-            <div id="topmenu">
-                <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-                <a href="#" id="topleft"></a>
-                <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
-                <span data-item="item1" class="menubar">콘서트</span>
-                <span data-item="item2" class="menubar">뮤지컬</span>
-                <span data-item="item3" class="menubar">연극</span>
-                <span data-item="item4" class="menubar">클래식</span>
-                <span data-item="item5" class="menubar">전시</span>
-                <!-- 상단메뉴 우측(랭킹, 이벤트, 검색창, 마이페이지) -->
-                <div id="topright">
-                    <span data-item="item6" class="menubar">랭킹</span>
-                    <span data-item="item7" class="menubar">이벤트</span>
-                    <input type="text" value="" id="search">
-                    <label for="search" class="glyphicon glyphicon-search"
-                        style="font-size: 14px; cursor: pointer;"></label>
-                    <div class="glyphicon glyphicon-user" 
-                        style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
-                </div>
+            <div id="top">
+                <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
+                
+                <!-- 메인화면 슬라이더 -->
+                <div class="slider">
+                <c:forEach items="${map}" var="map">
+                  <div><img src="./images/${map.value}" /></div>
+              	</c:forEach>
+              </div>
             </div>
-            <!-- 메인화면 슬라이더 -->
-            
-        <hr>
+            <hr />
 <!-------------------------------- 내용부분 -------------------------------->
         <h2 style="text-align: center; margin-top: 200px; margin-bottom: 50px; font-size: 4em; font-weight: bold;">공지사항</h2>
         <div class="noticebar">
@@ -292,7 +279,8 @@
                 <span style="padding-left: 30px; font-weight: bold; font-size: 17px;">${dto.opendate}(${dto.dy})</span>                
                 <div id="openAlarm" style=" width: 236px; height: 46px; border: 3px solid orange; margin-top: 80px; position: relative; left: -30px; padding-top: 10px; text-align: center; background-color: white; color: orange; font-weight: bold; font-size: 18px;">티켓오픈 알림<span class="glyphicon glyphicon-bell"></span></div>
 		        
-		        <form method = "POST" action="/AtTicketProject/useralarm.do">
+		        <form id="form1" method = "POST" action="/AtTicketProject/show/useralarm.do?noticeseq=${noticeseq}&page=${page}&search=${search}&showseq=${showseq}">
+		     
 		        <div role="dialog" id="dialog1" style="border:0px;">
 		        	<p id = "alarm">티켓오픈 알람 신청</p>
 		        	<p id = "mcontent">티켓오픈 알람 신청 시<br>
@@ -302,7 +290,11 @@
 							(팬클럽 선예매 등은 발송 대상이 아닙니다.)<br>
 							알림 받을 휴대전화번호 변경을 원하시면, <a href = "/AtTicketProject/mypagepersonalize.do" target="_blank">마이페이지>회원정보관리</a> 에서<br>
 							변경하신 후 신청하시면 됩니다.</p>
+							 <input type = "hidden" name = "showseq" value = "${showseq}">
+							<!-- <button type="submit" class="btn btn-primary">확인</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">취소</button> -->
 		        </div> 
+				  
 		        </form>
 	    	</div>
            </div>
@@ -520,6 +512,7 @@ Special 2. 지정석 20% <br>
 				return;
 			}else {
 				//모달
+				$(".ui-dialog-buttonset button:first-child").hide();
 				 $("#dialog1").dialog({//작은 팝업창 생성
 		                title: "티켓오픈 알람 신청",
 		                width: 600,
@@ -529,18 +522,29 @@ Special 2. 지정석 20% <br>
 		                modal: true,
 		                buttons: {
 		                    // "text": function() { alert(); }
-		                    "등록": function() {
-		                        alert("[${showtitle} - 티켓오픈 안내 SMS 알림서비스가 신청되었습니다.MY공연>나의맞춤설정 에서 확인해주세요.]");
-		                        $("#dialog1").dialog("close");
+		                    "등록":
+			                   function() {  
+		                    	alert(${repeat});
+		                    	if(${repeat}==0) {
+			                        alert("[${showtitle} - 티켓오픈 안내 SMS 알림서비스가 신청되었습니다.MY공연>나의맞춤설정 에서 확인해주세요.]");
+			                        
+			                        $("#dialog1").dialog("close");
+			                        
+			                        $("#form1").submit();
+		                    	} else {
+		           					alert("이미 등록되어있습니다.");
+		           					$("#dialog1").dialog("close");
+		                    	}
 		                    },
 		                    "취소" : function () {
 		                        $("#dialog1").dialog("close");
 		                    }
-		                }
+		                } 
 		            }); 
 				}
 			
 		});
+    	
 
 
         //상단 메뉴 css

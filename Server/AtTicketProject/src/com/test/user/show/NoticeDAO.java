@@ -314,8 +314,10 @@ public class NoticeDAO extends HttpServlet {
 
 		public int updateAlarm(HashMap<String, String> map) {
 			try {
-				String sql = "insert into tblmybell values(mybellseq.nextVal, ? ,?)";
+				String sql = "insert into tblmybell values(mybellseq.nextVal, ? ,?,default)";
 				pstat = conn.prepareStatement(sql);
+				System.out.println(map.get("showseq"));
+				System.out.println(map.get("cusseq"));
 				pstat.setString(1, map.get("showseq"));
 				pstat.setString(2, map.get("cusseq"));
 				return pstat.executeUpdate();
@@ -324,6 +326,27 @@ public class NoticeDAO extends HttpServlet {
 				System.out.println("NoticeDAO.updateAlarm()");
 				e.printStackTrace();
 			}
+			return 0;
+		}
+
+		public int getRepeat(HashMap<String, String> map) {
+			String sql = "select * from tblmybell where cusseq = ? and showseq = ? and delflag <> 1";
+			try {
+				
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, map.get("cusseq"));
+				pstat.setString(2, map.get("showseq"));
+				rs = pstat.executeQuery();
+				int repeat = 0;
+				while(rs.next()) {
+					repeat+=1;
+				}
+				return repeat;
+			} catch (Exception e) {
+				System.out.println("NoticeDAO.getRepeat()");
+				e.printStackTrace();
+			}
+		
 			return 0;
 		}
 		

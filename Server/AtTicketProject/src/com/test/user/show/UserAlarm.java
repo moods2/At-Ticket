@@ -17,16 +17,20 @@ public class UserAlarm extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		String cusseq = String.valueOf(session.getAttribute("userseq"));
-		String showseq = String.valueOf(req.getAttribute("showseq"));
+		String showseq = String.valueOf(req.getParameter("showseq"));
+		String noticeseq = req.getParameter("noticeseq");
+		String page = req.getParameter("page");
+		String search = req.getParameter("search");
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("cusseq", cusseq);
 		map.put("showseq", showseq);
+		System.out.println(showseq);
 		NoticeDAO dao = new NoticeDAO();
 		int result = dao.updateAlarm(map);
-		
+		System.out.println(result);
 		if(result == 1) {
 			//글쓰기 성공 -> 게시판 목록 보기로 이동 
-			resp.sendRedirect("/codestudy/plan/index.do");
+			resp.sendRedirect(String.format("/AtTicketProject/show/usernoticetemp.do?noticeseq=%s&page=%s&search=%s&showseq=%s",noticeseq,page,search,showseq));
 		} else {
 			//글쓰기 실패 
 			PrintWriter writer = resp.getWriter();
