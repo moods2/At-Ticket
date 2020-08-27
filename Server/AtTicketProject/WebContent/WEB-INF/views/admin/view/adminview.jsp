@@ -490,7 +490,7 @@ function fn_callback_realTimeBookRank(response){
 	//alert("실시간예매순위 콜백");
 	$(response).each(function (index, item){
 		imgs.push(item.poster);
-		category.push('<span>'+item.genre+'</span>');
+		category.push('<span><b>'+item.genre+'</b></span>');
 		titles.push('<span>'+item.title+'</span>');
 		booking.push('<span>'+parseFloat(item.rate, 10+'</span>'));
 	});

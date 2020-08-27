@@ -243,5 +243,5 @@ public class MypageJDTO {
 		this.showTheater = showTheater;
 	}
 	
-	//dto
+
 }

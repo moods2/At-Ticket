@@ -666,7 +666,7 @@ public class MyPageJDAO {
 		}
 		return 0;
 	}
-	//dao
+
 
 	
 	

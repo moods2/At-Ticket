@@ -218,7 +218,7 @@
 	                                <strong>${dto.myShowTitle }</strong>
 	                                <span>${dto.myShowstart } ~ ${dto.myShowend }</span>
 	                                <span>${dto.myShowTheater}</span>
-	                                <em>관련공지: <a href="user_notice.html">04</a>개</em>
+	                                <em>관련공지: <a href="/AtTicketProject/show/usernotice.do">04</a>개</em>
 	                            </li>
                             </c:forEach>
                         </ul>
@@ -254,7 +254,7 @@
                                 	</td>
                                 	<td>${dto.vellopenDate }</td>
                                 	<td>${dto.velldate }</td>
-                                	<td> <button>상세정보</button> </td>
+                                	<td> <button onclick="location.href='/AtTicketProject/show/usernoticetemp.do?noticeseq=100&page=&search='">상세정보</button> </td>
                                 </tr>
                                 </c:forEach>
                             </tbody>
@@ -356,7 +356,7 @@
 
         //공지사항 확인
         $("#checknotice").click(function() {
-            location.href = "user_notice.html";
+            location.href = "/AtTicketProject/show/usernotice.do";
         });
 
     </script>
