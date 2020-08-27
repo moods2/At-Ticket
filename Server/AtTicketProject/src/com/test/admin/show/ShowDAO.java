@@ -40,10 +40,10 @@ public class ShowDAO {
 			
 			if(map.get("search") != null) {
 				//이름 & 제목 & 내용 - 포괄 검색
-				where = String.format("and v.title like '%%%s%%' or v.genre like '%%%s%%'",map.get("search"),map.get("search"));
+				where = String.format("and title like '%%%s%%' or genre like '%%%s%%'",map.get("search"),map.get("search"));
 			}
 			
-			String sql = String.format("select a.* from (select rownum as rnum, v.* from tblShow v where v.delflag = 0 %s order by v.seq) a where rnum >= %s and rnum <= %s and delflag=0 order by %s"
+			String sql = String.format("select a.* from (select rownum as rnum, s.* from (select * from tblShow where delflag = 0 %s order by seq) s) a where rnum >= %s and rnum <= %s and delflag=0 order by %s"
 					,where ,map.get("begin"), map.get("end"),map.get("sort"));
 			
 			stat = conn.createStatement();
