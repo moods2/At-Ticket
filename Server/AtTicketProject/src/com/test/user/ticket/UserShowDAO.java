@@ -644,6 +644,45 @@ public class UserShowDAO {
 		return 0;
 	}
 
+	//회원이 가지고 있는 쿠폰을 없애준다.
+	public void removeUserCoup(String couponUserSeq) {
+		try {
+			
+			String sql = "update tblCusCoupon set delflag = 1 where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, couponUserSeq);
+			
+			rs = pstat.executeQuery();//쿼리를 날려준다
+			
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	//유저가 쓰고 남은 egg money 를 넣어줄것이다.
+	public void removeEggMoney(int cseq, int remainEgg) {
+		try {
+			
+			String sql = "update tblCustomer set egg = ? where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, remainEgg);
+			pstat.setInt(2, cseq);
+			
+			rs = pstat.executeQuery();
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 	
 	
 

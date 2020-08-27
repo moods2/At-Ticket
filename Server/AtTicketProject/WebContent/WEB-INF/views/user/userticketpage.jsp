@@ -1247,6 +1247,7 @@
             	$(".btncoupon").click(function(){
             		
             		couponUserSeq = $(this).attr("id");	
+            		//alert(couponUserSeq);
             		
             		$("#finull").text($("#totalPrice").text());	
             		$("#discountPrice").text($(this).val());
@@ -1751,16 +1752,6 @@
                     		dataType: "text",
                     		success : function(result) {
                     			
-    							//var list = result;
-    							
-    							
-    			/* 				var showRound = 1;
-    							$(result).each(function(index, item) {
-    								$("#inputTime").append("<li class = 'timeRound' id ='"+ item.rseq +"'> [" + showRound + "]회 " + item.rstartTime + " ~ " + item.rendTime + "</li>");
-    								
-    								showRound++;
-    								
-    							}); */
     							
                     		},
                     		error : function(a,b,c) {
