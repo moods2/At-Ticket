@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/usertickekting1.do")
+@WebServlet("/usertickekting.do")
 public class UserTickekting extends HttpServlet{
 	
 	@Override
