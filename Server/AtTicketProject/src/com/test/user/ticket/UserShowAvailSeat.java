@@ -58,8 +58,8 @@ public class UserShowAvailSeat extends HttpServlet{
 		}
 		
 		System.out.println("풍문으로");
-		System.out.println(arr.get(0));
-		System.out.println(arr.get(1));
+		//System.out.println(arr.get(0));
+	//	System.out.println(arr.get(1));
 		System.out.println("풍문으로");
 		
 		resp.setCharacterEncoding("UTF-8");
