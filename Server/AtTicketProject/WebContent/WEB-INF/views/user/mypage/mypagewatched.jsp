@@ -140,7 +140,7 @@
                         <table id = "tbl1" class = "table table-bordered table-striped table-hover">
 	                       	<tbody>
 	                    	<c:if test = "${vlist.size() == 0}">
-	                        	<td style="text-align:center;padding-top: 100px;">관람하신 공연이 없습니다.</td>
+	                        	<td style="text-align:center;padding-top: 100px;padding-bottom: 100px;">관람하신 공연이 없습니다.</td>
 	                        </c:if>
 	                        <c:if test = "${vlist.size() != 0}">
 	                  		<tr>
