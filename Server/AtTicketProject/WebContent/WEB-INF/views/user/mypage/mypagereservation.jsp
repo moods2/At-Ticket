@@ -311,7 +311,7 @@
 				success: function(result) {
 					
 					if (result.length == 0) {
-						$(".left").attr("disabled",true);
+						/* $(".left").attr("disabled",true); */
 						return;
 					}
 					
@@ -340,7 +340,7 @@
 					
 				},
 				error: function(a,b,c) {
-					$(".left").attr("disabled",true);
+					/* $(".left").attr("disabled",true); */
 					console.log(a,b,c);
 				}
 				
@@ -363,7 +363,7 @@
 			success: function(result) {
 				
 				if (result.length == 0) {
-					$(".right").attr("disabled",true);
+					/* $(".right").attr("disabled",true); */
 					return;
 				}
 				
@@ -393,7 +393,7 @@
 				
 			},
 			error: function(a,b,c) {
-				$(".right").attr("disabled",true);
+				/* $(".right").attr("disabled",true); */
 				console.log(a,b,c);
 			}
 			

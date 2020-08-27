@@ -170,7 +170,34 @@
             font-size: 12px;
             color: #444;
         }
-
+		
+		 #tblbook th{
+        	text-align:center;
+        }
+        
+        #tblbook td{
+        	text-align:center;
+        }
+        
+        #tblbook td:nth-child(3){
+        	text-align:left;
+        }
+        
+        #tblwatch th{
+        	text-align:center;
+        }
+        
+        #tblwatch td {
+        	text-align:center;
+        }
+        
+         #tblwatch td:nth-child(1) {
+        	text-align:left;
+        }
+        
+         #tblwatch td:nth-child(4) {
+        	text-align:left;
+        }
     </style>
 </head>
 <body>
@@ -208,24 +235,46 @@
                     </ul>
                 </div>
                 <div style="clear: both;"></div>
-                <div class="mycount">
+                 <div class="mycount">
                     <p><i class="glyphicon glyphicon-ok-sign"></i>최근 예매내역<span>${username}님께서 최근 3개월간 예매하신 내역입니다.</span></p>
-                    <table id="tbl1">
+                    <table id="tblbook" class = "table table-bordered table-striped table-hover">
                         <thead>
                             <th>예매일</th>
                             <th>예매번호</th>
                             <th>공연명</th>
                             <th>관람일시</th>
                             <th>매수</th>
-                            <th>에매상태</th>
+                            <th>예매상태</th>
                         </thead>
-                        <tbody>
+                        <tbody id = "tby1">
+                        	 <c:if test = "${rlist.size() == 0}"> 
                             <tr>
                                 <td colspan="6">최근 예매내역이 없습니다.</td>
                             </tr>
+                            </c:if>
+                            <c:if test = "${rlist.size() != 0 }">
+                            <c:forEach items="${rlist}" var="rdto">
+	                            <tr>       
+	                            	<td>${rdto.bookdate}</td>
+	                            	<td>${rdto.bookseq}</td>
+	                            	<td>${rdto.showtitle}</td>
+	                            	<td>${rdto.bookdate}</td>
+	                            	<td>${rdto.cnt}</td>
+	                            	<td>${rdto.bookstate}</td>
+	                            </tr>
+                            </c:forEach>
+                            </c:if>
                         </tbody>
-                    </table>
+                    </table> 
                 </div>
+                 <div style="margin-left:350px;margin-top:-10px;" id="paging">
+                        <button type = "button" id = "btnleft" class="glyphicon glyphicon-menu-left left"></button>
+                        <span id = "page"> 
+                        <span>${nowPageB}</span>
+                        <span>(<span id = "nowPage">${nowPageB}</span>/${totalPageB})</span>
+                        </span>
+                        <button type = "button" class="glyphicon glyphicon-menu-right right" id = "btnright"></button>
+                 </div>
                 <div class="mycount">
                     <p><i class="glyphicon glyphicon-ok-sign"></i>Egg포인트 적립내역<span>공연 예매로 인해 적립된 egg포인트 내역입니다.</span></p>
                     <table id="tbl1">
@@ -245,7 +294,7 @@
                     <p style="font-size: 11px; float: right; margin-top: 5px;">Egg포인트는 공연 관람일 혹은 후기 작성일 익일 지급됩니다.</p>
                 </div>
                 <div class="mycount">
-                    <p><i class="glyphicon glyphicon-ok-sign"></i>나의 관심 공연<span>'나의 관심 공연'이 <span>${totalCount }</span>개 있습니다.</span></p>
+                    <p><i class="glyphicon glyphicon-ok-sign"></i>나의 관심 공연<span>'나의 관심 공연'이 <span>${totalCount}</span>개 있습니다.</span></p>
                     <div class="mylist">
                     
                         <ul>
@@ -275,16 +324,47 @@
                         </ul>
                     </div>
                 </div>
-                <div class="mycount">
+               <div id = "mycountw" class="mycount">
                     <p><i class="glyphicon glyphicon-ok-sign"></i>나의 관람 공연</p>
-                    <div class="mylist">
+                    <div class="mylist" id = "mylist">
+                    	<c:if test= "${wlist.size() == 0}">
                         <ul>
                             <div>
                                 <p>'나의 관람 공연'이 없습니다.</p>
-                            </div>                             
+                            </div>
                         </ul>
+                        </c:if>
+                        
+                        <c:if test = "${wlist.size() != 0}">
+                        	<table class = "table table-bordered table-striped table-hover" id = "tblwatch" style="height:auto;">
+                        		<thead>
+                        			<th>공연명</th>
+                        			<th>관람일</th>
+                        			<th>예매번호</th>
+                        			<th>주소</th>
+                        		</thead>
+        						<tbody id = "tby2">
+	                        		<c:forEach items = "${wlist}" var = "wdto">
+	                        			<tr>
+	                        				<td>${wdto.showtitle}</td>
+	                        				<td>${wdto.bdate}</td>
+	                        				<td>${wdto.bookseq}</td>
+	                        				<td>${wdto.showaddr}</td>
+	                        			</tr>
+	                        		</c:forEach>
+                        		</tbody>
+                        	</table>
+                        </c:if>
                     </div>
                 </div>
+                     <div style="margin-left:350px;margin-top:-10px;" id="paging">
+                        <button type = "button" id = "btnleftW" class="glyphicon glyphicon-menu-left left"></button>
+                        <span id = "pageW"> 
+                        <span>${nowPageW}</span>
+                        <span>(<span id = "nowPageW">${nowPage}</span>/${totalPageW})</span>
+                        </span>
+                        <button type = "button" class="glyphicon glyphicon-menu-right right" id = "btnrightW"></button>
+                    </div>
                 <div class="mycount">
                     <p><i class="glyphicon glyphicon-ok-sign"></i>나의 맞춤 알람 소식<span>최근 1주일 간 업데이트된 맞춤 알람 소식입니다.</span></p>
                     <table id="tbl2">
@@ -334,7 +414,214 @@
 
 
     <script>
+    var begin = ${mapB.begin};
+	var end = ${mapB.end};
+	var totalPageB= ${totalPageB};
+	var nowPageB = ${nowPageB};
+	
+	var beginW = ${map1.beginW};
+	var endW = ${map1.endW};
+	var totalPageW= ${totalPageW};
+	var nowPageW = ${nowPageW};
+	if(${wlist.size()}!=0){
+		$("#mylist").css("border","none");
+	}
+    $("#btnleft").click(function() {
 
+		nowPage-=1;
+		begin-=2;
+		end-=2;
+		$.ajax({
+			type: "GET",
+			url: "/AtTicketProject/myreok.do",
+			data: "begin=" + begin + "&end=" + end + "&totalPage=" + totalPageB + "&nowPage=" + nowPageB,
+			dataType: "json",
+			success: function(result) {
+				
+				if (result.length == 0) {
+					/* $(".left").attr("disabled",true); */
+					return;
+				}
+				
+				//alert(result.length);
+				$("#tby1").empty();
+				$(result).each(function(index, item) {
+					//게시물 1개
+					var temp = "";
+					temp += "<tr>";
+					temp += "<td style='width:15%;'>" + item.bookdate + "</td>";
+					temp += "<td style='width:10%;'>" + item.bookseq + "</td>";
+					temp += "<td style='width:43%;'>" + item.showtitle + "</td>";
+					temp += "<td style='width:15%;'>" + item.bdate + "</td>";
+					temp += "<td style='width:7%;'>" + item.cnt + "</td>";
+					temp += "<td style='width:10%;'>" + item.bookstate + "</td>";
+					temp += "</tr>";
+						
+					$("#tblbook > #tby1").append(temp); 
+					$("#page").empty();
+					var temp = "";		
+					temp+="<span>"+ item.nowPage+"</span>";
+					temp+=" <span>(<span id = 'nowPage'>"+item.nowPage+"</span>/"+item.totalPage+")</span>";
+					$("#page").append(temp);  
+				});
+				
+			},
+			error: function(a,b,c) {
+				/* $(".left").attr("disabled",true); */
+				console.log(a,b,c);
+			}
+			
+		}); //ajax
+		
+	});
+
+	$("#btnright").click(function() {
+		
+	begin+=2;
+	end+=2;
+	nowPage +=1;
+	$.ajax({
+		type: "GET",
+		url: "/AtTicketProject/myreok.do",
+		data: "begin=" + begin + "&end=" + end + "&totalPage=" + totalPageB + "&nowPage=" + nowPageB,
+		dataType: "json",
+		success: function(result) {
+			
+			if (result.length == 0) {
+				/* $(".right").attr("disabled",true); */
+				return;
+			}
+			
+			//alert(result.length);
+			$("#tby1").empty();
+			
+			$(result).each(function(index, item) {
+				//게시물 1개
+				var temp = "";
+				temp += "<tr>";
+				temp += "<td style='width:15%;'>" + item.bookdate + "</td>";
+				temp += "<td style='width:10%;'>" + item.bookseq + "</td>";
+				temp += "<td style='width:43%;'>" + item.showtitle + "</td>";
+				temp += "<td style='width:15%;'>" + item.bdate + "</td>";
+				temp += "<td style='width:7%;'>" + item.cnt + "</td>";
+				temp += "<td style='width:10%;'>" + item.bookstate + "</td>";
+				temp += "</tr>";
+					
+				$("#tblbook > #tby1").append(temp); 
+				$("#page").empty();
+				var temp = "";
+				temp+="<span>"+ item.nowPage+"</span>";
+				temp+=" <span>(<span id = 'nowPage'>"+item.nowPage+"</span>/"+item.totalPage+")</span>";
+				$("#page").append(temp); 
+			});
+			
+		},
+		error: function(a,b,c) {
+			/* $(".right").attr("disabled",true); */
+			console.log(a,b,c);
+		}
+		
+	}); //ajax
+
+	});
+	
+	  $("#btnleftW").click(function() {
+
+			nowPageW-=1;
+			beginW-=2;
+			endW-=2;
+			$.ajax({
+				type: "GET",
+				url: "/AtTicketProject/mywaok.do",
+				data: "beginW=" + beginW + "&endW=" + endW + "&totalPageW=" + totalPageW + "&nowPageW=" + nowPageW,
+				dataType: "json",
+				success: function(result) {
+					
+					if (result.length == 0) {
+						/* $(".left").attr("disabled",true); */
+						return;
+					}
+					
+					//alert(result.length);
+					$("#tby2").empty();
+					$("#mylist").css("border","none");
+					$(result).each(function(index, item) {
+						//게시물 1개
+						
+						var temp = "";
+						temp += "<tr>";
+						temp += "<td style='width:40%'>" + item.showtitle + "</td>";
+						temp += "<td style='width:15%'>" + item.bdate + "</td>";
+						temp += "<td style='width:10%'>" + item.bookseq + "</td>";
+						temp += "<td>" + item.showaddr + "</td>";
+						temp += "</tr>";
+							
+						$("#tblwatch > #tby2").append(temp); 
+						$("#pageW").empty();
+						var temp = "";		
+						temp+="<span>"+ item.nowPageW+"</span>";
+						temp+=" <span>(<span id = 'nowPageW'>"+item.nowPageW+"</span>/"+item.totalPageW+")</span>";
+						$("#pageW").append(temp);  
+					});
+					
+				},
+				error: function(a,b,c) {
+					/* $(".left").attr("disabled",true); */
+					console.log(a,b,c);
+				}
+				
+			}); //ajax
+			
+	});
+
+		$("#btnrightW").click(function() {
+			
+		beginW+=2;
+		endW+=2;
+		nowPageW +=1;
+		
+		$.ajax({
+			type: "GET",
+			url: "/AtTicketProject/mywaok.do",
+			data: "beginW=" + beginW + "&endW=" + endW + "&totalPageW=" + totalPageW + "&nowPageW=" + nowPageW,
+			dataType: "json",
+			success: function(result) {
+				
+				if (result.length == 0) {
+					/* $(".right").attr("disabled",true); */
+					return;
+				}
+				
+				//alert(result.length);
+				$("#tby2").empty();
+				$("#mylist").css("border","none");
+				$(result).each(function(index, item) {
+					//게시물 1개
+					var temp = "";
+					temp += "<tr>";
+					temp += "<td style='width:40%'>" + item.showtitle + "</td>";
+					temp += "<td style='width:15%'>" + item.bdate + "</td>";
+					temp += "<td style='width:10%'>" + item.bookseq + "</td>";
+					temp += "<td>" + item.showaddr + "</td>";
+					temp += "</tr>";
+						
+					$("#tblwatch > #tby2").append(temp); 
+					$("#pageW").empty();
+					var temp = "";
+					temp+="<span>"+ item.nowPageW+"</span>";
+					temp+=" <span>(<span id = 'nowPageW'>"+item.nowPageW+"</span>/"+item.totalPageW+")</span>";
+					$("#pageW").append(temp); 
+				});
+				
+			},
+			error: function(a,b,c) {
+				/* $(".right").attr("disabled",true); */
+				console.log(a,b,c);
+			}
+			
+		}); //ajax
+
+		});
         //이벤트 더보기 클릭시 이동
         $("#eventmore").click(function() {
             location.href = "/AtTicketProject/userevent.do";

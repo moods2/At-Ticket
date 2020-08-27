@@ -1,4 +1,4 @@
-package com.test.user.mypage;
+package com.test.user.main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,17 +15,18 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-@WebServlet("/mypage/mypagereservationok.do")
-public class MyPageReservationOk extends HttpServlet {
+import com.test.user.mypage.MyReDTO;
+
+@WebServlet("/myreok.do")
+public class MyReOk	extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		HttpSession session = req.getSession();
 		String cusseq = String.valueOf(session.getAttribute("userseq"));
 		String begin = req.getParameter("begin");
 		String end = req.getParameter("end");
-		String from = req.getParameter("from");
-		String to = req.getParameter("to");
+		
 		String nowPage = req.getParameter("nowPage");
 		HashMap<String,String> map = new HashMap<String,String>();
 		req.setCharacterEncoding("UTF-8");
@@ -33,21 +34,19 @@ public class MyPageReservationOk extends HttpServlet {
 		map.put("cusseq", cusseq);
 		map.put("begin", begin);
 		map.put("end", end);
-		map.put("from", from);
-		map.put("to", to);
-	
+
 		
 		//2.
-		MyPageHDAO dao = new MyPageHDAO();
+		MyHDAO dao = new MyHDAO();
 //		(int)Math.ceil((double)totalCount/pageSize);
-		int pageSize = 3;
-		int totalPage = (int)Math.ceil((double)dao.getTotalCountR(map)/pageSize);
+		int pageSize = 2;
+		int totalPage = (int)Math.ceil((double)dao.getTotalCount(cusseq)/pageSize);
 	
 		if(totalPage == 0) {
 			totalPage = 1;
 		}
 		
-		ArrayList<MyReDTO> list = dao.getlistB(map);
+		ArrayList<MyReDTO> blist = dao.getlistB(map);
 		
 		dao.close();
 		
@@ -58,7 +57,7 @@ public class MyPageReservationOk extends HttpServlet {
 		
 		JSONArray arr = new JSONArray();
 		
-		for (MyReDTO dto : list) {
+		for (MyReDTO dto : blist) {
 			JSONObject obj = new JSONObject();
 			obj.put("bdate",dto.getBdate());
 			obj.put("bookdate",dto.getBookdate());
@@ -75,6 +74,5 @@ public class MyPageReservationOk extends HttpServlet {
 		
 		writer.print(arr);
 		writer.close();
-		
 	}
 }

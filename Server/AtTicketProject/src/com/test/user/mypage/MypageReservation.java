@@ -25,6 +25,7 @@ public class MypageReservation extends HttpServlet {
 		
 		String cusseq = String.valueOf(session.getAttribute("userseq"));
 		String page = req.getParameter("page");
+		System.out.println(page);
 		Calendar now = Calendar.getInstance();
 		String from = String.format("%tF", now);
 		now.add(Calendar.MONTH, -1);
