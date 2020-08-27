@@ -270,7 +270,7 @@
 				success: function(result) {
 					
 					if (result.length == 0) {
-						$("#btnMore").attr("disabled",true);
+						/* $("#btnMore").attr("disabled",true); */
 						return;
 					}
 					
@@ -297,7 +297,7 @@
 					
 				},
 				error: function(a,b,c) {
-					$("#btnMore").attr("disabled",true);
+					/* $("#btnMore").attr("disabled",true); */
 					console.log(a,b,c);
 				}
 				
@@ -323,7 +323,7 @@
 				success: function(result) {
 					
 					if (result.length == 0) {
-						$("#btnBefore").attr("disabled",true);
+						/* $("#btnBefore").attr("disabled",true); */
 						return;
 					}
 					
@@ -350,7 +350,7 @@
 					
 				},
 				error: function(a,b,c) {
-					$("#btnBefore").attr("disabled",true);
+					/* $("#btnBefore").attr("disabled",true); */
 					console.log(a,b,c);
 				}
 				
@@ -426,7 +426,7 @@
 				success: function(result) {
 					
 					if (result.length == 0) {
-						$("#btnMore").attr("disabled",true);
+						/* $("#btnMore").attr("disabled",true); */
 						return;
 					}
 					
@@ -479,7 +479,7 @@
 				success: function(result) {
 					
 					if (result.length == 0) {
-						$("#btnBefore").attr("disabled",true);
+						/* $("#btnBefore").attr("disabled",true); */
 						return;
 					}
 					

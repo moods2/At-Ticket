@@ -7,6 +7,10 @@
 <title>Admin</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp"%>
 <style>
+	body{
+		overflow-x:hidden;
+	}
+	
 	td {
             text-align: center;
         }

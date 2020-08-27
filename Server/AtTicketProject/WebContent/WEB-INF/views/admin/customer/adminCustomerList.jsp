@@ -23,7 +23,7 @@
            left: 0px;
            top: 0px;
            width: 250px;
-           height: 900px;
+           height: 1100px;
            /* border: 1px solid black; */
            background-color: #444;
            text-align: center;

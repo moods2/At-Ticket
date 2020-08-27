@@ -292,7 +292,7 @@ public class CustomerDAO {
 			String sql = null;
 			try {
 				
-				sql = "select * from vwMyShow where cusseq = ?";
+				sql = "select * from vwMyShow1 where cusseq = ?";
 				pstat = conn.prepareStatement(sql);
 				pstat.setString(1, seq);
 				rs = pstat.executeQuery();
@@ -597,7 +597,7 @@ public class CustomerDAO {
 
 		public CusMyShowDTO getMyShow(String showseq) {
 			try {
-				String sql = "select * from vwmyshow where myshowseq = ?";
+				String sql = "select * from vwmyshow1 where myshowseq = ?";
 				pstat = conn.prepareStatement(sql);
 				pstat.setString(1, showseq);
 				rs = pstat.executeQuery();

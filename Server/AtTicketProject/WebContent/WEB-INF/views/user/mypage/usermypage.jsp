@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
@@ -365,7 +364,7 @@
                         </span>
                         <button type = "button" class="glyphicon glyphicon-menu-right right" id = "btnrightW"></button>
                     </div>
-                <div class="mycount">
+                <%-- <div class="mycount">
                     <p><i class="glyphicon glyphicon-ok-sign"></i>나의 맞춤 알람 소식<span>최근 1주일 간 업데이트된 맞춤 알람 소식입니다.</span></p>
                     <table id="tbl2">
                         <tbody>
@@ -399,7 +398,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> --%>
             </div>
 
             <!-- 챗봇 : 단비봇 -->
@@ -423,7 +422,7 @@
 	var endW = ${map1.endW};
 	var totalPageW= ${totalPageW};
 	var nowPageW = ${nowPageW};
-	if(${wlist.size()}!=0){
+	if(${wlist.size()!=0}){
 		$("#mylist").css("border","none");
 	}
     $("#btnleft").click(function() {

@@ -81,6 +81,10 @@ th {
 #manipulate6{
 	margin-left:750px;
 }
+
+#left{
+	height:1400px;
+}
 </style>
 </head>
 <body>
@@ -503,7 +507,7 @@ th {
 
   
      $("#makebtn5").click(function () {
-        window.open("/AtTicketProject/customer/cuscouponinsert.do?seq=${seq}", "쿠폰 추가", "width=600,height=400");
+        window.open("/AtTicketProject/customer/cuscouponinsert.do?seq=${seq}", "쿠폰 추가", "width=600,height=250");
     });
      
 
@@ -595,7 +599,7 @@ th {
 
   
      $("#modifybtn5").click(function () {
-        window.open("/AtTicketProject/customer/cuscouponupdate.do?seq=${seq}&cuscouponseq="+$('.cb5:checked').val(), "쿠폰 수정", "width=600,height=400");
+        window.open("/AtTicketProject/customer/cuscouponupdate.do?seq=${seq}&cuscouponseq="+$('.cb5:checked').val(), "쿠폰 수정", "width=600,height=250");
     });
      
   
