@@ -44,10 +44,17 @@ public class HistoryDAO {
 				dto.setContent(rs.getString("content"));
 				
 				return dto;
+				
+			} else { //결과 없을 때
+				HistoryDTO dto = new HistoryDTO();
+				dto.setSeq("0");
+				
+				return dto;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return null;
 	}
 
@@ -60,6 +67,19 @@ public class HistoryDAO {
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, content);
 			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	//HistoryOk 서블릿 
+	public void add(String content) {
+		try {
+			String sql = "insert into tblHistory (seq,content) values (1,?)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, content);
 			pstat.executeUpdate();
 			
 		} catch (Exception e) {

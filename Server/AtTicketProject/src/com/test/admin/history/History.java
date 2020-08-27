@@ -20,13 +20,12 @@ public class History extends HttpServlet{
 		
 		int flag = 0;
 		
-		if(dto.getSeq() == null) {
+		if(dto.getSeq().equals("0")) {
 			//아무 값도 없을 때
 			flag = 0;
 		}else {
 			flag = 1;
 		}
-		
 		
 		req.setCharacterEncoding("UTF-8");
 		req.setAttribute("dto", dto);

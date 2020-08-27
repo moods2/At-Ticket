@@ -1026,7 +1026,7 @@
                             <dd><input type="text" class="alternate" size="30" id = "inputDate"></dd>
                         <div style="clear: both;"></div>
                         <dt>시간</dt>
-                        <dd></dd>
+                        <dd id="ticketTime"></dd>
                         <div style="clear: both;"></div>
                         <dt>매수</dt>
                         <dd id="ticketNum"></dd>
@@ -1229,7 +1229,7 @@
                             			<td>${dto.title}</td>
                             			<td>${dto.endDate}</td>
                             			<td>${dto.discount}</td>
-                            			<td><button  type= "button" class="btncoupon" value="${dto.discount}">사용</button></td>
+                            			<td><button  id = "${dto.seq}" type= "button" class="btncoupon" value="${dto.discount}">사용</button></td>
                             		</tr>
                             		</c:forEach>
                             	</c:if>
@@ -1241,9 +1241,13 @@
             
             <script>
             	
+            	var couponUserSeq;//쿠회번호
             	//여기서 정산 처리를 해줄것이다.
-            	
+            	//쿠폰사용 선택했을 경우
             	$(".btncoupon").click(function(){
+            		
+            		couponUserSeq = $(this).attr("id");	
+            		
             		$("#finull").text($("#totalPrice").text());	
             		$("#discountPrice").text($(this).val());
             		$("#discountTotalPrice").text($(this).val());
@@ -1722,16 +1726,50 @@
                 			return;
                 		} 
                 		
-                		
+      
                 	}
                 	
-                	
-                	/* if ($("#pcb1").attr('checked') && $("#pcb1").attr('checked')) {
+                	//모든 조건을 만족했을 경우
+                	if (finalPass == 0) {
+						
+                		var inputDate = $("#inputDate").val();
+                		var ticketNum = $("#ticketNum").text();
+
+                		var seatAvail = "";//내가 예매할 좌석
+                		$(".nodab").each(function (index, item) {
+                			seatAvail += $(item).text() + ",";
+                		});
+                		//var parameter = "eggmoney=" + $("#eggpt").val() + "&showroundSeq=" + showroundSeq + "&couponUserSeq=" + couponUserSeq +"&seatAvail=" + seatAvail;
+                		var parameter = "eggmoney=" + $("#eggpt").val() + "&showroundSeq=" + showroundSeq + "&couponUserSeq=" + couponUserSeq +"&seatAvail=" + seatAvail 
+                						+ "&inputDate=" + inputDate + "&ticketNum=" + ticketNum;
                 		
-                	} */
-                	
-                	
-/*                     $("#dialog1").dialog({
+                    	$.ajax({
+                    		type : "POST",
+                    		url : "/AtTicketProject/usershowfinal.do",
+                    		data : parameter,
+                    		async: true,
+                    		dataType: "text",
+                    		success : function(result) {
+                    			
+    							//var list = result;
+    							
+    							
+    			/* 				var showRound = 1;
+    							$(result).each(function(index, item) {
+    								$("#inputTime").append("<li class = 'timeRound' id ='"+ item.rseq +"'> [" + showRound + "]회 " + item.rstartTime + " ~ " + item.rendTime + "</li>");
+    								
+    								showRound++;
+    								
+    							}); */
+    							
+                    		},
+                    		error : function(a,b,c) {
+                    			console.log(a,b,c);
+                    		}
+                    		
+                    	});//여기까지가 ajax
+                    	
+                    	                     $("#dialog1").dialog({
                         // title: "인삿말",
                         width: 500,
                         height: 250,
@@ -1759,7 +1797,15 @@
                         n = 4;
                         $("#side1").css("display","block")
                         $("#side2").css("display","none")
-                    }); */
+                    }); 	
+                		
+                	}
+                	
+                	
+                	
+                	
+                	
+
                 }//n == 5
             }            
         });
@@ -1927,7 +1973,7 @@
 				$(this).css("background-color","#FECA52");
 				
 	             //$("#clock").css("background-color","#FECA52");
-	             //$("#clock").css("border","#FECA52");
+	             //$("#clock").css("border","#FECA52");F
 	             //$("#clock").css("color","white");
 	             $("#data").css("border","1px solid #eeeeee");
 	             $("#sit").css("border","1px solid #FECA52");
@@ -2264,7 +2310,7 @@
                 if($(obj).attr("class") == "s6"){
                 // list 추가
                     checkList2.push("<li>"+ $(obj).attr("title") +"</li>");
-                    sitFinul2.push("<dd>"+ $(obj).attr("title") +"</dd>");
+                    sitFinul2.push("<dd class = 'nodab'>"+ $(obj).attr("title") +"</dd>");
 
                     //li초기화
                     $("#choiceSit ul").empty();
