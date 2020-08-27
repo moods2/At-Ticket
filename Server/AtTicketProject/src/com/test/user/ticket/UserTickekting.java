@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/usertickekting.do")
+@WebServlet("/usertickekting1.do")
 public class UserTickekting extends HttpServlet{
 	
 	@Override

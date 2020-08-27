@@ -82,7 +82,7 @@
             font-size: 15px;
             padding: 40px 0;
             position: absolute;
-            /* margin-top: -120px; */
+            margin-top: -120px;
         }
         .menubar {
             margin: 0 5px;
@@ -302,12 +302,14 @@
             <h1>Q&A Update</h1>
 
             <div id = "right">
+            
+            <form method="POST" action="/AtTicketProject/userqnaupdateok.do">
 
                 <table id="tbl" class="table table-bordered">
                     <tr>
                         <th>문의 유형</th>
                         <td>
-                            <select class="form-control">
+                            <select class="form-control" id="tagoption" name="tag">
                                 <option>예매방법</option>
                                 <option>결제방법</option>
                                 <option>수수료</option>
@@ -322,13 +324,13 @@
                         <th>제목</th>
                         <td>
                             <!-- block태그로 바뀜 -->
-                            <input type="text" class="form-control"> 
+                            <input type="text" class="form-control" value="${subject}" name="subject"> 
                         </td>
                     </tr>
                     <tr>
                         <th>내용</th>
                         <td>
-                            <textarea class="form-control" style="height: 500px;"></textarea>
+                            <textarea class="form-control" style="height: 500px;" name="content">${content}</textarea>
                         </td>
                     </tr>
                     <tr>
@@ -338,14 +340,19 @@
                         </td>
                     </tr>
                 </table>
+                
+                <input type="text" name="seq" value="${seq}" style="display: none;">
         
-                <button class="btn btn-primary" id="write">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    Write
+                <button class="btn btn-primary" id="write" type="submit">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    ok
                 </button>
+                
+               </form>
+               
                 <button class="btn btn-primary" id="list">
                     <span class="glyphicon glyphicon-list"></span>
-                    목록
+                    	목록
                 </button>
         
         
@@ -438,11 +445,10 @@
 
         // 목록 링크
         $("#list").click(function() {
-            $(location).attr('href','user_qna.html');
+            $(location).attr('href','/AtTicketProject/userqna.do');
         });
 
- 
-
+        $("#tagoption").val("${tag}").prop("selected", true);
 
 
     </script>

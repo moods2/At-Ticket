@@ -1,4 +1,4 @@
-package com.test.user.qna;
+package com.test.user.mypage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,36 +10,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.test.admin.customerqna.QnaDAO;
-import com.test.admin.customerqna.QnaDTO;
-
-@WebServlet("/userqna.do")
-public class UserQna extends HttpServlet{
-
+@WebServlet("/mypageinterestsearch.do")
+public class MyPageInterestSearch extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		HttpSession session = req.getSession();
+		req.setCharacterEncoding("UTF-8");
 		
-		String userseq = String.valueOf( session.getAttribute("userseq"));
-			
-		//String seq = req.getParameter("seq");
 		String search = req.getParameter("search");
-		
-		String sort = req.getParameter("sort");
+		String index = req.getParameter("index");
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
 		map.put("search",search);
-		map.put("sort",sort);
 		
-		
+		System.out.println(map.get("search"));
 		//페이징 처리 관련 변수
 		int nowPage = 0; 			//현재 페이지 번호
 		int totalCount = 0; 		//총 게시물 수
-		int pageSize = 15; 			//한페이지 당 출력 갯수
+		int pageSize = 4; 			//한페이지 당 출력 갯수
 		int totalPage = 0;			//총 페이지 수
 		int begin = 0;				//rnum 시작 번호
 		int end = 0;				//rnum 끝 번호
@@ -62,44 +53,30 @@ public class UserQna extends HttpServlet{
 		
 		
 		//리스트 출력
-		QnaDAO dao = new QnaDAO();
+		MyPageJDAO dao = new MyPageJDAO();
 		
-		totalCount = dao.getTotalCount(map);
+		totalCount = dao.getMyShowSearchTotalCount(map);
 		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
-		ArrayList<QnaDTO> list = dao.list(map);
+		ArrayList<MypageJDTO> list = dao.myShowSearchList(map);
 		
-		for (QnaDTO dto : list) {
+		for (MypageJDTO dto : list) {
 			
-			if(search != null && search !="") {
-				//d. 검색어 부각시키기
-				// - 제목
-				String subject = dto.getSubject();
-				subject = subject.replace(search, "<span style='font-weight:bold;color:tomato;'>" + search + "</span>");
-				dto.setSubject(subject);
-				
-				String name = dto.getName();
-				name = name.replace(search, "<span style='font-weight:bold;color:tomato;'>" + search + "</span>");
-				dto.setName(name);
-				}
+			String showseq = dto.getShowseq();
+			dto.setShowseq(showseq);
+			String showtitle = dto.getShowtitle();
+			dto.setShowtitle(showtitle);
+			String showstart = dto.getShowstart();
+			dto.setShowstart(showstart);
+			String showend = dto.getShowend();
+			dto.setShowend(showend);
+			String showPoster = dto.getShowPoster();
+			dto.setShowPoster(showPoster);
+			String showTheater = dto.getShowTheater();
+			dto.setShowTheater(showTheater);
 			
-				/*
-				 * String subject = dto.getSubject(); dto.setSubject(subject); String name =
-				 * dto.getName(); dto.setName(name);
-				 */
-			String regdate = dto.getRegdate();
-			dto.setRegdate(regdate);
-			String tag = dto.getTag();
-			dto.setTag(tag);
-			int qview = dto.getQview();
-			dto.setQview(qview);
-			int ansSeq = dto.getAnsSeq();
-			dto.setAnsSeq(ansSeq);
 		}
-		
-		//새로고침 조회수 증가 방지
-		session.setAttribute("read", false);
 		
 		
 		//페이지바 제작
@@ -120,7 +97,7 @@ public class UserQna extends HttpServlet{
 					pagebar += "<li>";
 				} else {
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/userqna.do?page=%d\" aria-label=\"Previous\">", n -1 );
+					pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?page=%d\" aria-label=\"Previous\">", n -1 );
 					pagebar += "<span aria-hidden=\"true\">&laquo;</span>";
 					pagebar += "</a>";
 					pagebar += "<li>";
@@ -129,12 +106,19 @@ public class UserQna extends HttpServlet{
 				while (!(loop > blockSize || n > totalPage)) {
 				//페이지 번호
 				if(n == nowPage) {
+					search = req.getParameter("search");	
+					
 				pagebar += "<li class='active'>";
 				pagebar += String.format("<a href=\"#!\">%d</a>", n);
 				pagebar += "</li>";
 				}else {
 				pagebar += "<li>";
-				pagebar += String.format("<a href=\"/AtTicketProject/userqna.do?page=%d\">%d</a>", n,n);
+				
+				if(index.equals("3")) {
+					pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\">%d</a>",index,search, n,n);
+				}else {			
+					pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\">%d</a>",index,search, n,n);
+				}
 				pagebar += "</li>";
 				}
 				loop++;
@@ -150,7 +134,7 @@ public class UserQna extends HttpServlet{
 					pagebar += "<li>";
 				} else {		
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/userqna.do?page=%d\" aria-label=\"Next\">", n);
+					pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?page=%d\" aria-label=\"Next\">", n);
 					pagebar += "<span aria-hidden=\"true\">&raquo;</span>";
 					pagebar += "</a>";
 					pagebar += "<li>";
@@ -162,7 +146,6 @@ public class UserQna extends HttpServlet{
 		//리스트 목록
 		req.setAttribute("list", list);
 		req.setAttribute("search", search);
-		req.setAttribute("sort", sort);
 		//페이징바
 		req.setAttribute("page", page);
 		req.setAttribute("totalCount", totalCount);
@@ -170,13 +153,17 @@ public class UserQna extends HttpServlet{
 		
 		req.setAttribute("pagebar", pagebar);
 		
+		if(index.equals("3")) {
+			req.setAttribute("index", "4");			
+		}else {			
+			req.setAttribute("index", "2");
+		}
 		
-		req.setAttribute("userseq", userseq);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userqna.jsp");
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/mypage/mypageinterestpopup.jsp");
 		dispatcher.forward(req, resp);
-		
-		
+
 	}
 	
 }

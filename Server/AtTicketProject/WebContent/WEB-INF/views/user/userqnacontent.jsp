@@ -253,6 +253,7 @@
         }
 
         #tbl th:nth-child(1) {width: 135px; text-align: center; color: #d2e1ee;}
+        #tbl th:nth-child(1) a {color: #d2e1ee;}
         #tbl th:nth-child(2) {width: 700px; text-align: left; color: white;}
         #tbl th:nth-child(3) {text-align: right; color: white; padding-right: 20px;}
 
@@ -283,6 +284,7 @@
         }
 
         /* 버튼 */
+        
         .btn-primary {
             outline: none;
             width: 120px;
@@ -312,9 +314,10 @@
         #list {
             background-color: #bbb;
             border-color: #bbb;
-            position: relative;
-            right: 250px;
+           /*  position: relative;
+            right: 250px; */
             outline: none;
+            float: right;
         }
 
 
@@ -358,14 +361,18 @@
 
         <!-- 내용============================================================================================================================================= -->
         <div id="mainBox">
-            <h1>Q&A</h1>
-
+        	<c:if test="${index == 1}">
+            	<h1>Q&A</h1>
+			</c:if>
+        	<c:if test="${index == 2}">
+            	<h1>My Q&A</h1>
+			</c:if>
             <!-- <div id = "right"> -->
 
                 <table id="tbl">
 
                     <thead>
-                        <th>${dto.tag}</th>
+                        <th><a href="/AtTicketProject/userqna.do?sort=${dto.tag}" style="text-decoration: none;">${dto.tag}</a></th>
                         <th colspan="2">${dto.subject}</th>
                         <th colspan="2">${dto.regdate }</th>
                     </thead>
@@ -393,6 +400,8 @@
                     </tbody>
 
                 </table>
+				
+				<c:if test="${dto.ansSeq ne 0}">
 
                 <table id="tbl2">
 
@@ -412,20 +421,33 @@
                     </tbody>
 
                 </table>
-
-                        
-                <button class="btn btn-primary" id="update">
+                </c:if>
+                
+                <c:if test="${id == dto.id}">     
+                   
+                <form method="POST" action="/AtTicketProject/userqnaupdate.do">
+                
+                <input type="text" name="tag" value="${dto.tag}" style="display: none;">
+                <input type="text" name="subject" value="${dto.subject}" style="display: none;">
+                <textarea name="content" style="display: none;">${dto.content}</textarea>
+                <input type="text" name="seq" value="${dto.seq}" style="display: none;">
+                
+                <button type="submit" class="btn btn-primary" id="update">
                     <span class="glyphicon glyphicon-pencil"></span>
-                    수정하기
+                    	수정하기
                 </button>
+                
+                </form>
+                
                 <button class="btn btn-primary" id="delete">
                 <span class="
                 glyphicon glyphicon-trash"></span>
-                삭제하기
+                	삭제하기
                 </button>
+                </c:if>
                 <button class="btn btn-primary" id="list">
                 <span class="glyphicon glyphicon-list"></span>
-                목록
+               		 목록
                 </button>
         
         
@@ -513,25 +535,32 @@
 
 
         // 수정하기 링크
-        $("#update").click(function() {
-            $(location).attr('href','user_qna_update.html');
-        });
+/*         $("#update").click(function() {
+            $(location).attr('href','/AtTicketProject/userqnaupdate.do');
+        }); */
         // 목록 링크
         $("#list").click(function() {
-            $(location).attr('href','/AtTicketProject/userqna.do');
+        	   	
+	        if(${index} == 1){
+	            $(location).attr('href','/AtTicketProject/userqna.do');
+	        }else {
+	        	$(location).attr('href','/AtTicketProject/userqnamylist.do');
+			}
+	        
         });
         // 삭제
         $("#delete").click(function() {
             // alert("삭제하시겠습니까?");
 
             if (confirm("삭제하시겠습니까?")) {
-                $(location).attr('href','user_qna.html');
-            } else {
-            }
+                $(location).attr('href','/AtTicketProject/userqnadeleteok.do?seq=' + ${dto.seq} );
+            } 
+            
 
         });
 
 
+ 
     </script>
 
 
