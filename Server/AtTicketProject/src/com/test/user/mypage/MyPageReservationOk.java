@@ -42,6 +42,7 @@ public class MyPageReservationOk extends HttpServlet {
 //		(int)Math.ceil((double)totalCount/pageSize);
 		int pageSize = 3;
 		int totalPage = (int)Math.ceil((double)dao.getTotalCountR(map)/pageSize);
+	
 		if(totalPage == 0) {
 			totalPage = 1;
 		}

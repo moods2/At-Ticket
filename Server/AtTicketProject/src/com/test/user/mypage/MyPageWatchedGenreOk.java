@@ -65,7 +65,7 @@ public class MyPageWatchedGenreOk extends HttpServlet {
 			obj.put("totalCountG", totalCountG);
 			arr.add(obj);
 		}
-		System.out.println("사이즈"+totalCountG);
+		
 		writer.print(arr);
 		writer.close();
 		

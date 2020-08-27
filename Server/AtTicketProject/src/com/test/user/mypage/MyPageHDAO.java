@@ -93,12 +93,19 @@ public class MyPageHDAO {
 		return 0;
 	}
 
-	public int getTotalCount(String cusseq) {
+	public int getTotalCount(HashMap<String, String> map) {
 		try {
-			String sql = "select count(*) as cnt from vwmyreservation where cusseq = ?";
+			/*
+			 * String sql = "select count(*) as cnt from vwmyreservation where cusseq = ?";
+			 * pstat = conn.prepareStatement(sql); pstat.setString(1, cusseq);
+			 */
+			String sql = "select count(*) as cnt from(select a.*, rownum as rnum from (select * from vwmyreservation where cusseq = ? and bookdate >= ? and bookdate <= ? order by bookseq desc) a) b where rnum >=? and rnum <=?";
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, cusseq);
-			
+			pstat.setString(1, map.get("cusseq"));
+			pstat.setString(2, map.get("from"));
+			pstat.setString(3, map.get("to"));
+			pstat.setString(4, map.get("begin"));
+			pstat.setString(5, map.get("end"));	
 			rs = pstat.executeQuery();
 			if(rs.next()) {
 				int cnt = rs.getInt("cnt");
@@ -316,13 +323,12 @@ public class MyPageHDAO {
 	public int getTotalCountR(HashMap<String, String> map) {
 		try {
 			
-			String sql = "select count(*) as cnt from(select a.*, rownum as rnum from (select * from vwmyreservation where cusseq = ? and bookdate >= ? and bookdate <= ? order by bookseq desc) a) b where rnum >=? and rnum <=?";
+			String sql = "select count(*) as cnt from(select a.*, rownum as rnum from (select * from vwmyreservation where cusseq = ? and bookdate >= ? and bookdate <= ? order by bookseq desc) a) b";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, map.get("cusseq"));
 			pstat.setString(2, map.get("from"));
 			pstat.setString(3, map.get("to"));
-			pstat.setString(4, map.get("begin"));
-			pstat.setString(5, map.get("end"));	
+			
 			/*
 			 * System.out.println(map.get("cusseq")); System.out.println(map.get("from"));
 			 * System.out.println(map.get("to")); System.out.println(map.get("begin"));

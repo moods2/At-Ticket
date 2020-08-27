@@ -19,6 +19,7 @@ public class UserTicketpage extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//여기서 좌석상황 쿠폰 등등 다 넘겨줘야된다.
+		//회차번호를 넣어줘야 되는거 아닌가?
 		
 		HttpSession session = req.getSession();
 		int userSeq = (int)session.getAttribute("userseq");//유저 seq
@@ -39,7 +40,7 @@ public class UserTicketpage extends HttpServlet{
 		
 		//오늘 날짜+1를 넘겨줄 것이다
 		Calendar minDate = Calendar.getInstance();
-		minDate.add(Calendar.DATE, 0);//날짜 하루뒤부터 예약이 가능함.
+		minDate.add(Calendar.DATE, 1);//날짜 하루뒤부터 예약이 가능함.
 		
 		String minDateInfo = minDate.get(Calendar.YEAR) + "-" + (minDate.get(Calendar.MONTH) + 1) + "-" + (minDate.get(Calendar.DATE));
 		

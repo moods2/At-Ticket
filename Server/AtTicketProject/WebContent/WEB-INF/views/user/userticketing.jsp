@@ -1707,8 +1707,8 @@
                 //여기가  달력을 클릭할때 생기는 이벤트.
                 onSelect: function(dateText) { 
                 	
-                	alert("asd");
-                	alert(dateText);//2020-03-08 이런식으로 보임
+                	//alert("asd");
+                	//alert(dateText);//2020-03-08 이런식으로 보임
                 	$("#inputTime").empty();
                 	/* $("#inputTime").append("<li>[1]회 19시 00분</li>"); */
                 	 $("#data").css("border","1px solid #FECA52");
@@ -1779,7 +1779,7 @@
             		
             		$(".timeRound").css("background-color","#FFF");//모든 회차 배경을 하얀색으로 돌리고 밑에서 색을 다시 돌린다.
             	
-    				alert($(this).attr("id"));
+    				//alert($(this).attr("id"));
     				$(this).css("background-color","#FECA52");
     				
     	             //$("#clock").css("background-color","#FECA52");

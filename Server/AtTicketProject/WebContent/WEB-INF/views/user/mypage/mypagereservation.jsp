@@ -239,7 +239,11 @@
 
 
     <script>
-    	
+    
+    $("#usermenu p:first-child").css("color","#4C7CCE");
+    $("#usermenu p:first-child").mouseout(function(){
+    	$("#usermenu p:first-child").css("color","#4C7CCE");
+    });	
     var begin = ${map.begin};
 	var end = ${map.end};
 	var totalPage= ${totalPage};

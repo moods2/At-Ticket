@@ -68,7 +68,6 @@ $(".usermenu").mouseout(function() {
 //유저메뉴 클릭시 이동
 $(".usermenu").click(function() {
     // console.log($(this).data("lo"));
-    alert();
     location.href = $(this).data("lo");
 });
 

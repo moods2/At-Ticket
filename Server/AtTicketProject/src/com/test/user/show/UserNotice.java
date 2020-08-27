@@ -25,6 +25,7 @@ public class UserNotice extends HttpServlet{
 		String search = req.getParameter("search");
 		String sort = req.getParameter("sort");
 		String page = req.getParameter("page");
+		String cusseq = String.valueOf(session.getAttribute("userseq"));
 		
 		//페이징 처리 관련 변수
 		int nowPage = 0; //현재 페이지 번호
@@ -62,7 +63,8 @@ public class UserNotice extends HttpServlet{
 		
 		totalCount = dao.getTotalCount(map);
 		totalPage = (int)Math.ceil((double)totalCount/pageSize);
-		
+		String tel = dao.getTel(cusseq);
+		req.setAttribute("tel", tel);
 		ArrayList<NoticeDTO> list = dao.list(map);
 		
 		for(NoticeDTO dto : list) {
