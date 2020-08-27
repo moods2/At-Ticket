@@ -137,13 +137,13 @@
                 <h1>할인쿠폰/예매권</h1>
                 <div id="line"></div>
                 <p><i class="glyphicon glyphicon-menu-right
-                    "></i><span>${username}</span>님이 가지고 계신 <span style="color: #7A98B4">할인쿠폰 번호 12자리</span>를 입력해 주세요.
+                    "></i><span>${username}</span>님이 가지고 계신 <span style="color: #7A98B4">할인쿠폰 번호</span>를 입력해 주세요.
                 </p>
                 
                 <form method="POST" action="/AtTicketProject/mypagecouponok.do" name="signup" id="signup">	
 	                <div id="coupon">
 	                   	공연 할인쿠폰 
-	                   <input type="text" id="coupontxt" placeholder="할인쿠폰 번호 12자리" name="couponseq">
+	                   <input type="text" id="coupontxt" placeholder="할인쿠폰 번호" name="couponseq">
 	                   <input type="submit" value="등록하기" class="btn btn-default" id="btncoupon">
 	                </div>
                 </form>
@@ -218,22 +218,33 @@
             }, 500);
         });
         
-/*         $("#btncoupon").click(function() {
-        	alert();
-        }); */
         
-    
-        $(document).ready(function() {
+        var couponSeq = [];
+        
+        
+         <c:forEach items="${seqAllGet}" var="dto">
+        	couponSeq.push("${dto.couponSeq}");
+		</c:forEach> 
+        
+         $(document).ready(function() {
+        	 
+        	 
             $('#signup').submit(function() {
                 if ($('#coupontxt').val() == '') {
                     alert('쿠폰번호를 입력해 주세요.');
                     return false;
-                } else if ($('#coupontxt').val() == ${dto.couponSeq}) {
+                } 
+                 else if (couponSeq.indexOf($('#coupontxt').val()) != "-1") {
                 	alert('이미 등록된 쿠폰번호 입니다.');
                     return false;
                 }
             }); 
-        }); 
+        });   
+        
+
+        
+        //alert(couponSeq.indexOf($('#coupontxt').val()));
+
         
 
 

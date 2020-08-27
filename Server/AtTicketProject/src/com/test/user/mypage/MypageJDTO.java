@@ -48,6 +48,7 @@ public class MypageJDTO {
 	private String velltitle;
 	private String vellopenDate;
 	private String velldate;
+	private String noticeseq;
 	
 	
 	public String getVellseq() {
@@ -241,6 +242,12 @@ public class MypageJDTO {
 	}
 	public void setShowTheater(String showTheater) {
 		this.showTheater = showTheater;
+	}
+	public String getNoticeseq() {
+		return noticeseq;
+	}
+	public void setNoticeseq(String noticeseq) {
+		this.noticeseq = noticeseq;
 	}
 	
 

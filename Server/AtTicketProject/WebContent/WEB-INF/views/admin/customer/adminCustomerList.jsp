@@ -17,6 +17,18 @@
             width: 1500px;
             border-bottom: 1px dashed black;
         }
+        
+        #left {
+           position: absolute;
+           left: 0px;
+           top: 0px;
+           width: 250px;
+           height: 900px;
+           /* border: 1px solid black; */
+           background-color: #444;
+           text-align: center;
+           z-index: 10;
+       }
 
         h1 {
             font-weight: bold;

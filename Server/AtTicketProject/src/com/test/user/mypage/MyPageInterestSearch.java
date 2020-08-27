@@ -97,7 +97,12 @@ public class MyPageInterestSearch extends HttpServlet{
 					pagebar += "<li>";
 				} else {
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?page=%d\" aria-label=\"Previous\">", n -1 );
+					/* if(index.equals("3")) { */
+						pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\" aria-label=\"Previous\">",index,search, n -1);
+				/*	}else {			
+						pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\">%d</a>",index,search, n,n);
+					}
+					pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?page=%d\" aria-label=\"Previous\">", n -1 );*/
 					pagebar += "<span aria-hidden=\"true\">&laquo;</span>";
 					pagebar += "</a>";
 					pagebar += "<li>";
@@ -134,7 +139,18 @@ public class MyPageInterestSearch extends HttpServlet{
 					pagebar += "<li>";
 				} else {		
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?page=%d\" aria-label=\"Next\">", n);
+					/*
+					 * pagebar += String.
+					 * format("<a href=\"/AtTicketProject/mypageinterestsearch.do?page=%d\" aria-label=\"Next\">"
+					 * , n);
+					 */
+					if(index.equals("3")) {
+//						pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\">%d</a>",index,search, n,n);
+						pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\" aria-label=\"Next\">",index,search, n);
+					}else {			
+//						pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\">%d</a>",index,search, n,n);
+						pagebar += String.format("<a href=\"/AtTicketProject/mypageinterestsearch.do?index=%s&search=%s&page=%d\" aria-label=\"Next\">",index,search, n);
+					}
 					pagebar += "<span aria-hidden=\"true\">&raquo;</span>";
 					pagebar += "</a>";
 					pagebar += "<li>";

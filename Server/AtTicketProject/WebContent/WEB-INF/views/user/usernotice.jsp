@@ -32,8 +32,7 @@
             }
             #top {
                 /* border: 1px solid black; */
-                min-width: 1600px;
-                height: 650px;
+                min-width: 1600px;               
                 margin: 0 auto;  
             }
             #middle {
@@ -373,7 +372,71 @@
 			a {
     			color: black;
 			}
-			
+			#tagsearch {
+    border: 1px solid #111;
+    width: 170px;
+    height: 205px;
+    position: relative;
+    float: right;
+    background-color: white;
+    margin-right: 60px;
+    /* text-align: center; */
+
+    display: none;
+}
+#tagsearch::after {
+    content: "";
+    display: none;
+    clear: both;
+}
+#tag {
+    width: 168px;
+    /* background-color: rgb(253, 236, 236); */
+    background-color: #f6f6f6;
+    height: 25px;
+}
+#tag > span {
+    color: #222;
+    font-size: 14px;
+    width: 50px;
+    height: 30px;
+    font-weight: normal;
+    font-family: "IBMPlexSansKR-Regular";
+    position: relative;
+    left: -20px;
+}
+
+#tag > label {
+    color: #111;
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 100;
+}
+#tagsearch > a {
+    display: block;
+    color: #555;
+    font-size: 14px;
+    font-family: "IBMPlexSansKR-Regular";
+    font-weight: normal;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+#tagsearch > span {
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+    font-family: "IBMPlexSansKR-Regular";
+
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.event-main-list {
+	margin-left:220px;
+}
         </style>
     </head>
     <body>
@@ -474,10 +537,10 @@
                 </div>
                 <!-- 검색창 -->
                 <div class="searchbox">
-                    <span  style="position: relative; top: 50px; right: 380px;" class="noticemenu" onclick="location.href='/AtTicketProject/show/usernotice.do?page=${page}&search=${search}&sort=regdate';">등록순</span>
-                    <span  style="position: relative; top: 50px; right: 380px;" class="noticemenu" onclick="location.href='/AtTicketProject/show/usernotice.do?page=${page}&search=${search}&sort=opendate';">오픈일순</span>
-                    <span  style="position: relative; top: 50px; right: 380px;" class="noticemenu" onclick="location.href='/AtTicketProject/show/usernotice.do?page=${page}&search=${search}&sort=nview';">조회순</span>
-                   	<form method="GET" action="/AtTicketProject/show/usernotice.do" id="searchForm" autocomplete="off">
+                    <span  style="position: relative; top: 50px; right: 380px;" class="noticemenu" onclick="location.href='/AtTicketProject/usernotice.do?page=${page}&search=${search}&sort=regdate';">등록순</span>
+                    <span  style="position: relative; top: 50px; right: 380px;" class="noticemenu" onclick="location.href='/AtTicketProject/usernotice.do?page=${page}&search=${search}&sort=opendate';">오픈일순</span>
+                    <span  style="position: relative; top: 50px; right: 380px;" class="noticemenu" onclick="location.href='/AtTicketProject/usernotice.do?page=${page}&search=${search}&sort=nview';">조회순</span>
+                   	<form method="GET" action="/AtTicketProject/usernotice.do" id="searchForm" autocomplete="off">
                     <div class="search">
                         <div class="form-group">
                             <div class="input-group">
@@ -506,7 +569,7 @@
                         <tr>
                         	<td>${dto.seq}</td>
                             <td>${dto.nindex}</td>
-                            <td><a href="/AtTicketProject/show/usernoticetemp.do?noticeseq=${dto.seq}&page=${page}&search=${search}">${dto.title}</td>     
+                            <td><a href="/AtTicketProject/usernoticetemp.do?noticeseq=${dto.seq}&page=${page}&search=${search}">${dto.title}</a></td>     
                             <td>${dto.opendate}</td>
                             <td>${dto.nview}</td>
                         </tr>

@@ -603,6 +603,7 @@ public class MyPageJDAO {
 				dto.setVelltitle(rs.getString("velltitle"));
 				dto.setVellopenDate(rs.getString("vellopenDate"));
 				dto.setVelldate(rs.getString("velldate"));
+				dto.setNoticeseq(rs.getString("noticeseq"));
 				
 				
 				list.add(dto);
@@ -665,6 +666,40 @@ public class MyPageJDAO {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	public ArrayList<MypageJDTO> seqAllGet(String userseq) {
+		try {
+
+			String sql = "";
+			
+
+				sql = String.format("select couponseq from vwcuscoupon where userseq = %s", userseq);
+
+
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+
+			
+			ArrayList<MypageJDTO> seqAllGet = new ArrayList<MypageJDTO>();
+			
+			while (rs.next()) {
+				MypageJDTO dto = new MypageJDTO();
+				
+				dto.setCouponSeq(rs.getString("couponSeq"));
+				
+				seqAllGet.add(dto);
+			}
+			
+			return seqAllGet;
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("MypageJDTO.seqAllGet()");
+			
+		}
+		return null;
 	}
 
 

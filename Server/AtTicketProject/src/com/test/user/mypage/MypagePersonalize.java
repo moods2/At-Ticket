@@ -21,6 +21,7 @@ public class MypagePersonalize extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		String userseq = String.valueOf( session.getAttribute("userseq"));
+		String usertel = String.valueOf( session.getAttribute("usertel"));
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
@@ -188,6 +189,10 @@ public class MypagePersonalize extends HttpServlet {
 					dto.setVellopenDate(vellopenDate);
 					String velldate = dto.getVelldate();
 					dto.setVelldate(velldate);
+					String noticeseq = dto.getNoticeseq();
+					dto.setNoticeseq(noticeseq);
+					
+					System.out.println(dto.getNoticeseq());
 					
 				}
 				
@@ -264,6 +269,7 @@ public class MypagePersonalize extends HttpServlet {
 		
 		
 		req.setAttribute("userseq", userseq);
+		req.setAttribute("usertel", usertel);
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/mypage/mypagepersonalize.jsp");

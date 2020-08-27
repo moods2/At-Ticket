@@ -62,7 +62,7 @@ public class UserQnaMylist extends HttpServlet{
 		//QnaDAO dao = new QnaDAO();
 		UserQnaDAO dao = new UserQnaDAO();
 		
-		totalCount = dao.getTotalCount(map);
+		totalCount = dao.getMyQnaTotalCount(map);
 		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
@@ -114,7 +114,7 @@ public class UserQnaMylist extends HttpServlet{
 					pagebar += "<li>";
 				} else {
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/userqna.do?page=%d\" aria-label=\"Previous\">", n -1 );
+					pagebar += String.format("<a href=\"/AtTicketProject/userqnamylist.do?page=%d\" aria-label=\"Previous\">", n -1 );
 					pagebar += "<span aria-hidden=\"true\">&laquo;</span>";
 					pagebar += "</a>";
 					pagebar += "<li>";
@@ -128,7 +128,7 @@ public class UserQnaMylist extends HttpServlet{
 				pagebar += "</li>";
 				}else {
 				pagebar += "<li>";
-				pagebar += String.format("<a href=\"/AtTicketProject/userqna.do?page=%d\">%d</a>", n,n);
+				pagebar += String.format("<a href=\"/AtTicketProject/userqnamylist.do?page=%d\">%d</a>", n,n);
 				pagebar += "</li>";
 				}
 				loop++;
@@ -144,7 +144,7 @@ public class UserQnaMylist extends HttpServlet{
 					pagebar += "<li>";
 				} else {		
 					pagebar += "<li>";
-					pagebar += String.format("<a href=\"/AtTicketProject/userqna.do?page=%d\" aria-label=\"Next\">", n);
+					pagebar += String.format("<a href=\"/AtTicketProject/userqnamylist.do?page=%d\" aria-label=\"Next\">", n);
 					pagebar += "<span aria-hidden=\"true\">&raquo;</span>";
 					pagebar += "</a>";
 					pagebar += "<li>";

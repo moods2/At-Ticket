@@ -207,5 +207,45 @@ public class UserQnaDAO {
 		return 0;
 	}
 
+	public int getMyQnaTotalCount(HashMap<String, String> map) {
+		try {
+			
+			String where = "";
+			
+			if (map.get("search") != null) {
+				//이름 & 제목 & 내용 - 포괄 검색
+				where = String.format("where (name like '%%%s%%' or subject like '%%%s%%' or content like '%%%s%%')", map.get("search"), map.get("search"), map.get("search"));
+			}
+			
+			String sql = "";
+			String sort = "";
+			
+			
+			if (map.get("sort") != null) {
+				
+				sort = String.format("where tag = '%s'", map.get("sort"));
+				sql = String.format("select count(*) as cnt from tblqna %s %s and cusseq = %s", where, sort,map.get("userseq"));
+			}
+			
+			if (map.get("sort") == null) {
+				sql = String.format("select count(*) as cnt from tblqna %s and cusseq = %s", where ,map.get("userseq"));
+			}
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			//System.out.println("==="+sql);
+			
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getTotalCount");
+		}
+		return 0;
+	}
+
 
 }

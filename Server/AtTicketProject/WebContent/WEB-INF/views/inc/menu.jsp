@@ -51,7 +51,7 @@
             </div>
             <h3>이벤트</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="event.html"><span>▶</span> 이벤트 조회</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/event/adminevent.do"><span>▶</span> 이벤트 조회</a></div>
             <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/coupon/admincoupon.do"><span>▶</span> 쿠폰 조회</a></div>
             </div>
             <h3>1:1 문의</h3>
@@ -68,7 +68,7 @@
             </div>
             <h3>고객 정보</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminCustomer.html"><span>▶</span> 고객 정보 조회</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/customer/admincustomerlist.do"><span>▶</span> 고객 정보 조회</a></div>
             </div>
             <h3>업무 게시판</h3>
             <div>
@@ -86,6 +86,10 @@
                 <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannertheater.do"><span>▶</span>연극 배너 수정</a></div>
                 <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerclassic.do"><span>▶</span>클래식 배너 수정</a></div>
                 <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/admin/adminbannerdisplay.do"><span>▶</span>전시 배너 수정</a></div>
+            </div>
+            <h3>작업 히스토리</h3>
+            <div>
+                <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/history.do"><span>▶</span> 작업 히스토리</a></div>
             </div> 
         </div>
         

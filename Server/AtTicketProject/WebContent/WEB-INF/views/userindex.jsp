@@ -389,10 +389,10 @@
             
             //로그아웃 java 로 이동
             $("#logout").click(function() {
-                location.href = "/AtTicketProject/userlogout.do";
+                location.href = "/AtTicketProject/userlogout.do";            
+            //로그인 java 로 이동
             });
             
-            //로그인 java 로 이동
             $("#slogin").click(function() {
                 location.href = "/AtTicketProject/userlogin.do";
             });

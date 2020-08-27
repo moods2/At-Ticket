@@ -59,6 +59,15 @@ public class MypageCoupon extends HttpServlet {
 		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
+		//쿠폰번호 전체
+		ArrayList<MypageJDTO> seqAllGet = dao.seqAllGet(userseq);
+		
+		for (MypageJDTO dto : seqAllGet) {
+			String seqAll = dto.getCouponSeq();
+			dto.setCouponSeq(seqAll);
+		}
+		
+		
 		ArrayList<MypageJDTO> list = dao.couponList(map);
 		
 		for (MypageJDTO dto : list) {
@@ -135,6 +144,7 @@ public class MypageCoupon extends HttpServlet {
 		
 		//리스트 목록
 		req.setAttribute("list", list);
+		req.setAttribute("seqAllGet", seqAllGet);
 		//페이징바
 		req.setAttribute("page", page);
 		req.setAttribute("totalCount", totalCount);

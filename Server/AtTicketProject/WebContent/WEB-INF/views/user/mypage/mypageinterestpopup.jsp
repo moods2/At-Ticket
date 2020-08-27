@@ -200,6 +200,7 @@
             <input type="text" name="index" value="${index}" style="display: none;">
             <input type="text" id="txtsearch" name="search" value="${search}">
             <button class="btn btn-default btn-sm" id="btnsearch">검색</button>
+            <button class="btn btn-default btn-sm" type="button" style="width: 120px; height: 25px; padding-top: 2px;" onclick="location.href='/AtTicketProject/mypageinterestpopup.do'">AT's Pick 이동</button>
            <%--  <div id ="index">${index }</div> --%>
         </div>
         </form>

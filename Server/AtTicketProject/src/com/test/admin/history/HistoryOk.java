@@ -16,10 +16,11 @@ public class HistoryOk extends HttpServlet{
 		
 		req.setCharacterEncoding("UTF-8");
 		String content = req.getParameter("content");
-		if(req.getParameter("empty") == 0) {
-			//insert
-			
-		}
+		/*
+		 * if(req.getParameter("empty") == 0) { //insert
+		 * 
+		 * }
+		 */
 		
 		HistoryDAO dao = new HistoryDAO();
 		dao.edit(content);

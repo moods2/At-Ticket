@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/show/useralarm.do")
+@WebServlet("/useralarm.do")
 public class UserAlarm extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class UserAlarm extends HttpServlet {
 		System.out.println(result);
 		if(result == 1) {
 			//글쓰기 성공 -> 게시판 목록 보기로 이동 
-			resp.sendRedirect(String.format("/AtTicketProject/show/usernoticetemp.do?noticeseq=%s&page=%s&search=%s&showseq=%s",noticeseq,page,search,showseq));
+			resp.sendRedirect(String.format("/AtTicketProject/usernoticetemp.do?noticeseq=%s&page=%s&search=%s&showseq=%s",noticeseq,page,search,showseq));
 		} else {
 			//글쓰기 실패 
 			PrintWriter writer = resp.getWriter();
