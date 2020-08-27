@@ -981,8 +981,14 @@
                     <option value="option1">예매가능좌석</option>
                     <option>잔여석 정보 제공 안 함</option>
                 </select>
+                
+        
+  
                 <input type="button" value="예매하기" id="mTTicketing">
+   
+
             </div>
+            
         </div>
         <!-------------------------------- 화면 상단부 -------------------------------->
         <%@include file="/WEB-INF/views/inc/usertopbar.jsp" %>
@@ -1277,8 +1283,14 @@
                     </div>
                 </div>
             </div>
-            <input type="button" value="예매하기" id="ticketing">
-
+            
+            <c:if test = "${not empty userseq}">
+            	<input type="button" value="예매하기" id="ticketing">
+			</c:if>
+			
+			<c:if test = "${empty userseq}">
+            	<input type="button" value="예매하기" id="ticketing" style = "visibility : hidden;">
+			</c:if>
             <div id="tabs" style="text-align: center;">
                 <!-- <ul>
                     <li><a href="#tab1">상세정보</a></li>
