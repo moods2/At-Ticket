@@ -39,6 +39,9 @@
             class="glyphicon glyphicon-search"
             style="font-size: 14px; cursor: pointer;"
         ></label>
+        <c:if test = "${empty userid}">
+        <span class="menubar" id="slogin">로그인</span>
+        </c:if>
         <c:if test = "${!empty userid}">
         <div
             class="glyphicon glyphicon-user"
@@ -49,6 +52,7 @@
                 margin: 0 10px;
             "
         ></div>
+        <span class="menubar" id="slogout">로그아웃</span>
         </c:if>
     </div>
 

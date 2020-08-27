@@ -29,15 +29,24 @@ public class UserNoticeTemp extends HttpServlet{
 		String search = req.getParameter("search");
 		String sort = req.getParameter("sort");
 		String noticeseq = req.getParameter("noticeseq");
+		String cusseq = String.valueOf(session.getAttribute("userseq"));
+		String tel = String.valueOf(session.getAttribute("usertel"));
 		
 		req.setAttribute("noticeseq", noticeseq);
 		req.setAttribute("page", page);
 		req.setAttribute("search", search);
 		req.setAttribute("sort", sort);
+		req.setAttribute("cusseq", cusseq);
+		req.setAttribute("tel", tel);
 		
 		NoticeDAO dao = new NoticeDAO();
 		
 		NoticeDTO dto = dao.getNotice(noticeseq);
+		String showseq = dto.getSeq();
+		String showtitle = dto.getTitle();
+		
+		req.setAttribute("showseq", showseq);
+		req.setAttribute("showtitle", showtitle);
 		
 		if(session.getAttribute("read") == null || (boolean)session.getAttribute("read")==false) {
 			//2.3 조회수 증가 

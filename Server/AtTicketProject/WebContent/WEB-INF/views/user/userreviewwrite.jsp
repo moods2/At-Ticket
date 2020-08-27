@@ -438,6 +438,7 @@
             <div class="banner2">
             <img style="margin-bottom: 40px; width: 1200px;" src="./images/banner2.png" alt="">
             </div>
+            
         </form>
 
         
@@ -453,7 +454,7 @@
                 <img src="./images/title2.png" style="transform: translate(0, 40px);">
             </div>
         </div>
-    </div>
+
 
 
 

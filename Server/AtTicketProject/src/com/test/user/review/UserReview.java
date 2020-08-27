@@ -27,22 +27,22 @@ public class UserReview extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		
-		System.out.println("user : "+ (int)session.getAttribute("userseq"));
+//		System.out.println("user : "+ (int)session.getAttribute("userseq"));
 		
-		int userseq = (int)session.getAttribute("userseq");
+//		int userseq = (int)session.getAttribute("userseq");
 		String search = req.getParameter("search");
 		String sort = req.getParameter("sort");
 		
 		
 		ReviewDAO dao = new ReviewDAO();
 		ReviewDTO dto = new ReviewDTO();
-		dto.setCseq(userseq);
+//		dto.setCseq(userseq);
 		
 		ArrayList<ReviewDTO> list = new ArrayList<ReviewDTO>();
 		HashMap<String,String> map = new HashMap<String, String>();
 		
 		if (sort == null || sort == "") {
-			sort = "seq asc"; // 기본값
+			sort = "seq desc"; // 기본값
 		}else if(sort.equals("rview")) {
 			sort = "rview desc";
 		}else if(sort.equals("heart")) {
@@ -88,6 +88,9 @@ public class UserReview extends HttpServlet{
 
 		totalPage = (int) Math.ceil((double) totalCount / pageSize);
 		list = dao.getList(map);
+		
+		//새로고침 조회수 증가 방지
+		session.setAttribute("read", false);
 
 		// 페이지바 제작
 		loop = 1;
@@ -163,7 +166,7 @@ public class UserReview extends HttpServlet{
 		
 		req.setAttribute("pagebar", pagebar);
 		
-		req.setAttribute("userseq", userseq);
+//		req.setAttribute("userseq", userseq);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userreview.jsp");
 		dispatcher.forward(req, resp);
 		

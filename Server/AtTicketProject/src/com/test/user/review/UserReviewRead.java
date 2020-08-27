@@ -17,11 +17,19 @@ public class UserReviewRead extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		
+
 		String rseq = req.getParameter("rseq");
 		
 		ReviewDAO dao = new ReviewDAO();
 		ReviewDTO dto = dao.getReview(rseq);
+		
+		System.out.println("read : " + session.getAttribute("read"));
+		System.out.println((boolean)session.getAttribute("read"));
+		
+		if(session.getAttribute("read") == null || (boolean)session.getAttribute("read") == false) {
+			dao.updateReadcount(rseq); 
+			session.setAttribute("read", true);
+		}
 		
 		req.setAttribute("dto", dto);
 		
