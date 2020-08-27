@@ -27,7 +27,6 @@
         #top {
             /* border: 1px solid black; */
             min-width: 1600px;
-            height: 650px;
             margin: 0 auto;
         }
         #middle {
@@ -246,7 +245,69 @@
 		    vertical-align: baseline;
 		    font-family: 'NanumBarunGothic', '���� ����', 'Malgun Gothic', sans-serif;
       	}
+      	#tagsearch {
+    border: 1px solid #111;
+    width: 170px;
+    height: 205px;
+    position: relative;
+    float: right;
+    background-color: white;
+    margin-right: 60px;
+    /* text-align: center; */
+
+    display: none;
+}
+#tagsearch::after {
+    content: "";
+    display: none;
+    clear: both;
+}
+#tag {
+    width: 168px;
+    /* background-color: rgb(253, 236, 236); */
+    background-color: #f6f6f6;
+    height: 25px;
+}
+#tag > span {
+    color: #222;
+    font-size: 14px;
+    width: 50px;
+    height: 30px;
+    font-weight: normal;
+    font-family: "IBMPlexSansKR-Regular";
+    position: relative;
+    left: -20px;
+}
+
+#tag > label {
+    color: #111;
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 100;
+}
+#tagsearch > a {
+    display: block;
+    color: #555;
+    font-size: 14px;
+    font-family: "IBMPlexSansKR-Regular";
+    font-weight: normal;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+#tagsearch > span {
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+    font-family: "IBMPlexSansKR-Regular";
+
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+}
     </style>
+      	
 </head>
 <body>
     
@@ -264,6 +325,7 @@
             </div>
             <hr />
 <!-------------------------------- 내용부분 -------------------------------->
+ 		
         <h2 style="text-align: center; margin-top: 200px; margin-bottom: 50px; font-size: 4em; font-weight: bold;">공지사항</h2>
         <div class="noticebar">
             <div style="display: inline-block; width:90px; border: 1px solid orange; color: orange; text-align: center;">${dto.nindex}</div>
@@ -279,7 +341,7 @@
                 <span style="padding-left: 30px; font-weight: bold; font-size: 17px;">${dto.opendate}(${dto.dy})</span>                
                 <div id="openAlarm" style=" width: 236px; height: 46px; border: 3px solid orange; margin-top: 80px; position: relative; left: -30px; padding-top: 10px; text-align: center; background-color: white; color: orange; font-weight: bold; font-size: 18px;">티켓오픈 알림<span class="glyphicon glyphicon-bell"></span></div>
 		        
-		        <form id="form1" method = "POST" action="/AtTicketProject/show/useralarm.do?noticeseq=${noticeseq}&page=${page}&search=${search}&showseq=${showseq}">
+		        <form id="form1" method = "POST" action="/AtTicketProject/useralarm.do?noticeseq=${noticeseq}&page=${page}&search=${search}&showseq=${showseq}">
 		     
 		        <div role="dialog" id="dialog1" style="border:0px;">
 		        	<p id = "alarm">티켓오픈 알람 신청</p>
@@ -567,7 +629,7 @@ Special 2. 지정석 20% <br>
       
 
        $(".golist").click(function(){
-    	  	location.href="/AtTicketProject/show/usernotice.do?page=${page}&search=${search}&sort=${sort}"; 
+    	  	location.href="/AtTicketProject/usernotice.do?page=${page}&search=${search}&sort=${sort}"; 
        });
 
         

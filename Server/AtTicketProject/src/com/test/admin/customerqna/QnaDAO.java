@@ -285,4 +285,23 @@ public class QnaDAO {
 		return 0;
 	}
 
+	public void updateReadcount(String userseq) {
+		
+		try {
+
+			String sql = "update tblQna set qview = qview + 1 where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, userseq);
+			
+			pstat.executeUpdate();
+			
+
+		} catch (Exception e) {
+			System.out.println("updateReadcount()");
+			e.printStackTrace();
+		}
+		
+	}
+
 }

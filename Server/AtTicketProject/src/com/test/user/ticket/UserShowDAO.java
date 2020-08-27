@@ -604,6 +604,86 @@ public class UserShowDAO {
 	}
 
 	
+	//UserShowFinal 서블릿
+	public int insertBook(BookDTO dto) {
+		
+		try {
+			int result = 0;
+			
+			String sql = "insert into tblBooking (seq, bookdate,bdate,state,cnt,roundSeq,delflag) values (bookingSeq.nextVal,sysdate,to_date(?,'yyyy.mm.dd'),'완료',?,?,default)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getInputDate());
+			pstat.setString(2, dto.getTicketNum());//문제
+			pstat.setString(3, dto.getShowroundSeq());
+			
+			result += pstat.executeUpdate();
+			
+			//예매 번호 가져오기
+			sql = "select max(seq) as seq from tblBooking";
+			stat = conn.createStatement();
+			stat.execute(sql);
+			rs = stat.executeQuery(sql);
+			String bookseq = "";
+			if(rs.next()) {
+				bookseq = rs.getString("seq");
+			}
+			
+			//결제 테이블 insert
+			sql = "insert into tblPay (Seq,opseq, bookseq, cusseq, delflag) values (paySeq.nextVal,3,?,?,default)";
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, bookseq);
+			pstat.setInt(2, dto.getCusseq());
+			
+			result += pstat.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	//회원이 가지고 있는 쿠폰을 없애준다.
+	public void removeUserCoup(String couponUserSeq) {
+		try {
+			
+			String sql = "update tblCusCoupon set delflag = 1 where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, couponUserSeq);
+			
+			rs = pstat.executeQuery();//쿼리를 날려준다
+			
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	//유저가 쓰고 남은 egg money 를 넣어줄것이다.
+	public void removeEggMoney(int cseq, int remainEgg) {
+		try {
+			
+			String sql = "update tblCustomer set egg = ? where seq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setInt(1, remainEgg);
+			pstat.setInt(2, cseq);
+			
+			rs = pstat.executeQuery();
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	
 	
 
 	

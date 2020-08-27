@@ -140,6 +140,36 @@
             background-color: #EEE;
             width: 150px;
         }
+        
+        
+        
+        /* ================================== */
+        .mylist > ul > .myShowInterest {
+        	width: 250px;
+            padding: 5px 0;
+            text-align: left;
+            margin-top: 10px;
+            float: left;
+            margin-left: 20px;
+            border-right: 1px solid #eee;
+        }
+        .mylist > ul > .myShowInterest:first-child{
+            margin-left: -10px;
+        }
+        .mylist > ul > .myShowInterest:last-child{
+            border-right: 0px;
+        }
+        .myShowInterest > img {
+            width: 80px;
+            height: 100px;
+            float: left;
+            margin: 0 10px;
+        }
+        .myShowInterest > p {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #444;
+        }
 
     </style>
 </head>
@@ -215,7 +245,7 @@
                     <p style="font-size: 11px; float: right; margin-top: 5px;">Egg포인트는 공연 관람일 혹은 후기 작성일 익일 지급됩니다.</p>
                 </div>
                 <div class="mycount">
-                    <p><i class="glyphicon glyphicon-ok-sign"></i>나의 관심 공연<span>'나의 관심 공연'이 <span>0</span>개 있습니다.</span></p>
+                    <p><i class="glyphicon glyphicon-ok-sign"></i>나의 관심 공연<span>'나의 관심 공연'이 <span>${totalCount }</span>개 있습니다.</span></p>
                     <div class="mylist">
                     
                         <ul>
@@ -230,10 +260,18 @@
                                 </a>
                             </li> -->
                             
-                            <div>
-                                <p>'나의 관심 공연'으로 담은 공연이 없습니다.</p>
-                                <button class="btn btn-default btn-xs" style="outline: none; margin-top: -5px;" id="add">관심 공연 담기<span>+</span></button>
-                            </div>
+                            	<c:if test="${list.size() == 0}">
+                                	<p>'나의 관심 공연'으로 담은 공연이 없습니다.</p>
+                                	<button class="btn btn-default btn-xs" style="outline: none; margin-top: -5px;" id="add">관심 공연 담기<span>+</span></button>
+                                </c:if>
+                            	<c:forEach items="${list}" var="dto">
+	                                <div class="myShowInterest">
+	                                <img src="./images/${dto.myShowPoster}">
+	                                <strong>${dto.myShowTitle }</strong>
+	                                <p>${dto.myShowstart } ~ ${dto.myShowend }<br>
+	                                ${dto.myShowTheater}</p>
+	                                </div>
+                        		</c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -243,7 +281,7 @@
                         <ul>
                             <div>
                                 <p>'나의 관람 공연'이 없습니다.</p>
-                            </div>
+                            </div>                             
                         </ul>
                     </div>
                 </div>
@@ -253,11 +291,31 @@
                         <tbody>
                             <tr>
                                 <th>맞춤알람 공연</th>
-                                <td>최근 업데이트 소식이 없습니다.</td>
+                                <c:if test="${list1.size() == 0}">
+                                	<td>최근 업데이트 소식이 없습니다.</td>
+                                </c:if>
+                                <td>
+	                            	<p>
+	                                <strong>${list1.get(0).myShowTitle}</strong> (
+	                                ${list1.get(0).myShowstart } ~ ${list1.get(0).myShowend }
+	                                ${list1.get(0).myShowTheater} )
+	                                <button class="btn btn btn-default" style="padding: 2px 12px; margin-left: 10px;" onclick="location.href='/AtTicketProject/usertickekting.do?seq=${list1.get(0).myShowseq}'">예매하기</button>
+	                                </p>
+                                </td>
                             </tr>
                             <tr>
                                 <th>티켓오픈 알람</th>
-                                <td>최근 업데이트 소식이 없습니다.</td>
+                                <c:if test="${list2.size() == 0}">
+                                	<td>최근 업데이트 소식이 없습니다.</td>
+                                </c:if>
+                                <td>
+	                            	<p>
+	                                <strong>${list2.get(0).velltitle}</strong> (
+						                                티켓 오픈 : ${list2.get(0).vellopenDate } / 
+						                                알람 일시 : ${list2.get(0).velldate} )
+						              <button class="btn btn btn-default" style="padding: 2px 12px; margin-left: 10px;" onclick="location.href='/AtTicketProject/show/usernoticetemp.do?noticeseq='+ ${list2.get(0).noticeseq }+'&page=&search='">상세정보</button>
+	                                </p>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

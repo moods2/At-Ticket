@@ -40,7 +40,7 @@ public class MyPageHDAO {
 	public ArrayList<MyReDTO> getlistB(HashMap<String, String> map) {
 		
 		try {
-			String sql = "select b.* from(select a.*, rownum as rnum from (select * from vwmyreservation where cusseq = ? and bookdate >= ? and bookdate <= ? order by bookseq desc) a) b where rnum >=? and rnum <=?";
+			String sql = "select b.* from(select a.*, rownum as rnum from (select * from vwmyreservation where cusseq = ? and bookdate >= ? and bookdate <= ? order by bookdate desc) a) b where rnum >=? and rnum <=?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, map.get("cusseq"));
 			pstat.setString(2, map.get("from"));

@@ -40,7 +40,7 @@
             style="font-size: 14px; cursor: pointer;"
         ></label>
         <c:if test = "${empty userid}">
-        <span class="menubar" id="slogin">로그인</span>
+        <span class="menubar" id="slogin" data-lo="/AtTicketProject/userlogin.do">로그인</span>
         </c:if>
         <c:if test = "${!empty userid}">
         <div
@@ -52,7 +52,7 @@
                 margin: 0 10px;
             "
         ></div>
-        <span class="menubar" id="slogout">로그아웃</span>
+        <span class="menubar" id="slogout" data-lo="/AtTicketProject/userlogout.do">로그아웃</span>
         </c:if>
     </div>
 
@@ -105,5 +105,6 @@ $("#tagremove").click(function () {
 $("#mypage").click(function () {
     location.href = "/AtTicketProject/usermypage.do";
 });
+ 
 
 </script>

@@ -169,7 +169,10 @@
                         </table>
                     </div>
                 </div>
-            	<div style="margin:5px 400px;width:100px;"><button id = "btnMore" class = "btn btn-default btn-sm" type = "button">더 보기</button></div>
+                <div style="margin:5px 370px;width:300px;">
+	                <button style="float:left;display:inline-block;margin-right:5px;" id = "btnBefore" class = "btn btn-default btn-sm" type = "button">이전</button>
+	            	<button style="float:left;" id = "btnMore" class = "btn btn-default btn-sm" type = "button">더 보기</button>
+           		</div>
             </div>
             <!-- 챗봇 : 단비봇 -->
             <%@include file="/WEB-INF/views/inc/userchat.jsp" %>
@@ -304,6 +307,59 @@
 			end += 3;  */
 			
 		});
+		
+		$("#btnBefore").click(function() {
+			
+	    	var from = $("#from").val();
+	    	var to = $("#to").val();
+	    	var showtitle = $("#nametxt").val();
+	    	begin-=3;
+	    	end-=3;
+			$.ajax({
+				type: "GET",
+				url: "/AtTicketProject/mypagewatchedgenreok.do",
+				data: "begin=" + begin + "&end=" + end + "&from=" + from + "&to=" + to + "&genre=" + genre,
+				dataType: "json",
+				success: function(result) {
+					
+					if (result.length == 0) {
+						$("#btnBefore").attr("disabled",true);
+						return;
+					}
+					
+					//alert(result.length);
+					$("tbody").empty();
+					$(result).each(function(index, item) {
+						//게시물 1개
+						var temp = "";
+						temp += "<tr>";
+						temp += "<th>공연 이미지</th>";
+						temp += "<th>내용</th>";
+						temp += "</tr>";
+						temp += "<tr>";
+						temp += "<td><img style='height:200px;margin-left:100px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+						temp += "<td style='text-align:center;line-height:2em;vertical-align:middle;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+						temp += "<b>관람일:</b> "+item.bdate+"<br>";
+						temp += "<b>예매번호:</b> " + item.bookseq +"<br>"
+						temp += "<b>주소:</b> " + item.showaddr + "</td>";
+						temp += "</tr>";
+						
+						$("table > tbody").append(temp);
+						$("#totalcount").text(item.totalCountG);
+					});
+					
+				},
+				error: function(a,b,c) {
+					$("#btnBefore").attr("disabled",true);
+					console.log(a,b,c);
+				}
+				
+			}); //ajax
+			
+			/* begin += 3;
+			end += 3;  */
+			
+		});
 	    
 	});
     
@@ -407,6 +463,58 @@
 			 */
 		});
 		
+		$("#btnBefore").click(function() {
+			
+	    	var from = $("#from").val();
+	    	var to = $("#to").val();
+	    	var showtitle = $("#nametxt").val();
+	    	begin-=3;
+	    	end-=3;
+			//서버에게 그 다음 10개 게시물을 주세요~ 요청
+			$.ajax({
+				type: "GET",
+				url: "/AtTicketProject/mypagewatchedtitleok.do",
+				data: "begin=" + begin + "&end=" + end + "&showtitle=" + showtitle,
+				dataType: "json",
+				success: function(result) {
+					
+					if (result.length == 0) {
+						$("#btnBefore").attr("disabled",true);
+						return;
+					}
+					
+					//alert(result.length);
+					$("tbody").empty();
+					$(result).each(function(index, item) {
+						//게시물 1개
+						var temp = "";
+						temp += "<tr>";
+						temp += "<th>공연 이미지</th>";
+						temp += "<th>내용</th>";
+						temp += "</tr>";
+						temp += "<tr>";
+						temp += "<td><img style='height:200px;margin-left:100px;' src = '/AtTicketProject/images/"+item.showposter+"'></td>";
+						temp += "<td style='text-align:center;line-height:2em;vertical-align:middle;'>" + "<b>공연명:</b> "+item.showtitle+"<br>";
+						temp += "<b>관람일:</b> "+item.bdate+"<br>";
+						temp += "<b>예매번호:</b> " + item.bookseq +"<br> </td>";
+						temp += "<b>주소:</b> " + item.showaddr + "</td>";
+						temp += "</tr>";
+						$("#totalcount").text(item.totalCountT);
+						
+						$("table > tbody").append(temp);
+					});
+					
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+				
+			}); //ajax
+			
+			/* begin += 3;
+			end += 3;
+			 */
+		});
 	});
     
      //주문일자 텍스트창 css

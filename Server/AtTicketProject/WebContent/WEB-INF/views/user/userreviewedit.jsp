@@ -45,16 +45,16 @@
             color: white;
         }
         #topmenu {
-            border-bottom: 1px solid #ddd;
-            background-color: transparent;
+            border-bottom: 1px solid #eee;
+            background-color: white;
             width: 100%;
             height: 40px;
             color: black;
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 15px;
             padding: 40px 0;
             position: absolute;
+            margin-top: -120px;
         }
         .menubar {
             margin: 0 5px;

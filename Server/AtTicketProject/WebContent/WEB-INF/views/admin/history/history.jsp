@@ -31,13 +31,23 @@ body {
 	left: 250px;
 	top: 120px;
 }
-.history,
-.txtHistory {
+.history, .txtHistory {
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 3px;
 	resize: none;
 	padding: 0px 20px 20px;
-	outline: none;
-	position: relative;
-	left: 20px;
+	margin-left: 20px;
+}
+
+.history h3 {
+	border-bottom: 1px dashed #CCCCCC;
+	padding-bottom: 5px;
+}
+
+.txtHistory {
+	display: none;
+	padding-top: 20px;
+	border: 2px dashed rgb(221, 221, 221);
 }
 </style>
 
@@ -57,7 +67,7 @@ body {
 
 			<form id="formHistory" method="POST"
 				action="/AtTicketProject/historyok.do">
-				<textarea class="txtHistory" name="content"></textarea>
+				<textarea class="txtHistory" name="content"	></textarea>
 				
 				<c:if test="${flag == 0}">
 				<input type="hidden" name="empty" value="${flag}">

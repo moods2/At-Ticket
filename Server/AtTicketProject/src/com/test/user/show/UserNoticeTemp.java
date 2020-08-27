@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 
 
-@WebServlet("/show/usernoticetemp.do")
+@WebServlet("/usernoticetemp.do")
 public class UserNoticeTemp extends HttpServlet{
 
 	@Override

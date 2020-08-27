@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.test.user.main.BannerDAO;
 import com.test.user.main.BannerDTO;
 
-@WebServlet("/adminbannermainend.do")
+@WebServlet("/admin/adminbannermainend.do")
 public class AdminBannerMainEnd extends HttpServlet {
 
 	@Override
@@ -67,7 +67,7 @@ public class AdminBannerMainEnd extends HttpServlet {
 			
 			if (result == 1) {
 				
-				resp.sendRedirect("/AtTicketProject/adminbannermain.do");
+				resp.sendRedirect("/AtTicketProject/admin/adminbannermain.do");
 				
 			} else if (result == 0) { 
 				PrintWriter writer = resp.getWriter();
@@ -88,7 +88,7 @@ public class AdminBannerMainEnd extends HttpServlet {
 			dao.close();
 			
 			if (result2 == 1 && result3 == 1) {
-				resp.sendRedirect("/AtTicketProject/adminbannermain.do");
+				resp.sendRedirect("/AtTicketProject/admin/adminbannermain.do");
 			} else {
 				PrintWriter writer = resp.getWriter();
 				writer.print("<html>");

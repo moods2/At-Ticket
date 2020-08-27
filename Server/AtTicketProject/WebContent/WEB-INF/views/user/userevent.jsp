@@ -318,7 +318,7 @@
         <div id="top">
             <div id="topmenu">
                 <!-- 상단메뉴 좌측(메인화면으로 돌아가기) -->
-                <a href="main.do" id="topleft"></a>
+                <a href="userindex.do" id="topleft"></a>
                 <!-- 상단메뉴 센터(콘서트, 뮤지컬, 연극, 클래식, 전시) -->
                 <div id="topcenter">
                     <span data-lo="userconcert.do" class="menubar">콘서트</span>
@@ -334,8 +334,22 @@
                     <input type="text" value="" id="search">
                     <label for="search" class="glyphicon glyphicon-search"
                         style="font-size: 14px; cursor: pointer;"></label>
-                        <div class="glyphicon glyphicon-user" id="mypage" 
-                        style="font-size: 14px; cursor: pointer; margin: 0 10px; "></div>
+                        <c:if test = "${empty userid}">
+        <span class="menubar" id="slogin">로그인</span>
+        </c:if>
+        <c:if test = "${!empty userid}">
+        <div
+            class="glyphicon glyphicon-user"
+            id="mypage"
+            style="
+                font-size: 14px;
+                cursor: pointer;
+                margin: 0 10px;
+            "
+        ></div>
+        <span class="menubar" id="slogout">로그아웃</span>
+        </c:if>
+                        
                 </div>
             </div>
             <!-- 메인화면 슬라이더 -->
@@ -523,7 +537,27 @@
 
         //마이페이지 클릭시 이동
         $("#mypage").click(function() {
-            location.href = "mypage.html";
+            location.href = "usermypage.do";
+        });
+        
+      //로그인 java 로 이동
+        $("#login").click(function() {
+            location.href = "/AtTicketProject/userlogin.do";
+        });
+        
+        //로그아웃 java 로 이동
+        $("#logout").click(function() {
+            location.href = "/AtTicketProject/userlogout.do";
+        });
+        
+        //로그인 java 로 이동
+        $("#slogin").click(function() {
+            location.href = "/AtTicketProject/userlogin.do";
+        });
+        
+        //로그아웃 java 로 이동
+        $("#slogout").click(function() {
+            location.href = "/AtTicketProject/userlogout.do";
         });
 
 

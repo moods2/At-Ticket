@@ -319,14 +319,14 @@
         <!-- 일별 방문자수 요약 -->
         <div style = "margin-left : 200px;">
             <h4 style="margin-right: 140px; color: #666;" class = "chartWord">방문자</h4>
-            <span style="color: #555; font-size: 25px;" class = "chartWord">11.2k</span><span style="color:red"> ▲ 2.1k</span>
+            <span style="color: #555; font-size: 25px;" class = "chartWord" id="visitorNow"></span><span style="color:red" id="visitorPluse"></span>
             <span class="glyphicon glyphicon-stats" style="font-size: 35px; margin-left: 100px; color: #e09b9b;"></span>
         </div>
 
         <!-- 예매율 요약 -->
         <div style = "margin-left : 200px;">
             <h4 style="margin-right: 140px; color: #666;" class = "chartWord">예매율</h4>
-            <span style="color: #555; font-size: 25px;" class = "chartWord">11.1%</span><span style="color: blue"> ▼ 1.6%</span>
+            <span style="color: #555; font-size: 25px;" class = "chartWord" id="rateNow"></span><span style="color: blue" id="ratePluse"></span>
             <span class="glyphicon glyphicon-stats" style="font-size: 35px; margin-left: 100px; color: #e09b9b;"></span>
         </div>
 
@@ -343,94 +343,201 @@
     </div>
     
     <script>
-    //일별 방문자수
-    Highcharts.chart('container2', {
-        colors: [
-            "#8389E0"
-        ],
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: '2020-07-15 ~ 2020-07-21'
-        },
-        subtitle: {
-            text: 'At-Ticket.com'
-        },
-        xAxis: {
-            categories: ['15', '16', '17', '18', '19', '20', '21']
-        },
-        yAxis: {
-            title: {
-                text: '방문자수(k)'
-            }
-        },
-        plotOptions: {
-            line: {
-                dataLabels: {
-                    enabled: true
-                },
-                enableMouseTracking: false
-            }
-        },
-        series: [{
-            name: '일별 방문자(천)',
-            data: [12.7, 15.0, 25.6, 27.8, 22.2, 23.8, 25.9]
-        }]
+    
+    function callAjax(url, method, params, sCallback, eCallback) {
+    	$.ajax({
+    		type: method,
+    		url: url,
+    		dataType: "json",
+    		success: sCallback,
+    		error: eCallback		
+    	});
+    }
+    
+    $(document).ready(function (){
+    	fn_dailyVisitor(); // 일일방문자 Tran
+    	fn_dailyBookRate(); //일일예매율 Tran
     });
     
-    // 예매율
-    Highcharts.chart('container1', {
-    colors: [
-        "#92D050"
-    ],
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: '2020-07-15 ~ 2020-07-21'
-    },
-    subtitle: {
-        text: 'At-Ticket.com'
-    },
-    xAxis: {
-        categories: [
-            '15',
-            '16',
-            '17',
-            '18',
-            '19',
-            '20',
-            '21',
-        ],
-        crosshair: true
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: '예매율(%)'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f}%</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: '일별 예매율(%)',
-        data: [26.0, 35.6, 18.5, 16.4, 14.1, 35.6, 26.9]
+ 	// 일일방문자 Tran
+    function fn_dailyVisitor() {
+    	//jin var url = '/AtTicketProject/customer/adminViewOk1.do';
+    	var url = '/AtTicketProject/customer/adminviewok.do';
+    	var method = 'GET';
+    	var s_Callback = fn_callback_dailyVisitor;
+    	var e_Callback = fn_err_callback_dailyVisitor;
+    	
+    	callAjax(url, method, '' , s_Callback, e_Callback);
+    }
 
-    }]
-});
+    //일일예매율 Tran
+    function fn_dailyBookRate(){
+    	var url = '/AtTicketProject/customer/dailyBookRateOk.do';
+    	var method = 'GET';
+    	var s_Callback = fn_callback_dailyBookRate;
+    	var e_Callback = fn_err_callback_dailyBookRate;
+    	
+    	
+    	callAjax(url, method, '' , s_Callback, e_Callback);
+    }
+    
+    
+  //일일방문자 콜백
+    function fn_callback_dailyVisitor(response){
+    	var vData = [];
+    	var vCnt = [];
+    	$(response[1]).each(function (index, item){
+    		vData.push(item.vdate);
+    		vCnt.push(parseFloat(item.vcnt, 10));
+    	});
+    	
+    	console.log(vData);
+    	console.log(vCnt);
+    	
+    	
+     	$("#visitorNow").html(vCnt[6]+'k');
+    	
+    	if( vCnt[6]-vCnt[5] > 0 ){
+    		$("#visitorPluse").html('▲ ' +(vCnt[6]-vCnt[5]).toFixed(1)+'k')
+    		$("#visitorPluse").css({
+    			"color" : "red",
+    			"margin-left": "10px"
+    		});
+    	} else {
+    		$("#visitorPluse").html('▼ ' +(vCnt[6]-vCnt[5]).toFixed(1)+'k')
+    		$("#visitorPluse").css({
+    			"color" : "blue",
+    			"margin-left": "10px"
+    		});
+    	} 
+    	
+    	Highcharts.chart('container2', {
+            colors: [
+                "#8389E0"
+            ],
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: vData[0] +' ~ '+ vData[6]
+            },
+            subtitle: {
+                text: 'At-Ticket.com'
+            },
+            xAxis: {
+                categories: vData
+            },
+            yAxis: {
+                title: {
+                    text: '방문자수(k)'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: '일별 방문자(천)',
+                // data: [12.7, 15.0, 25.6, 27.8, 22.2, 23.8, 25.9]
+                data: vCnt
+            }]
+        });
+    }
+
+    //일일예매율 콜백
+    function fn_callback_dailyBookRate(response){
+    	//alert("일일예매율 콜백");
+    	
+    	var dbData = [];
+    	var dbRate = [];
+    	$(response).each(function (index, item){
+    		dbData.push(item.dbdate);
+    		dbRate.push(parseFloat(item.dbrate, 10));
+    	});
+    	//alert("일일예매율 콜백 성공");
+    	
+     	$("#rateNow").html(dbRate[2]+'%');
+    	
+    	if( dbRate[2]-dbRate[1] > 0 ){
+    		$("#ratePluse").html('▲ ' +(dbRate[2]-dbRate[1]).toFixed(1)+'%')
+    		$("#ratePluse").css({
+    			"color" : "red",
+    			"margin-left": "10px"
+    		});
+    	} else {
+    		$("#ratePluse").html('▼ ' +(dbRate[2]-dbRate[1]).toFixed(1)+'%')
+    		$("#ratePluse").css({
+    			"color" : "blue",
+    			"margin-left": "10px"
+    		});
+    	}; 
+    	
+    	
+    	console.log("일일예애: "+dbData);
+    	console.log(dbRate);
+    	
+
+    	
+        Highcharts.chart('container1', {
+            colors: [
+                "#92D050"
+            ],
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: dbData[0] +' ~ '+ dbData[2]
+            },
+            subtitle: {
+                text: 'At-Ticket.com'
+            },
+            xAxis: {
+                categories: dbData,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '예매율(%)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f}%</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: '일별 예매율(%)',
+                data: dbRate
+
+            }]
+        });
+    }   
+    
+  //일일방문자 에러콜백
+    function fn_err_callback_dailyVisitor(){
+    	alert("일일방문자 에러콜백");
+    }
+
+    //일일예매율 에러콜백
+    function fn_err_callback_dailyBookRate(){
+    	alert("일일예매율 에러콜백");
+    }
+    
+ 
     
     </script>
     

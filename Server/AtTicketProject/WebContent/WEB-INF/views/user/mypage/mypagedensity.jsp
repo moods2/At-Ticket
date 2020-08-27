@@ -649,6 +649,7 @@ th {
 						<div id="tt3">결제한 날짜</div>
 						<select name="sel2" id="month3">
 							<optgroup label="월">
+								<option value = "-1">월 선택</option>
 								<option value="01">1월</option>
 								<option value="02">2월</option>
 								<option value="03">3월</option>
