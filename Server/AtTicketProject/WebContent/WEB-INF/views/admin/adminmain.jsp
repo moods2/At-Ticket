@@ -119,7 +119,25 @@
         .pagination > li > a, .pagination > li > span{
           color: black;
         }
-        
+        .history, .txtHistory {
+		border: 1px solid rgb(221, 221, 221);
+		border-radius: 3px;
+		resize: none;
+		padding: 0px 20px 20px;
+		margin-left: 20px;
+	}
+	
+	.history h3 {
+		border-bottom: 1px dashed #CCCCCC;
+		padding-bottom: 5px;
+	}
+	
+	.txtHistory {
+		display: none;
+		padding-top: 20px;
+		border: 2px dashed rgb(221, 221, 221);
+	}
+	        
         
         
         /* --------------사내 공지사항 관련 css 끝--------------*/
@@ -133,124 +151,27 @@
 </head>
 
 <body>
-	<!-- -------------------사내공지 게시판 시작------------------------- -->
+	<!-- -------------------작업 히스토리 시작------------------------- -->
 	<div class = "basicBox" style = "height : 600px">
-        <div id = "selectable">
-           <div id = "empNoticeTitle"><span id = "empNoticeTitleImport"><span><i class = "glyphicon glyphicon-pushpin"></i></span></span>&nbsp;사내 공지사항 안내</div>
-           <div id = "slctp2">
-	    		<div class="input-group">
-	    			<input type="text" class="form-control" placeholder = "ex) 랜섬웨어로 인한 복구작업">
-	    			<span class="input-group-addon" id = "searchlogo"><i class="glyphicon glyphicon-search"></i></span>
-	    		</div>
-            </div>
-            <table style = "width:1330px;" class = "table table-striped table-bordered table-condensed" id = "nttable">
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>날짜</th>
-                        <th>조회수</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td><span class = "starpoint">긴급</span>&nbsp;랜섬웨어로 인한 복구작업</td>
-                        <td> 이몽룡</td>
-                        <td> 2020.02.17(월)</td>
-                        <td><span class = "seesee">180</span></td>
-                    </tr>
 
-                </tbody>
-            </table>
+           <div id = "empNoticeTitle" style="margin-bottom: 30px;">
+           	<span id = "empNoticeTitleImport"><span><i class = "glyphicon glyphicon-pushpin"></i></span></span>&nbsp;작업 히스토리</div>
+           <div>
 
-        <!-- 하단 페이지 선택 바 -->
-            <nav class = "pagebar">
-              <ul class="pagination">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class = "active"><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
+			<div class="history">${dto.content}</div>
 
-              </ul>
-            </nav>
+			<form id="formHistory" method="POST"
+				action="/AtTicketProject/historyok.do">
+				<textarea class="txtHistory" name="content"	></textarea>
+				
+				<c:if test="${flag == 0}">
+				<input type="hidden" name="empty" value="${flag}">
+				</c:if>
+			</form>
+           
         </div>       
     </div>
-    <!-- -------------------사내공지 게시판 끝------------------------- -->
+    <!-- -------------------작업 히스토리 끝------------------------- -->
     
     <hr class = "splitHr">
     
@@ -343,6 +264,68 @@
     </div>
     
     <script>
+    
+	
+	var txt, lines;
+	
+    function showHistory() {
+        txt = $(".history").text().trim();
+        $(".history").text("");
+
+        //라인 분리
+        lines = txt.split("\n");
+        
+        lines.forEach(function(item) {
+
+            item = item.trim();
+
+            //버전 찾기
+            if (item.startsWith("v")) {
+                $(".history").append("<h3>" + item + "</h3>");  
+            }
+
+            if (item.startsWith("-")) {
+                $(".history").append("<div>" + item + "</div>");  
+            }
+        });
+    } 
+
+    showHistory();
+
+    function syncSize() {
+        $(".txtHistory").width($(".history").width());
+        $(".txtHistory").height($(".history").height());
+    }
+
+    //크기 동기화
+    $(window).resize(function() {
+        syncSize();
+    });
+    
+
+
+    //전환
+    $(".history").dblclick(function() {
+        syncSize();
+        $(".txtHistory").val(txt);
+        $(".history").hide();
+        $(".txtHistory").show();
+    });
+
+    $(".txtHistory").keyup(function() {
+        if (event.ctrlKey && event.keyCode == 13) {
+            syncSize();
+            $(".history").text($(".txtHistory").val());
+            showHistory();
+            $(".history").show();
+            $(".txtHistory").hide();
+            
+            //편집 내용 -> 서버로 전송
+            $("#formHistory").submit();
+            
+        }
+        event.cancelBubble = true;
+    });
     
     function callAjax(url, method, params, sCallback, eCallback) {
     	$.ajax({

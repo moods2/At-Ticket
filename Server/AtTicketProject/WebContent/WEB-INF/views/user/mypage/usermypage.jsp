@@ -373,6 +373,7 @@
                                 <c:if test="${list1.size() == 0}">
                                 	<td>최근 업데이트 소식이 없습니다.</td>
                                 </c:if>
+                                <c:if test="${list1.size() != 0}">
                                 <td>
 	                            	<p>
 	                                <strong>${list1.get(0).myShowTitle}</strong> (
@@ -381,12 +382,14 @@
 	                                <button class="btn btn btn-default" style="padding: 2px 12px; margin-left: 10px;" onclick="location.href='/AtTicketProject/usertickekting.do?seq=${list1.get(0).myShowseq}'">예매하기</button>
 	                                </p>
                                 </td>
+                                </c:if>
                             </tr>
                             <tr>
                                 <th>티켓오픈 알람</th>
                                 <c:if test="${list2.size() == 0}">
                                 	<td>최근 업데이트 소식이 없습니다.</td>
                                 </c:if>
+                                <c:if test="${list2.size() != 0}">
                                 <td>
 	                            	<p>
 	                                <strong>${list2.get(0).velltitle}</strong> (
@@ -395,6 +398,7 @@
 						              <button class="btn btn btn-default" style="padding: 2px 12px; margin-left: 10px;" onclick="location.href='/AtTicketProject/show/usernoticetemp.do?noticeseq='+ ${list2.get(0).noticeseq }+'&page=&search='">상세정보</button>
 	                                </p>
                                 </td>
+                                </c:if>
                             </tr>
                         </tbody>
                     </table>

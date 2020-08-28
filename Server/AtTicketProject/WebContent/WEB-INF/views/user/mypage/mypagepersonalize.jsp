@@ -254,7 +254,7 @@
                                 	</td>
                                 	<td>${dto.vellopenDate }</td>
                                 	<td>${dto.velldate }</td>
-                                	<td> <button onclick="location.href='/AtTicketProject/show/usernoticetemp.do?noticeseq='+ ${dto.noticeseq }+'&page=&search='">상세정보</button> </td>
+                                	<td> <button onclick="location.href='/AtTicketProject/usernoticetemp.do?noticeseq='+ ${dto.noticeseq }+'&page=&search='">상세정보</button> </td>
                                 </tr>
                                 </c:forEach>
                             </tbody>
