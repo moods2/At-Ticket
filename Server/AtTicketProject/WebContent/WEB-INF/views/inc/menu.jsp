@@ -38,7 +38,7 @@
             </div>
             <h3>통계</h3>
             <div>
-            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="adminViews.html"><span>▶</span> 방문자 통계</a></div>
+            <div style="margin-left:-30px; padding-left: 30px; width: 231px; height: 25px;"><a href="/AtTicketProject/customer/adminview.do"><span>▶</span> 방문자 통계</a></div>
             </div>
             <h3>정산 관리</h3>
             <div>
