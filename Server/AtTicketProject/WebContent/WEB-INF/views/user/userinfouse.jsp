@@ -1099,7 +1099,9 @@
 
         // 아코디언
 		$(".a1").accordion({
-            heightStyle: "content"
+			collapsible: true,
+	        active: false,
+			heightStyle: "content"
         });
 
         // 문의하기 링크

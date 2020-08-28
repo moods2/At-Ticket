@@ -71,7 +71,8 @@
 
     $(".accomenu").accordion({
         collapsible: true,
-        active: false
+        active: false,
+        heightStyle: "content"
     });
 
     //홈버튼 링크
