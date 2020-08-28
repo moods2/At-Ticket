@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
@@ -170,9 +171,10 @@
             color: #444;
         }
 		
-		 #tblbook th{
+		 #tblbook th, td{
         	text-align:center;
         }
+        #tblbook th {border-top: 3px solid #4E7AD1;}
         
         #tblbook td{
         	text-align:center;
@@ -184,6 +186,7 @@
         
         #tblwatch th{
         	text-align:center;
+        	border-top: 3px solid #4E7AD1;
         }
         
         #tblwatch td {
@@ -196,6 +199,23 @@
         
          #tblwatch td:nth-child(4) {
         	text-align:left;
+        }
+        
+        .tbl1 th, .tbl1 td {
+            border: 1px solid #D3D3D3;
+            text-align: center;
+            font-size: 13px;
+            color: #444;
+            padding: 10px 0;
+        }
+        .tbl1 th {
+           background-color: #EEE;
+            border-top: 3px solid #4E7AD1;
+            border-bottom: 1px solid #CCC;
+        }
+        .tbl1 td {
+            border-left: 0;
+            border-right: 0;
         }
     </style>
 </head>
@@ -236,7 +256,7 @@
                 <div style="clear: both;"></div>
                  <div class="mycount">
                     <p><i class="glyphicon glyphicon-ok-sign"></i>최근 예매내역<span>${username}님께서 최근 3개월간 예매하신 내역입니다.</span></p>
-                    <table id="tblbook" class = "table table-bordered table-striped table-hover">
+                    <table id="tblbook" class = "table table-bordered table-striped table-hover tbl1">
                         <thead>
                             <th>예매일</th>
                             <th>예매번호</th>
@@ -335,7 +355,7 @@
                         </c:if>
                         
                         <c:if test = "${wlist.size() != 0}">
-                        	<table class = "table table-bordered table-striped table-hover" id = "tblwatch" style="height:auto;">
+                        	<table class = "table table-bordered table-striped table-hover tbl1" id = "tblwatch" style="height:auto;">
                         		<thead>
                         			<th>공연명</th>
                         			<th>관람일</th>
@@ -364,7 +384,7 @@
                         </span>
                         <button type = "button" class="glyphicon glyphicon-menu-right right" id = "btnrightW"></button>
                     </div>
-                <%-- <div class="mycount">
+                <div class="mycount">
                     <p><i class="glyphicon glyphicon-ok-sign"></i>나의 맞춤 알람 소식<span>최근 1주일 간 업데이트된 맞춤 알람 소식입니다.</span></p>
                     <table id="tbl2">
                         <tbody>
@@ -402,7 +422,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div> --%>
+                </div>
             </div>
 
             <!-- 챗봇 : 단비봇 -->
@@ -426,18 +446,18 @@
 	var endW = ${map1.endW};
 	var totalPageW= ${totalPageW};
 	var nowPageW = ${nowPageW};
-	if(${wlist.size()!=0}){
+	if(${wlist.size()}!=0){
 		$("#mylist").css("border","none");
 	}
     $("#btnleft").click(function() {
 
-		nowPage-=1;
+		nowPageB-=1;
 		begin-=2;
 		end-=2;
 		$.ajax({
 			type: "GET",
 			url: "/AtTicketProject/myreok.do",
-			data: "begin=" + begin + "&end=" + end + "&totalPage=" + totalPageB + "&nowPage=" + nowPageB,
+			data: "begin=" + begin + "&end=" + end + "&totalPageB=" + totalPageB + "&nowPageB=" + nowPageB,
 			dataType: "json",
 			success: function(result) {
 				
@@ -463,8 +483,8 @@
 					$("#tblbook > #tby1").append(temp); 
 					$("#page").empty();
 					var temp = "";		
-					temp+="<span>"+ item.nowPage+"</span>";
-					temp+=" <span>(<span id = 'nowPage'>"+item.nowPage+"</span>/"+item.totalPage+")</span>";
+					temp+="<span>"+ item.nowPageB+"</span>";
+					temp+=" <span>(<span id = 'nowPage'>"+item.nowPageB+"</span>/"+item.totalPageB+")</span>";
 					$("#page").append(temp);  
 				});
 				
@@ -482,11 +502,11 @@
 		
 	begin+=2;
 	end+=2;
-	nowPage +=1;
+	nowPageB +=1;
 	$.ajax({
 		type: "GET",
 		url: "/AtTicketProject/myreok.do",
-		data: "begin=" + begin + "&end=" + end + "&totalPage=" + totalPageB + "&nowPage=" + nowPageB,
+		data: "begin=" + begin + "&end=" + end + "&totalPageB=" + totalPageB + "&nowPageB=" + nowPageB,
 		dataType: "json",
 		success: function(result) {
 			
@@ -513,8 +533,8 @@
 				$("#tblbook > #tby1").append(temp); 
 				$("#page").empty();
 				var temp = "";
-				temp+="<span>"+ item.nowPage+"</span>";
-				temp+=" <span>(<span id = 'nowPage'>"+item.nowPage+"</span>/"+item.totalPage+")</span>";
+				temp+="<span>"+ item.nowPageB+"</span>";
+				temp+=" <span>(<span id = 'nowPage'>"+item.nowPageB+"</span>/"+item.totalPageB+")</span>";
 				$("#page").append(temp); 
 			});
 			

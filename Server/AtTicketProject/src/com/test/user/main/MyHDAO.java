@@ -57,7 +57,7 @@ public class MyHDAO {
 	public ArrayList<MyReDTO> getlistB(HashMap<String, String> map) {
 		
 		try {
-			String sql = "select b.* from(select a.*, rownum as rnum from (select * from vwmyreservation where cusseq = ? and bookdate <= to_char(sysdate,'yy/mm/dd') and bookdate>(to_char(add_months(sysdate,-3),'yy/mm/dd')) order by bookdate desc) a) b where rnum >=? and rnum <=?";
+			String sql = "select b.* from(select a.*, rownum as rnum from (select * from vwmyreservation where cusseq = ? and to_char(bookdate,'yy/mm/dd') <= to_char(sysdate,'yy/mm/dd') and bookdate>=(to_char(add_months(sysdate,-3),'yy/mm/dd')) order by bookdate desc) a) b where rnum >=? and rnum <=?";
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, map.get("cusseq"));
 			pstat.setString(2, map.get("begin"));

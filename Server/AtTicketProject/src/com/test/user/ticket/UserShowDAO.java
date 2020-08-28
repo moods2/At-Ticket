@@ -404,7 +404,7 @@ public class UserShowDAO {
 	public void downCoupon(int userSeq, String couponSeq) {
 		try {
 			
-			String sql = "insert into tblCusCoupon values (cuscouponSeq.nextVal,to_date(sysdate,'yyyy/mm/dd'),?,?,0)";
+			String sql = "insert into tblCusCoupon values (cuscouponSeq.nextVal,default,?,?,0)";
 			
 			pstat = conn.prepareStatement(sql);
 			
@@ -648,12 +648,13 @@ public class UserShowDAO {
 	public void removeUserCoup(String couponUserSeq) {
 		try {
 			
+			
 			String sql = "update tblCusCoupon set delflag = 1 where seq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, couponUserSeq);
 			
-			rs = pstat.executeQuery();//쿼리를 날려준다
+			rs = pstat.executeQuery();//쿼리를 날려준다...
 			
 			
 			

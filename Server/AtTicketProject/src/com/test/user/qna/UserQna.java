@@ -170,7 +170,6 @@ public class UserQna extends HttpServlet{
 		
 		req.setAttribute("pagebar", pagebar);
 		
-		
 		req.setAttribute("userseq", userseq);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/user/userqna.jsp");

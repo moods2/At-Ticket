@@ -452,7 +452,7 @@
               	</c:forEach>
               </div>
             </div>
-            <hr />
+            <hr style="margin-top: 0px;">
                 <!-------------------------------- 내용부분 -------------------------------->
                 <p
                     class="event-main-tit"

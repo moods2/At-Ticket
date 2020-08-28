@@ -2,6 +2,7 @@ package com.test.user.ticket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLSyntaxErrorException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +18,7 @@ public class UserShowFinal extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		
+
 		
 		HttpSession session = req.getSession();//회원의 세션을 받아온다 -> 회원의 정보가 존재함
 		
@@ -51,7 +52,14 @@ public class UserShowFinal extends HttpServlet{
 		//System.out.println(dto.getInputDate());
 		
 		//회원이 사용한 쿠폰을 없애준다.
-		dao.removeUserCoup(couponUserSeq);
+		
+		System.out.println("=-==================");
+		System.out.println(couponUserSeq);
+		System.out.println("=-==================");
+		
+		if(!couponUserSeq.equals("undefined")) {
+			dao.removeUserCoup(couponUserSeq);			
+		}
 		//그리고 session에 접근하여 적용해준다.-> 쿠폰은 적용할 필요가 없지.
 		
 		

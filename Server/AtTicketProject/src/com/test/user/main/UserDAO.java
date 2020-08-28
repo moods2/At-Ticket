@@ -104,7 +104,7 @@ public class UserDAO {
 		try {
 			
 			String sql = "INSERT INTO TBLCUSTOMER (SEQ, NAME, SSN, ID, PW, EGG, ADDR, TEL, EMAIL, GRADE, DELFLAG) "
-					+ "VALUES (CUSTOMERSEQ.NEXTVAL, ?, ?, ?, ?, DEFAULT, ?, ?, ?, DEFAULT, DEFAULT)";
+					+ "VALUES (CUSTOMERSEQ.NEXTVAL, ?, ?, ?, ?, 2000, ?, ?, ?, DEFAULT, DEFAULT)";
 			pstat = conn.prepareStatement(sql);
 			
 			pstat.setString(1, dto.getName());

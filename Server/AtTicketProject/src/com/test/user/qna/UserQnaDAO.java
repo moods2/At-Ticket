@@ -173,7 +173,7 @@ public class UserQnaDAO {
 			
 			if (map.get("search") != null) {
 				//이름 & 제목 & 내용 - 포괄 검색
-				where = String.format("where (name like '%%%s%%' or subject like '%%%s%%' or content like '%%%s%%')", map.get("search"), map.get("search"), map.get("search"));
+				where = String.format("where (title like '%%%s%%' or content like '%%%s%%')", map.get("search"), map.get("search"));
 			}
 			
 			String sql = "";
@@ -214,7 +214,8 @@ public class UserQnaDAO {
 			
 			if (map.get("search") != null) {
 				//이름 & 제목 & 내용 - 포괄 검색
-				where = String.format("where (name like '%%%s%%' or subject like '%%%s%%' or content like '%%%s%%')", map.get("search"), map.get("search"), map.get("search"));
+				where = String.format("and (title like '%%%s%%' or content like '%%%s%%')", map.get("search"), map.get("search"));
+				System.out.println("검색 있");
 			}
 			
 			String sql = "";
@@ -223,26 +224,31 @@ public class UserQnaDAO {
 			
 			if (map.get("sort") != null) {
 				
-				sort = String.format("where tag = '%s'", map.get("sort"));
-				sql = String.format("select count(*) as cnt from tblqna %s %s and cusseq = %s", where, sort,map.get("userseq"));
+				sort = String.format("and tag = '%s'", map.get("sort"));
+				sql = String.format("select count(*) as cnt from tblqna where cusseq = %s %s %s ",map.get("userseq"), where, sort);
+				
+				System.out.println("소트 있");
 			}
 			
 			if (map.get("sort") == null) {
-				sql = String.format("select count(*) as cnt from tblqna %s and cusseq = %s", where ,map.get("userseq"));
+				sql = String.format("select count(*) as cnt from tblqna where cusseq = %s %s ",map.get("userseq"), where);
+				System.out.println("소트 없");
 			}
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
-			
-			//System.out.println("==="+sql);
+
 			
 			if(rs.next()) {
 				return rs.getInt("cnt");
 			}
 			
+			
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("getTotalCount");
+			System.out.println("getMyQnaTotalCount");
 		}
 		return 0;
 	}

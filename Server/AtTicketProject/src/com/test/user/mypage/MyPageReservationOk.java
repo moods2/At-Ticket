@@ -30,6 +30,8 @@ public class MyPageReservationOk extends HttpServlet {
 		HashMap<String,String> map = new HashMap<String,String>();
 		req.setCharacterEncoding("UTF-8");
 		
+		
+		
 		map.put("cusseq", cusseq);
 		map.put("begin", begin);
 		map.put("end", end);

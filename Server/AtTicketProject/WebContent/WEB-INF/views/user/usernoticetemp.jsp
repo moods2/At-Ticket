@@ -323,7 +323,7 @@
               	</c:forEach>
               </div>
             </div>
-            <hr />
+            <hr style="margin-top: 0px;">
 <!-------------------------------- 내용부분 -------------------------------->
  		
         <h2 style="text-align: center; margin-top: 200px; margin-bottom: 50px; font-size: 4em; font-weight: bold;">공지사항</h2>

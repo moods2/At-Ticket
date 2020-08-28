@@ -150,7 +150,7 @@
                 
                 <h2>사용가능한 쿠폰</h2>
                 <p><i class="glyphicon glyphicon-menu-right
-                    "></i>현재 사용 가능한 공연 할인 쿠폰은 <span style="color: red;">0</span>매 입니다.
+                    "></i>현재 사용 가능한 공연 할인 쿠폰은 <span style="color: red;">${totalCount }</span>매 입니다.
                 </p>
                 <table id="tbl1">
                     <thead>
