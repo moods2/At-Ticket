@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.test.admin.customerqna.QnaDAO;
-import com.test.admin.customerqna.QnaDTO;
 
 @WebServlet("/userqnamylist.do")
 public class UserQnaMylist extends HttpServlet{
@@ -67,6 +65,7 @@ public class UserQnaMylist extends HttpServlet{
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
 		ArrayList<UserQnaDTO> list = dao.list(map);
+		dao.close();
 		
 		for (UserQnaDTO dto : list) {
 			
