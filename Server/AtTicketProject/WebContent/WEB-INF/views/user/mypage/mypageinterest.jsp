@@ -161,7 +161,7 @@
 
         //관련 컨텐츠 공지 클릭시
         $(".notice").click(function() {
-            location.href = "/AtTicketProject/show/usernotice.do";
+            location.href = "/AtTicketProject/usernotice.do";
         });
 
         //예매하기 클릭시
