@@ -454,7 +454,7 @@
             </div>
         </form> 
 
-			<c:if test="${not empty userseq}">
+			<c:if test="${userseq}">
             <button id="myQna" class="move">
                 <span class="
                 glyphicon glyphicon-th-list"></span>
@@ -541,10 +541,14 @@
             <span class="glyphicon glyphicon-pencil"></span>
             list
             </button>
+           
+            <c:if test="${userseq}">
             <button class="btn btn-primary" id="write">
             <span class="glyphicon glyphicon-pencil"></span>
             Write
             </button>
+            </c:if>
+            
 			<div style="clear: both;"></div>
 
 			${pagebar}
