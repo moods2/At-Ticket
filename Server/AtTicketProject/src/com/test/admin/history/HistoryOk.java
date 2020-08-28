@@ -26,7 +26,7 @@ public class HistoryOk extends HttpServlet {
 			 dao.edit(content);
 		 }
 		
-		resp.sendRedirect("/AtTicketProject/history.do");
+		resp.sendRedirect("/AtTicketProject/adminmain.do");
 	}
 
 }
