@@ -117,32 +117,26 @@ public class MyPageHDAO {
 		try {
 			int result = 0;
 			String sql = "";
-			System.out.println(bookseq[0]);
-			sql = "select to_char(bdate,'yyyy-mm-dd') as bdate from tblbooking where delflag <> 1 and seq = ?";
-			ArrayList<String> bdate = new ArrayList<String>();
-			pstat = conn.prepareStatement(sql);
-			for(int i=0;i<bookseq.length;i++) {
-				pstat.setString(1,bookseq[i]);
-				rs = pstat.executeQuery();
-				if(rs.next()) {
-					bdate.add(rs.getString("bdate"));
-				}
-			}
-			
-			Calendar c = Calendar.getInstance();
-			for(int i=0;i<bdate.size();i++) {
-				if(bdate.get(i).compareTo(String.format("%tF", c)) ==  -1){
-					System.out.println(bdate.get(i));
-					return -1;
-				}
-			}
+			/*
+			 * System.out.println(bookseq[0]); sql =
+			 * "select to_char(bdate,'yyyy-mm-dd') as bdate from tblbooking where delflag <> 1 and seq = ?"
+			 * ; ArrayList<String> bdate = new ArrayList<String>(); pstat =
+			 * conn.prepareStatement(sql); for(int i=0;i<bookseq.length;i++) {
+			 * pstat.setString(1,bookseq[i]); rs = pstat.executeQuery(); if(rs.next()) {
+			 * bdate.add(rs.getString("bdate")); } }
+			 * 
+			 * Calendar c = Calendar.getInstance(); for(int i=0;i<bdate.size();i++) {
+			 * if(bdate.get(i).compareTo(String.format("%tF", c)) == -1){
+			 * System.out.println(bdate.get(i)); return -1; } }
+			 */
 			sql = "update tblbooking set delflag = 1, state = '취소' where seq = ?";
 			pstat = conn.prepareStatement(sql);
+			
 			for(int i=0;i<bookseq.length;i++) {
 				pstat.setString(1,bookseq[i]);
 				result += pstat.executeUpdate();
-				return result;
 			}
+			return result;
 		} catch (Exception e) {
 			System.out.println("MyPageHDAO.deleteReservation()");
 			e.printStackTrace();
@@ -391,7 +385,7 @@ public class MyPageHDAO {
 			 * System.out.println(map.get("to")); System.out.println(map.get("begin"));
 			 * System.out.println(map.get("end"));
 			 */
-			System.out.println();
+			
 			rs = pstat.executeQuery();
 			ArrayList<MyReDTO> list = new ArrayList<MyReDTO>();
 			if(rs.next()) {

@@ -27,7 +27,7 @@ public class MyReOk	extends HttpServlet {
 		String begin = req.getParameter("begin");
 		String end = req.getParameter("end");
 		
-		String nowPage = req.getParameter("nowPage");
+		String nowPageB = req.getParameter("nowPageB");
 		HashMap<String,String> map = new HashMap<String,String>();
 		req.setCharacterEncoding("UTF-8");
 		
@@ -39,11 +39,11 @@ public class MyReOk	extends HttpServlet {
 		//2.
 		MyHDAO dao = new MyHDAO();
 //		(int)Math.ceil((double)totalCount/pageSize);
-		int pageSize = 2;
-		int totalPage = (int)Math.ceil((double)dao.getTotalCount(cusseq)/pageSize);
+		int pageSizeB = 2;
+		int totalPageB = (int)Math.ceil((double)dao.getTotalCount(cusseq)/pageSizeB);
 	
-		if(totalPage == 0) {
-			totalPage = 1;
+		if(totalPageB == 0) {
+			totalPageB = 1;
 		}
 		
 		ArrayList<MyReDTO> blist = dao.getlistB(map);
@@ -65,8 +65,8 @@ public class MyReOk	extends HttpServlet {
 			obj.put("bookstate",dto.getBookstate());
 			obj.put("cnt",dto.getCnt());
 			obj.put("showtitle",dto.getShowtitle());
-			obj.put("nowPage", nowPage);
-			obj.put("totalPage", totalPage);
+			obj.put("nowPageB", nowPageB);
+			obj.put("totalPageB", totalPageB);
 			arr.add(obj);
 		}
 		
