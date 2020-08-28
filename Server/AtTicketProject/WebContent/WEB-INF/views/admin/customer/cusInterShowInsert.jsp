@@ -7,13 +7,9 @@
 <title>Admin</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp"%>
 <style>
-	body{
-		overflow-x:hidden;
-	}
-	
-	td {
-          text-align: center;
-       }
+td {
+            text-align: center;
+        }
 
         th {
             background-color:  #999;
@@ -28,9 +24,8 @@
             font-weight: border;
             color : rgb(220,220,220);
             height : 35px;
-            font-weight: bold;  
-            margin-top:20px;  
-            margin-left: 210px; 
+            font-weight: bold;    
+            margin-left: 410px; 
             width: 60px;
         }
         .modified:hover {

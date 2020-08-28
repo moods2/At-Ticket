@@ -74,71 +74,14 @@ public class MyPageHDAO {
 		}
 		return null;
 	}
-	
-	public ArrayList<MyReDTO> getlistB1(HashMap<String, String> map) {
-		
-		try {
-			String sql = "select b.* from(select a.*, rownum as rnum from (select * from vwmyreservation1 where cusseq = ? and bookdate >= ? and bookdate <= ? order by bookdate desc) a) b where rnum >=? and rnum <=?";
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, map.get("cusseq"));
-			pstat.setString(2, map.get("from"));
-			pstat.setString(3, map.get("to"));
-			pstat.setString(4, map.get("begin"));
-			pstat.setString(5, map.get("end"));	
-			/*
-			 * System.out.println(map.get("cusseq")); System.out.println(map.get("from"));
-			 * System.out.println(map.get("to")); System.out.println(map.get("begin"));
-			 * System.out.println(map.get("end"));
-			 */
-		
-			rs = pstat.executeQuery();
-			ArrayList<MyReDTO> list = new ArrayList<MyReDTO>();
-			while(rs.next()) {
-				MyReDTO dto = new MyReDTO();
-				dto.setBdate(rs.getString("bdate").substring(0,10));
-				dto.setBookdate(rs.getString("bookdate").substring(0,10));
-				dto.setBookseq(rs.getString("bookseq"));
-				dto.setBookstate(rs.getString("bookstate"));
-				dto.setCnt(rs.getString("cnt"));
-				dto.setShowtitle(rs.getString("showtitle"));
-				list.add(dto);
-			}
-			
-			return list;
-			
-		} catch (Exception e) {
-			System.out.println("MyPageHDAO.getlist()");
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 	public int deleteReservation(String[] bookseq) {
 		try {
 			int result = 0;
-			String sql = "";
-			System.out.println(bookseq[0]);
-			sql = "select to_char(bdate,'yyyy-mm-dd') as bdate from tblbooking where delflag <> 1 and seq = ?";
-			ArrayList<String> bdate = new ArrayList<String>();
+			String sql = "update tblbooking set delflag = 1 where seq = ?";
 			pstat = conn.prepareStatement(sql);
 			for(int i=0;i<bookseq.length;i++) {
-				pstat.setString(1,bookseq[i]);
-				rs = pstat.executeQuery();
-				if(rs.next()) {
-					bdate.add(rs.getString("bdate"));
-				}
-			}
-			
-			Calendar c = Calendar.getInstance();
-			for(int i=0;i<bdate.size();i++) {
-				if(bdate.get(i).compareTo(String.format("%tF", c)) ==  -1){
-					System.out.println(bdate.get(i));
-					return -1;
-				}
-			}
-			sql = "update tblbooking set delflag = 1, state = '취소' where seq = ?";
-			pstat = conn.prepareStatement(sql);
-			for(int i=0;i<bookseq.length;i++) {
+				
 				pstat.setString(1,bookseq[i]);
 				result += pstat.executeUpdate();
 				return result;

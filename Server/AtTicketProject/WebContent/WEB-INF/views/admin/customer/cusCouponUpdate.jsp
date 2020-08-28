@@ -25,12 +25,8 @@
 		color: rgb(220, 220, 220);
 		height: 35px;
 		font-weight: bold;
-		margin-left: 240px;
+		margin-left: 390px;
 		width: 60px;
-	}
-	
-	body{
-		overflow-x:hidden;
 	}
 	
 	.modified:hover {

@@ -8,9 +8,6 @@
 <title>Admin</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp"%>
 <style>
-	body{
-		overflow-x:hidden;
-	}
 	td {
 		text-align: center;
 	}
@@ -29,7 +26,7 @@
 		color: rgb(220, 220, 220);
 		height: 35px;
 		font-weight: bold;
-		margin-left: 210px;
+		margin-left: 410px;
 		width: 60px;
 	}
 	
