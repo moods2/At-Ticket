@@ -13,7 +13,7 @@
            left: 0px;
            top: 0px;
            width: 250px;
-           height: 800px;
+           height: 1300px;
            /* border: 1px solid black; */
            background-color: #444;
            text-align: center;
