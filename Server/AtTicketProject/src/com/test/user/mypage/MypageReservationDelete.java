@@ -32,6 +32,15 @@ public class MypageReservationDelete extends HttpServlet {
 			
 			resp.sendRedirect(String.format("/AtTicketProject/mypagereservation.do?monthsearch=%s&from=%s&to=%s",monthsearch,from,to));
 			
+		} else if(result == -1) {
+			writer.print("<html>");
+			writer.print("<body>");
+			writer.print("<script>");
+			writer.print("alert('이미 관람일시가 지난 예매를 선택하셨습니다. 다시 선택해주세요.');history.back();");
+			writer.print("</script>");
+			writer.print("</body>");
+			writer.print("</html>");
+			writer.close();
 		} else {
 			writer.print("<html>");
 			writer.print("<body>");
